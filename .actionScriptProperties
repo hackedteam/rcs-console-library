@@ -19,7 +19,7 @@
     <sourceAttachmentPath/>
   </compiler>
   <applications>
-    <application path="RCSCoreLibrary.mxml">
+    <application path="RCSConsoleLibrary.mxml">
       <airExcludes/>
     </application>
   </applications>
@@ -35,5 +35,3 @@
     </buildTarget>
   </buildTargets>
 </actionScriptProperties>
-
-
