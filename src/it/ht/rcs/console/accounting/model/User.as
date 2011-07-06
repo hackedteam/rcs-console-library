@@ -1,5 +1,5 @@
 /**
- * This is a generated sub-class of _Network.as and is intended for behavior
+ * This is a generated sub-class of _User.as and is intended for behavior
  * customization.  This class is only generated when there is no file already present
  * at its target location.  Thus custom behavior that you add here will survive regeneration
  * of the super-class. 
@@ -10,12 +10,12 @@
  * corresponding entity 
  **/ 
  
-package it.ht.rcs.console.network.model
+package it.ht.rcs.console.accounting.model
 {
 
 import com.adobe.fiber.core.model_internal;
 
-public class Network extends _Super_Network
+public class User extends _Super_User
 {
     /** 
      * DO NOT MODIFY THIS STATIC INITIALIZER - IT IS NECESSARY
@@ -30,26 +30,22 @@ public class Network extends _Super_Network
      */     
     public static function _initRemoteClassAlias() : void
     {
-        _Super_Network.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.network.model.Network);
-        _Super_Network.model_internal::initRemoteClassAliasAllRelated();
+        _Super_User.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.accounting.model.User);
+        _Super_User.model_internal::initRemoteClassAliasAllRelated();
     }
      
     model_internal static function initRemoteClassAliasSingleChild() : void
     {
-        _Super_Network.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.network.model.Network);
+        _Super_User.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.accounting.model.User);
     }
     
     {
-        _Super_Network.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.network.model.Network);
+        _Super_User.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.accounting.model.User);
     }
     /** 
      * END OF DO NOT MODIFY SECTION
      *
      **/    
-	
-	public function Network(data: Object) {
-		
-	}
 }
 
 }

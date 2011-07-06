@@ -1,5 +1,5 @@
 /**
- * This is a generated sub-class of _User.as and is intended for behavior
+ * This is a generated sub-class of _AuditFilter.as and is intended for behavior
  * customization.  This class is only generated when there is no file already present
  * at its target location.  Thus custom behavior that you add here will survive regeneration
  * of the super-class. 
@@ -10,12 +10,12 @@
  * corresponding entity 
  **/ 
  
-package it.ht.rcs.console.network.model
+package it.ht.rcs.console.audit.model
 {
 
 import com.adobe.fiber.core.model_internal;
 
-public class User extends _Super_User
+public class AuditFilter extends _Super_AuditFilter
 {
     /** 
      * DO NOT MODIFY THIS STATIC INITIALIZER - IT IS NECESSARY
@@ -30,17 +30,17 @@ public class User extends _Super_User
      */     
     public static function _initRemoteClassAlias() : void
     {
-        _Super_User.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.network.model.User);
-        _Super_User.model_internal::initRemoteClassAliasAllRelated();
+        _Super_AuditFilter.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.audit.model.AuditFilter);
+        _Super_AuditFilter.model_internal::initRemoteClassAliasAllRelated();
     }
      
     model_internal static function initRemoteClassAliasSingleChild() : void
     {
-        _Super_User.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.network.model.User);
+        _Super_AuditFilter.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.audit.model.AuditFilter);
     }
     
     {
-        _Super_User.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.network.model.User);
+        _Super_AuditFilter.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.audit.model.AuditFilter);
     }
     /** 
      * END OF DO NOT MODIFY SECTION
