@@ -15,14 +15,14 @@ package it.ht.rcs.console.network.rest
 
 public class DBNetwork extends _Super_DBNetwork implements IDBNetwork
 {
-    /**
-     * Override super.init() to provide any initialization customization if needed.
-     */
-    protected override function preInitializeService():void
-    {
-        super.preInitializeService();
-        // Initialization customization goes here
-    }
+  /**
+   * Override super.init() to provide any initialization customization if needed.
+   */
+  protected override function preInitializeService():void
+  {
+    super.preInitializeService();
+    // Initialization customization goes here
+  }
 	
 	public function DBNetwork(host: String) {
 		super();
