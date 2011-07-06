@@ -2,15 +2,15 @@
 /**
  * This is a generated class and is not intended for modification.  
  */
-package it.ht.rcs.console.network.model
+package it.ht.rcs.console.accounting.model
 {
 import com.adobe.fiber.styles.IStyle;
 import com.adobe.fiber.styles.Style;
-import com.adobe.fiber.styles.StyleValidator;
 import com.adobe.fiber.valueobjects.AbstractEntityMetadata;
 import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 import com.adobe.fiber.valueobjects.IPropertyIterator;
-import mx.events.ValidationResultEvent;
+import it.ht.rcs.console.accounting.model.User;
+import mx.collections.ArrayCollection;
 import com.adobe.fiber.core.model_internal;
 import com.adobe.fiber.valueobjects.IModelType;
 import mx.events.PropertyChangeEvent;
@@ -18,58 +18,57 @@ import mx.events.PropertyChangeEvent;
 use namespace model_internal;
 
 [ExcludeClass]
-internal class _NetworkEntityMetadata extends com.adobe.fiber.valueobjects.AbstractEntityMetadata
+internal class _SessionEntityMetadata extends com.adobe.fiber.valueobjects.AbstractEntityMetadata
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("name");
+    model_internal static var allProperties:Array = new Array("cookie", "time", "level", "address", "user");
     model_internal static var allAssociationProperties:Array = new Array();
-    model_internal static var allRequiredProperties:Array = new Array("name");
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("name");
+    model_internal static var allRequiredProperties:Array = new Array();
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("cookie", "time", "level", "address", "user");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("name");
+    model_internal static var dataProperties:Array = new Array("cookie", "time", "level", "address", "user");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("name");
+    model_internal static var nonDerivedProperties:Array = new Array("cookie", "time", "level", "address", "user");
     model_internal static var derivedProperties:Array = new Array();
-    model_internal static var collectionProperties:Array = new Array();
+    model_internal static var collectionProperties:Array = new Array("level");
     model_internal static var collectionBaseMap:Object;
-    model_internal static var entityName:String = "Network";
+    model_internal static var entityName:String = "Session";
     model_internal static var dependentsOnMap:Object;
     model_internal static var dependedOnServices:Array = new Array();
     model_internal static var propertyTypeMap:Object;
 
-    
-    model_internal var _nameIsValid:Boolean;
-    model_internal var _nameValidator:com.adobe.fiber.styles.StyleValidator;
-    model_internal var _nameIsValidCacheInitialized:Boolean = false;
-    model_internal var _nameValidationFailureMessages:Array;
 
-    model_internal var _instance:_Super_Network;
+    model_internal var _instance:_Super_Session;
     model_internal static var _nullStyle:com.adobe.fiber.styles.Style = new com.adobe.fiber.styles.Style();
 
-    public function _NetworkEntityMetadata(value : _Super_Network)
+    public function _SessionEntityMetadata(value : _Super_Session)
     {
         // initialize property maps
         if (model_internal::dependentsOnMap == null)
         {
             // dependents map
             model_internal::dependentsOnMap = new Object();
-            model_internal::dependentsOnMap["name"] = new Array();
+            model_internal::dependentsOnMap["cookie"] = new Array();
+            model_internal::dependentsOnMap["time"] = new Array();
+            model_internal::dependentsOnMap["level"] = new Array();
+            model_internal::dependentsOnMap["address"] = new Array();
+            model_internal::dependentsOnMap["user"] = new Array();
 
             // collection base map
             model_internal::collectionBaseMap = new Object();
+            model_internal::collectionBaseMap["level"] = "String";
         }
 
         // Property type Map
         model_internal::propertyTypeMap = new Object();
-        model_internal::propertyTypeMap["name"] = "String";
+        model_internal::propertyTypeMap["cookie"] = "String";
+        model_internal::propertyTypeMap["time"] = "int";
+        model_internal::propertyTypeMap["level"] = "ArrayCollection";
+        model_internal::propertyTypeMap["address"] = "String";
+        model_internal::propertyTypeMap["user"] = "it.ht.rcs.console.accounting.model.User";
 
         model_internal::_instance = value;
-        model_internal::_nameValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForName);
-        model_internal::_nameValidator.required = true;
-        model_internal::_nameValidator.requiredFieldError = "name is required";
-        //model_internal::_nameValidator.source = model_internal::_instance;
-        //model_internal::_nameValidator.property = "name";
     }
 
     override public function getEntityName():String
@@ -120,7 +119,7 @@ internal class _NetworkEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     override public function getDependants(propertyName:String):Array
     {
        if (model_internal::nonDerivedProperties.indexOf(propertyName) == -1)
-            throw new Error(propertyName + " is not a data property of entity Network");
+            throw new Error(propertyName + " is not a data property of entity Session");
             
        return model_internal::dependentsOnMap[propertyName] as Array;  
     }
@@ -138,7 +137,7 @@ internal class _NetworkEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     override public function getCollectionBase(propertyName:String):String
     {
         if (model_internal::collectionProperties.indexOf(propertyName) == -1)
-            throw new Error(propertyName + " is not a collection property of entity Network");
+            throw new Error(propertyName + " is not a collection property of entity Session");
 
         return model_internal::collectionBaseMap[propertyName];
     }
@@ -146,7 +145,7 @@ internal class _NetworkEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     override public function getPropertyType(propertyName:String):String
     {
         if (model_internal::allProperties.indexOf(propertyName) == -1)
-            throw new Error(propertyName + " is not a property of Network");
+            throw new Error(propertyName + " is not a property of Session");
 
         return model_internal::propertyTypeMap[propertyName];
     }
@@ -160,7 +159,7 @@ internal class _NetworkEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     {
         if (model_internal::allProperties.indexOf(propertyName) == -1)
         {
-            throw new Error(propertyName + " does not exist for entity Network");
+            throw new Error(propertyName + " does not exist for entity Session");
         }
 
         return model_internal::_instance[propertyName];
@@ -170,7 +169,7 @@ internal class _NetworkEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     {
         if (model_internal::nonDerivedProperties.indexOf(propertyName) == -1)
         {
-            throw new Error(propertyName + " is not a modifiable property of entity Network");
+            throw new Error(propertyName + " is not a modifiable property of entity Session");
         }
 
         model_internal::_instance[propertyName] = value;
@@ -202,7 +201,7 @@ internal class _NetworkEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     {
         if (model_internal::allProperties.indexOf(propertyName) == -1)
         {
-            throw new Error(propertyName + " does not exist for entity Network");
+            throw new Error(propertyName + " does not exist for entity Session");
         }
 
         if (model_internal::allAlwaysAvailableProperties.indexOf(propertyName) != -1)
@@ -297,7 +296,31 @@ internal class _NetworkEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     }
 
     [Bindable(event="propertyChange")]
-    public function get isNameAvailable():Boolean
+    public function get isCookieAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isTimeAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isLevelAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isAddressAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isUserAvailable():Boolean
     {
         return true;
     }
@@ -306,14 +329,6 @@ internal class _NetworkEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     /**
      * derived property recalculation
      */
-    public function invalidateDependentOnName():void
-    {
-        if (model_internal::_nameIsValidCacheInitialized )
-        {
-            model_internal::_instance.model_internal::_doValidationCacheOfName = null;
-            model_internal::calculateNameIsValid();
-        }
-    }
 
     model_internal function fireChangeEvent(propertyName:String, oldValue:Object, newValue:Object):void
     {
@@ -321,103 +336,33 @@ internal class _NetworkEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     }
 
     [Bindable(event="propertyChange")]   
-    public function get nameStyle():com.adobe.fiber.styles.Style
+    public function get cookieStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
 
-    public function get nameValidator() : StyleValidator
+    [Bindable(event="propertyChange")]   
+    public function get timeStyle():com.adobe.fiber.styles.Style
     {
-        return model_internal::_nameValidator;
+        return model_internal::_nullStyle;
     }
 
-    model_internal function set _nameIsValid_der(value:Boolean):void 
+    [Bindable(event="propertyChange")]   
+    public function get levelStyle():com.adobe.fiber.styles.Style
     {
-        var oldValue:Boolean = model_internal::_nameIsValid;         
-        if (oldValue !== value)
-        {
-            model_internal::_nameIsValid = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "nameIsValid", oldValue, value));
-        }                             
+        return model_internal::_nullStyle;
     }
 
-    [Bindable(event="propertyChange")]
-    public function get nameIsValid():Boolean
+    [Bindable(event="propertyChange")]   
+    public function get addressStyle():com.adobe.fiber.styles.Style
     {
-        if (!model_internal::_nameIsValidCacheInitialized)
-        {
-            model_internal::calculateNameIsValid();
-        }
-
-        return model_internal::_nameIsValid;
+        return model_internal::_nullStyle;
     }
 
-    model_internal function calculateNameIsValid():void
+    [Bindable(event="propertyChange")]   
+    public function get userStyle():com.adobe.fiber.styles.Style
     {
-        var valRes:ValidationResultEvent = model_internal::_nameValidator.validate(model_internal::_instance.name)
-        model_internal::_nameIsValid_der = (valRes.results == null);
-        model_internal::_nameIsValidCacheInitialized = true;
-        if (valRes.results == null)
-             model_internal::nameValidationFailureMessages_der = emptyArray;
-        else
-        {
-            var _valFailures:Array = new Array();
-            for (var a:int = 0 ; a<valRes.results.length ; a++)
-            {
-                _valFailures.push(valRes.results[a].errorMessage);
-            }
-            model_internal::nameValidationFailureMessages_der = _valFailures;
-        }
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get nameValidationFailureMessages():Array
-    {
-        if (model_internal::_nameValidationFailureMessages == null)
-            model_internal::calculateNameIsValid();
-
-        return _nameValidationFailureMessages;
-    }
-
-    model_internal function set nameValidationFailureMessages_der(value:Array) : void
-    {
-        var oldValue:Array = model_internal::_nameValidationFailureMessages;
-
-        var needUpdate : Boolean = false;
-        if (oldValue == null)
-            needUpdate = true;
-    
-        // avoid firing the event when old and new value are different empty arrays
-        if (!needUpdate && (oldValue !== value && (oldValue.length > 0 || value.length > 0)))
-        {
-            if (oldValue.length == value.length)
-            {
-                for (var a:int=0; a < oldValue.length; a++)
-                {
-                    if (oldValue[a] !== value[a])
-                    {
-                        needUpdate = true;
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                needUpdate = true;
-            }
-        }
-
-        if (needUpdate)
-        {
-            model_internal::_nameValidationFailureMessages = value;   
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "nameValidationFailureMessages", oldValue, value));
-            // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
-            // the entire entity.
-            if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
-            {
-                model_internal::_instance.model_internal::isValid_der = model_internal::_instance.model_internal::calculateIsValid();
-            }
-        }
+        return model_internal::_nullStyle;
     }
 
 
@@ -445,10 +390,6 @@ internal class _NetworkEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
      {
          switch(propertyName)
          {
-            case("name"):
-            {
-                return nameValidationFailureMessages;
-            }
             default:
             {
                 return emptyArray;

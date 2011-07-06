@@ -1,57 +1,67 @@
 package it.ht.rcs.console
 {
 
-  import it.ht.rcs.console.network.rest.DBNetwork;
-	import it.ht.rcs.console.network.rest.DBNetworkDemo;
-	import it.ht.rcs.console.network.rest.IDBNetwork;
-	
-	import mx.rpc.CallResponder;
-	import mx.rpc.events.FaultEvent;
-	import mx.rpc.events.ResultEvent;
+  import com.adobe.serialization.json.JSON;
+  import com.adobe.serialization.json.JSONParseError;
   
-	public class DB
-	{
+  import it.ht.rcs.console.accounting.rest.DBAuth;
+  import it.ht.rcs.console.accounting.rest.IDBAuth;
+  import it.ht.rcs.console.audit.rest.DBAudit;
+  import it.ht.rcs.console.audit.rest.DBAuditDemo;
+  import it.ht.rcs.console.audit.rest.IDBAudit;
+  
+  import mx.controls.Alert;
+  import mx.rpc.CallResponder;
+  import mx.rpc.events.FaultEvent;
+  import mx.rpc.events.ResultEvent;
+
+  public class DB
+  {
+    public var auth:IDBAuth;
+    public var audit:IDBAudit;
     
-		public var network:IDBNetwork;
-		
-    public function DB(host: String)
+    private static var notifier:IFaultNotifier;
+    
+    public function DB(host:String, notifier:IFaultNotifier)
     {
-      host == 'demo' ? initDemo() :	initRemote(host);
+      DB.notifier = notifier;
+      host == 'demo' ? initDemo() : initRemote(host);
     }
-    
-		private function initRemote(host:String):void
-		{
-			network = new DBNetwork(host);
-		}
-		
-		private function initDemo():void
-		{
-			network = new DBNetworkDemo();
-		}
-		
+
+    private function initRemote(host:String):void
+    {
+      auth = new DBAuth(host);
+      audit = new DBAudit(host);
+    }
+
+    private function initDemo():void
+    {
+      //auth = new DBAuthDemo();
+      audit = new DBAuditDemo();
+    }
+
     public static function getCallResponder(onResult:Function, onFault:Function):CallResponder
     {
       // Set up the responder
       var resp:CallResponder = new CallResponder();
-      
-      if (onResult != null) 
+
+      if (onResult != null)
         resp.addEventListener(ResultEvent.RESULT, onResult);
-      
+
       // If the fault handler is provided, use it. Otherwise, use the default one.
-      if (onFault != null) 
+      if (onFault != null)
         resp.addEventListener(FaultEvent.FAULT, onFault);
       else
         resp.addEventListener(FaultEvent.FAULT, onDeFault);
-      
+
       return resp;
     }
-    
-    public static function onDeFault(event:FaultEvent):void {
+
+    /* default Fault handler */
+    private static function onDeFault(e:FaultEvent):void
     {
-        trace("cacca");
-        trace(event);
+      if (notifier)
+        notifier.fault(e);
     }
-
   }
-
 }

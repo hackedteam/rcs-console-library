@@ -1,5 +1,5 @@
 /**
- * This is a generated sub-class of _UserSession.as and is intended for behavior
+ * This is a generated sub-class of _Session.as and is intended for behavior
  * customization.  This class is only generated when there is no file already present
  * at its target location.  Thus custom behavior that you add here will survive regeneration
  * of the super-class. 
@@ -10,12 +10,12 @@
  * corresponding entity 
  **/ 
  
-package it.ht.rcs.console.network.model
+package it.ht.rcs.console.accounting.model
 {
 
 import com.adobe.fiber.core.model_internal;
 
-public class UserSession extends _Super_UserSession
+public class Session extends _Super_Session
 {
     /** 
      * DO NOT MODIFY THIS STATIC INITIALIZER - IT IS NECESSARY
@@ -30,17 +30,17 @@ public class UserSession extends _Super_UserSession
      */     
     public static function _initRemoteClassAlias() : void
     {
-        _Super_UserSession.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.network.model.UserSession);
-        _Super_UserSession.model_internal::initRemoteClassAliasAllRelated();
+        _Super_Session.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.accounting.model.Session);
+        _Super_Session.model_internal::initRemoteClassAliasAllRelated();
     }
      
     model_internal static function initRemoteClassAliasSingleChild() : void
     {
-        _Super_UserSession.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.network.model.UserSession);
+        _Super_Session.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.accounting.model.Session);
     }
     
     {
-        _Super_UserSession.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.network.model.UserSession);
+        _Super_Session.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.accounting.model.Session);
     }
     /** 
      * END OF DO NOT MODIFY SECTION
