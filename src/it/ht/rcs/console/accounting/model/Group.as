@@ -14,11 +14,9 @@ package it.ht.rcs.console.accounting.model
 {
 
   import com.adobe.fiber.core.model_internal;
-
-  import it.ht.rcs.console.accounting.rest.IDBGroup;
-
+  
+  import it.ht.rcs.console.DB;
   import mx.collections.ArrayCollection;
-  import mx.rpc.events.ResultEvent;
 
   public class Group extends _Super_Group
   {
@@ -58,7 +56,7 @@ package it.ht.rcs.console.accounting.model
       /* default group (when creating new group) */
       if (data == null) {
         _id = "";
-        name = ResourceManager.getInstance().getString('localized_main', 'NEW_GROUP');
+        name = DB.i18n.getString('NEW_GROUP');
         alert = false;
         user_ids = new ArrayCollection();
       } else {

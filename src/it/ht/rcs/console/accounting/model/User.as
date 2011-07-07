@@ -14,11 +14,9 @@ package it.ht.rcs.console.accounting.model
 {
 
   import com.adobe.fiber.core.model_internal;
-
-  import it.ht.rcs.console.accounting.rest.IDBUser;
-
+  
+  import it.ht.rcs.console.DB;
   import mx.collections.ArrayCollection;
-  import mx.rpc.events.ResultEvent;
 
   public class User extends _Super_User
   {
@@ -59,7 +57,7 @@ package it.ht.rcs.console.accounting.model
       if (data == null) {
         _id = '';
         enabled = false;
-        name = ResourceManager.getInstance().getString('localized_main', 'NEW_USER');
+        name = DB.i18n.getString('NEW_USER');
         pass = '';
         desc = '';
         contact = '';
