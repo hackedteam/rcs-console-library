@@ -9,8 +9,9 @@
   <fx:Script>
     <![CDATA[
       import it.ht.rcs.console.DB;
+      import it.ht.rcs.console.I18NImpl;
       
-      private static var db:DB = new DB('localhost', null);
+      private static var db:DB = new DB('localhost', null, new I18NImpl());
     ]]>
   </fx:Script>
 </s:WindowedApplication>

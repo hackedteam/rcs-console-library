@@ -46,6 +46,19 @@ public class Status extends _Super_Status
      * END OF DO NOT MODIFY SECTION
      *
      **/    
+    
+    public function Status(data:Object)
+    {
+      _id = data._id;
+      name = data.name;
+      status = data.status;
+      address = data.address;
+      info = data.info;
+      time = data.time;
+      pcpu = data.pcpu;
+      cpu = data.cpu;
+      disk = data.disk;
+    }
 }
 
 }
