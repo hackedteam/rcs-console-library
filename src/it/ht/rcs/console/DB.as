@@ -5,7 +5,13 @@ package it.ht.rcs.console
   import com.adobe.serialization.json.JSONParseError;
   
   import it.ht.rcs.console.accounting.rest.DBAuth;
+  import it.ht.rcs.console.accounting.rest.DBGroup;
+  import it.ht.rcs.console.accounting.rest.DBGroupDemo;
+  import it.ht.rcs.console.accounting.rest.DBUser;
+  import it.ht.rcs.console.accounting.rest.DBUserDemo;
   import it.ht.rcs.console.accounting.rest.IDBAuth;
+  import it.ht.rcs.console.accounting.rest.IDBGroup;
+  import it.ht.rcs.console.accounting.rest.IDBUser;
   import it.ht.rcs.console.audit.rest.DBAudit;
   import it.ht.rcs.console.audit.rest.DBAuditDemo;
   import it.ht.rcs.console.audit.rest.IDBAudit;
@@ -27,6 +33,8 @@ package it.ht.rcs.console
     public var audit:IDBAudit;
     public var license:IDBLicense;
     public var monitor:IDBMonitor;
+    public var user:IDBUser;
+    public var group:IDBGroup;
     
     private static var notifier:IFaultNotifier;
     
@@ -42,6 +50,8 @@ package it.ht.rcs.console
       audit = new DBAudit(host);
       license = new DBLicense(host);
       monitor = new DBMonitor(host);
+      user = new DBUser(host);
+      group = new DBGroup(host);
     }
 
     private function initDemo():void
@@ -50,6 +60,8 @@ package it.ht.rcs.console
       audit = new DBAuditDemo();
       license = new DBLicenseDemo();
       monitor = new DBMonitorDemo();
+      user = new DBUserDemo();
+      group = new DBGroupDemo();
     }
 
     public static function getCallResponder(onResult:Function, onFault:Function):CallResponder

@@ -47,19 +47,19 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
     /**
      * properties
      */
+    private var _internal__mid : int;
     private var _internal_enabled : Boolean;
-    private var _internal_desc : String;
-    private var _internal_group_ids : ArrayCollection;
-    private var _internal_locale : String;
-    private var _internal_contact : String;
-    private var _internal_pass : String;
     private var _internal_timezone : int;
     private var _internal_updated_at : String;
+    private var _internal_desc : String;
     private var _internal__id : String;
     private var _internal_privs : ArrayCollection;
+    private var _internal_group_ids : ArrayCollection;
     private var _internal_name : String;
+    private var _internal_locale : String;
     private var _internal_created_at : String;
-    private var _internal__mid : int;
+    private var _internal_contact : String;
+    private var _internal_pass : String;
 
     private static var emptyArray:Array = new Array();
 
@@ -84,39 +84,15 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
      */
 
     [Bindable(event="propertyChange")]
+    public function get _mid() : int
+    {
+        return _internal__mid;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get enabled() : Boolean
     {
         return _internal_enabled;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get desc() : String
-    {
-        return _internal_desc;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get group_ids() : ArrayCollection
-    {
-        return _internal_group_ids;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get locale() : String
-    {
-        return _internal_locale;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get contact() : String
-    {
-        return _internal_contact;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get pass() : String
-    {
-        return _internal_pass;
     }
 
     [Bindable(event="propertyChange")]
@@ -132,6 +108,12 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
     }
 
     [Bindable(event="propertyChange")]
+    public function get desc() : String
+    {
+        return _internal_desc;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get _id() : String
     {
         return _internal__id;
@@ -144,9 +126,21 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
     }
 
     [Bindable(event="propertyChange")]
+    public function get group_ids() : ArrayCollection
+    {
+        return _internal_group_ids;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get name() : String
     {
         return _internal_name;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get locale() : String
+    {
+        return _internal_locale;
     }
 
     [Bindable(event="propertyChange")]
@@ -156,9 +150,15 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
     }
 
     [Bindable(event="propertyChange")]
-    public function get _mid() : int
+    public function get contact() : String
     {
-        return _internal__mid;
+        return _internal_contact;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get pass() : String
+    {
+        return _internal_pass;
     }
 
     public function clearAssociations() : void
@@ -169,6 +169,16 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
      * data/source property setters
      */
 
+    public function set _mid(value:int) : void
+    {
+        var oldValue:int = _internal__mid;
+        if (oldValue !== value)
+        {
+            _internal__mid = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "_mid", oldValue, _internal__mid));
+        }
+    }
+
     public function set enabled(value:Boolean) : void
     {
         var oldValue:Boolean = _internal_enabled;
@@ -176,71 +186,6 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
         {
             _internal_enabled = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "enabled", oldValue, _internal_enabled));
-        }
-    }
-
-    public function set desc(value:String) : void
-    {
-        var oldValue:String = _internal_desc;
-        if (oldValue !== value)
-        {
-            _internal_desc = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "desc", oldValue, _internal_desc));
-        }
-    }
-
-    public function set group_ids(value:*) : void
-    {
-        var oldValue:ArrayCollection = _internal_group_ids;
-        if (oldValue !== value)
-        {
-            if (value is ArrayCollection)
-            {
-                _internal_group_ids = value;
-            }
-            else if (value is Array)
-            {
-                _internal_group_ids = new ArrayCollection(value);
-            }
-            else if (value == null)
-            {
-                _internal_group_ids = null;
-            }
-            else
-            {
-                throw new Error("value of group_ids must be a collection");
-            }
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "group_ids", oldValue, _internal_group_ids));
-        }
-    }
-
-    public function set locale(value:String) : void
-    {
-        var oldValue:String = _internal_locale;
-        if (oldValue !== value)
-        {
-            _internal_locale = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "locale", oldValue, _internal_locale));
-        }
-    }
-
-    public function set contact(value:String) : void
-    {
-        var oldValue:String = _internal_contact;
-        if (oldValue !== value)
-        {
-            _internal_contact = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "contact", oldValue, _internal_contact));
-        }
-    }
-
-    public function set pass(value:String) : void
-    {
-        var oldValue:String = _internal_pass;
-        if (oldValue !== value)
-        {
-            _internal_pass = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "pass", oldValue, _internal_pass));
         }
     }
 
@@ -261,6 +206,16 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
         {
             _internal_updated_at = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "updated_at", oldValue, _internal_updated_at));
+        }
+    }
+
+    public function set desc(value:String) : void
+    {
+        var oldValue:String = _internal_desc;
+        if (oldValue !== value)
+        {
+            _internal_desc = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "desc", oldValue, _internal_desc));
         }
     }
 
@@ -299,6 +254,31 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
         }
     }
 
+    public function set group_ids(value:*) : void
+    {
+        var oldValue:ArrayCollection = _internal_group_ids;
+        if (oldValue !== value)
+        {
+            if (value is ArrayCollection)
+            {
+                _internal_group_ids = value;
+            }
+            else if (value is Array)
+            {
+                _internal_group_ids = new ArrayCollection(value);
+            }
+            else if (value == null)
+            {
+                _internal_group_ids = null;
+            }
+            else
+            {
+                throw new Error("value of group_ids must be a collection");
+            }
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "group_ids", oldValue, _internal_group_ids));
+        }
+    }
+
     public function set name(value:String) : void
     {
         var oldValue:String = _internal_name;
@@ -306,6 +286,16 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
         {
             _internal_name = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "name", oldValue, _internal_name));
+        }
+    }
+
+    public function set locale(value:String) : void
+    {
+        var oldValue:String = _internal_locale;
+        if (oldValue !== value)
+        {
+            _internal_locale = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "locale", oldValue, _internal_locale));
         }
     }
 
@@ -319,13 +309,23 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
         }
     }
 
-    public function set _mid(value:int) : void
+    public function set contact(value:String) : void
     {
-        var oldValue:int = _internal__mid;
+        var oldValue:String = _internal_contact;
         if (oldValue !== value)
         {
-            _internal__mid = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "_mid", oldValue, _internal__mid));
+            _internal_contact = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "contact", oldValue, _internal_contact));
+        }
+    }
+
+    public function set pass(value:String) : void
+    {
+        var oldValue:String = _internal_pass;
+        if (oldValue !== value)
+        {
+            _internal_pass = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "pass", oldValue, _internal_pass));
         }
     }
 
