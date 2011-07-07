@@ -10,7 +10,7 @@ import com.adobe.fiber.util.FiberUtils;
 import com.adobe.fiber.valueobjects.IValueObject;
 import flash.events.Event;
 import flash.events.EventDispatcher;
-import it.ht.rcs.console.task.model.TaskResource;
+import it.ht.rcs.console.task.model.Resource;
 import mx.binding.utils.ChangeWatcher;
 import mx.collections.ArrayCollection;
 import mx.events.PropertyChangeEvent;
@@ -33,7 +33,7 @@ public class _Super_Task extends flash.events.EventDispatcher implements com.ado
 
     model_internal static function initRemoteClassAliasAllRelated() : void
     {
-        it.ht.rcs.console.task.model.TaskResource.initRemoteClassAliasSingleChild();
+        it.ht.rcs.console.task.model.Resource.initRemoteClassAliasSingleChild();
     }
 
     model_internal var _dminternal_model : _TaskEntityMetadata;
@@ -57,7 +57,7 @@ public class _Super_Task extends flash.events.EventDispatcher implements com.ado
     private var _internal_desc : String;
     private var _internal__id : String;
     private var _internal_stopped : Boolean;
-    private var _internal_resource : it.ht.rcs.console.task.model.TaskResource;
+    private var _internal_resource : it.ht.rcs.console.task.model.Resource;
     private var _internal_current : int;
     private var _internal_type : String;
     private var _internal_file_name : String;
@@ -114,7 +114,7 @@ public class _Super_Task extends flash.events.EventDispatcher implements com.ado
     }
 
     [Bindable(event="propertyChange")]
-    public function get resource() : it.ht.rcs.console.task.model.TaskResource
+    public function get resource() : it.ht.rcs.console.task.model.Resource
     {
         return _internal_resource;
     }
@@ -185,9 +185,9 @@ public class _Super_Task extends flash.events.EventDispatcher implements com.ado
         }
     }
 
-    public function set resource(value:it.ht.rcs.console.task.model.TaskResource) : void
+    public function set resource(value:it.ht.rcs.console.task.model.Resource) : void
     {
-        var oldValue:it.ht.rcs.console.task.model.TaskResource = _internal_resource;
+        var oldValue:it.ht.rcs.console.task.model.Resource = _internal_resource;
         if (oldValue !== value)
         {
             _internal_resource = value;
@@ -442,11 +442,11 @@ public class _Super_Task extends flash.events.EventDispatcher implements com.ado
     }
     
     model_internal var _doValidationCacheOfResource : Array = null;
-    model_internal var _doValidationLastValOfResource : it.ht.rcs.console.task.model.TaskResource;
+    model_internal var _doValidationLastValOfResource : it.ht.rcs.console.task.model.Resource;
 
     model_internal function _doValidationForResource(valueIn:Object):Array
     {
-        var value : it.ht.rcs.console.task.model.TaskResource = valueIn as it.ht.rcs.console.task.model.TaskResource;
+        var value : it.ht.rcs.console.task.model.Resource = valueIn as it.ht.rcs.console.task.model.Resource;
 
         if (model_internal::_doValidationCacheOfResource != null && model_internal::_doValidationLastValOfResource == value)
            return model_internal::_doValidationCacheOfResource ;

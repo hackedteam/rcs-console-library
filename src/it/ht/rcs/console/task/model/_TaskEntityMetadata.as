@@ -10,7 +10,7 @@ import com.adobe.fiber.styles.StyleValidator;
 import com.adobe.fiber.valueobjects.AbstractEntityMetadata;
 import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 import com.adobe.fiber.valueobjects.IPropertyIterator;
-import it.ht.rcs.console.task.model.TaskResource;
+import it.ht.rcs.console.task.model.Resource;
 import mx.events.ValidationResultEvent;
 import com.adobe.fiber.core.model_internal;
 import com.adobe.fiber.valueobjects.IModelType;
@@ -94,7 +94,7 @@ internal class _TaskEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
         model_internal::propertyTypeMap["desc"] = "String";
         model_internal::propertyTypeMap["_id"] = "String";
         model_internal::propertyTypeMap["stopped"] = "Boolean";
-        model_internal::propertyTypeMap["resource"] = "it.ht.rcs.console.task.model.TaskResource";
+        model_internal::propertyTypeMap["resource"] = "it.ht.rcs.console.task.model.Resource";
         model_internal::propertyTypeMap["current"] = "int";
         model_internal::propertyTypeMap["type"] = "String";
         model_internal::propertyTypeMap["file_name"] = "String";

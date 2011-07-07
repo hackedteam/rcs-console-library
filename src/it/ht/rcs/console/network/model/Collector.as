@@ -22,31 +22,31 @@ import mx.resources.ResourceManager;
 
 public class Collector extends _Super_Collector
 {
-  
-  public function Collector(data:Object = null)
+  public static function defaultCollector():Object
   {
-    if (data == null) {
-      _id = '';
-      //name = ResourceManager.getInstance().getString('localized_main', 'NEW_COLLECTOR');
-      name = DB.i18n.getString('NEW_COLLECTOR');
-      desc = '';
-      address = '';
-      type = 'remote';
-      port = 4444;
-      poll = false;
-      configured = true;
-    } else {
-      /* existing collector */
-      _id = data._id;
-      name = data.name;
-      desc = data.desc;
-      address = data.address;
-      type = data.type;
-      port = data.port;
-      poll = data.poll;
-      next = data.next is ArrayCollection ? data.next[0] : data.next;
-      prev = data.prev is ArrayCollection ? data.prev[0] : data.prev;
-    }
+    return {
+      _id: '',
+      name: DB.i18n.getString('NEW_COLLECTOR'),
+      desc: '',
+      address: '',
+      type: 'remote',
+      port: 4444,
+      poll: false,
+      configured: true
+    };
+  }
+  
+  public function Collector(data:Object)
+  {
+    _id = data._id;
+    name = data.name;
+    desc = data.desc;
+    address = data.address;
+    type = data.type;
+    port = data.port;
+    poll = data.poll;
+    next = data.next is ArrayCollection ? data.next[0] : data.next;
+    prev = data.prev is ArrayCollection ? data.prev[0] : data.prev;
   }
   
   private var _nextHop:Collector;

@@ -28,9 +28,9 @@ package it.ht.rcs.console.accounting.rest
       /* do nothing */
     }
     
-    public function create(group:Group, onResult:Function=null, onFault:Function=null):void
+    public function create(params:Object, onResult:Function=null, onFault:Function=null):void
     {
-      var g:Object = group.toHash();
+      var g:Object = params;
       g._id = new Date().getTime().toString();
       g.user_ids = new ArrayCollection(g.user_ids);
       var event:ResultEvent = new ResultEvent("user.create", false, true, g);

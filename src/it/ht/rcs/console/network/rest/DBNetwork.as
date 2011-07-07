@@ -30,10 +30,10 @@ package it.ht.rcs.console.network.rest
       _serviceControl.baseURL = "https://" + host + ":4444/";
     }
                
-    public function create(collector:Collector, onResult:Function=null, onFault:Function=null):void
+    public function create(params:Object, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = create_(JSON.encode(collector));
+      resp.token = create_(JSON.encode(params));
     }
     
     public function destroy(id:String, onResult:Function=null, onFault:Function=null):void
@@ -57,6 +57,7 @@ package it.ht.rcs.console.network.rest
     public function update(collector:Collector, property:Object, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      property['_id'] = collector._id;
       resp.token = update_(JSON.encode(collector));
     }
     

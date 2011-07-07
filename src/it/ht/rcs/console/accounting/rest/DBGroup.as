@@ -53,10 +53,10 @@ public class DBGroup extends _Super_DBGroup implements IDBGroup
       resp.token = all_(); 
     }
     
-    public function create(group:Group, onResult:Function=null, onFault:Function=null):void
+    public function create(params:Object, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = create_(JSON.encode(group.toHash()));
+      resp.token = create_(JSON.encode(params));
     }
     
     public function del_user(group:Group, user:User, onResult:Function=null, onFault:Function=null):void

@@ -53,40 +53,43 @@ package it.ht.rcs.console.accounting.model
      * END OF DO NOT MODIFY SECTION
      *
      **/
-
-    public function User(data:Object = null)
+    
+    public static function defaultUser():Object
     {
-      /* default user (when creating new user) */
-      if (data == null) {
-        _id = '';
-        enabled = false;
-        name = DB.i18n.getString('NEW_USER');
-        pass = '';
-        desc = '';
-        contact = '';
-        privs = new ArrayCollection();
-        locale = 'en_US';
-        timezone = 0;
-        group_ids = new ArrayCollection();
-      } else {
-        /* existing user */
-        _id = data._id;
-        enabled = data.enabled;
-        name = data.name;
-        pass = data.pass;
-        desc = data.desc;
-        contact = data.contact;
-        privs = data.privs;
-        locale = data.locale;
-        timezone = data.timezone;
-        group_ids = data.group_ids;
-      }
+      return {
+        _id: '',
+        enabled: false,
+        name: DB.i18n.getString('NEW_USER'),
+        pass: '',
+        desc: '',
+        contact: '',
+        privs: new ArrayCollection(),
+        locale: 'en_US',
+        timezone: 0,
+        group_ids: new ArrayCollection()
+      };
+    }
+    
+    public function User(data:Object)
+    {
+      _id = data._id;
+      enabled = data.enabled;
+      name = data.name;
+      pass = data.pass;
+      desc = data.desc;
+      contact = data.contact;
+      privs = data.privs;
+      locale = data.locale;
+      timezone = data.timezone;
+      group_ids = data.group_ids;
     }
 
+    /*
     public function toHash():Object
     {
       return {enabled: enabled, name: name, contact: contact, desc: desc, privs: privs.source, locale: locale, group_ids: group_ids.source, timezone: timezone};
     }
+    */
 
     public function is_admin():Boolean
     {
