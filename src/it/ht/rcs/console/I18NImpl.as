@@ -1,6 +1,6 @@
 package it.ht.rcs.console
 {
-  public class I18NImpl implements I18N
+  public class I18NImpl implements II18N
   {
     public function getString(string:String):String
     {

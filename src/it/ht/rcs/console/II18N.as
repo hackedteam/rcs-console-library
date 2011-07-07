@@ -1,6 +1,6 @@
 package it.ht.rcs.console
 {
-  public interface I18N
+  public interface II18N
   {
     function getString(string:String):String;
   }
