@@ -1,7 +1,7 @@
 package it.ht.rcs.console
 {
 
-  import it.ht.rcs.console.accounting.rest.DBAuth;
+  import it.ht.rcs.console.accounting.rest.DBSession;
   import it.ht.rcs.console.accounting.rest.DBSessionDemo;
   import it.ht.rcs.console.accounting.rest.DBGroup;
   import it.ht.rcs.console.accounting.rest.DBGroupDemo;
@@ -29,7 +29,7 @@ package it.ht.rcs.console
 
   public class DB
   {
-    public var auth:IDBSession;
+    public var session:IDBSession;
     public var audit:IDBAudit;
     public var network:IDBNetwork;
     public var license:IDBLicense;
@@ -49,7 +49,7 @@ package it.ht.rcs.console
 
     private function initRemote(host:String):void
     {
-      auth = new DBAuth(host);
+      session = new DBSession(host);
       audit = new DBAudit(host);
       network = new DBNetwork(host);
       license = new DBLicense(host);
@@ -60,7 +60,7 @@ package it.ht.rcs.console
 
     private function initDemo():void
     {
-      auth = new DBSessionDemo();
+      session = new DBSessionDemo();
       audit = new DBAuditDemo();
       network = new DBNetworkDemo();
       license = new DBLicenseDemo();
