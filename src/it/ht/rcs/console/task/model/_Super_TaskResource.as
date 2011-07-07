@@ -1,6 +1,6 @@
 /**
  * This is a generated class and is not intended for modification.  To customize behavior
- * of this value object you may modify the generated sub-class of this class - Task.as.
+ * of this value object you may modify the generated sub-class of this class - TaskResource.as.
  */
 
 package it.ht.rcs.console.task.model
@@ -8,7 +8,6 @@ package it.ht.rcs.console.task.model
 import com.adobe.fiber.services.IFiberManagingService;
 import com.adobe.fiber.valueobjects.IValueObject;
 import flash.events.EventDispatcher;
-import it.ht.rcs.console.task.model.TaskResource;
 import mx.collections.ArrayCollection;
 import mx.events.PropertyChangeEvent;
 
@@ -21,7 +20,7 @@ import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 use namespace model_internal;
 
 [ExcludeClass]
-public class _Super_Task extends flash.events.EventDispatcher implements com.adobe.fiber.valueobjects.IValueObject
+public class _Super_TaskResource extends flash.events.EventDispatcher implements com.adobe.fiber.valueobjects.IValueObject
 {
     model_internal static function initRemoteClassAliasSingle(cz:Class) : void
     {
@@ -29,10 +28,9 @@ public class _Super_Task extends flash.events.EventDispatcher implements com.ado
 
     model_internal static function initRemoteClassAliasAllRelated() : void
     {
-        it.ht.rcs.console.task.model.TaskResource.initRemoteClassAliasSingleChild();
     }
 
-    model_internal var _dminternal_model : _TaskEntityMetadata;
+    model_internal var _dminternal_model : _TaskResourceEntityMetadata;
     model_internal var _changedObjects:mx.collections.ArrayCollection = new ArrayCollection();
 
     public function getChangedObjects() : Array
@@ -49,14 +47,8 @@ public class _Super_Task extends flash.events.EventDispatcher implements com.ado
     /**
      * properties
      */
-    private var _internal_total : int;
-    private var _internal_desc : String;
     private var _internal__id : String;
-    private var _internal_stopped : Boolean;
-    private var _internal_resource : it.ht.rcs.console.task.model.TaskResource;
-    private var _internal_current : int;
     private var _internal_type : String;
-    private var _internal_file_name : String;
 
     private static var emptyArray:Array = new Array();
 
@@ -68,9 +60,9 @@ public class _Super_Task extends flash.events.EventDispatcher implements com.ado
 
     model_internal var _changeWatcherArray:Array = new Array();
 
-    public function _Super_Task()
+    public function _Super_TaskResource()
     {
-        _model = new _TaskEntityMetadata(this);
+        _model = new _TaskResourceEntityMetadata(this);
 
         // Bind to own data or source properties for cache invalidation triggering
 
@@ -81,51 +73,15 @@ public class _Super_Task extends flash.events.EventDispatcher implements com.ado
      */
 
     [Bindable(event="propertyChange")]
-    public function get total() : int
-    {
-        return _internal_total;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get desc() : String
-    {
-        return _internal_desc;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get _id() : String
     {
         return _internal__id;
     }
 
     [Bindable(event="propertyChange")]
-    public function get stopped() : Boolean
-    {
-        return _internal_stopped;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get resource() : it.ht.rcs.console.task.model.TaskResource
-    {
-        return _internal_resource;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get current() : int
-    {
-        return _internal_current;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get type() : String
     {
         return _internal_type;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get file_name() : String
-    {
-        return _internal_file_name;
     }
 
     public function clearAssociations() : void
@@ -135,26 +91,6 @@ public class _Super_Task extends flash.events.EventDispatcher implements com.ado
     /**
      * data/source property setters
      */
-
-    public function set total(value:int) : void
-    {
-        var oldValue:int = _internal_total;
-        if (oldValue !== value)
-        {
-            _internal_total = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "total", oldValue, _internal_total));
-        }
-    }
-
-    public function set desc(value:String) : void
-    {
-        var oldValue:String = _internal_desc;
-        if (oldValue !== value)
-        {
-            _internal_desc = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "desc", oldValue, _internal_desc));
-        }
-    }
 
     public function set _id(value:String) : void
     {
@@ -166,36 +102,6 @@ public class _Super_Task extends flash.events.EventDispatcher implements com.ado
         }
     }
 
-    public function set stopped(value:Boolean) : void
-    {
-        var oldValue:Boolean = _internal_stopped;
-        if (oldValue !== value)
-        {
-            _internal_stopped = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "stopped", oldValue, _internal_stopped));
-        }
-    }
-
-    public function set resource(value:it.ht.rcs.console.task.model.TaskResource) : void
-    {
-        var oldValue:it.ht.rcs.console.task.model.TaskResource = _internal_resource;
-        if (oldValue !== value)
-        {
-            _internal_resource = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "resource", oldValue, _internal_resource));
-        }
-    }
-
-    public function set current(value:int) : void
-    {
-        var oldValue:int = _internal_current;
-        if (oldValue !== value)
-        {
-            _internal_current = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "current", oldValue, _internal_current));
-        }
-    }
-
     public function set type(value:String) : void
     {
         var oldValue:String = _internal_type;
@@ -203,16 +109,6 @@ public class _Super_Task extends flash.events.EventDispatcher implements com.ado
         {
             _internal_type = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "type", oldValue, _internal_type));
-        }
-    }
-
-    public function set file_name(value:String) : void
-    {
-        var oldValue:String = _internal_file_name;
-        if (oldValue !== value)
-        {
-            _internal_file_name = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "file_name", oldValue, _internal_file_name));
         }
     }
 
@@ -276,14 +172,14 @@ public class _Super_Task extends flash.events.EventDispatcher implements com.ado
 
     [Transient]
     [Bindable(event="propertyChange")]
-    public function get _model() : _TaskEntityMetadata
+    public function get _model() : _TaskResourceEntityMetadata
     {
         return model_internal::_dminternal_model;
     }
 
-    public function set _model(value : _TaskEntityMetadata) : void
+    public function set _model(value : _TaskResourceEntityMetadata) : void
     {
-        var oldValue : _TaskEntityMetadata = model_internal::_dminternal_model;
+        var oldValue : _TaskResourceEntityMetadata = model_internal::_dminternal_model;
         if (oldValue !== value)
         {
             model_internal::_dminternal_model = value;

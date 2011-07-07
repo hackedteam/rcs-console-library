@@ -1175,7 +1175,7 @@
       <parameter name="strXml" type="string"/>
     </function>
   </service>
-  <entity name="Resource">
+  <entity name="TaskResource">
     <annotation name="EntityProperties">
       <item name="EntityOriginalName">Resource</item>
     </annotation>
@@ -1188,8 +1188,8 @@
     <annotation name="ActionScriptGeneration">
       <item name="Package">it.ht.rcs.console.task.model</item>
     </annotation>
-    <property name="_id" type="string" required="true"/>
-    <property name="type" type="string" required="true"/>
+    <property name="_id" type="string"/>
+    <property name="type" type="string"/>
   </entity>
   <entity name="Task">
     <annotation name="EntityProperties">
@@ -1213,13 +1213,13 @@
     <annotation name="show_">
       <item name="propertySpecifier">total,desc,_id,stopped,resource,current,type,file_name</item>
     </annotation>
-    <property name="total" type="integer" required="true"/>
-    <property name="desc" type="string" required="true"/>
-    <property name="_id" type="string" required="true"/>
-    <property name="stopped" type="boolean" required="true"/>
-    <property name="resource" type="Resource" required="true"/>
-    <property name="current" type="integer" required="true"/>
-    <property name="type" type="string" required="true"/>
-    <property name="file_name" type="string" required="true"/>
+    <property name="total" type="integer"/>
+    <property name="desc" type="string"/>
+    <property name="_id" type="string"/>
+    <property name="stopped" type="boolean"/>
+    <property name="resource" type="TaskResource"/>
+    <property name="current" type="integer"/>
+    <property name="type" type="string"/>
+    <property name="file_name" type="string"/>
   </entity>
 </model>

@@ -9,7 +9,6 @@ import com.adobe.fiber.styles.Style;
 import com.adobe.fiber.valueobjects.AbstractEntityMetadata;
 import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 import com.adobe.fiber.valueobjects.IPropertyIterator;
-import it.ht.rcs.console.task.model.TaskResource;
 import com.adobe.fiber.core.model_internal;
 import com.adobe.fiber.valueobjects.IModelType;
 import mx.events.PropertyChangeEvent;
@@ -17,45 +16,39 @@ import mx.events.PropertyChangeEvent;
 use namespace model_internal;
 
 [ExcludeClass]
-internal class _TaskEntityMetadata extends com.adobe.fiber.valueobjects.AbstractEntityMetadata
+internal class _TaskResourceEntityMetadata extends com.adobe.fiber.valueobjects.AbstractEntityMetadata
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("total", "desc", "_id", "stopped", "resource", "current", "type", "file_name");
+    model_internal static var allProperties:Array = new Array("_id", "type");
     model_internal static var allAssociationProperties:Array = new Array();
     model_internal static var allRequiredProperties:Array = new Array();
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("total", "desc", "_id", "stopped", "resource", "current", "type", "file_name");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("_id", "type");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("total", "desc", "_id", "stopped", "resource", "current", "type", "file_name");
+    model_internal static var dataProperties:Array = new Array("_id", "type");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("total", "desc", "_id", "stopped", "resource", "current", "type", "file_name");
+    model_internal static var nonDerivedProperties:Array = new Array("_id", "type");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array();
     model_internal static var collectionBaseMap:Object;
-    model_internal static var entityName:String = "Task";
+    model_internal static var entityName:String = "TaskResource";
     model_internal static var dependentsOnMap:Object;
     model_internal static var dependedOnServices:Array = new Array();
     model_internal static var propertyTypeMap:Object;
 
 
-    model_internal var _instance:_Super_Task;
+    model_internal var _instance:_Super_TaskResource;
     model_internal static var _nullStyle:com.adobe.fiber.styles.Style = new com.adobe.fiber.styles.Style();
 
-    public function _TaskEntityMetadata(value : _Super_Task)
+    public function _TaskResourceEntityMetadata(value : _Super_TaskResource)
     {
         // initialize property maps
         if (model_internal::dependentsOnMap == null)
         {
             // dependents map
             model_internal::dependentsOnMap = new Object();
-            model_internal::dependentsOnMap["total"] = new Array();
-            model_internal::dependentsOnMap["desc"] = new Array();
             model_internal::dependentsOnMap["_id"] = new Array();
-            model_internal::dependentsOnMap["stopped"] = new Array();
-            model_internal::dependentsOnMap["resource"] = new Array();
-            model_internal::dependentsOnMap["current"] = new Array();
             model_internal::dependentsOnMap["type"] = new Array();
-            model_internal::dependentsOnMap["file_name"] = new Array();
 
             // collection base map
             model_internal::collectionBaseMap = new Object();
@@ -63,14 +56,8 @@ internal class _TaskEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
 
         // Property type Map
         model_internal::propertyTypeMap = new Object();
-        model_internal::propertyTypeMap["total"] = "int";
-        model_internal::propertyTypeMap["desc"] = "String";
         model_internal::propertyTypeMap["_id"] = "String";
-        model_internal::propertyTypeMap["stopped"] = "Boolean";
-        model_internal::propertyTypeMap["resource"] = "it.ht.rcs.console.task.model.TaskResource";
-        model_internal::propertyTypeMap["current"] = "int";
         model_internal::propertyTypeMap["type"] = "String";
-        model_internal::propertyTypeMap["file_name"] = "String";
 
         model_internal::_instance = value;
     }
@@ -123,7 +110,7 @@ internal class _TaskEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
     override public function getDependants(propertyName:String):Array
     {
        if (model_internal::nonDerivedProperties.indexOf(propertyName) == -1)
-            throw new Error(propertyName + " is not a data property of entity Task");
+            throw new Error(propertyName + " is not a data property of entity TaskResource");
             
        return model_internal::dependentsOnMap[propertyName] as Array;  
     }
@@ -141,7 +128,7 @@ internal class _TaskEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
     override public function getCollectionBase(propertyName:String):String
     {
         if (model_internal::collectionProperties.indexOf(propertyName) == -1)
-            throw new Error(propertyName + " is not a collection property of entity Task");
+            throw new Error(propertyName + " is not a collection property of entity TaskResource");
 
         return model_internal::collectionBaseMap[propertyName];
     }
@@ -149,7 +136,7 @@ internal class _TaskEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
     override public function getPropertyType(propertyName:String):String
     {
         if (model_internal::allProperties.indexOf(propertyName) == -1)
-            throw new Error(propertyName + " is not a property of Task");
+            throw new Error(propertyName + " is not a property of TaskResource");
 
         return model_internal::propertyTypeMap[propertyName];
     }
@@ -163,7 +150,7 @@ internal class _TaskEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
     {
         if (model_internal::allProperties.indexOf(propertyName) == -1)
         {
-            throw new Error(propertyName + " does not exist for entity Task");
+            throw new Error(propertyName + " does not exist for entity TaskResource");
         }
 
         return model_internal::_instance[propertyName];
@@ -173,7 +160,7 @@ internal class _TaskEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
     {
         if (model_internal::nonDerivedProperties.indexOf(propertyName) == -1)
         {
-            throw new Error(propertyName + " is not a modifiable property of entity Task");
+            throw new Error(propertyName + " is not a modifiable property of entity TaskResource");
         }
 
         model_internal::_instance[propertyName] = value;
@@ -205,7 +192,7 @@ internal class _TaskEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
     {
         if (model_internal::allProperties.indexOf(propertyName) == -1)
         {
-            throw new Error(propertyName + " does not exist for entity Task");
+            throw new Error(propertyName + " does not exist for entity TaskResource");
         }
 
         if (model_internal::allAlwaysAvailableProperties.indexOf(propertyName) != -1)
@@ -300,49 +287,13 @@ internal class _TaskEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
     }
 
     [Bindable(event="propertyChange")]
-    public function get isTotalAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get isDescAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get is_idAvailable():Boolean
     {
         return true;
     }
 
     [Bindable(event="propertyChange")]
-    public function get isStoppedAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get isResourceAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get isCurrentAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get isTypeAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get isFile_nameAvailable():Boolean
     {
         return true;
     }
@@ -358,49 +309,13 @@ internal class _TaskEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
     }
 
     [Bindable(event="propertyChange")]   
-    public function get totalStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get descStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
     public function get _idStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
 
     [Bindable(event="propertyChange")]   
-    public function get stoppedStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get resourceStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get currentStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
     public function get typeStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get file_nameStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
