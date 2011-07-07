@@ -5,10 +5,14 @@ package it.ht.rcs.console
   import com.adobe.serialization.json.JSONParseError;
   
   import it.ht.rcs.console.accounting.rest.DBAuth;
+  import it.ht.rcs.console.accounting.rest.DBAuthDemo;
   import it.ht.rcs.console.accounting.rest.IDBAuth;
   import it.ht.rcs.console.audit.rest.DBAudit;
   import it.ht.rcs.console.audit.rest.DBAuditDemo;
   import it.ht.rcs.console.audit.rest.IDBAudit;
+  import it.ht.rcs.console.network.rest.DBNetwork;
+  import it.ht.rcs.console.network.rest.DBNetworkDemo;
+  import it.ht.rcs.console.network.rest.IDBNetwork;
   
   import mx.controls.Alert;
   import mx.rpc.CallResponder;
@@ -19,6 +23,7 @@ package it.ht.rcs.console
   {
     public var auth:IDBAuth;
     public var audit:IDBAudit;
+    public var network:IDBNetwork;
     
     private static var notifier:IFaultNotifier;
     
@@ -32,12 +37,14 @@ package it.ht.rcs.console
     {
       auth = new DBAuth(host);
       audit = new DBAudit(host);
+      network = new DBNetwork(host);
     }
 
     private function initDemo():void
     {
-      //auth = new DBAuthDemo();
+      auth = new DBAuthDemo();
       audit = new DBAuditDemo();
+      network = new DBNetworkDemo();
     }
 
     public static function getCallResponder(onResult:Function, onFault:Function):CallResponder
