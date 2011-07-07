@@ -17,56 +17,112 @@ import com.adobe.fiber.core.model_internal;
 
 import it.ht.rcs.console.DB;
 
+import mx.collections.ArrayCollection;
 import mx.resources.ResourceManager;
 
 public class Collector extends _Super_Collector
 {
-    /** 
-     * DO NOT MODIFY THIS STATIC INITIALIZER - IT IS NECESSARY
-     * FOR PROPERLY SETTING UP THE REMOTE CLASS ALIAS FOR THIS CLASS
-     *
-     **/
-     
-    public function Collector(data:Object = null)
-    {
-      /* default values (when creating new collector) */
-      if (data == null) {
-        _id = '';
-        //name = ResourceManager.getInstance().getString('localized_main', 'NEW_COLLECTOR');
-        name = DB.i18n.getString('NEW_COLLECTOR');
-        desc = '';
-        address = '';
-        type = 'remote';
-        port = 4444;
-        poll = false;
-        configured = true;
-      } else {
-      }
-    }
   
-    /**
-     * Calling this static function will initialize RemoteClass aliases
-     * for this value object as well as all of the value objects corresponding
-     * to entities associated to this value object's entity.  
-     */     
-    public static function _initRemoteClassAlias() : void
-    {
-        _Super_Collector.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.network.model.Collector);
-        _Super_Collector.model_internal::initRemoteClassAliasAllRelated();
+  public function Collector(data:Object = null)
+  {
+    if (data == null) {
+      _id = '';
+      //name = ResourceManager.getInstance().getString('localized_main', 'NEW_COLLECTOR');
+      name = DB.i18n.getString('NEW_COLLECTOR');
+      desc = '';
+      address = '';
+      type = 'remote';
+      port = 4444;
+      poll = false;
+      configured = true;
+    } else {
+      /* existing collector */
+      _id = data._id;
+      name = data.name;
+      desc = data.desc;
+      address = data.address;
+      type = data.type;
+      port = data.port;
+      poll = data.poll;
+      next = data.next is ArrayCollection ? data.next[0] : data.next;
+      prev = data.prev is ArrayCollection ? data.prev[0] : data.prev;
     }
-     
-    model_internal static function initRemoteClassAliasSingleChild() : void
-    {
-        _Super_Collector.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.network.model.Collector);
-    }
+  }
+  
+  private var _nextHop:Collector;
+  private var _prevHop:Collector;
+  
+  public function get nextHop():Collector
+  {
+    return _nextHop;
+  }
+  
+  public function set nextHop(newNextHop:Collector):void
+  {
+    _nextHop = newNextHop;
+  }
+  
+  public function get prevHop():Collector
+  {
+    return _prevHop;
+  }
+  
+  public function set prevHop(newPrevHop:Collector):void
+  {
+    _prevHop = newPrevHop;
+  }
+  
+  public function moveAfter(destination:Collector):void
+  {
+    if (_prevHop === destination)
+      return;
     
-    {
-        _Super_Collector.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.network.model.Collector);
-    }
-    /** 
-     * END OF DO NOT MODIFY SECTION
-     *
-     **/    
+    _prevHop._nextHop = _nextHop;
+    if (_nextHop != null)
+      _nextHop._prevHop = _prevHop;
+    
+    if (destination._nextHop != null)
+      destination._nextHop._prevHop = this;
+    _nextHop = destination._nextHop;
+    _prevHop = destination;
+    destination._nextHop = this;
+  }
+  
+  public function detach():void
+  {
+    if (_nextHop != null)
+      _nextHop._prevHop = _prevHop;
+    _prevHop._nextHop = _nextHop;
+  }
+  
+  /** 
+   * DO NOT MODIFY THIS STATIC INITIALIZER - IT IS NECESSARY
+   * FOR PROPERLY SETTING UP THE REMOTE CLASS ALIAS FOR THIS CLASS
+   **/
+   
+  /**
+   * Calling this static function will initialize RemoteClass aliases
+   * for this value object as well as all of the value objects corresponding
+   * to entities associated to this value object's entity.  
+   */     
+  public static function _initRemoteClassAlias() : void
+  {
+      _Super_Collector.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.network.model.Collector);
+      _Super_Collector.model_internal::initRemoteClassAliasAllRelated();
+  }
+   
+  model_internal static function initRemoteClassAliasSingleChild() : void
+  {
+      _Super_Collector.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.network.model.Collector);
+  }
+  
+  {
+      _Super_Collector.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.network.model.Collector);
+  }
+  /** 
+   * END OF DO NOT MODIFY SECTION
+   **/
+    
 }
 
 }
