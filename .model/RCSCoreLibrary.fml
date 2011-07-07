@@ -502,4 +502,172 @@
     <property name="linux" type="boolean" required="true"/>
     <property name="mobile" type="opaque"/>
   </entity>
+  <service name="DBNetwork">
+    <annotation name="ActionScriptGeneration">
+      <item name="ServiceType">HTTPMultiService</item>
+      <item name="Package">it.ht.rcs.console.network.rest</item>
+      <item name="rootURL">http://localhost:4444</item>
+    </annotation>
+    <annotation name="ServiceTypeGroup">
+      <item name="ServiceBackendType">HTTPService</item>
+    </annotation>
+    <annotation name="ServiceConfig">
+      <item name="DEFAULT_ENTITY_PACKAGE">it.ht.rcs.console.network.model</item>
+      <item name="LINKED_FILE"></item>
+    </annotation>
+    <function name="all_" return-type="Collector[]">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/network/all</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">http://localhost:4444/network/all</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">port,desc,configured,next,type,version,prev,updated_at,poll,_id,address,name,created_at,_mid,instance</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+      </annotation>
+    </function>
+    <function name="show_" return-type="Collector">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.xml.XMLSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/network/show</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">http://localhost:4444/network/show</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">port,desc,configured,next,type,version,prev,updated_at,poll,_id,address,name,created_at,_mid,instance</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParamNames">id</item>
+        <item name="inputParams">string</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="id" type="string"/>
+    </function>
+    <function name="log_" return-type="opaque">
+      <annotation name="analyze group">
+        <item name="analyzed">false</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="method">GET</item>
+        <item name="url">/network/log</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">http://localhost:4444/network/log</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParamNames">id</item>
+        <item name="inputParams">string</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="id" type="string"/>
+    </function>
+    <function name="update_" return-type="opaque">
+      <annotation name="analyze group">
+        <item name="analyzed">false</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="method">POST</item>
+        <item name="contentType">application/xml</item>
+        <item name="requestBodyParameter">true</item>
+        <item name="url">/network/update</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">http://localhost:4444/network/update</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParamNames">strXml</item>
+        <item name="inputParams">string</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="strXml" type="string"/>
+    </function>
+    <function name="create_" return-type="opaque">
+      <annotation name="analyze group">
+        <item name="analyzed">false</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="method">POST</item>
+        <item name="contentType">application/xml</item>
+        <item name="requestBodyParameter">true</item>
+        <item name="url">/network/create</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">http://localhost:4444/network/create</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParamNames">strXml</item>
+        <item name="inputParams">string</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="strXml" type="string"/>
+    </function>
+    <function name="destroy_" return-type="opaque">
+      <annotation name="analyze group">
+        <item name="analyzed">false</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="method">POST</item>
+        <item name="contentType">application/xml</item>
+        <item name="requestBodyParameter">true</item>
+        <item name="url">/network/destroy</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">http://localhost:4444/network/destroy</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParamNames">strXml</item>
+        <item name="inputParams">string</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="strXml" type="string"/>
+    </function>
+  </service>
+  <entity name="Collector">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Collector</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBNetwork</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="all_">
+      <item name="propertySpecifier">port,desc,configured,next,type,version,prev,updated_at,poll,_id,address,name,created_at,_mid,instance</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.network.model</item>
+    </annotation>
+    <annotation name="show_">
+      <item name="propertySpecifier">port,desc,configured,next,type,version,prev,updated_at,poll,_id,address,name,created_at,_mid,instance</item>
+    </annotation>
+    <property name="port" type="integer" required="true"/>
+    <property name="desc" type="string" required="true"/>
+    <property name="configured" type="boolean" required="true"/>
+    <property name="next" type="string[]" required="true"/>
+    <property name="type" type="string" required="true"/>
+    <property name="version" type="integer" required="true"/>
+    <property name="prev" type="opaque[]" required="true"/>
+    <property name="updated_at" type="string" required="true"/>
+    <property name="poll" type="boolean" required="true"/>
+    <property name="_id" type="string" required="true"/>
+    <property name="address" type="string" required="true"/>
+    <property name="name" type="string" required="true"/>
+    <property name="created_at" type="string" required="true"/>
+    <property name="_mid" type="integer" required="true"/>
+    <property name="instance" type="string" required="true"/>
+  </entity>
 </model>
