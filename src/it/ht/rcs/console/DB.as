@@ -1,13 +1,13 @@
 package it.ht.rcs.console
 {
 
-  import it.ht.rcs.console.accounting.rest.DBAuth;
-  import it.ht.rcs.console.accounting.rest.DBAuthDemo;
+  import it.ht.rcs.console.accounting.rest.DBSession;
+  import it.ht.rcs.console.accounting.rest.DBSessionDemo;
   import it.ht.rcs.console.accounting.rest.DBGroup;
   import it.ht.rcs.console.accounting.rest.DBGroupDemo;
   import it.ht.rcs.console.accounting.rest.DBUser;
   import it.ht.rcs.console.accounting.rest.DBUserDemo;
-  import it.ht.rcs.console.accounting.rest.IDBAuth;
+  import it.ht.rcs.console.accounting.rest.IDBSession;
   import it.ht.rcs.console.accounting.rest.IDBGroup;
   import it.ht.rcs.console.accounting.rest.IDBUser;
   import it.ht.rcs.console.audit.rest.DBAudit;
@@ -32,7 +32,7 @@ package it.ht.rcs.console
 
   public class DB
   {
-    public var auth:IDBAuth;
+    public var session:IDBSession;
     public var audit:IDBAudit;
     public var task:IDBTask;
     public var network:IDBNetwork;
@@ -53,7 +53,7 @@ package it.ht.rcs.console
     
     private function initRemote(host:String):void
     {
-      auth = new DBAuth(host);
+      session = new DBSession(host);
       audit = new DBAudit(host);
       task = new DBTask(host);
       network = new DBNetwork(host);
@@ -65,7 +65,7 @@ package it.ht.rcs.console
 
     private function initDemo():void
     {
-      auth = new DBAuthDemo();
+      session = new DBSessionDemo();
       audit = new DBAuditDemo();
       task = new DBTaskDemo();
       network = new DBNetworkDemo();

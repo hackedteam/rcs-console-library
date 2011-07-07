@@ -21,6 +21,7 @@ package it.ht.rcs.console.accounting.model
   import mx.collections.ArrayCollection;
   import mx.rpc.events.ResultEvent;
 
+
   public class Group extends _Super_Group
   {
     /**
