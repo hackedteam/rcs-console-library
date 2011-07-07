@@ -9,6 +9,9 @@ package it.ht.rcs.console
   import it.ht.rcs.console.audit.rest.DBAudit;
   import it.ht.rcs.console.audit.rest.DBAuditDemo;
   import it.ht.rcs.console.audit.rest.IDBAudit;
+  import it.ht.rcs.console.task.rest.DBTask;
+  import it.ht.rcs.console.task.rest.DBTaskDemo;
+  import it.ht.rcs.console.task.rest.IDBTask;
   
   import mx.controls.Alert;
   import mx.rpc.CallResponder;
@@ -19,6 +22,7 @@ package it.ht.rcs.console
   {
     public var auth:IDBAuth;
     public var audit:IDBAudit;
+    public var task:IDBTask;
     
     private static var notifier:IFaultNotifier;
     
@@ -32,12 +36,14 @@ package it.ht.rcs.console
     {
       auth = new DBAuth(host);
       audit = new DBAudit(host);
+      task = new DBTask(host);
     }
 
     private function initDemo():void
     {
       //auth = new DBAuthDemo();
       audit = new DBAuditDemo();
+      task = new DBTaskDemo();
     }
 
     public static function getCallResponder(onResult:Function, onFault:Function):CallResponder
