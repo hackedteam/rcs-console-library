@@ -1,10 +1,8 @@
 package it.ht.rcs.console
 {
 
-  import com.adobe.serialization.json.JSON;
-  import com.adobe.serialization.json.JSONParseError;
-  
   import it.ht.rcs.console.accounting.rest.DBAuth;
+  import it.ht.rcs.console.accounting.rest.DBAuthDemo;
   import it.ht.rcs.console.accounting.rest.DBGroup;
   import it.ht.rcs.console.accounting.rest.DBGroupDemo;
   import it.ht.rcs.console.accounting.rest.DBUser;
@@ -21,8 +19,10 @@ package it.ht.rcs.console
   import it.ht.rcs.console.monitor.rest.DBMonitorDemo;
   import it.ht.rcs.console.monitor.rest.IDBLicense;
   import it.ht.rcs.console.monitor.rest.IDBMonitor;
+  import it.ht.rcs.console.network.rest.DBNetwork;
+  import it.ht.rcs.console.network.rest.DBNetworkDemo;
+  import it.ht.rcs.console.network.rest.IDBNetwork;
   
-  import mx.controls.Alert;
   import mx.rpc.CallResponder;
   import mx.rpc.events.FaultEvent;
   import mx.rpc.events.ResultEvent;
@@ -31,16 +31,19 @@ package it.ht.rcs.console
   {
     public var auth:IDBAuth;
     public var audit:IDBAudit;
+    public var network:IDBNetwork;
     public var license:IDBLicense;
     public var monitor:IDBMonitor;
     public var user:IDBUser;
     public var group:IDBGroup;
     
     private static var notifier:IFaultNotifier;
+    public static var i18n:I18N;
     
-    public function DB(host:String, notifier:IFaultNotifier)
+    public function DB(host:String, notifier:IFaultNotifier, i18n:I18N)
     {
       DB.notifier = notifier;
+      DB.i18n = i18n;
       host == 'demo' ? initDemo() : initRemote(host);
     }
 
@@ -48,6 +51,7 @@ package it.ht.rcs.console
     {
       auth = new DBAuth(host);
       audit = new DBAudit(host);
+      network = new DBNetwork(host);
       license = new DBLicense(host);
       monitor = new DBMonitor(host);
       user = new DBUser(host);
@@ -56,8 +60,9 @@ package it.ht.rcs.console
 
     private function initDemo():void
     {
-      //auth = new DBAuthDemo();
+      auth = new DBAuthDemo();
       audit = new DBAuditDemo();
+      network = new DBNetworkDemo();
       license = new DBLicenseDemo();
       monitor = new DBMonitorDemo();
       user = new DBUserDemo();
