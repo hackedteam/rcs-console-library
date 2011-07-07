@@ -15,6 +15,10 @@ package it.ht.rcs.console.network.model
 
 import com.adobe.fiber.core.model_internal;
 
+import it.ht.rcs.console.DB;
+
+import mx.resources.ResourceManager;
+
 public class Collector extends _Super_Collector
 {
     /** 
@@ -23,6 +27,23 @@ public class Collector extends _Super_Collector
      *
      **/
      
+    public function Collector(data:Object = null)
+    {
+      /* default values (when creating new collector) */
+      if (data == null) {
+        _id = '';
+        //name = ResourceManager.getInstance().getString('localized_main', 'NEW_COLLECTOR');
+        name = DB.i18n.getString('NEW_COLLECTOR');
+        desc = '';
+        address = '';
+        type = 'remote';
+        port = 4444;
+        poll = false;
+        configured = true;
+      } else {
+      }
+    }
+  
     /**
      * Calling this static function will initialize RemoteClass aliases
      * for this value object as well as all of the value objects corresponding
