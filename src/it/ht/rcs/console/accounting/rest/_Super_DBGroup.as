@@ -42,7 +42,7 @@ internal class _Super_DBGroup extends com.adobe.fiber.services.wrapper.HTTPServi
          operation.method = "GET";
          argsArray = new Array("id");
          operation.argumentNames = argsArray;         
-         operation.serializationFilter = serializer1;
+         operation.serializationFilter = serializer0;
          operation.properties = new Object();
          operation.properties["urlParamNames"] = ["id"];
          operation.resultType = it.ht.rcs.console.accounting.model.Group;
@@ -51,7 +51,7 @@ internal class _Super_DBGroup extends com.adobe.fiber.services.wrapper.HTTPServi
          operation = new mx.rpc.http.Operation(null, "update_");
          operation.url = "/group/update";
          operation.method = "POST";
-         operation.serializationFilter = serializer1;
+         operation.serializationFilter = serializer0;
          operation.contentType = "application/xml";
          operation.resultType = it.ht.rcs.console.accounting.model.Group;
          operations.push(operation);
@@ -66,14 +66,14 @@ internal class _Super_DBGroup extends com.adobe.fiber.services.wrapper.HTTPServi
          operation = new mx.rpc.http.Operation(null, "add_user_");
          operation.url = "/group/add_user";
          operation.method = "POST";
+         operation.serializationFilter = serializer1;
          operation.contentType = "application/xml";
-         operation.resultType = Object;
          operations.push(operation);
 
          operation = new mx.rpc.http.Operation(null, "create_");
          operation.url = "/group";
          operation.method = "POST";
-         operation.serializationFilter = serializer1;
+         operation.serializationFilter = serializer0;
          operation.contentType = "application/xml";
          operation.resultType = it.ht.rcs.console.accounting.model.Group;
          operations.push(operation);
@@ -81,15 +81,15 @@ internal class _Super_DBGroup extends com.adobe.fiber.services.wrapper.HTTPServi
          operation = new mx.rpc.http.Operation(null, "del_user_");
          operation.url = "/group/del_user";
          operation.method = "POST";
+         operation.serializationFilter = serializer1;
          operation.contentType = "application/xml";
-         operation.resultType = Object;
          operations.push(operation);
 
          operation = new mx.rpc.http.Operation(null, "alert_");
          operation.url = "/group/alert";
          operation.method = "POST";
+         operation.serializationFilter = serializer1;
          operation.contentType = "application/xml";
-         operation.resultType = Object;
          operations.push(operation);
 
          _serviceControl.operationList = operations;  

@@ -49,7 +49,7 @@ package it.ht.rcs.console.accounting.model
     {
       _Super_Group.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.accounting.model.Group);
     }
-
+    
     /**
      * END OF DO NOT MODIFY SECTION
      *
@@ -65,14 +65,16 @@ package it.ht.rcs.console.accounting.model
       }
     }
     
-    public function Group(data:Object)
+    public function Group(data:Object=null)
     {
-      _id = data._id;
-      name = data.name;
-      alert = data.alert;
-      user_ids = data.user_ids;
+      if (data) {
+        _id = data._id;
+        name = data.name;
+        alert = data.alert;
+        user_ids = data.user_ids;
+      }
     }
-
+    
     /*
     public function toHash():Object
     {

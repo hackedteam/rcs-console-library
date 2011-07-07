@@ -70,18 +70,20 @@ package it.ht.rcs.console.accounting.model
       };
     }
     
-    public function User(data:Object)
+    public function User(data:Object=null)
     {
-      _id = data._id;
-      enabled = data.enabled;
-      name = data.name;
-      pass = data.pass;
-      desc = data.desc;
-      contact = data.contact;
-      privs = data.privs;
-      locale = data.locale;
-      timezone = data.timezone;
-      group_ids = data.group_ids;
+      if (data) {
+        _id = data._id;
+        enabled = data.enabled;
+        name = data.name;
+        pass = data.pass;
+        desc = data.desc;
+        contact = data.contact;
+        privs = data.privs;
+        locale = data.locale;
+        timezone = data.timezone;
+        group_ids = data.group_ids;
+      }
     }
 
     /*

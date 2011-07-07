@@ -57,7 +57,7 @@ internal class _Super_DBUser extends com.adobe.fiber.services.wrapper.HTTPServic
          operation.method = "GET";
          argsArray = new Array("id");
          operation.argumentNames = argsArray;         
-         operation.serializationFilter = serializer1;
+         operation.serializationFilter = serializer0;
          operation.properties = new Object();
          operation.properties["urlParamNames"] = ["id"];
          operation.resultType = it.ht.rcs.console.accounting.model.User;
@@ -66,7 +66,7 @@ internal class _Super_DBUser extends com.adobe.fiber.services.wrapper.HTTPServic
          operation = new mx.rpc.http.Operation(null, "update_");
          operation.url = "/user/update";
          operation.method = "POST";
-         operation.serializationFilter = serializer1;
+         operation.serializationFilter = serializer0;
          operation.contentType = "application/xml";
          operation.resultType = it.ht.rcs.console.accounting.model.User;
          operations.push(operation);
