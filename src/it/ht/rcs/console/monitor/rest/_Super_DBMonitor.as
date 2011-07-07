@@ -29,21 +29,21 @@ internal class _Super_DBMonitor extends com.adobe.fiber.services.wrapper.HTTPSer
          var operation:mx.rpc.http.Operation;
          var argsArray:Array;
 
-         operation = new mx.rpc.http.Operation(null, "all");
+         operation = new mx.rpc.http.Operation(null, "all_");
          operation.url = "/status";
          operation.method = "GET";
          operation.serializationFilter = serializer0;
          operation.resultElementType = it.ht.rcs.console.monitor.model.Status;
          operations.push(operation);
 
-         operation = new mx.rpc.http.Operation(null, "destroy");
+         operation = new mx.rpc.http.Operation(null, "destroy_");
          operation.url = "/status/destroy";
          operation.method = "POST";
          operation.contentType = "application/xml";
          operation.resultType = Object;
          operations.push(operation);
 
-         operation = new mx.rpc.http.Operation(null, "counters");
+         operation = new mx.rpc.http.Operation(null, "counters_");
          operation.url = "/status/counters";
          operation.method = "GET";
          operation.serializationFilter = serializer0;
@@ -65,7 +65,7 @@ internal class _Super_DBMonitor extends com.adobe.fiber.services.wrapper.HTTPSer
     
 
     /**
-      * This method is a generated wrapper used to call the 'all' operation. It returns an mx.rpc.AsyncToken whose 
+      * This method is a generated wrapper used to call the 'all_' operation. It returns an mx.rpc.AsyncToken whose 
       * result property will be populated with the result of the operation when the server response is received. 
       * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value. 
       * You can then bind to CallResponder.lastResult or listen for the CallResponder.result or fault events.
@@ -75,15 +75,15 @@ internal class _Super_DBMonitor extends com.adobe.fiber.services.wrapper.HTTPSer
       *
       * @return an mx.rpc.AsyncToken whose result property will be populated with the result of the operation when the server response is received.
       */
-    public function all() : mx.rpc.AsyncToken
+    public function all_() : mx.rpc.AsyncToken
     {
-        var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("all");
+        var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("all_");
 		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send() ;
         return _internal_token;
     }
      
     /**
-      * This method is a generated wrapper used to call the 'destroy' operation. It returns an mx.rpc.AsyncToken whose 
+      * This method is a generated wrapper used to call the 'destroy_' operation. It returns an mx.rpc.AsyncToken whose 
       * result property will be populated with the result of the operation when the server response is received. 
       * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value. 
       * You can then bind to CallResponder.lastResult or listen for the CallResponder.result or fault events.
@@ -93,15 +93,15 @@ internal class _Super_DBMonitor extends com.adobe.fiber.services.wrapper.HTTPSer
       *
       * @return an mx.rpc.AsyncToken whose result property will be populated with the result of the operation when the server response is received.
       */
-    public function destroy(strXml:String) : mx.rpc.AsyncToken
+    public function destroy_(strXml:String) : mx.rpc.AsyncToken
     {
-        var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("destroy");
+        var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("destroy_");
 		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(strXml) ;
         return _internal_token;
     }
      
     /**
-      * This method is a generated wrapper used to call the 'counters' operation. It returns an mx.rpc.AsyncToken whose 
+      * This method is a generated wrapper used to call the 'counters_' operation. It returns an mx.rpc.AsyncToken whose 
       * result property will be populated with the result of the operation when the server response is received. 
       * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value. 
       * You can then bind to CallResponder.lastResult or listen for the CallResponder.result or fault events.
@@ -111,9 +111,9 @@ internal class _Super_DBMonitor extends com.adobe.fiber.services.wrapper.HTTPSer
       *
       * @return an mx.rpc.AsyncToken whose result property will be populated with the result of the operation when the server response is received.
       */
-    public function counters() : mx.rpc.AsyncToken
+    public function counters_() : mx.rpc.AsyncToken
     {
-        var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("counters");
+        var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("counters_");
 		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send() ;
         return _internal_token;
     }

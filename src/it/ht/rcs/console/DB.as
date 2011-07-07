@@ -13,6 +13,12 @@ package it.ht.rcs.console
   import it.ht.rcs.console.network.rest.DBNetwork;
   import it.ht.rcs.console.network.rest.DBNetworkDemo;
   import it.ht.rcs.console.network.rest.IDBNetwork;
+  import it.ht.rcs.console.monitor.rest.DBLicense;
+  import it.ht.rcs.console.monitor.rest.DBLicenseDemo;
+  import it.ht.rcs.console.monitor.rest.DBMonitor;
+  import it.ht.rcs.console.monitor.rest.DBMonitorDemo;
+  import it.ht.rcs.console.monitor.rest.IDBLicense;
+  import it.ht.rcs.console.monitor.rest.IDBMonitor;
   
   import mx.controls.Alert;
   import mx.rpc.CallResponder;
@@ -24,6 +30,8 @@ package it.ht.rcs.console
     public var auth:IDBAuth;
     public var audit:IDBAudit;
     public var network:IDBNetwork;
+    public var license:IDBLicense;
+    public var monitor:IDBMonitor;
     
     private static var notifier:IFaultNotifier;
     
@@ -38,6 +46,8 @@ package it.ht.rcs.console
       auth = new DBAuth(host);
       audit = new DBAudit(host);
       network = new DBNetwork(host);
+      license = new DBLicense(host);
+      monitor = new DBMonitor(host);
     }
 
     private function initDemo():void
@@ -45,6 +55,8 @@ package it.ht.rcs.console
       auth = new DBAuthDemo();
       audit = new DBAuditDemo();
       network = new DBNetworkDemo();
+      license = new DBLicenseDemo();
+      monitor = new DBMonitorDemo();
     }
 
     public static function getCallResponder(onResult:Function, onFault:Function):CallResponder

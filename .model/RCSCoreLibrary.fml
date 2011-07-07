@@ -3,291 +3,6 @@
   <annotation name="ActionScriptGeneration">
     <item name="FullyQualifyReferences">true</item>
   </annotation>
-  <entity name="Backdoors">
-    <annotation name="EntityProperties">
-      <item name="EntityOriginalName">Backdoors</item>
-    </annotation>
-    <annotation name="service Group">
-      <item name="service">DBLicense</item>
-    </annotation>
-    <annotation name="ServerProperties">
-      <item name="IncludeRemoteClass">nonempty</item>
-    </annotation>
-    <annotation name="ActionScriptGeneration">
-      <item name="Package">it.ht.rcs.console.monitor.model</item>
-    </annotation>
-    <property name="symbian" type="boolean" required="true"/>
-    <property name="blackberry" type="boolean" required="true"/>
-    <property name="osx" type="boolean" required="true"/>
-    <property name="total" type="opaque" required="true"/>
-    <property name="android" type="boolean" required="true"/>
-    <property name="ios" type="boolean" required="true"/>
-    <property name="desktop" type="opaque" required="true"/>
-    <property name="windows" type="boolean" required="true"/>
-    <property name="winmo" type="boolean" required="true"/>
-    <property name="linux" type="boolean" required="true"/>
-    <property name="mobile" type="opaque" required="true"/>
-  </entity>
-  <service name="DBLicense">
-    <annotation name="ActionScriptGeneration">
-      <item name="ServiceType">HTTPMultiService</item>
-      <item name="Package">it.ht.rcs.console.monitor.rest</item>
-      <item name="rootURL">https://localhost:4444</item>
-    </annotation>
-    <annotation name="ServiceTypeGroup">
-      <item name="ServiceBackendType">HTTPService</item>
-    </annotation>
-    <annotation name="ServiceConfig">
-      <item name="DEFAULT_ENTITY_PACKAGE">it.ht.rcs.console.monitor.model</item>
-      <item name="LINKED_FILE"></item>
-    </annotation>
-    <function name="count" return-type="LicenseCount">
-      <annotation name="analyze group">
-        <item name="analyzed">true</item>
-      </annotation>
-      <annotation name="ActionScriptGeneration">
-        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
-        <item name="method">GET</item>
-        <item name="url">/license/count</item>
-      </annotation>
-      <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/license/count</item>
-      </annotation>
-      <annotation name="ValidProperties">
-        <item name="propertySpecifier">collectors,users,ipa,backdoors</item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="returnType">opaque</item>
-      </annotation>
-    </function>
-    <function name="limit" return-type="License">
-      <annotation name="analyze group">
-        <item name="analyzed">true</item>
-      </annotation>
-      <annotation name="ActionScriptGeneration">
-        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
-        <item name="method">GET</item>
-        <item name="url">/license/limit</item>
-      </annotation>
-      <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/license/limit</item>
-      </annotation>
-      <annotation name="ValidProperties">
-        <item name="propertySpecifier">collectors,users,ipa,backdoors,alerting,correlation,type,serial,rmi</item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="returnType">opaque</item>
-      </annotation>
-    </function>
-  </service>
-  <entity name="License">
-    <annotation name="EntityProperties">
-      <item name="EntityOriginalName">License</item>
-    </annotation>
-    <annotation name="service Group">
-      <item name="service">DBLicense</item>
-    </annotation>
-    <annotation name="ServerProperties">
-      <item name="IncludeRemoteClass">nonempty</item>
-    </annotation>
-    <annotation name="limit">
-      <item name="propertySpecifier">collectors,users,ipa,backdoors,alerting,correlation,type,serial,rmi</item>
-    </annotation>
-    <annotation name="ActionScriptGeneration">
-      <item name="Package">it.ht.rcs.console.monitor.model</item>
-    </annotation>
-    <property name="collectors" type="LicenseCollectors"/>
-    <property name="users" type="opaque"/>
-    <property name="ipa" type="integer"/>
-    <property name="backdoors" type="LicenseBackdoors"/>
-    <property name="alerting" type="boolean"/>
-    <property name="correlation" type="boolean"/>
-    <property name="type" type="string"/>
-    <property name="serial" type="string"/>
-    <property name="rmi" type="boolean"/>
-  </entity>
-  <entity name="LicenseCount">
-    <annotation name="EntityProperties">
-      <item name="EntityOriginalName">LicenseCount</item>
-    </annotation>
-    <annotation name="service Group">
-      <item name="service">DBLicense</item>
-    </annotation>
-    <annotation name="ServerProperties">
-      <item name="IncludeRemoteClass">nonempty</item>
-    </annotation>
-    <annotation name="count">
-      <item name="propertySpecifier">collectors,users,ipa,backdoors</item>
-    </annotation>
-    <annotation name="ActionScriptGeneration">
-      <item name="Package">it.ht.rcs.console.monitor.model</item>
-    </annotation>
-    <property name="collectors" type="LicenseCollectors" required="true"/>
-    <property name="users" type="integer" required="true"/>
-    <property name="ipa" type="integer" required="true"/>
-    <property name="backdoors" type="LicenseBackdoors" required="true"/>
-  </entity>
-  <entity name="LicenseCollectors">
-    <annotation name="EntityProperties">
-      <item name="EntityOriginalName">Collectors</item>
-    </annotation>
-    <annotation name="service Group">
-      <item name="service">DBLicense</item>
-    </annotation>
-    <annotation name="ServerProperties">
-      <item name="IncludeRemoteClass">nonempty</item>
-    </annotation>
-    <annotation name="ActionScriptGeneration">
-      <item name="Package">it.ht.rcs.console.monitor.model</item>
-    </annotation>
-    <property name="collectors" type="integer"/>
-    <property name="anonymizers" type="integer"/>
-  </entity>
-  <entity name="LicenseBackdoors">
-    <annotation name="EntityProperties">
-      <item name="EntityOriginalName">Backdoors</item>
-    </annotation>
-    <annotation name="service Group">
-      <item name="service">DBLicense</item>
-    </annotation>
-    <annotation name="ServerProperties">
-      <item name="IncludeRemoteClass">nonempty</item>
-    </annotation>
-    <annotation name="ActionScriptGeneration">
-      <item name="Package">it.ht.rcs.console.monitor.model</item>
-    </annotation>
-    <property name="symbian" type="boolean" required="true"/>
-    <property name="blackberry" type="boolean" required="true"/>
-    <property name="osx" type="boolean" required="true"/>
-    <property name="total" type="opaque"/>
-    <property name="android" type="boolean" required="true"/>
-    <property name="ios" type="boolean" required="true"/>
-    <property name="desktop" type="opaque"/>
-    <property name="windows" type="boolean" required="true"/>
-    <property name="winmo" type="boolean" required="true"/>
-    <property name="linux" type="boolean" required="true"/>
-    <property name="mobile" type="opaque"/>
-  </entity>
-  <service name="DBMonitor">
-    <annotation name="ActionScriptGeneration">
-      <item name="ServiceType">HTTPMultiService</item>
-      <item name="Package">it.ht.rcs.console.monitor.rest</item>
-      <item name="rootURL">https://localhost:4444</item>
-    </annotation>
-    <annotation name="ServiceTypeGroup">
-      <item name="ServiceBackendType">HTTPService</item>
-    </annotation>
-    <annotation name="ServiceConfig">
-      <item name="DEFAULT_ENTITY_PACKAGE">it.ht.rcs.console.monitor.model</item>
-      <item name="LINKED_FILE"></item>
-    </annotation>
-    <function name="all" return-type="Status[]">
-      <annotation name="analyze group">
-        <item name="analyzed">true</item>
-      </annotation>
-      <annotation name="ActionScriptGeneration">
-        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
-        <item name="method">GET</item>
-        <item name="url">/status</item>
-      </annotation>
-      <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/status</item>
-      </annotation>
-      <annotation name="ValidProperties">
-        <item name="propertySpecifier">time,updated_at,_id,status,address,name,disk,cpu,created_at,pcpu,info</item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="returnType">opaque</item>
-      </annotation>
-    </function>
-    <function name="destroy" return-type="opaque">
-      <annotation name="analyze group">
-        <item name="analyzed">false</item>
-      </annotation>
-      <annotation name="ActionScriptGeneration">
-        <item name="method">POST</item>
-        <item name="contentType">application/xml</item>
-        <item name="requestBodyParameter">true</item>
-        <item name="url">/status/destroy</item>
-      </annotation>
-      <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/status/destroy</item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="inputParamNames">strXml</item>
-        <item name="inputParams">string</item>
-        <item name="returnType">opaque</item>
-      </annotation>
-      <parameter name="strXml" type="string"/>
-    </function>
-    <function name="counters" return-type="StatusCounters">
-      <annotation name="analyze group">
-        <item name="analyzed">true</item>
-      </annotation>
-      <annotation name="ActionScriptGeneration">
-        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
-        <item name="method">GET</item>
-        <item name="url">/status/counters</item>
-      </annotation>
-      <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/status/counters</item>
-      </annotation>
-      <annotation name="ValidProperties">
-        <item name="propertySpecifier">warn,error,ok</item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="returnType">opaque</item>
-      </annotation>
-    </function>
-  </service>
-  <entity name="Status">
-    <annotation name="EntityProperties">
-      <item name="EntityOriginalName">Status</item>
-    </annotation>
-    <annotation name="service Group">
-      <item name="service">DBMonitor</item>
-    </annotation>
-    <annotation name="ServerProperties">
-      <item name="IncludeRemoteClass">nonempty</item>
-    </annotation>
-    <annotation name="all">
-      <item name="propertySpecifier">time,updated_at,_id,status,address,name,disk,cpu,created_at,pcpu,info</item>
-    </annotation>
-    <annotation name="ActionScriptGeneration">
-      <item name="Package">it.ht.rcs.console.monitor.model</item>
-    </annotation>
-    <property name="time" type="integer" required="true"/>
-    <property name="updated_at" type="string" required="true"/>
-    <property name="_id" type="string" required="true"/>
-    <property name="status" type="string" required="true"/>
-    <property name="address" type="string" required="true"/>
-    <property name="name" type="string" required="true"/>
-    <property name="disk" type="integer" required="true"/>
-    <property name="cpu" type="integer" required="true"/>
-    <property name="created_at" type="string" required="true"/>
-    <property name="pcpu" type="integer" required="true"/>
-    <property name="info" type="string" required="true"/>
-  </entity>
-  <entity name="StatusCounters">
-    <annotation name="EntityProperties">
-      <item name="EntityOriginalName">StatusCounters</item>
-    </annotation>
-    <annotation name="service Group">
-      <item name="service">DBMonitor</item>
-    </annotation>
-    <annotation name="ServerProperties">
-      <item name="IncludeRemoteClass">nonempty</item>
-    </annotation>
-    <annotation name="counters">
-      <item name="propertySpecifier">warn,error,ok</item>
-    </annotation>
-    <annotation name="ActionScriptGeneration">
-      <item name="Package">it.ht.rcs.console.monitor.model</item>
-    </annotation>
-    <property name="warn" type="integer" required="true"/>
-    <property name="error" type="integer" required="true"/>
-    <property name="ok" type="integer" required="true"/>
-  </entity>
   <service name="DBAudit">
     <annotation name="ActionScriptGeneration">
       <item name="ServiceType">HTTPMultiService</item>
@@ -526,6 +241,266 @@
     <property name="level" type="string[]"/>
     <property name="address" type="string"/>
     <property name="user" type="User"/>
+  </entity>
+  <service name="DBMonitor">
+    <annotation name="ActionScriptGeneration">
+      <item name="ServiceType">HTTPMultiService</item>
+      <item name="Package">it.ht.rcs.console.monitor.rest</item>
+      <item name="rootURL">https://localhost:4444</item>
+    </annotation>
+    <annotation name="ServiceTypeGroup">
+      <item name="ServiceBackendType">HTTPService</item>
+    </annotation>
+    <annotation name="ServiceConfig">
+      <item name="DEFAULT_ENTITY_PACKAGE">it.ht.rcs.console.monitor.model</item>
+      <item name="LINKED_FILE"></item>
+    </annotation>
+    <function name="all_" return-type="Status[]">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/status</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/status</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">time,updated_at,_id,status,address,name,disk,cpu,created_at,pcpu,info</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+      </annotation>
+    </function>
+    <function name="destroy_" return-type="opaque">
+      <annotation name="analyze group">
+        <item name="analyzed">false</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="method">POST</item>
+        <item name="contentType">application/xml</item>
+        <item name="requestBodyParameter">true</item>
+        <item name="url">/status/destroy</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/status/destroy</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+        <item name="inputParamNames">strXml</item>
+        <item name="inputParams">string</item>
+      </annotation>
+      <parameter name="strXml" type="string"/>
+    </function>
+    <function name="counters_" return-type="StatusCounters">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/status/counters</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/status/counters</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">warn,error,ok</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+      </annotation>
+    </function>
+  </service>
+  <entity name="Status">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Status</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBMonitor</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="all">
+      <item name="propertySpecifier">time,updated_at,_id,status,address,name,disk,cpu,created_at,pcpu,info</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.monitor.model</item>
+    </annotation>
+    <property name="time" type="integer" required="true"/>
+    <property name="updated_at" type="string" required="true"/>
+    <property name="_id" type="string" required="true"/>
+    <property name="status" type="string" required="true"/>
+    <property name="address" type="string" required="true"/>
+    <property name="name" type="string" required="true"/>
+    <property name="disk" type="integer" required="true"/>
+    <property name="cpu" type="integer" required="true"/>
+    <property name="created_at" type="string" required="true"/>
+    <property name="pcpu" type="integer" required="true"/>
+    <property name="info" type="string" required="true"/>
+  </entity>
+  <entity name="StatusCounters">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">StatusCounters</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBMonitor</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="counters">
+      <item name="propertySpecifier">warn,error,ok</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.monitor.model</item>
+    </annotation>
+    <property name="warn" type="integer" required="true"/>
+    <property name="error" type="integer" required="true"/>
+    <property name="ok" type="integer" required="true"/>
+  </entity>
+  <service name="DBLicense">
+    <annotation name="ActionScriptGeneration">
+      <item name="ServiceType">HTTPMultiService</item>
+      <item name="Package">it.ht.rcs.console.monitor.rest</item>
+      <item name="rootURL">https://localhost:4444</item>
+    </annotation>
+    <annotation name="ServiceTypeGroup">
+      <item name="ServiceBackendType">HTTPService</item>
+    </annotation>
+    <annotation name="ServiceConfig">
+      <item name="DEFAULT_ENTITY_PACKAGE">it.ht.rcs.console.monitor.model</item>
+      <item name="LINKED_FILE"></item>
+    </annotation>
+    <function name="count_" return-type="LicenseCount">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/license/count</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/license/count</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">collectors,users,ipa,backdoors</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+      </annotation>
+    </function>
+    <function name="limit_" return-type="License">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/license/limit</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/license/limit</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">collectors,users,ipa,backdoors,alerting,correlation,type,serial,rmi</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+      </annotation>
+    </function>
+  </service>
+  <entity name="License">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">License</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBLicense</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="limit">
+      <item name="propertySpecifier">collectors,users,ipa,backdoors,alerting,correlation,type,serial,rmi</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.monitor.model</item>
+    </annotation>
+    <property name="collectors" type="LicenseCollectors"/>
+    <property name="users" type="opaque"/>
+    <property name="ipa" type="integer"/>
+    <property name="backdoors" type="LicenseBackdoors"/>
+    <property name="alerting" type="boolean"/>
+    <property name="correlation" type="boolean"/>
+    <property name="type" type="string"/>
+    <property name="serial" type="string"/>
+    <property name="rmi" type="boolean"/>
+  </entity>
+  <entity name="LicenseCount">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">LicenseCount</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBLicense</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="count">
+      <item name="propertySpecifier">collectors,users,ipa,backdoors</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.monitor.model</item>
+    </annotation>
+    <property name="collectors" type="LicenseCollectors" required="true"/>
+    <property name="users" type="integer" required="true"/>
+    <property name="ipa" type="integer" required="true"/>
+    <property name="backdoors" type="LicenseBackdoors" required="true"/>
+  </entity>
+  <entity name="LicenseCollectors">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Collectors</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBLicense</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.monitor.model</item>
+    </annotation>
+    <property name="collectors" type="integer"/>
+    <property name="anonymizers" type="integer"/>
+  </entity>
+  <entity name="LicenseBackdoors">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Backdoors</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBLicense</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.monitor.model</item>
+    </annotation>
+    <property name="symbian" type="boolean" required="true"/>
+    <property name="blackberry" type="boolean" required="true"/>
+    <property name="osx" type="boolean" required="true"/>
+    <property name="total" type="opaque"/>
+    <property name="android" type="boolean" required="true"/>
+    <property name="ios" type="boolean" required="true"/>
+    <property name="desktop" type="opaque"/>
+    <property name="windows" type="boolean" required="true"/>
+    <property name="winmo" type="boolean" required="true"/>
+    <property name="linux" type="boolean" required="true"/>
+    <property name="mobile" type="opaque"/>
   </entity>
   <service name="DBNetwork">
     <annotation name="ActionScriptGeneration">
