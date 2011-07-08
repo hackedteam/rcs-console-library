@@ -51,7 +51,7 @@ public class DBTask extends _Super_DBTask implements IDBTask
     public function show(id:String, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = show_(JSON.encode(id));  
+      resp.token = show_(id);  
     }
 }
 

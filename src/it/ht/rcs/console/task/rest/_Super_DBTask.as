@@ -18,8 +18,8 @@ import com.adobe.serializers.xml.XMLSerializationFilter;
 [ExcludeClass]
 internal class _Super_DBTask extends com.adobe.fiber.services.wrapper.HTTPServiceWrapper
 {
-    private static var serializer1:JSONSerializationFilter = new JSONSerializationFilter();
-    private static var serializer0:XMLSerializationFilter = new XMLSerializationFilter();
+    private static var serializer0:JSONSerializationFilter = new JSONSerializationFilter();
+    private static var serializer1:XMLSerializationFilter = new XMLSerializationFilter();
 
     // Constructor
     public function _Super_DBTask()
@@ -34,7 +34,7 @@ internal class _Super_DBTask extends com.adobe.fiber.services.wrapper.HTTPServic
          operation.url = "/task";
          operation.method = "GET";
          operation.serializationFilter = serializer0;
-         operation.resultElementType = it.ht.rcs.console.task.model.Task;
+         operation.resultElementType = Object;
          operations.push(operation);
 
          operation = new mx.rpc.http.Operation(null, "show_");
@@ -51,7 +51,7 @@ internal class _Super_DBTask extends com.adobe.fiber.services.wrapper.HTTPServic
          operation = new mx.rpc.http.Operation(null, "create_");
          operation.url = "/task/create";
          operation.method = "POST";
-         operation.serializationFilter = serializer1;
+         operation.serializationFilter = serializer0;
          operation.contentType = "application/xml";
          operation.resultType = it.ht.rcs.console.task.model.Task;
          operations.push(operation);
@@ -59,7 +59,7 @@ internal class _Super_DBTask extends com.adobe.fiber.services.wrapper.HTTPServic
          operation = new mx.rpc.http.Operation(null, "destroy_");
          operation.url = "/task/destroy";
          operation.method = "POST";
-         operation.serializationFilter = serializer0;
+         operation.serializationFilter = serializer1;
          operation.contentType = "application/xml";
          operations.push(operation);
 

@@ -56,17 +56,18 @@ package it.ht.rcs.console.accounting.model
     
     public static function defaultUser():Object
     {
+      var name:String = DB.i18n.getString('NEW_USER');
       return {
         _id: '',
         enabled: false,
-        name: DB.i18n.getString('NEW_USER'),
+        name: name,
         pass: '',
         desc: '',
         contact: '',
-        privs: new ArrayCollection(),
+        privs: new Array(),
         locale: 'en_US',
         timezone: 0,
-        group_ids: new ArrayCollection()
+        group_ids: new Array()
       };
     }
     

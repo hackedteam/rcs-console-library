@@ -57,9 +57,10 @@ package it.ht.rcs.console.accounting.model
     
     public static function defaultGroup():Object
     {
+      var name:String = DB.i18n.getString('NEW_GROUP');
       return {
         _id: "",
-        name: DB.i18n.getString('NEW_GROUP'),
+        name: name,
         alert: false,
         user_ids: new ArrayCollection()
       }
