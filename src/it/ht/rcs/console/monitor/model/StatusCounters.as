@@ -46,6 +46,15 @@ public class StatusCounters extends _Super_StatusCounters
      * END OF DO NOT MODIFY SECTION
      *
      **/    
+    
+    public function StatusCounters(data:Object = null)
+    {
+      if(data) {
+        ok = data.ok;
+        warn = data.warn;
+        error = data.error;
+      }
+    }
 }
 
 }

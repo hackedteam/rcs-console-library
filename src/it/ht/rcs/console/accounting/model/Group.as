@@ -49,33 +49,39 @@ package it.ht.rcs.console.accounting.model
     {
       _Super_Group.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.accounting.model.Group);
     }
-
+    
     /**
      * END OF DO NOT MODIFY SECTION
      *
      **/
-
-    public function Group(data:Object = null)
+    
+    public static function defaultGroup():Object
     {
-      /* default group (when creating new group) */
-      if (data == null) {
-        _id = "";
-        name = DB.i18n.getString('NEW_GROUP');
-        alert = false;
-        user_ids = new ArrayCollection();
-      } else {
-        /* existing group */
+      var name:String = DB.i18n.getString('NEW_GROUP');
+      return {
+        _id: "",
+        name: name,
+        alert: false,
+        user_ids: new ArrayCollection()
+      }
+    }
+    
+    public function Group(data:Object=null)
+    {
+      if (data) {
         _id = data._id;
         name = data.name;
         alert = data.alert;
         user_ids = data.user_ids;
       }
     }
-
+    
+    /*
     public function toHash():Object
     {
       return {name: name, user_ids: user_ids.source}
     }
+    */
 
   }
 

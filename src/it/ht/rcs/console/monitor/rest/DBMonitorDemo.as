@@ -2,6 +2,8 @@ package it.ht.rcs.console.monitor.rest
 {
   import com.adobe.serialization.json.JSON;
   
+  import it.ht.rcs.console.monitor.model.StatusCounters;
+  
   import mx.collections.ArrayCollection;
   import mx.rpc.events.ResultEvent;
 
@@ -24,7 +26,7 @@ package it.ht.rcs.console.monitor.rest
     
     public function counters(onResult:Function=null, onFault:Function=null):void
     {
-      var counters:Object = {"ok":1, "warn":1, "error":1};
+      var counters:StatusCounters = new StatusCounters({"ok":1, "warn":1, "error":1});
       var event:ResultEvent = new ResultEvent("monitor.counters", false, true, JSON.encode(counters));
       if (onResult != null) 
         onResult(event);   

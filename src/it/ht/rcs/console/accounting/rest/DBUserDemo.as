@@ -32,13 +32,12 @@ package it.ht.rcs.console.accounting.rest
         onResult(event);
     }
     
-    public function create(user:User, onResult:Function=null, onFault:Function=null):void
+    public function create(params:Object, onResult:Function=null, onFault:Function=null):void
     {
-      var u:Object = user.toHash();
-      u._id = new Date().getTime().toString();
-      u.privs = new ArrayCollection(u.privs);
-      u.group_ids = new ArrayCollection(u.group_ids);
-      var event:ResultEvent = new ResultEvent("user.create", false, true, u);
+      params._id = new Date().getTime().toString();
+      params.privs = new ArrayCollection(params.privs);
+      params.group_ids = new ArrayCollection(params.group_ids);
+      var event:ResultEvent = new ResultEvent("user.create", false, true, params);
       onResult(event);
     }
     

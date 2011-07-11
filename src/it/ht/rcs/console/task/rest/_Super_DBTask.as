@@ -34,7 +34,7 @@ internal class _Super_DBTask extends com.adobe.fiber.services.wrapper.HTTPServic
          operation.url = "/task";
          operation.method = "GET";
          operation.serializationFilter = serializer0;
-         operation.resultElementType = it.ht.rcs.console.task.model.Task;
+         operation.resultElementType = Object;
          operations.push(operation);
 
          operation = new mx.rpc.http.Operation(null, "show_");
@@ -42,7 +42,7 @@ internal class _Super_DBTask extends com.adobe.fiber.services.wrapper.HTTPServic
          operation.method = "GET";
          argsArray = new Array("id");
          operation.argumentNames = argsArray;         
-         operation.serializationFilter = serializer1;
+         operation.serializationFilter = serializer0;
          operation.properties = new Object();
          operation.properties["urlParamNames"] = ["id"];
          operation.resultType = it.ht.rcs.console.task.model.Task;
@@ -51,7 +51,7 @@ internal class _Super_DBTask extends com.adobe.fiber.services.wrapper.HTTPServic
          operation = new mx.rpc.http.Operation(null, "create_");
          operation.url = "/task/create";
          operation.method = "POST";
-         operation.serializationFilter = serializer1;
+         operation.serializationFilter = serializer0;
          operation.contentType = "application/xml";
          operation.resultType = it.ht.rcs.console.task.model.Task;
          operations.push(operation);

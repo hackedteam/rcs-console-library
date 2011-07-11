@@ -49,17 +49,18 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
      */
     private var _internal__mid : int;
     private var _internal_enabled : Boolean;
-    private var _internal_timezone : int;
-    private var _internal_updated_at : String;
     private var _internal_desc : String;
-    private var _internal__id : String;
-    private var _internal_privs : ArrayCollection;
     private var _internal_group_ids : ArrayCollection;
-    private var _internal_name : String;
     private var _internal_locale : String;
-    private var _internal_created_at : String;
     private var _internal_contact : String;
     private var _internal_pass : String;
+    private var _internal_not_exist : String;
+    private var _internal_timezone : int;
+    private var _internal_updated_at : String;
+    private var _internal__id : String;
+    private var _internal_privs : ArrayCollection;
+    private var _internal_name : String;
+    private var _internal_created_at : String;
 
     private static var emptyArray:Array = new Array();
 
@@ -96,6 +97,42 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
     }
 
     [Bindable(event="propertyChange")]
+    public function get desc() : String
+    {
+        return _internal_desc;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get group_ids() : ArrayCollection
+    {
+        return _internal_group_ids;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get locale() : String
+    {
+        return _internal_locale;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get contact() : String
+    {
+        return _internal_contact;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get pass() : String
+    {
+        return _internal_pass;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get not_exist() : String
+    {
+        return _internal_not_exist;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get timezone() : int
     {
         return _internal_timezone;
@@ -105,12 +142,6 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
     public function get updated_at() : String
     {
         return _internal_updated_at;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get desc() : String
-    {
-        return _internal_desc;
     }
 
     [Bindable(event="propertyChange")]
@@ -126,39 +157,15 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
     }
 
     [Bindable(event="propertyChange")]
-    public function get group_ids() : ArrayCollection
-    {
-        return _internal_group_ids;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get name() : String
     {
         return _internal_name;
     }
 
     [Bindable(event="propertyChange")]
-    public function get locale() : String
-    {
-        return _internal_locale;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get created_at() : String
     {
         return _internal_created_at;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get contact() : String
-    {
-        return _internal_contact;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get pass() : String
-    {
-        return _internal_pass;
     }
 
     public function clearAssociations() : void
@@ -189,6 +196,81 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
         }
     }
 
+    public function set desc(value:String) : void
+    {
+        var oldValue:String = _internal_desc;
+        if (oldValue !== value)
+        {
+            _internal_desc = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "desc", oldValue, _internal_desc));
+        }
+    }
+
+    public function set group_ids(value:*) : void
+    {
+        var oldValue:ArrayCollection = _internal_group_ids;
+        if (oldValue !== value)
+        {
+            if (value is ArrayCollection)
+            {
+                _internal_group_ids = value;
+            }
+            else if (value is Array)
+            {
+                _internal_group_ids = new ArrayCollection(value);
+            }
+            else if (value == null)
+            {
+                _internal_group_ids = null;
+            }
+            else
+            {
+                throw new Error("value of group_ids must be a collection");
+            }
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "group_ids", oldValue, _internal_group_ids));
+        }
+    }
+
+    public function set locale(value:String) : void
+    {
+        var oldValue:String = _internal_locale;
+        if (oldValue !== value)
+        {
+            _internal_locale = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "locale", oldValue, _internal_locale));
+        }
+    }
+
+    public function set contact(value:String) : void
+    {
+        var oldValue:String = _internal_contact;
+        if (oldValue !== value)
+        {
+            _internal_contact = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "contact", oldValue, _internal_contact));
+        }
+    }
+
+    public function set pass(value:String) : void
+    {
+        var oldValue:String = _internal_pass;
+        if (oldValue !== value)
+        {
+            _internal_pass = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "pass", oldValue, _internal_pass));
+        }
+    }
+
+    public function set not_exist(value:String) : void
+    {
+        var oldValue:String = _internal_not_exist;
+        if (oldValue !== value)
+        {
+            _internal_not_exist = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "not_exist", oldValue, _internal_not_exist));
+        }
+    }
+
     public function set timezone(value:int) : void
     {
         var oldValue:int = _internal_timezone;
@@ -206,16 +288,6 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
         {
             _internal_updated_at = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "updated_at", oldValue, _internal_updated_at));
-        }
-    }
-
-    public function set desc(value:String) : void
-    {
-        var oldValue:String = _internal_desc;
-        if (oldValue !== value)
-        {
-            _internal_desc = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "desc", oldValue, _internal_desc));
         }
     }
 
@@ -254,31 +326,6 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
         }
     }
 
-    public function set group_ids(value:*) : void
-    {
-        var oldValue:ArrayCollection = _internal_group_ids;
-        if (oldValue !== value)
-        {
-            if (value is ArrayCollection)
-            {
-                _internal_group_ids = value;
-            }
-            else if (value is Array)
-            {
-                _internal_group_ids = new ArrayCollection(value);
-            }
-            else if (value == null)
-            {
-                _internal_group_ids = null;
-            }
-            else
-            {
-                throw new Error("value of group_ids must be a collection");
-            }
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "group_ids", oldValue, _internal_group_ids));
-        }
-    }
-
     public function set name(value:String) : void
     {
         var oldValue:String = _internal_name;
@@ -289,16 +336,6 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
         }
     }
 
-    public function set locale(value:String) : void
-    {
-        var oldValue:String = _internal_locale;
-        if (oldValue !== value)
-        {
-            _internal_locale = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "locale", oldValue, _internal_locale));
-        }
-    }
-
     public function set created_at(value:String) : void
     {
         var oldValue:String = _internal_created_at;
@@ -306,26 +343,6 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
         {
             _internal_created_at = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "created_at", oldValue, _internal_created_at));
-        }
-    }
-
-    public function set contact(value:String) : void
-    {
-        var oldValue:String = _internal_contact;
-        if (oldValue !== value)
-        {
-            _internal_contact = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "contact", oldValue, _internal_contact));
-        }
-    }
-
-    public function set pass(value:String) : void
-    {
-        var oldValue:String = _internal_pass;
-        if (oldValue !== value)
-        {
-            _internal_pass = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "pass", oldValue, _internal_pass));
         }
     }
 

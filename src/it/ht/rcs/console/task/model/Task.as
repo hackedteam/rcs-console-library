@@ -15,8 +15,26 @@ package it.ht.rcs.console.task.model
 
 import com.adobe.fiber.core.model_internal;
 
+import flash.events.TimerEvent;
+import flash.utils.Timer;
+
+import mx.rpc.events.ResultEvent;
+
 public class Task extends _Super_Task
-{
+{ 
+  public function Task(data:Object = null)
+  {
+    if (data != null) {
+      _id = data._id;
+      type = data.type;
+      current = data.current;
+      total = data.total;
+      desc = data.desc;
+      resource = data.resource;
+      file_name = data.file_name;
+    }
+  }
+  
     /** 
      * DO NOT MODIFY THIS STATIC INITIALIZER - IT IS NECESSARY
      * FOR PROPERLY SETTING UP THE REMOTE CLASS ALIAS FOR THIS CLASS
@@ -45,7 +63,8 @@ public class Task extends _Super_Task
     /** 
      * END OF DO NOT MODIFY SECTION
      *
-     **/    
+     **/
+    
 }
 
 }

@@ -6,14 +6,10 @@
 package it.ht.rcs.console.task.model
 {
 import com.adobe.fiber.services.IFiberManagingService;
-import com.adobe.fiber.util.FiberUtils;
 import com.adobe.fiber.valueobjects.IValueObject;
-import flash.events.Event;
 import flash.events.EventDispatcher;
-import mx.binding.utils.ChangeWatcher;
 import mx.collections.ArrayCollection;
 import mx.events.PropertyChangeEvent;
-import mx.validators.ValidationResult;
 
 import flash.net.registerClassAlias;
 import flash.net.getClassByAlias;
@@ -69,8 +65,6 @@ public class _Super_TaskResource extends flash.events.EventDispatcher implements
         _model = new _TaskResourceEntityMetadata(this);
 
         // Bind to own data or source properties for cache invalidation triggering
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "_id", model_internal::setterListener_id));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "type", model_internal::setterListenerType));
 
     }
 
@@ -130,16 +124,6 @@ public class _Super_TaskResource extends flash.events.EventDispatcher implements
      *  - the validity of the property (and the containing entity) if the given data property is required.
      */
 
-    model_internal function setterListener_id(value:flash.events.Event):void
-    {
-        _model.invalidateDependentOn_id();
-    }
-
-    model_internal function setterListenerType(value:flash.events.Event):void
-    {
-        _model.invalidateDependentOnType();
-    }
-
 
     /**
      * valid related derived properties
@@ -161,16 +145,6 @@ public class _Super_TaskResource extends flash.events.EventDispatcher implements
         var validationFailureMessages:Array = new Array();
 
         var propertyValidity:Boolean = true;
-        if (!_model._idIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::__idValidationFailureMessages);
-        }
-        if (!_model.typeIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_typeValidationFailureMessages);
-        }
 
         model_internal::_cacheInitialized_isValid = true;
         model_internal::invalidConstraints_der = violatedConsts;
@@ -250,60 +224,6 @@ public class _Super_TaskResource extends flash.events.EventDispatcher implements
         }
     }
 
-    model_internal var _doValidationCacheOf_id : Array = null;
-    model_internal var _doValidationLastValOf_id : String;
-
-    model_internal function _doValidationFor_id(valueIn:Object):Array
-    {
-        var value : String = valueIn as String;
-
-        if (model_internal::_doValidationCacheOf_id != null && model_internal::_doValidationLastValOf_id == value)
-           return model_internal::_doValidationCacheOf_id ;
-
-        _model.model_internal::__idIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.is_idAvailable && _internal__id == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "_id is required"));
-        }
-
-        model_internal::_doValidationCacheOf_id = validationFailures;
-        model_internal::_doValidationLastValOf_id = value;
-
-        return validationFailures;
-    }
-    
-    model_internal var _doValidationCacheOfType : Array = null;
-    model_internal var _doValidationLastValOfType : String;
-
-    model_internal function _doValidationForType(valueIn:Object):Array
-    {
-        var value : String = valueIn as String;
-
-        if (model_internal::_doValidationCacheOfType != null && model_internal::_doValidationLastValOfType == value)
-           return model_internal::_doValidationCacheOfType ;
-
-        _model.model_internal::_typeIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.isTypeAvailable && _internal_type == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "type is required"));
-        }
-
-        model_internal::_doValidationCacheOfType = validationFailures;
-        model_internal::_doValidationLastValOfType = value;
-
-        return validationFailures;
-    }
-    
 
 }
 

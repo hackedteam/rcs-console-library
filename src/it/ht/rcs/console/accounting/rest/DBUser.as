@@ -37,10 +37,10 @@ public class DBUser extends _Super_DBUser implements IDBUser
       resp.token = all_();
     }
     
-    public function create(user:User, onResult:Function=null, onFault:Function=null):void
+    public function create(params:Object, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = create_(JSON.encode(user.toHash()));
+      resp.token = create_(JSON.encode(params));
     }
     
     public function destroy(user:User, onResult:Function=null, onFault:Function=null):void

@@ -36,11 +36,10 @@ public class DBTask extends _Super_DBTask implements IDBTask
       resp.token = all_();  
     }
     
-    public function create(task:Task, onResult:Function=null, onFault:Function=null):void
+    public function create(params:Object, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = create_(JSON.encode(task));  
-      
+      resp.token = create_(JSON.encode(params));
     }
     
     public function destroy(id:String, onResult:Function=null, onFault:Function=null):void
@@ -52,7 +51,7 @@ public class DBTask extends _Super_DBTask implements IDBTask
     public function show(id:String, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = show_(JSON.encode(id));  
+      resp.token = show_(id);  
     }
 }
 

@@ -24,15 +24,15 @@ package it.ht.rcs.console.task.rest
     {
     }
     
-    public function create(task:Task, onResult:Function=null, onFault:Function=null):void
+    public function create(params:Object, onResult:Function=null, onFault:Function=null):void
     {
       var newTask:Object = { _id: '__' + Math.round(Math.random() * 1000),
         type: 'blotter',
         total: 1000,
         current: 0,
-        desc: new Date().time + " " + task.type,
+        desc: new Date().time + " " + params.type,
         grid_id: dummyFile,
-        file_name: task.file_name
+        file_name: params.file_name
       }
       tasks[newTask._id] = newTask;
       var event:ResultEvent = new ResultEvent("task.create", false, true, newTask);

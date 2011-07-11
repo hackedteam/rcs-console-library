@@ -17,7 +17,7 @@ package it.ht.rcs.console.network.rest
     {
     }
     
-    public function create(collector:Collector, onResult:Function=null, onFault:Function=null):void
+    public function create(params:Object, onResult:Function=null, onFault:Function=null):void
     {
     }
     
