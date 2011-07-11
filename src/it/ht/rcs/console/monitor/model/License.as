@@ -17,6 +17,21 @@ import com.adobe.fiber.core.model_internal;
 
 public class License extends _Super_License
 {
+  
+  public function License(data:Object = null) {
+    if (data) {
+      alerting = data.alerting;
+      backdoors = data.backdoors;
+      collectors = data.collectors;
+      correlation = data.correlation;
+      ipa = data.ipa;
+      rmi = data.rmi;
+      serial = data.serial;
+      type = data.type;
+      users = data.users;
+    }
+  }
+  
     /** 
      * DO NOT MODIFY THIS STATIC INITIALIZER - IT IS NECESSARY
      * FOR PROPERLY SETTING UP THE REMOTE CLASS ALIAS FOR THIS CLASS

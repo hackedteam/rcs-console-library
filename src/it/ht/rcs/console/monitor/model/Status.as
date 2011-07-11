@@ -17,6 +17,21 @@ import com.adobe.fiber.core.model_internal;
 
 public class Status extends _Super_Status
 {
+  
+  public function Status(data:Object = null) {
+    if (data) {
+      _id = data._id;
+      address = data.address;
+      cpu = data.cpu;
+      disk = data.disk;
+      info = data.info;
+      name = data.name;
+      pcpu = data.pcpu;
+      status = data.status;
+      time = data.time;
+    }
+  }
+  
     /** 
      * DO NOT MODIFY THIS STATIC INITIALIZER - IT IS NECESSARY
      * FOR PROPERLY SETTING UP THE REMOTE CLASS ALIAS FOR THIS CLASS
@@ -46,21 +61,6 @@ public class Status extends _Super_Status
      * END OF DO NOT MODIFY SECTION
      *
      **/    
-    
-    public function Status(data:Object=null)
-    {
-      if (data) {
-        _id = data._id;
-        name = data.name;
-        status = data.status;
-        address = data.address;
-        info = data.info;
-        time = data.time;
-        pcpu = data.pcpu;
-        cpu = data.cpu;
-        disk = data.disk;
-      }
-    }
 }
 
 }

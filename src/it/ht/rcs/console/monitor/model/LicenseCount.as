@@ -17,6 +17,16 @@ import com.adobe.fiber.core.model_internal;
 
 public class LicenseCount extends _Super_LicenseCount
 {
+  
+  public function LicenseCount(data:Object = null) {
+    if (data) {
+      backdoors = data.backdoors;
+      collectors = data.collectors;
+      ipa = data.ipa;
+      users = data.users;
+    }
+  }
+  
     /** 
      * DO NOT MODIFY THIS STATIC INITIALIZER - IT IS NECESSARY
      * FOR PROPERLY SETTING UP THE REMOTE CLASS ALIAS FOR THIS CLASS

@@ -17,6 +17,14 @@ import com.adobe.fiber.core.model_internal;
 
 public class LicenseCollectors extends _Super_LicenseCollectors
 {
+  
+  public function LicenseCollectors(data:Object = null) {
+    if (data) {
+      anonymizers = data.anonymizers;
+      collectors = data.collectors;
+    }
+  }
+  
     /** 
      * DO NOT MODIFY THIS STATIC INITIALIZER - IT IS NECESSARY
      * FOR PROPERLY SETTING UP THE REMOTE CLASS ALIAS FOR THIS CLASS

@@ -17,6 +17,23 @@ import com.adobe.fiber.core.model_internal;
 
 public class LicenseBackdoors extends _Super_LicenseBackdoors
 {
+  
+  public function LicenseBackdoors(data:Object = null) {
+    if (data) {
+      android = data.android;
+      blackberry = data.blackberry;
+      desktop = data.desktop;
+      ios = data.ios;
+      linux = data.linux;
+      mobile = data.mobile;
+      osx = data.osx;
+      symbian = data.symbian;
+      total = data.total;
+      windows = data.windows;
+      winmo = data.winmo;
+    }
+  }
+  
     /** 
      * DO NOT MODIFY THIS STATIC INITIALIZER - IT IS NECESSARY
      * FOR PROPERLY SETTING UP THE REMOTE CLASS ALIAS FOR THIS CLASS
