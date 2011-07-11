@@ -1,5 +1,5 @@
 /**
- * This is a generated sub-class of _Task.as and is intended for behavior
+ * This is a generated sub-class of _TaskGenerator.as and is intended for behavior
  * customization.  This class is only generated when there is no file already present
  * at its target location.  Thus custom behavior that you add here will survive regeneration
  * of the super-class. 
@@ -15,27 +15,8 @@ package it.ht.rcs.console.task.model
 
 import com.adobe.fiber.core.model_internal;
 
-import flash.events.TimerEvent;
-import flash.utils.Timer;
-
-import mx.rpc.events.ResultEvent;
-
-public class Task extends _Super_Task
+public class TaskGenerator extends _Super_TaskGenerator
 {
-  
-  public function Task(data:Object = null)
-  {
-    if (data != null) {
-      _id = data._id;
-      type = data.type;
-      current = data.current;
-      total = data.total;
-      desc = data.desc;
-      resource = data.resource;
-      file_name = data.file_name;
-    }
-  }
-  
     /** 
      * DO NOT MODIFY THIS STATIC INITIALIZER - IT IS NECESSARY
      * FOR PROPERLY SETTING UP THE REMOTE CLASS ALIAS FOR THIS CLASS
@@ -49,23 +30,22 @@ public class Task extends _Super_Task
      */     
     public static function _initRemoteClassAlias() : void
     {
-        _Super_Task.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.task.model.Task);
-        _Super_Task.model_internal::initRemoteClassAliasAllRelated();
+        _Super_TaskGenerator.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.task.model.TaskGenerator);
+        _Super_TaskGenerator.model_internal::initRemoteClassAliasAllRelated();
     }
      
     model_internal static function initRemoteClassAliasSingleChild() : void
     {
-        _Super_Task.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.task.model.Task);
+        _Super_TaskGenerator.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.task.model.TaskGenerator);
     }
     
     {
-        _Super_Task.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.task.model.Task);
+        _Super_TaskGenerator.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.task.model.TaskGenerator);
     }
     /** 
      * END OF DO NOT MODIFY SECTION
      *
-     **/
-    
+     **/    
 }
 
 }

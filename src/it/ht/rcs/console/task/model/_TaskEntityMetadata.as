@@ -9,6 +9,7 @@ import com.adobe.fiber.styles.Style;
 import com.adobe.fiber.valueobjects.AbstractEntityMetadata;
 import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 import com.adobe.fiber.valueobjects.IPropertyIterator;
+import it.ht.rcs.console.task.model.TaskGenerator;
 import it.ht.rcs.console.task.model.TaskResource;
 import com.adobe.fiber.core.model_internal;
 import com.adobe.fiber.valueobjects.IModelType;
@@ -21,14 +22,14 @@ internal class _TaskEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("total", "desc", "_id", "stopped", "resource", "current", "type", "file_name");
+    model_internal static var allProperties:Array = new Array("total", "desc", "_id", "stopped", "resource", "current", "generator", "type", "file_name");
     model_internal static var allAssociationProperties:Array = new Array();
     model_internal static var allRequiredProperties:Array = new Array();
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("total", "desc", "_id", "stopped", "resource", "current", "type", "file_name");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("total", "desc", "_id", "stopped", "resource", "current", "generator", "type", "file_name");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("total", "desc", "_id", "stopped", "resource", "current", "type", "file_name");
+    model_internal static var dataProperties:Array = new Array("total", "desc", "_id", "stopped", "resource", "current", "generator", "type", "file_name");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("total", "desc", "_id", "stopped", "resource", "current", "type", "file_name");
+    model_internal static var nonDerivedProperties:Array = new Array("total", "desc", "_id", "stopped", "resource", "current", "generator", "type", "file_name");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array();
     model_internal static var collectionBaseMap:Object;
@@ -54,6 +55,7 @@ internal class _TaskEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
             model_internal::dependentsOnMap["stopped"] = new Array();
             model_internal::dependentsOnMap["resource"] = new Array();
             model_internal::dependentsOnMap["current"] = new Array();
+            model_internal::dependentsOnMap["generator"] = new Array();
             model_internal::dependentsOnMap["type"] = new Array();
             model_internal::dependentsOnMap["file_name"] = new Array();
 
@@ -69,6 +71,7 @@ internal class _TaskEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
         model_internal::propertyTypeMap["stopped"] = "Boolean";
         model_internal::propertyTypeMap["resource"] = "it.ht.rcs.console.task.model.TaskResource";
         model_internal::propertyTypeMap["current"] = "int";
+        model_internal::propertyTypeMap["generator"] = "it.ht.rcs.console.task.model.TaskGenerator";
         model_internal::propertyTypeMap["type"] = "String";
         model_internal::propertyTypeMap["file_name"] = "String";
 
@@ -336,6 +339,12 @@ internal class _TaskEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
     }
 
     [Bindable(event="propertyChange")]
+    public function get isGeneratorAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get isTypeAvailable():Boolean
     {
         return true;
@@ -389,6 +398,12 @@ internal class _TaskEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
 
     [Bindable(event="propertyChange")]   
     public function get currentStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get generatorStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
