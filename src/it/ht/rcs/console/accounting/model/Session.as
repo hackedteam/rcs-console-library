@@ -46,6 +46,19 @@ public class Session extends _Super_Session
      * END OF DO NOT MODIFY SECTION
      *
      **/    
+    
+    [Bindable]
+    public var server:String;
+    
+    public function Session(data:Object = null) {
+      if (data) {
+        cookie = data.cookie;
+        user = data.user;
+        time = data.time;
+        address = data.address;
+        level = data.level;
+      }
+    }
 }
 
 }
