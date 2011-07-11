@@ -1,5 +1,6 @@
 package it.ht.rcs.console.accounting.rest
 {
+  import it.ht.rcs.console.accounting.model.Session;
   import it.ht.rcs.console.accounting.model.User;
   
   import mx.collections.ArrayCollection;
@@ -16,7 +17,7 @@ package it.ht.rcs.console.accounting.rest
     
     public function login(credentials:Object, onResult:Function, onFault:Function):void
     {
-      var result:Object = {cookie: 0, time: 0, user: demo_user};
+      var result:Session = new Session({cookie: 0, time: 0, user: demo_user});
       var event:ResultEvent = new ResultEvent("login", false, true, result);
       onResult(event);
     }
