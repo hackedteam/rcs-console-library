@@ -34,7 +34,7 @@ internal class _Super_DBTask extends com.adobe.fiber.services.wrapper.HTTPServic
          operation.url = "/task";
          operation.method = "GET";
          operation.serializationFilter = serializer0;
-         operation.resultElementType = Object;
+         operation.resultElementType = it.ht.rcs.console.task.model.Task;
          operations.push(operation);
 
          operation = new mx.rpc.http.Operation(null, "show_");

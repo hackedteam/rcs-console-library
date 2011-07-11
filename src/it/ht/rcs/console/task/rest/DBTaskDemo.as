@@ -40,10 +40,10 @@ package it.ht.rcs.console.task.rest
         onResult(event);
     }
     
-    public function destroy(id:String, onResult:Function=null, onFault:Function=null):void
+    public function destroy(task: Task, onResult:Function=null, onFault:Function=null):void
     {
-      delete(tasks[id]);
-      var event:ResultEvent = new ResultEvent("task.destroy", false, true, id);
+      delete(tasks[task._id]);
+      var event:ResultEvent = new ResultEvent("task.destroy", false, true, task._id);
       if (onResult != null)
         onResult(event);
     }
