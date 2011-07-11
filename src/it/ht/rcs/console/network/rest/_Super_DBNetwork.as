@@ -31,23 +31,25 @@ internal class _Super_DBNetwork extends com.adobe.fiber.services.wrapper.HTTPSer
          var argsArray:Array;
 
          operation = new mx.rpc.http.Operation(null, "all_");
-         operation.url = "/network/all";
+         operation.url = "/collector";
          operation.method = "GET";
          operation.serializationFilter = serializer0;
          operation.resultElementType = it.ht.rcs.console.network.model.Collector;
          operations.push(operation);
 
          operation = new mx.rpc.http.Operation(null, "show_");
-         operation.url = "/network/show";
+         operation.url = "/collector/{id}";
          operation.method = "GET";
          argsArray = new Array("id");
          operation.argumentNames = argsArray;         
          operation.serializationFilter = serializer1;
+         operation.properties = new Object();
+         operation.properties["urlParamNames"] = ["id"];
          operation.resultType = it.ht.rcs.console.network.model.Collector;
          operations.push(operation);
 
          operation = new mx.rpc.http.Operation(null, "log_");
-         operation.url = "/network/log";
+         operation.url = "/collector/log";
          operation.method = "GET";
          argsArray = new Array("id");
          operation.argumentNames = argsArray;         
@@ -55,24 +57,26 @@ internal class _Super_DBNetwork extends com.adobe.fiber.services.wrapper.HTTPSer
          operations.push(operation);
 
          operation = new mx.rpc.http.Operation(null, "update_");
-         operation.url = "/network/update";
+         operation.url = "/collector/update";
          operation.method = "POST";
+         operation.serializationFilter = serializer0;
          operation.contentType = "application/xml";
-         operation.resultType = Object;
+         operation.resultType = it.ht.rcs.console.network.model.Collector;
          operations.push(operation);
 
          operation = new mx.rpc.http.Operation(null, "create_");
-         operation.url = "/network/create";
+         operation.url = "/collector/create";
          operation.method = "POST";
+         operation.serializationFilter = serializer0;
          operation.contentType = "application/xml";
-         operation.resultType = Object;
+         operation.resultType = it.ht.rcs.console.network.model.Collector;
          operations.push(operation);
 
          operation = new mx.rpc.http.Operation(null, "destroy_");
-         operation.url = "/network/destroy";
+         operation.url = "/collector/destroy";
          operation.method = "POST";
+         operation.serializationFilter = serializer1;
          operation.contentType = "application/xml";
-         operation.resultType = Object;
          operations.push(operation);
 
          _serviceControl.operationList = operations;  
