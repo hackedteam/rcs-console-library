@@ -17,11 +17,39 @@ import com.adobe.fiber.core.model_internal;
 
 import it.ht.rcs.console.DB;
 
-import mx.collections.ArrayCollection;
-import mx.resources.ResourceManager;
-
 public class Collector extends _Super_Collector
 {
+  
+  public static function defaultCollector():Object
+  {
+    return {
+      _id: '',
+      address: '',
+      desc: '',
+      name: DB.i18n.getString('NEW_COLLECTOR'),
+        poll: false,
+        port: 4444,
+        type: 'remote',
+        version: '',
+        configured: true
+    };
+  }
+  
+  public function Collector(data:Object = null)
+  {
+    if (data) {
+      _id = data._id;
+      address = data.address;
+      desc = data.desc;
+      name = data.name;
+      poll = data.poll;
+      port = data.port;
+      type = data.type;
+      version = data.version;
+      next = data.next;
+      prev = data.prev;
+    }
+  }
   
   /** 
    * DO NOT MODIFY THIS STATIC INITIALIZER - IT IS NECESSARY
@@ -50,37 +78,6 @@ public class Collector extends _Super_Collector
   /** 
    * END OF DO NOT MODIFY SECTION
    **/
-  
-  public static function defaultCollector():Object
-  {
-    return {
-      _id: '',
-      address: '',
-      desc: '',
-      name: DB.i18n.getString('NEW_COLLECTOR'),
-      poll: false,
-      port: 4444,
-      type: 'remote',
-      version: '',
-      configured: true
-    };
-  }
-  
-  public function Collector(data:Object = null)
-  {
-    if (data) {
-      _id = data._id;
-      address = data.address;
-      desc = data.desc;
-      name = data.name;
-      poll = data.poll;
-      port = data.port;
-      type = data.type;
-      version = data.version;
-      next = data.next;
-      prev = data.prev;
-    }
-  }
   
   private var _nextHop:Collector;
   private var _prevHop:Collector;
