@@ -1,12 +1,18 @@
-package it.ht.rcs.console.model
+package it.ht.rcs.console.monitor.controller
 {
   import com.adobe.serialization.json.JSON;
+  
+  import it.ht.rcs.console.events.RefreshEvent;
+  import it.ht.rcs.console.model.CurrMaxObject;
+  import it.ht.rcs.console.controller.Manager;
+  import it.ht.rcs.console.monitor.model.License;
+  import it.ht.rcs.console.monitor.model.LicenseCount;
   
   import mx.core.FlexGlobals;
   import mx.rpc.events.ResultEvent;
   
   [Bindable]
-  public class LicenseManager
+  public class LicenseManager extends Manager
   {
     public var type:String = "reusable";
     public var serial:String = "off";
@@ -40,31 +46,21 @@ package it.ht.rcs.console.model
     
     public function LicenseManager()
     {
+      super();
     }
     
-    public function start():void
+    override protected function onRefresh(e:RefreshEvent):void
     {
-      /* react to the global refresh event */
-      FlexGlobals.topLevelApplication.addEventListener(RefreshEvent.REFRESH, load_license);
-    }
-    
-    public function stop():void
-    {
-      /* after stop, we don't want to refresh anymore */
-      FlexGlobals.topLevelApplication.removeEventListener(RefreshEvent.REFRESH, load_license);
-    }
-    
-    public function load_license(e:RefreshEvent):void
-    {
+      super.onRefresh(e);
       trace('LicenseManager -- Refresh');
-
-      console.currentDB.license_limit(onLoadLimit);
-      console.currentDB.license_count(onLoadCount);
+      
+      console.currentDB.license.limit(onLoadLimit);
+      console.currentDB.license.count(onLoadCount);
     }
     
     private function onLoadLimit(e:ResultEvent):void
     {
-      var limits:Object = JSON.decode(e.result as String);
+      var limits:License = e.result as License;
         
       type = limits['type'];
       serial = limits['serial'].toString();
@@ -96,7 +92,7 @@ package it.ht.rcs.console.model
 
     private function onLoadCount(e:ResultEvent):void
     {
-      var current:Object = JSON.decode(e.result as String);
+      var current:LicenseCount = e.result as LicenseCount;
       
       users.curr = current['users'].toString();
       
