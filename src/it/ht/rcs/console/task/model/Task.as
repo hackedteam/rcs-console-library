@@ -21,7 +21,8 @@ import flash.utils.Timer;
 import mx.rpc.events.ResultEvent;
 
 public class Task extends _Super_Task
-{ 
+{
+  
   public function Task(data:Object = null)
   {
     if (data != null) {

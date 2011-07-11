@@ -1089,7 +1089,7 @@
       <item name="DEFAULT_ENTITY_PACKAGE">it.ht.rcs.console.task.model</item>
       <item name="LINKED_FILE"></item>
     </annotation>
-    <function name="all_" return-type="opaque[]">
+    <function name="all_" return-type="Task[]">
       <annotation name="analyze group">
         <item name="analyzed">true</item>
       </annotation>
@@ -1102,7 +1102,7 @@
         <item name="completeURL">https://localhost:4443/task</item>
       </annotation>
       <annotation name="ValidProperties">
-        <item name="propertySpecifier">total,desc,_id,stopped,resource,current,type,file_name</item>
+        <item name="propertySpecifier">total,desc,_id,stopped,resource,current,generator,type,file_name</item>
       </annotation>
       <annotation name="original signature">
         <item name="returnType">opaque</item>
@@ -1121,7 +1121,7 @@
         <item name="completeURL">https://localhost:4443/task/{id}</item>
       </annotation>
       <annotation name="ValidProperties">
-        <item name="propertySpecifier">desc,_id,stopped,resource,current,type,file_name</item>
+        <item name="propertySpecifier">total,desc,_id,stopped,resource,current,generator,type,file_name</item>
       </annotation>
       <annotation name="Properties">
         <item name="urlParamNames">id</item>
@@ -1179,6 +1179,22 @@
       <parameter name="strXml" type="string"/>
     </function>
   </service>
+  <entity name="TaskGenerator">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Generator</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBTask</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.task.model</item>
+    </annotation>
+    <property name="description" type="string" required="true"/>
+    <property name="filter" type="opaque" required="true"/>
+  </entity>
   <entity name="TaskResource">
     <annotation name="EntityProperties">
       <item name="EntityOriginalName">Resource</item>
@@ -1212,10 +1228,10 @@
       <item name="Package">it.ht.rcs.console.task.model</item>
     </annotation>
     <annotation name="all_">
-      <item name="propertySpecifier">total,desc,_id,stopped,resource,current,type,file_name</item>
+      <item name="propertySpecifier">total,desc,_id,stopped,resource,current,generator,type,file_name</item>
     </annotation>
     <annotation name="show_">
-      <item name="propertySpecifier">desc,_id,stopped,resource,current,type,file_name</item>
+      <item name="propertySpecifier">total,desc,_id,stopped,resource,current,generator,type,file_name</item>
     </annotation>
     <property name="total" type="integer"/>
     <property name="desc" type="string"/>
@@ -1223,6 +1239,7 @@
     <property name="stopped" type="boolean"/>
     <property name="resource" type="TaskResource"/>
     <property name="current" type="integer"/>
+    <property name="generator" type="TaskGenerator"/>
     <property name="type" type="string"/>
     <property name="file_name" type="string"/>
   </entity>

@@ -2,8 +2,6 @@ package it.ht.rcs.console.model
 {
   import com.adobe.serialization.json.JSON;
   
-  import it.ht.rcs.console.events.RefreshEvent;
-  
   import mx.core.FlexGlobals;
   import mx.rpc.events.ResultEvent;
   
