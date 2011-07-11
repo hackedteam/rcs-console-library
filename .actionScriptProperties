@@ -19,7 +19,7 @@
     <sourceAttachmentPath/>
   </compiler>
   <applications>
-    <application path="RCSConsoleLibrary.mxml">
+    <application path="consolelibrary.mxml">
       <airExcludes/>
     </application>
   </applications>
