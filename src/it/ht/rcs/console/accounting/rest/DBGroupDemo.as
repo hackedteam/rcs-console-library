@@ -15,9 +15,9 @@ package it.ht.rcs.console.accounting.rest
     public function all(onResult:Function=null, onFault:Function=null):void
     {
       var items:ArrayCollection = new ArrayCollection();
-      items.addItem({_id: '1', name: 'demo', user_ids:new ArrayCollection(['1','2','3']), alert: false});
-      items.addItem({_id: '2', name: 'developers', user_ids:new ArrayCollection(['2','3','4','5','6','7','8','9']), alert: false});
-      items.addItem({_id: '3', name: 'test', user_ids:new ArrayCollection(['10']), alert: true});
+      items.addItem(new Group({_id: '1', name: 'demo', user_ids:new ArrayCollection(['1','2','3']), alert: false}) );
+      items.addItem(new Group({_id: '2', name: 'developers', user_ids:new ArrayCollection(['2','3','4','5','6','7','8','9']), alert: false}) );
+      items.addItem(new Group({_id: '3', name: 'test', user_ids:new ArrayCollection(['10']), alert: true}) );
       var event:ResultEvent = new ResultEvent("group.index", false, true, items);
       if (onResult != null) 
         onResult(event);

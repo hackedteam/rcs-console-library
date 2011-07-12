@@ -1,6 +1,7 @@
 package it.ht.rcs.console.task.rest
 {
   import it.ht.rcs.console.task.model.Task;
+  import it.ht.rcs.console.task.model.TaskResource;
   
   import mx.collections.ArrayCollection;
   import mx.rpc.events.ResultEvent;
@@ -10,14 +11,14 @@ package it.ht.rcs.console.task.rest
     private var dummyFile:String = 'http://www.birdlife.org/action/science/species/seabirds/tracking_ocean_wanderers.pdf';
     private var dummyFileSize:Number = 4993536;
     private var tasks:Object = {
-      '5f58925c-2e86-9cff-5816-95fe5cbdd246': { _id: '5f58925c-2e86-9cff-5816-95fe5cbdd246',
+      '5f58925c-2e86-9cff-5816-95fe5cbdd246': new Task({ _id: '5f58925c-2e86-9cff-5816-95fe5cbdd246',
         type: 'blotter',
         total: 1000,
         current: 0,
         desc: 'Blotter creation',
-        grid_id: dummyFile,
+        resource: new TaskResource({type: 'demo', _id: 0}),
         file_name: 'test.pdf'
-      }
+      })
     };
     
     public function DBTaskDemo()
@@ -31,7 +32,7 @@ package it.ht.rcs.console.task.rest
         total: 1000,
         current: 0,
         desc: new Date().time + " " + params.type,
-        grid_id: dummyFile,
+        resource: new TaskResource({type: 'demo', _id: 0}),
         file_name: params.file_name
       }
       tasks[newTask._id] = newTask;
@@ -60,7 +61,7 @@ package it.ht.rcs.console.task.rest
     {
       var show:Object = {};
       show._id = tasks[id];
-      show.grid_id = tasks[id].grid_id;
+      show.resource = new TaskResource({_id: tasks[id].grid_id, type: 'demo'});
       show.current = tasks[id].current += 50;
       show.file_size = dummyFileSize;
       var event:ResultEvent = new ResultEvent("task.show", false, true, show);
