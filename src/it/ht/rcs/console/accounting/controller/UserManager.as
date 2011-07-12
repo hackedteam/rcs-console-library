@@ -1,15 +1,15 @@
 package it.ht.rcs.console.accounting.controller
 {
   import it.ht.rcs.console.accounting.model.User;
-  import it.ht.rcs.console.events.RefreshEvent;
   import it.ht.rcs.console.controller.ItemManager;
+  import it.ht.rcs.console.events.RefreshEvent;
+  import it.ht.rcs.console.utils.AlertPopUp;
   
   import mx.collections.ArrayCollection;
   import mx.collections.ArrayList;
   import mx.collections.ListCollectionView;
   import mx.collections.Sort;
   import mx.collections.SortField;
-  import mx.controls.Alert;
   import mx.core.FlexGlobals;
   import mx.events.CollectionEvent;
   import mx.resources.ResourceManager;
@@ -86,7 +86,7 @@ package it.ht.rcs.console.accounting.controller
     public function changePassword(user:User, password:String):void
     {
       console.currentDB.user.update(user, {pass: password}, function (e:ResultEvent):void {
-        Alert.show(ResourceManager.getInstance().getString('localized_main', 'PASSWORD_CHANGED'));
+        AlertPopUp.show(ResourceManager.getInstance().getString('localized_main', 'PASSWORD_CHANGED'));
       });
     }
     
