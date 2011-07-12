@@ -7,9 +7,6 @@ package it.ht.rcs.console.accounting.controller
   
   import mx.collections.ArrayCollection;
   import mx.collections.ArrayList;
-  import mx.collections.ListCollectionView;
-  import mx.collections.Sort;
-  import mx.collections.SortField;
   import mx.core.FlexGlobals;
   import mx.events.CollectionEvent;
   import mx.rpc.events.ResultEvent;

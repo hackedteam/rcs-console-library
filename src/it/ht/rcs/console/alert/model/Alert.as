@@ -46,6 +46,32 @@ public class Alert extends _Super_Alert
      * END OF DO NOT MODIFY SECTION
      *
      **/    
+    
+    public static function defaultAlert():Object
+    {
+      return {
+        _id: '',
+        enabled: false,
+        suppression: 600,
+        keywords: '',
+        priority: 0,
+        type = 'LOG'
+      };
+    }
+    
+    public function Alert(data:Object=null)
+    {
+      if (data) {
+        _id = data._id;
+        enabled = data.enabled;
+        suppression = data.suppression;
+        keywords = data.keywords;
+        priority = data.priority;
+        path = data.path;
+        evidence = data.evidence;
+        type = data.type;
+      }
+    }
 }
 
 }

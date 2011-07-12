@@ -22,9 +22,6 @@
     <application path="consolelibrary.mxml">
       <airExcludes/>
     </application>
-    <application path="RCSCoreLibrary.mxml">
-      <airExcludes/>
-    </application>
   </applications>
   <modules/>
   <buildCSSFiles/>
