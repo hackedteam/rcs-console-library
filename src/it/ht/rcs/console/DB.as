@@ -11,6 +11,9 @@ package it.ht.rcs.console
   import it.ht.rcs.console.accounting.rest.IDBGroup;
   import it.ht.rcs.console.accounting.rest.IDBSession;
   import it.ht.rcs.console.accounting.rest.IDBUser;
+  import it.ht.rcs.console.alert.rest.DBAlert;
+  import it.ht.rcs.console.alert.rest.DBAlertDemo;
+  import it.ht.rcs.console.alert.rest.IDBAlert;
   import it.ht.rcs.console.audit.rest.DBAudit;
   import it.ht.rcs.console.audit.rest.DBAuditDemo;
   import it.ht.rcs.console.audit.rest.IDBAudit;
@@ -41,6 +44,7 @@ package it.ht.rcs.console
     public var monitor:IDBMonitor;
     public var user:IDBUser;
     public var group:IDBGroup;
+    public var alert:IDBAlert;
     
     private static var notifier:IFaultNotifier;
     public static var i18n:II18N;
@@ -65,6 +69,7 @@ package it.ht.rcs.console
       monitor = new DBMonitor(host);
       user = new DBUser(host);
       group = new DBGroup(host);
+      alert = new DBAlert(host);
     }
 
     private function initDemo():void
@@ -77,6 +82,7 @@ package it.ht.rcs.console
       monitor = new DBMonitorDemo();
       user = new DBUserDemo();
       group = new DBGroupDemo();
+      alert = new DBAlertDemo();
     }
 
     private function host_autocomplete(host:String):String

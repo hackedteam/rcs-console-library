@@ -60,7 +60,7 @@ internal class _Super_DBAlert extends com.adobe.fiber.services.wrapper.HTTPServi
          operation.url = "/alert/destroy";
          operation.method = "POST";
          operation.serializationFilter = serializer1;
-         operation.contentType = "application/x-www-form-urlencoded";
+         operation.contentType = "application/xml";
          operations.push(operation);
 
          operation = new mx.rpc.http.Operation(null, "update_");
@@ -150,10 +150,10 @@ internal class _Super_DBAlert extends com.adobe.fiber.services.wrapper.HTTPServi
       *
       * @return an mx.rpc.AsyncToken whose result property will be populated with the result of the operation when the server response is received.
       */
-    public function destroy_() : mx.rpc.AsyncToken
+    public function destroy_(strXml:String) : mx.rpc.AsyncToken
     {
         var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("destroy_");
-		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send() ;
+		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(strXml) ;
         return _internal_token;
     }
      

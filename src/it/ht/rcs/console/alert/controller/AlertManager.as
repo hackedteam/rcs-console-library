@@ -1,5 +1,6 @@
 package it.ht.rcs.console.alert.controller
 {
+  import it.ht.rcs.console.alert.model.Alert;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.events.RefreshEvent;
   
