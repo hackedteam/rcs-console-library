@@ -48,14 +48,14 @@ package it.ht.rcs.console.alert.controller
     override protected function onRefresh(e:RefreshEvent):void
     {
       super.onRefresh(e);
-      console.currentDB.alert.all(onGroupIndexResult);
+      console.currentDB.alert.all(onAlertIndexResult);
     }
     
-    private function onGroupIndexResult(e:ResultEvent):void
+    private function onAlertIndexResult(e:ResultEvent):void
     {
       var items:ArrayCollection = e.result as ArrayCollection;
       _items.removeAll();
-      items.source.forEach(function toGroupArray(element:*, index:int, arr:Array):void {
+      items.source.forEach(function _(element:*, index:int, arr:Array):void {
         addItem(new Alert(element));
       });
     }
@@ -87,12 +87,12 @@ package it.ht.rcs.console.alert.controller
     {
       trace(_classname + ' -- Refresh Counters');
       
-      console.currentDB.alert.counters(onMonitorCounters);
+      console.currentDB.alert.counters(onAlertCounters);
     }
     
     // TODO: refactor the baloon outside the manager !!!!
     
-    private function onMonitorCounters(e:ResultEvent):void
+    private function onAlertCounters(e:ResultEvent):void
     {
       /* get the position of the Monitor button */
       var buttons:ArrayCollection = FlexGlobals.topLevelApplication.mainPanel.sectionsButtonBar.dataProvider;
