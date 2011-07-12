@@ -6,12 +6,13 @@ package it.ht.rcs.console.accounting.controller
   import flash.filesystem.FileStream;
   
   import it.ht.rcs.console.DB;
-  import it.ht.rcs.console.DBFaultNotifier;
   import it.ht.rcs.console.accounting.model.Session;
   import it.ht.rcs.console.accounting.model.User;
+  import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.events.RefreshEvent;
   import it.ht.rcs.console.events.SessionEvent;
-  import it.ht.rcs.console.controller.ItemManager;
+  import it.ht.rcs.console.utils.AlertPopUp;
+  import it.ht.rcs.console.utils.DBFaultNotifier;
   
   import locale.I18N;
   
@@ -20,7 +21,6 @@ package it.ht.rcs.console.accounting.controller
   import mx.collections.ListCollectionView;
   import mx.collections.Sort;
   import mx.collections.SortField;
-  import mx.controls.Alert;
   import mx.core.FlexGlobals;
   import mx.events.CloseEvent;
   import mx.resources.ResourceManager;
@@ -99,16 +99,17 @@ package it.ht.rcs.console.accounting.controller
       
       var event:SessionEvent = new SessionEvent(SessionEvent.LOGGING_OUT, false, true);
       FlexGlobals.topLevelApplication.dispatchEvent(event);
-      if (event.isDefaultPrevented())
-        Alert.show(ResourceManager.getInstance().getString('localized_main', 'CONFIRM_LOGOUT'),
+      if (event.isDefaultPrevented()) {
+        AlertPopUp.show(ResourceManager.getInstance().getString('localized_main', 'CONFIRM_LOGOUT'),
                    ResourceManager.getInstance().getString('localized_main', 'CONFIRM'),
-                   Alert.OK | Alert.CANCEL, null, function(event:CloseEvent):void {
-                                                    if(event.detail == Alert.OK)
+                   AlertPopUp.OK | AlertPopUp.CANCEL, null, function(event:CloseEvent):void {
+                                                    if(event.detail == AlertPopUp.OK)
                                                       forceLogout(exitApplication);
                                                   }
                    );
-      else
+      } else {
         forceLogout(exitApplication);
+      }
     }
     
     public function forceLogout(exitApplication:Boolean = false):void {

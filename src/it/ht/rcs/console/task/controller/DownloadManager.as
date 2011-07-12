@@ -37,7 +37,8 @@ package it.ht.rcs.console.task.controller
       var items:ArrayCollection = e.result as ArrayCollection;
       _items.removeAll();
       
-      if (active = items.length > 0)
+      active = items.length > 0;
+      if (items.length > 0)
         items.source.forEach(itemToDownloadTask);
     }
     
@@ -84,7 +85,7 @@ package it.ht.rcs.console.task.controller
     
     public function onTaskCreateResult(e:ResultEvent):void
     {
-      itemToDownloadTask(e.result as Task, 0, null);
+      itemToDownloadTask(new Task(e.result), 0, null);
     }
     
     override protected function onItemRemove(t:*):void

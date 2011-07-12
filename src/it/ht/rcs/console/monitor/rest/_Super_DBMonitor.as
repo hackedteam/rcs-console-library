@@ -14,11 +14,13 @@ import mx.rpc.http.HTTPMultiService;
 import mx.rpc.http.Operation;
 
 import com.adobe.serializers.json.JSONSerializationFilter;
+import com.adobe.serializers.xml.XMLSerializationFilter;
 
 [ExcludeClass]
 internal class _Super_DBMonitor extends com.adobe.fiber.services.wrapper.HTTPServiceWrapper
 {
     private static var serializer0:JSONSerializationFilter = new JSONSerializationFilter();
+    private static var serializer1:XMLSerializationFilter = new XMLSerializationFilter();
 
     // Constructor
     public function _Super_DBMonitor()
@@ -39,8 +41,8 @@ internal class _Super_DBMonitor extends com.adobe.fiber.services.wrapper.HTTPSer
          operation = new mx.rpc.http.Operation(null, "destroy_");
          operation.url = "/status/destroy";
          operation.method = "POST";
+         operation.serializationFilter = serializer1;
          operation.contentType = "application/xml";
-         operation.resultType = Object;
          operations.push(operation);
 
          operation = new mx.rpc.http.Operation(null, "counters_");

@@ -1,20 +1,20 @@
 /**
- * This is a generated sub-class of _DBTask.as and is intended for behavior
+ * This is a generated sub-class of _DBAlert.as and is intended for behavior
  * customization.  This class is only generated when there is no file already present
  * at its target location.  Thus custom behavior that you add here will survive regeneration
  * of the super-class. 
  **/
  
-package it.ht.rcs.console.task.rest
+package it.ht.rcs.console.alert.rest
 {
   import com.adobe.serialization.json.JSON;
   
   import it.ht.rcs.console.DB;
-  import it.ht.rcs.console.task.model.Task;
+  import it.ht.rcs.console.alert.model.Alert;
   
   import mx.rpc.CallResponder;
 
-public class DBTask extends _Super_DBTask implements IDBTask
+public class DBAlert extends _Super_DBAlert implements IDBAlert
 {
     /**
      * Override super.init() to provide any initialization customization if needed.
@@ -24,8 +24,9 @@ public class DBTask extends _Super_DBTask implements IDBTask
         super.preInitializeService();
         // Initialization customization goes here
     }
-    
-    public function DBTask(host: String) {
+         
+    public function DBAlert(host:String)
+    {
       super();
       _serviceControl.baseURL = host;
     }
@@ -33,7 +34,7 @@ public class DBTask extends _Super_DBTask implements IDBTask
     public function all(onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = all_();  
+      resp.token = all_();
     }
     
     public function create(params:Object, onResult:Function=null, onFault:Function=null):void
@@ -42,17 +43,25 @@ public class DBTask extends _Super_DBTask implements IDBTask
       resp.token = create_(JSON.encode(params));
     }
     
-    public function destroy(task:Task, onResult:Function=null, onFault:Function=null):void
+    public function destroy(alert:Alert, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = destroy_(JSON.encode({_id: task._id}));  
+      resp.token = destroy_(JSON.encode({_id: alert._id}))
     }
     
     public function show(id:String, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = show_(id);  
+      resp.token = show_(id)
     }
+    
+    public function update(alert:Alert, property:Object, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      property['_id'] = alert._id;
+      resp.token = update_(JSON.encode(property));
+    }
+    
 }
 
 }

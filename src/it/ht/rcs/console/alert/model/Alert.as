@@ -1,5 +1,5 @@
 /**
- * This is a generated sub-class of _TaskResource.as and is intended for behavior
+ * This is a generated sub-class of _Alert.as and is intended for behavior
  * customization.  This class is only generated when there is no file already present
  * at its target location.  Thus custom behavior that you add here will survive regeneration
  * of the super-class. 
@@ -10,22 +10,13 @@
  * corresponding entity 
  **/ 
  
-package it.ht.rcs.console.task.model
+package it.ht.rcs.console.alert.model
 {
 
 import com.adobe.fiber.core.model_internal;
 
-public class TaskResource extends _Super_TaskResource
+public class Alert extends _Super_Alert
 {
-  
-  public function TaskResource(data:Object = null)
-  {
-    if (data != null) {
-      _id = data._id;
-      type = data.type;
-    }
-  }
-  
     /** 
      * DO NOT MODIFY THIS STATIC INITIALIZER - IT IS NECESSARY
      * FOR PROPERLY SETTING UP THE REMOTE CLASS ALIAS FOR THIS CLASS
@@ -39,22 +30,48 @@ public class TaskResource extends _Super_TaskResource
      */     
     public static function _initRemoteClassAlias() : void
     {
-        _Super_TaskResource.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.task.model.TaskResource);
-        _Super_TaskResource.model_internal::initRemoteClassAliasAllRelated();
+        _Super_Alert.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.alert.model.Alert);
+        _Super_Alert.model_internal::initRemoteClassAliasAllRelated();
     }
      
     model_internal static function initRemoteClassAliasSingleChild() : void
     {
-        _Super_TaskResource.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.task.model.TaskResource);
+        _Super_Alert.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.alert.model.Alert);
     }
     
     {
-        _Super_TaskResource.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.task.model.TaskResource);
+        _Super_Alert.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.alert.model.Alert);
     }
     /** 
      * END OF DO NOT MODIFY SECTION
      *
      **/    
+    
+    public static function defaultAlert():Object
+    {
+      return {
+        _id: '',
+        enabled: false,
+        suppression: 600,
+        keywords: '',
+        priority: 0,
+        type = 'LOG'
+      };
+    }
+    
+    public function Alert(data:Object=null)
+    {
+      if (data) {
+        _id = data._id;
+        enabled = data.enabled;
+        suppression = data.suppression;
+        keywords = data.keywords;
+        priority = data.priority;
+        path = data.path;
+        evidence = data.evidence;
+        type = data.type;
+      }
+    }
 }
 
 }

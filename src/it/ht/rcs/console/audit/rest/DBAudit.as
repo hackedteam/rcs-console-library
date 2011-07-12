@@ -24,7 +24,7 @@ package it.ht.rcs.console.audit.rest
 		
 		public function DBAudit(host: String) {
 			super();
-			_serviceControl.baseURL = "https://" + host + ":4444/";
+			_serviceControl.baseURL = host;
 		}
 		
 		public function filters(onResult:Function = null, onFault:Function = null):void {

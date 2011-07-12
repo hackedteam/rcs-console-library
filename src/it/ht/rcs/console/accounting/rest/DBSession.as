@@ -26,7 +26,7 @@ public class DBSession extends _Super_DBSession implements IDBSession
         
     public function DBSession(host: String) {
       super();
-      _serviceControl.baseURL = "https://" + host + ":4444/";
+      _serviceControl.baseURL = host;
     }
     
     public function login(credentials:Object, onResult:Function, onFault:Function):void

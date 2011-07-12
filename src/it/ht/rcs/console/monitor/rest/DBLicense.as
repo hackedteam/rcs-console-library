@@ -25,7 +25,7 @@ package it.ht.rcs.console.monitor.rest
     public function DBLicense(host:String)
     {
       super();
-      _serviceControl.baseURL = "https://" + host + ":4444/";
+      _serviceControl.baseURL = host;
     }
 
     public function count(onResult:Function = null, onFault:Function = null):void

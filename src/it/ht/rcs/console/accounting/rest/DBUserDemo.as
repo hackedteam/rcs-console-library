@@ -8,7 +8,7 @@ package it.ht.rcs.console.accounting.rest
   public class DBUserDemo implements IDBUser
   {
     
-    private var demo_user:Object = {_id: '1', name: 'demo', contact:'demo@hackingteam.it', privs:new ArrayCollection(['ADMIN', 'TECH', 'VIEW']), locale:'en_US', group_ids:new ArrayCollection(['1']), timezone:0, enabled:true};
+    private var demo_user:User = new User({_id: '1', name: 'demo', contact:'demo@hackingteam.it', privs:new ArrayCollection(['ADMIN', 'TECH', 'VIEW']), locale:'en_US', group_ids:new ArrayCollection(['1']), timezone:0, enabled:true});
 
     public function DBUserDemo()
     {
@@ -18,15 +18,15 @@ package it.ht.rcs.console.accounting.rest
     {
       var items:ArrayCollection = new ArrayCollection();
       items.addItem(demo_user);
-      items.addItem({_id: '2', name: 'alor', locale:'en_US', group_ids:new ArrayCollection(['1','2']), enabled:true, privs:new ArrayCollection(['ADMIN', 'TECH', 'VIEW'])});
-      items.addItem({_id: '3', name: 'daniel', locale:'it_IT', group_ids:new ArrayCollection(['1','2']), enabled:true, privs:new ArrayCollection(['ADMIN', 'TECH', 'VIEW'])});
-      items.addItem({_id: '4', name: 'naga', group_ids:new ArrayCollection(['2']), enabled:true, privs:new ArrayCollection(['VIEW'])});
-      items.addItem({_id: '5', name: 'que', group_ids:new ArrayCollection(['2']), enabled:false});
-      items.addItem({_id: '6', name: 'zeno', group_ids:new ArrayCollection(['2']), enabled:true, privs:new ArrayCollection(['TECH', 'VIEW'])});
-      items.addItem({_id: '7', name: 'rev', group_ids:new ArrayCollection(['2']), enabled:false});
-      items.addItem({_id: '8', name: 'kiodo', group_ids:new ArrayCollection(['2']), enabled:false});
-      items.addItem({_id: '9', name: 'fabio', group_ids:new ArrayCollection(['2']), enabled:false});
-      items.addItem({_id: '10', name: 'br1', group_ids:new ArrayCollection(['3']), enabled:false});
+      items.addItem(new User({_id: '2', name: 'alor', locale:'en_US', group_ids:new ArrayCollection(['1','2']), enabled:true, privs:new ArrayCollection(['ADMIN', 'TECH', 'VIEW'])}) );
+      items.addItem(new User({_id: '3', name: 'daniel', locale:'it_IT', group_ids:new ArrayCollection(['1','2']), enabled:true, privs:new ArrayCollection(['ADMIN', 'TECH', 'VIEW'])}) );
+      items.addItem(new User({_id: '4', name: 'naga', group_ids:new ArrayCollection(['2']), enabled:true, privs:new ArrayCollection(['VIEW'])}) );
+      items.addItem(new User({_id: '5', name: 'que', group_ids:new ArrayCollection(['2']), enabled:false}) );
+      items.addItem(new User({_id: '6', name: 'zeno', group_ids:new ArrayCollection(['2']), enabled:true, privs:new ArrayCollection(['TECH', 'VIEW'])}) );
+      items.addItem(new User({_id: '7', name: 'rev', group_ids:new ArrayCollection(['2']), enabled:false}) );
+      items.addItem(new User({_id: '8', name: 'kiodo', group_ids:new ArrayCollection(['2']), enabled:false}) );
+      items.addItem(new User({_id: '9', name: 'fabio', group_ids:new ArrayCollection(['2']), enabled:false}) );
+      items.addItem(new User({_id: '10', name: 'br1', group_ids:new ArrayCollection(['3']), enabled:false}) );
       var event:ResultEvent = new ResultEvent("user.index", false, true, items);
       if (onResult != null) 
         onResult(event);
