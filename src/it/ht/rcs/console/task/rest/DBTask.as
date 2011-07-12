@@ -27,7 +27,7 @@ public class DBTask extends _Super_DBTask implements IDBTask
     
     public function DBTask(host: String) {
       super();
-      _serviceControl.baseURL = "https://" + host + ":4444/";
+      _serviceControl.baseURL = host;
     }
     
     public function all(onResult:Function=null, onFault:Function=null):void

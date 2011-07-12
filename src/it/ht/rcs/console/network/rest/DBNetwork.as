@@ -27,7 +27,7 @@ package it.ht.rcs.console.network.rest
     
     public function DBNetwork(host:String) {
       super();
-      _serviceControl.baseURL = "https://" + host + ":4444/";
+      _serviceControl.baseURL = host;
     }
                
     public function create(params:Object, onResult:Function=null, onFault:Function=null):void

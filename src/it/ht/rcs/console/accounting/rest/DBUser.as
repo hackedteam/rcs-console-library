@@ -28,7 +28,7 @@ public class DBUser extends _Super_DBUser implements IDBUser
     public function DBUser(host:String)
     {
       super();
-      _serviceControl.baseURL = "https://" + host + ":4444/";
+      _serviceControl.baseURL = host;
     }
     
     public function all(onResult:Function=null, onFault:Function=null):void

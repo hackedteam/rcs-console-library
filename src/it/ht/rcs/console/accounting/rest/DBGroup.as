@@ -29,7 +29,7 @@ public class DBGroup extends _Super_DBGroup implements IDBGroup
     public function DBGroup(host:String)
     {
       super();
-      _serviceControl.baseURL = "https://" + host + ":4444/";
+      _serviceControl.baseURL = host;
     }
     
     public function add_user(group:Group, user:User, onResult:Function=null, onFault:Function=null):void

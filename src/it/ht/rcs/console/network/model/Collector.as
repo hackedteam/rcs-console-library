@@ -27,11 +27,11 @@ public class Collector extends _Super_Collector
       address: '',
       desc: '',
       name: DB.i18n.getString('NEW_COLLECTOR'),
-        poll: false,
-        port: 4444,
-        type: 'remote',
-        version: '',
-        configured: true
+      poll: false,
+      port: 4444,
+      type: 'remote',
+      version: '',
+      configured: true
     };
   }
   
@@ -78,53 +78,7 @@ public class Collector extends _Super_Collector
   /** 
    * END OF DO NOT MODIFY SECTION
    **/
-  
-  private var _nextHop:Collector;
-  private var _prevHop:Collector;
-  
-  public function get nextHop():Collector
-  {
-    return _nextHop;
-  }
-  
-  public function set nextHop(newNextHop:Collector):void
-  {
-    _nextHop = newNextHop;
-  }
-  
-  public function get prevHop():Collector
-  {
-    return _prevHop;
-  }
-  
-  public function set prevHop(newPrevHop:Collector):void
-  {
-    _prevHop = newPrevHop;
-  }
-  
-  public function moveAfter(destination:Collector):void
-  {
-    if (_prevHop === destination)
-      return;
-    
-    _prevHop._nextHop = _nextHop;
-    if (_nextHop != null)
-      _nextHop._prevHop = _prevHop;
-    
-    if (destination._nextHop != null)
-      destination._nextHop._prevHop = this;
-    _nextHop = destination._nextHop;
-    _prevHop = destination;
-    destination._nextHop = this;
-  }
-  
-  public function detach():void
-  {
-    if (_nextHop != null)
-      _nextHop._prevHop = _prevHop;
-    _prevHop._nextHop = _nextHop;
-  }
-    
+
 }
 
 }
