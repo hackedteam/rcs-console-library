@@ -81,8 +81,22 @@ package it.ht.rcs.console
 
     private function host_autocomplete(host:String):String
     {
-      // TODO: allow different ports
-      return "https://" + host + ":4444/";
+      /* if the user doesn't declare the protocol, go with https by default */ 
+      if (host.search("http") == -1) {
+        host = "https://" + host;
+      }
+      
+      /* if the user doesn't declare a specific port, go with default */ 
+      if (host.lastIndexOf(":") == host.indexOf(":")) {
+        host = host + ":4444/"
+      }
+      
+      /* always be sure the url ends with / */
+      if (host.lastIndexOf("/") != host.length -1) {
+        host = host + "/"
+      }
+      
+      return host;
     }
     
     public static function getCallResponder(onResult:Function, onFault:Function):CallResponder
