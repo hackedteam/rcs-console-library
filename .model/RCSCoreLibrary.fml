@@ -1388,6 +1388,22 @@
       </annotation>
       <parameter name="strXml" type="string"/>
     </function>
+    <function name="counters_" return-type="integer">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.xml.XMLSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/alert/counters</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/alert/counters</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+      </annotation>
+    </function>
   </service>
   <entity name="Alert">
     <annotation name="EntityProperties">

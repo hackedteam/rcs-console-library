@@ -106,6 +106,8 @@ package it.ht.rcs.console.monitor.controller
       console.currentDB.monitor.counters(onMonitorCounters);
     }
     
+    // TODO: refactor the baloon outside the manager !!!!
+    
     private function onMonitorCounters(e:ResultEvent):void
     {
       /* get the position of the Monitor button */

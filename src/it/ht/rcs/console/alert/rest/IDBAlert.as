@@ -9,5 +9,6 @@ package it.ht.rcs.console.alert.rest
     function create(params:Object, onResult:Function = null, onFault:Function = null):void;
     function update(alert:Alert, property:Object, onResult:Function = null, onFault:Function = null):void;
     function destroy(alert:Alert, onResult:Function = null, onFault:Function = null):void;
+    function counters(onResult:Function = null, onFault:Function = null):void;
   }
 }

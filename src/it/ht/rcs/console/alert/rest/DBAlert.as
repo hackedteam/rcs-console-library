@@ -62,6 +62,11 @@ public class DBAlert extends _Super_DBAlert implements IDBAlert
       resp.token = update_(JSON.encode(property));
     }
     
+    public function counters(onResult:Function = null, onFault:Function = null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = counters_();
+    }
 }
 
 }

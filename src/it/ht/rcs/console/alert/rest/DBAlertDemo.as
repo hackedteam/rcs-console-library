@@ -42,5 +42,14 @@ package it.ht.rcs.console.alert.rest
     {
       /* do nothing */
     }
+    
+    public function counters(onResult:Function=null, onFault:Function=null):void
+    {
+      var event:ResultEvent = new ResultEvent("alert.counters", false, true, 2);
+      if (onResult != null) 
+        onResult(event);
+    }
+    
+    
   }
 }
