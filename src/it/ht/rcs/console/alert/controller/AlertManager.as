@@ -1,13 +1,26 @@
 package it.ht.rcs.console.alert.controller
 {
+  import flash.events.Event;
+  import flash.events.TimerEvent;
+  import flash.utils.Timer;
+  
+  import it.ht.rcs.console.alert.model.Alert;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.events.RefreshEvent;
+  import it.ht.rcs.console.utils.CounterBaloon;
   
   import mx.collections.ArrayCollection;
+  import mx.core.FlexGlobals;
   import mx.rpc.events.ResultEvent;
   
   public class AlertManager extends ItemManager
   {
+    
+    private var _counterBaloon:CounterBaloon = new CounterBaloon();
+    
+    /* for the auto refresh every 15 seconds */
+    private var _autorefresh:Timer = new Timer(15000);
+    
     /* singleton */
     private static var _instance:AlertManager = new AlertManager();
     public static function get instance():AlertManager { return _instance; } 
@@ -45,6 +58,59 @@ package it.ht.rcs.console.alert.controller
       items.source.forEach(function toGroupArray(element:*, index:int, arr:Array):void {
         addItem(new Alert(element));
       });
+    }
+    
+    
+    public function start_counters():void
+    {
+      /* add the baloon to the screen */
+      FlexGlobals.topLevelApplication.addElement(_counterBaloon);
+      
+      /* start the auto refresh when the section is open */
+      _autorefresh.addEventListener(TimerEvent.TIMER, onRefreshCounter);
+      _autorefresh.start();
+      
+      /* the first refresh */
+      onRefreshCounter(null);
+    }
+    
+    public function stop_counters():void
+    {
+      FlexGlobals.topLevelApplication.removeElement(_counterBaloon);
+      
+      /* stop the auto refresh when going away */
+      _autorefresh.removeEventListener(TimerEvent.TIMER, onRefreshCounter);
+      _autorefresh.stop();
+    }
+    
+    private function onRefreshCounter(e:Event):void
+    {
+      trace(_classname + ' -- Refresh Counters');
+      
+      console.currentDB.alert.counters(onMonitorCounters);
+    }
+    
+    // TODO: refactor the baloon outside the manager !!!!
+    
+    private function onMonitorCounters(e:ResultEvent):void
+    {
+      /* get the position of the Monitor button */
+      var buttons:ArrayCollection = FlexGlobals.topLevelApplication.mainPanel.sectionsButtonBar.dataProvider;
+      var len:int = buttons.length;
+      var index:int = buttons.toArray().indexOf("Alerting") + 1;
+      
+      /* find the correct displacement (starting from right) */
+      _counterBaloon.right = 3 + ((len - index) * 90);
+      _counterBaloon.top = 43;
+      
+      _counterBaloon.value = e.result as int;
+      _counterBaloon.style = 'info';
+
+      /* display it or not */
+      if (_counterBaloon.value > 0)
+        _counterBaloon.visible = true;
+      else
+        _counterBaloon.visible = false;
     }
   }
 }
