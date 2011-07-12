@@ -54,6 +54,9 @@ package it.ht.rcs.console
     
     private function initRemote(host:String):void
     {
+      /* auto completion of the host entered by the user */
+      host = host_autocomplete(host);
+      
       session = new DBSession(host);
       audit = new DBAudit(host);
       task = new DBTask(host);
@@ -76,6 +79,12 @@ package it.ht.rcs.console
       group = new DBGroupDemo();
     }
 
+    private function host_autocomplete(host:String):String
+    {
+      // TODO: allow different ports
+      return "https://" + host + ":4444/";
+    }
+    
     public static function getCallResponder(onResult:Function, onFault:Function):CallResponder
     {
       // Set up the responder
