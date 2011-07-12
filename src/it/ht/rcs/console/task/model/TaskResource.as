@@ -17,6 +17,15 @@ import com.adobe.fiber.core.model_internal;
 
 public class TaskResource extends _Super_TaskResource
 {
+  
+  public function TaskResource(data:Object = null)
+  {
+    if (data != null) {
+      _id = data._id;
+      type = data.type;
+    }
+  }
+  
     /** 
      * DO NOT MODIFY THIS STATIC INITIALIZER - IT IS NECESSARY
      * FOR PROPERLY SETTING UP THE REMOTE CLASS ALIAS FOR THIS CLASS
