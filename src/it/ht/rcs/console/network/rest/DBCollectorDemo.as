@@ -5,7 +5,7 @@ package it.ht.rcs.console.network.rest
   import mx.collections.ArrayCollection;
   import mx.rpc.events.ResultEvent;
   
-  public class DBNetworkDemo implements IDBNetwork
+  public class DBCollectorDemo implements IDBCollector
   {
     
     public function all(onResult:Function=null, onFault:Function=null):void

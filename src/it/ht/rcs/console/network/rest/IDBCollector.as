@@ -2,7 +2,7 @@ package it.ht.rcs.console.network.rest
 {
   import it.ht.rcs.console.network.model.Collector;
 
-  public interface IDBNetwork
+  public interface IDBCollector
   {
     function all(onResult:Function = null, onFault:Function = null):void;
     

@@ -1,7 +1,6 @@
 package it.ht.rcs.console
 {
   
-  
   import it.ht.rcs.console.accounting.rest.DBGroup;
   import it.ht.rcs.console.accounting.rest.DBGroupDemo;
   import it.ht.rcs.console.accounting.rest.DBSession;
@@ -23,9 +22,12 @@ package it.ht.rcs.console
   import it.ht.rcs.console.monitor.rest.DBMonitorDemo;
   import it.ht.rcs.console.monitor.rest.IDBLicense;
   import it.ht.rcs.console.monitor.rest.IDBMonitor;
-  import it.ht.rcs.console.network.rest.DBNetwork;
-  import it.ht.rcs.console.network.rest.DBNetworkDemo;
-  import it.ht.rcs.console.network.rest.IDBNetwork;
+  import it.ht.rcs.console.network.rest.DBCollector;
+  import it.ht.rcs.console.network.rest.DBCollectorDemo;
+  import it.ht.rcs.console.network.rest.DBProxy;
+  import it.ht.rcs.console.network.rest.DBProxyDemo;
+  import it.ht.rcs.console.network.rest.IDBCollector;
+  import it.ht.rcs.console.network.rest.IDBProxy;
   import it.ht.rcs.console.task.rest.DBTask;
   import it.ht.rcs.console.task.rest.DBTaskDemo;
   import it.ht.rcs.console.task.rest.IDBTask;
@@ -39,7 +41,8 @@ package it.ht.rcs.console
     public var session:IDBSession;
     public var audit:IDBAudit;
     public var task:IDBTask;
-    public var network:IDBNetwork;
+    public var collector:IDBCollector;
+    public var proxy:IDBProxy;
     public var license:IDBLicense;
     public var monitor:IDBMonitor;
     public var user:IDBUser;
@@ -64,7 +67,8 @@ package it.ht.rcs.console
       session = new DBSession(host);
       audit = new DBAudit(host);
       task = new DBTask(host);
-      network = new DBNetwork(host);
+      collector = new DBCollector(host);
+      proxy = new DBProxy(host);
       license = new DBLicense(host);
       monitor = new DBMonitor(host);
       user = new DBUser(host);
@@ -77,7 +81,8 @@ package it.ht.rcs.console
       session = new DBSessionDemo();
       audit = new DBAuditDemo();
       task = new DBTaskDemo();
-      network = new DBNetworkDemo();
+      collector = new DBCollectorDemo();
+      proxy = new DBProxyDemo();
       license = new DBLicenseDemo();
       monitor = new DBMonitorDemo();
       user = new DBUserDemo();
