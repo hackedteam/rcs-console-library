@@ -10,8 +10,10 @@ package it.ht.rcs.console.events
     
     public static const USER:String = "editUser";
     public static const GROUP:String = "editGroup";
+    public static const PROXY:String = "editProxy";
     public var user:User;
     public var group:Group;
+    public var object:Object;
     
     public function EditEvent(type:String, bubbles:Boolean=false, cancelable:Boolean=false)
     {

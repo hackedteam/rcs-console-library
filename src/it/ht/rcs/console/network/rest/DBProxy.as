@@ -4,13 +4,15 @@ package it.ht.rcs.console.network.rest
   
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.network.model.Proxy;
+  import it.ht.rcs.console.network.model.ProxyRule;
   
   import mx.rpc.CallResponder;
 
   public class DBProxy extends _Super_DBProxy implements IDBProxy
   {
     
-    public function DBProxy(host:String) {
+    public function DBProxy(host:String)
+    {
       super();
       _serviceControl.baseURL = host;
     }
@@ -44,6 +46,18 @@ package it.ht.rcs.console.network.rest
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
       resp.token = destroy_(id);
+    }
+    
+    public function add_rule(rule:ProxyRule, proxy_id:String, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = add_rule_(JSON.encode( { _id: proxy_id, rule: JSON.encode(rule) } ));
+    }
+    
+    public function del_rule(proxy_id:String, rule_id:String, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = del_rule_(JSON.encode( { _id: proxy_id, rule_id: rule_id } ));
     }
     
     /**

@@ -6,16 +6,11 @@
 package it.ht.rcs.console.network.model
 {
 import com.adobe.fiber.services.IFiberManagingService;
-import com.adobe.fiber.util.FiberUtils;
 import com.adobe.fiber.valueobjects.IValueObject;
-import flash.events.Event;
 import flash.events.EventDispatcher;
 import it.ht.rcs.console.network.model.ProxyRule;
-import mx.binding.utils.ChangeWatcher;
 import mx.collections.ArrayCollection;
-import mx.events.CollectionEvent;
 import mx.events.PropertyChangeEvent;
-import mx.validators.ValidationResult;
 
 import flash.net.registerClassAlias;
 import flash.net.getClassByAlias;
@@ -59,13 +54,13 @@ public class _Super_Proxy extends flash.events.EventDispatcher implements com.ad
     private var _internal_version : int;
     private var _internal__mid : int;
     private var _internal_redirection_tag : String;
-    private var _internal_desc : String;
-    private var _internal_address : String;
     private var _internal_port : int;
     private var _internal_updated_at : String;
     private var _internal_poll : Boolean;
+    private var _internal_desc : String;
     private var _internal__id : String;
     private var _internal_configured : Boolean;
+    private var _internal_address : String;
     private var _internal_name : String;
     private var _internal_created_at : String;
     private var _internal_redirect : String;
@@ -85,8 +80,6 @@ public class _Super_Proxy extends flash.events.EventDispatcher implements com.ad
         _model = new _ProxyEntityMetadata(this);
 
         // Bind to own data or source properties for cache invalidation triggering
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "rules", model_internal::setterListenerRules));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "redirection_tag", model_internal::setterListenerRedirection_tag));
 
     }
 
@@ -119,18 +112,6 @@ public class _Super_Proxy extends flash.events.EventDispatcher implements com.ad
     }
 
     [Bindable(event="propertyChange")]
-    public function get desc() : String
-    {
-        return _internal_desc;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get address() : String
-    {
-        return _internal_address;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get port() : int
     {
         return _internal_port;
@@ -149,6 +130,12 @@ public class _Super_Proxy extends flash.events.EventDispatcher implements com.ad
     }
 
     [Bindable(event="propertyChange")]
+    public function get desc() : String
+    {
+        return _internal_desc;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get _id() : String
     {
         return _internal__id;
@@ -158,6 +145,12 @@ public class _Super_Proxy extends flash.events.EventDispatcher implements com.ad
     public function get configured() : Boolean
     {
         return _internal_configured;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get address() : String
+    {
+        return _internal_address;
     }
 
     [Bindable(event="propertyChange")]
@@ -241,26 +234,6 @@ public class _Super_Proxy extends flash.events.EventDispatcher implements com.ad
         }
     }
 
-    public function set desc(value:String) : void
-    {
-        var oldValue:String = _internal_desc;
-        if (oldValue !== value)
-        {
-            _internal_desc = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "desc", oldValue, _internal_desc));
-        }
-    }
-
-    public function set address(value:String) : void
-    {
-        var oldValue:String = _internal_address;
-        if (oldValue !== value)
-        {
-            _internal_address = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "address", oldValue, _internal_address));
-        }
-    }
-
     public function set port(value:int) : void
     {
         var oldValue:int = _internal_port;
@@ -291,6 +264,16 @@ public class _Super_Proxy extends flash.events.EventDispatcher implements com.ad
         }
     }
 
+    public function set desc(value:String) : void
+    {
+        var oldValue:String = _internal_desc;
+        if (oldValue !== value)
+        {
+            _internal_desc = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "desc", oldValue, _internal_desc));
+        }
+    }
+
     public function set _id(value:String) : void
     {
         var oldValue:String = _internal__id;
@@ -308,6 +291,16 @@ public class _Super_Proxy extends flash.events.EventDispatcher implements com.ad
         {
             _internal_configured = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "configured", oldValue, _internal_configured));
+        }
+    }
+
+    public function set address(value:String) : void
+    {
+        var oldValue:String = _internal_address;
+        if (oldValue !== value)
+        {
+            _internal_address = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "address", oldValue, _internal_address));
         }
     }
 
@@ -353,23 +346,6 @@ public class _Super_Proxy extends flash.events.EventDispatcher implements com.ad
      *  - the validity of the property (and the containing entity) if the given data property is required.
      */
 
-    model_internal function setterListenerRules(value:flash.events.Event):void
-    {
-        if (value is mx.events.PropertyChangeEvent)
-        {
-            if (mx.events.PropertyChangeEvent(value).newValue)
-            {
-                mx.events.PropertyChangeEvent(value).newValue.addEventListener(mx.events.CollectionEvent.COLLECTION_CHANGE, model_internal::setterListenerRules);
-            }
-        }
-        _model.invalidateDependentOnRules();
-    }
-
-    model_internal function setterListenerRedirection_tag(value:flash.events.Event):void
-    {
-        _model.invalidateDependentOnRedirection_tag();
-    }
-
 
     /**
      * valid related derived properties
@@ -391,16 +367,6 @@ public class _Super_Proxy extends flash.events.EventDispatcher implements com.ad
         var validationFailureMessages:Array = new Array();
 
         var propertyValidity:Boolean = true;
-        if (!_model.rulesIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_rulesValidationFailureMessages);
-        }
-        if (!_model.redirection_tagIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_redirection_tagValidationFailureMessages);
-        }
 
         model_internal::_cacheInitialized_isValid = true;
         model_internal::invalidConstraints_der = violatedConsts;
@@ -480,60 +446,6 @@ public class _Super_Proxy extends flash.events.EventDispatcher implements com.ad
         }
     }
 
-    model_internal var _doValidationCacheOfRules : Array = null;
-    model_internal var _doValidationLastValOfRules : ArrayCollection;
-
-    model_internal function _doValidationForRules(valueIn:Object):Array
-    {
-        var value : ArrayCollection = valueIn as ArrayCollection;
-
-        if (model_internal::_doValidationCacheOfRules != null && model_internal::_doValidationLastValOfRules == value)
-           return model_internal::_doValidationCacheOfRules ;
-
-        _model.model_internal::_rulesIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.isRulesAvailable && _internal_rules == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "rules is required"));
-        }
-
-        model_internal::_doValidationCacheOfRules = validationFailures;
-        model_internal::_doValidationLastValOfRules = value;
-
-        return validationFailures;
-    }
-    
-    model_internal var _doValidationCacheOfRedirection_tag : Array = null;
-    model_internal var _doValidationLastValOfRedirection_tag : String;
-
-    model_internal function _doValidationForRedirection_tag(valueIn:Object):Array
-    {
-        var value : String = valueIn as String;
-
-        if (model_internal::_doValidationCacheOfRedirection_tag != null && model_internal::_doValidationLastValOfRedirection_tag == value)
-           return model_internal::_doValidationCacheOfRedirection_tag ;
-
-        _model.model_internal::_redirection_tagIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.isRedirection_tagAvailable && _internal_redirection_tag == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "redirection_tag is required"));
-        }
-
-        model_internal::_doValidationCacheOfRedirection_tag = validationFailures;
-        model_internal::_doValidationLastValOfRedirection_tag = value;
-
-        return validationFailures;
-    }
-    
 
 }
 

@@ -26,7 +26,7 @@ package it.ht.rcs.console.network.rest
         new Collector({name:        'Anonymizer 4',  _id: 'a4',  prev:   null,  next:   null,  address: '192.168.2.174', type: 'remote', port: 4444, _mid: 23, configured:  true, desc: 'Desc 192.168.1.174', instance:                                    '', poll: false, created_at: '2011-06-22T17:29:41+02:00', updated_at: '2011-06-22T17:29:41+02:00', version: 0})];
       items = new ArrayCollection(a);
       
-      var event:ResultEvent = new ResultEvent('collector.index', false, true, items);
+      var event:ResultEvent = new ResultEvent('collector.all', false, true, items);
       if (onResult != null)
         onResult(event);
     }

@@ -1476,7 +1476,7 @@
         <item name="analyzed">true</item>
       </annotation>
       <annotation name="ActionScriptGeneration">
-        <item name="SerializationFilter">com.adobe.serializers.xml.XMLSerializationFilter</item>
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
         <item name="method">GET</item>
         <item name="url">/proxy/{id}</item>
       </annotation>
@@ -1486,13 +1486,13 @@
       <annotation name="ValidProperties">
         <item name="propertySpecifier">port,desc,configured,rules,version,poll,updated_at,_id,address,name,created_at,redirect,_mid,redirection_tag</item>
       </annotation>
-      <annotation name="Properties">
-        <item name="urlParamNames">id</item>
-      </annotation>
       <annotation name="original signature">
+        <item name="returnType">opaque</item>
         <item name="inputParamNames">id</item>
         <item name="inputParams">string</item>
-        <item name="returnType">opaque</item>
+      </annotation>
+      <annotation name="Properties">
+        <item name="urlParamNames">id</item>
       </annotation>
       <parameter name="id" type="string"/>
     </function>
@@ -1514,9 +1514,9 @@
         <item name="propertySpecifier">port,updated_at,poll,_id,configured,name,created_at,redirect</item>
       </annotation>
       <annotation name="original signature">
+        <item name="returnType">opaque</item>
         <item name="inputParamNames">strXml</item>
         <item name="inputParams">string</item>
-        <item name="returnType">opaque</item>
       </annotation>
       <parameter name="strXml" type="string"/>
     </function>
@@ -1538,9 +1538,9 @@
         <item name="propertySpecifier">port,updated_at,poll,desc,_id,configured,address,name,created_at,redirect</item>
       </annotation>
       <annotation name="original signature">
+        <item name="returnType">opaque</item>
         <item name="inputParamNames">strXml</item>
         <item name="inputParams">string</item>
-        <item name="returnType">opaque</item>
       </annotation>
       <parameter name="strXml" type="string"/>
     </function>
@@ -1559,6 +1559,51 @@
         <item name="completeURL">https://localhost:4444/proxy/destroy</item>
       </annotation>
       <annotation name="original signature">
+        <item name="returnType">opaque</item>
+        <item name="inputParamNames">strXml</item>
+        <item name="inputParams">string</item>
+      </annotation>
+      <parameter name="strXml" type="string"/>
+    </function>
+    <function name="add_rule_" return-type="ProxyRule">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">POST</item>
+        <item name="contentType">application/xml</item>
+        <item name="requestBodyParameter">true</item>
+        <item name="url">/proxy/add_rule</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/proxy/add_rule</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">enabled,action_param,updated_at,ident,_id,target,resource,action,ident_param,disable_sync,created_at,probability</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParamNames">strXml</item>
+        <item name="inputParams">string</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="strXml" type="string"/>
+    </function>
+    <function name="del_rule_" return-type="void">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.xml.XMLSerializationFilter</item>
+        <item name="method">POST</item>
+        <item name="contentType">application/xml</item>
+        <item name="requestBodyParameter">true</item>
+        <item name="url">/proxy/del_rule</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/proxy/del_rule</item>
+      </annotation>
+      <annotation name="original signature">
         <item name="inputParamNames">strXml</item>
         <item name="inputParams">string</item>
         <item name="returnType">opaque</item>
@@ -1566,33 +1611,6 @@
       <parameter name="strXml" type="string"/>
     </function>
   </service>
-  <entity name="ProxyRule">
-    <annotation name="EntityProperties">
-      <item name="EntityOriginalName">Rules</item>
-    </annotation>
-    <annotation name="service Group">
-      <item name="service">DBProxy</item>
-    </annotation>
-    <annotation name="ServerProperties">
-      <item name="IncludeRemoteClass">nonempty</item>
-    </annotation>
-    <annotation name="ActionScriptGeneration">
-      <item name="Package">it.ht.rcs.console.network.model</item>
-    </annotation>
-    <property name="action_param" type="string" required="true"/>
-    <property name="enabled" type="boolean" required="true"/>
-    <property name="resource" type="string" required="true"/>
-    <property name="updated_at" type="string" required="true"/>
-    <property name="_id" type="string" required="true"/>
-    <property name="ident" type="string" required="true"/>
-    <property name="action" type="string" required="true"/>
-    <property name="target" type="string[]" required="true"/>
-    <property name="created_at" type="string" required="true"/>
-    <property name="disable_sync" type="boolean" required="true"/>
-    <property name="ident_param" type="string" required="true"/>
-    <property name="probability" type="integer" required="true"/>
-    <property name="_mid" type="integer" required="true"/>
-  </entity>
   <entity name="Proxy">
     <annotation name="EntityProperties">
       <item name="EntityOriginalName">Proxy</item>
@@ -1618,19 +1636,52 @@
     <annotation name="update_">
       <item name="propertySpecifier">port,updated_at,poll,desc,_id,configured,address,name,created_at,redirect</item>
     </annotation>
-    <property name="rules" type="ProxyRule[]" required="true"/>
-    <property name="version" type="integer" required="true"/>
-    <property name="_mid" type="integer" required="true"/>
-    <property name="redirection_tag" type="string" required="true"/>
-    <property name="desc" type="string"/>
-    <property name="address" type="string"/>
+    <property name="rules" type="ProxyRule[]"/>
+    <property name="version" type="integer"/>
+    <property name="_mid" type="integer"/>
+    <property name="redirection_tag" type="string"/>
     <property name="port" type="integer"/>
     <property name="updated_at" type="string"/>
     <property name="poll" type="boolean"/>
+    <property name="desc" type="string"/>
     <property name="_id" type="string"/>
     <property name="configured" type="boolean"/>
+    <property name="address" type="string"/>
     <property name="name" type="string"/>
     <property name="created_at" type="string"/>
     <property name="redirect" type="string"/>
+  </entity>
+  <entity name="ProxyRule">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Rules</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBProxy</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.network.model</item>
+    </annotation>
+    <annotation name="add_rule">
+      <item name="propertySpecifier">enabled,action_param,updated_at,ident,_id,target,resource,action,ident_param,disable_sync,created_at,probability</item>
+    </annotation>
+    <annotation name="add_rule_">
+      <item name="propertySpecifier">enabled,action_param,updated_at,ident,_id,target,resource,action,ident_param,disable_sync,created_at,probability</item>
+    </annotation>
+    <property name="_mid" type="integer"/>
+    <property name="enabled" type="boolean"/>
+    <property name="action_param" type="string"/>
+    <property name="updated_at" type="string"/>
+    <property name="ident" type="string"/>
+    <property name="_id" type="string"/>
+    <property name="target" type="string[]"/>
+    <property name="resource" type="string"/>
+    <property name="action" type="string"/>
+    <property name="ident_param" type="string"/>
+    <property name="disable_sync" type="boolean"/>
+    <property name="created_at" type="string"/>
+    <property name="probability" type="integer"/>
   </entity>
 </model>

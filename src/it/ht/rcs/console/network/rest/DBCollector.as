@@ -10,7 +10,8 @@ package it.ht.rcs.console.network.rest
   public class DBCollector extends _Super_DBCollector implements IDBCollector
   {
     
-    public function DBCollector(host:String) {
+    public function DBCollector(host:String)
+    {
       super();
       _serviceControl.baseURL = host;
     }
