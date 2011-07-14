@@ -35,7 +35,7 @@ public class DBGroup extends _Super_DBGroup implements IDBGroup
     public function add_user(group:Group, user:User, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = add_user_(JSON.encode( {_id: group._id, user: user._id} )); 
+      resp.token = add_user_(JSON.encode( {_id: group._id, user: {_id: user._id}} )); 
     }
     
     public function alert(group:Group, onResult:Function=null, onFault:Function=null):void
@@ -62,7 +62,7 @@ public class DBGroup extends _Super_DBGroup implements IDBGroup
     public function del_user(group:Group, user:User, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = del_user_(JSON.encode( {_id: group._id, user: user._id} ));
+      resp.token = del_user_(JSON.encode( {_id: group._id, user: {_id: user._id}} ));
     }
     
     public function destroy(group:Group, onResult:Function=null, onFault:Function=null):void

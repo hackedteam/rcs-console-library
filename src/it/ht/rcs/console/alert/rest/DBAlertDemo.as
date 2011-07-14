@@ -1,6 +1,7 @@
 package it.ht.rcs.console.alert.rest
 {
   import it.ht.rcs.console.alert.model.Alert;
+  import it.ht.rcs.console.alert.model.AlertLog;
   
   import mx.collections.ArrayCollection;
   import mx.rpc.events.ResultEvent;
@@ -14,8 +15,10 @@ package it.ht.rcs.console.alert.rest
     public function all(onResult:Function=null, onFault:Function=null):void
     {
       var items:ArrayCollection = new ArrayCollection();
-      items.addItem(new Alert({_id: '1', enabled:true, suppression: 600, type: 'MAIL', keywords: "HT", priority: 2, evidence: 'ANY', path:new ArrayCollection([])}) );
-      items.addItem(new Alert({_id: '2', enabled:true, suppression: 600, type: 'LOG', keywords: "bomb", priority: 3, evidence: 'ANY', path:new ArrayCollection(['1', '2'])}) );
+      items.addItem(new Alert({_id: '1', enabled:true, suppression: 600, type: 'MAIL', keywords: "HT", priority: 2, evidence: 'ANY', path:new ArrayCollection([]), 
+                                logs:new ArrayCollection([new AlertLog({time: new Date().time / 1000, path: [], evidence: 123456})])}) );
+      items.addItem(new Alert({_id: '2', enabled:true, suppression: 600, type: 'LOG', keywords: "bomb", priority: 3, evidence: 'ANY', path:new ArrayCollection(['1', '2']), 
+                                logs:new ArrayCollection([new AlertLog({time: new Date().time / 1000, path: [], evidence: 123456})])}) );
       items.addItem(new Alert({_id: '3', enabled:false, suppression: 600, type: 'LOG', keywords: "RCS", priority: 3, evidence: 'KEYLOG', path:new ArrayCollection(['1', '2', '3'])}) );
 
       var event:ResultEvent = new ResultEvent("alert.index", false, true, items);
