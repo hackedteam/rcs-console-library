@@ -16,9 +16,13 @@ package it.ht.rcs.console.alert.rest
     {
       var items:ArrayCollection = new ArrayCollection();
       items.addItem(new Alert({_id: '1', enabled:true, suppression: 600, type: 'MAIL', keywords: "HT", priority: 2, evidence: 'ANY', path:new ArrayCollection([]), 
-                                logs:new ArrayCollection([new AlertLog({time: new Date().time / 1000, path: new ArrayCollection([]), evidence: new ArrayCollection([2132468])})])}) );
+                                logs:new ArrayCollection([new AlertLog({time: new Date().time / 1000, path: new ArrayCollection(['1', '2', '3']), evidence: new ArrayCollection([2132468])})])
+                    }));
       items.addItem(new Alert({_id: '2', enabled:true, suppression: 600, type: 'LOG', keywords: "bomb", priority: 3, evidence: 'ANY', path:new ArrayCollection(['1', '2']), 
-                                logs:new ArrayCollection([new AlertLog({time: new Date().time / 1000, path: new ArrayCollection([]), evidence: new ArrayCollection([654324])})])}) );
+                                logs:new ArrayCollection([new AlertLog({time: new Date().time / 1000, path: new ArrayCollection(['1', '2', '3']), evidence: new ArrayCollection([654324])}),
+                                                          new AlertLog({time: new Date().time / 1000, path: new ArrayCollection(['1', '2', '3']), evidence: new ArrayCollection([367670123])})
+                                ])
+                    }));
       items.addItem(new Alert({_id: '3', enabled:false, suppression: 600, type: 'LOG', keywords: "RCS", priority: 3, evidence: 'KEYLOG', path:new ArrayCollection(['1', '2', '3'])}) );
 
       var event:ResultEvent = new ResultEvent("alert.index", false, true, items);
@@ -50,7 +54,7 @@ package it.ht.rcs.console.alert.rest
     
     public function counters(onResult:Function=null, onFault:Function=null):void
     {
-      var event:ResultEvent = new ResultEvent("alert.counters", false, true, 2);
+      var event:ResultEvent = new ResultEvent("alert.counters", false, true, 3);
       if (onResult != null) 
         onResult(event);
     }
