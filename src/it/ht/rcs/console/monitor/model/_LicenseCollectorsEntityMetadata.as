@@ -56,8 +56,8 @@ internal class _LicenseCollectorsEntityMetadata extends com.adobe.fiber.valueobj
 
         // Property type Map
         model_internal::propertyTypeMap = new Object();
-        model_internal::propertyTypeMap["collectors"] = "int";
-        model_internal::propertyTypeMap["anonymizers"] = "int";
+        model_internal::propertyTypeMap["collectors"] = "Object";
+        model_internal::propertyTypeMap["anonymizers"] = "Object";
 
         model_internal::_instance = value;
     }
