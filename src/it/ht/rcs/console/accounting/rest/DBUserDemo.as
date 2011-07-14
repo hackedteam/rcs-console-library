@@ -37,8 +37,11 @@ package it.ht.rcs.console.accounting.rest
       params._id = new Date().getTime().toString();
       params.privs = new ArrayCollection(params.privs);
       params.group_ids = new ArrayCollection(params.group_ids);
-      var event:ResultEvent = new ResultEvent("user.create", false, true, params);
-      onResult(event);
+      
+      var user:User = new User(params);
+      
+      var event:ResultEvent = new ResultEvent("user.create", false, true, user);
+        onResult(event);
     }
     
     public function destroy(user:User, onResult:Function=null, onFault:Function=null):void

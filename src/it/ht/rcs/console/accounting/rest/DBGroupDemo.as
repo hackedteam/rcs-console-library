@@ -30,9 +30,9 @@ package it.ht.rcs.console.accounting.rest
     
     public function create(params:Object, onResult:Function=null, onFault:Function=null):void
     {
-      var g:Object = params;
+      var g:Group = new Group(params);
       g._id = new Date().getTime().toString();
-      g.user_ids = new ArrayCollection(g.user_ids);
+      g.user_ids = new ArrayCollection(params.user_ids);
       var event:ResultEvent = new ResultEvent("user.create", false, true, g);
       if (onResult != null) 
         onResult(event);
