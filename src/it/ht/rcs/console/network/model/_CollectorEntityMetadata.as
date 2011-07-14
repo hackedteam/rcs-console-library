@@ -23,14 +23,14 @@ internal class _CollectorEntityMetadata extends com.adobe.fiber.valueobjects.Abs
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("next", "version", "prev", "_mid", "instance", "port", "updated_at", "poll", "desc", "_id", "configured", "address", "name", "created_at", "type");
+    model_internal static var allProperties:Array = new Array("next", "version", "prev", "instance", "port", "updated_at", "poll", "desc", "_id", "configured", "address", "name", "created_at", "type");
     model_internal static var allAssociationProperties:Array = new Array();
-    model_internal static var allRequiredProperties:Array = new Array("next", "version", "prev", "_mid", "instance");
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("next", "version", "prev", "_mid", "instance", "port", "updated_at", "poll", "desc", "_id", "configured", "address", "name", "created_at", "type");
+    model_internal static var allRequiredProperties:Array = new Array("next", "version", "prev", "instance");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("next", "version", "prev", "instance", "port", "updated_at", "poll", "desc", "_id", "configured", "address", "name", "created_at", "type");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("next", "version", "prev", "_mid", "instance", "port", "updated_at", "poll", "desc", "_id", "configured", "address", "name", "created_at", "type");
+    model_internal static var dataProperties:Array = new Array("next", "version", "prev", "instance", "port", "updated_at", "poll", "desc", "_id", "configured", "address", "name", "created_at", "type");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("next", "version", "prev", "_mid", "instance", "port", "updated_at", "poll", "desc", "_id", "configured", "address", "name", "created_at", "type");
+    model_internal static var nonDerivedProperties:Array = new Array("next", "version", "prev", "instance", "port", "updated_at", "poll", "desc", "_id", "configured", "address", "name", "created_at", "type");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array("next", "prev");
     model_internal static var collectionBaseMap:Object;
@@ -68,7 +68,6 @@ internal class _CollectorEntityMetadata extends com.adobe.fiber.valueobjects.Abs
             model_internal::dependentsOnMap["next"] = new Array();
             model_internal::dependentsOnMap["version"] = new Array();
             model_internal::dependentsOnMap["prev"] = new Array();
-            model_internal::dependentsOnMap["_mid"] = new Array();
             model_internal::dependentsOnMap["instance"] = new Array();
             model_internal::dependentsOnMap["port"] = new Array();
             model_internal::dependentsOnMap["updated_at"] = new Array();
@@ -92,7 +91,6 @@ internal class _CollectorEntityMetadata extends com.adobe.fiber.valueobjects.Abs
         model_internal::propertyTypeMap["next"] = "ArrayCollection";
         model_internal::propertyTypeMap["version"] = "int";
         model_internal::propertyTypeMap["prev"] = "ArrayCollection";
-        model_internal::propertyTypeMap["_mid"] = "int";
         model_internal::propertyTypeMap["instance"] = "String";
         model_internal::propertyTypeMap["port"] = "int";
         model_internal::propertyTypeMap["updated_at"] = "String";
@@ -361,12 +359,6 @@ internal class _CollectorEntityMetadata extends com.adobe.fiber.valueobjects.Abs
 
     [Bindable(event="propertyChange")]
     public function get isPrevAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get is_midAvailable():Boolean
     {
         return true;
     }
@@ -675,12 +667,6 @@ internal class _CollectorEntityMetadata extends com.adobe.fiber.valueobjects.Abs
                 model_internal::_instance.model_internal::isValid_der = model_internal::_instance.model_internal::calculateIsValid();
             }
         }
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get _midStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
     }
 
     [Bindable(event="propertyChange")]   

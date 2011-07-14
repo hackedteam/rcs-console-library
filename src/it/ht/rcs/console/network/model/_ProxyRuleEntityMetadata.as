@@ -21,16 +21,16 @@ internal class _ProxyRuleEntityMetadata extends com.adobe.fiber.valueobjects.Abs
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("_mid", "enabled", "action_param", "updated_at", "ident", "_id", "target", "resource", "action", "ident_param", "disable_sync", "created_at", "probability");
+    model_internal static var allProperties:Array = new Array("enabled", "action_param", "updated_at", "ident", "_id", "target_id", "resource", "action", "ident_param", "disable_sync", "created_at", "probability");
     model_internal static var allAssociationProperties:Array = new Array();
     model_internal static var allRequiredProperties:Array = new Array();
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("_mid", "enabled", "action_param", "updated_at", "ident", "_id", "target", "resource", "action", "ident_param", "disable_sync", "created_at", "probability");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("enabled", "action_param", "updated_at", "ident", "_id", "target_id", "resource", "action", "ident_param", "disable_sync", "created_at", "probability");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("_mid", "enabled", "action_param", "updated_at", "ident", "_id", "target", "resource", "action", "ident_param", "disable_sync", "created_at", "probability");
+    model_internal static var dataProperties:Array = new Array("enabled", "action_param", "updated_at", "ident", "_id", "target_id", "resource", "action", "ident_param", "disable_sync", "created_at", "probability");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("_mid", "enabled", "action_param", "updated_at", "ident", "_id", "target", "resource", "action", "ident_param", "disable_sync", "created_at", "probability");
+    model_internal static var nonDerivedProperties:Array = new Array("enabled", "action_param", "updated_at", "ident", "_id", "target_id", "resource", "action", "ident_param", "disable_sync", "created_at", "probability");
     model_internal static var derivedProperties:Array = new Array();
-    model_internal static var collectionProperties:Array = new Array("target");
+    model_internal static var collectionProperties:Array = new Array("target_id");
     model_internal static var collectionBaseMap:Object;
     model_internal static var entityName:String = "ProxyRule";
     model_internal static var dependentsOnMap:Object;
@@ -48,13 +48,12 @@ internal class _ProxyRuleEntityMetadata extends com.adobe.fiber.valueobjects.Abs
         {
             // dependents map
             model_internal::dependentsOnMap = new Object();
-            model_internal::dependentsOnMap["_mid"] = new Array();
             model_internal::dependentsOnMap["enabled"] = new Array();
             model_internal::dependentsOnMap["action_param"] = new Array();
             model_internal::dependentsOnMap["updated_at"] = new Array();
             model_internal::dependentsOnMap["ident"] = new Array();
             model_internal::dependentsOnMap["_id"] = new Array();
-            model_internal::dependentsOnMap["target"] = new Array();
+            model_internal::dependentsOnMap["target_id"] = new Array();
             model_internal::dependentsOnMap["resource"] = new Array();
             model_internal::dependentsOnMap["action"] = new Array();
             model_internal::dependentsOnMap["ident_param"] = new Array();
@@ -64,18 +63,17 @@ internal class _ProxyRuleEntityMetadata extends com.adobe.fiber.valueobjects.Abs
 
             // collection base map
             model_internal::collectionBaseMap = new Object();
-            model_internal::collectionBaseMap["target"] = "String";
+            model_internal::collectionBaseMap["target_id"] = "String";
         }
 
         // Property type Map
         model_internal::propertyTypeMap = new Object();
-        model_internal::propertyTypeMap["_mid"] = "int";
         model_internal::propertyTypeMap["enabled"] = "Boolean";
         model_internal::propertyTypeMap["action_param"] = "String";
         model_internal::propertyTypeMap["updated_at"] = "String";
         model_internal::propertyTypeMap["ident"] = "String";
         model_internal::propertyTypeMap["_id"] = "String";
-        model_internal::propertyTypeMap["target"] = "ArrayCollection";
+        model_internal::propertyTypeMap["target_id"] = "ArrayCollection";
         model_internal::propertyTypeMap["resource"] = "String";
         model_internal::propertyTypeMap["action"] = "String";
         model_internal::propertyTypeMap["ident_param"] = "String";
@@ -311,12 +309,6 @@ internal class _ProxyRuleEntityMetadata extends com.adobe.fiber.valueobjects.Abs
     }
 
     [Bindable(event="propertyChange")]
-    public function get is_midAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get isEnabledAvailable():Boolean
     {
         return true;
@@ -347,7 +339,7 @@ internal class _ProxyRuleEntityMetadata extends com.adobe.fiber.valueobjects.Abs
     }
 
     [Bindable(event="propertyChange")]
-    public function get isTargetAvailable():Boolean
+    public function get isTarget_idAvailable():Boolean
     {
         return true;
     }
@@ -399,12 +391,6 @@ internal class _ProxyRuleEntityMetadata extends com.adobe.fiber.valueobjects.Abs
     }
 
     [Bindable(event="propertyChange")]   
-    public function get _midStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
     public function get enabledStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
@@ -435,7 +421,7 @@ internal class _ProxyRuleEntityMetadata extends com.adobe.fiber.valueobjects.Abs
     }
 
     [Bindable(event="propertyChange")]   
-    public function get targetStyle():com.adobe.fiber.styles.Style
+    public function get target_idStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }

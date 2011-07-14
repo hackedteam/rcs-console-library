@@ -55,7 +55,6 @@ public class _Super_Collector extends flash.events.EventDispatcher implements co
     private var _internal_next : ArrayCollection;
     private var _internal_version : int;
     private var _internal_prev : ArrayCollection;
-    private var _internal__mid : int;
     private var _internal_instance : String;
     private var _internal_port : int;
     private var _internal_updated_at : String;
@@ -109,12 +108,6 @@ public class _Super_Collector extends flash.events.EventDispatcher implements co
     public function get prev() : ArrayCollection
     {
         return _internal_prev;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get _mid() : int
-    {
-        return _internal__mid;
     }
 
     [Bindable(event="propertyChange")]
@@ -248,16 +241,6 @@ public class _Super_Collector extends flash.events.EventDispatcher implements co
                 throw new Error("value of prev must be a collection");
             }
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "prev", oldValue, _internal_prev));
-        }
-    }
-
-    public function set _mid(value:int) : void
-    {
-        var oldValue:int = _internal__mid;
-        if (oldValue !== value)
-        {
-            _internal__mid = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "_mid", oldValue, _internal__mid));
         }
     }
 

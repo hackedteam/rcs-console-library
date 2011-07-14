@@ -550,7 +550,6 @@
     <annotation name="update_">
       <item name="propertySpecifier">enabled,desc,group_ids,locale,contact,pass,not_exist,timezone,updated_at,_id,privs,name,created_at</item>
     </annotation>
-    <property name="_mid" type="integer"/>
     <property name="enabled" type="boolean"/>
     <property name="desc" type="string"/>
     <property name="group_ids" type="opaque[]"/>
@@ -1282,7 +1281,7 @@
         <item name="completeURL">https://localhost:4444/collector</item>
       </annotation>
       <annotation name="ValidProperties">
-        <item name="propertySpecifier">port,desc,configured,next,type,version,prev,updated_at,poll,_id,address,name,created_at,_mid,instance</item>
+        <item name="propertySpecifier">port,desc,configured,next,type,version,prev,updated_at,poll,_id,address,name,created_at,instance</item>
       </annotation>
       <annotation name="original signature">
         <item name="returnType">opaque</item>
@@ -1301,7 +1300,7 @@
         <item name="completeURL">https://localhost:4444/collector/{id}</item>
       </annotation>
       <annotation name="ValidProperties">
-        <item name="propertySpecifier">port,desc,configured,next,type,version,prev,updated_at,poll,_id,address,name,created_at,_mid,instance</item>
+        <item name="propertySpecifier">port,desc,configured,next,type,version,prev,updated_at,poll,_id,address,name,created_at,instance</item>
       </annotation>
       <annotation name="original signature">
         <item name="returnType">opaque</item>
@@ -1409,13 +1408,13 @@
       <item name="IncludeRemoteClass">nonempty</item>
     </annotation>
     <annotation name="all_">
-      <item name="propertySpecifier">port,desc,configured,next,type,version,prev,updated_at,poll,_id,address,name,created_at,_mid,instance</item>
+      <item name="propertySpecifier">port,desc,configured,next,type,version,prev,updated_at,poll,_id,address,name,created_at,instance</item>
     </annotation>
     <annotation name="ActionScriptGeneration">
       <item name="Package">it.ht.rcs.console.network.model</item>
     </annotation>
     <annotation name="show_">
-      <item name="propertySpecifier">port,desc,configured,next,type,version,prev,updated_at,poll,_id,address,name,created_at,_mid,instance</item>
+      <item name="propertySpecifier">port,desc,configured,next,type,version,prev,updated_at,poll,_id,address,name,created_at,instance</item>
     </annotation>
     <annotation name="create_">
       <item name="propertySpecifier">port,updated_at,poll,_id,configured,name,created_at,type</item>
@@ -1426,7 +1425,6 @@
     <property name="next" type="string[]" required="true"/>
     <property name="version" type="integer" required="true"/>
     <property name="prev" type="opaque[]" required="true"/>
-    <property name="_mid" type="integer" required="true"/>
     <property name="instance" type="string" required="true"/>
     <property name="port" type="integer"/>
     <property name="updated_at" type="string"/>
@@ -1465,7 +1463,7 @@
         <item name="completeURL">https://localhost:4444/proxy</item>
       </annotation>
       <annotation name="ValidProperties">
-        <item name="propertySpecifier">port,desc,configured,rules,version,poll,updated_at,_id,address,name,created_at,redirect,_mid,redirection_tag</item>
+        <item name="propertySpecifier">port,desc,configured,rules,version,poll,updated_at,_id,address,name,created_at,redirect,redirection_tag</item>
       </annotation>
       <annotation name="original signature">
         <item name="returnType">opaque</item>
@@ -1484,7 +1482,7 @@
         <item name="completeURL">https://localhost:4444/proxy/{id}</item>
       </annotation>
       <annotation name="ValidProperties">
-        <item name="propertySpecifier">port,desc,configured,rules,version,poll,updated_at,_id,address,name,created_at,redirect,_mid,redirection_tag</item>
+        <item name="propertySpecifier">port,desc,configured,rules,version,poll,updated_at,_id,address,name,created_at,redirect,redirection_tag</item>
       </annotation>
       <annotation name="original signature">
         <item name="returnType">opaque</item>
@@ -1580,7 +1578,7 @@
         <item name="completeURL">https://localhost:4444/proxy/add_rule</item>
       </annotation>
       <annotation name="ValidProperties">
-        <item name="propertySpecifier">enabled,action_param,updated_at,ident,_id,target,resource,action,ident_param,disable_sync,created_at,probability</item>
+        <item name="propertySpecifier">enabled,action_param,updated_at,ident,_id,target_id,resource,action,ident_param,disable_sync,created_at,probability</item>
       </annotation>
       <annotation name="original signature">
         <item name="inputParamNames">strXml</item>
@@ -1622,13 +1620,13 @@
       <item name="IncludeRemoteClass">nonempty</item>
     </annotation>
     <annotation name="all_">
-      <item name="propertySpecifier">port,desc,configured,rules,version,poll,updated_at,_id,address,name,created_at,redirect,_mid,redirection_tag</item>
+      <item name="propertySpecifier">port,desc,configured,rules,version,poll,updated_at,_id,address,name,created_at,redirect,redirection_tag</item>
     </annotation>
     <annotation name="ActionScriptGeneration">
       <item name="Package">it.ht.rcs.console.network.model</item>
     </annotation>
     <annotation name="show_">
-      <item name="propertySpecifier">port,desc,configured,rules,version,poll,updated_at,_id,address,name,created_at,redirect,_mid,redirection_tag</item>
+      <item name="propertySpecifier">port,desc,configured,rules,version,poll,updated_at,_id,address,name,created_at,redirect,redirection_tag</item>
     </annotation>
     <annotation name="create_">
       <item name="propertySpecifier">port,updated_at,poll,_id,configured,name,created_at,redirect</item>
@@ -1638,7 +1636,6 @@
     </annotation>
     <property name="rules" type="ProxyRule[]"/>
     <property name="version" type="integer"/>
-    <property name="_mid" type="integer"/>
     <property name="redirection_tag" type="string"/>
     <property name="port" type="integer"/>
     <property name="updated_at" type="string"/>
@@ -1664,19 +1661,15 @@
     <annotation name="ActionScriptGeneration">
       <item name="Package">it.ht.rcs.console.network.model</item>
     </annotation>
-    <annotation name="add_rule">
-      <item name="propertySpecifier">enabled,action_param,updated_at,ident,_id,target,resource,action,ident_param,disable_sync,created_at,probability</item>
-    </annotation>
     <annotation name="add_rule_">
-      <item name="propertySpecifier">enabled,action_param,updated_at,ident,_id,target,resource,action,ident_param,disable_sync,created_at,probability</item>
+      <item name="propertySpecifier">enabled,action_param,updated_at,ident,_id,target_id,resource,action,ident_param,disable_sync,created_at,probability</item>
     </annotation>
-    <property name="_mid" type="integer"/>
     <property name="enabled" type="boolean"/>
     <property name="action_param" type="string"/>
     <property name="updated_at" type="string"/>
     <property name="ident" type="string"/>
     <property name="_id" type="string"/>
-    <property name="target" type="string[]"/>
+    <property name="target_id" type="string[]"/>
     <property name="resource" type="string"/>
     <property name="action" type="string"/>
     <property name="ident_param" type="string"/>
