@@ -70,6 +70,7 @@ public class Alert extends _Super_Alert
         path = data.path;
         evidence = data.evidence;
         type = data.type;
+        logs = data.logs;
       }
     }
 }

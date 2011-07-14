@@ -50,6 +50,7 @@ public class AlertLog extends _Super_AlertLog
     public function AlertLog(data:Object=null)
     {
       if (data) {
+        _id = data._id;
         time = data.time;
         path = data.path;
         evidence = data.evidence;
