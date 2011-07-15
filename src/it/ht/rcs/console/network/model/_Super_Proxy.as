@@ -52,7 +52,6 @@ public class _Super_Proxy extends flash.events.EventDispatcher implements com.ad
     private var _internal_rules : ArrayCollection;
     model_internal var _internal_rules_leaf:it.ht.rcs.console.network.model.ProxyRule;
     private var _internal_version : int;
-    private var _internal__mid : int;
     private var _internal_redirection_tag : String;
     private var _internal_port : int;
     private var _internal_updated_at : String;
@@ -97,12 +96,6 @@ public class _Super_Proxy extends flash.events.EventDispatcher implements com.ad
     public function get version() : int
     {
         return _internal_version;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get _mid() : int
-    {
-        return _internal__mid;
     }
 
     [Bindable(event="propertyChange")]
@@ -211,16 +204,6 @@ public class _Super_Proxy extends flash.events.EventDispatcher implements com.ad
         {
             _internal_version = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "version", oldValue, _internal_version));
-        }
-    }
-
-    public function set _mid(value:int) : void
-    {
-        var oldValue:int = _internal__mid;
-        if (oldValue !== value)
-        {
-            _internal__mid = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "_mid", oldValue, _internal__mid));
         }
     }
 

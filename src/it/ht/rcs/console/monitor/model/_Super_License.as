@@ -53,7 +53,7 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
      */
     private var _internal_collectors : it.ht.rcs.console.monitor.model.LicenseCollectors;
     private var _internal_users : Object;
-    private var _internal_ipa : int;
+    private var _internal_ipa : Object;
     private var _internal_backdoors : it.ht.rcs.console.monitor.model.LicenseBackdoors;
     private var _internal_alerting : Boolean;
     private var _internal_correlation : Boolean;
@@ -96,7 +96,7 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
     }
 
     [Bindable(event="propertyChange")]
-    public function get ipa() : int
+    public function get ipa() : Object
     {
         return _internal_ipa;
     }
@@ -165,9 +165,9 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
         }
     }
 
-    public function set ipa(value:int) : void
+    public function set ipa(value:Object) : void
     {
-        var oldValue:int = _internal_ipa;
+        var oldValue:Object = _internal_ipa;
         if (oldValue !== value)
         {
             _internal_ipa = value;

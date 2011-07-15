@@ -25,13 +25,13 @@ package it.ht.rcs.console.monitor.rest
               mobile: 15,
               osx: true,
               symbian: false,
-              total: Infinity,
+              total: null,
               windows: true,
               winmo: false
             }),
           collectors: new LicenseCollectors(
             {
-              collectors: Infinity,
+              collectors: null,
               anonymizers: 5
             }),
           correlation: false,

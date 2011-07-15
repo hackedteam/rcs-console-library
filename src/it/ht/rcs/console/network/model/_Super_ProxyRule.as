@@ -47,13 +47,12 @@ public class _Super_ProxyRule extends flash.events.EventDispatcher implements co
     /**
      * properties
      */
-    private var _internal__mid : int;
     private var _internal_enabled : Boolean;
     private var _internal_action_param : String;
     private var _internal_updated_at : String;
     private var _internal_ident : String;
     private var _internal__id : String;
-    private var _internal_target : ArrayCollection;
+    private var _internal_target_id : ArrayCollection;
     private var _internal_resource : String;
     private var _internal_action : String;
     private var _internal_ident_param : String;
@@ -82,12 +81,6 @@ public class _Super_ProxyRule extends flash.events.EventDispatcher implements co
     /**
      * data/source property getters
      */
-
-    [Bindable(event="propertyChange")]
-    public function get _mid() : int
-    {
-        return _internal__mid;
-    }
 
     [Bindable(event="propertyChange")]
     public function get enabled() : Boolean
@@ -120,9 +113,9 @@ public class _Super_ProxyRule extends flash.events.EventDispatcher implements co
     }
 
     [Bindable(event="propertyChange")]
-    public function get target() : ArrayCollection
+    public function get target_id() : ArrayCollection
     {
-        return _internal_target;
+        return _internal_target_id;
     }
 
     [Bindable(event="propertyChange")]
@@ -168,16 +161,6 @@ public class _Super_ProxyRule extends flash.events.EventDispatcher implements co
     /**
      * data/source property setters
      */
-
-    public function set _mid(value:int) : void
-    {
-        var oldValue:int = _internal__mid;
-        if (oldValue !== value)
-        {
-            _internal__mid = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "_mid", oldValue, _internal__mid));
-        }
-    }
 
     public function set enabled(value:Boolean) : void
     {
@@ -229,28 +212,28 @@ public class _Super_ProxyRule extends flash.events.EventDispatcher implements co
         }
     }
 
-    public function set target(value:*) : void
+    public function set target_id(value:*) : void
     {
-        var oldValue:ArrayCollection = _internal_target;
+        var oldValue:ArrayCollection = _internal_target_id;
         if (oldValue !== value)
         {
             if (value is ArrayCollection)
             {
-                _internal_target = value;
+                _internal_target_id = value;
             }
             else if (value is Array)
             {
-                _internal_target = new ArrayCollection(value);
+                _internal_target_id = new ArrayCollection(value);
             }
             else if (value == null)
             {
-                _internal_target = null;
+                _internal_target_id = null;
             }
             else
             {
-                throw new Error("value of target must be a collection");
+                throw new Error("value of target_id must be a collection");
             }
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "target", oldValue, _internal_target));
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "target_id", oldValue, _internal_target_id));
         }
     }
 

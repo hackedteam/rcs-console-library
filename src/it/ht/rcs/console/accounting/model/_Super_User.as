@@ -47,7 +47,6 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
     /**
      * properties
      */
-    private var _internal__mid : int;
     private var _internal_enabled : Boolean;
     private var _internal_desc : String;
     private var _internal_group_ids : ArrayCollection;
@@ -83,12 +82,6 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
     /**
      * data/source property getters
      */
-
-    [Bindable(event="propertyChange")]
-    public function get _mid() : int
-    {
-        return _internal__mid;
-    }
 
     [Bindable(event="propertyChange")]
     public function get enabled() : Boolean
@@ -175,16 +168,6 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
     /**
      * data/source property setters
      */
-
-    public function set _mid(value:int) : void
-    {
-        var oldValue:int = _internal__mid;
-        if (oldValue !== value)
-        {
-            _internal__mid = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "_mid", oldValue, _internal__mid));
-        }
-    }
 
     public function set enabled(value:Boolean) : void
     {

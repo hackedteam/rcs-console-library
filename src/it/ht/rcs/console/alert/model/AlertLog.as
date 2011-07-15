@@ -1,5 +1,5 @@
 /**
- * This is a generated sub-class of _Alert.as and is intended for behavior
+ * This is a generated sub-class of _AlertLog.as and is intended for behavior
  * customization.  This class is only generated when there is no file already present
  * at its target location.  Thus custom behavior that you add here will survive regeneration
  * of the super-class. 
@@ -15,7 +15,7 @@ package it.ht.rcs.console.alert.model
 
 import com.adobe.fiber.core.model_internal;
 
-public class Alert extends _Super_Alert
+public class AlertLog extends _Super_AlertLog
 {
     /** 
      * DO NOT MODIFY THIS STATIC INITIALIZER - IT IS NECESSARY
@@ -30,47 +30,30 @@ public class Alert extends _Super_Alert
      */     
     public static function _initRemoteClassAlias() : void
     {
-        _Super_Alert.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.alert.model.Alert);
-        _Super_Alert.model_internal::initRemoteClassAliasAllRelated();
+        _Super_AlertLog.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.alert.model.AlertLog);
+        _Super_AlertLog.model_internal::initRemoteClassAliasAllRelated();
     }
      
     model_internal static function initRemoteClassAliasSingleChild() : void
     {
-        _Super_Alert.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.alert.model.Alert);
+        _Super_AlertLog.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.alert.model.AlertLog);
     }
     
     {
-        _Super_Alert.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.alert.model.Alert);
+        _Super_AlertLog.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.alert.model.AlertLog);
     }
     /** 
      * END OF DO NOT MODIFY SECTION
      *
      **/    
     
-    public static function defaultAlert():Object
-    {
-      return {
-        _id: '',
-        enabled: false,
-        suppression: 600,
-        keywords: '',
-        priority: 0,
-        type: 'LOG'
-      };
-    }
-    
-    public function Alert(data:Object=null)
+    public function AlertLog(data:Object=null)
     {
       if (data) {
         _id = data._id;
-        enabled = data.enabled;
-        suppression = data.suppression;
-        keywords = data.keywords;
-        priority = data.priority;
+        time = data.time;
         path = data.path;
         evidence = data.evidence;
-        type = data.type;
-        logs = data.logs;
       }
     }
 }

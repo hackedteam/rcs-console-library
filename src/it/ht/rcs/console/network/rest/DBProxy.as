@@ -57,7 +57,7 @@ package it.ht.rcs.console.network.rest
     public function del_rule(proxy_id:String, rule_id:String, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = del_rule_(JSON.encode( { _id: proxy_id, rule_id: rule_id } ));
+      resp.token = del_rule_(JSON.encode( { _id: proxy_id, rule: { _id: rule_id } } ));
     }
     
     /**

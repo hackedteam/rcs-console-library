@@ -47,8 +47,8 @@ public class _Super_LicenseCollectors extends flash.events.EventDispatcher imple
     /**
      * properties
      */
-    private var _internal_collectors : int;
-    private var _internal_anonymizers : int;
+    private var _internal_collectors : Object;
+    private var _internal_anonymizers : Object;
 
     private static var emptyArray:Array = new Array();
 
@@ -73,13 +73,13 @@ public class _Super_LicenseCollectors extends flash.events.EventDispatcher imple
      */
 
     [Bindable(event="propertyChange")]
-    public function get collectors() : int
+    public function get collectors() : Object
     {
         return _internal_collectors;
     }
 
     [Bindable(event="propertyChange")]
-    public function get anonymizers() : int
+    public function get anonymizers() : Object
     {
         return _internal_anonymizers;
     }
@@ -92,9 +92,9 @@ public class _Super_LicenseCollectors extends flash.events.EventDispatcher imple
      * data/source property setters
      */
 
-    public function set collectors(value:int) : void
+    public function set collectors(value:Object) : void
     {
-        var oldValue:int = _internal_collectors;
+        var oldValue:Object = _internal_collectors;
         if (oldValue !== value)
         {
             _internal_collectors = value;
@@ -102,9 +102,9 @@ public class _Super_LicenseCollectors extends flash.events.EventDispatcher imple
         }
     }
 
-    public function set anonymizers(value:int) : void
+    public function set anonymizers(value:Object) : void
     {
-        var oldValue:int = _internal_anonymizers;
+        var oldValue:Object = _internal_anonymizers;
         if (oldValue !== value)
         {
             _internal_anonymizers = value;

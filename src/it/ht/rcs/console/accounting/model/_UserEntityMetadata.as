@@ -21,14 +21,14 @@ internal class _UserEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("_mid", "enabled", "desc", "group_ids", "locale", "contact", "pass", "not_exist", "timezone", "updated_at", "_id", "privs", "name", "created_at");
+    model_internal static var allProperties:Array = new Array("enabled", "desc", "group_ids", "locale", "contact", "pass", "not_exist", "timezone", "updated_at", "_id", "privs", "name", "created_at");
     model_internal static var allAssociationProperties:Array = new Array();
     model_internal static var allRequiredProperties:Array = new Array();
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("_mid", "enabled", "desc", "group_ids", "locale", "contact", "pass", "not_exist", "timezone", "updated_at", "_id", "privs", "name", "created_at");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("enabled", "desc", "group_ids", "locale", "contact", "pass", "not_exist", "timezone", "updated_at", "_id", "privs", "name", "created_at");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("_mid", "enabled", "desc", "group_ids", "locale", "contact", "pass", "not_exist", "timezone", "updated_at", "_id", "privs", "name", "created_at");
+    model_internal static var dataProperties:Array = new Array("enabled", "desc", "group_ids", "locale", "contact", "pass", "not_exist", "timezone", "updated_at", "_id", "privs", "name", "created_at");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("_mid", "enabled", "desc", "group_ids", "locale", "contact", "pass", "not_exist", "timezone", "updated_at", "_id", "privs", "name", "created_at");
+    model_internal static var nonDerivedProperties:Array = new Array("enabled", "desc", "group_ids", "locale", "contact", "pass", "not_exist", "timezone", "updated_at", "_id", "privs", "name", "created_at");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array("group_ids", "privs");
     model_internal static var collectionBaseMap:Object;
@@ -48,7 +48,6 @@ internal class _UserEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
         {
             // dependents map
             model_internal::dependentsOnMap = new Object();
-            model_internal::dependentsOnMap["_mid"] = new Array();
             model_internal::dependentsOnMap["enabled"] = new Array();
             model_internal::dependentsOnMap["desc"] = new Array();
             model_internal::dependentsOnMap["group_ids"] = new Array();
@@ -71,7 +70,6 @@ internal class _UserEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
 
         // Property type Map
         model_internal::propertyTypeMap = new Object();
-        model_internal::propertyTypeMap["_mid"] = "int";
         model_internal::propertyTypeMap["enabled"] = "Boolean";
         model_internal::propertyTypeMap["desc"] = "String";
         model_internal::propertyTypeMap["group_ids"] = "ArrayCollection";
@@ -314,12 +312,6 @@ internal class _UserEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
     }
 
     [Bindable(event="propertyChange")]
-    public function get is_midAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get isEnabledAvailable():Boolean
     {
         return true;
@@ -405,12 +397,6 @@ internal class _UserEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
     model_internal function fireChangeEvent(propertyName:String, oldValue:Object, newValue:Object):void
     {
         this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, propertyName, oldValue, newValue));
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get _midStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
     }
 
     [Bindable(event="propertyChange")]   

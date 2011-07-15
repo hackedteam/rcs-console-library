@@ -34,7 +34,7 @@ public class ProxyRule extends _Super_ProxyRule
       ident_param = data.ident_param;
       probability = data.probability;
       resource = data.resource;
-      target = data.target;
+      target_id = data.target_id;
     }
   }
   
