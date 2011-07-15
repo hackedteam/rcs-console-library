@@ -24,14 +24,14 @@ internal class _AlertEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("enabled", "keywords", "logs", "evidence", "type", "suppression", "updated_at", "_id", "priority", "action", "path", "created_at", "user_id");
+    model_internal static var allProperties:Array = new Array("enabled", "keywords", "logs", "evidence", "type", "suppression", "updated_at", "_id", "tag", "action", "path", "created_at", "user_id");
     model_internal static var allAssociationProperties:Array = new Array();
     model_internal static var allRequiredProperties:Array = new Array("action");
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("enabled", "keywords", "logs", "evidence", "type", "suppression", "updated_at", "_id", "priority", "action", "path", "created_at", "user_id");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("enabled", "keywords", "logs", "evidence", "type", "suppression", "updated_at", "_id", "tag", "action", "path", "created_at", "user_id");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("enabled", "keywords", "logs", "evidence", "type", "suppression", "updated_at", "_id", "priority", "action", "path", "created_at", "user_id");
+    model_internal static var dataProperties:Array = new Array("enabled", "keywords", "logs", "evidence", "type", "suppression", "updated_at", "_id", "tag", "action", "path", "created_at", "user_id");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("enabled", "keywords", "logs", "evidence", "type", "suppression", "updated_at", "_id", "priority", "action", "path", "created_at", "user_id");
+    model_internal static var nonDerivedProperties:Array = new Array("enabled", "keywords", "logs", "evidence", "type", "suppression", "updated_at", "_id", "tag", "action", "path", "created_at", "user_id");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array("logs", "path");
     model_internal static var collectionBaseMap:Object;
@@ -64,7 +64,7 @@ internal class _AlertEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
             model_internal::dependentsOnMap["suppression"] = new Array();
             model_internal::dependentsOnMap["updated_at"] = new Array();
             model_internal::dependentsOnMap["_id"] = new Array();
-            model_internal::dependentsOnMap["priority"] = new Array();
+            model_internal::dependentsOnMap["tag"] = new Array();
             model_internal::dependentsOnMap["action"] = new Array();
             model_internal::dependentsOnMap["path"] = new Array();
             model_internal::dependentsOnMap["created_at"] = new Array();
@@ -86,7 +86,7 @@ internal class _AlertEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
         model_internal::propertyTypeMap["suppression"] = "int";
         model_internal::propertyTypeMap["updated_at"] = "String";
         model_internal::propertyTypeMap["_id"] = "String";
-        model_internal::propertyTypeMap["priority"] = "int";
+        model_internal::propertyTypeMap["tag"] = "int";
         model_internal::propertyTypeMap["action"] = "String";
         model_internal::propertyTypeMap["path"] = "ArrayCollection";
         model_internal::propertyTypeMap["created_at"] = "String";
@@ -373,7 +373,7 @@ internal class _AlertEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
     }
 
     [Bindable(event="propertyChange")]
-    public function get isPriorityAvailable():Boolean
+    public function get isTagAvailable():Boolean
     {
         return true;
     }
@@ -469,7 +469,7 @@ internal class _AlertEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
     }
 
     [Bindable(event="propertyChange")]   
-    public function get priorityStyle():com.adobe.fiber.styles.Style
+    public function get tagStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }

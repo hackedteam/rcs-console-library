@@ -62,7 +62,7 @@ public class _Super_Alert extends flash.events.EventDispatcher implements com.ad
     private var _internal_suppression : int;
     private var _internal_updated_at : String;
     private var _internal__id : String;
-    private var _internal_priority : int;
+    private var _internal_tag : int;
     private var _internal_action : String;
     private var _internal_path : ArrayCollection;
     private var _internal_created_at : String;
@@ -140,9 +140,9 @@ public class _Super_Alert extends flash.events.EventDispatcher implements com.ad
     }
 
     [Bindable(event="propertyChange")]
-    public function get priority() : int
+    public function get tag() : int
     {
-        return _internal_priority;
+        return _internal_tag;
     }
 
     [Bindable(event="propertyChange")]
@@ -272,13 +272,13 @@ public class _Super_Alert extends flash.events.EventDispatcher implements com.ad
         }
     }
 
-    public function set priority(value:int) : void
+    public function set tag(value:int) : void
     {
-        var oldValue:int = _internal_priority;
+        var oldValue:int = _internal_tag;
         if (oldValue !== value)
         {
-            _internal_priority = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "priority", oldValue, _internal_priority));
+            _internal_tag = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "tag", oldValue, _internal_tag));
         }
     }
 
