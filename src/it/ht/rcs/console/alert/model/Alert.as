@@ -55,7 +55,8 @@ public class Alert extends _Super_Alert
         suppression: 600,
         keywords: '',
         priority: 0,
-        type: 'LOG'
+        type: 'LOG',
+        action: 'EVIDENCE'
       };
     }
     
@@ -70,6 +71,7 @@ public class Alert extends _Super_Alert
         path = data.path;
         evidence = data.evidence;
         type = data.type;
+        action = data.action;
         logs = data.logs;
       }
     }

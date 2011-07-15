@@ -6,15 +6,10 @@
 package it.ht.rcs.console.alert.model
 {
 import com.adobe.fiber.services.IFiberManagingService;
-import com.adobe.fiber.util.FiberUtils;
 import com.adobe.fiber.valueobjects.IValueObject;
-import flash.events.Event;
 import flash.events.EventDispatcher;
-import mx.binding.utils.ChangeWatcher;
 import mx.collections.ArrayCollection;
-import mx.events.CollectionEvent;
 import mx.events.PropertyChangeEvent;
-import mx.validators.ValidationResult;
 
 import flash.net.registerClassAlias;
 import flash.net.getClassByAlias;
@@ -72,9 +67,6 @@ public class _Super_AlertLog extends flash.events.EventDispatcher implements com
         _model = new _AlertLogEntityMetadata(this);
 
         // Bind to own data or source properties for cache invalidation triggering
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "_id", model_internal::setterListener_id));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "evidence", model_internal::setterListenerEvidence));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "path", model_internal::setterListenerPath));
 
     }
 
@@ -196,35 +188,6 @@ public class _Super_AlertLog extends flash.events.EventDispatcher implements com
      *  - the validity of the property (and the containing entity) if the given data property is required.
      */
 
-    model_internal function setterListener_id(value:flash.events.Event):void
-    {
-        _model.invalidateDependentOn_id();
-    }
-
-    model_internal function setterListenerEvidence(value:flash.events.Event):void
-    {
-        if (value is mx.events.PropertyChangeEvent)
-        {
-            if (mx.events.PropertyChangeEvent(value).newValue)
-            {
-                mx.events.PropertyChangeEvent(value).newValue.addEventListener(mx.events.CollectionEvent.COLLECTION_CHANGE, model_internal::setterListenerEvidence);
-            }
-        }
-        _model.invalidateDependentOnEvidence();
-    }
-
-    model_internal function setterListenerPath(value:flash.events.Event):void
-    {
-        if (value is mx.events.PropertyChangeEvent)
-        {
-            if (mx.events.PropertyChangeEvent(value).newValue)
-            {
-                mx.events.PropertyChangeEvent(value).newValue.addEventListener(mx.events.CollectionEvent.COLLECTION_CHANGE, model_internal::setterListenerPath);
-            }
-        }
-        _model.invalidateDependentOnPath();
-    }
-
 
     /**
      * valid related derived properties
@@ -246,21 +209,6 @@ public class _Super_AlertLog extends flash.events.EventDispatcher implements com
         var validationFailureMessages:Array = new Array();
 
         var propertyValidity:Boolean = true;
-        if (!_model._idIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::__idValidationFailureMessages);
-        }
-        if (!_model.evidenceIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_evidenceValidationFailureMessages);
-        }
-        if (!_model.pathIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_pathValidationFailureMessages);
-        }
 
         model_internal::_cacheInitialized_isValid = true;
         model_internal::invalidConstraints_der = violatedConsts;
@@ -340,87 +288,6 @@ public class _Super_AlertLog extends flash.events.EventDispatcher implements com
         }
     }
 
-    model_internal var _doValidationCacheOf_id : Array = null;
-    model_internal var _doValidationLastValOf_id : String;
-
-    model_internal function _doValidationFor_id(valueIn:Object):Array
-    {
-        var value : String = valueIn as String;
-
-        if (model_internal::_doValidationCacheOf_id != null && model_internal::_doValidationLastValOf_id == value)
-           return model_internal::_doValidationCacheOf_id ;
-
-        _model.model_internal::__idIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.is_idAvailable && _internal__id == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "_id is required"));
-        }
-
-        model_internal::_doValidationCacheOf_id = validationFailures;
-        model_internal::_doValidationLastValOf_id = value;
-
-        return validationFailures;
-    }
-    
-    model_internal var _doValidationCacheOfEvidence : Array = null;
-    model_internal var _doValidationLastValOfEvidence : ArrayCollection;
-
-    model_internal function _doValidationForEvidence(valueIn:Object):Array
-    {
-        var value : ArrayCollection = valueIn as ArrayCollection;
-
-        if (model_internal::_doValidationCacheOfEvidence != null && model_internal::_doValidationLastValOfEvidence == value)
-           return model_internal::_doValidationCacheOfEvidence ;
-
-        _model.model_internal::_evidenceIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.isEvidenceAvailable && _internal_evidence == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "evidence is required"));
-        }
-
-        model_internal::_doValidationCacheOfEvidence = validationFailures;
-        model_internal::_doValidationLastValOfEvidence = value;
-
-        return validationFailures;
-    }
-    
-    model_internal var _doValidationCacheOfPath : Array = null;
-    model_internal var _doValidationLastValOfPath : ArrayCollection;
-
-    model_internal function _doValidationForPath(valueIn:Object):Array
-    {
-        var value : ArrayCollection = valueIn as ArrayCollection;
-
-        if (model_internal::_doValidationCacheOfPath != null && model_internal::_doValidationLastValOfPath == value)
-           return model_internal::_doValidationCacheOfPath ;
-
-        _model.model_internal::_pathIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.isPathAvailable && _internal_path == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "path is required"));
-        }
-
-        model_internal::_doValidationCacheOfPath = validationFailures;
-        model_internal::_doValidationLastValOfPath = value;
-
-        return validationFailures;
-    }
-    
 
 }
 
