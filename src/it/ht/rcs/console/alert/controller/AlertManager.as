@@ -60,6 +60,14 @@ package it.ht.rcs.console.alert.controller
       });
     }
     
+    public function newAlert(callback:Function):void
+    {     
+      console.currentDB.alert.create(Alert.defaultAlert(), function (e:ResultEvent):void {
+        var a:Alert = e.result as Alert;
+        addItem(a);
+        callback(a);
+      });
+    }
     
     public function start_counters():void
     {
