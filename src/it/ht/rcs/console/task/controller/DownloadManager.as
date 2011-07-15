@@ -3,8 +3,8 @@ package it.ht.rcs.console.task.controller
   import com.adobe.serialization.json.JSON;
   
   import it.ht.rcs.console.DB;
-  import it.ht.rcs.console.events.SessionEvent;
   import it.ht.rcs.console.controller.ItemManager;
+  import it.ht.rcs.console.events.SessionEvent;
   import it.ht.rcs.console.task.model.Task;
   
   import mx.collections.ArrayCollection;
@@ -78,9 +78,11 @@ package it.ht.rcs.console.task.controller
       }
     }
     
-    public function createTask(type:String, fileName:String):void
+    public function createTask(type:String, fileName:String, onSuccess:Function=null, onFailure:Function=null):void
     {
-      console.currentDB.task.create({type: type, file_name: fileName}, onTaskCreateResult);
+      if (onSuccess == null)
+        onSuccess = onTaskCreateResult;
+      console.currentDB.task.create({type: type, file_name: fileName}, onSuccess, onFailure);
     }
     
     public function onTaskCreateResult(e:ResultEvent):void
