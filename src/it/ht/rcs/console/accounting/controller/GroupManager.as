@@ -1,5 +1,6 @@
 package it.ht.rcs.console.accounting.controller
 {
+  import it.ht.rcs.console.DB;
   import it.ht.rcs.console.accounting.model.Group;
   import it.ht.rcs.console.accounting.model.User;
   import it.ht.rcs.console.controller.ItemManager;
@@ -24,7 +25,7 @@ package it.ht.rcs.console.accounting.controller
 
     override protected function onItemRemove(o:*):void
     { 
-      console.currentDB.group.destroy(o);
+      DB.instance.group.destroy(o);
     }
     
     override protected function onItemUpdate(e:*):void
@@ -34,13 +35,13 @@ package it.ht.rcs.console.accounting.controller
         o[e.property] = e.newValue.source;
       else
         o[e.property] = e.newValue;
-      console.currentDB.group.update(e.source, o);
+      DB.instance.group.update(e.source, o);
     }
 
     override protected function onRefresh(e:RefreshEvent):void
     {
       super.onRefresh(e);
-	    console.currentDB.group.all(onGroupIndexResult);
+	    DB.instance.group.all(onGroupIndexResult);
     }
     
     private function onGroupIndexResult(e:ResultEvent):void
@@ -54,7 +55,7 @@ package it.ht.rcs.console.accounting.controller
     
     public function removeUser(g:Group, u:User):void
     {
-      console.currentDB.group.del_user(g, u, function _():void {
+      DB.instance.group.del_user(g, u, function _():void {
         reload(g);
         UserManager.instance.reload(u);
       });
@@ -62,7 +63,7 @@ package it.ht.rcs.console.accounting.controller
     
     public function addUser(g:Group, u:User):void
     {
-      console.currentDB.group.add_user(g, u, function _():void {
+      DB.instance.group.add_user(g, u, function _():void {
         reload(g);
         UserManager.instance.reload(u);
       });
@@ -70,7 +71,7 @@ package it.ht.rcs.console.accounting.controller
     
     public function reload(g:Group):void
     {
-      console.currentDB.group.show(g._id, function (e:ResultEvent):void {
+      DB.instance.group.show(g._id, function (e:ResultEvent):void {
         g.name = e.result.name;
         g.user_ids = e.result.user_ids;
       });
@@ -78,7 +79,7 @@ package it.ht.rcs.console.accounting.controller
     
     public function newGroup(callback:Function):void
     {
-      console.currentDB.group.create(Group.defaultGroup(), function _(e:ResultEvent):void {
+      DB.instance.group.create(Group.defaultGroup(), function _(e:ResultEvent):void {
         var g:Group = e.result as Group;
         addItem(g);
         callback(g);
@@ -99,7 +100,7 @@ package it.ht.rcs.console.accounting.controller
     
     public function setalertGroup(g:Group):void
     {
-      console.currentDB.group.alert(g);
+      DB.instance.group.alert(g);
       if (g != null) 
         g.alert = true;
     }

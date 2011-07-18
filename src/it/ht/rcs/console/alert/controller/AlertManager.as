@@ -4,6 +4,7 @@ package it.ht.rcs.console.alert.controller
   import flash.events.TimerEvent;
   import flash.utils.Timer;
   
+  import it.ht.rcs.console.DB;
   import it.ht.rcs.console.alert.model.Alert;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.events.RefreshEvent;
@@ -36,7 +37,7 @@ package it.ht.rcs.console.alert.controller
     
     override protected function onItemRemove(o:*):void
     { 
-      console.currentDB.alert.destroy(o);
+      DB.instance.alert.destroy(o);
     }
     
     override protected function onItemUpdate(e:*):void
@@ -46,13 +47,13 @@ package it.ht.rcs.console.alert.controller
         o[e.property] = e.newValue.source;
       else
         o[e.property] = e.newValue;
-      console.currentDB.alert.update(e.source, o);
+      DB.instance.alert.update(e.source, o);
     }
     
     override protected function onRefresh(e:RefreshEvent):void
     {
       super.onRefresh(e);
-      console.currentDB.alert.all(onAlertIndexResult);
+      DB.instance.alert.all(onAlertIndexResult);
     }
     
     private function onAlertIndexResult(e:ResultEvent):void
@@ -74,7 +75,7 @@ package it.ht.rcs.console.alert.controller
     
     public function newAlert(callback:Function):void
     {     
-      console.currentDB.alert.create(Alert.defaultAlert(), function (e:ResultEvent):void {
+      DB.instance.alert.create(Alert.defaultAlert(), function (e:ResultEvent):void {
         var a:Alert = e.result as Alert;
         addItem(a);
         callback(a);
@@ -107,7 +108,7 @@ package it.ht.rcs.console.alert.controller
     {
       trace(_classname + ' -- Refresh Counters');
       
-      console.currentDB.alert.counters(onAlertCounters);
+      DB.instance.alert.counters(onAlertCounters);
     }
     
     // TODO: refactor the baloon outside the manager !!!!
