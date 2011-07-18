@@ -33,7 +33,6 @@ package it.ht.rcs.console.task.controller
     
     private function onTaskIndexResult(e:ResultEvent):void
     {
-      trace(_classname + ' (onTaskIndexResult) e.result = ' + e.result);
       var items:ArrayCollection = e.result as ArrayCollection;
       _items.removeAll();
       
@@ -100,15 +99,13 @@ package it.ht.rcs.console.task.controller
     public function addTask(t:DownloadTask):void
     {
       addItem(t);
-      active = _items.length > 0;
+      if (_items.length > 0) active = true;
     }
     
     public function removeTask(t:DownloadTask):void
     {
       removeItem(t);
-      active = _items.length > 0;
+      if (_items.length > 0) active = true;
     }
-    
   }
-  
 }
