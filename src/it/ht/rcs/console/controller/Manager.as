@@ -49,8 +49,6 @@ package it.ht.rcs.console.controller
       trace(_classname + ' (manager) -- Start');
       /* react to the global refresh event */
       FlexGlobals.topLevelApplication.addEventListener(RefreshEvent.REFRESH, onRefresh);
-      /* always get new data upon startup */
-      onRefresh(null);
     }
     
     public function stop():void

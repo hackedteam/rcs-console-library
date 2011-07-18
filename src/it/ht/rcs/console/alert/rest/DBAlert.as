@@ -11,6 +11,7 @@ package it.ht.rcs.console.alert.rest
   
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.alert.model.Alert;
+  import it.ht.rcs.console.alert.model.AlertLog;
   
   import mx.rpc.CallResponder;
 
@@ -66,6 +67,18 @@ public class DBAlert extends _Super_DBAlert implements IDBAlert
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
       resp.token = counters_();
+    }
+    
+    public function destroy_log(alert:Alert, log:AlertLog, onResult:Function = null, onFault:Function = null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = destroy_log_(JSON.encode({_id: alert._id, log: {_id: log._id}}))
+    }
+    
+    public function destroy_all_logs(alert:Alert, onResult:Function = null, onFault:Function = null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = destroy_all_logs_(JSON.encode({_id: alert._id}))
     }
 }
 

@@ -15,6 +15,8 @@ package it.ht.rcs.console.alert.model
 
 import com.adobe.fiber.core.model_internal;
 
+import it.ht.rcs.console.alert.controller.AlertLogManager;
+
 public class Alert extends _Super_Alert
 {
     /** 
@@ -47,6 +49,8 @@ public class Alert extends _Super_Alert
      *
      **/    
     
+    public var logmanager:AlertLogManager;
+    
     public static function defaultAlert():Object
     {
       return {
@@ -74,6 +78,10 @@ public class Alert extends _Super_Alert
         action = data.action;
         logs = data.logs;
       }
+      
+      /* attach the submanager for the logs list */
+      if (logs != null)
+        logmanager = new AlertLogManager(this, logs);
     }
 }
 
