@@ -87,13 +87,6 @@ package it.ht.rcs.console.accounting.model
       }
     }
 
-    /*
-    public function toHash():Object
-    {
-      return {enabled: enabled, name: name, contact: contact, desc: desc, privs: privs.source, locale: locale, group_ids: group_ids.source, timezone: timezone};
-    }
-    */
-
     public function is_admin():Boolean
     {
       return privs.getItemIndex('ADMIN') != -1;

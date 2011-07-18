@@ -10,6 +10,10 @@ package it.ht.rcs.console.alert.controller
   import it.ht.rcs.console.utils.CounterBaloon;
   
   import mx.collections.ArrayCollection;
+  import mx.collections.ISort;
+  import mx.collections.ListCollectionView;
+  import mx.collections.Sort;
+  import mx.collections.SortField;
   import mx.core.FlexGlobals;
   import mx.rpc.events.ResultEvent;
   
@@ -58,6 +62,14 @@ package it.ht.rcs.console.alert.controller
       items.source.forEach(function _(element:*, index:int, arr:Array):void {
         addItem(element as Alert);
       });
+    }
+    
+    override public function getView(sortCriteria:ISort=null, filterFunction:Function=null):ListCollectionView
+    {
+      /* sorting by time */
+      var sort:Sort = new Sort();
+      sort.fields = [new SortField('_id', true, false, true)];
+      return super.getView(sort);
     }
     
     public function newAlert(callback:Function):void
