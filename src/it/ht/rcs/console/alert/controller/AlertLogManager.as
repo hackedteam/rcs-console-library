@@ -21,14 +21,12 @@ package it.ht.rcs.console.alert.controller
     
     override protected function onItemRemove(o:*):void
     { 
-      //console.currentDB.alert.destroy_log(_owner, o);
-      trace('remove')
+      console.currentDB.alert.destroy_log(_owner, o);
     }
     
     override protected function onReset():void
     {
-      //console.currentDB.alert.destroy_all_logs(_owner);
-      trace('remove all')
+      console.currentDB.alert.destroy_all_logs(_owner);
     }
     
   }

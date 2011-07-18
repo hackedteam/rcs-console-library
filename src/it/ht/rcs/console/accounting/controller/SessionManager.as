@@ -53,8 +53,6 @@ package it.ht.rcs.console.accounting.controller
     override protected function onRefresh(e:RefreshEvent):void
     {
       super.onRefresh(e);
-      
-      /* retrieve the connected users */
       console.currentDB.session.all(onSessionIndexResult);
     }
     
@@ -63,7 +61,7 @@ package it.ht.rcs.console.accounting.controller
       var items:ArrayCollection = e.result as ArrayCollection;
       _items.removeAll();
       items.source.forEach(function toUserArray(element:*, index:int, arr:Array):void {
-        addItem(new Session(element));
+        addItem(element as Session);
       });
     }
     
@@ -77,17 +75,10 @@ package it.ht.rcs.console.accounting.controller
     
     override public function getView(sortCriteria:ISort=null, filterFunction:Function=null):ListCollectionView
     {
-      /* create the view for the caller */
-      var lcv:ListCollectionView = new ListCollectionView();
-      lcv.list = _items;
-      
       /* sorting by time */
       var sort:Sort = new Sort();
       sort.fields = [new SortField('time', true, false, true)];
-      lcv.sort = sort;
-      lcv.refresh();
-      
-      return lcv;
+      return super.getView(sort);
     }
     
     
@@ -140,7 +131,7 @@ package it.ht.rcs.console.accounting.controller
       /* this is for DEMO purpose only, no database will be contacted, all the data are fake */
       if (user == 'demo' && pass == '' && server == 'demo') {
         console.currentDB = new DB(server, notifier, new I18N(), true);
-        trace('Account.login -- DEMO MODE');
+        trace('SessionManager.login -- DEMO MODE');
       } else {
         console.currentDB = new DB(server, notifier, new I18N());
       }
