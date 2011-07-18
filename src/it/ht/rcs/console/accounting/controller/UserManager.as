@@ -1,5 +1,6 @@
 package it.ht.rcs.console.accounting.controller
 {
+  import it.ht.rcs.console.DB;
   import it.ht.rcs.console.accounting.model.User;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.events.RefreshEvent;
@@ -29,7 +30,7 @@ package it.ht.rcs.console.accounting.controller
     
     override protected function onItemRemove(o:*):void
     { 
-      console.currentDB.user.destroy(o);
+      DB.instance.user.destroy(o);
     }
     
     override protected function onItemUpdate(e:*):void
@@ -39,7 +40,7 @@ package it.ht.rcs.console.accounting.controller
         o[e.property] = e.newValue.source;
       else
         o[e.property] = e.newValue;
-      console.currentDB.user.update(e.source, o);
+      DB.instance.user.update(e.source, o);
     }
     
     override protected function onRefresh(e:RefreshEvent):void
@@ -47,7 +48,7 @@ package it.ht.rcs.console.accounting.controller
       super.onRefresh(e);
       
       /* system users */
-      console.currentDB.user.all(onUserIndexResult);
+      DB.instance.user.all(onUserIndexResult);
     }
     
     public function onUserIndexResult(e:ResultEvent):void
@@ -61,7 +62,7 @@ package it.ht.rcs.console.accounting.controller
     
     public function reload(u:User):void
     {
-      console.currentDB.user.show(u._id, function (e:ResultEvent):void {
+      DB.instance.user.show(u._id, function (e:ResultEvent):void {
         u.enabled = e.result.enabled;
         u.name = e.result.name;
         u.pass = e.result.pass;
@@ -76,7 +77,7 @@ package it.ht.rcs.console.accounting.controller
       
     public function newUser(callback:Function):void
     {     
-      console.currentDB.user.create(User.defaultUser(), function (e:ResultEvent):void {
+      DB.instance.user.create(User.defaultUser(), function (e:ResultEvent):void {
         var u:User = e.result as User;
         addItem(u);
         callback(u);
@@ -85,14 +86,14 @@ package it.ht.rcs.console.accounting.controller
     
     public function changePassword(user:User, password:String):void
     {
-      console.currentDB.user.update(user, {pass: password}, function (e:ResultEvent):void {
+      DB.instance.user.update(user, {pass: password}, function (e:ResultEvent):void {
         AlertPopUp.show(ResourceManager.getInstance().getString('localized_main', 'PASSWORD_CHANGED'));
       });
     }
     
     public function update(user:User, properties:Object):void
     {
-      console.currentDB.user.update(user, properties);
+      DB.instance.user.update(user, properties);
     }
 
   }

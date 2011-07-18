@@ -79,9 +79,16 @@ public class Alert extends _Super_Alert
         logs = data.logs;
       }
       
+    }
+    
+    override public function set logs(value:*) : void
+    {
+      super.logs = value;
+      
       /* attach the submanager for the logs list */
       if (logs != null)
         logmanager = new AlertLogManager(this, logs);
+      
     }
 }
 

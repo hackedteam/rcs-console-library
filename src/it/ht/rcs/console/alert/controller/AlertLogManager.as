@@ -4,6 +4,7 @@ package it.ht.rcs.console.alert.controller
   import flash.events.TimerEvent;
   import flash.utils.Timer;
   
+  import it.ht.rcs.console.DB;
   import it.ht.rcs.console.alert.model.Alert;
   import it.ht.rcs.console.controller.SubManager;
   
@@ -21,14 +22,12 @@ package it.ht.rcs.console.alert.controller
     
     override protected function onItemRemove(o:*):void
     { 
-      //console.currentDB.alert.destroy_log(_owner, o);
-      trace('remove')
+      DB.instance.alert.destroy_log(_owner, o);
     }
     
     override protected function onReset():void
     {
-      //console.currentDB.alert.destroy_all_logs(_owner);
-      trace('remove all')
+      DB.instance.alert.destroy_all_logs(_owner);
     }
     
   }

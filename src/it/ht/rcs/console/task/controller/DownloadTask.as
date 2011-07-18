@@ -49,7 +49,7 @@ package it.ht.rcs.console.task.controller
     public function factory(type:String, fileName:String):DownloadTask
     {
       var task: Task;
-      console.currentDB.task.create({type: type, file_name: fileName}, function(e:ResultEvent):void {
+      DB.instance.task.create({type: type, file_name: fileName}, function(e:ResultEvent):void {
         task = e.result as Task;
       });
       
