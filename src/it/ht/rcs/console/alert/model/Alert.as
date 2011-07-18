@@ -54,8 +54,9 @@ public class Alert extends _Super_Alert
         enabled: false,
         suppression: 600,
         keywords: '',
-        priority: 0,
-        type: 'LOG'
+        tag: 0,
+        type: 'LOG',
+        action: 'EVIDENCE'
       };
     }
     
@@ -66,10 +67,11 @@ public class Alert extends _Super_Alert
         enabled = data.enabled;
         suppression = data.suppression;
         keywords = data.keywords;
-        priority = data.priority;
+        tag = data.tag;
         path = data.path;
         evidence = data.evidence;
         type = data.type;
+        action = data.action;
         logs = data.logs;
       }
     }

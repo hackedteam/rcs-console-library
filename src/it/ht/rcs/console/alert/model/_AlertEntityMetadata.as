@@ -24,14 +24,14 @@ internal class _AlertEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("suppression", "enabled", "updated_at", "keywords", "logs", "priority", "evidence", "path", "created_at", "user_id", "type", "_id");
+    model_internal static var allProperties:Array = new Array("enabled", "keywords", "logs", "evidence", "type", "suppression", "updated_at", "_id", "tag", "action", "path", "created_at", "user_id");
     model_internal static var allAssociationProperties:Array = new Array();
-    model_internal static var allRequiredProperties:Array = new Array("logs", "_id");
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("suppression", "enabled", "updated_at", "keywords", "logs", "priority", "evidence", "path", "created_at", "user_id", "type", "_id");
+    model_internal static var allRequiredProperties:Array = new Array("action");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("enabled", "keywords", "logs", "evidence", "type", "suppression", "updated_at", "_id", "tag", "action", "path", "created_at", "user_id");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("suppression", "enabled", "updated_at", "keywords", "logs", "priority", "evidence", "path", "created_at", "user_id", "type", "_id");
+    model_internal static var dataProperties:Array = new Array("enabled", "keywords", "logs", "evidence", "type", "suppression", "updated_at", "_id", "tag", "action", "path", "created_at", "user_id");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("suppression", "enabled", "updated_at", "keywords", "logs", "priority", "evidence", "path", "created_at", "user_id", "type", "_id");
+    model_internal static var nonDerivedProperties:Array = new Array("enabled", "keywords", "logs", "evidence", "type", "suppression", "updated_at", "_id", "tag", "action", "path", "created_at", "user_id");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array("logs", "path");
     model_internal static var collectionBaseMap:Object;
@@ -41,15 +41,10 @@ internal class _AlertEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
     model_internal static var propertyTypeMap:Object;
 
     
-    model_internal var _logsIsValid:Boolean;
-    model_internal var _logsValidator:com.adobe.fiber.styles.StyleValidator;
-    model_internal var _logsIsValidCacheInitialized:Boolean = false;
-    model_internal var _logsValidationFailureMessages:Array;
-    
-    model_internal var __idIsValid:Boolean;
-    model_internal var __idValidator:com.adobe.fiber.styles.StyleValidator;
-    model_internal var __idIsValidCacheInitialized:Boolean = false;
-    model_internal var __idValidationFailureMessages:Array;
+    model_internal var _actionIsValid:Boolean;
+    model_internal var _actionValidator:com.adobe.fiber.styles.StyleValidator;
+    model_internal var _actionIsValidCacheInitialized:Boolean = false;
+    model_internal var _actionValidationFailureMessages:Array;
 
     model_internal var _instance:_Super_Alert;
     model_internal static var _nullStyle:com.adobe.fiber.styles.Style = new com.adobe.fiber.styles.Style();
@@ -61,51 +56,48 @@ internal class _AlertEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
         {
             // dependents map
             model_internal::dependentsOnMap = new Object();
-            model_internal::dependentsOnMap["suppression"] = new Array();
             model_internal::dependentsOnMap["enabled"] = new Array();
-            model_internal::dependentsOnMap["updated_at"] = new Array();
             model_internal::dependentsOnMap["keywords"] = new Array();
             model_internal::dependentsOnMap["logs"] = new Array();
-            model_internal::dependentsOnMap["priority"] = new Array();
             model_internal::dependentsOnMap["evidence"] = new Array();
+            model_internal::dependentsOnMap["type"] = new Array();
+            model_internal::dependentsOnMap["suppression"] = new Array();
+            model_internal::dependentsOnMap["updated_at"] = new Array();
+            model_internal::dependentsOnMap["_id"] = new Array();
+            model_internal::dependentsOnMap["tag"] = new Array();
+            model_internal::dependentsOnMap["action"] = new Array();
             model_internal::dependentsOnMap["path"] = new Array();
             model_internal::dependentsOnMap["created_at"] = new Array();
             model_internal::dependentsOnMap["user_id"] = new Array();
-            model_internal::dependentsOnMap["type"] = new Array();
-            model_internal::dependentsOnMap["_id"] = new Array();
 
             // collection base map
             model_internal::collectionBaseMap = new Object();
             model_internal::collectionBaseMap["logs"] = "it.ht.rcs.console.alert.model.AlertLog";
-            model_internal::collectionBaseMap["path"] = "int";
+            model_internal::collectionBaseMap["path"] = "String";
         }
 
         // Property type Map
         model_internal::propertyTypeMap = new Object();
-        model_internal::propertyTypeMap["suppression"] = "int";
         model_internal::propertyTypeMap["enabled"] = "Boolean";
-        model_internal::propertyTypeMap["updated_at"] = "String";
         model_internal::propertyTypeMap["keywords"] = "String";
         model_internal::propertyTypeMap["logs"] = "ArrayCollection";
-        model_internal::propertyTypeMap["priority"] = "int";
         model_internal::propertyTypeMap["evidence"] = "String";
+        model_internal::propertyTypeMap["type"] = "String";
+        model_internal::propertyTypeMap["suppression"] = "int";
+        model_internal::propertyTypeMap["updated_at"] = "String";
+        model_internal::propertyTypeMap["_id"] = "String";
+        model_internal::propertyTypeMap["tag"] = "int";
+        model_internal::propertyTypeMap["action"] = "String";
         model_internal::propertyTypeMap["path"] = "ArrayCollection";
         model_internal::propertyTypeMap["created_at"] = "String";
         model_internal::propertyTypeMap["user_id"] = "String";
-        model_internal::propertyTypeMap["type"] = "String";
-        model_internal::propertyTypeMap["_id"] = "Object";
 
         model_internal::_instance = value;
-        model_internal::_logsValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForLogs);
-        model_internal::_logsValidator.required = true;
-        model_internal::_logsValidator.requiredFieldError = "logs is required";
-        //model_internal::_logsValidator.source = model_internal::_instance;
-        //model_internal::_logsValidator.property = "logs";
-        model_internal::__idValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationFor_id);
-        model_internal::__idValidator.required = true;
-        model_internal::__idValidator.requiredFieldError = "_id is required";
-        //model_internal::__idValidator.source = model_internal::_instance;
-        //model_internal::__idValidator.property = "_id";
+        model_internal::_actionValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForAction);
+        model_internal::_actionValidator.required = true;
+        model_internal::_actionValidator.requiredFieldError = "action is required";
+        //model_internal::_actionValidator.source = model_internal::_instance;
+        //model_internal::_actionValidator.property = "action";
     }
 
     override public function getEntityName():String
@@ -333,19 +325,7 @@ internal class _AlertEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
     }
 
     [Bindable(event="propertyChange")]
-    public function get isSuppressionAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get isEnabledAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get isUpdated_atAvailable():Boolean
     {
         return true;
     }
@@ -363,13 +343,43 @@ internal class _AlertEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
     }
 
     [Bindable(event="propertyChange")]
-    public function get isPriorityAvailable():Boolean
+    public function get isEvidenceAvailable():Boolean
     {
         return true;
     }
 
     [Bindable(event="propertyChange")]
-    public function get isEvidenceAvailable():Boolean
+    public function get isTypeAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isSuppressionAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isUpdated_atAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get is_idAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isTagAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isActionAvailable():Boolean
     {
         return true;
     }
@@ -392,36 +402,16 @@ internal class _AlertEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
         return true;
     }
 
-    [Bindable(event="propertyChange")]
-    public function get isTypeAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get is_idAvailable():Boolean
-    {
-        return true;
-    }
-
 
     /**
      * derived property recalculation
      */
-    public function invalidateDependentOnLogs():void
+    public function invalidateDependentOnAction():void
     {
-        if (model_internal::_logsIsValidCacheInitialized )
+        if (model_internal::_actionIsValidCacheInitialized )
         {
-            model_internal::_instance.model_internal::_doValidationCacheOfLogs = null;
-            model_internal::calculateLogsIsValid();
-        }
-    }
-    public function invalidateDependentOn_id():void
-    {
-        if (model_internal::__idIsValidCacheInitialized )
-        {
-            model_internal::_instance.model_internal::_doValidationCacheOf_id = null;
-            model_internal::calculate_idIsValid();
+            model_internal::_instance.model_internal::_doValidationCacheOfAction = null;
+            model_internal::calculateActionIsValid();
         }
     }
 
@@ -431,19 +421,7 @@ internal class _AlertEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
     }
 
     [Bindable(event="propertyChange")]   
-    public function get suppressionStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
     public function get enabledStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get updated_atStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
@@ -460,39 +438,81 @@ internal class _AlertEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
         return model_internal::_nullStyle;
     }
 
-    public function get logsValidator() : StyleValidator
+    [Bindable(event="propertyChange")]   
+    public function get evidenceStyle():com.adobe.fiber.styles.Style
     {
-        return model_internal::_logsValidator;
+        return model_internal::_nullStyle;
     }
 
-    model_internal function set _logsIsValid_der(value:Boolean):void 
+    [Bindable(event="propertyChange")]   
+    public function get typeStyle():com.adobe.fiber.styles.Style
     {
-        var oldValue:Boolean = model_internal::_logsIsValid;         
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get suppressionStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get updated_atStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get _idStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get tagStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get actionStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    public function get actionValidator() : StyleValidator
+    {
+        return model_internal::_actionValidator;
+    }
+
+    model_internal function set _actionIsValid_der(value:Boolean):void 
+    {
+        var oldValue:Boolean = model_internal::_actionIsValid;         
         if (oldValue !== value)
         {
-            model_internal::_logsIsValid = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "logsIsValid", oldValue, value));
+            model_internal::_actionIsValid = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "actionIsValid", oldValue, value));
         }                             
     }
 
     [Bindable(event="propertyChange")]
-    public function get logsIsValid():Boolean
+    public function get actionIsValid():Boolean
     {
-        if (!model_internal::_logsIsValidCacheInitialized)
+        if (!model_internal::_actionIsValidCacheInitialized)
         {
-            model_internal::calculateLogsIsValid();
+            model_internal::calculateActionIsValid();
         }
 
-        return model_internal::_logsIsValid;
+        return model_internal::_actionIsValid;
     }
 
-    model_internal function calculateLogsIsValid():void
+    model_internal function calculateActionIsValid():void
     {
-        var valRes:ValidationResultEvent = model_internal::_logsValidator.validate(model_internal::_instance.logs)
-        model_internal::_logsIsValid_der = (valRes.results == null);
-        model_internal::_logsIsValidCacheInitialized = true;
+        var valRes:ValidationResultEvent = model_internal::_actionValidator.validate(model_internal::_instance.action)
+        model_internal::_actionIsValid_der = (valRes.results == null);
+        model_internal::_actionIsValidCacheInitialized = true;
         if (valRes.results == null)
-             model_internal::logsValidationFailureMessages_der = emptyArray;
+             model_internal::actionValidationFailureMessages_der = emptyArray;
         else
         {
             var _valFailures:Array = new Array();
@@ -500,22 +520,22 @@ internal class _AlertEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
             {
                 _valFailures.push(valRes.results[a].errorMessage);
             }
-            model_internal::logsValidationFailureMessages_der = _valFailures;
+            model_internal::actionValidationFailureMessages_der = _valFailures;
         }
     }
 
     [Bindable(event="propertyChange")]
-    public function get logsValidationFailureMessages():Array
+    public function get actionValidationFailureMessages():Array
     {
-        if (model_internal::_logsValidationFailureMessages == null)
-            model_internal::calculateLogsIsValid();
+        if (model_internal::_actionValidationFailureMessages == null)
+            model_internal::calculateActionIsValid();
 
-        return _logsValidationFailureMessages;
+        return _actionValidationFailureMessages;
     }
 
-    model_internal function set logsValidationFailureMessages_der(value:Array) : void
+    model_internal function set actionValidationFailureMessages_der(value:Array) : void
     {
-        var oldValue:Array = model_internal::_logsValidationFailureMessages;
+        var oldValue:Array = model_internal::_actionValidationFailureMessages;
 
         var needUpdate : Boolean = false;
         if (oldValue == null)
@@ -543,8 +563,8 @@ internal class _AlertEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
 
         if (needUpdate)
         {
-            model_internal::_logsValidationFailureMessages = value;   
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "logsValidationFailureMessages", oldValue, value));
+            model_internal::_actionValidationFailureMessages = value;   
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "actionValidationFailureMessages", oldValue, value));
             // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
             // the entire entity.
             if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
@@ -552,18 +572,6 @@ internal class _AlertEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
                 model_internal::_instance.model_internal::isValid_der = model_internal::_instance.model_internal::calculateIsValid();
             }
         }
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get priorityStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get evidenceStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
     }
 
     [Bindable(event="propertyChange")]   
@@ -582,112 +590,6 @@ internal class _AlertEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
     public function get user_idStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get typeStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get _idStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    public function get _idValidator() : StyleValidator
-    {
-        return model_internal::__idValidator;
-    }
-
-    model_internal function set __idIsValid_der(value:Boolean):void 
-    {
-        var oldValue:Boolean = model_internal::__idIsValid;         
-        if (oldValue !== value)
-        {
-            model_internal::__idIsValid = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "_idIsValid", oldValue, value));
-        }                             
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get _idIsValid():Boolean
-    {
-        if (!model_internal::__idIsValidCacheInitialized)
-        {
-            model_internal::calculate_idIsValid();
-        }
-
-        return model_internal::__idIsValid;
-    }
-
-    model_internal function calculate_idIsValid():void
-    {
-        var valRes:ValidationResultEvent = model_internal::__idValidator.validate(model_internal::_instance._id)
-        model_internal::__idIsValid_der = (valRes.results == null);
-        model_internal::__idIsValidCacheInitialized = true;
-        if (valRes.results == null)
-             model_internal::_idValidationFailureMessages_der = emptyArray;
-        else
-        {
-            var _valFailures:Array = new Array();
-            for (var a:int = 0 ; a<valRes.results.length ; a++)
-            {
-                _valFailures.push(valRes.results[a].errorMessage);
-            }
-            model_internal::_idValidationFailureMessages_der = _valFailures;
-        }
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get _idValidationFailureMessages():Array
-    {
-        if (model_internal::__idValidationFailureMessages == null)
-            model_internal::calculate_idIsValid();
-
-        return __idValidationFailureMessages;
-    }
-
-    model_internal function set _idValidationFailureMessages_der(value:Array) : void
-    {
-        var oldValue:Array = model_internal::__idValidationFailureMessages;
-
-        var needUpdate : Boolean = false;
-        if (oldValue == null)
-            needUpdate = true;
-    
-        // avoid firing the event when old and new value are different empty arrays
-        if (!needUpdate && (oldValue !== value && (oldValue.length > 0 || value.length > 0)))
-        {
-            if (oldValue.length == value.length)
-            {
-                for (var a:int=0; a < oldValue.length; a++)
-                {
-                    if (oldValue[a] !== value[a])
-                    {
-                        needUpdate = true;
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                needUpdate = true;
-            }
-        }
-
-        if (needUpdate)
-        {
-            model_internal::__idValidationFailureMessages = value;   
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "_idValidationFailureMessages", oldValue, value));
-            // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
-            // the entire entity.
-            if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
-            {
-                model_internal::_instance.model_internal::isValid_der = model_internal::_instance.model_internal::calculateIsValid();
-            }
-        }
     }
 
 
@@ -715,13 +617,9 @@ internal class _AlertEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
      {
          switch(propertyName)
          {
-            case("logs"):
+            case("action"):
             {
-                return logsValidationFailureMessages;
-            }
-            case("_id"):
-            {
-                return _idValidationFailureMessages;
+                return actionValidationFailureMessages;
             }
             default:
             {

@@ -13,7 +13,6 @@ import flash.events.EventDispatcher;
 import it.ht.rcs.console.alert.model.AlertLog;
 import mx.binding.utils.ChangeWatcher;
 import mx.collections.ArrayCollection;
-import mx.events.CollectionEvent;
 import mx.events.PropertyChangeEvent;
 import mx.validators.ValidationResult;
 
@@ -54,19 +53,20 @@ public class _Super_Alert extends flash.events.EventDispatcher implements com.ad
     /**
      * properties
      */
-    private var _internal_suppression : int;
     private var _internal_enabled : Boolean;
-    private var _internal_updated_at : String;
     private var _internal_keywords : String;
     private var _internal_logs : ArrayCollection;
     model_internal var _internal_logs_leaf:it.ht.rcs.console.alert.model.AlertLog;
-    private var _internal_priority : int;
     private var _internal_evidence : String;
+    private var _internal_type : String;
+    private var _internal_suppression : int;
+    private var _internal_updated_at : String;
+    private var _internal__id : String;
+    private var _internal_tag : int;
+    private var _internal_action : String;
     private var _internal_path : ArrayCollection;
     private var _internal_created_at : String;
     private var _internal_user_id : String;
-    private var _internal_type : String;
-    private var _internal__id : Object;
 
     private static var emptyArray:Array = new Array();
 
@@ -83,8 +83,7 @@ public class _Super_Alert extends flash.events.EventDispatcher implements com.ad
         _model = new _AlertEntityMetadata(this);
 
         // Bind to own data or source properties for cache invalidation triggering
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "logs", model_internal::setterListenerLogs));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "_id", model_internal::setterListener_id));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "action", model_internal::setterListenerAction));
 
     }
 
@@ -93,21 +92,9 @@ public class _Super_Alert extends flash.events.EventDispatcher implements com.ad
      */
 
     [Bindable(event="propertyChange")]
-    public function get suppression() : int
-    {
-        return _internal_suppression;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get enabled() : Boolean
     {
         return _internal_enabled;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get updated_at() : String
-    {
-        return _internal_updated_at;
     }
 
     [Bindable(event="propertyChange")]
@@ -123,15 +110,45 @@ public class _Super_Alert extends flash.events.EventDispatcher implements com.ad
     }
 
     [Bindable(event="propertyChange")]
-    public function get priority() : int
-    {
-        return _internal_priority;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get evidence() : String
     {
         return _internal_evidence;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get type() : String
+    {
+        return _internal_type;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get suppression() : int
+    {
+        return _internal_suppression;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get updated_at() : String
+    {
+        return _internal_updated_at;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get _id() : String
+    {
+        return _internal__id;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get tag() : int
+    {
+        return _internal_tag;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get action() : String
+    {
+        return _internal_action;
     }
 
     [Bindable(event="propertyChange")]
@@ -152,18 +169,6 @@ public class _Super_Alert extends flash.events.EventDispatcher implements com.ad
         return _internal_user_id;
     }
 
-    [Bindable(event="propertyChange")]
-    public function get type() : String
-    {
-        return _internal_type;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get _id() : Object
-    {
-        return _internal__id;
-    }
-
     public function clearAssociations() : void
     {
     }
@@ -172,16 +177,6 @@ public class _Super_Alert extends flash.events.EventDispatcher implements com.ad
      * data/source property setters
      */
 
-    public function set suppression(value:int) : void
-    {
-        var oldValue:int = _internal_suppression;
-        if (oldValue !== value)
-        {
-            _internal_suppression = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "suppression", oldValue, _internal_suppression));
-        }
-    }
-
     public function set enabled(value:Boolean) : void
     {
         var oldValue:Boolean = _internal_enabled;
@@ -189,16 +184,6 @@ public class _Super_Alert extends flash.events.EventDispatcher implements com.ad
         {
             _internal_enabled = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "enabled", oldValue, _internal_enabled));
-        }
-    }
-
-    public function set updated_at(value:String) : void
-    {
-        var oldValue:String = _internal_updated_at;
-        if (oldValue !== value)
-        {
-            _internal_updated_at = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "updated_at", oldValue, _internal_updated_at));
         }
     }
 
@@ -237,16 +222,6 @@ public class _Super_Alert extends flash.events.EventDispatcher implements com.ad
         }
     }
 
-    public function set priority(value:int) : void
-    {
-        var oldValue:int = _internal_priority;
-        if (oldValue !== value)
-        {
-            _internal_priority = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "priority", oldValue, _internal_priority));
-        }
-    }
-
     public function set evidence(value:String) : void
     {
         var oldValue:String = _internal_evidence;
@@ -254,6 +229,66 @@ public class _Super_Alert extends flash.events.EventDispatcher implements com.ad
         {
             _internal_evidence = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "evidence", oldValue, _internal_evidence));
+        }
+    }
+
+    public function set type(value:String) : void
+    {
+        var oldValue:String = _internal_type;
+        if (oldValue !== value)
+        {
+            _internal_type = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "type", oldValue, _internal_type));
+        }
+    }
+
+    public function set suppression(value:int) : void
+    {
+        var oldValue:int = _internal_suppression;
+        if (oldValue !== value)
+        {
+            _internal_suppression = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "suppression", oldValue, _internal_suppression));
+        }
+    }
+
+    public function set updated_at(value:String) : void
+    {
+        var oldValue:String = _internal_updated_at;
+        if (oldValue !== value)
+        {
+            _internal_updated_at = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "updated_at", oldValue, _internal_updated_at));
+        }
+    }
+
+    public function set _id(value:String) : void
+    {
+        var oldValue:String = _internal__id;
+        if (oldValue !== value)
+        {
+            _internal__id = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "_id", oldValue, _internal__id));
+        }
+    }
+
+    public function set tag(value:int) : void
+    {
+        var oldValue:int = _internal_tag;
+        if (oldValue !== value)
+        {
+            _internal_tag = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "tag", oldValue, _internal_tag));
+        }
+    }
+
+    public function set action(value:String) : void
+    {
+        var oldValue:String = _internal_action;
+        if (oldValue !== value)
+        {
+            _internal_action = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "action", oldValue, _internal_action));
         }
     }
 
@@ -302,26 +337,6 @@ public class _Super_Alert extends flash.events.EventDispatcher implements com.ad
         }
     }
 
-    public function set type(value:String) : void
-    {
-        var oldValue:String = _internal_type;
-        if (oldValue !== value)
-        {
-            _internal_type = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "type", oldValue, _internal_type));
-        }
-    }
-
-    public function set _id(value:Object) : void
-    {
-        var oldValue:Object = _internal__id;
-        if (oldValue !== value)
-        {
-            _internal__id = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "_id", oldValue, _internal__id));
-        }
-    }
-
     /**
      * Data/source property setter listeners
      *
@@ -334,21 +349,9 @@ public class _Super_Alert extends flash.events.EventDispatcher implements com.ad
      *  - the validity of the property (and the containing entity) if the given data property is required.
      */
 
-    model_internal function setterListenerLogs(value:flash.events.Event):void
+    model_internal function setterListenerAction(value:flash.events.Event):void
     {
-        if (value is mx.events.PropertyChangeEvent)
-        {
-            if (mx.events.PropertyChangeEvent(value).newValue)
-            {
-                mx.events.PropertyChangeEvent(value).newValue.addEventListener(mx.events.CollectionEvent.COLLECTION_CHANGE, model_internal::setterListenerLogs);
-            }
-        }
-        _model.invalidateDependentOnLogs();
-    }
-
-    model_internal function setterListener_id(value:flash.events.Event):void
-    {
-        _model.invalidateDependentOn_id();
+        _model.invalidateDependentOnAction();
     }
 
 
@@ -372,15 +375,10 @@ public class _Super_Alert extends flash.events.EventDispatcher implements com.ad
         var validationFailureMessages:Array = new Array();
 
         var propertyValidity:Boolean = true;
-        if (!_model.logsIsValid)
+        if (!_model.actionIsValid)
         {
             propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_logsValidationFailureMessages);
-        }
-        if (!_model._idIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::__idValidationFailureMessages);
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_actionValidationFailureMessages);
         }
 
         model_internal::_cacheInitialized_isValid = true;
@@ -461,56 +459,29 @@ public class _Super_Alert extends flash.events.EventDispatcher implements com.ad
         }
     }
 
-    model_internal var _doValidationCacheOfLogs : Array = null;
-    model_internal var _doValidationLastValOfLogs : ArrayCollection;
+    model_internal var _doValidationCacheOfAction : Array = null;
+    model_internal var _doValidationLastValOfAction : String;
 
-    model_internal function _doValidationForLogs(valueIn:Object):Array
+    model_internal function _doValidationForAction(valueIn:Object):Array
     {
-        var value : ArrayCollection = valueIn as ArrayCollection;
+        var value : String = valueIn as String;
 
-        if (model_internal::_doValidationCacheOfLogs != null && model_internal::_doValidationLastValOfLogs == value)
-           return model_internal::_doValidationCacheOfLogs ;
+        if (model_internal::_doValidationCacheOfAction != null && model_internal::_doValidationLastValOfAction == value)
+           return model_internal::_doValidationCacheOfAction ;
 
-        _model.model_internal::_logsIsValidCacheInitialized = true;
+        _model.model_internal::_actionIsValidCacheInitialized = true;
         var validationFailures:Array = new Array();
         var errorMessage:String;
         var failure:Boolean;
 
         var valRes:ValidationResult;
-        if (_model.isLogsAvailable && _internal_logs == null)
+        if (_model.isActionAvailable && _internal_action == null)
         {
-            validationFailures.push(new ValidationResult(true, "", "", "logs is required"));
+            validationFailures.push(new ValidationResult(true, "", "", "action is required"));
         }
 
-        model_internal::_doValidationCacheOfLogs = validationFailures;
-        model_internal::_doValidationLastValOfLogs = value;
-
-        return validationFailures;
-    }
-    
-    model_internal var _doValidationCacheOf_id : Array = null;
-    model_internal var _doValidationLastValOf_id : Object;
-
-    model_internal function _doValidationFor_id(valueIn:Object):Array
-    {
-        var value : Object = valueIn as Object;
-
-        if (model_internal::_doValidationCacheOf_id != null && model_internal::_doValidationLastValOf_id == value)
-           return model_internal::_doValidationCacheOf_id ;
-
-        _model.model_internal::__idIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.is_idAvailable && _internal__id == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "_id is required"));
-        }
-
-        model_internal::_doValidationCacheOf_id = validationFailures;
-        model_internal::_doValidationLastValOf_id = value;
+        model_internal::_doValidationCacheOfAction = validationFailures;
+        model_internal::_doValidationLastValOfAction = value;
 
         return validationFailures;
     }

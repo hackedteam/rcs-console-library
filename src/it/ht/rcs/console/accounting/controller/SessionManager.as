@@ -139,7 +139,7 @@ package it.ht.rcs.console.accounting.controller
       
       /* this is for DEMO purpose only, no database will be contacted, all the data are fake */
       if (user == 'demo' && pass == '' && server == 'demo') {
-        console.currentDB = new DB(server, notifier, new I18N());
+        console.currentDB = new DB(server, notifier, new I18N(), true);
         trace('Account.login -- DEMO MODE');
       } else {
         console.currentDB = new DB(server, notifier, new I18N());
