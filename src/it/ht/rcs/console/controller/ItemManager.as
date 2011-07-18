@@ -117,6 +117,8 @@ package it.ht.rcs.console.controller
     
     public function getView(sortCriteria:ISort=null, filterFunction:Function=null):ListCollectionView
     {
+      trace(_classname + ' (itemManager) -- getView');
+      
       /* always return updated content when something requests a view */
       onRefresh(null);
       
