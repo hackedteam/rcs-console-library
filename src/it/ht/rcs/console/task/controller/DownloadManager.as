@@ -21,7 +21,10 @@ package it.ht.rcs.console.task.controller
     
     public function DownloadManager()
     {
+      super();
       trace(_classname + ' (instance) -- Init');
+      /* always get new data upon startup */
+      onRefresh(null);
     }
     
     override protected function onLoggingIn(e:SessionEvent):void

@@ -47,6 +47,8 @@ package it.ht.rcs.console.monitor.controller
     public function LicenseManager()
     {
       super();
+      /* always get new data upon startup */
+      onRefresh(null);
     }
     
     override protected function onRefresh(e:RefreshEvent):void

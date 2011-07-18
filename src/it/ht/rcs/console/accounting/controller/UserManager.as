@@ -55,7 +55,7 @@ package it.ht.rcs.console.accounting.controller
       var items:ArrayCollection = e.result as ArrayCollection;
       _items.removeAll();
       items.source.forEach(function toUserArray(element:*, index:int, arr:Array):void {
-        addItem(new User(element));
+        addItem(element as User);
       });
     }
     

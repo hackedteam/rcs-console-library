@@ -62,6 +62,14 @@ package it.ht.rcs.console.alert.rest
         onResult(event);
     }
     
+    public function destroy_log(alert:Alert, log:AlertLog, onResult:Function = null, onFault:Function = null):void
+    {
+      /* do nothing */
+    }
     
+    public function destroy_all_logs(alert:Alert, onResult:Function = null, onFault:Function = null):void
+    {
+      /* do nothing */
+    }
   }
 }

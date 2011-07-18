@@ -56,7 +56,7 @@ package it.ht.rcs.console.alert.controller
       var items:ArrayCollection = e.result as ArrayCollection;
       _items.removeAll();
       items.source.forEach(function _(element:*, index:int, arr:Array):void {
-        addItem(new Alert(element));
+        addItem(element as Alert);
       });
     }
     
