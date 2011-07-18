@@ -2,8 +2,8 @@ package it.ht.rcs.console.accounting.controller
 {
   import it.ht.rcs.console.accounting.model.Group;
   import it.ht.rcs.console.accounting.model.User;
-  import it.ht.rcs.console.events.RefreshEvent;
   import it.ht.rcs.console.controller.ItemManager;
+  import it.ht.rcs.console.events.RefreshEvent;
   
   import mx.collections.ArrayCollection;
   import mx.collections.ArrayList;
@@ -48,7 +48,7 @@ package it.ht.rcs.console.accounting.controller
       var items:ArrayCollection = e.result as ArrayCollection;
       _items.removeAll();
       items.source.forEach(function toGroupArray(element:*, index:int, arr:Array):void {
-        addItem(new Group(element));
+        addItem(element as Group);
       });
     }
     

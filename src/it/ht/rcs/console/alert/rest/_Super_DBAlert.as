@@ -78,6 +78,20 @@ internal class _Super_DBAlert extends com.adobe.fiber.services.wrapper.HTTPServi
          operation.resultType = int;
          operations.push(operation);
 
+         operation = new mx.rpc.http.Operation(null, "destroy_log_");
+         operation.url = "/alert/destroy_log";
+         operation.method = "POST";
+         operation.serializationFilter = serializer1;
+         operation.contentType = "application/xml";
+         operations.push(operation);
+
+         operation = new mx.rpc.http.Operation(null, "destroy_all_logs_");
+         operation.url = "/alert/destroy_all_logs";
+         operation.method = "POST";
+         operation.serializationFilter = serializer1;
+         operation.contentType = "application/xml";
+         operations.push(operation);
+
          _serviceControl.operationList = operations;  
 
 
@@ -197,6 +211,42 @@ internal class _Super_DBAlert extends com.adobe.fiber.services.wrapper.HTTPServi
     {
         var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("counters_");
 		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send() ;
+        return _internal_token;
+    }
+     
+    /**
+      * This method is a generated wrapper used to call the 'destroy_log_' operation. It returns an mx.rpc.AsyncToken whose 
+      * result property will be populated with the result of the operation when the server response is received. 
+      * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value. 
+      * You can then bind to CallResponder.lastResult or listen for the CallResponder.result or fault events.
+      *
+      * @see mx.rpc.AsyncToken
+      * @see mx.rpc.CallResponder 
+      *
+      * @return an mx.rpc.AsyncToken whose result property will be populated with the result of the operation when the server response is received.
+      */
+    public function destroy_log_(strXml:String) : mx.rpc.AsyncToken
+    {
+        var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("destroy_log_");
+		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(strXml) ;
+        return _internal_token;
+    }
+     
+    /**
+      * This method is a generated wrapper used to call the 'destroy_all_logs_' operation. It returns an mx.rpc.AsyncToken whose 
+      * result property will be populated with the result of the operation when the server response is received. 
+      * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value. 
+      * You can then bind to CallResponder.lastResult or listen for the CallResponder.result or fault events.
+      *
+      * @see mx.rpc.AsyncToken
+      * @see mx.rpc.CallResponder 
+      *
+      * @return an mx.rpc.AsyncToken whose result property will be populated with the result of the operation when the server response is received.
+      */
+    public function destroy_all_logs_(strXml:String) : mx.rpc.AsyncToken
+    {
+        var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("destroy_all_logs_");
+		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(strXml) ;
         return _internal_token;
     }
      

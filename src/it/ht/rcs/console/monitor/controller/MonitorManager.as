@@ -4,8 +4,8 @@ package it.ht.rcs.console.monitor.controller
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
 	
-	import it.ht.rcs.console.events.RefreshEvent;
 	import it.ht.rcs.console.controller.ItemManager;
+	import it.ht.rcs.console.events.RefreshEvent;
 	import it.ht.rcs.console.monitor.model.Status;
 	import it.ht.rcs.console.monitor.model.StatusCounters;
 	import it.ht.rcs.console.utils.CounterBaloon;
@@ -43,7 +43,7 @@ package it.ht.rcs.console.monitor.controller
       var items:ArrayCollection = e.result as ArrayCollection;
       _items.removeAll();
       items.source.forEach(function toMonitorArray(element:*, index:int, arr:Array):void {
-        addItem(new Status(element));
+        addItem(element as Status);
       });
     }
     
