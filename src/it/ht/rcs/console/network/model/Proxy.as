@@ -17,7 +17,7 @@ public class Proxy extends _Super_Proxy
       name: DB.i18n.getString('NEW_PROXY'),
       poll: false,
       port: 4444,
-      redirect: '',
+      redirect: 'auto',
       redirection_tag: '',
       rules: [],
       version: ''
