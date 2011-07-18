@@ -34,14 +34,14 @@ package it.ht.rcs.console.network.controller
     override protected function onRefresh(e:RefreshEvent):void
     {
       super.onRefresh(e);
-      console.currentDB.proxy.all(onUserIndexResult);
+      console.currentDB.proxy.all(onResult);
     }
     
-    public function onUserIndexResult(e:ResultEvent):void
+    private function onResult(e:ResultEvent):void
     {
       var items:ArrayCollection = e.result as ArrayCollection;
       _items.removeAll();
-      items.source.forEach(function toUserArray(element:*, index:int, arr:Array):void {
+      items.source.forEach(function(element:*, index:int, arr:Array):void {
         addItem(element);
       });
     }
