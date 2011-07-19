@@ -3,8 +3,8 @@ package it.ht.rcs.console.controller
   
   import flash.utils.getQualifiedClassName;
   
-  import it.ht.rcs.console.events.SessionEvent;
   import it.ht.rcs.console.events.RefreshEvent;
+  import it.ht.rcs.console.events.SessionEvent;
   
   import mx.collections.ArrayList;
   import mx.collections.ISort;

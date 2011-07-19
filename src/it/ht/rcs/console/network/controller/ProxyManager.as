@@ -1,5 +1,6 @@
 package it.ht.rcs.console.network.controller
 {
+  import it.ht.rcs.console.DB;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.events.RefreshEvent;
   import it.ht.rcs.console.network.model.Proxy;
@@ -21,20 +22,20 @@ package it.ht.rcs.console.network.controller
     
     override protected function onItemRemove(o:*):void
     {
-      console.currentDB.proxy.destroy(o._id);
+      DB.instance.proxy.destroy(o._id);
     }
     
     override protected function onItemUpdate(e:*):void
     {
       var o:Object = new Object;
       o[e.property] = e.newValue;
-      console.currentDB.proxy.update(e.source, o);
+      DB.instance.proxy.update(e.source, o);
     }
     
     override protected function onRefresh(e:RefreshEvent):void
     {
       super.onRefresh(e);
-      console.currentDB.proxy.all(onResult);
+      DB.instance.proxy.all(onResult);
     }
     
     private function onResult(e:ResultEvent):void
@@ -48,7 +49,7 @@ package it.ht.rcs.console.network.controller
     
     public function addProxy(callback:Function):void
     {
-      console.currentDB.proxy.create(Proxy.defaultProxy(), function (e:ResultEvent):void {
+      DB.instance.proxy.create(Proxy.defaultProxy(), function (e:ResultEvent):void {
         var proxy:Proxy = e.result as Proxy;
         addItem(proxy);
         callback(proxy);

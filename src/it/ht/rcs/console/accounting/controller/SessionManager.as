@@ -6,15 +6,14 @@ package it.ht.rcs.console.accounting.controller
   import flash.filesystem.FileStream;
   
   import it.ht.rcs.console.DB;
+  import it.ht.rcs.console.IFaultNotifier;
+  import it.ht.rcs.console.II18N;
   import it.ht.rcs.console.accounting.model.Session;
   import it.ht.rcs.console.accounting.model.User;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.events.RefreshEvent;
   import it.ht.rcs.console.events.SessionEvent;
   import it.ht.rcs.console.utils.AlertPopUp;
-  import it.ht.rcs.console.utils.DBFaultNotifier;
-  
-  import locale.I18N;
   
   import mx.collections.ArrayCollection;
   import mx.collections.ISort;
@@ -53,7 +52,7 @@ package it.ht.rcs.console.accounting.controller
     override protected function onRefresh(e:RefreshEvent):void
     {
       super.onRefresh(e);
-      console.currentDB.session.all(onSessionIndexResult);
+      DB.instance.session.all(onSessionIndexResult);
     }
     
     public function onSessionIndexResult(e:ResultEvent):void
@@ -70,7 +69,7 @@ package it.ht.rcs.console.accounting.controller
       _items.removeItem(u);
       
       /* disconnect call to db */
-      console.currentDB.session.destroy(u['cookie']);
+      DB.instance.session.destroy(u['cookie']);
     }
     
     override public function getView(sortCriteria:ISort=null, filterFunction:Function=null):ListCollectionView
@@ -110,37 +109,41 @@ package it.ht.rcs.console.accounting.controller
       var event:SessionEvent = new SessionEvent(SessionEvent.FORCE_LOG_OUT, false, true);
       FlexGlobals.topLevelApplication.dispatchEvent(event);
       
+      // TODO: refactor here:  console references are baaaad
+      
       /* destroy the current session */
       console.currentSession = null;
       /* request to the DB, ignoring the results */
-      if (console.currentDB != null)
-        console.currentDB.session.logout();
-      exitApplication ? FlexGlobals.topLevelApplication.exit() : FlexGlobals.topLevelApplication.currentState = console.LOGGED_OUT_STATE;
+      if (DB.instance != null)
+        DB.instance.session.logout();
       
+      exitApplication ? FlexGlobals.topLevelApplication.exit() : FlexGlobals.topLevelApplication.currentState = console.LOGGED_OUT_STATE;
     }
     
-    public function login(user:String, pass:String, server:String, callback:Function, errback:Function):void
+    public function login(user:String, pass:String, server:String, notifier:IFaultNotifier, i18n:II18N, callback:Function, errback:Function):DB
     {
       trace('SessionManager.login');
+      
+      var db:DB;
       
       this.lastUsername = user;
       this.lastServer = server;
       
-      var notifier:DBFaultNotifier = new DBFaultNotifier();
-      
       /* this is for DEMO purpose only, no database will be contacted, all the data are fake */
       if (user == 'demo' && pass == '' && server == 'demo') {
-        console.currentDB = new DB(server, notifier, new I18N(), true);
+        db = new DB(server, notifier, i18n, true);
         trace('SessionManager.login -- DEMO MODE');
       } else {
-        console.currentDB = new DB(server, notifier, new I18N());
+        db = new DB(server, notifier, i18n, false);
       }
       
       /* remember the function for the async handlers */
       _callback = callback;
       _errback = errback;
       
-      console.currentDB.session.login({user:user, pass:pass}, onLoginResult, onLoginFault);
+      db.session.login({user:user, pass:pass}, onLoginResult, onLoginFault);
+      
+      return db;
     }
     
     private function onLoginResult(e:ResultEvent):void
@@ -149,11 +152,11 @@ package it.ht.rcs.console.accounting.controller
       save_previous();
       
       /* save the current session */
-      console.currentSession = e.result as Session;
-      console.currentSession.server = lastServer;
+      var sess:Session = e.result as Session;
+      sess.server = lastServer;
       
       /* invoke the callback */
-      _callback();
+      _callback(sess);
     }
     
     private function onLoginFault(e:FaultEvent):void

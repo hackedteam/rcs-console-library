@@ -4,6 +4,7 @@ package it.ht.rcs.console.monitor.controller
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
 	
+	import it.ht.rcs.console.DB;
 	import it.ht.rcs.console.controller.ItemManager;
 	import it.ht.rcs.console.events.RefreshEvent;
 	import it.ht.rcs.console.monitor.model.Status;
@@ -35,7 +36,7 @@ package it.ht.rcs.console.monitor.controller
     override protected function onRefresh(e:RefreshEvent):void
     {
       super.onRefresh(e);
-      console.currentDB.monitor.all(onMonitorIndexResult);
+      DB.instance.monitor.all(onMonitorIndexResult);
     }
     
     private function onMonitorIndexResult(e:ResultEvent):void
@@ -49,7 +50,7 @@ package it.ht.rcs.console.monitor.controller
     
     override protected function onItemRemove(o:*):void 
     { 
-      console.currentDB.monitor.destroy(o._id);
+      DB.instance.monitor.destroy(o._id);
     }
     
     private function onAutoRefresh(e:Event):void
@@ -103,7 +104,7 @@ package it.ht.rcs.console.monitor.controller
     {
       trace(_classname + ' -- Refresh Counters');
       
-      console.currentDB.monitor.counters(onMonitorCounters);
+      DB.instance.monitor.counters(onMonitorCounters);
     }
     
     // TODO: refactor the baloon outside the manager !!!!

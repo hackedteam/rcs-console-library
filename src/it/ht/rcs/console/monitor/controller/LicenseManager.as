@@ -2,11 +2,12 @@ package it.ht.rcs.console.monitor.controller
 {
   import com.adobe.serialization.json.JSON;
   
-  import it.ht.rcs.console.events.RefreshEvent;
-  import it.ht.rcs.console.utils.CurrMaxObject;
+  import it.ht.rcs.console.DB;
   import it.ht.rcs.console.controller.Manager;
+  import it.ht.rcs.console.events.RefreshEvent;
   import it.ht.rcs.console.monitor.model.License;
   import it.ht.rcs.console.monitor.model.LicenseCount;
+  import it.ht.rcs.console.utils.CurrMaxObject;
   
   import mx.core.FlexGlobals;
   import mx.rpc.events.ResultEvent;
@@ -56,8 +57,8 @@ package it.ht.rcs.console.monitor.controller
       super.onRefresh(e);
       trace('LicenseManager -- Refresh');
       
-      console.currentDB.license.limit(onLoadLimit);
-      console.currentDB.license.count(onLoadCount);
+      DB.instance.license.limit(onLoadLimit);
+      DB.instance.license.count(onLoadCount);
     }
     
     private function onLoadLimit(e:ResultEvent):void

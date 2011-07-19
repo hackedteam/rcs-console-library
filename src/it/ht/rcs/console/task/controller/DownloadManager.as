@@ -31,12 +31,11 @@ package it.ht.rcs.console.task.controller
     {
       trace(_classname + ' (instance) -- Logging In');
       // get all available tasks
-      console.currentDB.task.all(onTaskIndexResult);
+      DB.instance.task.all(onTaskIndexResult);
     }
     
     private function onTaskIndexResult(e:ResultEvent):void
     {
-      trace(_classname + ' (onTaskIndexResult) e.result = ' + e.result);
       var items:ArrayCollection = e.result as ArrayCollection;
       _items.removeAll();
       
@@ -48,7 +47,7 @@ package it.ht.rcs.console.task.controller
     private function itemToDownloadTask(task:Object, index:int, arr:Array):void
     {
       trace(_classname + ' (itemToDownloadTask) e.result = ' + task);
-      var downloadTask:DownloadTask = new DownloadTask(task, console.currentDB);
+      var downloadTask:DownloadTask = new DownloadTask(task, DB.instance);
       addTask(downloadTask);
       downloadTask.start_update();
     }
@@ -85,7 +84,7 @@ package it.ht.rcs.console.task.controller
     {
       if (onSuccess == null)
         onSuccess = onTaskCreateResult;
-      console.currentDB.task.create({type: type, file_name: fileName}, onSuccess, onFailure);
+      DB.instance.task.create({type: type, file_name: fileName}, onSuccess, onFailure);
     }
     
     public function onTaskCreateResult(e:ResultEvent):void
@@ -103,15 +102,13 @@ package it.ht.rcs.console.task.controller
     public function addTask(t:DownloadTask):void
     {
       addItem(t);
-      active = _items.length > 0;
+      if (_items.length > 0) active = true;
     }
     
     public function removeTask(t:DownloadTask):void
     {
       removeItem(t);
-      active = _items.length > 0;
+      if (_items.length > 0) active = true;
     }
-    
   }
-  
 }
