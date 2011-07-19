@@ -57,7 +57,12 @@ package it.ht.rcs.console.controller
       /* after stop, we don't want to refresh anymore */
       FlexGlobals.topLevelApplication.removeEventListener(RefreshEvent.REFRESH, onRefresh);
     }
-
+    
+    public function refresh():void
+    {
+      onRefresh(null);
+    }
+    
     protected function onRefresh(e:RefreshEvent):void
     {
       trace(_classname + ' (manager) -- Refresh');
