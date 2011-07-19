@@ -120,7 +120,7 @@ package it.ht.rcs.console.accounting.controller
       exitApplication ? FlexGlobals.topLevelApplication.exit() : FlexGlobals.topLevelApplication.currentState = console.LOGGED_OUT_STATE;
     }
     
-    public function login(user:String, pass:String, server:String, notifier:IFaultNotifier, i18n:II18N, callback:Function, errback:Function):DB
+    public function login(user:String, pass:String, server:String, notifier:IFaultNotifier, i18n:II18N, callback:Function, errback:Function):void
     {
       trace('SessionManager.login');
       
@@ -131,19 +131,17 @@ package it.ht.rcs.console.accounting.controller
       
       /* this is for DEMO purpose only, no database will be contacted, all the data are fake */
       if (user == 'demo' && pass == '' && server == 'demo') {
-        db = new DB(server, notifier, i18n, true);
+        DB.instance.connect(server, notifier, i18n, true);
         trace('SessionManager.login -- DEMO MODE');
       } else {
-        db = new DB(server, notifier, i18n, false);
+        DB.instance.connect(server, notifier, i18n, false);
       }
       
       /* remember the function for the async handlers */
       _callback = callback;
       _errback = errback;
       
-      db.session.login({user:user, pass:pass}, onLoginResult, onLoginFault);
-      
-      return db;
+      DB.instance.session.login({user:user, pass:pass}, onLoginResult, onLoginFault);
     }
     
     private function onLoginResult(e:ResultEvent):void

@@ -1,5 +1,6 @@
 package it.ht.rcs.console.network.controller
 {
+  import it.ht.rcs.console.DB;
   import it.ht.rcs.console.controller.SubManager;
   import it.ht.rcs.console.network.model.Proxy;
   
@@ -15,7 +16,7 @@ package it.ht.rcs.console.network.controller
     
     override protected function onItemRemove(o:*):void
     { 
-      console.currentDB.proxy.del_rule(_owner, o);
+      DB.instance.proxy.del_rule(_owner, o);
     }
     
   }

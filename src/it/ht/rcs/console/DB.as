@@ -51,14 +51,20 @@ package it.ht.rcs.console
     
     private static var notifier:IFaultNotifier;
     public static var i18n:II18N;
-    public static var instance:DB;
     
-    public function DB(host:String, notifier:IFaultNotifier, i18n:II18N, demo:Boolean=false)
+    /* singleton */
+    private static var _instance:DB = new DB();
+    public static function get instance():DB { return _instance; } 
+    
+    public function DB()
+    {
+    }
+    
+    public function connect(host:String, notifier:IFaultNotifier, i18n:II18N, demo:Boolean=false):void
     {
       DB.notifier = notifier;
       DB.i18n = i18n;
       demo ? initDemo() : initRemote(host);
-      instance = this;
     }
     
     private function initRemote(host:String):void
