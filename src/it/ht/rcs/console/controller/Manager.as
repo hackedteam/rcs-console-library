@@ -60,6 +60,7 @@ package it.ht.rcs.console.controller
     
     public function refresh():void
     {
+      //trace(_classname + ' (manager) -- Explicit Refresh');
       onRefresh(null);
     }
     
