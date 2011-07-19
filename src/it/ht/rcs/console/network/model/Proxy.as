@@ -4,9 +4,12 @@ package it.ht.rcs.console.network.model
 import com.adobe.fiber.core.model_internal;
 
 import it.ht.rcs.console.DB;
+import it.ht.rcs.console.network.controller.ProxyRuleManager;
 
 public class Proxy extends _Super_Proxy
 {
+  
+  public var rulesManager:ProxyRuleManager;
   
   public static function defaultProxy():Object
   {
@@ -40,6 +43,15 @@ public class Proxy extends _Super_Proxy
       created_at = data.created_at;
       updated_at = data.updated_at;
     }
+  }
+  
+  override public function set rules(value:*):void
+  {
+    super.rules = value;
+    
+    /* attach the submanager for the rules list */
+    if (rules != null)
+      rulesManager = new ProxyRuleManager(this, rules);
   }
   
   /** 
