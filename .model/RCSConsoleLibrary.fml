@@ -258,6 +258,172 @@
     <property name="address" type="string"/>
     <property name="user" type="User"/>
   </entity>
+  <service name="DBUser">
+    <annotation name="ActionScriptGeneration">
+      <item name="ServiceType">HTTPMultiService</item>
+      <item name="Package">it.ht.rcs.console.accounting.rest</item>
+      <item name="rootURL">https://localhost:4444</item>
+    </annotation>
+    <annotation name="ServiceTypeGroup">
+      <item name="ServiceBackendType">HTTPService</item>
+    </annotation>
+    <annotation name="ServiceConfig">
+      <item name="DEFAULT_ENTITY_PACKAGE">it.ht.rcs.console.accounting.model</item>
+      <item name="LINKED_FILE"></item>
+    </annotation>
+    <function name="all_" return-type="User[]">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/user</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/user</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">enabled,timezone,updated_at,desc,_id,privs,group_ids,name,locale,created_at,contact,pass</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+      </annotation>
+    </function>
+    <function name="create_" return-type="User">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">POST</item>
+        <item name="contentType">application/xml</item>
+        <item name="requestBodyParameter">true</item>
+        <item name="url">/user</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/user</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">enabled,timezone,updated_at,desc,_id,privs,group_ids,name,locale,created_at,contact,pass</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParamNames">strXml</item>
+        <item name="inputParams">string</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="strXml" type="string"/>
+    </function>
+    <function name="destroy_" return-type="void">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.xml.XMLSerializationFilter</item>
+        <item name="method">POST</item>
+        <item name="contentType">application/xml</item>
+        <item name="requestBodyParameter">true</item>
+        <item name="url">/user/destroy</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/user/destroy</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParamNames">strXml</item>
+        <item name="inputParams">string</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="strXml" type="string"/>
+    </function>
+    <function name="show_" return-type="User">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/user/{id}</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/user/{id}</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">enabled,desc,group_ids,locale,contact,pass,not_exist,timezone,updated_at,_id,privs,name,created_at</item>
+      </annotation>
+      <annotation name="Properties">
+        <item name="urlParamNames">id</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParamNames">id</item>
+        <item name="inputParams">string</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="id" type="string"/>
+    </function>
+    <function name="update_" return-type="User">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">POST</item>
+        <item name="contentType">application/xml</item>
+        <item name="requestBodyParameter">true</item>
+        <item name="url">/user/update</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/user/update</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">enabled,desc,group_ids,locale,contact,pass,not_exist,timezone,updated_at,_id,privs,name,created_at</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParamNames">strXml</item>
+        <item name="inputParams">string</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="strXml" type="string"/>
+    </function>
+  </service>
+  <entity name="User">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">User</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBUser,DBSession</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.accounting.model</item>
+    </annotation>
+    <annotation name="all_">
+      <item name="propertySpecifier">enabled,timezone,updated_at,desc,_id,privs,group_ids,name,locale,created_at,contact,pass</item>
+    </annotation>
+    <annotation name="create_">
+      <item name="propertySpecifier">enabled,timezone,updated_at,desc,_id,privs,group_ids,name,locale,created_at,contact,pass</item>
+    </annotation>
+    <annotation name="show_">
+      <item name="propertySpecifier">enabled,desc,group_ids,locale,contact,pass,not_exist,timezone,updated_at,_id,privs,name,created_at</item>
+    </annotation>
+    <annotation name="update_">
+      <item name="propertySpecifier">enabled,desc,group_ids,locale,contact,pass,not_exist,timezone,updated_at,_id,privs,name,created_at</item>
+    </annotation>
+    <property name="enabled" type="boolean"/>
+    <property name="desc" type="string"/>
+    <property name="group_ids" type="opaque[]"/>
+    <property name="locale" type="string"/>
+    <property name="contact" type="string"/>
+    <property name="pass" type="string"/>
+    <property name="not_exist" type="string"/>
+    <property name="timezone" type="integer"/>
+    <property name="updated_at" type="string"/>
+    <property name="_id" type="string"/>
+    <property name="privs" type="string[]"/>
+    <property name="name" type="string"/>
+    <property name="created_at" type="string"/>
+  </entity>
   <service name="DBGroup">
     <annotation name="ActionScriptGeneration">
       <item name="ServiceType">HTTPMultiService</item>
@@ -1573,39 +1739,64 @@
     <property name="created_at" type="string"/>
     <property name="user_id" type="string"/>
   </entity>
-  <service name="DBUser">
+  <service name="DBOperation">
     <annotation name="ActionScriptGeneration">
       <item name="ServiceType">HTTPMultiService</item>
-      <item name="Package">it.ht.rcs.console.accounting.rest</item>
-      <item name="rootURL">https://localhost:4444</item>
+      <item name="Package">it.ht.rcs.console.operation.rest</item>
+      <item name="rootURL">http://localhost:4443</item>
     </annotation>
     <annotation name="ServiceTypeGroup">
       <item name="ServiceBackendType">HTTPService</item>
     </annotation>
     <annotation name="ServiceConfig">
-      <item name="DEFAULT_ENTITY_PACKAGE">it.ht.rcs.console.accounting.model</item>
+      <item name="DEFAULT_ENTITY_PACKAGE">it.ht.rcs.console.operation.model</item>
       <item name="LINKED_FILE"></item>
     </annotation>
-    <function name="all_" return-type="User[]">
+    <function name="all_" return-type="Operation[]">
       <annotation name="analyze group">
         <item name="analyzed">true</item>
       </annotation>
       <annotation name="ActionScriptGeneration">
         <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
         <item name="method">GET</item>
-        <item name="url">/user</item>
+        <item name="url">/operation</item>
       </annotation>
       <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/user</item>
+        <item name="completeURL">http://localhost:4443/operation</item>
       </annotation>
       <annotation name="ValidProperties">
-        <item name="propertySpecifier">enabled,timezone,updated_at,desc,_id,privs,group_ids,name,locale,created_at,contact,pass</item>
+        <item name="propertySpecifier">_kind,desc,_id,status,group_ids,name,path,stat</item>
       </annotation>
       <annotation name="original signature">
         <item name="returnType">opaque</item>
       </annotation>
     </function>
-    <function name="create_" return-type="User">
+    <function name="show_" return-type="Operation">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/operation/{id}</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">http://localhost:4443/operation/{id}</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">_kind,updated_at,desc,_id,status,group_ids,name,path,created_at,contact,stat</item>
+      </annotation>
+      <annotation name="Properties">
+        <item name="urlParamNames">id</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParamNames">id</item>
+        <item name="inputParams">string</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="id" type="string"/>
+    </function>
+    <function name="create_" return-type="Operation">
       <annotation name="analyze group">
         <item name="analyzed">true</item>
       </annotation>
@@ -1614,13 +1805,37 @@
         <item name="method">POST</item>
         <item name="contentType">application/xml</item>
         <item name="requestBodyParameter">true</item>
-        <item name="url">/user</item>
+        <item name="url">/operation</item>
       </annotation>
       <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/user</item>
+        <item name="completeURL">http://localhost:4443/operation</item>
       </annotation>
       <annotation name="ValidProperties">
-        <item name="propertySpecifier">enabled,timezone,updated_at,desc,_id,privs,group_ids,name,locale,created_at,contact,pass</item>
+        <item name="propertySpecifier">_kind,updated_at,desc,_id,status,group_ids,name,path,created_at,contact,stat</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParamNames">strXml</item>
+        <item name="inputParams">string</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="strXml" type="string"/>
+    </function>
+    <function name="update_" return-type="Operation">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">POST</item>
+        <item name="contentType">application/xml</item>
+        <item name="requestBodyParameter">true</item>
+        <item name="url">/operation/update</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">http://localhost:4443/operation/update</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">_kind,updated_at,desc,_id,status,group_ids,name,path,created_at,contact,stat</item>
       </annotation>
       <annotation name="original signature">
         <item name="inputParamNames">strXml</item>
@@ -1638,10 +1853,10 @@
         <item name="method">POST</item>
         <item name="contentType">application/xml</item>
         <item name="requestBodyParameter">true</item>
-        <item name="url">/user/destroy</item>
+        <item name="url">/operation/destroy</item>
       </annotation>
       <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/user/destroy</item>
+        <item name="completeURL">http://localhost:4443/operation/destroy</item>
       </annotation>
       <annotation name="original signature">
         <item name="inputParamNames">strXml</item>
@@ -1650,20 +1865,90 @@
       </annotation>
       <parameter name="strXml" type="string"/>
     </function>
-    <function name="show_" return-type="User">
+  </service>
+  <entity name="Operation">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Operation</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBOperation</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="all_">
+      <item name="propertySpecifier">_kind,desc,_id,status,group_ids,name,path,stat</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.operation.model</item>
+    </annotation>
+    <annotation name="create_">
+      <item name="propertySpecifier">_kind,updated_at,desc,_id,status,group_ids,name,path,created_at,contact,stat</item>
+    </annotation>
+    <annotation name="show_">
+      <item name="propertySpecifier">_kind,updated_at,desc,_id,status,group_ids,name,path,created_at,contact,stat</item>
+    </annotation>
+    <annotation name="update_">
+      <item name="propertySpecifier">_kind,updated_at,desc,_id,status,group_ids,name,path,created_at,contact,stat</item>
+    </annotation>
+    <property name="_kind" type="string"/>
+    <property name="updated_at" type="string"/>
+    <property name="desc" type="string"/>
+    <property name="_id" type="string"/>
+    <property name="status" type="string"/>
+    <property name="group_ids" type="opaque[]"/>
+    <property name="name" type="string"/>
+    <property name="path" type="opaque[]"/>
+    <property name="created_at" type="string"/>
+    <property name="contact" type="string"/>
+    <property name="stat" type="Stat"/>
+  </entity>
+  <service name="DBTarget">
+    <annotation name="ActionScriptGeneration">
+      <item name="ServiceType">HTTPMultiService</item>
+      <item name="Package">it.ht.rcs.console.target.rest</item>
+      <item name="rootURL">http://localhost:4443</item>
+    </annotation>
+    <annotation name="ServiceTypeGroup">
+      <item name="ServiceBackendType">HTTPService</item>
+    </annotation>
+    <annotation name="ServiceConfig">
+      <item name="DEFAULT_ENTITY_PACKAGE">it.ht.rcs.console.target.model</item>
+      <item name="LINKED_FILE"></item>
+    </annotation>
+    <function name="all_" return-type="Target[]">
       <annotation name="analyze group">
         <item name="analyzed">true</item>
       </annotation>
       <annotation name="ActionScriptGeneration">
         <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
         <item name="method">GET</item>
-        <item name="url">/user/{id}</item>
+        <item name="url">/target</item>
       </annotation>
       <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/user/{id}</item>
+        <item name="completeURL">http://localhost:4443/target</item>
       </annotation>
       <annotation name="ValidProperties">
-        <item name="propertySpecifier">enabled,desc,group_ids,locale,contact,pass,timezone,updated_at,_id,privs,dashboard_ids,name,created_at</item>
+        <item name="propertySpecifier">_kind,desc,_id,status,group_ids,name,path,stat</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+      </annotation>
+    </function>
+    <function name="show_" return-type="Target">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/target/{id}</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">http://localhost:4443/target/{id}</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">_kind,updated_at,desc,_id,status,group_ids,name,path,created_at,_mid,stat</item>
       </annotation>
       <annotation name="Properties">
         <item name="urlParamNames">id</item>
@@ -1675,7 +1960,7 @@
       </annotation>
       <parameter name="id" type="string"/>
     </function>
-    <function name="update_" return-type="User">
+    <function name="create_" return-type="Target">
       <annotation name="analyze group">
         <item name="analyzed">true</item>
       </annotation>
@@ -1684,13 +1969,58 @@
         <item name="method">POST</item>
         <item name="contentType">application/xml</item>
         <item name="requestBodyParameter">true</item>
-        <item name="url">/user/update</item>
+        <item name="url">/target</item>
       </annotation>
       <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/user/update</item>
+        <item name="completeURL">http://localhost:4443/target</item>
       </annotation>
       <annotation name="ValidProperties">
-        <item name="propertySpecifier">enabled,desc,group_ids,locale,contact,pass,not_exist,timezone,updated_at,_id,privs,name,created_at</item>
+        <item name="propertySpecifier">_kind,updated_at,desc,_id,status,group_ids,name,path,created_at,stat</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParamNames">strXml</item>
+        <item name="inputParams">string</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="strXml" type="string"/>
+    </function>
+    <function name="update_" return-type="Target">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">POST</item>
+        <item name="contentType">application/xml</item>
+        <item name="requestBodyParameter">true</item>
+        <item name="url">/target/update</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">http://localhost:4443/target/update</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">_kind,updated_at,desc,_id,status,group_ids,name,path,created_at,stat</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParamNames">strXml</item>
+        <item name="inputParams">string</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="strXml" type="string"/>
+    </function>
+    <function name="destroy_" return-type="void">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.xml.XMLSerializationFilter</item>
+        <item name="method">POST</item>
+        <item name="contentType">application/xml</item>
+        <item name="requestBodyParameter">true</item>
+        <item name="url">/target/destroy</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">http://localhost:4443/target/destroy</item>
       </annotation>
       <annotation name="original signature">
         <item name="inputParamNames">strXml</item>
@@ -1700,44 +2030,254 @@
       <parameter name="strXml" type="string"/>
     </function>
   </service>
-  <entity name="User">
+  <entity name="Target">
     <annotation name="EntityProperties">
-      <item name="EntityOriginalName">User</item>
+      <item name="EntityOriginalName">Target</item>
     </annotation>
     <annotation name="service Group">
-      <item name="service">DBUser,DBSession</item>
+      <item name="service">DBTarget</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="all_">
+      <item name="propertySpecifier">_kind,desc,_id,status,group_ids,name,path,stat</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.target.model</item>
+    </annotation>
+    <annotation name="show_">
+      <item name="propertySpecifier">_kind,updated_at,desc,_id,status,group_ids,name,path,created_at,_mid,stat</item>
+    </annotation>
+    <annotation name="update_">
+      <item name="propertySpecifier">_kind,updated_at,desc,_id,status,group_ids,name,path,created_at,stat</item>
+    </annotation>
+    <annotation name="create_">
+      <item name="propertySpecifier">_kind,updated_at,desc,_id,status,group_ids,name,path,created_at,stat</item>
+    </annotation>
+    <property name="_mid" type="integer" required="true"/>
+    <property name="_kind" type="string"/>
+    <property name="updated_at" type="string"/>
+    <property name="desc" type="string"/>
+    <property name="_id" type="string"/>
+    <property name="status" type="string"/>
+    <property name="group_ids" type="opaque[]"/>
+    <property name="name" type="string"/>
+    <property name="path" type="string[]"/>
+    <property name="created_at" type="string"/>
+    <property name="stat" type="Stat"/>
+  </entity>
+  <service name="DBBackdoor">
+    <annotation name="ActionScriptGeneration">
+      <item name="ServiceType">HTTPMultiService</item>
+      <item name="Package">it.ht.rcs.console.backdoor.rest</item>
+      <item name="rootURL">https://localhost:4443</item>
+    </annotation>
+    <annotation name="ServiceTypeGroup">
+      <item name="ServiceBackendType">HTTPService</item>
+    </annotation>
+    <annotation name="ServiceConfig">
+      <item name="DEFAULT_ENTITY_PACKAGE">it.ht.rcs.console.backdoor.model</item>
+      <item name="LINKED_FILE"></item>
+    </annotation>
+    <function name="all_" return-type="Backdoor[]">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/backdoor</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4443/backdoor</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">demo,_kind,desc,status,group_ids,seed,counter,type,deleted,stat,configs,logkey,updated_at,_id,ident,confkey,name,path,created_at</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+      </annotation>
+    </function>
+    <function name="show_" return-type="Backdoor">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/backdoor/{id}</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4443/backdoor/{id}</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">demo,_kind,desc,status,group_ids,seed,counter,type,deleted,stat,configs,logkey,updated_at,_id,ident,confkey,name,path,created_at,_mid</item>
+      </annotation>
+      <annotation name="Properties">
+        <item name="urlParamNames">id</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParamNames">id</item>
+        <item name="inputParams">string</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="id" type="string"/>
+    </function>
+    <function name="create_" return-type="Backdoor">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">POST</item>
+        <item name="contentType">application/xml</item>
+        <item name="requestBodyParameter">true</item>
+        <item name="url">/backdoor</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4443/backdoor</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">demo,_kind,desc,status,group_ids,seed,counter,type,deleted,stat,configs,logkey,updated_at,_id,ident,confkey,name,path,created_at,_mid</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParamNames">strXml</item>
+        <item name="inputParams">string</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="strXml" type="string"/>
+    </function>
+    <function name="update_" return-type="Backdoor">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">POST</item>
+        <item name="contentType">application/xml</item>
+        <item name="requestBodyParameter">true</item>
+        <item name="url">/backdoor/update</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4443/backdoor/update</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">demo,_kind,desc,status,group_ids,seed,counter,type,deleted,stat,configs,logkey,updated_at,_id,ident,confkey,name,path,created_at,_mid</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParamNames">strXml</item>
+        <item name="inputParams">string</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="strXml" type="string"/>
+    </function>
+    <function name="destroy_" return-type="void">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.xml.XMLSerializationFilter</item>
+        <item name="method">POST</item>
+        <item name="contentType">application/xml</item>
+        <item name="requestBodyParameter">true</item>
+        <item name="url">/backdoor/destroy</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4443/backdoor/destroy</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParamNames">strXml</item>
+        <item name="inputParams">string</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="strXml" type="string"/>
+    </function>
+  </service>
+  <entity name="Stat">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Stat</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBBackdoor</item>
     </annotation>
     <annotation name="ServerProperties">
       <item name="IncludeRemoteClass">nonempty</item>
     </annotation>
     <annotation name="ActionScriptGeneration">
-      <item name="Package">it.ht.rcs.console.accounting.model</item>
+      <item name="Package">it.ht.rcs.console.operation.model</item>
+    </annotation>
+    <property name="_id" type="string"/>
+    <property name="grid_size" type="integer"/>
+    <property name="evidence" type="opaque"/>
+    <property name="size" type="integer"/>
+  </entity>
+  <entity name="Configs">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Configs</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBBackdoor</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.backdoor.model</item>
+    </annotation>
+    <property name="updated_at" type="string"/>
+    <property name="desc" type="string"/>
+    <property name="_id" type="string"/>
+    <property name="saved" type="integer"/>
+    <property name="created_at" type="string"/>
+    <property name="config" type="string"/>
+    <property name="_mid" type="integer"/>
+    <property name="user" type="string"/>
+  </entity>
+  <entity name="Backdoor">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Backdoor</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBBackdoor</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
     </annotation>
     <annotation name="all_">
-      <item name="propertySpecifier">enabled,timezone,updated_at,desc,_id,privs,group_ids,name,locale,created_at,contact,pass</item>
+      <item name="propertySpecifier">demo,_kind,desc,status,group_ids,seed,counter,type,deleted,stat,configs,logkey,updated_at,_id,ident,confkey,name,path,created_at</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.backdoor.model</item>
     </annotation>
     <annotation name="create_">
-      <item name="propertySpecifier">enabled,timezone,updated_at,desc,_id,privs,group_ids,name,locale,created_at,contact,pass</item>
+      <item name="propertySpecifier">demo,_kind,desc,status,group_ids,seed,counter,type,deleted,stat,configs,logkey,updated_at,_id,ident,confkey,name,path,created_at,_mid</item>
     </annotation>
     <annotation name="show_">
-      <item name="propertySpecifier">enabled,desc,group_ids,locale,contact,pass,timezone,updated_at,_id,privs,dashboard_ids,name,created_at</item>
+      <item name="propertySpecifier">demo,_kind,desc,status,group_ids,seed,counter,type,deleted,stat,configs,logkey,updated_at,_id,ident,confkey,name,path,created_at,_mid</item>
     </annotation>
     <annotation name="update_">
-      <item name="propertySpecifier">enabled,desc,group_ids,locale,contact,pass,not_exist,timezone,updated_at,_id,privs,name,created_at</item>
+      <item name="propertySpecifier">demo,_kind,desc,status,group_ids,seed,counter,type,deleted,stat,configs,logkey,updated_at,_id,ident,confkey,name,path,created_at,_mid</item>
     </annotation>
-    <property name="not_exist" type="string"/>
-    <property name="enabled" type="boolean"/>
+    <property name="demo" type="boolean"/>
+    <property name="_kind" type="string"/>
     <property name="desc" type="string"/>
-    <property name="group_ids" type="string[]"/>
-    <property name="locale" type="string"/>
-    <property name="contact" type="string"/>
-    <property name="pass" type="string"/>
-    <property name="timezone" type="integer"/>
+    <property name="status" type="string"/>
+    <property name="group_ids" type="opaque[]"/>
+    <property name="seed" type="string"/>
+    <property name="counter" type="integer"/>
+    <property name="type" type="string"/>
+    <property name="deleted" type="boolean"/>
+    <property name="stat" type="Stat"/>
+    <property name="configs" type="Configs[]"/>
+    <property name="logkey" type="string"/>
     <property name="updated_at" type="string"/>
     <property name="_id" type="string"/>
-    <property name="privs" type="string[]"/>
-    <property name="dashboard_ids" type="string[]" required="true"/>
+    <property name="ident" type="string"/>
+    <property name="confkey" type="string"/>
     <property name="name" type="string"/>
+    <property name="path" type="string[]"/>
     <property name="created_at" type="string"/>
+    <property name="_mid" type="integer"/>
   </entity>
 </model>

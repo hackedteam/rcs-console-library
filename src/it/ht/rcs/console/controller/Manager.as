@@ -1,19 +1,12 @@
 package it.ht.rcs.console.controller
 {
-  
+  import flash.events.Event;
   import flash.utils.getQualifiedClassName;
   
   import it.ht.rcs.console.events.RefreshEvent;
   import it.ht.rcs.console.events.SessionEvent;
   
-  import mx.collections.ArrayList;
-  import mx.collections.ISort;
-  import mx.collections.ListCollectionView;
-  import mx.collections.Sort;
-  import mx.collections.SortField;
   import mx.core.FlexGlobals;
-  import mx.events.CollectionEvent;
-  import mx.events.CollectionEventKind;
   
   public class Manager
   {
@@ -60,7 +53,7 @@ package it.ht.rcs.console.controller
       FlexGlobals.topLevelApplication.removeEventListener(RefreshEvent.REFRESH, onRefresh);
     }
     
-    public function refresh():void
+    public function refresh(e:Event=null):void
     {
       //trace(_classname + ' (manager) -- Explicit Refresh');
       onRefresh(null);
