@@ -24,7 +24,7 @@ package it.ht.rcs.console.alert.rest
                                                           new AlertLog({time: new Date().time / 1000, path: new ArrayCollection(['1', '2', '3']), evidence: new ArrayCollection([367670123])})
                                 ])
                     }));
-      items.addItem(new Alert({_id: '4', enabled:false, suppression: 600, type: 'LOG', action: 'EVIDENCE', keywords: "RCS", tag: 4, evidence: 'KEYLOG', path:new ArrayCollection(['1', '2', '3'])}) );
+      items.addItem(new Alert({_id: '4', enabled:false, suppression: 600, type: 'LOG', action: 'EVIDENCE', keywords: "RCS", tag: 4, evidence: 'KEYLOG', path:new ArrayCollection(['1'])}) );
       items.addItem(new Alert({_id: '5', enabled:true, suppression: 600, type: 'MAIL', action: 'SYNC', path:new ArrayCollection(['1', '2', '3'])}) );
       items.addItem(new Alert({_id: '6', enabled:true, suppression: 600, type: 'MAIL', action: 'INSTANCE', path:new ArrayCollection(['1', '2'])}) );
       
