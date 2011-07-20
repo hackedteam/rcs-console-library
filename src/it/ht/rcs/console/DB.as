@@ -134,7 +134,7 @@ package it.ht.rcs.console
 
       return resp;
     }
-
+    
     /* default Fault handler */
     private static function onDeFault(e:FaultEvent):void
     {

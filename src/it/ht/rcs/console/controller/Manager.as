@@ -53,6 +53,7 @@ package it.ht.rcs.console.controller
     
     public function refresh(e:Event=null):void
     {
+      //trace(_classname + ' (manager) -- Explicit Refresh');
       onRefresh(null);
     }
     
