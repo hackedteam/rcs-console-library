@@ -56,6 +56,6 @@ package it.ht.rcs.console.network.controller
       });
     }
     
-    
   }
+  
 }
