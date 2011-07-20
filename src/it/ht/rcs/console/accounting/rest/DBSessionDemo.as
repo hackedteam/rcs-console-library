@@ -9,7 +9,7 @@ package it.ht.rcs.console.accounting.rest
   public class DBSessionDemo implements IDBSession
   {
     
-    private var demo_user:User = new User({_id: '1', name: 'demo', contact:'demo@hackingteam.it', privs:new ArrayCollection(['ADMIN', 'TECH', 'VIEW']), locale:'en_US', group_ids:new ArrayCollection(['1']), timezone:0, enabled:true});
+    public static var demo_user:User = new User({_id: '1', name: 'demo', contact:'demo@hackingteam.it', privs:new ArrayCollection(['ADMIN', 'TECH', 'VIEW']), locale:'en_US', group_ids:new ArrayCollection(['1']), dashboard_ids: new ArrayCollection(['1', '2', '3']), timezone:0, enabled:true});
 
     public function DBSessionDemo()
     {

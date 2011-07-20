@@ -8,8 +8,6 @@ package it.ht.rcs.console.accounting.rest
   public class DBUserDemo implements IDBUser
   {
     
-    private var demo_user:User = new User({_id: '1', name: 'demo', contact:'demo@hackingteam.it', privs:new ArrayCollection(['ADMIN', 'TECH', 'VIEW']), locale:'en_US', group_ids:new ArrayCollection(['1']), dashboard_ids: new ArrayCollection(['1', '2', '3']), timezone:0, enabled:true});
-
     public function DBUserDemo()
     {
     }
@@ -17,7 +15,7 @@ package it.ht.rcs.console.accounting.rest
     public function all(onResult:Function=null, onFault:Function=null):void
     {
       var items:ArrayCollection = new ArrayCollection();
-      items.addItem(demo_user);
+      items.addItem(DBSessionDemo.demo_user);
       items.addItem(new User({_id: '2', name: 'alor', locale:'en_US', group_ids:new ArrayCollection(['1','2']), enabled:true, privs:new ArrayCollection(['ADMIN', 'TECH', 'VIEW'])}) );
       items.addItem(new User({_id: '3', name: 'daniel', locale:'it_IT', group_ids:new ArrayCollection(['1','2']), enabled:true, privs:new ArrayCollection(['ADMIN', 'TECH', 'VIEW'])}) );
       items.addItem(new User({_id: '4', name: 'naga', group_ids:new ArrayCollection(['2']), enabled:true, privs:new ArrayCollection(['VIEW'])}) );
