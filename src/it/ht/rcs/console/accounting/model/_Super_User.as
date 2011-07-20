@@ -6,10 +6,15 @@
 package it.ht.rcs.console.accounting.model
 {
 import com.adobe.fiber.services.IFiberManagingService;
+import com.adobe.fiber.util.FiberUtils;
 import com.adobe.fiber.valueobjects.IValueObject;
+import flash.events.Event;
 import flash.events.EventDispatcher;
+import mx.binding.utils.ChangeWatcher;
 import mx.collections.ArrayCollection;
+import mx.events.CollectionEvent;
 import mx.events.PropertyChangeEvent;
+import mx.validators.ValidationResult;
 
 import flash.net.registerClassAlias;
 import flash.net.getClassByAlias;
@@ -47,17 +52,18 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
     /**
      * properties
      */
+    private var _internal_not_exist : String;
     private var _internal_enabled : Boolean;
     private var _internal_desc : String;
     private var _internal_group_ids : ArrayCollection;
     private var _internal_locale : String;
     private var _internal_contact : String;
     private var _internal_pass : String;
-    private var _internal_not_exist : String;
     private var _internal_timezone : int;
     private var _internal_updated_at : String;
     private var _internal__id : String;
     private var _internal_privs : ArrayCollection;
+    private var _internal_dashboard_ids : ArrayCollection;
     private var _internal_name : String;
     private var _internal_created_at : String;
 
@@ -76,12 +82,19 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
         _model = new _UserEntityMetadata(this);
 
         // Bind to own data or source properties for cache invalidation triggering
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "dashboard_ids", model_internal::setterListenerDashboard_ids));
 
     }
 
     /**
      * data/source property getters
      */
+
+    [Bindable(event="propertyChange")]
+    public function get not_exist() : String
+    {
+        return _internal_not_exist;
+    }
 
     [Bindable(event="propertyChange")]
     public function get enabled() : Boolean
@@ -120,12 +133,6 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
     }
 
     [Bindable(event="propertyChange")]
-    public function get not_exist() : String
-    {
-        return _internal_not_exist;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get timezone() : int
     {
         return _internal_timezone;
@@ -150,6 +157,12 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
     }
 
     [Bindable(event="propertyChange")]
+    public function get dashboard_ids() : ArrayCollection
+    {
+        return _internal_dashboard_ids;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get name() : String
     {
         return _internal_name;
@@ -168,6 +181,16 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
     /**
      * data/source property setters
      */
+
+    public function set not_exist(value:String) : void
+    {
+        var oldValue:String = _internal_not_exist;
+        if (oldValue !== value)
+        {
+            _internal_not_exist = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "not_exist", oldValue, _internal_not_exist));
+        }
+    }
 
     public function set enabled(value:Boolean) : void
     {
@@ -244,16 +267,6 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
         }
     }
 
-    public function set not_exist(value:String) : void
-    {
-        var oldValue:String = _internal_not_exist;
-        if (oldValue !== value)
-        {
-            _internal_not_exist = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "not_exist", oldValue, _internal_not_exist));
-        }
-    }
-
     public function set timezone(value:int) : void
     {
         var oldValue:int = _internal_timezone;
@@ -309,6 +322,31 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
         }
     }
 
+    public function set dashboard_ids(value:*) : void
+    {
+        var oldValue:ArrayCollection = _internal_dashboard_ids;
+        if (oldValue !== value)
+        {
+            if (value is ArrayCollection)
+            {
+                _internal_dashboard_ids = value;
+            }
+            else if (value is Array)
+            {
+                _internal_dashboard_ids = new ArrayCollection(value);
+            }
+            else if (value == null)
+            {
+                _internal_dashboard_ids = null;
+            }
+            else
+            {
+                throw new Error("value of dashboard_ids must be a collection");
+            }
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "dashboard_ids", oldValue, _internal_dashboard_ids));
+        }
+    }
+
     public function set name(value:String) : void
     {
         var oldValue:String = _internal_name;
@@ -341,6 +379,18 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
      *  - the validity of the property (and the containing entity) if the given data property is required.
      */
 
+    model_internal function setterListenerDashboard_ids(value:flash.events.Event):void
+    {
+        if (value is mx.events.PropertyChangeEvent)
+        {
+            if (mx.events.PropertyChangeEvent(value).newValue)
+            {
+                mx.events.PropertyChangeEvent(value).newValue.addEventListener(mx.events.CollectionEvent.COLLECTION_CHANGE, model_internal::setterListenerDashboard_ids);
+            }
+        }
+        _model.invalidateDependentOnDashboard_ids();
+    }
+
 
     /**
      * valid related derived properties
@@ -362,6 +412,11 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
         var validationFailureMessages:Array = new Array();
 
         var propertyValidity:Boolean = true;
+        if (!_model.dashboard_idsIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_dashboard_idsValidationFailureMessages);
+        }
 
         model_internal::_cacheInitialized_isValid = true;
         model_internal::invalidConstraints_der = violatedConsts;
@@ -441,6 +496,33 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
         }
     }
 
+    model_internal var _doValidationCacheOfDashboard_ids : Array = null;
+    model_internal var _doValidationLastValOfDashboard_ids : ArrayCollection;
+
+    model_internal function _doValidationForDashboard_ids(valueIn:Object):Array
+    {
+        var value : ArrayCollection = valueIn as ArrayCollection;
+
+        if (model_internal::_doValidationCacheOfDashboard_ids != null && model_internal::_doValidationLastValOfDashboard_ids == value)
+           return model_internal::_doValidationCacheOfDashboard_ids ;
+
+        _model.model_internal::_dashboard_idsIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isDashboard_idsAvailable && _internal_dashboard_ids == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "dashboard_ids is required"));
+        }
+
+        model_internal::_doValidationCacheOfDashboard_ids = validationFailures;
+        model_internal::_doValidationLastValOfDashboard_ids = value;
+
+        return validationFailures;
+    }
+    
 
 }
 

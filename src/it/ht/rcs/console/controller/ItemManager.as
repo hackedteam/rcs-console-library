@@ -1,9 +1,7 @@
 package it.ht.rcs.console.controller
 {
-  
   import flash.utils.getQualifiedClassName;
   
-  import it.ht.rcs.console.events.RefreshEvent;
   import it.ht.rcs.console.events.SessionEvent;
   
   import mx.collections.ArrayList;
@@ -11,7 +9,6 @@ package it.ht.rcs.console.controller
   import mx.collections.ListCollectionView;
   import mx.collections.Sort;
   import mx.collections.SortField;
-  import mx.core.FlexGlobals;
   import mx.events.CollectionEvent;
   import mx.events.CollectionEventKind;
   
