@@ -19,6 +19,8 @@ package it.ht.rcs.console
   import it.ht.rcs.console.backdoor.rest.DBBackdoor;
   import it.ht.rcs.console.backdoor.rest.DBBackdoorDemo;
   import it.ht.rcs.console.backdoor.rest.IDBBackdoor;
+  import it.ht.rcs.console.factory.rest.DBFactory;
+  import it.ht.rcs.console.factory.rest.IDBFactory;
   import it.ht.rcs.console.monitor.rest.DBLicense;
   import it.ht.rcs.console.monitor.rest.DBLicenseDemo;
   import it.ht.rcs.console.monitor.rest.DBMonitor;
@@ -60,6 +62,7 @@ package it.ht.rcs.console
     public var operation:IDBOperation;
     public var target:IDBTarget;
     public var backdoor:IDBBackdoor;
+    public var factory:IDBFactory;
     
     private static var notifier:IFaultNotifier;
     public static var i18n:II18N;
@@ -97,6 +100,7 @@ package it.ht.rcs.console
       operation = new DBOperation(host);
       target = new DBTarget(host);
       backdoor = new DBBackdoor(host);
+      factory = new DBFactory(host);
     }
 
     private function initDemo():void
@@ -114,6 +118,7 @@ package it.ht.rcs.console
       operation = new DBOperationDemo();
       target = new DBTargetDemo();
       backdoor = new DBBackdoorDemo();
+      factory = new DBFactoryDemo();
     }
 
     private function host_autocomplete(host:String):String
