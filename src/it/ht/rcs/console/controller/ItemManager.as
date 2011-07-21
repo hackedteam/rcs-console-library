@@ -120,8 +120,8 @@ package it.ht.rcs.console.controller
       onRefresh(null);
       
       /* create the view for the caller */
-      var lcv:ListCollectionView = new ListCollectionView();
-      lcv.list = _items;
+      var lcv:ListCollectionView = new ListCollectionView(_items);
+      //lcv.list = _items;
       
       if (sortCriteria == null) {
         /* default sorting is alphabetical */

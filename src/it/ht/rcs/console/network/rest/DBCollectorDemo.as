@@ -37,6 +37,10 @@ package it.ht.rcs.console.network.rest
     
     public function create(params:Object, onResult:Function=null, onFault:Function=null):void
     {
+      var collector:Collector = new Collector(params);
+      
+      var event:ResultEvent = new ResultEvent('collector.create', false, true, collector);
+      onResult(event);
     }
     
     public function update(collector:Collector, property:Object, onResult:Function=null, onFault:Function=null):void
