@@ -6,6 +6,7 @@ package it.ht.rcs.console.backdoor.rest
   import it.ht.rcs.console.target.model.Target;
   
   import mx.collections.ArrayCollection;
+  import mx.rpc.events.ResultEvent;
 
   public class DBBackdoorDemo implements IDBBackdoor
   {
@@ -61,6 +62,9 @@ package it.ht.rcs.console.backdoor.rest
     
     public function all(onResult:Function=null, onFault:Function=null):void
     {
+      var event:ResultEvent = new ResultEvent('backdoor.all', false, true, backdoors);
+      if (onResult != null)
+        onResult(event);
     }
     
     public function show(id:String, onResult:Function=null, onFault:Function=null):void
