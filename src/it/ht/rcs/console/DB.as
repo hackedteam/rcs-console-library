@@ -16,6 +16,11 @@ package it.ht.rcs.console
   import it.ht.rcs.console.audit.rest.DBAudit;
   import it.ht.rcs.console.audit.rest.DBAuditDemo;
   import it.ht.rcs.console.audit.rest.IDBAudit;
+  import it.ht.rcs.console.backdoor.rest.DBBackdoor;
+  import it.ht.rcs.console.backdoor.rest.DBBackdoorDemo;
+  import it.ht.rcs.console.backdoor.rest.IDBBackdoor;
+  import it.ht.rcs.console.factory.rest.DBFactory;
+  import it.ht.rcs.console.factory.rest.IDBFactory;
   import it.ht.rcs.console.monitor.rest.DBLicense;
   import it.ht.rcs.console.monitor.rest.DBLicenseDemo;
   import it.ht.rcs.console.monitor.rest.DBMonitor;
@@ -28,6 +33,12 @@ package it.ht.rcs.console
   import it.ht.rcs.console.network.rest.DBProxyDemo;
   import it.ht.rcs.console.network.rest.IDBCollector;
   import it.ht.rcs.console.network.rest.IDBProxy;
+  import it.ht.rcs.console.operation.rest.DBOperation;
+  import it.ht.rcs.console.operation.rest.DBOperationDemo;
+  import it.ht.rcs.console.operation.rest.IDBOperation;
+  import it.ht.rcs.console.target.rest.DBTarget;
+  import it.ht.rcs.console.target.rest.DBTargetDemo;
+  import it.ht.rcs.console.target.rest.IDBTarget;
   import it.ht.rcs.console.task.rest.DBTask;
   import it.ht.rcs.console.task.rest.DBTaskDemo;
   import it.ht.rcs.console.task.rest.IDBTask;
@@ -48,6 +59,10 @@ package it.ht.rcs.console
     public var user:IDBUser;
     public var group:IDBGroup;
     public var alert:IDBAlert;
+    public var operation:IDBOperation;
+    public var target:IDBTarget;
+    public var backdoor:IDBBackdoor;
+    public var factory:IDBFactory;
     
     private static var notifier:IFaultNotifier;
     public static var i18n:II18N;
@@ -82,6 +97,10 @@ package it.ht.rcs.console
       user = new DBUser(host);
       group = new DBGroup(host);
       alert = new DBAlert(host);
+      operation = new DBOperation(host);
+      target = new DBTarget(host);
+      backdoor = new DBBackdoor(host);
+      factory = new DBFactory(host);
     }
 
     private function initDemo():void
@@ -96,6 +115,10 @@ package it.ht.rcs.console
       user = new DBUserDemo();
       group = new DBGroupDemo();
       alert = new DBAlertDemo();
+      operation = new DBOperationDemo();
+      target = new DBTargetDemo();
+      backdoor = new DBBackdoorDemo();
+      factory = new DBFactoryDemo();
     }
 
     private function host_autocomplete(host:String):String

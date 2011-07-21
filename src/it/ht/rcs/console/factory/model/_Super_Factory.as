@@ -1,14 +1,13 @@
 /**
  * This is a generated class and is not intended for modification.  To customize behavior
- * of this value object you may modify the generated sub-class of this class - Backdoor.as.
+ * of this value object you may modify the generated sub-class of this class - Factory.as.
  */
 
-package it.ht.rcs.console.backdoor.model
+package it.ht.rcs.console.factory.model
 {
 import com.adobe.fiber.services.IFiberManagingService;
 import com.adobe.fiber.valueobjects.IValueObject;
 import flash.events.EventDispatcher;
-import it.ht.rcs.console.operation.model.Stat;
 import mx.collections.ArrayCollection;
 import mx.events.PropertyChangeEvent;
 
@@ -21,7 +20,7 @@ import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 use namespace model_internal;
 
 [ExcludeClass]
-public class _Super_Backdoor extends flash.events.EventDispatcher implements com.adobe.fiber.valueobjects.IValueObject
+public class _Super_Factory extends flash.events.EventDispatcher implements com.adobe.fiber.valueobjects.IValueObject
 {
     model_internal static function initRemoteClassAliasSingle(cz:Class) : void
     {
@@ -29,10 +28,9 @@ public class _Super_Backdoor extends flash.events.EventDispatcher implements com
 
     model_internal static function initRemoteClassAliasAllRelated() : void
     {
-        it.ht.rcs.console.operation.model.Stat.initRemoteClassAliasSingleChild();
     }
 
-    model_internal var _dminternal_model : _BackdoorEntityMetadata;
+    model_internal var _dminternal_model : _FactoryEntityMetadata;
     model_internal var _changedObjects:mx.collections.ArrayCollection = new ArrayCollection();
 
     public function getChangedObjects() : Array
@@ -49,6 +47,7 @@ public class _Super_Backdoor extends flash.events.EventDispatcher implements com
     /**
      * properties
      */
+    private var _internal_configs : ArrayCollection;
     private var _internal__kind : String;
     private var _internal_desc : String;
     private var _internal_ident : String;
@@ -56,9 +55,8 @@ public class _Super_Backdoor extends flash.events.EventDispatcher implements com
     private var _internal_status : String;
     private var _internal_group_ids : ArrayCollection;
     private var _internal_name : String;
+    private var _internal_counter : int;
     private var _internal_path : ArrayCollection;
-    private var _internal_upgradable : Boolean;
-    private var _internal_stat : it.ht.rcs.console.operation.model.Stat;
 
     private static var emptyArray:Array = new Array();
 
@@ -70,9 +68,9 @@ public class _Super_Backdoor extends flash.events.EventDispatcher implements com
 
     model_internal var _changeWatcherArray:Array = new Array();
 
-    public function _Super_Backdoor()
+    public function _Super_Factory()
     {
-        _model = new _BackdoorEntityMetadata(this);
+        _model = new _FactoryEntityMetadata(this);
 
         // Bind to own data or source properties for cache invalidation triggering
 
@@ -81,6 +79,12 @@ public class _Super_Backdoor extends flash.events.EventDispatcher implements com
     /**
      * data/source property getters
      */
+
+    [Bindable(event="propertyChange")]
+    public function get configs() : ArrayCollection
+    {
+        return _internal_configs;
+    }
 
     [Bindable(event="propertyChange")]
     public function get _kind() : String
@@ -125,21 +129,15 @@ public class _Super_Backdoor extends flash.events.EventDispatcher implements com
     }
 
     [Bindable(event="propertyChange")]
+    public function get counter() : int
+    {
+        return _internal_counter;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get path() : ArrayCollection
     {
         return _internal_path;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get upgradable() : Boolean
-    {
-        return _internal_upgradable;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get stat() : it.ht.rcs.console.operation.model.Stat
-    {
-        return _internal_stat;
     }
 
     public function clearAssociations() : void
@@ -149,6 +147,31 @@ public class _Super_Backdoor extends flash.events.EventDispatcher implements com
     /**
      * data/source property setters
      */
+
+    public function set configs(value:*) : void
+    {
+        var oldValue:ArrayCollection = _internal_configs;
+        if (oldValue !== value)
+        {
+            if (value is ArrayCollection)
+            {
+                _internal_configs = value;
+            }
+            else if (value is Array)
+            {
+                _internal_configs = new ArrayCollection(value);
+            }
+            else if (value == null)
+            {
+                _internal_configs = null;
+            }
+            else
+            {
+                throw new Error("value of configs must be a collection");
+            }
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "configs", oldValue, _internal_configs));
+        }
+    }
 
     public function set _kind(value:String) : void
     {
@@ -235,6 +258,16 @@ public class _Super_Backdoor extends flash.events.EventDispatcher implements com
         }
     }
 
+    public function set counter(value:int) : void
+    {
+        var oldValue:int = _internal_counter;
+        if (oldValue !== value)
+        {
+            _internal_counter = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "counter", oldValue, _internal_counter));
+        }
+    }
+
     public function set path(value:*) : void
     {
         var oldValue:ArrayCollection = _internal_path;
@@ -257,26 +290,6 @@ public class _Super_Backdoor extends flash.events.EventDispatcher implements com
                 throw new Error("value of path must be a collection");
             }
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "path", oldValue, _internal_path));
-        }
-    }
-
-    public function set upgradable(value:Boolean) : void
-    {
-        var oldValue:Boolean = _internal_upgradable;
-        if (oldValue !== value)
-        {
-            _internal_upgradable = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "upgradable", oldValue, _internal_upgradable));
-        }
-    }
-
-    public function set stat(value:it.ht.rcs.console.operation.model.Stat) : void
-    {
-        var oldValue:it.ht.rcs.console.operation.model.Stat = _internal_stat;
-        if (oldValue !== value)
-        {
-            _internal_stat = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "stat", oldValue, _internal_stat));
         }
     }
 
@@ -340,14 +353,14 @@ public class _Super_Backdoor extends flash.events.EventDispatcher implements com
 
     [Transient]
     [Bindable(event="propertyChange")]
-    public function get _model() : _BackdoorEntityMetadata
+    public function get _model() : _FactoryEntityMetadata
     {
         return model_internal::_dminternal_model;
     }
 
-    public function set _model(value : _BackdoorEntityMetadata) : void
+    public function set _model(value : _FactoryEntityMetadata) : void
     {
-        var oldValue : _BackdoorEntityMetadata = model_internal::_dminternal_model;
+        var oldValue : _FactoryEntityMetadata = model_internal::_dminternal_model;
         if (oldValue !== value)
         {
             model_internal::_dminternal_model = value;

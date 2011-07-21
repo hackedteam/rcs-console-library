@@ -1,5 +1,5 @@
 /**
- * This is a generated sub-class of _Target.as and is intended for behavior
+ * This is a generated sub-class of _Factory.as and is intended for behavior
  * customization.  This class is only generated when there is no file already present
  * at its target location.  Thus custom behavior that you add here will survive regeneration
  * of the super-class. 
@@ -10,21 +10,25 @@
  * corresponding entity 
  **/ 
  
-package it.ht.rcs.console.target.model
+package it.ht.rcs.console.factory.model
 {
 
 import com.adobe.fiber.core.model_internal;
 
-public class Target extends _Super_Target
+public class Factory extends _Super_Factory
 {
-  public function Target(data: Object = null)
+  public function Factory(data: Object = null) 
   {
     if (data) {
       _id = data._id;
-      desc = data.desc;
+      _kind = data._kind;
       name = data.name;
+      desc = data.desc;
+      ident = data.ident;
       status = data.status;
       path = data.path;
+      configs = data.configs;
+      counter = data.counter;
     }
   }
   
@@ -41,22 +45,22 @@ public class Target extends _Super_Target
    */     
   public static function _initRemoteClassAlias() : void
   {
-      _Super_Target.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.target.model.Target);
-      _Super_Target.model_internal::initRemoteClassAliasAllRelated();
+      _Super_Factory.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.factory.model.Factory);
+      _Super_Factory.model_internal::initRemoteClassAliasAllRelated();
   }
    
   model_internal static function initRemoteClassAliasSingleChild() : void
   {
-      _Super_Target.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.target.model.Target);
+      _Super_Factory.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.factory.model.Factory);
   }
   
   {
-      _Super_Target.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.target.model.Target);
+      _Super_Factory.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.factory.model.Factory);
   }
   /** 
    * END OF DO NOT MODIFY SECTION
    *
-   **/    
+   **/
 }
 
 }

@@ -2,14 +2,13 @@
 /**
  * This is a generated class and is not intended for modification.  
  */
-package it.ht.rcs.console.backdoor.model
+package it.ht.rcs.console.factory.model
 {
 import com.adobe.fiber.styles.IStyle;
 import com.adobe.fiber.styles.Style;
 import com.adobe.fiber.valueobjects.AbstractEntityMetadata;
 import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 import com.adobe.fiber.valueobjects.IPropertyIterator;
-import it.ht.rcs.console.operation.model.Stat;
 import mx.collections.ArrayCollection;
 import com.adobe.fiber.core.model_internal;
 import com.adobe.fiber.valueobjects.IModelType;
@@ -18,37 +17,38 @@ import mx.events.PropertyChangeEvent;
 use namespace model_internal;
 
 [ExcludeClass]
-internal class _BackdoorEntityMetadata extends com.adobe.fiber.valueobjects.AbstractEntityMetadata
+internal class _FactoryEntityMetadata extends com.adobe.fiber.valueobjects.AbstractEntityMetadata
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("_kind", "desc", "ident", "_id", "status", "group_ids", "name", "path", "upgradable", "stat");
+    model_internal static var allProperties:Array = new Array("configs", "_kind", "desc", "ident", "_id", "status", "group_ids", "name", "counter", "path");
     model_internal static var allAssociationProperties:Array = new Array();
     model_internal static var allRequiredProperties:Array = new Array();
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("_kind", "desc", "ident", "_id", "status", "group_ids", "name", "path", "upgradable", "stat");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("configs", "_kind", "desc", "ident", "_id", "status", "group_ids", "name", "counter", "path");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("_kind", "desc", "ident", "_id", "status", "group_ids", "name", "path", "upgradable", "stat");
+    model_internal static var dataProperties:Array = new Array("configs", "_kind", "desc", "ident", "_id", "status", "group_ids", "name", "counter", "path");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("_kind", "desc", "ident", "_id", "status", "group_ids", "name", "path", "upgradable", "stat");
+    model_internal static var nonDerivedProperties:Array = new Array("configs", "_kind", "desc", "ident", "_id", "status", "group_ids", "name", "counter", "path");
     model_internal static var derivedProperties:Array = new Array();
-    model_internal static var collectionProperties:Array = new Array("group_ids", "path");
+    model_internal static var collectionProperties:Array = new Array("configs", "group_ids", "path");
     model_internal static var collectionBaseMap:Object;
-    model_internal static var entityName:String = "Backdoor";
+    model_internal static var entityName:String = "Factory";
     model_internal static var dependentsOnMap:Object;
     model_internal static var dependedOnServices:Array = new Array();
     model_internal static var propertyTypeMap:Object;
 
 
-    model_internal var _instance:_Super_Backdoor;
+    model_internal var _instance:_Super_Factory;
     model_internal static var _nullStyle:com.adobe.fiber.styles.Style = new com.adobe.fiber.styles.Style();
 
-    public function _BackdoorEntityMetadata(value : _Super_Backdoor)
+    public function _FactoryEntityMetadata(value : _Super_Factory)
     {
         // initialize property maps
         if (model_internal::dependentsOnMap == null)
         {
             // dependents map
             model_internal::dependentsOnMap = new Object();
+            model_internal::dependentsOnMap["configs"] = new Array();
             model_internal::dependentsOnMap["_kind"] = new Array();
             model_internal::dependentsOnMap["desc"] = new Array();
             model_internal::dependentsOnMap["ident"] = new Array();
@@ -56,18 +56,19 @@ internal class _BackdoorEntityMetadata extends com.adobe.fiber.valueobjects.Abst
             model_internal::dependentsOnMap["status"] = new Array();
             model_internal::dependentsOnMap["group_ids"] = new Array();
             model_internal::dependentsOnMap["name"] = new Array();
+            model_internal::dependentsOnMap["counter"] = new Array();
             model_internal::dependentsOnMap["path"] = new Array();
-            model_internal::dependentsOnMap["upgradable"] = new Array();
-            model_internal::dependentsOnMap["stat"] = new Array();
 
             // collection base map
             model_internal::collectionBaseMap = new Object();
+            model_internal::collectionBaseMap["configs"] = "Object";
             model_internal::collectionBaseMap["group_ids"] = "Object";
             model_internal::collectionBaseMap["path"] = "String";
         }
 
         // Property type Map
         model_internal::propertyTypeMap = new Object();
+        model_internal::propertyTypeMap["configs"] = "ArrayCollection";
         model_internal::propertyTypeMap["_kind"] = "String";
         model_internal::propertyTypeMap["desc"] = "String";
         model_internal::propertyTypeMap["ident"] = "String";
@@ -75,9 +76,8 @@ internal class _BackdoorEntityMetadata extends com.adobe.fiber.valueobjects.Abst
         model_internal::propertyTypeMap["status"] = "String";
         model_internal::propertyTypeMap["group_ids"] = "ArrayCollection";
         model_internal::propertyTypeMap["name"] = "String";
+        model_internal::propertyTypeMap["counter"] = "int";
         model_internal::propertyTypeMap["path"] = "ArrayCollection";
-        model_internal::propertyTypeMap["upgradable"] = "Boolean";
-        model_internal::propertyTypeMap["stat"] = "it.ht.rcs.console.operation.model.Stat";
 
         model_internal::_instance = value;
     }
@@ -130,7 +130,7 @@ internal class _BackdoorEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     override public function getDependants(propertyName:String):Array
     {
        if (model_internal::nonDerivedProperties.indexOf(propertyName) == -1)
-            throw new Error(propertyName + " is not a data property of entity Backdoor");
+            throw new Error(propertyName + " is not a data property of entity Factory");
             
        return model_internal::dependentsOnMap[propertyName] as Array;  
     }
@@ -148,7 +148,7 @@ internal class _BackdoorEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     override public function getCollectionBase(propertyName:String):String
     {
         if (model_internal::collectionProperties.indexOf(propertyName) == -1)
-            throw new Error(propertyName + " is not a collection property of entity Backdoor");
+            throw new Error(propertyName + " is not a collection property of entity Factory");
 
         return model_internal::collectionBaseMap[propertyName];
     }
@@ -156,7 +156,7 @@ internal class _BackdoorEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     override public function getPropertyType(propertyName:String):String
     {
         if (model_internal::allProperties.indexOf(propertyName) == -1)
-            throw new Error(propertyName + " is not a property of Backdoor");
+            throw new Error(propertyName + " is not a property of Factory");
 
         return model_internal::propertyTypeMap[propertyName];
     }
@@ -170,7 +170,7 @@ internal class _BackdoorEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     {
         if (model_internal::allProperties.indexOf(propertyName) == -1)
         {
-            throw new Error(propertyName + " does not exist for entity Backdoor");
+            throw new Error(propertyName + " does not exist for entity Factory");
         }
 
         return model_internal::_instance[propertyName];
@@ -180,7 +180,7 @@ internal class _BackdoorEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     {
         if (model_internal::nonDerivedProperties.indexOf(propertyName) == -1)
         {
-            throw new Error(propertyName + " is not a modifiable property of entity Backdoor");
+            throw new Error(propertyName + " is not a modifiable property of entity Factory");
         }
 
         model_internal::_instance[propertyName] = value;
@@ -212,7 +212,7 @@ internal class _BackdoorEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     {
         if (model_internal::allProperties.indexOf(propertyName) == -1)
         {
-            throw new Error(propertyName + " does not exist for entity Backdoor");
+            throw new Error(propertyName + " does not exist for entity Factory");
         }
 
         if (model_internal::allAlwaysAvailableProperties.indexOf(propertyName) != -1)
@@ -307,6 +307,12 @@ internal class _BackdoorEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     }
 
     [Bindable(event="propertyChange")]
+    public function get isConfigsAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get is_kindAvailable():Boolean
     {
         return true;
@@ -349,19 +355,13 @@ internal class _BackdoorEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     }
 
     [Bindable(event="propertyChange")]
+    public function get isCounterAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get isPathAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get isUpgradableAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get isStatAvailable():Boolean
     {
         return true;
     }
@@ -374,6 +374,12 @@ internal class _BackdoorEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     model_internal function fireChangeEvent(propertyName:String, oldValue:Object, newValue:Object):void
     {
         this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, propertyName, oldValue, newValue));
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get configsStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
     }
 
     [Bindable(event="propertyChange")]   
@@ -419,19 +425,13 @@ internal class _BackdoorEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     }
 
     [Bindable(event="propertyChange")]   
+    public function get counterStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
     public function get pathStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get upgradableStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get statStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
