@@ -7,6 +7,7 @@ package it.ht.rcs.console.network.rest
 import com.adobe.fiber.core.model_internal;
 import com.adobe.fiber.services.wrapper.HTTPServiceWrapper;
 import it.ht.rcs.console.network.model.Collector;
+import it.ht.rcs.console.network.model.CollectorLog;
 import mx.rpc.AbstractOperation;
 import mx.rpc.AsyncToken;
 import mx.rpc.http.HTTPMultiService;
@@ -48,10 +49,15 @@ internal class _Super_DBCollector extends com.adobe.fiber.services.wrapper.HTTPS
          operation.resultType = it.ht.rcs.console.network.model.Collector;
          operations.push(operation);
 
-         operation = new mx.rpc.http.Operation(null, "log_");
-         operation.url = "/collector/log";
+         operation = new mx.rpc.http.Operation(null, "logs_");
+         operation.url = "/collector/log/{id}";
          operation.method = "GET";
-         operation.resultType = Object;
+         argsArray = new Array("id");
+         operation.argumentNames = argsArray;         
+         operation.serializationFilter = serializer0;
+         operation.properties = new Object();
+         operation.properties["urlParamNames"] = ["id"];
+         operation.resultType = it.ht.rcs.console.network.model.CollectorLog;
          operations.push(operation);
 
          operation = new mx.rpc.http.Operation(null, "update_");
@@ -72,6 +78,13 @@ internal class _Super_DBCollector extends com.adobe.fiber.services.wrapper.HTTPS
 
          operation = new mx.rpc.http.Operation(null, "destroy_");
          operation.url = "/collector/destroy";
+         operation.method = "POST";
+         operation.serializationFilter = serializer1;
+         operation.contentType = "application/xml";
+         operations.push(operation);
+
+         operation = new mx.rpc.http.Operation(null, "del_logs_");
+         operation.url = "/collector/del_logs";
          operation.method = "POST";
          operation.serializationFilter = serializer1;
          operation.contentType = "application/xml";
@@ -128,7 +141,7 @@ internal class _Super_DBCollector extends com.adobe.fiber.services.wrapper.HTTPS
     }
      
     /**
-      * This method is a generated wrapper used to call the 'log_' operation. It returns an mx.rpc.AsyncToken whose 
+      * This method is a generated wrapper used to call the 'logs_' operation. It returns an mx.rpc.AsyncToken whose 
       * result property will be populated with the result of the operation when the server response is received. 
       * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value. 
       * You can then bind to CallResponder.lastResult or listen for the CallResponder.result or fault events.
@@ -138,10 +151,10 @@ internal class _Super_DBCollector extends com.adobe.fiber.services.wrapper.HTTPS
       *
       * @return an mx.rpc.AsyncToken whose result property will be populated with the result of the operation when the server response is received.
       */
-    public function log_() : mx.rpc.AsyncToken
+    public function logs_(id:String) : mx.rpc.AsyncToken
     {
-        var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("log_");
-		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send() ;
+        var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("logs_");
+		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(id) ;
         return _internal_token;
     }
      
@@ -195,6 +208,24 @@ internal class _Super_DBCollector extends com.adobe.fiber.services.wrapper.HTTPS
     public function destroy_(strXml:String) : mx.rpc.AsyncToken
     {
         var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("destroy_");
+		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(strXml) ;
+        return _internal_token;
+    }
+     
+    /**
+      * This method is a generated wrapper used to call the 'del_logs_' operation. It returns an mx.rpc.AsyncToken whose 
+      * result property will be populated with the result of the operation when the server response is received. 
+      * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value. 
+      * You can then bind to CallResponder.lastResult or listen for the CallResponder.result or fault events.
+      *
+      * @see mx.rpc.AsyncToken
+      * @see mx.rpc.CallResponder 
+      *
+      * @return an mx.rpc.AsyncToken whose result property will be populated with the result of the operation when the server response is received.
+      */
+    public function del_logs_(strXml:String) : mx.rpc.AsyncToken
+    {
+        var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("del_logs_");
 		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(strXml) ;
         return _internal_token;
     }

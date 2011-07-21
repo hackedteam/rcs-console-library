@@ -38,7 +38,7 @@ package it.ht.rcs.console.network.model
       }
     }
     
-    /** 
+    /**
      * DO NOT MODIFY THIS STATIC INITIALIZER - IT IS NECESSARY
      * FOR PROPERLY SETTING UP THE REMOTE CLASS ALIAS FOR THIS CLASS
      **/
@@ -62,7 +62,7 @@ package it.ht.rcs.console.network.model
     {
       _Super_Collector.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.network.model.Collector);
     }
-    /** 
+    /**
      * END OF DO NOT MODIFY SECTION
      **/
   

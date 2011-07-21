@@ -13,5 +13,9 @@ package it.ht.rcs.console.network.rest
     function update(collector:Collector, property:Object, onResult:Function = null, onFault:Function = null):void;
     
     function destroy(id:String, onResult:Function = null, onFault:Function = null):void;
+    
+    function logs(id:String, onResult:Function = null, onFault:Function = null):void;
+    
+    function del_logs(id:String, onResult:Function = null, onFault:Function = null):void;
   }
 }

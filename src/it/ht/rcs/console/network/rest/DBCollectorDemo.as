@@ -1,6 +1,7 @@
 package it.ht.rcs.console.network.rest
 {
   import it.ht.rcs.console.network.model.Collector;
+  import it.ht.rcs.console.network.model.CollectorLog;
   
   import mx.collections.ArrayCollection;
   import mx.rpc.events.ResultEvent;
@@ -40,7 +41,8 @@ package it.ht.rcs.console.network.rest
       var collector:Collector = new Collector(params);
       
       var event:ResultEvent = new ResultEvent('collector.create', false, true, collector);
-      onResult(event);
+      if (onResult != null)
+        onResult(event);
     }
     
     public function update(collector:Collector, property:Object, onResult:Function=null, onFault:Function=null):void
@@ -49,6 +51,26 @@ package it.ht.rcs.console.network.rest
     
     public function destroy(id:String, onResult:Function=null, onFault:Function=null):void
     {
+    }
+    
+    public function logs(id:String, onResult:Function=null, onFault:Function=null):void
+    {
+      
+      var logs:ArrayCollection = new ArrayCollection();
+      logs.addItem(new CollectorLog({time: '2011-01-01 12:00:00', type: 'INFO', info: 'Started'}));
+      logs.addItem(new CollectorLog({time: '2011-01-01 13:00:00', type: 'INFO', info: 'Forwarwed sync for 1.2.3.4'}));
+      logs.addItem(new CollectorLog({time: '2011-01-01 14:00:00', type: 'WARN', info: 'Forwarwed sync for 5.6.7.8'}));
+      
+      var event:ResultEvent = new ResultEvent('collector.logs', false, true, logs);
+      if (onResult != null)
+        onResult(event);
+    }
+    
+    public function del_logs(id:String, onResult:Function=null, onFault:Function=null):void
+    {
+      var event:ResultEvent = new ResultEvent('collector.del_logs', false, true);
+      if (onResult != null)
+        onResult(event);
     }
     
   }

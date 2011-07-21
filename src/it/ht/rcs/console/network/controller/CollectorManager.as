@@ -56,6 +56,20 @@ package it.ht.rcs.console.network.controller
       });
     }
     
+    public function getLogs(_id:String, callback:Function):void
+    {
+      DB.instance.collector.logs(_id, function(e:ResultEvent):void {
+        callback(e.result as ArrayCollection);
+      });
+    }
+    
+    public function clearLogs(_id:String, callback:Function):void
+    {
+      DB.instance.collector.del_logs(_id, function(e:ResultEvent):void {
+        callback();
+      });
+    }
+    
   }
   
 }
