@@ -20,6 +20,7 @@ package it.ht.rcs.console
   import it.ht.rcs.console.backdoor.rest.DBBackdoorDemo;
   import it.ht.rcs.console.backdoor.rest.IDBBackdoor;
   import it.ht.rcs.console.factory.rest.DBFactory;
+  import it.ht.rcs.console.factory.rest.DBFactoryDemo;
   import it.ht.rcs.console.factory.rest.IDBFactory;
   import it.ht.rcs.console.monitor.rest.DBLicense;
   import it.ht.rcs.console.monitor.rest.DBLicenseDemo;
