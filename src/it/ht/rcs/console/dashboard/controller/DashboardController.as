@@ -55,9 +55,10 @@ package it.ht.rcs.console.dashboard.controller
         //})  
       });
       
-      addItem({name: 'Operation One', _kind: 'operation'});
-      addItem({name: 'Operation One', _kind: 'operation'});
-      addItem({name: 'Target One', _kind: 'target'});
+      addItem({name: 'Operation One', status: 'open', _kind: 'operation'});
+      addItem({name: 'Operation One', status: 'closed', _kind: 'operation'});
+      addItem({name: 'Target One', status: 'open', _kind: 'target'});
+      addItem({name: 'Backdoor', status: 'queued', _kind: 'backdoor'});
     }
     
  
