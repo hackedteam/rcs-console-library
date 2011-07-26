@@ -104,7 +104,7 @@ package it.ht.rcs.console.accounting.model
       return privs.getItemIndex('TECH') != -1;
     }
 
-    public function is_viewer():Boolean
+    public function is_view():Boolean
     {
       return privs.getItemIndex('VIEW') != -1;
     }
