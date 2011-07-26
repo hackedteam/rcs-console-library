@@ -94,6 +94,11 @@ package it.ht.rcs.console.accounting.model
       return privs.getItemIndex('ADMIN') != -1;
     }
 
+    public function is_sys():Boolean
+    {
+      return privs.getItemIndex('SYS') != -1;
+    }
+    
     public function is_tech():Boolean
     {
       return privs.getItemIndex('TECH') != -1;
