@@ -51,7 +51,7 @@ package it.ht.rcs.console.network.rest
     public function add_rule(proxy_id:String, params:Object, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = add_rule_(JSON.encode( { _id: proxy_id, rule: JSON.encode(params) } ));
+      resp.token = add_rule_(JSON.encode( { _id: proxy_id, rule: params } ));
     }
     
     public function del_rule(proxy_id:String, rule_id:String, onResult:Function=null, onFault:Function=null):void
@@ -63,7 +63,7 @@ package it.ht.rcs.console.network.rest
     public function update_rule(proxy_id:String, params:Object, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = add_rule_(JSON.encode( { _id: proxy_id, rule: JSON.encode(params) } ));
+      resp.token = update_rule_(JSON.encode( { _id: proxy_id, rule: params } ));
     }
     
     /**

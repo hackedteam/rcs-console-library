@@ -16,7 +16,7 @@ public class ProxyRule extends _Super_ProxyRule
       enabled: false,
       ident: '',
       ident_param: '',
-      probability: 0,
+      probability: 100,
       resource: '',
       target_id: []
     };
