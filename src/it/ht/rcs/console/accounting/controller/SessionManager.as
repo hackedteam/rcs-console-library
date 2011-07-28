@@ -114,7 +114,7 @@ package it.ht.rcs.console.accounting.controller
       /* destroy the current session */
       console.currentSession = null;
       /* request to the DB, ignoring the results */
-      if (DB.instance != null)
+      if (DB.instance != null && DB.instance.session != null)
         DB.instance.session.logout();
       
       exitApplication ? FlexGlobals.topLevelApplication.exit() : FlexGlobals.topLevelApplication.currentState = console.LOGGED_OUT_STATE;

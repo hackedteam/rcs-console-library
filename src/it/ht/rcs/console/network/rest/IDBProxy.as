@@ -1,7 +1,6 @@
 package it.ht.rcs.console.network.rest
 {
   import it.ht.rcs.console.network.model.Proxy;
-  import it.ht.rcs.console.network.model.ProxyRule;
 
   public interface IDBProxy
   {
@@ -15,7 +14,7 @@ package it.ht.rcs.console.network.rest
     
     function destroy(id:String, onResult:Function = null, onFault:Function = null):void;
     
-    function add_rule(rule:ProxyRule, proxy_id:String, onResult:Function = null, onFault:Function = null):void;
+    function add_rule(params:Object, proxy_id:String, onResult:Function = null, onFault:Function = null):void;
     
     function del_rule(proxy_id:String, rule_id:String, onResult:Function = null, onFault:Function = null):void;
   }

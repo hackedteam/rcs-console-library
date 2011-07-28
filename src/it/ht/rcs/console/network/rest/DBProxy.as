@@ -48,10 +48,10 @@ package it.ht.rcs.console.network.rest
       resp.token = destroy_(JSON.encode({_id: id}));
     }
     
-    public function add_rule(rule:ProxyRule, proxy_id:String, onResult:Function=null, onFault:Function=null):void
+    public function add_rule(params:Object, proxy_id:String, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = add_rule_(JSON.encode( { _id: proxy_id, rule: JSON.encode(rule) } ));
+      resp.token = add_rule_(JSON.encode( { _id: proxy_id, rule: JSON.encode(params) } ));
     }
     
     public function del_rule(proxy_id:String, rule_id:String, onResult:Function=null, onFault:Function=null):void
