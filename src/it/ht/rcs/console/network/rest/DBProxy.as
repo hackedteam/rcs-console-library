@@ -48,7 +48,7 @@ package it.ht.rcs.console.network.rest
       resp.token = destroy_(JSON.encode({_id: id}));
     }
     
-    public function add_rule(params:Object, proxy_id:String, onResult:Function=null, onFault:Function=null):void
+    public function add_rule(proxy_id:String, params:Object, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
       resp.token = add_rule_(JSON.encode( { _id: proxy_id, rule: JSON.encode(params) } ));
@@ -58,6 +58,12 @@ package it.ht.rcs.console.network.rest
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
       resp.token = del_rule_(JSON.encode( { _id: proxy_id, rule: { _id: rule_id } } ));
+    }
+    
+    public function update_rule(proxy_id:String, params:Object, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = add_rule_(JSON.encode( { _id: proxy_id, rule: JSON.encode(params) } ));
     }
     
     /**

@@ -50,7 +50,7 @@ internal class _Super_DBCollector extends com.adobe.fiber.services.wrapper.HTTPS
          operations.push(operation);
 
          operation = new mx.rpc.http.Operation(null, "logs_");
-         operation.url = "/collector/log/{id}";
+         operation.url = "/collector/logs/{id}";
          operation.method = "GET";
          argsArray = new Array("id");
          operation.argumentNames = argsArray;         

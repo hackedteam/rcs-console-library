@@ -18,12 +18,20 @@ package it.ht.rcs.console.network.controller
     
     override protected function onItemRemove(o:*):void
     { 
-      DB.instance.proxy.del_rule(_owner, o);
+      DB.instance.proxy.del_rule(_owner._id, o._id);
+    }
+    
+    override protected function onItemUpdate(e:*):void
+    {
+      var o:Object = new Object;
+      o[e.property] = e.newValue;
+      o._id = e.source._id;
+      DB.instance.proxy.update_rule(_owner._id, o);
     }
     
     public function addRule(proxy_id:String, callback:Function):void
     {
-      DB.instance.proxy.add_rule(ProxyRule.defaultProxyRule(), proxy_id, function (e:ResultEvent):void {
+      DB.instance.proxy.add_rule(proxy_id, ProxyRule.defaultProxyRule(), function (e:ResultEvent):void {
         var rule:ProxyRule = e.result as ProxyRule;
         addItem(rule);
         callback(rule);

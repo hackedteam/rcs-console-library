@@ -14,8 +14,10 @@ package it.ht.rcs.console.network.rest
     
     function destroy(id:String, onResult:Function = null, onFault:Function = null):void;
     
-    function add_rule(params:Object, proxy_id:String, onResult:Function = null, onFault:Function = null):void;
+    function add_rule(proxy_id:String, params:Object, onResult:Function = null, onFault:Function = null):void;
     
     function del_rule(proxy_id:String, rule_id:String, onResult:Function = null, onFault:Function = null):void;
+    
+    function update_rule(proxy_id:String, params:Object, onResult:Function = null, onFault:Function = null):void;
   }
 }

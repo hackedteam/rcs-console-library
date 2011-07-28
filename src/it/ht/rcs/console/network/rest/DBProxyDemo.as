@@ -50,12 +50,16 @@ package it.ht.rcs.console.network.rest
     {
     }
     
-    public function add_rule(params:Object, proxy_id:String, onResult:Function=null, onFault:Function=null):void
+    public function add_rule(proxy_id:String, params:Object, onResult:Function=null, onFault:Function=null):void
     {
       var rule:ProxyRule = new ProxyRule(params);
       
       var event:ResultEvent = new ResultEvent('proxy.add_rule', false, true, rule);
       onResult(event);
+    }
+    
+    public function update_rule(proxy_id:String, params:Object, onResult:Function=null, onFault:Function=null):void
+    {
     }
     
     public function del_rule(proxy_id:String, rule_id:String, onResult:Function=null, onFault:Function=null):void
