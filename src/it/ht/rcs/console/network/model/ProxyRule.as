@@ -6,6 +6,8 @@ import com.adobe.fiber.core.model_internal;
 public class ProxyRule extends _Super_ProxyRule
 {
   
+  public var action_param_name:String;
+  
   public static function defaultProxyRule():Object
   {
     return {
@@ -18,7 +20,8 @@ public class ProxyRule extends _Super_ProxyRule
       ident_param: '',
       probability: 100,
       resource: '',
-      target_id: []
+      target_id: [],
+      action_param_name: ''
     };
   }
   
@@ -35,6 +38,7 @@ public class ProxyRule extends _Super_ProxyRule
       probability = data.probability;
       resource = data.resource;
       target_id = data.target_id;
+      action_param_name = data.action_param_name;
     }
   }
   
