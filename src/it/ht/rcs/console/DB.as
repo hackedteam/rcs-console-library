@@ -122,7 +122,7 @@ package it.ht.rcs.console
       factory = new DBFactoryDemo();
     }
 
-    private function host_autocomplete(host:String):String
+    public static function host_autocomplete(host:String):String
     {
       /* if the user doesn't declare the protocol, go with https by default */ 
       if (host.search("http") == -1) {

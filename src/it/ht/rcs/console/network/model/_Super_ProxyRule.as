@@ -47,17 +47,18 @@ public class _Super_ProxyRule extends flash.events.EventDispatcher implements co
     /**
      * properties
      */
-    private var _internal_enabled : Boolean;
     private var _internal_action_param : String;
-    private var _internal_updated_at : String;
-    private var _internal_ident : String;
-    private var _internal__id : String;
-    private var _internal_target_id : ArrayCollection;
+    private var _internal_enabled : Boolean;
+    private var _internal_action_param_name : String;
     private var _internal_resource : String;
+    private var _internal_target_id : ArrayCollection;
+    private var _internal_updated_at : String;
+    private var _internal__id : String;
+    private var _internal_ident : String;
     private var _internal_action : String;
-    private var _internal_ident_param : String;
-    private var _internal_disable_sync : Boolean;
     private var _internal_created_at : String;
+    private var _internal_disable_sync : Boolean;
+    private var _internal_ident_param : String;
     private var _internal_probability : int;
 
     private static var emptyArray:Array = new Array();
@@ -83,39 +84,21 @@ public class _Super_ProxyRule extends flash.events.EventDispatcher implements co
      */
 
     [Bindable(event="propertyChange")]
-    public function get enabled() : Boolean
-    {
-        return _internal_enabled;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get action_param() : String
     {
         return _internal_action_param;
     }
 
     [Bindable(event="propertyChange")]
-    public function get updated_at() : String
+    public function get enabled() : Boolean
     {
-        return _internal_updated_at;
+        return _internal_enabled;
     }
 
     [Bindable(event="propertyChange")]
-    public function get ident() : String
+    public function get action_param_name() : String
     {
-        return _internal_ident;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get _id() : String
-    {
-        return _internal__id;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get target_id() : ArrayCollection
-    {
-        return _internal_target_id;
+        return _internal_action_param_name;
     }
 
     [Bindable(event="propertyChange")]
@@ -125,15 +108,39 @@ public class _Super_ProxyRule extends flash.events.EventDispatcher implements co
     }
 
     [Bindable(event="propertyChange")]
+    public function get target_id() : ArrayCollection
+    {
+        return _internal_target_id;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get updated_at() : String
+    {
+        return _internal_updated_at;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get _id() : String
+    {
+        return _internal__id;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get ident() : String
+    {
+        return _internal_ident;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get action() : String
     {
         return _internal_action;
     }
 
     [Bindable(event="propertyChange")]
-    public function get ident_param() : String
+    public function get created_at() : String
     {
-        return _internal_ident_param;
+        return _internal_created_at;
     }
 
     [Bindable(event="propertyChange")]
@@ -143,9 +150,9 @@ public class _Super_ProxyRule extends flash.events.EventDispatcher implements co
     }
 
     [Bindable(event="propertyChange")]
-    public function get created_at() : String
+    public function get ident_param() : String
     {
-        return _internal_created_at;
+        return _internal_ident_param;
     }
 
     [Bindable(event="propertyChange")]
@@ -162,16 +169,6 @@ public class _Super_ProxyRule extends flash.events.EventDispatcher implements co
      * data/source property setters
      */
 
-    public function set enabled(value:Boolean) : void
-    {
-        var oldValue:Boolean = _internal_enabled;
-        if (oldValue !== value)
-        {
-            _internal_enabled = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "enabled", oldValue, _internal_enabled));
-        }
-    }
-
     public function set action_param(value:String) : void
     {
         var oldValue:String = _internal_action_param;
@@ -182,33 +179,33 @@ public class _Super_ProxyRule extends flash.events.EventDispatcher implements co
         }
     }
 
-    public function set updated_at(value:String) : void
+    public function set enabled(value:Boolean) : void
     {
-        var oldValue:String = _internal_updated_at;
+        var oldValue:Boolean = _internal_enabled;
         if (oldValue !== value)
         {
-            _internal_updated_at = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "updated_at", oldValue, _internal_updated_at));
+            _internal_enabled = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "enabled", oldValue, _internal_enabled));
         }
     }
 
-    public function set ident(value:String) : void
+    public function set action_param_name(value:String) : void
     {
-        var oldValue:String = _internal_ident;
+        var oldValue:String = _internal_action_param_name;
         if (oldValue !== value)
         {
-            _internal_ident = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "ident", oldValue, _internal_ident));
+            _internal_action_param_name = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "action_param_name", oldValue, _internal_action_param_name));
         }
     }
 
-    public function set _id(value:String) : void
+    public function set resource(value:String) : void
     {
-        var oldValue:String = _internal__id;
+        var oldValue:String = _internal_resource;
         if (oldValue !== value)
         {
-            _internal__id = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "_id", oldValue, _internal__id));
+            _internal_resource = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "resource", oldValue, _internal_resource));
         }
     }
 
@@ -237,13 +234,33 @@ public class _Super_ProxyRule extends flash.events.EventDispatcher implements co
         }
     }
 
-    public function set resource(value:String) : void
+    public function set updated_at(value:String) : void
     {
-        var oldValue:String = _internal_resource;
+        var oldValue:String = _internal_updated_at;
         if (oldValue !== value)
         {
-            _internal_resource = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "resource", oldValue, _internal_resource));
+            _internal_updated_at = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "updated_at", oldValue, _internal_updated_at));
+        }
+    }
+
+    public function set _id(value:String) : void
+    {
+        var oldValue:String = _internal__id;
+        if (oldValue !== value)
+        {
+            _internal__id = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "_id", oldValue, _internal__id));
+        }
+    }
+
+    public function set ident(value:String) : void
+    {
+        var oldValue:String = _internal_ident;
+        if (oldValue !== value)
+        {
+            _internal_ident = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "ident", oldValue, _internal_ident));
         }
     }
 
@@ -257,13 +274,13 @@ public class _Super_ProxyRule extends flash.events.EventDispatcher implements co
         }
     }
 
-    public function set ident_param(value:String) : void
+    public function set created_at(value:String) : void
     {
-        var oldValue:String = _internal_ident_param;
+        var oldValue:String = _internal_created_at;
         if (oldValue !== value)
         {
-            _internal_ident_param = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "ident_param", oldValue, _internal_ident_param));
+            _internal_created_at = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "created_at", oldValue, _internal_created_at));
         }
     }
 
@@ -277,13 +294,13 @@ public class _Super_ProxyRule extends flash.events.EventDispatcher implements co
         }
     }
 
-    public function set created_at(value:String) : void
+    public function set ident_param(value:String) : void
     {
-        var oldValue:String = _internal_created_at;
+        var oldValue:String = _internal_ident_param;
         if (oldValue !== value)
         {
-            _internal_created_at = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "created_at", oldValue, _internal_created_at));
+            _internal_ident_param = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "ident_param", oldValue, _internal_ident_param));
         }
     }
 

@@ -5,9 +5,7 @@ import com.adobe.fiber.core.model_internal;
 
 public class ProxyRule extends _Super_ProxyRule
 {
-  
-  public var action_param_name:String;
-  
+    
   public static function defaultProxyRule():Object
   {
     return {

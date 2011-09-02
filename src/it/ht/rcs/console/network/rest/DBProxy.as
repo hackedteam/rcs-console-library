@@ -45,7 +45,7 @@ package it.ht.rcs.console.network.rest
     public function destroy(id:String, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = destroy_(JSON.encode({_id: id}));
+      resp.token = destroy_(JSON.encode( { _id: id } ));
     }
     
     public function add_rule(proxy_id:String, params:Object, onResult:Function=null, onFault:Function=null):void
