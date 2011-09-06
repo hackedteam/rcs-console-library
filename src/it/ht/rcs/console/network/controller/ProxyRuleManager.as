@@ -29,10 +29,10 @@ package it.ht.rcs.console.network.controller
       DB.instance.proxy.update_rule(_owner._id, o);
     }
     
-    public function addRule(proxy_id:String, callback:Function):void
+    public function addRule(proxy_id:String, rule:ProxyRule, callback:Function):void
     {
-      DB.instance.proxy.add_rule(proxy_id, ProxyRule.defaultProxyRule(), function (e:ResultEvent):void {
-        var rule:ProxyRule = e.result as ProxyRule;
+      DB.instance.proxy.add_rule(proxy_id, rule, function (e:ResultEvent):void {
+        //var rule:ProxyRule = e.result as ProxyRule;
         addItem(rule);
         callback(rule);
       });
