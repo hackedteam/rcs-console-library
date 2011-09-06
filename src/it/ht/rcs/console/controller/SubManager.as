@@ -24,7 +24,7 @@ package it.ht.rcs.console.controller
       _classname = flash.utils.getQualifiedClassName(this).split('::')[1];
       trace(_classname + ' (submanager) -- Init');
 
-      _items = data;
+      _items = data ? data : new ArrayCollection();
       _owner = owner;
       
       /* detect changes on the list */

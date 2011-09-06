@@ -31,7 +31,9 @@ package it.ht.rcs.console.network.controller
     
     public function addRule(proxy_id:String, rule:ProxyRule, callback:Function):void
     {
-      DB.instance.proxy.add_rule(proxy_id, rule, function (e:ResultEvent):void {
+      var ruleObject:Object = rule.toObject();
+      //ruleObject.target_id = ruleObject.target_id ? ruleObject.target_id.source : ruleObject.target_id;
+      DB.instance.proxy.add_rule(proxy_id, ruleObject, function (e:ResultEvent):void {
         //var rule:ProxyRule = e.result as ProxyRule;
         addItem(rule);
         callback(rule);

@@ -12,14 +12,14 @@ public class ProxyRule extends _Super_ProxyRule
       _id: '',
       action: '',
       action_param: '',
+      action_param_name: '',
       disable_sync: false,
       enabled: false,
       ident: '',
       ident_param: '',
       probability: 100,
       resource: '',
-      target_id: [],
-      action_param_name: ''
+      target_id: []
     };
   }
   
@@ -29,6 +29,7 @@ public class ProxyRule extends _Super_ProxyRule
       _id = data._id;
       action = data.action;
       action_param = data.action_param;
+      action_param_name = data.action_param_name;
       disable_sync = data.disable_sync;
       enabled = data.enabled;
       ident = data.ident;
@@ -36,8 +37,24 @@ public class ProxyRule extends _Super_ProxyRule
       probability = data.probability;
       resource = data.resource;
       target_id = data.target_id;
-      action_param_name = data.action_param_name;
     }
+  }
+  
+  public function toObject():Object
+  {
+    var o:Object = {};
+    o.action = action;
+    o.action_param = action_param;
+    o.action_param_name = action_param_name;
+    o.disable_sync = disable_sync;
+    o.enabled = enabled;
+    o.ident = ident;
+    o.ident_param = ident_param;
+    o.probability = probability;
+    o.resource = resource;
+    if (target_id)
+      o.target_id = target_id.source;
+    return o;
   }
   
     /** 

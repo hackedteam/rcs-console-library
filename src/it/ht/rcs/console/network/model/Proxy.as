@@ -29,6 +29,8 @@ public class Proxy extends _Super_Proxy
   
   public function Proxy(data:Object = null)
   {
+    // We always create an empty rulesManager to prevent NPE if the proxy has no rules.
+    rulesManager = new ProxyRuleManager(this, null);
     if (data) {
       _id = data._id;
       address = data.address;
