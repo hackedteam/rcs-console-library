@@ -43,6 +43,9 @@ package it.ht.rcs.console
   import it.ht.rcs.console.task.rest.DBTask;
   import it.ht.rcs.console.task.rest.DBTaskDemo;
   import it.ht.rcs.console.task.rest.IDBTask;
+  import it.ht.rcs.console.update.rest.DBUpdate;
+  import it.ht.rcs.console.update.rest.DBUpdateDemo;
+  import it.ht.rcs.console.update.rest.IDBUpdate;
   
   import mx.rpc.CallResponder;
   import mx.rpc.events.FaultEvent;
@@ -64,6 +67,7 @@ package it.ht.rcs.console
     public var target:IDBTarget;
     public var backdoor:IDBBackdoor;
     public var factory:IDBFactory;
+    public var update:IDBUpdate;
     
     private static var notifier:IFaultNotifier;
     public static var i18n:II18N;
@@ -102,6 +106,7 @@ package it.ht.rcs.console
       target = new DBTarget(host);
       backdoor = new DBBackdoor(host);
       factory = new DBFactory(host);
+      update = new DBUpdate(host);
     }
 
     private function initDemo():void
@@ -120,6 +125,7 @@ package it.ht.rcs.console
       target = new DBTargetDemo();
       backdoor = new DBBackdoorDemo();
       factory = new DBFactoryDemo();
+      update = new DBUpdateDemo();
     }
 
     public static function host_autocomplete(host:String):String

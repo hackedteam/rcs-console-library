@@ -72,13 +72,13 @@ package it.ht.rcs.console.dashboard.controller
     
     override public function removeItem(o:Object):void
     {
-      var idx:int = _dashboard_ids.getItemIndex(o._id as String);
-      _dashboard_ids.removeItemAt(idx);
+      //var idx:int = _dashboard_ids.getItemIndex(o._id as String);
+      //_dashboard_ids.removeItemAt(idx);
       
       _items.removeItem(o);
       
       /* save in the user profile the new list of items */
-      UserManager.instance.update(_user, {dashboard_ids: _dashboard_ids});
+      //UserManager.instance.update(_user, {dashboard_ids: _dashboard_ids});
     }
     
   }
