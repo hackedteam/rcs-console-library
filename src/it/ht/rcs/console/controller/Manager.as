@@ -1,6 +1,8 @@
 package it.ht.rcs.console.controller
 {
   import flash.events.Event;
+  import flash.events.EventDispatcher;
+  import flash.events.IEventDispatcher;
   import flash.utils.getQualifiedClassName;
   
   import it.ht.rcs.console.events.RefreshEvent;
@@ -8,7 +10,7 @@ package it.ht.rcs.console.controller
   
   import mx.core.FlexGlobals;
   
-  public class Manager
+  public class Manager extends EventDispatcher
   {
     protected var _classname:String;
     
@@ -57,6 +59,11 @@ package it.ht.rcs.console.controller
     {
       //trace(_classname + ' (manager) -- Explicit Refresh');
       onRefresh(null);
+    }
+    
+    protected function dispatchDataLoadedEvent():void
+    {
+      dispatchEvent(new Event("dataLoaded"));
     }
     
     protected function onRefresh(e:RefreshEvent):void

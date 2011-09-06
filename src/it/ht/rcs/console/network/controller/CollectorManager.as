@@ -45,6 +45,7 @@ package it.ht.rcs.console.network.controller
       items.source.forEach(function(element:*, index:int, arr:Array):void {
         addItem(element);
       });
+      dispatchDataLoadedEvent();
     }
     
     public function addProxy(callback:Function):void
