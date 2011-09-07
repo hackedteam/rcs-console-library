@@ -29,6 +29,7 @@ public class License extends _Super_License
       serial = data.serial;
       type = data.type;
       users = data.users;
+      shards = data.shards;
     }
   }
   
