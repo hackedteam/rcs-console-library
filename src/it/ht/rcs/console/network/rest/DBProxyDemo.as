@@ -15,8 +15,8 @@ package it.ht.rcs.console.network.rest
       var items:ArrayCollection;
       var a:Array = [
         new Proxy({_id: 'p1', address: '192.168.1.101', desc: 'Desc 192.168.1.101', name: 'Proxy 1', poll: false, port: 4444, redirect: '', redirection_tag: '', created_at: '2011-06-22T17:29:41+02:00', updated_at: '2011-06-22T17:29:41+02:00', version: 0,
-                   rules: [new ProxyRule({_id: '', action: 'INJECT-EXE', action_param: 'RCS_0002', action_param_name:     'RCS_0002', disable_sync: false, enabled:  true, ident:     'STATIC-IP', ident_param: '1.2.3.4', probability:   0, resource: '.exe', target_id: ['Target 1']}),
-                           new ProxyRule({_id: '', action:    'REPLACE', action_param: 'DOC_0001', action_param_name: 'Document.doc', disable_sync:  true, enabled: false, ident: 'STRING-CLIENT', ident_param: '4.5.6.7', probability: 100, resource: '.doc', target_id: ['Target 2']})]}),
+                   rules: [new ProxyRule({_id: '', action: 'INJECT-EXE', action_param: 'RCS_0002', action_param_name:     'RCS_0002', disable_sync: false, enabled:  true, ident:     'STATIC-IP', ident_param: '1.2.3.4', probability:   0, resource: '.exe', target_id: ['4e314a052afb65157900005a']}),
+                           new ProxyRule({_id: '', action:    'REPLACE', action_param: 'DOC_0001', action_param_name: 'Document.doc', disable_sync:  true, enabled: false, ident: 'STRING-CLIENT', ident_param: '4.5.6.7', probability: 100, resource: '.doc', target_id: ['Target']})]}),
         new Proxy({_id: 'p2', address: '192.168.1.102', desc: 'Desc 192.168.1.102', name: 'Proxy 2', poll: false, port: 4444, redirect: '', redirection_tag: '', created_at: '2011-06-22T17:29:41+02:00', updated_at: '2011-06-22T17:29:41+02:00', version: 0,
                    rules: [new ProxyRule({_id: '', action: 'action2'})]}),
         new Proxy({_id: 'p3', address: '192.168.1.103', desc: 'Desc 192.168.1.103', name: 'Proxy 3', poll: false, port: 4444, redirect: '', redirection_tag: '', created_at: '2011-06-22T17:29:41+02:00', updated_at: '2011-06-22T17:29:41+02:00', version: 0,
