@@ -17,17 +17,17 @@ package it.ht.rcs.console.monitor.rest
           alerting: true,
           backdoors: new LicenseBackdoors(
             {
-              android: true,
-              blackberry: true,
+              android: [true, true],
+              blackberry: [true, true],
               desktop: 15,
-              ios: false,
-              linux: false,
+              ios: [true, true],
+              linux: [false, false],
               mobile: 15,
-              osx: true,
-              symbian: false,
+              osx: [true, true],
+              symbian: [true, true],
               total: null,
-              windows: true,
-              winmo: false
+              windows: [true, true],
+              winmo: [false, true]
             }),
           collectors: new LicenseCollectors(
             {
@@ -39,7 +39,8 @@ package it.ht.rcs.console.monitor.rest
           rmi: true,
           serial: 1234567890,
           type: 'reusable',
-          users: 15
+          users: 15,
+          shards: 1
         });
       var event:ResultEvent = new ResultEvent("license.limit", false, true, limits);
       if (onResult != null) 
@@ -62,7 +63,8 @@ package it.ht.rcs.console.monitor.rest
               anonymizers: 1
             }),
           ipa: 2,
-          users: 10
+          users: 10,
+          shards: 1
         });
       var event:ResultEvent = new ResultEvent("license.count", false, true, counters);
       if (onResult != null) 

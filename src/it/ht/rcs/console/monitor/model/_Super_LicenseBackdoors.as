@@ -47,16 +47,16 @@ public class _Super_LicenseBackdoors extends flash.events.EventDispatcher implem
     /**
      * properties
      */
-    private var _internal_symbian : Boolean;
-    private var _internal_blackberry : Boolean;
-    private var _internal_osx : Boolean;
+    private var _internal_symbian : ArrayCollection;
+    private var _internal_blackberry : ArrayCollection;
+    private var _internal_osx : ArrayCollection;
+    private var _internal_android : ArrayCollection;
+    private var _internal_ios : ArrayCollection;
+    private var _internal_windows : ArrayCollection;
+    private var _internal_winmo : ArrayCollection;
+    private var _internal_linux : ArrayCollection;
     private var _internal_total : Object;
-    private var _internal_android : Boolean;
-    private var _internal_ios : Boolean;
     private var _internal_desktop : Object;
-    private var _internal_windows : Boolean;
-    private var _internal_winmo : Boolean;
-    private var _internal_linux : Boolean;
     private var _internal_mobile : Object;
 
     private static var emptyArray:Array = new Array();
@@ -82,21 +82,51 @@ public class _Super_LicenseBackdoors extends flash.events.EventDispatcher implem
      */
 
     [Bindable(event="propertyChange")]
-    public function get symbian() : Boolean
+    public function get symbian() : ArrayCollection
     {
         return _internal_symbian;
     }
 
     [Bindable(event="propertyChange")]
-    public function get blackberry() : Boolean
+    public function get blackberry() : ArrayCollection
     {
         return _internal_blackberry;
     }
 
     [Bindable(event="propertyChange")]
-    public function get osx() : Boolean
+    public function get osx() : ArrayCollection
     {
         return _internal_osx;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get android() : ArrayCollection
+    {
+        return _internal_android;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get ios() : ArrayCollection
+    {
+        return _internal_ios;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get windows() : ArrayCollection
+    {
+        return _internal_windows;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get winmo() : ArrayCollection
+    {
+        return _internal_winmo;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get linux() : ArrayCollection
+    {
+        return _internal_linux;
     }
 
     [Bindable(event="propertyChange")]
@@ -106,39 +136,9 @@ public class _Super_LicenseBackdoors extends flash.events.EventDispatcher implem
     }
 
     [Bindable(event="propertyChange")]
-    public function get android() : Boolean
-    {
-        return _internal_android;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get ios() : Boolean
-    {
-        return _internal_ios;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get desktop() : Object
     {
         return _internal_desktop;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get windows() : Boolean
-    {
-        return _internal_windows;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get winmo() : Boolean
-    {
-        return _internal_winmo;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get linux() : Boolean
-    {
-        return _internal_linux;
     }
 
     [Bindable(event="propertyChange")]
@@ -155,33 +155,203 @@ public class _Super_LicenseBackdoors extends flash.events.EventDispatcher implem
      * data/source property setters
      */
 
-    public function set symbian(value:Boolean) : void
+    public function set symbian(value:*) : void
     {
-        var oldValue:Boolean = _internal_symbian;
+        var oldValue:ArrayCollection = _internal_symbian;
         if (oldValue !== value)
         {
-            _internal_symbian = value;
+            if (value is ArrayCollection)
+            {
+                _internal_symbian = value;
+            }
+            else if (value is Array)
+            {
+                _internal_symbian = new ArrayCollection(value);
+            }
+            else if (value == null)
+            {
+                _internal_symbian = null;
+            }
+            else
+            {
+                throw new Error("value of symbian must be a collection");
+            }
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "symbian", oldValue, _internal_symbian));
         }
     }
 
-    public function set blackberry(value:Boolean) : void
+    public function set blackberry(value:*) : void
     {
-        var oldValue:Boolean = _internal_blackberry;
+        var oldValue:ArrayCollection = _internal_blackberry;
         if (oldValue !== value)
         {
-            _internal_blackberry = value;
+            if (value is ArrayCollection)
+            {
+                _internal_blackberry = value;
+            }
+            else if (value is Array)
+            {
+                _internal_blackberry = new ArrayCollection(value);
+            }
+            else if (value == null)
+            {
+                _internal_blackberry = null;
+            }
+            else
+            {
+                throw new Error("value of blackberry must be a collection");
+            }
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "blackberry", oldValue, _internal_blackberry));
         }
     }
 
-    public function set osx(value:Boolean) : void
+    public function set osx(value:*) : void
     {
-        var oldValue:Boolean = _internal_osx;
+        var oldValue:ArrayCollection = _internal_osx;
         if (oldValue !== value)
         {
-            _internal_osx = value;
+            if (value is ArrayCollection)
+            {
+                _internal_osx = value;
+            }
+            else if (value is Array)
+            {
+                _internal_osx = new ArrayCollection(value);
+            }
+            else if (value == null)
+            {
+                _internal_osx = null;
+            }
+            else
+            {
+                throw new Error("value of osx must be a collection");
+            }
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "osx", oldValue, _internal_osx));
+        }
+    }
+
+    public function set android(value:*) : void
+    {
+        var oldValue:ArrayCollection = _internal_android;
+        if (oldValue !== value)
+        {
+            if (value is ArrayCollection)
+            {
+                _internal_android = value;
+            }
+            else if (value is Array)
+            {
+                _internal_android = new ArrayCollection(value);
+            }
+            else if (value == null)
+            {
+                _internal_android = null;
+            }
+            else
+            {
+                throw new Error("value of android must be a collection");
+            }
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "android", oldValue, _internal_android));
+        }
+    }
+
+    public function set ios(value:*) : void
+    {
+        var oldValue:ArrayCollection = _internal_ios;
+        if (oldValue !== value)
+        {
+            if (value is ArrayCollection)
+            {
+                _internal_ios = value;
+            }
+            else if (value is Array)
+            {
+                _internal_ios = new ArrayCollection(value);
+            }
+            else if (value == null)
+            {
+                _internal_ios = null;
+            }
+            else
+            {
+                throw new Error("value of ios must be a collection");
+            }
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "ios", oldValue, _internal_ios));
+        }
+    }
+
+    public function set windows(value:*) : void
+    {
+        var oldValue:ArrayCollection = _internal_windows;
+        if (oldValue !== value)
+        {
+            if (value is ArrayCollection)
+            {
+                _internal_windows = value;
+            }
+            else if (value is Array)
+            {
+                _internal_windows = new ArrayCollection(value);
+            }
+            else if (value == null)
+            {
+                _internal_windows = null;
+            }
+            else
+            {
+                throw new Error("value of windows must be a collection");
+            }
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "windows", oldValue, _internal_windows));
+        }
+    }
+
+    public function set winmo(value:*) : void
+    {
+        var oldValue:ArrayCollection = _internal_winmo;
+        if (oldValue !== value)
+        {
+            if (value is ArrayCollection)
+            {
+                _internal_winmo = value;
+            }
+            else if (value is Array)
+            {
+                _internal_winmo = new ArrayCollection(value);
+            }
+            else if (value == null)
+            {
+                _internal_winmo = null;
+            }
+            else
+            {
+                throw new Error("value of winmo must be a collection");
+            }
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "winmo", oldValue, _internal_winmo));
+        }
+    }
+
+    public function set linux(value:*) : void
+    {
+        var oldValue:ArrayCollection = _internal_linux;
+        if (oldValue !== value)
+        {
+            if (value is ArrayCollection)
+            {
+                _internal_linux = value;
+            }
+            else if (value is Array)
+            {
+                _internal_linux = new ArrayCollection(value);
+            }
+            else if (value == null)
+            {
+                _internal_linux = null;
+            }
+            else
+            {
+                throw new Error("value of linux must be a collection");
+            }
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "linux", oldValue, _internal_linux));
         }
     }
 
@@ -195,26 +365,6 @@ public class _Super_LicenseBackdoors extends flash.events.EventDispatcher implem
         }
     }
 
-    public function set android(value:Boolean) : void
-    {
-        var oldValue:Boolean = _internal_android;
-        if (oldValue !== value)
-        {
-            _internal_android = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "android", oldValue, _internal_android));
-        }
-    }
-
-    public function set ios(value:Boolean) : void
-    {
-        var oldValue:Boolean = _internal_ios;
-        if (oldValue !== value)
-        {
-            _internal_ios = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "ios", oldValue, _internal_ios));
-        }
-    }
-
     public function set desktop(value:Object) : void
     {
         var oldValue:Object = _internal_desktop;
@@ -222,36 +372,6 @@ public class _Super_LicenseBackdoors extends flash.events.EventDispatcher implem
         {
             _internal_desktop = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "desktop", oldValue, _internal_desktop));
-        }
-    }
-
-    public function set windows(value:Boolean) : void
-    {
-        var oldValue:Boolean = _internal_windows;
-        if (oldValue !== value)
-        {
-            _internal_windows = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "windows", oldValue, _internal_windows));
-        }
-    }
-
-    public function set winmo(value:Boolean) : void
-    {
-        var oldValue:Boolean = _internal_winmo;
-        if (oldValue !== value)
-        {
-            _internal_winmo = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "winmo", oldValue, _internal_winmo));
-        }
-    }
-
-    public function set linux(value:Boolean) : void
-    {
-        var oldValue:Boolean = _internal_linux;
-        if (oldValue !== value)
-        {
-            _internal_linux = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "linux", oldValue, _internal_linux));
         }
     }
 

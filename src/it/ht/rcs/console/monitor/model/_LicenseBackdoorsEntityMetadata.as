@@ -9,6 +9,7 @@ import com.adobe.fiber.styles.Style;
 import com.adobe.fiber.valueobjects.AbstractEntityMetadata;
 import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 import com.adobe.fiber.valueobjects.IPropertyIterator;
+import mx.collections.ArrayCollection;
 import com.adobe.fiber.core.model_internal;
 import com.adobe.fiber.valueobjects.IModelType;
 import mx.events.PropertyChangeEvent;
@@ -20,16 +21,16 @@ internal class _LicenseBackdoorsEntityMetadata extends com.adobe.fiber.valueobje
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("symbian", "blackberry", "osx", "total", "android", "ios", "desktop", "windows", "winmo", "linux", "mobile");
+    model_internal static var allProperties:Array = new Array("symbian", "blackberry", "osx", "android", "ios", "windows", "winmo", "linux", "total", "desktop", "mobile");
     model_internal static var allAssociationProperties:Array = new Array();
-    model_internal static var allRequiredProperties:Array = new Array("symbian", "blackberry", "osx", "android", "ios", "windows", "winmo", "linux");
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("symbian", "blackberry", "osx", "total", "android", "ios", "desktop", "windows", "winmo", "linux", "mobile");
+    model_internal static var allRequiredProperties:Array = new Array();
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("symbian", "blackberry", "osx", "android", "ios", "windows", "winmo", "linux", "total", "desktop", "mobile");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("symbian", "blackberry", "osx", "total", "android", "ios", "desktop", "windows", "winmo", "linux", "mobile");
+    model_internal static var dataProperties:Array = new Array("symbian", "blackberry", "osx", "android", "ios", "windows", "winmo", "linux", "total", "desktop", "mobile");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("symbian", "blackberry", "osx", "total", "android", "ios", "desktop", "windows", "winmo", "linux", "mobile");
+    model_internal static var nonDerivedProperties:Array = new Array("symbian", "blackberry", "osx", "android", "ios", "windows", "winmo", "linux", "total", "desktop", "mobile");
     model_internal static var derivedProperties:Array = new Array();
-    model_internal static var collectionProperties:Array = new Array();
+    model_internal static var collectionProperties:Array = new Array("symbian", "blackberry", "osx", "android", "ios", "windows", "winmo", "linux");
     model_internal static var collectionBaseMap:Object;
     model_internal static var entityName:String = "LicenseBackdoors";
     model_internal static var dependentsOnMap:Object;
@@ -50,31 +51,39 @@ internal class _LicenseBackdoorsEntityMetadata extends com.adobe.fiber.valueobje
             model_internal::dependentsOnMap["symbian"] = new Array();
             model_internal::dependentsOnMap["blackberry"] = new Array();
             model_internal::dependentsOnMap["osx"] = new Array();
-            model_internal::dependentsOnMap["total"] = new Array();
             model_internal::dependentsOnMap["android"] = new Array();
             model_internal::dependentsOnMap["ios"] = new Array();
-            model_internal::dependentsOnMap["desktop"] = new Array();
             model_internal::dependentsOnMap["windows"] = new Array();
             model_internal::dependentsOnMap["winmo"] = new Array();
             model_internal::dependentsOnMap["linux"] = new Array();
+            model_internal::dependentsOnMap["total"] = new Array();
+            model_internal::dependentsOnMap["desktop"] = new Array();
             model_internal::dependentsOnMap["mobile"] = new Array();
 
             // collection base map
             model_internal::collectionBaseMap = new Object();
+            model_internal::collectionBaseMap["symbian"] = "Boolean";
+            model_internal::collectionBaseMap["blackberry"] = "Boolean";
+            model_internal::collectionBaseMap["osx"] = "Boolean";
+            model_internal::collectionBaseMap["android"] = "Boolean";
+            model_internal::collectionBaseMap["ios"] = "Boolean";
+            model_internal::collectionBaseMap["windows"] = "Boolean";
+            model_internal::collectionBaseMap["winmo"] = "Boolean";
+            model_internal::collectionBaseMap["linux"] = "Boolean";
         }
 
         // Property type Map
         model_internal::propertyTypeMap = new Object();
-        model_internal::propertyTypeMap["symbian"] = "Boolean";
-        model_internal::propertyTypeMap["blackberry"] = "Boolean";
-        model_internal::propertyTypeMap["osx"] = "Boolean";
+        model_internal::propertyTypeMap["symbian"] = "ArrayCollection";
+        model_internal::propertyTypeMap["blackberry"] = "ArrayCollection";
+        model_internal::propertyTypeMap["osx"] = "ArrayCollection";
+        model_internal::propertyTypeMap["android"] = "ArrayCollection";
+        model_internal::propertyTypeMap["ios"] = "ArrayCollection";
+        model_internal::propertyTypeMap["windows"] = "ArrayCollection";
+        model_internal::propertyTypeMap["winmo"] = "ArrayCollection";
+        model_internal::propertyTypeMap["linux"] = "ArrayCollection";
         model_internal::propertyTypeMap["total"] = "Object";
-        model_internal::propertyTypeMap["android"] = "Boolean";
-        model_internal::propertyTypeMap["ios"] = "Boolean";
         model_internal::propertyTypeMap["desktop"] = "Object";
-        model_internal::propertyTypeMap["windows"] = "Boolean";
-        model_internal::propertyTypeMap["winmo"] = "Boolean";
-        model_internal::propertyTypeMap["linux"] = "Boolean";
         model_internal::propertyTypeMap["mobile"] = "Object";
 
         model_internal::_instance = value;
@@ -323,12 +332,6 @@ internal class _LicenseBackdoorsEntityMetadata extends com.adobe.fiber.valueobje
     }
 
     [Bindable(event="propertyChange")]
-    public function get isTotalAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get isAndroidAvailable():Boolean
     {
         return true;
@@ -336,12 +339,6 @@ internal class _LicenseBackdoorsEntityMetadata extends com.adobe.fiber.valueobje
 
     [Bindable(event="propertyChange")]
     public function get isIosAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get isDesktopAvailable():Boolean
     {
         return true;
     }
@@ -360,6 +357,18 @@ internal class _LicenseBackdoorsEntityMetadata extends com.adobe.fiber.valueobje
 
     [Bindable(event="propertyChange")]
     public function get isLinuxAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isTotalAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isDesktopAvailable():Boolean
     {
         return true;
     }
@@ -399,12 +408,6 @@ internal class _LicenseBackdoorsEntityMetadata extends com.adobe.fiber.valueobje
     }
 
     [Bindable(event="propertyChange")]   
-    public function get totalStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
     public function get androidStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
@@ -412,12 +415,6 @@ internal class _LicenseBackdoorsEntityMetadata extends com.adobe.fiber.valueobje
 
     [Bindable(event="propertyChange")]   
     public function get iosStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get desktopStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
@@ -436,6 +433,18 @@ internal class _LicenseBackdoorsEntityMetadata extends com.adobe.fiber.valueobje
 
     [Bindable(event="propertyChange")]   
     public function get linuxStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get totalStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get desktopStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
