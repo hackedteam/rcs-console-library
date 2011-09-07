@@ -6,11 +6,13 @@ package it.ht.rcs.console.monitor.model
 {
 import com.adobe.fiber.styles.IStyle;
 import com.adobe.fiber.styles.Style;
+import com.adobe.fiber.styles.StyleValidator;
 import com.adobe.fiber.valueobjects.AbstractEntityMetadata;
 import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 import com.adobe.fiber.valueobjects.IPropertyIterator;
 import it.ht.rcs.console.monitor.model.LicenseBackdoors;
 import it.ht.rcs.console.monitor.model.LicenseCollectors;
+import mx.events.ValidationResultEvent;
 import com.adobe.fiber.core.model_internal;
 import com.adobe.fiber.valueobjects.IModelType;
 import mx.events.PropertyChangeEvent;
@@ -22,14 +24,14 @@ internal class _LicenseEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("collectors", "users", "ipa", "backdoors", "alerting", "correlation", "type", "serial", "rmi");
+    model_internal static var allProperties:Array = new Array("collectors", "users", "shards", "ipa", "exploits", "backdoors", "alerting", "correlation", "type", "serial", "rmi");
     model_internal static var allAssociationProperties:Array = new Array();
-    model_internal static var allRequiredProperties:Array = new Array();
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("collectors", "users", "ipa", "backdoors", "alerting", "correlation", "type", "serial", "rmi");
+    model_internal static var allRequiredProperties:Array = new Array("shards", "exploits");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("collectors", "users", "shards", "ipa", "exploits", "backdoors", "alerting", "correlation", "type", "serial", "rmi");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("collectors", "users", "ipa", "backdoors", "alerting", "correlation", "type", "serial", "rmi");
+    model_internal static var dataProperties:Array = new Array("collectors", "users", "shards", "ipa", "exploits", "backdoors", "alerting", "correlation", "type", "serial", "rmi");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("collectors", "users", "ipa", "backdoors", "alerting", "correlation", "type", "serial", "rmi");
+    model_internal static var nonDerivedProperties:Array = new Array("collectors", "users", "shards", "ipa", "exploits", "backdoors", "alerting", "correlation", "type", "serial", "rmi");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array();
     model_internal static var collectionBaseMap:Object;
@@ -38,6 +40,16 @@ internal class _LicenseEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     model_internal static var dependedOnServices:Array = new Array();
     model_internal static var propertyTypeMap:Object;
 
+    
+    model_internal var _shardsIsValid:Boolean;
+    model_internal var _shardsValidator:com.adobe.fiber.styles.StyleValidator;
+    model_internal var _shardsIsValidCacheInitialized:Boolean = false;
+    model_internal var _shardsValidationFailureMessages:Array;
+    
+    model_internal var _exploitsIsValid:Boolean;
+    model_internal var _exploitsValidator:com.adobe.fiber.styles.StyleValidator;
+    model_internal var _exploitsIsValidCacheInitialized:Boolean = false;
+    model_internal var _exploitsValidationFailureMessages:Array;
 
     model_internal var _instance:_Super_License;
     model_internal static var _nullStyle:com.adobe.fiber.styles.Style = new com.adobe.fiber.styles.Style();
@@ -51,7 +63,9 @@ internal class _LicenseEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
             model_internal::dependentsOnMap = new Object();
             model_internal::dependentsOnMap["collectors"] = new Array();
             model_internal::dependentsOnMap["users"] = new Array();
+            model_internal::dependentsOnMap["shards"] = new Array();
             model_internal::dependentsOnMap["ipa"] = new Array();
+            model_internal::dependentsOnMap["exploits"] = new Array();
             model_internal::dependentsOnMap["backdoors"] = new Array();
             model_internal::dependentsOnMap["alerting"] = new Array();
             model_internal::dependentsOnMap["correlation"] = new Array();
@@ -67,7 +81,9 @@ internal class _LicenseEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
         model_internal::propertyTypeMap = new Object();
         model_internal::propertyTypeMap["collectors"] = "it.ht.rcs.console.monitor.model.LicenseCollectors";
         model_internal::propertyTypeMap["users"] = "Object";
+        model_internal::propertyTypeMap["shards"] = "Object";
         model_internal::propertyTypeMap["ipa"] = "Object";
+        model_internal::propertyTypeMap["exploits"] = "String";
         model_internal::propertyTypeMap["backdoors"] = "it.ht.rcs.console.monitor.model.LicenseBackdoors";
         model_internal::propertyTypeMap["alerting"] = "Boolean";
         model_internal::propertyTypeMap["correlation"] = "Boolean";
@@ -76,6 +92,16 @@ internal class _LicenseEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
         model_internal::propertyTypeMap["rmi"] = "Boolean";
 
         model_internal::_instance = value;
+        model_internal::_shardsValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForShards);
+        model_internal::_shardsValidator.required = true;
+        model_internal::_shardsValidator.requiredFieldError = "shards is required";
+        //model_internal::_shardsValidator.source = model_internal::_instance;
+        //model_internal::_shardsValidator.property = "shards";
+        model_internal::_exploitsValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForExploits);
+        model_internal::_exploitsValidator.required = true;
+        model_internal::_exploitsValidator.requiredFieldError = "exploits is required";
+        //model_internal::_exploitsValidator.source = model_internal::_instance;
+        //model_internal::_exploitsValidator.property = "exploits";
     }
 
     override public function getEntityName():String
@@ -315,7 +341,19 @@ internal class _LicenseEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     }
 
     [Bindable(event="propertyChange")]
+    public function get isShardsAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get isIpaAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isExploitsAvailable():Boolean
     {
         return true;
     }
@@ -360,6 +398,22 @@ internal class _LicenseEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     /**
      * derived property recalculation
      */
+    public function invalidateDependentOnShards():void
+    {
+        if (model_internal::_shardsIsValidCacheInitialized )
+        {
+            model_internal::_instance.model_internal::_doValidationCacheOfShards = null;
+            model_internal::calculateShardsIsValid();
+        }
+    }
+    public function invalidateDependentOnExploits():void
+    {
+        if (model_internal::_exploitsIsValidCacheInitialized )
+        {
+            model_internal::_instance.model_internal::_doValidationCacheOfExploits = null;
+            model_internal::calculateExploitsIsValid();
+        }
+    }
 
     model_internal function fireChangeEvent(propertyName:String, oldValue:Object, newValue:Object):void
     {
@@ -379,9 +433,209 @@ internal class _LicenseEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     }
 
     [Bindable(event="propertyChange")]   
+    public function get shardsStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    public function get shardsValidator() : StyleValidator
+    {
+        return model_internal::_shardsValidator;
+    }
+
+    model_internal function set _shardsIsValid_der(value:Boolean):void 
+    {
+        var oldValue:Boolean = model_internal::_shardsIsValid;         
+        if (oldValue !== value)
+        {
+            model_internal::_shardsIsValid = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "shardsIsValid", oldValue, value));
+        }                             
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get shardsIsValid():Boolean
+    {
+        if (!model_internal::_shardsIsValidCacheInitialized)
+        {
+            model_internal::calculateShardsIsValid();
+        }
+
+        return model_internal::_shardsIsValid;
+    }
+
+    model_internal function calculateShardsIsValid():void
+    {
+        var valRes:ValidationResultEvent = model_internal::_shardsValidator.validate(model_internal::_instance.shards)
+        model_internal::_shardsIsValid_der = (valRes.results == null);
+        model_internal::_shardsIsValidCacheInitialized = true;
+        if (valRes.results == null)
+             model_internal::shardsValidationFailureMessages_der = emptyArray;
+        else
+        {
+            var _valFailures:Array = new Array();
+            for (var a:int = 0 ; a<valRes.results.length ; a++)
+            {
+                _valFailures.push(valRes.results[a].errorMessage);
+            }
+            model_internal::shardsValidationFailureMessages_der = _valFailures;
+        }
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get shardsValidationFailureMessages():Array
+    {
+        if (model_internal::_shardsValidationFailureMessages == null)
+            model_internal::calculateShardsIsValid();
+
+        return _shardsValidationFailureMessages;
+    }
+
+    model_internal function set shardsValidationFailureMessages_der(value:Array) : void
+    {
+        var oldValue:Array = model_internal::_shardsValidationFailureMessages;
+
+        var needUpdate : Boolean = false;
+        if (oldValue == null)
+            needUpdate = true;
+    
+        // avoid firing the event when old and new value are different empty arrays
+        if (!needUpdate && (oldValue !== value && (oldValue.length > 0 || value.length > 0)))
+        {
+            if (oldValue.length == value.length)
+            {
+                for (var a:int=0; a < oldValue.length; a++)
+                {
+                    if (oldValue[a] !== value[a])
+                    {
+                        needUpdate = true;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                needUpdate = true;
+            }
+        }
+
+        if (needUpdate)
+        {
+            model_internal::_shardsValidationFailureMessages = value;   
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "shardsValidationFailureMessages", oldValue, value));
+            // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
+            // the entire entity.
+            if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
+            {
+                model_internal::_instance.model_internal::isValid_der = model_internal::_instance.model_internal::calculateIsValid();
+            }
+        }
+    }
+
+    [Bindable(event="propertyChange")]   
     public function get ipaStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get exploitsStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    public function get exploitsValidator() : StyleValidator
+    {
+        return model_internal::_exploitsValidator;
+    }
+
+    model_internal function set _exploitsIsValid_der(value:Boolean):void 
+    {
+        var oldValue:Boolean = model_internal::_exploitsIsValid;         
+        if (oldValue !== value)
+        {
+            model_internal::_exploitsIsValid = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "exploitsIsValid", oldValue, value));
+        }                             
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get exploitsIsValid():Boolean
+    {
+        if (!model_internal::_exploitsIsValidCacheInitialized)
+        {
+            model_internal::calculateExploitsIsValid();
+        }
+
+        return model_internal::_exploitsIsValid;
+    }
+
+    model_internal function calculateExploitsIsValid():void
+    {
+        var valRes:ValidationResultEvent = model_internal::_exploitsValidator.validate(model_internal::_instance.exploits)
+        model_internal::_exploitsIsValid_der = (valRes.results == null);
+        model_internal::_exploitsIsValidCacheInitialized = true;
+        if (valRes.results == null)
+             model_internal::exploitsValidationFailureMessages_der = emptyArray;
+        else
+        {
+            var _valFailures:Array = new Array();
+            for (var a:int = 0 ; a<valRes.results.length ; a++)
+            {
+                _valFailures.push(valRes.results[a].errorMessage);
+            }
+            model_internal::exploitsValidationFailureMessages_der = _valFailures;
+        }
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get exploitsValidationFailureMessages():Array
+    {
+        if (model_internal::_exploitsValidationFailureMessages == null)
+            model_internal::calculateExploitsIsValid();
+
+        return _exploitsValidationFailureMessages;
+    }
+
+    model_internal function set exploitsValidationFailureMessages_der(value:Array) : void
+    {
+        var oldValue:Array = model_internal::_exploitsValidationFailureMessages;
+
+        var needUpdate : Boolean = false;
+        if (oldValue == null)
+            needUpdate = true;
+    
+        // avoid firing the event when old and new value are different empty arrays
+        if (!needUpdate && (oldValue !== value && (oldValue.length > 0 || value.length > 0)))
+        {
+            if (oldValue.length == value.length)
+            {
+                for (var a:int=0; a < oldValue.length; a++)
+                {
+                    if (oldValue[a] !== value[a])
+                    {
+                        needUpdate = true;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                needUpdate = true;
+            }
+        }
+
+        if (needUpdate)
+        {
+            model_internal::_exploitsValidationFailureMessages = value;   
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "exploitsValidationFailureMessages", oldValue, value));
+            // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
+            // the entire entity.
+            if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
+            {
+                model_internal::_instance.model_internal::isValid_der = model_internal::_instance.model_internal::calculateIsValid();
+            }
+        }
     }
 
     [Bindable(event="propertyChange")]   
@@ -445,6 +699,14 @@ internal class _LicenseEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
      {
          switch(propertyName)
          {
+            case("shards"):
+            {
+                return shardsValidationFailureMessages;
+            }
+            case("exploits"):
+            {
+                return exploitsValidationFailureMessages;
+            }
             default:
             {
                 return emptyArray;

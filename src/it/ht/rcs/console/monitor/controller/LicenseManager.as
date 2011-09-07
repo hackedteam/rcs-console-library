@@ -21,10 +21,11 @@ package it.ht.rcs.console.monitor.controller
     
     public var bck_total:CurrMaxObject = new CurrMaxObject("0", "0");
     public var bck_desktop:CurrMaxObject = new CurrMaxObject("0", "0");
+    public var bck_mobile:CurrMaxObject = new CurrMaxObject("0", "0");
+    
     public var bck_linux:Boolean = false;
     public var bck_osx:Boolean = false;
     public var bck_windows:Boolean = false;
-    public var bck_mobile:CurrMaxObject = new CurrMaxObject("0", "0");
     public var bck_android:Boolean = false;
     public var bck_blackberry:Boolean = false;
     public var bck_ios:Boolean = false;
@@ -40,6 +41,8 @@ package it.ht.rcs.console.monitor.controller
     public var ipa:CurrMaxObject = new CurrMaxObject("0", "0");
     public var rmi:Boolean = false;
     
+    public var shards:CurrMaxObject = new CurrMaxObject("0", "0");
+    public var exploits:String;
     
     /* singleton */
     private static var _instance:LicenseManager = new LicenseManager();
@@ -74,14 +77,14 @@ package it.ht.rcs.console.monitor.controller
       bck_desktop.max = (limits['backdoors']['desktop'] == null) ? 'U' : limits['backdoors']['desktop'].toString();
       bck_mobile.max = (limits['backdoors']['mobile'] == null) ? 'U' : limits['backdoors']['mobile'].toString();
       
-      bck_linux = limits['backdoors']['linux'];
-      bck_osx = limits['backdoors']['osx'];
-      bck_windows = limits['backdoors']['windows'];
-      bck_android = limits['backdoors']['android'];
-      bck_blackberry = limits['backdoors']['blackberry'];
-      bck_ios = limits['backdoors']['ios'];
-      bck_symbian = limits['backdoors']['symbian'];
-      bck_winmo = limits['backdoors']['winmo'];
+      bck_linux = limits['backdoors']['linux'][0];
+      bck_osx = limits['backdoors']['osx'][0];
+      bck_windows = limits['backdoors']['windows'][0];
+      bck_android = limits['backdoors']['android'][0];
+      bck_blackberry = limits['backdoors']['blackberry'][0];
+      bck_ios = limits['backdoors']['ios'][0];
+      bck_symbian = limits['backdoors']['symbian'][0];
+      bck_winmo = limits['backdoors']['winmo'][0];
       
       collectors.max = (limits['collectors']['collectors'] == null) ? 'U' : limits['collectors']['collectors'].toString();
       anonymizers.max = (limits['collectors']['anonymizers'] == null) ? 'U' : limits['collectors']['anonymizers'].toString();
@@ -91,6 +94,8 @@ package it.ht.rcs.console.monitor.controller
       
       ipa.max = (limits['ipa'] == null) ? 'U' : limits['ipa'].toString();
       rmi = limits['rmi'];
+      
+      shards.max = (limits['shards'] == null) ? 'U' : limits['shards'].toString();
     }
 
     private function onLoadCount(e:ResultEvent):void
@@ -107,6 +112,8 @@ package it.ht.rcs.console.monitor.controller
       anonymizers.curr = current['collectors']['anonymizers'].toString();
       
       ipa.curr = current['ipa'].toString();
+      
+      shards.curr = current['shards'].toString();
     }
 
   }

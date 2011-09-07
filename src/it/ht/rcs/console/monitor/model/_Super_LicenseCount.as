@@ -6,16 +6,12 @@
 package it.ht.rcs.console.monitor.model
 {
 import com.adobe.fiber.services.IFiberManagingService;
-import com.adobe.fiber.util.FiberUtils;
 import com.adobe.fiber.valueobjects.IValueObject;
-import flash.events.Event;
 import flash.events.EventDispatcher;
 import it.ht.rcs.console.monitor.model.LicenseBackdoors;
 import it.ht.rcs.console.monitor.model.LicenseCollectors;
-import mx.binding.utils.ChangeWatcher;
 import mx.collections.ArrayCollection;
 import mx.events.PropertyChangeEvent;
-import mx.validators.ValidationResult;
 
 import flash.net.registerClassAlias;
 import flash.net.getClassByAlias;
@@ -57,6 +53,7 @@ public class _Super_LicenseCount extends flash.events.EventDispatcher implements
      */
     private var _internal_collectors : it.ht.rcs.console.monitor.model.LicenseCollectors;
     private var _internal_users : int;
+    private var _internal_shards : int;
     private var _internal_ipa : int;
     private var _internal_backdoors : it.ht.rcs.console.monitor.model.LicenseBackdoors;
 
@@ -75,8 +72,6 @@ public class _Super_LicenseCount extends flash.events.EventDispatcher implements
         _model = new _LicenseCountEntityMetadata(this);
 
         // Bind to own data or source properties for cache invalidation triggering
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "collectors", model_internal::setterListenerCollectors));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "backdoors", model_internal::setterListenerBackdoors));
 
     }
 
@@ -94,6 +89,12 @@ public class _Super_LicenseCount extends flash.events.EventDispatcher implements
     public function get users() : int
     {
         return _internal_users;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get shards() : int
+    {
+        return _internal_shards;
     }
 
     [Bindable(event="propertyChange")]
@@ -136,6 +137,16 @@ public class _Super_LicenseCount extends flash.events.EventDispatcher implements
         }
     }
 
+    public function set shards(value:int) : void
+    {
+        var oldValue:int = _internal_shards;
+        if (oldValue !== value)
+        {
+            _internal_shards = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "shards", oldValue, _internal_shards));
+        }
+    }
+
     public function set ipa(value:int) : void
     {
         var oldValue:int = _internal_ipa;
@@ -168,16 +179,6 @@ public class _Super_LicenseCount extends flash.events.EventDispatcher implements
      *  - the validity of the property (and the containing entity) if the given data property is required.
      */
 
-    model_internal function setterListenerCollectors(value:flash.events.Event):void
-    {
-        _model.invalidateDependentOnCollectors();
-    }
-
-    model_internal function setterListenerBackdoors(value:flash.events.Event):void
-    {
-        _model.invalidateDependentOnBackdoors();
-    }
-
 
     /**
      * valid related derived properties
@@ -199,16 +200,6 @@ public class _Super_LicenseCount extends flash.events.EventDispatcher implements
         var validationFailureMessages:Array = new Array();
 
         var propertyValidity:Boolean = true;
-        if (!_model.collectorsIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_collectorsValidationFailureMessages);
-        }
-        if (!_model.backdoorsIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_backdoorsValidationFailureMessages);
-        }
 
         model_internal::_cacheInitialized_isValid = true;
         model_internal::invalidConstraints_der = violatedConsts;
@@ -288,60 +279,6 @@ public class _Super_LicenseCount extends flash.events.EventDispatcher implements
         }
     }
 
-    model_internal var _doValidationCacheOfCollectors : Array = null;
-    model_internal var _doValidationLastValOfCollectors : it.ht.rcs.console.monitor.model.LicenseCollectors;
-
-    model_internal function _doValidationForCollectors(valueIn:Object):Array
-    {
-        var value : it.ht.rcs.console.monitor.model.LicenseCollectors = valueIn as it.ht.rcs.console.monitor.model.LicenseCollectors;
-
-        if (model_internal::_doValidationCacheOfCollectors != null && model_internal::_doValidationLastValOfCollectors == value)
-           return model_internal::_doValidationCacheOfCollectors ;
-
-        _model.model_internal::_collectorsIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.isCollectorsAvailable && _internal_collectors == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "collectors is required"));
-        }
-
-        model_internal::_doValidationCacheOfCollectors = validationFailures;
-        model_internal::_doValidationLastValOfCollectors = value;
-
-        return validationFailures;
-    }
-    
-    model_internal var _doValidationCacheOfBackdoors : Array = null;
-    model_internal var _doValidationLastValOfBackdoors : it.ht.rcs.console.monitor.model.LicenseBackdoors;
-
-    model_internal function _doValidationForBackdoors(valueIn:Object):Array
-    {
-        var value : it.ht.rcs.console.monitor.model.LicenseBackdoors = valueIn as it.ht.rcs.console.monitor.model.LicenseBackdoors;
-
-        if (model_internal::_doValidationCacheOfBackdoors != null && model_internal::_doValidationLastValOfBackdoors == value)
-           return model_internal::_doValidationCacheOfBackdoors ;
-
-        _model.model_internal::_backdoorsIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.isBackdoorsAvailable && _internal_backdoors == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "backdoors is required"));
-        }
-
-        model_internal::_doValidationCacheOfBackdoors = validationFailures;
-        model_internal::_doValidationLastValOfBackdoors = value;
-
-        return validationFailures;
-    }
-    
 
 }
 

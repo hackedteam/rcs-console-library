@@ -6,12 +6,16 @@
 package it.ht.rcs.console.monitor.model
 {
 import com.adobe.fiber.services.IFiberManagingService;
+import com.adobe.fiber.util.FiberUtils;
 import com.adobe.fiber.valueobjects.IValueObject;
+import flash.events.Event;
 import flash.events.EventDispatcher;
 import it.ht.rcs.console.monitor.model.LicenseBackdoors;
 import it.ht.rcs.console.monitor.model.LicenseCollectors;
+import mx.binding.utils.ChangeWatcher;
 import mx.collections.ArrayCollection;
 import mx.events.PropertyChangeEvent;
+import mx.validators.ValidationResult;
 
 import flash.net.registerClassAlias;
 import flash.net.getClassByAlias;
@@ -53,7 +57,9 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
      */
     private var _internal_collectors : it.ht.rcs.console.monitor.model.LicenseCollectors;
     private var _internal_users : Object;
+    private var _internal_shards : Object;
     private var _internal_ipa : Object;
+    private var _internal_exploits : String;
     private var _internal_backdoors : it.ht.rcs.console.monitor.model.LicenseBackdoors;
     private var _internal_alerting : Boolean;
     private var _internal_correlation : Boolean;
@@ -76,6 +82,8 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
         _model = new _LicenseEntityMetadata(this);
 
         // Bind to own data or source properties for cache invalidation triggering
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "shards", model_internal::setterListenerShards));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "exploits", model_internal::setterListenerExploits));
 
     }
 
@@ -96,9 +104,21 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
     }
 
     [Bindable(event="propertyChange")]
+    public function get shards() : Object
+    {
+        return _internal_shards;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get ipa() : Object
     {
         return _internal_ipa;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get exploits() : String
+    {
+        return _internal_exploits;
     }
 
     [Bindable(event="propertyChange")]
@@ -165,6 +185,16 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
         }
     }
 
+    public function set shards(value:Object) : void
+    {
+        var oldValue:Object = _internal_shards;
+        if (oldValue !== value)
+        {
+            _internal_shards = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "shards", oldValue, _internal_shards));
+        }
+    }
+
     public function set ipa(value:Object) : void
     {
         var oldValue:Object = _internal_ipa;
@@ -172,6 +202,16 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
         {
             _internal_ipa = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "ipa", oldValue, _internal_ipa));
+        }
+    }
+
+    public function set exploits(value:String) : void
+    {
+        var oldValue:String = _internal_exploits;
+        if (oldValue !== value)
+        {
+            _internal_exploits = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "exploits", oldValue, _internal_exploits));
         }
     }
 
@@ -247,6 +287,16 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
      *  - the validity of the property (and the containing entity) if the given data property is required.
      */
 
+    model_internal function setterListenerShards(value:flash.events.Event):void
+    {
+        _model.invalidateDependentOnShards();
+    }
+
+    model_internal function setterListenerExploits(value:flash.events.Event):void
+    {
+        _model.invalidateDependentOnExploits();
+    }
+
 
     /**
      * valid related derived properties
@@ -268,6 +318,16 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
         var validationFailureMessages:Array = new Array();
 
         var propertyValidity:Boolean = true;
+        if (!_model.shardsIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_shardsValidationFailureMessages);
+        }
+        if (!_model.exploitsIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_exploitsValidationFailureMessages);
+        }
 
         model_internal::_cacheInitialized_isValid = true;
         model_internal::invalidConstraints_der = violatedConsts;
@@ -347,6 +407,60 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
         }
     }
 
+    model_internal var _doValidationCacheOfShards : Array = null;
+    model_internal var _doValidationLastValOfShards : Object;
+
+    model_internal function _doValidationForShards(valueIn:Object):Array
+    {
+        var value : Object = valueIn as Object;
+
+        if (model_internal::_doValidationCacheOfShards != null && model_internal::_doValidationLastValOfShards == value)
+           return model_internal::_doValidationCacheOfShards ;
+
+        _model.model_internal::_shardsIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isShardsAvailable && _internal_shards == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "shards is required"));
+        }
+
+        model_internal::_doValidationCacheOfShards = validationFailures;
+        model_internal::_doValidationLastValOfShards = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfExploits : Array = null;
+    model_internal var _doValidationLastValOfExploits : String;
+
+    model_internal function _doValidationForExploits(valueIn:Object):Array
+    {
+        var value : String = valueIn as String;
+
+        if (model_internal::_doValidationCacheOfExploits != null && model_internal::_doValidationLastValOfExploits == value)
+           return model_internal::_doValidationCacheOfExploits ;
+
+        _model.model_internal::_exploitsIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isExploitsAvailable && _internal_exploits == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "exploits is required"));
+        }
+
+        model_internal::_doValidationCacheOfExploits = validationFailures;
+        model_internal::_doValidationLastValOfExploits = value;
+
+        return validationFailures;
+    }
+    
 
 }
 

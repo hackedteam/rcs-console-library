@@ -24,6 +24,7 @@ public class LicenseCount extends _Super_LicenseCount
       collectors = data.collectors;
       ipa = data.ipa;
       users = data.users;
+      shards = data.shards;
     }
   }
   
