@@ -46,6 +46,14 @@ public class System extends _Super_System
      * END OF DO NOT MODIFY SECTION
      *
      **/    
+    
+    public function System(data:Object=null)
+    {
+      if (data) {
+        ok = data.ok;
+        shards = data.shards;
+      }
+    }
 }
 
 }

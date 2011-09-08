@@ -46,6 +46,14 @@ public class Shard extends _Super_Shard
      * END OF DO NOT MODIFY SECTION
      *
      **/    
+    
+    public function Shard(data:Object=null)
+    {
+      if (data) {
+        host = data.host;
+        _id = data._id;
+      }
+    }
 }
 
 }

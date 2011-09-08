@@ -46,6 +46,14 @@ public class ShardStat extends _Super_ShardStat
      * END OF DO NOT MODIFY SECTION
      *
      **/    
+    
+    public function ShardStat(data:Object=null)
+    {
+      if (data) {
+        dataSize = data.dataSize;
+        storageSize = data.storageSize;
+      }
+    }
 }
 
 }
