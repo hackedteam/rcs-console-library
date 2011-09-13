@@ -4,7 +4,6 @@ package it.ht.rcs.console.system.rest
   import it.ht.rcs.console.system.model.ShardStat;
   import it.ht.rcs.console.system.model.System;
   
-  import mx.collections.ArrayCollection;
   import mx.rpc.events.ResultEvent;
 
   public class DBSystemDemo implements IDBSystem
@@ -16,15 +15,17 @@ package it.ht.rcs.console.system.rest
     public function all(onResult:Function=null, onFault:Function=null):void
     {
       var event:ResultEvent = new ResultEvent("system.index", false, true, 
-        new System({ shards: [new Shard({ _id: "shard0000", host: "localhost:27018" })], ok: "1" }));
-      if (onResult != null) 
+        new System({ shards: [new Shard({ _id: "shard0000", host: "localhost:27018" }),
+                              new Shard({ _id: "shard0001", host: "localhost:27019" })],
+                     ok: "1" }));
+      if (onResult != null)
         onResult(event);
     }
     
     public function show(id:String, onResult:Function=null, onFault:Function=null):void
     {
-      var event:ResultEvent = new ResultEvent("system.show", false, true, new ShardStat({dataSize: 14197900, storageSize: 28241664}));
-      if (onResult != null) 
+      var event:ResultEvent = new ResultEvent("system.show", false, true, new ShardStat({ dataSize: 14197900, storageSize: 28241664 }));
+      if (onResult != null)
         onResult(event);
     }
   }
