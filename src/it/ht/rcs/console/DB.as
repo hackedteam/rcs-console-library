@@ -37,6 +37,9 @@ package it.ht.rcs.console
   import it.ht.rcs.console.operation.rest.DBOperation;
   import it.ht.rcs.console.operation.rest.DBOperationDemo;
   import it.ht.rcs.console.operation.rest.IDBOperation;
+  import it.ht.rcs.console.search.rest.DBSearch;
+  import it.ht.rcs.console.search.rest.DBSearchDemo;
+  import it.ht.rcs.console.search.rest.IDBSearch;
   import it.ht.rcs.console.system.rest.DBSystem;
   import it.ht.rcs.console.system.rest.DBSystemDemo;
   import it.ht.rcs.console.system.rest.IDBSystem;
@@ -72,6 +75,7 @@ package it.ht.rcs.console
     public var factory:IDBFactory;
     public var update:IDBUpdate;
     public var system:IDBSystem;
+    public var search:IDBSearch;
     
     private static var notifier:IFaultNotifier;
     public static var i18n:II18N;
@@ -112,6 +116,7 @@ package it.ht.rcs.console
       factory = new DBFactory(host);
       update = new DBUpdate(host);
       system = new DBSystem(host);
+      search = new DBSearch(host);
     }
 
     private function initDemo():void
@@ -132,6 +137,7 @@ package it.ht.rcs.console
       factory = new DBFactoryDemo();
       update = new DBUpdateDemo();
       system = new DBSystemDemo();
+      search = new DBSearchDemo();
     }
 
     public static function host_autocomplete(host:String):String

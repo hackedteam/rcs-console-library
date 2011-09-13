@@ -21,6 +21,7 @@ public class Target extends _Super_Target
   {
     if (data) {
       _id = data._id;
+      _kind = data._kind;
       desc = data.desc;
       name = data.name;
       status = data.status;

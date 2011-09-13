@@ -37,7 +37,7 @@ package it.ht.rcs.console.backdoor.rest
     "upgradable":false}
     */
     
-    private var backdoors:ArrayCollection = new ArrayCollection([
+    public static var backdoors:ArrayCollection = new ArrayCollection([
         // John Doe (SwordFish)
         new Backdoor({_id:"4e26a406963d350eb1000003", _kind:"backdoor", desc:"John's Laptop", ident:"RCS_0000000001", counter: 1, name: "Laptop",path :["4df7246d963d350964000001", "4e2683f3963d350658000001"], stat: new Stat({_id:"4e26a406963d350eb1000002",evidence: {}, grid_size: 0, size: 0}), status: "open", upgradable: false}),
         new Backdoor({_id:"4e26a6f9963d350f4e000001", _kind:"backdoor", desc:"John's Android Mobile", ident:"RCS_0000000002", counter: 1, name: "Mobile",path :["4df7246d963d350964000001", "4e2683f3963d350658000001"], stat: new Stat({_id:"4e26a745963d350f4e000003",evidence: {}, grid_size: 0, size: 0}), status: "open", upgradable: false}),

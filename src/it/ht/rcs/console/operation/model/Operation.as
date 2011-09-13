@@ -21,11 +21,16 @@ public class Operation extends _Super_Operation
   {
     if (data) {
       _id = data._id;
-      desc = data.desc;
-      name = data.name;
+      _kind = data._kind;
       contact = data.contact;
-      status = data.status;
+      created_at = data.created_at;
+      desc = data.desc;
+      group_ids = data.group_ids;
+      name = data.name;
       path = data.path;
+      stat = data.stat;
+      status = data.status;
+      updated_at = data.updated_at;
     }
   }
   

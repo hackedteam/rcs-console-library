@@ -21,6 +21,7 @@ public class Backdoor extends _Super_Backdoor
   {
     if (data) {
       _id = data._id;
+      _kind = data._kind;
       name = data.name;
       desc = data.desc;
       ident = data.ident;
