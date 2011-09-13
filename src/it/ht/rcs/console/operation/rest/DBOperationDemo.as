@@ -7,10 +7,10 @@ package it.ht.rcs.console.operation.rest
   
   public class DBOperationDemo implements IDBOperation
   {
-    private var operations: ArrayCollection = new ArrayCollection([
-      new Operation({_id: "4df7246d963d350964000001", name: "Swordfish", status: "open", desc: "Terrorist attack in Singapore", path: []}),
-      new Operation({_id: "4e259fe5963d35425c000001", name: "BlackJack", status: "open", desc: "Mad bombers in Rome", path: []}),
-      new Operation({_id: "4e25a173963d354260000003", name: "All In", status: "closed", desc: "Worldwide drug dealer network", path: []})
+    public static var operations: ArrayCollection = new ArrayCollection([
+      new Operation({_id: "4df7246d963d350964000001", _kind: "operation", name: "Swordfish", status: "open", desc: "Terrorist attack in Singapore", path: [], group_ids: []}),
+      new Operation({_id: "4e259fe5963d35425c000001", _kind: "operation", name: "BlackJack", status: "open", desc: "Mad bombers in Rome", path: [], group_ids: []}),
+      new Operation({_id: "4e25a173963d354260000003", _kind: "operation", name: "All In", status: "closed", desc: "Worldwide drug dealer network", path: [], group_ids: []})
     ]);
     
     public function DBOperationDemo()

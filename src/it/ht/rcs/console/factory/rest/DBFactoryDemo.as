@@ -4,8 +4,12 @@ package it.ht.rcs.console.factory.rest
   import it.ht.rcs.console.operation.model.Operation;
   import it.ht.rcs.console.target.model.Target;
   
+  import mx.collections.ArrayCollection;
+  
   public class DBFactoryDemo implements IDBFactory
   {
+    public static var factories : ArrayCollection = new ArrayCollection([]);
+    
     public function DBFactoryDemo()
     {
     }

