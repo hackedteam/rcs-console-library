@@ -57,9 +57,10 @@ public class _Super_ShardStat extends flash.events.EventDispatcher implements co
     private var _internal_dataSize : int;
     private var _internal_indexes : int;
     private var _internal_storageSize : int;
-    private var _internal_ok : Number = Number(0);
+    private var _internal_ok : Number;
     private var _internal_indexSize : int;
-    private var _internal_avgObjSize : Number = Number(0);
+    private var _internal_errmsg : String;
+    private var _internal_avgObjSize : Number;
     private var _internal_objects : int;
     private var _internal_collections : int;
 
@@ -80,7 +81,7 @@ public class _Super_ShardStat extends flash.events.EventDispatcher implements co
         _model = new _ShardStatEntityMetadata(this);
 
         // Bind to own data or source properties for cache invalidation triggering
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "db", model_internal::setterListenerDb));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "errmsg", model_internal::setterListenerErrmsg));
 
     }
 
@@ -134,6 +135,12 @@ public class _Super_ShardStat extends flash.events.EventDispatcher implements co
     public function get indexSize() : int
     {
         return _internal_indexSize;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get errmsg() : String
+    {
+        return _internal_errmsg;
     }
 
     [Bindable(event="propertyChange")]
@@ -242,6 +249,16 @@ public class _Super_ShardStat extends flash.events.EventDispatcher implements co
         }
     }
 
+    public function set errmsg(value:String) : void
+    {
+        var oldValue:String = _internal_errmsg;
+        if (oldValue !== value)
+        {
+            _internal_errmsg = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "errmsg", oldValue, _internal_errmsg));
+        }
+    }
+
     public function set avgObjSize(value:Number) : void
     {
         var oldValue:Number = _internal_avgObjSize;
@@ -284,9 +301,9 @@ public class _Super_ShardStat extends flash.events.EventDispatcher implements co
      *  - the validity of the property (and the containing entity) if the given data property is required.
      */
 
-    model_internal function setterListenerDb(value:flash.events.Event):void
+    model_internal function setterListenerErrmsg(value:flash.events.Event):void
     {
-        _model.invalidateDependentOnDb();
+        _model.invalidateDependentOnErrmsg();
     }
 
 
@@ -310,10 +327,10 @@ public class _Super_ShardStat extends flash.events.EventDispatcher implements co
         var validationFailureMessages:Array = new Array();
 
         var propertyValidity:Boolean = true;
-        if (!_model.dbIsValid)
+        if (!_model.errmsgIsValid)
         {
             propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_dbValidationFailureMessages);
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_errmsgValidationFailureMessages);
         }
 
         model_internal::_cacheInitialized_isValid = true;
@@ -394,29 +411,29 @@ public class _Super_ShardStat extends flash.events.EventDispatcher implements co
         }
     }
 
-    model_internal var _doValidationCacheOfDb : Array = null;
-    model_internal var _doValidationLastValOfDb : String;
+    model_internal var _doValidationCacheOfErrmsg : Array = null;
+    model_internal var _doValidationLastValOfErrmsg : String;
 
-    model_internal function _doValidationForDb(valueIn:Object):Array
+    model_internal function _doValidationForErrmsg(valueIn:Object):Array
     {
         var value : String = valueIn as String;
 
-        if (model_internal::_doValidationCacheOfDb != null && model_internal::_doValidationLastValOfDb == value)
-           return model_internal::_doValidationCacheOfDb ;
+        if (model_internal::_doValidationCacheOfErrmsg != null && model_internal::_doValidationLastValOfErrmsg == value)
+           return model_internal::_doValidationCacheOfErrmsg ;
 
-        _model.model_internal::_dbIsValidCacheInitialized = true;
+        _model.model_internal::_errmsgIsValidCacheInitialized = true;
         var validationFailures:Array = new Array();
         var errorMessage:String;
         var failure:Boolean;
 
         var valRes:ValidationResult;
-        if (_model.isDbAvailable && _internal_db == null)
+        if (_model.isErrmsgAvailable && _internal_errmsg == null)
         {
-            validationFailures.push(new ValidationResult(true, "", "", "db is required"));
+            validationFailures.push(new ValidationResult(true, "", "", "errmsg is required"));
         }
 
-        model_internal::_doValidationCacheOfDb = validationFailures;
-        model_internal::_doValidationLastValOfDb = value;
+        model_internal::_doValidationCacheOfErrmsg = validationFailures;
+        model_internal::_doValidationLastValOfErrmsg = value;
 
         return validationFailures;
     }

@@ -31,26 +31,26 @@ public class _Super_SearchItem extends flash.events.EventDispatcher implements c
     model_internal static function initRemoteClassAliasSingle(cz:Class) : void
     {
     }
-    
+
     model_internal static function initRemoteClassAliasAllRelated() : void
     {
         it.ht.rcs.console.operation.model.Stat.initRemoteClassAliasSingleChild();
     }
-    
+
     model_internal var _dminternal_model : _SearchItemEntityMetadata;
     model_internal var _changedObjects:mx.collections.ArrayCollection = new ArrayCollection();
-    
+
     public function getChangedObjects() : Array
     {
         _changedObjects.addItemAt(this,0);
         return _changedObjects.source;
     }
-    
+
     public function clearChangedObjects() : void
     {
         _changedObjects.removeAll();
     }
-    
+
     /**
      * properties
      */

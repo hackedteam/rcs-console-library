@@ -21,20 +21,10 @@ package it.ht.rcs.console.system.controller
       super();
     }
     
-    override protected function onItemRemove(o:*):void
-    {
-    }
-    
-    override protected function onItemUpdate(e:*):void
-    {
-//      var o:Object = new Object;
-//      o[e.property] = e.newValue;
-//      DB.instance.collector.update(e.source, o);
-    }
-    
     override protected function onRefresh(e:RefreshEvent):void
     {
       super.onRefresh(e);
+      
       DB.instance.system.all(onResult);
     }
     
@@ -50,7 +40,7 @@ package it.ht.rcs.console.system.controller
     public function getStats(_id:String, callback:Function):void
     {
       DB.instance.system.show(_id, function(e:ResultEvent):void {
-        callback(e.result as ArrayCollection);
+        callback(e.result);
       });
     }
     

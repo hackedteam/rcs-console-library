@@ -7,6 +7,9 @@
  
 package it.ht.rcs.console.system.rest
 {
+  import it.ht.rcs.console.DB;
+  
+  import mx.rpc.CallResponder;
 
 public class DBSystem extends _Super_DBSystem implements IDBSystem
 {
@@ -28,14 +31,14 @@ public class DBSystem extends _Super_DBSystem implements IDBSystem
     
     public function all(onResult:Function=null, onFault:Function=null):void
     {
-      // TODO Auto Generated method stub
-      
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = all_();
     }
     
     public function show(id:String, onResult:Function=null, onFault:Function=null):void
     {
-      // TODO Auto Generated method stub
-      
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = show_(id);
     }
     
 }
