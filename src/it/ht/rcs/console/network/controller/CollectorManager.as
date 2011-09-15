@@ -28,7 +28,10 @@ package it.ht.rcs.console.network.controller
     override protected function onItemUpdate(e:*):void
     {
       var o:Object = new Object;
-      o[e.property] = e.newValue;
+      if (e.newValue is ArrayCollection)
+        o[e.property] = e.newValue.source;
+      else
+        o[e.property] = e.newValue;
       DB.instance.collector.update(e.source, o);
     }
     
