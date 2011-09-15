@@ -1,6 +1,8 @@
 package it.ht.rcs.console
 {
   
+  import flash.events.Event;
+  
   import it.ht.rcs.console.accounting.rest.DBGroup;
   import it.ht.rcs.console.accounting.rest.DBGroupDemo;
   import it.ht.rcs.console.accounting.rest.DBSession;
