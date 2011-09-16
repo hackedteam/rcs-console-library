@@ -40,9 +40,9 @@ package it.ht.rcs.console
   import it.ht.rcs.console.search.rest.DBSearch;
   import it.ht.rcs.console.search.rest.DBSearchDemo;
   import it.ht.rcs.console.search.rest.IDBSearch;
-  import it.ht.rcs.console.system.rest.DBSystem;
-  import it.ht.rcs.console.system.rest.DBSystemDemo;
-  import it.ht.rcs.console.system.rest.IDBSystem;
+  import it.ht.rcs.console.shard.rest.DBSystem;
+  import it.ht.rcs.console.shard.rest.DBSystemDemo;
+  import it.ht.rcs.console.shard.rest.IDBSystem;
   import it.ht.rcs.console.target.rest.DBTarget;
   import it.ht.rcs.console.target.rest.DBTargetDemo;
   import it.ht.rcs.console.target.rest.IDBTarget;

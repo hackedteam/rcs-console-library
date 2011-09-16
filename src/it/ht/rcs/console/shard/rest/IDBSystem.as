@@ -1,4 +1,4 @@
-package it.ht.rcs.console.system.rest
+package it.ht.rcs.console.shard.rest
 {
   public interface IDBSystem
   {

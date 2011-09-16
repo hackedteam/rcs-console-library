@@ -1,10 +1,10 @@
-package it.ht.rcs.console.system.controller
+package it.ht.rcs.console.shard.controller
 {
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.events.RefreshEvent;
   import it.ht.rcs.console.network.model.Collector;
-  import it.ht.rcs.console.system.model.Shard;
+  import it.ht.rcs.console.shard.model.Shard;
   
   import mx.collections.ArrayCollection;
   import mx.rpc.events.ResultEvent;

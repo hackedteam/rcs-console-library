@@ -2,7 +2,7 @@
 /**
  * This is a generated class and is not intended for modification.  
  */
-package it.ht.rcs.console.system.model
+package it.ht.rcs.console.shard.model
 {
 import com.adobe.fiber.styles.IStyle;
 import com.adobe.fiber.styles.Style;
@@ -10,6 +10,8 @@ import com.adobe.fiber.styles.StyleValidator;
 import com.adobe.fiber.valueobjects.AbstractEntityMetadata;
 import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 import com.adobe.fiber.valueobjects.IPropertyIterator;
+import it.ht.rcs.console.shard.model.Shard;
+import mx.collections.ArrayCollection;
 import mx.events.ValidationResultEvent;
 import com.adobe.fiber.core.model_internal;
 import com.adobe.fiber.valueobjects.IModelType;
@@ -18,80 +20,61 @@ import mx.events.PropertyChangeEvent;
 use namespace model_internal;
 
 [ExcludeClass]
-internal class _ShardStatEntityMetadata extends com.adobe.fiber.valueobjects.AbstractEntityMetadata
+internal class _SystemEntityMetadata extends com.adobe.fiber.valueobjects.AbstractEntityMetadata
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("fileSize", "numExtents", "db", "dataSize", "indexes", "storageSize", "ok", "indexSize", "errmsg", "avgObjSize", "objects", "collections");
+    model_internal static var allProperties:Array = new Array("shards", "ok");
     model_internal static var allAssociationProperties:Array = new Array();
-    model_internal static var allRequiredProperties:Array = new Array("errmsg");
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("fileSize", "numExtents", "db", "dataSize", "indexes", "storageSize", "ok", "indexSize", "errmsg", "avgObjSize", "objects", "collections");
+    model_internal static var allRequiredProperties:Array = new Array("shards", "ok");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("shards", "ok");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("fileSize", "numExtents", "db", "dataSize", "indexes", "storageSize", "ok", "indexSize", "errmsg", "avgObjSize", "objects", "collections");
+    model_internal static var dataProperties:Array = new Array("shards", "ok");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("fileSize", "numExtents", "db", "dataSize", "indexes", "storageSize", "ok", "indexSize", "errmsg", "avgObjSize", "objects", "collections");
+    model_internal static var nonDerivedProperties:Array = new Array("shards", "ok");
     model_internal static var derivedProperties:Array = new Array();
-    model_internal static var collectionProperties:Array = new Array();
+    model_internal static var collectionProperties:Array = new Array("shards");
     model_internal static var collectionBaseMap:Object;
-    model_internal static var entityName:String = "ShardStat";
+    model_internal static var entityName:String = "System";
     model_internal static var dependentsOnMap:Object;
     model_internal static var dependedOnServices:Array = new Array();
     model_internal static var propertyTypeMap:Object;
 
     
-    model_internal var _errmsgIsValid:Boolean;
-    model_internal var _errmsgValidator:com.adobe.fiber.styles.StyleValidator;
-    model_internal var _errmsgIsValidCacheInitialized:Boolean = false;
-    model_internal var _errmsgValidationFailureMessages:Array;
+    model_internal var _shardsIsValid:Boolean;
+    model_internal var _shardsValidator:com.adobe.fiber.styles.StyleValidator;
+    model_internal var _shardsIsValidCacheInitialized:Boolean = false;
+    model_internal var _shardsValidationFailureMessages:Array;
 
-    model_internal var _instance:_Super_ShardStat;
+    model_internal var _instance:_Super_System;
     model_internal static var _nullStyle:com.adobe.fiber.styles.Style = new com.adobe.fiber.styles.Style();
 
-    public function _ShardStatEntityMetadata(value : _Super_ShardStat)
+    public function _SystemEntityMetadata(value : _Super_System)
     {
         // initialize property maps
         if (model_internal::dependentsOnMap == null)
         {
             // dependents map
             model_internal::dependentsOnMap = new Object();
-            model_internal::dependentsOnMap["fileSize"] = new Array();
-            model_internal::dependentsOnMap["numExtents"] = new Array();
-            model_internal::dependentsOnMap["db"] = new Array();
-            model_internal::dependentsOnMap["dataSize"] = new Array();
-            model_internal::dependentsOnMap["indexes"] = new Array();
-            model_internal::dependentsOnMap["storageSize"] = new Array();
+            model_internal::dependentsOnMap["shards"] = new Array();
             model_internal::dependentsOnMap["ok"] = new Array();
-            model_internal::dependentsOnMap["indexSize"] = new Array();
-            model_internal::dependentsOnMap["errmsg"] = new Array();
-            model_internal::dependentsOnMap["avgObjSize"] = new Array();
-            model_internal::dependentsOnMap["objects"] = new Array();
-            model_internal::dependentsOnMap["collections"] = new Array();
 
             // collection base map
             model_internal::collectionBaseMap = new Object();
+            model_internal::collectionBaseMap["shards"] = "it.ht.rcs.console.system.model.Shard";
         }
 
         // Property type Map
         model_internal::propertyTypeMap = new Object();
-        model_internal::propertyTypeMap["fileSize"] = "int";
-        model_internal::propertyTypeMap["numExtents"] = "int";
-        model_internal::propertyTypeMap["db"] = "String";
-        model_internal::propertyTypeMap["dataSize"] = "int";
-        model_internal::propertyTypeMap["indexes"] = "int";
-        model_internal::propertyTypeMap["storageSize"] = "int";
+        model_internal::propertyTypeMap["shards"] = "ArrayCollection";
         model_internal::propertyTypeMap["ok"] = "Number";
-        model_internal::propertyTypeMap["indexSize"] = "int";
-        model_internal::propertyTypeMap["errmsg"] = "String";
-        model_internal::propertyTypeMap["avgObjSize"] = "Number";
-        model_internal::propertyTypeMap["objects"] = "int";
-        model_internal::propertyTypeMap["collections"] = "int";
 
         model_internal::_instance = value;
-        model_internal::_errmsgValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForErrmsg);
-        model_internal::_errmsgValidator.required = true;
-        model_internal::_errmsgValidator.requiredFieldError = "errmsg is required";
-        //model_internal::_errmsgValidator.source = model_internal::_instance;
-        //model_internal::_errmsgValidator.property = "errmsg";
+        model_internal::_shardsValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForShards);
+        model_internal::_shardsValidator.required = true;
+        model_internal::_shardsValidator.requiredFieldError = "shards is required";
+        //model_internal::_shardsValidator.source = model_internal::_instance;
+        //model_internal::_shardsValidator.property = "shards";
     }
 
     override public function getEntityName():String
@@ -142,7 +125,7 @@ internal class _ShardStatEntityMetadata extends com.adobe.fiber.valueobjects.Abs
     override public function getDependants(propertyName:String):Array
     {
        if (model_internal::nonDerivedProperties.indexOf(propertyName) == -1)
-            throw new Error(propertyName + " is not a data property of entity ShardStat");
+            throw new Error(propertyName + " is not a data property of entity System");
             
        return model_internal::dependentsOnMap[propertyName] as Array;  
     }
@@ -160,7 +143,7 @@ internal class _ShardStatEntityMetadata extends com.adobe.fiber.valueobjects.Abs
     override public function getCollectionBase(propertyName:String):String
     {
         if (model_internal::collectionProperties.indexOf(propertyName) == -1)
-            throw new Error(propertyName + " is not a collection property of entity ShardStat");
+            throw new Error(propertyName + " is not a collection property of entity System");
 
         return model_internal::collectionBaseMap[propertyName];
     }
@@ -168,7 +151,7 @@ internal class _ShardStatEntityMetadata extends com.adobe.fiber.valueobjects.Abs
     override public function getPropertyType(propertyName:String):String
     {
         if (model_internal::allProperties.indexOf(propertyName) == -1)
-            throw new Error(propertyName + " is not a property of ShardStat");
+            throw new Error(propertyName + " is not a property of System");
 
         return model_internal::propertyTypeMap[propertyName];
     }
@@ -182,7 +165,7 @@ internal class _ShardStatEntityMetadata extends com.adobe.fiber.valueobjects.Abs
     {
         if (model_internal::allProperties.indexOf(propertyName) == -1)
         {
-            throw new Error(propertyName + " does not exist for entity ShardStat");
+            throw new Error(propertyName + " does not exist for entity System");
         }
 
         return model_internal::_instance[propertyName];
@@ -192,7 +175,7 @@ internal class _ShardStatEntityMetadata extends com.adobe.fiber.valueobjects.Abs
     {
         if (model_internal::nonDerivedProperties.indexOf(propertyName) == -1)
         {
-            throw new Error(propertyName + " is not a modifiable property of entity ShardStat");
+            throw new Error(propertyName + " is not a modifiable property of entity System");
         }
 
         model_internal::_instance[propertyName] = value;
@@ -224,7 +207,7 @@ internal class _ShardStatEntityMetadata extends com.adobe.fiber.valueobjects.Abs
     {
         if (model_internal::allProperties.indexOf(propertyName) == -1)
         {
-            throw new Error(propertyName + " does not exist for entity ShardStat");
+            throw new Error(propertyName + " does not exist for entity System");
         }
 
         if (model_internal::allAlwaysAvailableProperties.indexOf(propertyName) != -1)
@@ -319,37 +302,7 @@ internal class _ShardStatEntityMetadata extends com.adobe.fiber.valueobjects.Abs
     }
 
     [Bindable(event="propertyChange")]
-    public function get isFileSizeAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get isNumExtentsAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get isDbAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get isDataSizeAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get isIndexesAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get isStorageSizeAvailable():Boolean
+    public function get isShardsAvailable():Boolean
     {
         return true;
     }
@@ -360,46 +313,16 @@ internal class _ShardStatEntityMetadata extends com.adobe.fiber.valueobjects.Abs
         return true;
     }
 
-    [Bindable(event="propertyChange")]
-    public function get isIndexSizeAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get isErrmsgAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get isAvgObjSizeAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get isObjectsAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get isCollectionsAvailable():Boolean
-    {
-        return true;
-    }
-
 
     /**
      * derived property recalculation
      */
-    public function invalidateDependentOnErrmsg():void
+    public function invalidateDependentOnShards():void
     {
-        if (model_internal::_errmsgIsValidCacheInitialized )
+        if (model_internal::_shardsIsValidCacheInitialized )
         {
-            model_internal::_instance.model_internal::_doValidationCacheOfErrmsg = null;
-            model_internal::calculateErrmsgIsValid();
+            model_internal::_instance.model_internal::_doValidationCacheOfShards = null;
+            model_internal::calculateShardsIsValid();
         }
     }
 
@@ -409,92 +332,44 @@ internal class _ShardStatEntityMetadata extends com.adobe.fiber.valueobjects.Abs
     }
 
     [Bindable(event="propertyChange")]   
-    public function get fileSizeStyle():com.adobe.fiber.styles.Style
+    public function get shardsStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
 
-    [Bindable(event="propertyChange")]   
-    public function get numExtentsStyle():com.adobe.fiber.styles.Style
+    public function get shardsValidator() : StyleValidator
     {
-        return model_internal::_nullStyle;
+        return model_internal::_shardsValidator;
     }
 
-    [Bindable(event="propertyChange")]   
-    public function get dbStyle():com.adobe.fiber.styles.Style
+    model_internal function set _shardsIsValid_der(value:Boolean):void 
     {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get dataSizeStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get indexesStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get storageSizeStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get okStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get indexSizeStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get errmsgStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    public function get errmsgValidator() : StyleValidator
-    {
-        return model_internal::_errmsgValidator;
-    }
-
-    model_internal function set _errmsgIsValid_der(value:Boolean):void 
-    {
-        var oldValue:Boolean = model_internal::_errmsgIsValid;         
+        var oldValue:Boolean = model_internal::_shardsIsValid;         
         if (oldValue !== value)
         {
-            model_internal::_errmsgIsValid = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "errmsgIsValid", oldValue, value));
+            model_internal::_shardsIsValid = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "shardsIsValid", oldValue, value));
         }                             
     }
 
     [Bindable(event="propertyChange")]
-    public function get errmsgIsValid():Boolean
+    public function get shardsIsValid():Boolean
     {
-        if (!model_internal::_errmsgIsValidCacheInitialized)
+        if (!model_internal::_shardsIsValidCacheInitialized)
         {
-            model_internal::calculateErrmsgIsValid();
+            model_internal::calculateShardsIsValid();
         }
 
-        return model_internal::_errmsgIsValid;
+        return model_internal::_shardsIsValid;
     }
 
-    model_internal function calculateErrmsgIsValid():void
+    model_internal function calculateShardsIsValid():void
     {
-        var valRes:ValidationResultEvent = model_internal::_errmsgValidator.validate(model_internal::_instance.errmsg)
-        model_internal::_errmsgIsValid_der = (valRes.results == null);
-        model_internal::_errmsgIsValidCacheInitialized = true;
+        var valRes:ValidationResultEvent = model_internal::_shardsValidator.validate(model_internal::_instance.shards)
+        model_internal::_shardsIsValid_der = (valRes.results == null);
+        model_internal::_shardsIsValidCacheInitialized = true;
         if (valRes.results == null)
-             model_internal::errmsgValidationFailureMessages_der = emptyArray;
+             model_internal::shardsValidationFailureMessages_der = emptyArray;
         else
         {
             var _valFailures:Array = new Array();
@@ -502,22 +377,22 @@ internal class _ShardStatEntityMetadata extends com.adobe.fiber.valueobjects.Abs
             {
                 _valFailures.push(valRes.results[a].errorMessage);
             }
-            model_internal::errmsgValidationFailureMessages_der = _valFailures;
+            model_internal::shardsValidationFailureMessages_der = _valFailures;
         }
     }
 
     [Bindable(event="propertyChange")]
-    public function get errmsgValidationFailureMessages():Array
+    public function get shardsValidationFailureMessages():Array
     {
-        if (model_internal::_errmsgValidationFailureMessages == null)
-            model_internal::calculateErrmsgIsValid();
+        if (model_internal::_shardsValidationFailureMessages == null)
+            model_internal::calculateShardsIsValid();
 
-        return _errmsgValidationFailureMessages;
+        return _shardsValidationFailureMessages;
     }
 
-    model_internal function set errmsgValidationFailureMessages_der(value:Array) : void
+    model_internal function set shardsValidationFailureMessages_der(value:Array) : void
     {
-        var oldValue:Array = model_internal::_errmsgValidationFailureMessages;
+        var oldValue:Array = model_internal::_shardsValidationFailureMessages;
 
         var needUpdate : Boolean = false;
         if (oldValue == null)
@@ -545,8 +420,8 @@ internal class _ShardStatEntityMetadata extends com.adobe.fiber.valueobjects.Abs
 
         if (needUpdate)
         {
-            model_internal::_errmsgValidationFailureMessages = value;   
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "errmsgValidationFailureMessages", oldValue, value));
+            model_internal::_shardsValidationFailureMessages = value;   
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "shardsValidationFailureMessages", oldValue, value));
             // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
             // the entire entity.
             if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
@@ -557,19 +432,7 @@ internal class _ShardStatEntityMetadata extends com.adobe.fiber.valueobjects.Abs
     }
 
     [Bindable(event="propertyChange")]   
-    public function get avgObjSizeStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get objectsStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get collectionsStyle():com.adobe.fiber.styles.Style
+    public function get okStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
@@ -599,9 +462,9 @@ internal class _ShardStatEntityMetadata extends com.adobe.fiber.valueobjects.Abs
      {
          switch(propertyName)
          {
-            case("errmsg"):
+            case("shards"):
             {
-                return errmsgValidationFailureMessages;
+                return shardsValidationFailureMessages;
             }
             default:
             {

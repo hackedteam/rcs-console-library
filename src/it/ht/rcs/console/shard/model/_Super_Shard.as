@@ -3,7 +3,7 @@
  * of this value object you may modify the generated sub-class of this class - Shard.as.
  */
 
-package it.ht.rcs.console.system.model
+package it.ht.rcs.console.shard.model
 {
 import com.adobe.fiber.services.IFiberManagingService;
 import com.adobe.fiber.util.FiberUtils;

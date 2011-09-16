@@ -2,12 +2,12 @@
  * This is a generated class and is not intended for modification.  To customize behavior
  * of this service wrapper you may modify the generated sub-class of this class - DBSystem.as.
  */
-package it.ht.rcs.console.system.rest
+package it.ht.rcs.console.shard.rest
 {
 import com.adobe.fiber.core.model_internal;
 import com.adobe.fiber.services.wrapper.HTTPServiceWrapper;
-import it.ht.rcs.console.system.model.ShardStat;
-import it.ht.rcs.console.system.model.System;
+import it.ht.rcs.console.shard.model.ShardStat;
+import it.ht.rcs.console.shard.model.System;
 import mx.rpc.AbstractOperation;
 import mx.rpc.AsyncToken;
 import mx.rpc.http.HTTPMultiService;
@@ -33,7 +33,7 @@ internal class _Super_DBSystem extends com.adobe.fiber.services.wrapper.HTTPServ
          operation.url = "/shard";
          operation.method = "GET";
          operation.serializationFilter = serializer0;
-         operation.resultType = it.ht.rcs.console.system.model.System;
+         operation.resultType = it.ht.rcs.console.shard.model.System;
          operations.push(operation);
 
          operation = new mx.rpc.http.Operation(null, "show_");
@@ -44,7 +44,7 @@ internal class _Super_DBSystem extends com.adobe.fiber.services.wrapper.HTTPServ
          operation.serializationFilter = serializer0;
          operation.properties = new Object();
          operation.properties["urlParamNames"] = ["id"];
-         operation.resultType = it.ht.rcs.console.system.model.ShardStat;
+         operation.resultType = it.ht.rcs.console.shard.model.ShardStat;
          operations.push(operation);
 
          _serviceControl.operationList = operations;  

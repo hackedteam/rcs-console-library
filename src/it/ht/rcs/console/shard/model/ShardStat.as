@@ -1,5 +1,5 @@
 /**
- * This is a generated sub-class of _Shard.as and is intended for behavior
+ * This is a generated sub-class of _ShardStat.as and is intended for behavior
  * customization.  This class is only generated when there is no file already present
  * at its target location.  Thus custom behavior that you add here will survive regeneration
  * of the super-class. 
@@ -10,12 +10,12 @@
  * corresponding entity 
  **/ 
  
-package it.ht.rcs.console.system.model
+package it.ht.rcs.console.shard.model
 {
 
 import com.adobe.fiber.core.model_internal;
 
-public class Shard extends _Super_Shard
+public class ShardStat extends _Super_ShardStat
 {
     /** 
      * DO NOT MODIFY THIS STATIC INITIALIZER - IT IS NECESSARY
@@ -30,28 +30,28 @@ public class Shard extends _Super_Shard
      */     
     public static function _initRemoteClassAlias() : void
     {
-        _Super_Shard.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.system.model.Shard);
-        _Super_Shard.model_internal::initRemoteClassAliasAllRelated();
+        _Super_ShardStat.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.shard.model.ShardStat);
+        _Super_ShardStat.model_internal::initRemoteClassAliasAllRelated();
     }
      
     model_internal static function initRemoteClassAliasSingleChild() : void
     {
-        _Super_Shard.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.system.model.Shard);
+        _Super_ShardStat.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.shard.model.ShardStat);
     }
     
     {
-        _Super_Shard.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.system.model.Shard);
+        _Super_ShardStat.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.shard.model.ShardStat);
     }
     /** 
      * END OF DO NOT MODIFY SECTION
      *
      **/    
     
-    public function Shard(data:Object=null)
+    public function ShardStat(data:Object=null)
     {
       if (data) {
-        host = data.host;
-        _id = data._id;
+        dataSize = data.dataSize;
+        storageSize = data.storageSize;
       }
     }
 }

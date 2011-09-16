@@ -5,7 +5,7 @@
  * of the super-class. 
  **/
  
-package it.ht.rcs.console.system.rest
+package it.ht.rcs.console.shard.rest
 {
   import it.ht.rcs.console.DB;
   

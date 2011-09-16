@@ -3,14 +3,14 @@
  * of this value object you may modify the generated sub-class of this class - System.as.
  */
 
-package it.ht.rcs.console.system.model
+package it.ht.rcs.console.shard.model
 {
 import com.adobe.fiber.services.IFiberManagingService;
 import com.adobe.fiber.util.FiberUtils;
 import com.adobe.fiber.valueobjects.IValueObject;
 import flash.events.Event;
 import flash.events.EventDispatcher;
-import it.ht.rcs.console.system.model.Shard;
+import it.ht.rcs.console.shard.model.Shard;
 import mx.binding.utils.ChangeWatcher;
 import mx.collections.ArrayCollection;
 import mx.events.CollectionEvent;
@@ -34,7 +34,7 @@ public class _Super_System extends flash.events.EventDispatcher implements com.a
 
     model_internal static function initRemoteClassAliasAllRelated() : void
     {
-        it.ht.rcs.console.system.model.Shard.initRemoteClassAliasSingleChild();
+        it.ht.rcs.console.shard.model.Shard.initRemoteClassAliasSingleChild();
     }
 
     model_internal var _dminternal_model : _SystemEntityMetadata;
@@ -55,7 +55,7 @@ public class _Super_System extends flash.events.EventDispatcher implements com.a
      * properties
      */
     private var _internal_shards : ArrayCollection;
-    model_internal var _internal_shards_leaf:it.ht.rcs.console.system.model.Shard;
+    model_internal var _internal_shards_leaf:it.ht.rcs.console.shard.model.Shard;
     private var _internal_ok : Number = Number(0);
 
     private static var emptyArray:Array = new Array();

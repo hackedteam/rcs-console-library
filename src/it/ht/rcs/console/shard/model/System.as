@@ -10,7 +10,7 @@
  * corresponding entity 
  **/ 
  
-package it.ht.rcs.console.system.model
+package it.ht.rcs.console.shard.model
 {
 
 import com.adobe.fiber.core.model_internal;
@@ -30,17 +30,17 @@ public class System extends _Super_System
      */     
     public static function _initRemoteClassAlias() : void
     {
-        _Super_System.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.system.model.System);
+        _Super_System.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.shard.model.System);
         _Super_System.model_internal::initRemoteClassAliasAllRelated();
     }
      
     model_internal static function initRemoteClassAliasSingleChild() : void
     {
-        _Super_System.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.system.model.System);
+        _Super_System.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.shard.model.System);
     }
     
     {
-        _Super_System.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.system.model.System);
+        _Super_System.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.shard.model.System);
     }
     /** 
      * END OF DO NOT MODIFY SECTION

@@ -1,8 +1,8 @@
-package it.ht.rcs.console.system.rest
+package it.ht.rcs.console.shard.rest
 {
-  import it.ht.rcs.console.system.model.Shard;
-  import it.ht.rcs.console.system.model.ShardStat;
-  import it.ht.rcs.console.system.model.System;
+  import it.ht.rcs.console.shard.model.Shard;
+  import it.ht.rcs.console.shard.model.ShardStat;
+  import it.ht.rcs.console.shard.model.System;
   
   import mx.rpc.events.ResultEvent;
 
