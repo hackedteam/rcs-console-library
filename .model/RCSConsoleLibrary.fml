@@ -2635,17 +2635,17 @@
     <property name="path" type="string[]" required="true"/>
     <property name="stat" type="Stat" required="true"/>
   </entity>
-  <service name="DBSystem">
+  <service name="DBShard">
     <annotation name="ActionScriptGeneration">
       <item name="ServiceType">HTTPMultiService</item>
-      <item name="Package">it.ht.rcs.console.system.rest</item>
+      <item name="Package">it.ht.rcs.console.shard.rest</item>
       <item name="rootURL">https://localhost:4444</item>
     </annotation>
     <annotation name="ServiceTypeGroup">
       <item name="ServiceBackendType">HTTPService</item>
     </annotation>
     <annotation name="ServiceConfig">
-      <item name="DEFAULT_ENTITY_PACKAGE">it.ht.rcs.console.system.model</item>
+      <item name="DEFAULT_ENTITY_PACKAGE">it.ht.rcs.console.shard.model</item>
       <item name="LINKED_FILE"></item>
     </annotation>
     <function name="all_" return-type="System">
@@ -2698,7 +2698,7 @@
       <item name="EntityOriginalName">ShardStat</item>
     </annotation>
     <annotation name="service Group">
-      <item name="service">DBSystem</item>
+      <item name="service">DBShard</item>
     </annotation>
     <annotation name="ServerProperties">
       <item name="IncludeRemoteClass">nonempty</item>
@@ -2707,7 +2707,7 @@
       <item name="propertySpecifier">fileSize,numExtents,db,dataSize,indexes,storageSize,ok,indexSize,errmsg,avgObjSize,objects,collections</item>
     </annotation>
     <annotation name="ActionScriptGeneration">
-      <item name="Package">it.ht.rcs.console.system.model</item>
+      <item name="Package">it.ht.rcs.console.shard.model</item>
     </annotation>
     <property name="fileSize" type="integer"/>
     <property name="numExtents" type="integer"/>
@@ -2727,7 +2727,7 @@
       <item name="EntityOriginalName">System</item>
     </annotation>
     <annotation name="service Group">
-      <item name="service">DBSystem</item>
+      <item name="service">DBShard</item>
     </annotation>
     <annotation name="ServerProperties">
       <item name="IncludeRemoteClass">nonempty</item>
@@ -2736,7 +2736,7 @@
       <item name="propertySpecifier">shards,ok</item>
     </annotation>
     <annotation name="ActionScriptGeneration">
-      <item name="Package">it.ht.rcs.console.system.model</item>
+      <item name="Package">it.ht.rcs.console.shard.model</item>
     </annotation>
     <property name="shards" type="Shard[]" required="true"/>
     <property name="ok" type="double" required="true" default="0"/>
@@ -2746,13 +2746,13 @@
       <item name="EntityOriginalName">Shards</item>
     </annotation>
     <annotation name="service Group">
-      <item name="service">DBSystem</item>
+      <item name="service">DBShard</item>
     </annotation>
     <annotation name="ServerProperties">
       <item name="IncludeRemoteClass">nonempty</item>
     </annotation>
     <annotation name="ActionScriptGeneration">
-      <item name="Package">it.ht.rcs.console.system.model</item>
+      <item name="Package">it.ht.rcs.console.shard.model</item>
     </annotation>
     <property name="host" type="string" required="true"/>
     <property name="_id" type="string" required="true"/>

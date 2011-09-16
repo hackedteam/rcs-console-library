@@ -6,9 +6,9 @@ package it.ht.rcs.console.shard.rest
   
   import mx.rpc.events.ResultEvent;
 
-  public class DBSystemDemo implements IDBSystem
+  public class DBShardDemo implements IDBShard
   {
-    public function DBSystemDemo()
+    public function DBShardDemo()
     {
     }
     

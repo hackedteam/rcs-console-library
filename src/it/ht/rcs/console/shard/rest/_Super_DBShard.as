@@ -1,6 +1,6 @@
 /**
  * This is a generated class and is not intended for modification.  To customize behavior
- * of this service wrapper you may modify the generated sub-class of this class - DBSystem.as.
+ * of this service wrapper you may modify the generated sub-class of this class - DBShard.as.
  */
 package it.ht.rcs.console.shard.rest
 {
@@ -16,12 +16,12 @@ import mx.rpc.http.Operation;
 import com.adobe.serializers.json.JSONSerializationFilter;
 
 [ExcludeClass]
-internal class _Super_DBSystem extends com.adobe.fiber.services.wrapper.HTTPServiceWrapper
+internal class _Super_DBShard extends com.adobe.fiber.services.wrapper.HTTPServiceWrapper
 {
     private static var serializer0:JSONSerializationFilter = new JSONSerializationFilter();
 
     // Constructor
-    public function _Super_DBSystem()
+    public function _Super_DBShard()
     {
         // initialize service control
         _serviceControl = new mx.rpc.http.HTTPMultiService("https://localhost:4444");

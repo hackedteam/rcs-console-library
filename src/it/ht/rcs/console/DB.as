@@ -40,9 +40,9 @@ package it.ht.rcs.console
   import it.ht.rcs.console.search.rest.DBSearch;
   import it.ht.rcs.console.search.rest.DBSearchDemo;
   import it.ht.rcs.console.search.rest.IDBSearch;
-  import it.ht.rcs.console.shard.rest.DBSystem;
-  import it.ht.rcs.console.shard.rest.DBSystemDemo;
-  import it.ht.rcs.console.shard.rest.IDBSystem;
+  import it.ht.rcs.console.shard.rest.DBShard;
+  import it.ht.rcs.console.shard.rest.DBShardDemo;
+  import it.ht.rcs.console.shard.rest.IDBShard;
   import it.ht.rcs.console.target.rest.DBTarget;
   import it.ht.rcs.console.target.rest.DBTargetDemo;
   import it.ht.rcs.console.target.rest.IDBTarget;
@@ -74,7 +74,7 @@ package it.ht.rcs.console
     public var backdoor:IDBBackdoor;
     public var factory:IDBFactory;
     public var update:IDBUpdate;
-    public var system:IDBSystem;
+    public var system:IDBShard;
     public var search:IDBSearch;
     
     private static var notifier:IFaultNotifier;
@@ -115,7 +115,7 @@ package it.ht.rcs.console
       backdoor = new DBBackdoor(host);
       factory = new DBFactory(host);
       update = new DBUpdate(host);
-      system = new DBSystem(host);
+      system = new DBShard(host);
       search = new DBSearch(host);
     }
 
@@ -136,7 +136,7 @@ package it.ht.rcs.console
       backdoor = new DBBackdoorDemo();
       factory = new DBFactoryDemo();
       update = new DBUpdateDemo();
-      system = new DBSystemDemo();
+      system = new DBShardDemo();
       search = new DBSearchDemo();
     }
 

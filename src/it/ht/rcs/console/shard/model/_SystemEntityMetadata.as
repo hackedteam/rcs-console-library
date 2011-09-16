@@ -61,7 +61,7 @@ internal class _SystemEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
 
             // collection base map
             model_internal::collectionBaseMap = new Object();
-            model_internal::collectionBaseMap["shards"] = "it.ht.rcs.console.system.model.Shard";
+            model_internal::collectionBaseMap["shards"] = "it.ht.rcs.console.shard.model.Shard";
         }
 
         // Property type Map

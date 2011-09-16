@@ -11,7 +11,7 @@ package it.ht.rcs.console.shard.rest
   
   import mx.rpc.CallResponder;
 
-public class DBSystem extends _Super_DBSystem implements IDBSystem
+public class DBShard extends _Super_DBShard implements IDBShard
 {
     /**
      * Override super.init() to provide any initialization customization if needed.
@@ -23,7 +23,7 @@ public class DBSystem extends _Super_DBSystem implements IDBSystem
     }
        
     
-    public function DBSystem(host: String)
+    public function DBShard(host: String)
     {
       super();
       _serviceControl.baseURL = host;
