@@ -1,6 +1,8 @@
 package it.ht.rcs.console.dashboard.controller
 {
   
+  import flash.events.Event;
+  
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.accounting.controller.UserManager;
   import it.ht.rcs.console.accounting.model.User;
@@ -37,6 +39,7 @@ package it.ht.rcs.console.dashboard.controller
     override public function start():void
     {
       //ItemManager.instance.start();
+      onRefresh(null);
     }
 
     override public function stop():void
@@ -59,6 +62,7 @@ package it.ht.rcs.console.dashboard.controller
       addItem({name: 'Operation One', status: 'closed', _kind: 'operation'});
       addItem({name: 'Target One', status: 'open', _kind: 'target'});
       addItem({name: 'Backdoor', status: 'queued', _kind: 'backdoor'});
+      dispatchDataLoadedEvent();
     }
     
     public function newDashItem(id:String, callback:Function):void

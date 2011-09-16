@@ -5,6 +5,7 @@ package it.ht.rcs.console.controller
   import flash.events.IEventDispatcher;
   import flash.utils.getQualifiedClassName;
   
+  import it.ht.rcs.console.events.DataLoadedEvent;
   import it.ht.rcs.console.events.RefreshEvent;
   import it.ht.rcs.console.events.SessionEvent;
   
@@ -63,7 +64,7 @@ package it.ht.rcs.console.controller
     
     protected function dispatchDataLoadedEvent():void
     {
-      dispatchEvent(new Event("dataLoaded"));
+      dispatchEvent(new DataLoadedEvent(DataLoadedEvent.DATA_LOADED));
     }
     
     protected function onRefresh(e:RefreshEvent):void
