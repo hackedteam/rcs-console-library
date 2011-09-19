@@ -52,6 +52,7 @@ public class ShardStat extends _Super_ShardStat
       if (data) {
         dataSize = data.dataSize;
         storageSize = data.storageSize;
+        ok = data.ok;
       }
     }
 }

@@ -27,9 +27,9 @@ package it.ht.rcs.console.shard.rest
       var event:ResultEvent;
       
       if (id == "shard0000")
-        event = new ResultEvent("system.show", false, true, new ShardStat({ dataSize: 141897900, storageSize: 282641664 }));
+        event = new ResultEvent("system.show", false, true, new ShardStat({ dataSize: 141897900, storageSize: 282641664, ok: 1 }));
       else if (id == "shard0001")
-        event = new ResultEvent("system.show", false, true, new ShardStat({ dataSize: 40325641, storageSize: 55632187 }));
+        event = new ResultEvent("system.show", false, true, new ShardStat({ dataSize: 40325641, storageSize: 55632187, ok: 1 }));
       
       if (onResult != null)
         onResult(event);
