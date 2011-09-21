@@ -19,18 +19,18 @@ package it.ht.rcs.console.monitor.controller
     public var serial:String = "off";
     public var users:CurrMaxObject = new CurrMaxObject("0", "0");
     
-    public var bck_total:CurrMaxObject = new CurrMaxObject("0", "0");
-    public var bck_desktop:CurrMaxObject = new CurrMaxObject("0", "0");
-    public var bck_mobile:CurrMaxObject = new CurrMaxObject("0", "0");
+    public var agent_total:CurrMaxObject = new CurrMaxObject("0", "0");
+    public var agent_desktop:CurrMaxObject = new CurrMaxObject("0", "0");
+    public var agent_mobile:CurrMaxObject = new CurrMaxObject("0", "0");
     
-    public var bck_linux:Boolean = false;
-    public var bck_osx:Boolean = false;
-    public var bck_windows:Boolean = false;
-    public var bck_android:Boolean = false;
-    public var bck_blackberry:Boolean = false;
-    public var bck_ios:Boolean = false;
-    public var bck_symbian:Boolean = false;
-    public var bck_winmo:Boolean = false;
+    public var agent_linux:Boolean = false;
+    public var agent_osx:Boolean = false;
+    public var agent_windows:Boolean = false;
+    public var agent_android:Boolean = false;
+    public var agent_blackberry:Boolean = false;
+    public var agent_ios:Boolean = false;
+    public var agent_symbian:Boolean = false;
+    public var agent_winmo:Boolean = false;
     
     public var collectors:CurrMaxObject = new CurrMaxObject("0", "0");
     public var anonymizers:CurrMaxObject = new CurrMaxObject("0", "0");
@@ -73,18 +73,18 @@ package it.ht.rcs.console.monitor.controller
       
       users.max = (limits['users'] == null) ? 'U' : limits['users'].toString();
       
-      bck_total.max = (limits['backdoors']['total'] == null) ? 'U' : limits['backdoors']['total'].toString();
-      bck_desktop.max = (limits['backdoors']['desktop'] == null) ? 'U' : limits['backdoors']['desktop'].toString();
-      bck_mobile.max = (limits['backdoors']['mobile'] == null) ? 'U' : limits['backdoors']['mobile'].toString();
+      agent_total.max = (limits['backdoors']['total'] == null) ? 'U' : limits['backdoors']['total'].toString();
+      agent_desktop.max = (limits['backdoors']['desktop'] == null) ? 'U' : limits['backdoors']['desktop'].toString();
+      agent_mobile.max = (limits['backdoors']['mobile'] == null) ? 'U' : limits['backdoors']['mobile'].toString();
       
-      bck_linux = limits['backdoors']['linux'][0];
-      bck_osx = limits['backdoors']['osx'][0];
-      bck_windows = limits['backdoors']['windows'][0];
-      bck_android = limits['backdoors']['android'][0];
-      bck_blackberry = limits['backdoors']['blackberry'][0];
-      bck_ios = limits['backdoors']['ios'][0];
-      bck_symbian = limits['backdoors']['symbian'][0];
-      bck_winmo = limits['backdoors']['winmo'][0];
+      agent_linux = limits['backdoors']['linux'][0];
+      agent_osx = limits['backdoors']['osx'][0];
+      agent_windows = limits['backdoors']['windows'][0];
+      agent_android = limits['backdoors']['android'][0];
+      agent_blackberry = limits['backdoors']['blackberry'][0];
+      agent_ios = limits['backdoors']['ios'][0];
+      agent_symbian = limits['backdoors']['symbian'][0];
+      agent_winmo = limits['backdoors']['winmo'][0];
       
       collectors.max = (limits['collectors']['collectors'] == null) ? 'U' : limits['collectors']['collectors'].toString();
       anonymizers.max = (limits['collectors']['anonymizers'] == null) ? 'U' : limits['collectors']['anonymizers'].toString();
@@ -104,9 +104,9 @@ package it.ht.rcs.console.monitor.controller
       
       users.curr = current['users'].toString();
       
-      bck_total.curr = current['backdoors']['total'].toString();
-      bck_desktop.curr = current['backdoors']['desktop'].toString();
-      bck_mobile.curr = current['backdoors']['mobile'].toString();
+      agent_total.curr = current['backdoors']['total'].toString();
+      agent_desktop.curr = current['backdoors']['desktop'].toString();
+      agent_mobile.curr = current['backdoors']['mobile'].toString();
       
       collectors.curr = current['collectors']['collectors'].toString();
       anonymizers.curr = current['collectors']['anonymizers'].toString();
