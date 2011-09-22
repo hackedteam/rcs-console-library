@@ -9,7 +9,7 @@ import com.adobe.fiber.styles.Style;
 import com.adobe.fiber.valueobjects.AbstractEntityMetadata;
 import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 import com.adobe.fiber.valueobjects.IPropertyIterator;
-import it.ht.rcs.console.monitor.model.LicenseBackdoors;
+import it.ht.rcs.console.monitor.model.LicenseAgents;
 import it.ht.rcs.console.monitor.model.LicenseCollectors;
 import com.adobe.fiber.core.model_internal;
 import com.adobe.fiber.valueobjects.IModelType;
@@ -22,14 +22,14 @@ internal class _LicenseCountEntityMetadata extends com.adobe.fiber.valueobjects.
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("collectors", "users", "shards", "ipa", "backdoors");
+    model_internal static var allProperties:Array = new Array("collectors", "users", "shards", "ipa", "agents");
     model_internal static var allAssociationProperties:Array = new Array();
     model_internal static var allRequiredProperties:Array = new Array("shards");
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("collectors", "users", "shards", "ipa", "backdoors");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("collectors", "users", "shards", "ipa", "agents");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("collectors", "users", "shards", "ipa", "backdoors");
+    model_internal static var dataProperties:Array = new Array("collectors", "users", "shards", "ipa", "agents");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("collectors", "users", "shards", "ipa", "backdoors");
+    model_internal static var nonDerivedProperties:Array = new Array("collectors", "users", "shards", "ipa", "agents");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array();
     model_internal static var collectionBaseMap:Object;
@@ -53,7 +53,7 @@ internal class _LicenseCountEntityMetadata extends com.adobe.fiber.valueobjects.
             model_internal::dependentsOnMap["users"] = new Array();
             model_internal::dependentsOnMap["shards"] = new Array();
             model_internal::dependentsOnMap["ipa"] = new Array();
-            model_internal::dependentsOnMap["backdoors"] = new Array();
+            model_internal::dependentsOnMap["agents"] = new Array();
 
             // collection base map
             model_internal::collectionBaseMap = new Object();
@@ -65,7 +65,7 @@ internal class _LicenseCountEntityMetadata extends com.adobe.fiber.valueobjects.
         model_internal::propertyTypeMap["users"] = "int";
         model_internal::propertyTypeMap["shards"] = "int";
         model_internal::propertyTypeMap["ipa"] = "int";
-        model_internal::propertyTypeMap["backdoors"] = "it.ht.rcs.console.monitor.model.LicenseBackdoors";
+        model_internal::propertyTypeMap["agents"] = "it.ht.rcs.console.monitor.model.LicenseAgents";
 
         model_internal::_instance = value;
     }
@@ -319,7 +319,7 @@ internal class _LicenseCountEntityMetadata extends com.adobe.fiber.valueobjects.
     }
 
     [Bindable(event="propertyChange")]
-    public function get isBackdoorsAvailable():Boolean
+    public function get isAgentsAvailable():Boolean
     {
         return true;
     }
@@ -359,7 +359,7 @@ internal class _LicenseCountEntityMetadata extends com.adobe.fiber.valueobjects.
     }
 
     [Bindable(event="propertyChange")]   
-    public function get backdoorsStyle():com.adobe.fiber.styles.Style
+    public function get agentsStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }

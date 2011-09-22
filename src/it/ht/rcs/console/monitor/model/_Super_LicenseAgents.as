@@ -1,6 +1,6 @@
 /**
  * This is a generated class and is not intended for modification.  To customize behavior
- * of this value object you may modify the generated sub-class of this class - LicenseBackdoors.as.
+ * of this value object you may modify the generated sub-class of this class - LicenseAgents.as.
  */
 
 package it.ht.rcs.console.monitor.model
@@ -20,7 +20,7 @@ import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 use namespace model_internal;
 
 [ExcludeClass]
-public class _Super_LicenseBackdoors extends flash.events.EventDispatcher implements com.adobe.fiber.valueobjects.IValueObject
+public class _Super_LicenseAgents extends flash.events.EventDispatcher implements com.adobe.fiber.valueobjects.IValueObject
 {
     model_internal static function initRemoteClassAliasSingle(cz:Class) : void
     {
@@ -30,7 +30,7 @@ public class _Super_LicenseBackdoors extends flash.events.EventDispatcher implem
     {
     }
 
-    model_internal var _dminternal_model : _LicenseBackdoorsEntityMetadata;
+    model_internal var _dminternal_model : _LicenseAgentsEntityMetadata;
     model_internal var _changedObjects:mx.collections.ArrayCollection = new ArrayCollection();
 
     public function getChangedObjects() : Array
@@ -69,9 +69,9 @@ public class _Super_LicenseBackdoors extends flash.events.EventDispatcher implem
 
     model_internal var _changeWatcherArray:Array = new Array();
 
-    public function _Super_LicenseBackdoors()
+    public function _Super_LicenseAgents()
     {
-        _model = new _LicenseBackdoorsEntityMetadata(this);
+        _model = new _LicenseAgentsEntityMetadata(this);
 
         // Bind to own data or source properties for cache invalidation triggering
 
@@ -445,14 +445,14 @@ public class _Super_LicenseBackdoors extends flash.events.EventDispatcher implem
 
     [Transient]
     [Bindable(event="propertyChange")]
-    public function get _model() : _LicenseBackdoorsEntityMetadata
+    public function get _model() : _LicenseAgentsEntityMetadata
     {
         return model_internal::_dminternal_model;
     }
 
-    public function set _model(value : _LicenseBackdoorsEntityMetadata) : void
+    public function set _model(value : _LicenseAgentsEntityMetadata) : void
     {
-        var oldValue : _LicenseBackdoorsEntityMetadata = model_internal::_dminternal_model;
+        var oldValue : _LicenseAgentsEntityMetadata = model_internal::_dminternal_model;
         if (oldValue !== value)
         {
             model_internal::_dminternal_model = value;

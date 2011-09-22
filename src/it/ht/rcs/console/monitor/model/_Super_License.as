@@ -10,7 +10,7 @@ import com.adobe.fiber.util.FiberUtils;
 import com.adobe.fiber.valueobjects.IValueObject;
 import flash.events.Event;
 import flash.events.EventDispatcher;
-import it.ht.rcs.console.monitor.model.LicenseBackdoors;
+import it.ht.rcs.console.monitor.model.LicenseAgents;
 import it.ht.rcs.console.monitor.model.LicenseCollectors;
 import mx.binding.utils.ChangeWatcher;
 import mx.collections.ArrayCollection;
@@ -35,7 +35,7 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
     model_internal static function initRemoteClassAliasAllRelated() : void
     {
         it.ht.rcs.console.monitor.model.LicenseCollectors.initRemoteClassAliasSingleChild();
-        it.ht.rcs.console.monitor.model.LicenseBackdoors.initRemoteClassAliasSingleChild();
+        it.ht.rcs.console.monitor.model.LicenseAgents.initRemoteClassAliasSingleChild();
     }
 
     model_internal var _dminternal_model : _LicenseEntityMetadata;
@@ -60,7 +60,7 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
     private var _internal_shards : Object;
     private var _internal_ipa : Object;
     private var _internal_exploits : String;
-    private var _internal_backdoors : it.ht.rcs.console.monitor.model.LicenseBackdoors;
+    private var _internal_agents : it.ht.rcs.console.monitor.model.LicenseAgents;
     private var _internal_alerting : Boolean;
     private var _internal_correlation : Boolean;
     private var _internal_type : String;
@@ -122,9 +122,9 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
     }
 
     [Bindable(event="propertyChange")]
-    public function get backdoors() : it.ht.rcs.console.monitor.model.LicenseBackdoors
+    public function get agents() : it.ht.rcs.console.monitor.model.LicenseAgents
     {
-        return _internal_backdoors;
+        return _internal_agents;
     }
 
     [Bindable(event="propertyChange")]
@@ -215,13 +215,13 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
         }
     }
 
-    public function set backdoors(value:it.ht.rcs.console.monitor.model.LicenseBackdoors) : void
+    public function set agents(value:it.ht.rcs.console.monitor.model.LicenseAgents) : void
     {
-        var oldValue:it.ht.rcs.console.monitor.model.LicenseBackdoors = _internal_backdoors;
+        var oldValue:it.ht.rcs.console.monitor.model.LicenseAgents = _internal_agents;
         if (oldValue !== value)
         {
-            _internal_backdoors = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "backdoors", oldValue, _internal_backdoors));
+            _internal_agents = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "agents", oldValue, _internal_agents));
         }
     }
 

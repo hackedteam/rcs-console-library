@@ -10,7 +10,7 @@
  * corresponding entity 
  **/ 
  
-package it.ht.rcs.console.backdoor.model
+package it.ht.rcs.console.agent.model
 {
 
 import com.adobe.fiber.core.model_internal;
@@ -30,17 +30,17 @@ public class Configs extends _Super_Configs
      */     
     public static function _initRemoteClassAlias() : void
     {
-        _Super_Configs.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.backdoor.model.Configs);
+        _Super_Configs.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.agent.model.Configs);
         _Super_Configs.model_internal::initRemoteClassAliasAllRelated();
     }
      
     model_internal static function initRemoteClassAliasSingleChild() : void
     {
-        _Super_Configs.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.backdoor.model.Configs);
+        _Super_Configs.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.agent.model.Configs);
     }
     
     {
-        _Super_Configs.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.backdoor.model.Configs);
+        _Super_Configs.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.agent.model.Configs);
     }
     /** 
      * END OF DO NOT MODIFY SECTION

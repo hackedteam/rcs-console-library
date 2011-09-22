@@ -73,7 +73,7 @@ package it.ht.rcs.console.alert.controller
       return getItemName(id);
     }
     
-    public function getBackdoorName(id:String):String
+    public function getAgentName(id:String):String
     {
       return getItemName(id);
     }

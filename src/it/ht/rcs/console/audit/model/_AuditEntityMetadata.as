@@ -22,14 +22,14 @@ internal class _AuditEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("backdoor", "operation", "time", "desc", "_id", "target", "action", "actor", "group", "user");
+    model_internal static var allProperties:Array = new Array("agent", "operation", "time", "desc", "_id", "target", "action", "actor", "group", "user");
     model_internal static var allAssociationProperties:Array = new Array();
-    model_internal static var allRequiredProperties:Array = new Array("backdoor", "operation", "time", "desc", "_id", "target", "action", "actor", "group", "user");
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("backdoor", "operation", "time", "desc", "_id", "target", "action", "actor", "group", "user");
+    model_internal static var allRequiredProperties:Array = new Array("agent", "operation", "time", "desc", "_id", "target", "action", "actor", "group", "user");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("agent", "operation", "time", "desc", "_id", "target", "action", "actor", "group", "user");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("backdoor", "operation", "time", "desc", "_id", "target", "action", "actor", "group", "user");
+    model_internal static var dataProperties:Array = new Array("agent", "operation", "time", "desc", "_id", "target", "action", "actor", "group", "user");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("backdoor", "operation", "time", "desc", "_id", "target", "action", "actor", "group", "user");
+    model_internal static var nonDerivedProperties:Array = new Array("agent", "operation", "time", "desc", "_id", "target", "action", "actor", "group", "user");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array();
     model_internal static var collectionBaseMap:Object;
@@ -39,10 +39,10 @@ internal class _AuditEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
     model_internal static var propertyTypeMap:Object;
 
     
-    model_internal var _backdoorIsValid:Boolean;
-    model_internal var _backdoorValidator:com.adobe.fiber.styles.StyleValidator;
-    model_internal var _backdoorIsValidCacheInitialized:Boolean = false;
-    model_internal var _backdoorValidationFailureMessages:Array;
+    model_internal var _agentIsValid:Boolean;
+    model_internal var _agentValidator:com.adobe.fiber.styles.StyleValidator;
+    model_internal var _agentIsValidCacheInitialized:Boolean = false;
+    model_internal var _agentValidationFailureMessages:Array;
     
     model_internal var _operationIsValid:Boolean;
     model_internal var _operationValidator:com.adobe.fiber.styles.StyleValidator;
@@ -89,7 +89,7 @@ internal class _AuditEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
         {
             // dependents map
             model_internal::dependentsOnMap = new Object();
-            model_internal::dependentsOnMap["backdoor"] = new Array();
+            model_internal::dependentsOnMap["agent"] = new Array();
             model_internal::dependentsOnMap["operation"] = new Array();
             model_internal::dependentsOnMap["time"] = new Array();
             model_internal::dependentsOnMap["desc"] = new Array();
@@ -106,7 +106,7 @@ internal class _AuditEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
 
         // Property type Map
         model_internal::propertyTypeMap = new Object();
-        model_internal::propertyTypeMap["backdoor"] = "String";
+        model_internal::propertyTypeMap["agent"] = "String";
         model_internal::propertyTypeMap["operation"] = "String";
         model_internal::propertyTypeMap["time"] = "int";
         model_internal::propertyTypeMap["desc"] = "String";
@@ -118,11 +118,11 @@ internal class _AuditEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
         model_internal::propertyTypeMap["user"] = "String";
 
         model_internal::_instance = value;
-        model_internal::_backdoorValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForBackdoor);
-        model_internal::_backdoorValidator.required = true;
-        model_internal::_backdoorValidator.requiredFieldError = "backdoor is required";
-        //model_internal::_backdoorValidator.source = model_internal::_instance;
-        //model_internal::_backdoorValidator.property = "backdoor";
+        model_internal::_agentValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForAgent);
+        model_internal::_agentValidator.required = true;
+        model_internal::_agentValidator.requiredFieldError = "agent is required";
+        //model_internal::_agentValidator.source = model_internal::_instance;
+        //model_internal::_agentValidator.property = "agent";
         model_internal::_operationValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForOperation);
         model_internal::_operationValidator.required = true;
         model_internal::_operationValidator.requiredFieldError = "operation is required";
@@ -386,7 +386,7 @@ internal class _AuditEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
     }
 
     [Bindable(event="propertyChange")]
-    public function get isBackdoorAvailable():Boolean
+    public function get isAgentAvailable():Boolean
     {
         return true;
     }
@@ -449,12 +449,12 @@ internal class _AuditEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
     /**
      * derived property recalculation
      */
-    public function invalidateDependentOnBackdoor():void
+    public function invalidateDependentOnAgent():void
     {
-        if (model_internal::_backdoorIsValidCacheInitialized )
+        if (model_internal::_agentIsValidCacheInitialized )
         {
-            model_internal::_instance.model_internal::_doValidationCacheOfBackdoor = null;
-            model_internal::calculateBackdoorIsValid();
+            model_internal::_instance.model_internal::_doValidationCacheOfAgent = null;
+            model_internal::calculateAgentIsValid();
         }
     }
     public function invalidateDependentOnOperation():void
@@ -520,44 +520,44 @@ internal class _AuditEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
     }
 
     [Bindable(event="propertyChange")]   
-    public function get backdoorStyle():com.adobe.fiber.styles.Style
+    public function get agentStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
 
-    public function get backdoorValidator() : StyleValidator
+    public function get agentValidator() : StyleValidator
     {
-        return model_internal::_backdoorValidator;
+        return model_internal::_agentValidator;
     }
 
-    model_internal function set _backdoorIsValid_der(value:Boolean):void 
+    model_internal function set _agentIsValid_der(value:Boolean):void 
     {
-        var oldValue:Boolean = model_internal::_backdoorIsValid;         
+        var oldValue:Boolean = model_internal::_agentIsValid;         
         if (oldValue !== value)
         {
-            model_internal::_backdoorIsValid = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "backdoorIsValid", oldValue, value));
+            model_internal::_agentIsValid = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "agentIsValid", oldValue, value));
         }                             
     }
 
     [Bindable(event="propertyChange")]
-    public function get backdoorIsValid():Boolean
+    public function get agentIsValid():Boolean
     {
-        if (!model_internal::_backdoorIsValidCacheInitialized)
+        if (!model_internal::_agentIsValidCacheInitialized)
         {
-            model_internal::calculateBackdoorIsValid();
+            model_internal::calculateAgentIsValid();
         }
 
-        return model_internal::_backdoorIsValid;
+        return model_internal::_agentIsValid;
     }
 
-    model_internal function calculateBackdoorIsValid():void
+    model_internal function calculateAgentIsValid():void
     {
-        var valRes:ValidationResultEvent = model_internal::_backdoorValidator.validate(model_internal::_instance.backdoor)
-        model_internal::_backdoorIsValid_der = (valRes.results == null);
-        model_internal::_backdoorIsValidCacheInitialized = true;
+        var valRes:ValidationResultEvent = model_internal::_agentValidator.validate(model_internal::_instance.agent)
+        model_internal::_agentIsValid_der = (valRes.results == null);
+        model_internal::_agentIsValidCacheInitialized = true;
         if (valRes.results == null)
-             model_internal::backdoorValidationFailureMessages_der = emptyArray;
+             model_internal::agentValidationFailureMessages_der = emptyArray;
         else
         {
             var _valFailures:Array = new Array();
@@ -565,22 +565,22 @@ internal class _AuditEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
             {
                 _valFailures.push(valRes.results[a].errorMessage);
             }
-            model_internal::backdoorValidationFailureMessages_der = _valFailures;
+            model_internal::agentValidationFailureMessages_der = _valFailures;
         }
     }
 
     [Bindable(event="propertyChange")]
-    public function get backdoorValidationFailureMessages():Array
+    public function get agentValidationFailureMessages():Array
     {
-        if (model_internal::_backdoorValidationFailureMessages == null)
-            model_internal::calculateBackdoorIsValid();
+        if (model_internal::_agentValidationFailureMessages == null)
+            model_internal::calculateAgentIsValid();
 
-        return _backdoorValidationFailureMessages;
+        return _agentValidationFailureMessages;
     }
 
-    model_internal function set backdoorValidationFailureMessages_der(value:Array) : void
+    model_internal function set agentValidationFailureMessages_der(value:Array) : void
     {
-        var oldValue:Array = model_internal::_backdoorValidationFailureMessages;
+        var oldValue:Array = model_internal::_agentValidationFailureMessages;
 
         var needUpdate : Boolean = false;
         if (oldValue == null)
@@ -608,8 +608,8 @@ internal class _AuditEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
 
         if (needUpdate)
         {
-            model_internal::_backdoorValidationFailureMessages = value;   
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "backdoorValidationFailureMessages", oldValue, value));
+            model_internal::_agentValidationFailureMessages = value;   
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "agentValidationFailureMessages", oldValue, value));
             // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
             // the entire entity.
             if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
@@ -1356,9 +1356,9 @@ internal class _AuditEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
      {
          switch(propertyName)
          {
-            case("backdoor"):
+            case("agent"):
             {
-                return backdoorValidationFailureMessages;
+                return agentValidationFailureMessages;
             }
             case("operation"):
             {

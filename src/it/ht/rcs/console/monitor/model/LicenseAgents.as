@@ -1,5 +1,5 @@
 /**
- * This is a generated sub-class of _Backdoors.as and is intended for behavior
+ * This is a generated sub-class of _LicenseAgents.as and is intended for behavior
  * customization.  This class is only generated when there is no file already present
  * at its target location.  Thus custom behavior that you add here will survive regeneration
  * of the super-class. 
@@ -15,25 +15,24 @@ package it.ht.rcs.console.monitor.model
 
 import com.adobe.fiber.core.model_internal;
 
-public class LicenseBackdoors extends _Super_LicenseBackdoors
+public class LicenseAgents extends _Super_LicenseAgents
 {
   
-  public function LicenseBackdoors(data:Object = null) {
-    if (data) {
-      android = data.android;
-      blackberry = data.blackberry;
-      desktop = data.desktop;
-      ios = data.ios;
-      linux = data.linux;
-      mobile = data.mobile;
-      osx = data.osx;
-      symbian = data.symbian;
-      total = data.total;
-      windows = data.windows;
-      winmo = data.winmo;
+    public function LicenseAgents(data:Object = null) {
+      if (data) {
+        android = data.android;
+        blackberry = data.blackberry;
+        desktop = data.desktop;
+        ios = data.ios;
+        linux = data.linux;
+        mobile = data.mobile;
+        osx = data.osx;
+        symbian = data.symbian;
+        total = data.total;
+        windows = data.windows;
+        winmo = data.winmo;
+      }
     }
-  }
-  
     /** 
      * DO NOT MODIFY THIS STATIC INITIALIZER - IT IS NECESSARY
      * FOR PROPERLY SETTING UP THE REMOTE CLASS ALIAS FOR THIS CLASS
@@ -47,17 +46,17 @@ public class LicenseBackdoors extends _Super_LicenseBackdoors
      */     
     public static function _initRemoteClassAlias() : void
     {
-        _Super_LicenseBackdoors.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.monitor.model.LicenseBackdoors);
-        _Super_LicenseBackdoors.model_internal::initRemoteClassAliasAllRelated();
+        _Super_LicenseAgents.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.monitor.model.LicenseAgents);
+        _Super_LicenseAgents.model_internal::initRemoteClassAliasAllRelated();
     }
      
     model_internal static function initRemoteClassAliasSingleChild() : void
     {
-        _Super_LicenseBackdoors.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.monitor.model.LicenseBackdoors);
+        _Super_LicenseAgents.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.monitor.model.LicenseAgents);
     }
     
     {
-        _Super_LicenseBackdoors.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.monitor.model.LicenseBackdoors);
+        _Super_LicenseAgents.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.monitor.model.LicenseAgents);
     }
     /** 
      * END OF DO NOT MODIFY SECTION
