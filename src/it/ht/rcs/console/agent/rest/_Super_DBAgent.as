@@ -1,12 +1,12 @@
 /**
  * This is a generated class and is not intended for modification.  To customize behavior
- * of this service wrapper you may modify the generated sub-class of this class - DBBackdoor.as.
+ * of this service wrapper you may modify the generated sub-class of this class - DBAgent.as.
  */
-package it.ht.rcs.console.backdoor.rest
+package it.ht.rcs.console.agent.rest
 {
 import com.adobe.fiber.core.model_internal;
 import com.adobe.fiber.services.wrapper.HTTPServiceWrapper;
-import it.ht.rcs.console.backdoor.model.Backdoor;
+import it.ht.rcs.console.agent.model.Agent;
 import mx.rpc.AbstractOperation;
 import mx.rpc.AsyncToken;
 import mx.rpc.http.HTTPMultiService;
@@ -16,13 +16,13 @@ import com.adobe.serializers.json.JSONSerializationFilter;
 import com.adobe.serializers.xml.XMLSerializationFilter;
 
 [ExcludeClass]
-internal class _Super_DBBackdoor extends com.adobe.fiber.services.wrapper.HTTPServiceWrapper
+internal class _Super_DBAgent extends com.adobe.fiber.services.wrapper.HTTPServiceWrapper
 {
     private static var serializer0:JSONSerializationFilter = new JSONSerializationFilter();
     private static var serializer1:XMLSerializationFilter = new XMLSerializationFilter();
 
     // Constructor
-    public function _Super_DBBackdoor()
+    public function _Super_DBAgent()
     {
         // initialize service control
         _serviceControl = new mx.rpc.http.HTTPMultiService("https://localhost:4443");
@@ -31,41 +31,41 @@ internal class _Super_DBBackdoor extends com.adobe.fiber.services.wrapper.HTTPSe
          var argsArray:Array;
 
          operation = new mx.rpc.http.Operation(null, "all_");
-         operation.url = "/backdoor";
+         operation.url = "/agent";
          operation.method = "GET";
          operation.serializationFilter = serializer0;
-         operation.resultElementType = it.ht.rcs.console.backdoor.model.Backdoor;
+         operation.resultElementType = it.ht.rcs.console.agent.model.Agent;
          operations.push(operation);
 
          operation = new mx.rpc.http.Operation(null, "show_");
-         operation.url = "/backdoor/{id}";
+         operation.url = "/agent/{id}";
          operation.method = "GET";
          argsArray = new Array("id");
          operation.argumentNames = argsArray;         
          operation.serializationFilter = serializer0;
          operation.properties = new Object();
          operation.properties["urlParamNames"] = ["id"];
-         operation.resultType = it.ht.rcs.console.backdoor.model.Backdoor;
+         operation.resultType = it.ht.rcs.console.agent.model.Agent;
          operations.push(operation);
 
          operation = new mx.rpc.http.Operation(null, "create_");
-         operation.url = "/backdoor";
+         operation.url = "/agent";
          operation.method = "POST";
          operation.serializationFilter = serializer0;
          operation.contentType = "application/xml";
-         operation.resultType = it.ht.rcs.console.backdoor.model.Backdoor;
+         operation.resultType = it.ht.rcs.console.agent.model.Agent;
          operations.push(operation);
 
          operation = new mx.rpc.http.Operation(null, "update_");
-         operation.url = "/backdoor/update";
+         operation.url = "/agent/update";
          operation.method = "POST";
          operation.serializationFilter = serializer0;
          operation.contentType = "application/xml";
-         operation.resultType = it.ht.rcs.console.backdoor.model.Backdoor;
+         operation.resultType = it.ht.rcs.console.agent.model.Agent;
          operations.push(operation);
 
          operation = new mx.rpc.http.Operation(null, "destroy_");
-         operation.url = "/backdoor/destroy";
+         operation.url = "/agent/destroy";
          operation.method = "POST";
          operation.serializationFilter = serializer1;
          operation.contentType = "application/xml";

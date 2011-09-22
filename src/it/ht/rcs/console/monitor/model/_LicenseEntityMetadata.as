@@ -10,7 +10,7 @@ import com.adobe.fiber.styles.StyleValidator;
 import com.adobe.fiber.valueobjects.AbstractEntityMetadata;
 import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 import com.adobe.fiber.valueobjects.IPropertyIterator;
-import it.ht.rcs.console.monitor.model.LicenseBackdoors;
+import it.ht.rcs.console.monitor.model.LicenseAgents;
 import it.ht.rcs.console.monitor.model.LicenseCollectors;
 import mx.events.ValidationResultEvent;
 import com.adobe.fiber.core.model_internal;
@@ -24,14 +24,14 @@ internal class _LicenseEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("collectors", "users", "shards", "ipa", "exploits", "backdoors", "alerting", "correlation", "type", "serial", "rmi");
+    model_internal static var allProperties:Array = new Array("collectors", "users", "shards", "ipa", "exploits", "agents", "alerting", "correlation", "type", "serial", "rmi");
     model_internal static var allAssociationProperties:Array = new Array();
     model_internal static var allRequiredProperties:Array = new Array("shards", "exploits");
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("collectors", "users", "shards", "ipa", "exploits", "backdoors", "alerting", "correlation", "type", "serial", "rmi");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("collectors", "users", "shards", "ipa", "exploits", "agents", "alerting", "correlation", "type", "serial", "rmi");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("collectors", "users", "shards", "ipa", "exploits", "backdoors", "alerting", "correlation", "type", "serial", "rmi");
+    model_internal static var dataProperties:Array = new Array("collectors", "users", "shards", "ipa", "exploits", "agents", "alerting", "correlation", "type", "serial", "rmi");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("collectors", "users", "shards", "ipa", "exploits", "backdoors", "alerting", "correlation", "type", "serial", "rmi");
+    model_internal static var nonDerivedProperties:Array = new Array("collectors", "users", "shards", "ipa", "exploits", "agents", "alerting", "correlation", "type", "serial", "rmi");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array();
     model_internal static var collectionBaseMap:Object;
@@ -66,7 +66,7 @@ internal class _LicenseEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
             model_internal::dependentsOnMap["shards"] = new Array();
             model_internal::dependentsOnMap["ipa"] = new Array();
             model_internal::dependentsOnMap["exploits"] = new Array();
-            model_internal::dependentsOnMap["backdoors"] = new Array();
+            model_internal::dependentsOnMap["agents"] = new Array();
             model_internal::dependentsOnMap["alerting"] = new Array();
             model_internal::dependentsOnMap["correlation"] = new Array();
             model_internal::dependentsOnMap["type"] = new Array();
@@ -84,7 +84,7 @@ internal class _LicenseEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
         model_internal::propertyTypeMap["shards"] = "Object";
         model_internal::propertyTypeMap["ipa"] = "Object";
         model_internal::propertyTypeMap["exploits"] = "String";
-        model_internal::propertyTypeMap["backdoors"] = "it.ht.rcs.console.monitor.model.LicenseBackdoors";
+        model_internal::propertyTypeMap["agents"] = "it.ht.rcs.console.monitor.model.LicenseAgents";
         model_internal::propertyTypeMap["alerting"] = "Boolean";
         model_internal::propertyTypeMap["correlation"] = "Boolean";
         model_internal::propertyTypeMap["type"] = "String";
@@ -359,7 +359,7 @@ internal class _LicenseEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     }
 
     [Bindable(event="propertyChange")]
-    public function get isBackdoorsAvailable():Boolean
+    public function get isAgentsAvailable():Boolean
     {
         return true;
     }
@@ -639,7 +639,7 @@ internal class _LicenseEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     }
 
     [Bindable(event="propertyChange")]   
-    public function get backdoorsStyle():com.adobe.fiber.styles.Style
+    public function get agentsStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }

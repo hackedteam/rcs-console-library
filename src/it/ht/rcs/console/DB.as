@@ -18,9 +18,9 @@ package it.ht.rcs.console
   import it.ht.rcs.console.audit.rest.DBAudit;
   import it.ht.rcs.console.audit.rest.DBAuditDemo;
   import it.ht.rcs.console.audit.rest.IDBAudit;
-  import it.ht.rcs.console.backdoor.rest.DBBackdoor;
-  import it.ht.rcs.console.backdoor.rest.DBBackdoorDemo;
-  import it.ht.rcs.console.backdoor.rest.IDBBackdoor;
+  import it.ht.rcs.console.agent.rest.DBAgent;
+  import it.ht.rcs.console.agent.rest.DBAgentDemo;
+  import it.ht.rcs.console.agent.rest.IDBAgent;
   import it.ht.rcs.console.factory.rest.DBFactory;
   import it.ht.rcs.console.factory.rest.DBFactoryDemo;
   import it.ht.rcs.console.factory.rest.IDBFactory;
@@ -73,7 +73,7 @@ package it.ht.rcs.console
     public var alert:IDBAlert;
     public var operation:IDBOperation;
     public var target:IDBTarget;
-    public var backdoor:IDBBackdoor;
+    public var agent:IDBAgent;
     public var factory:IDBFactory;
     public var update:IDBUpdate;
     public var system:IDBShard;
@@ -114,7 +114,7 @@ package it.ht.rcs.console
       alert = new DBAlert(host);
       operation = new DBOperation(host);
       target = new DBTarget(host);
-      backdoor = new DBBackdoor(host);
+      agent = new DBAgent(host);
       factory = new DBFactory(host);
       update = new DBUpdate(host);
       system = new DBShard(host);
@@ -135,7 +135,7 @@ package it.ht.rcs.console
       alert = new DBAlertDemo();
       operation = new DBOperationDemo();
       target = new DBTargetDemo();
-      backdoor = new DBBackdoorDemo();
+      agent = new DBAgentDemo();
       factory = new DBFactoryDemo();
       update = new DBUpdateDemo();
       system = new DBShardDemo();

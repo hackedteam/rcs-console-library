@@ -20,7 +20,7 @@ package it.ht.rcs.console.factory.controller
     override protected function onRefresh(e:RefreshEvent):void
     {
       super.onRefresh(e);
-      DB.instance.backdoor.all(onResult);
+      DB.instance.agent.all(onResult);
     }
     
     private function onResult(e:ResultEvent):void

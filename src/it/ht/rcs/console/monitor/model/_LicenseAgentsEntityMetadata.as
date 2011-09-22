@@ -2,14 +2,13 @@
 /**
  * This is a generated class and is not intended for modification.  
  */
-package it.ht.rcs.console.backdoor.model
+package it.ht.rcs.console.monitor.model
 {
 import com.adobe.fiber.styles.IStyle;
 import com.adobe.fiber.styles.Style;
 import com.adobe.fiber.valueobjects.AbstractEntityMetadata;
 import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 import com.adobe.fiber.valueobjects.IPropertyIterator;
-import it.ht.rcs.console.operation.model.Stat;
 import mx.collections.ArrayCollection;
 import com.adobe.fiber.core.model_internal;
 import com.adobe.fiber.valueobjects.IModelType;
@@ -18,66 +17,74 @@ import mx.events.PropertyChangeEvent;
 use namespace model_internal;
 
 [ExcludeClass]
-internal class _BackdoorEntityMetadata extends com.adobe.fiber.valueobjects.AbstractEntityMetadata
+internal class _LicenseAgentsEntityMetadata extends com.adobe.fiber.valueobjects.AbstractEntityMetadata
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("_kind", "desc", "ident", "_id", "status", "group_ids", "name", "path", "upgradable", "stat");
+    model_internal static var allProperties:Array = new Array("symbian", "blackberry", "osx", "android", "ios", "windows", "winmo", "linux", "total", "desktop", "mobile");
     model_internal static var allAssociationProperties:Array = new Array();
     model_internal static var allRequiredProperties:Array = new Array();
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("_kind", "desc", "ident", "_id", "status", "group_ids", "name", "path", "upgradable", "stat");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("symbian", "blackberry", "osx", "android", "ios", "windows", "winmo", "linux", "total", "desktop", "mobile");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("_kind", "desc", "ident", "_id", "status", "group_ids", "name", "path", "upgradable", "stat");
+    model_internal static var dataProperties:Array = new Array("symbian", "blackberry", "osx", "android", "ios", "windows", "winmo", "linux", "total", "desktop", "mobile");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("_kind", "desc", "ident", "_id", "status", "group_ids", "name", "path", "upgradable", "stat");
+    model_internal static var nonDerivedProperties:Array = new Array("symbian", "blackberry", "osx", "android", "ios", "windows", "winmo", "linux", "total", "desktop", "mobile");
     model_internal static var derivedProperties:Array = new Array();
-    model_internal static var collectionProperties:Array = new Array("group_ids", "path");
+    model_internal static var collectionProperties:Array = new Array("symbian", "blackberry", "osx", "android", "ios", "windows", "winmo", "linux");
     model_internal static var collectionBaseMap:Object;
-    model_internal static var entityName:String = "Backdoor";
+    model_internal static var entityName:String = "LicenseAgents";
     model_internal static var dependentsOnMap:Object;
     model_internal static var dependedOnServices:Array = new Array();
     model_internal static var propertyTypeMap:Object;
 
 
-    model_internal var _instance:_Super_Backdoor;
+    model_internal var _instance:_Super_LicenseAgents;
     model_internal static var _nullStyle:com.adobe.fiber.styles.Style = new com.adobe.fiber.styles.Style();
 
-    public function _BackdoorEntityMetadata(value : _Super_Backdoor)
+    public function _LicenseAgentsEntityMetadata(value : _Super_LicenseAgents)
     {
         // initialize property maps
         if (model_internal::dependentsOnMap == null)
         {
             // dependents map
             model_internal::dependentsOnMap = new Object();
-            model_internal::dependentsOnMap["_kind"] = new Array();
-            model_internal::dependentsOnMap["desc"] = new Array();
-            model_internal::dependentsOnMap["ident"] = new Array();
-            model_internal::dependentsOnMap["_id"] = new Array();
-            model_internal::dependentsOnMap["status"] = new Array();
-            model_internal::dependentsOnMap["group_ids"] = new Array();
-            model_internal::dependentsOnMap["name"] = new Array();
-            model_internal::dependentsOnMap["path"] = new Array();
-            model_internal::dependentsOnMap["upgradable"] = new Array();
-            model_internal::dependentsOnMap["stat"] = new Array();
+            model_internal::dependentsOnMap["symbian"] = new Array();
+            model_internal::dependentsOnMap["blackberry"] = new Array();
+            model_internal::dependentsOnMap["osx"] = new Array();
+            model_internal::dependentsOnMap["android"] = new Array();
+            model_internal::dependentsOnMap["ios"] = new Array();
+            model_internal::dependentsOnMap["windows"] = new Array();
+            model_internal::dependentsOnMap["winmo"] = new Array();
+            model_internal::dependentsOnMap["linux"] = new Array();
+            model_internal::dependentsOnMap["total"] = new Array();
+            model_internal::dependentsOnMap["desktop"] = new Array();
+            model_internal::dependentsOnMap["mobile"] = new Array();
 
             // collection base map
             model_internal::collectionBaseMap = new Object();
-            model_internal::collectionBaseMap["group_ids"] = "Object";
-            model_internal::collectionBaseMap["path"] = "String";
+            model_internal::collectionBaseMap["symbian"] = "Boolean";
+            model_internal::collectionBaseMap["blackberry"] = "Boolean";
+            model_internal::collectionBaseMap["osx"] = "Boolean";
+            model_internal::collectionBaseMap["android"] = "Boolean";
+            model_internal::collectionBaseMap["ios"] = "Boolean";
+            model_internal::collectionBaseMap["windows"] = "Boolean";
+            model_internal::collectionBaseMap["winmo"] = "Boolean";
+            model_internal::collectionBaseMap["linux"] = "Boolean";
         }
 
         // Property type Map
         model_internal::propertyTypeMap = new Object();
-        model_internal::propertyTypeMap["_kind"] = "String";
-        model_internal::propertyTypeMap["desc"] = "String";
-        model_internal::propertyTypeMap["ident"] = "String";
-        model_internal::propertyTypeMap["_id"] = "String";
-        model_internal::propertyTypeMap["status"] = "String";
-        model_internal::propertyTypeMap["group_ids"] = "ArrayCollection";
-        model_internal::propertyTypeMap["name"] = "String";
-        model_internal::propertyTypeMap["path"] = "ArrayCollection";
-        model_internal::propertyTypeMap["upgradable"] = "Boolean";
-        model_internal::propertyTypeMap["stat"] = "it.ht.rcs.console.operation.model.Stat";
+        model_internal::propertyTypeMap["symbian"] = "ArrayCollection";
+        model_internal::propertyTypeMap["blackberry"] = "ArrayCollection";
+        model_internal::propertyTypeMap["osx"] = "ArrayCollection";
+        model_internal::propertyTypeMap["android"] = "ArrayCollection";
+        model_internal::propertyTypeMap["ios"] = "ArrayCollection";
+        model_internal::propertyTypeMap["windows"] = "ArrayCollection";
+        model_internal::propertyTypeMap["winmo"] = "ArrayCollection";
+        model_internal::propertyTypeMap["linux"] = "ArrayCollection";
+        model_internal::propertyTypeMap["total"] = "Object";
+        model_internal::propertyTypeMap["desktop"] = "Object";
+        model_internal::propertyTypeMap["mobile"] = "Object";
 
         model_internal::_instance = value;
     }
@@ -130,7 +137,7 @@ internal class _BackdoorEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     override public function getDependants(propertyName:String):Array
     {
        if (model_internal::nonDerivedProperties.indexOf(propertyName) == -1)
-            throw new Error(propertyName + " is not a data property of entity Backdoor");
+            throw new Error(propertyName + " is not a data property of entity LicenseAgents");
             
        return model_internal::dependentsOnMap[propertyName] as Array;  
     }
@@ -148,7 +155,7 @@ internal class _BackdoorEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     override public function getCollectionBase(propertyName:String):String
     {
         if (model_internal::collectionProperties.indexOf(propertyName) == -1)
-            throw new Error(propertyName + " is not a collection property of entity Backdoor");
+            throw new Error(propertyName + " is not a collection property of entity LicenseAgents");
 
         return model_internal::collectionBaseMap[propertyName];
     }
@@ -156,7 +163,7 @@ internal class _BackdoorEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     override public function getPropertyType(propertyName:String):String
     {
         if (model_internal::allProperties.indexOf(propertyName) == -1)
-            throw new Error(propertyName + " is not a property of Backdoor");
+            throw new Error(propertyName + " is not a property of LicenseAgents");
 
         return model_internal::propertyTypeMap[propertyName];
     }
@@ -170,7 +177,7 @@ internal class _BackdoorEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     {
         if (model_internal::allProperties.indexOf(propertyName) == -1)
         {
-            throw new Error(propertyName + " does not exist for entity Backdoor");
+            throw new Error(propertyName + " does not exist for entity LicenseAgents");
         }
 
         return model_internal::_instance[propertyName];
@@ -180,7 +187,7 @@ internal class _BackdoorEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     {
         if (model_internal::nonDerivedProperties.indexOf(propertyName) == -1)
         {
-            throw new Error(propertyName + " is not a modifiable property of entity Backdoor");
+            throw new Error(propertyName + " is not a modifiable property of entity LicenseAgents");
         }
 
         model_internal::_instance[propertyName] = value;
@@ -212,7 +219,7 @@ internal class _BackdoorEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     {
         if (model_internal::allProperties.indexOf(propertyName) == -1)
         {
-            throw new Error(propertyName + " does not exist for entity Backdoor");
+            throw new Error(propertyName + " does not exist for entity LicenseAgents");
         }
 
         if (model_internal::allAlwaysAvailableProperties.indexOf(propertyName) != -1)
@@ -307,61 +314,67 @@ internal class _BackdoorEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     }
 
     [Bindable(event="propertyChange")]
-    public function get is_kindAvailable():Boolean
+    public function get isSymbianAvailable():Boolean
     {
         return true;
     }
 
     [Bindable(event="propertyChange")]
-    public function get isDescAvailable():Boolean
+    public function get isBlackberryAvailable():Boolean
     {
         return true;
     }
 
     [Bindable(event="propertyChange")]
-    public function get isIdentAvailable():Boolean
+    public function get isOsxAvailable():Boolean
     {
         return true;
     }
 
     [Bindable(event="propertyChange")]
-    public function get is_idAvailable():Boolean
+    public function get isAndroidAvailable():Boolean
     {
         return true;
     }
 
     [Bindable(event="propertyChange")]
-    public function get isStatusAvailable():Boolean
+    public function get isIosAvailable():Boolean
     {
         return true;
     }
 
     [Bindable(event="propertyChange")]
-    public function get isGroup_idsAvailable():Boolean
+    public function get isWindowsAvailable():Boolean
     {
         return true;
     }
 
     [Bindable(event="propertyChange")]
-    public function get isNameAvailable():Boolean
+    public function get isWinmoAvailable():Boolean
     {
         return true;
     }
 
     [Bindable(event="propertyChange")]
-    public function get isPathAvailable():Boolean
+    public function get isLinuxAvailable():Boolean
     {
         return true;
     }
 
     [Bindable(event="propertyChange")]
-    public function get isUpgradableAvailable():Boolean
+    public function get isTotalAvailable():Boolean
     {
         return true;
     }
 
     [Bindable(event="propertyChange")]
-    public function get isStatAvailable():Boolean
+    public function get isDesktopAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isMobileAvailable():Boolean
     {
         return true;
     }
@@ -377,61 +390,67 @@ internal class _BackdoorEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     }
 
     [Bindable(event="propertyChange")]   
-    public function get _kindStyle():com.adobe.fiber.styles.Style
+    public function get symbianStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
 
     [Bindable(event="propertyChange")]   
-    public function get descStyle():com.adobe.fiber.styles.Style
+    public function get blackberryStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
 
     [Bindable(event="propertyChange")]   
-    public function get identStyle():com.adobe.fiber.styles.Style
+    public function get osxStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
 
     [Bindable(event="propertyChange")]   
-    public function get _idStyle():com.adobe.fiber.styles.Style
+    public function get androidStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
 
     [Bindable(event="propertyChange")]   
-    public function get statusStyle():com.adobe.fiber.styles.Style
+    public function get iosStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
 
     [Bindable(event="propertyChange")]   
-    public function get group_idsStyle():com.adobe.fiber.styles.Style
+    public function get windowsStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
 
     [Bindable(event="propertyChange")]   
-    public function get nameStyle():com.adobe.fiber.styles.Style
+    public function get winmoStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
 
     [Bindable(event="propertyChange")]   
-    public function get pathStyle():com.adobe.fiber.styles.Style
+    public function get linuxStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
 
     [Bindable(event="propertyChange")]   
-    public function get upgradableStyle():com.adobe.fiber.styles.Style
+    public function get totalStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
 
     [Bindable(event="propertyChange")]   
-    public function get statStyle():com.adobe.fiber.styles.Style
+    public function get desktopStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get mobileStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }

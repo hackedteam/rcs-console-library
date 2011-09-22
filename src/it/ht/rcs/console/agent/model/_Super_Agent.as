@@ -1,9 +1,9 @@
 /**
  * This is a generated class and is not intended for modification.  To customize behavior
- * of this value object you may modify the generated sub-class of this class - Backdoor.as.
+ * of this value object you may modify the generated sub-class of this class - Agent.as.
  */
 
-package it.ht.rcs.console.backdoor.model
+package it.ht.rcs.console.agent.model
 {
 import com.adobe.fiber.services.IFiberManagingService;
 import com.adobe.fiber.valueobjects.IValueObject;
@@ -21,7 +21,7 @@ import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 use namespace model_internal;
 
 [ExcludeClass]
-public class _Super_Backdoor extends flash.events.EventDispatcher implements com.adobe.fiber.valueobjects.IValueObject
+public class _Super_Agent extends flash.events.EventDispatcher implements com.adobe.fiber.valueobjects.IValueObject
 {
     model_internal static function initRemoteClassAliasSingle(cz:Class) : void
     {
@@ -32,7 +32,7 @@ public class _Super_Backdoor extends flash.events.EventDispatcher implements com
         it.ht.rcs.console.operation.model.Stat.initRemoteClassAliasSingleChild();
     }
 
-    model_internal var _dminternal_model : _BackdoorEntityMetadata;
+    model_internal var _dminternal_model : _AgentEntityMetadata;
     model_internal var _changedObjects:mx.collections.ArrayCollection = new ArrayCollection();
 
     public function getChangedObjects() : Array
@@ -70,9 +70,9 @@ public class _Super_Backdoor extends flash.events.EventDispatcher implements com
 
     model_internal var _changeWatcherArray:Array = new Array();
 
-    public function _Super_Backdoor()
+    public function _Super_Agent()
     {
-        _model = new _BackdoorEntityMetadata(this);
+        _model = new _AgentEntityMetadata(this);
 
         // Bind to own data or source properties for cache invalidation triggering
 
@@ -340,14 +340,14 @@ public class _Super_Backdoor extends flash.events.EventDispatcher implements com
 
     [Transient]
     [Bindable(event="propertyChange")]
-    public function get _model() : _BackdoorEntityMetadata
+    public function get _model() : _AgentEntityMetadata
     {
         return model_internal::_dminternal_model;
     }
 
-    public function set _model(value : _BackdoorEntityMetadata) : void
+    public function set _model(value : _AgentEntityMetadata) : void
     {
-        var oldValue : _BackdoorEntityMetadata = model_internal::_dminternal_model;
+        var oldValue : _AgentEntityMetadata = model_internal::_dminternal_model;
         if (oldValue !== value)
         {
             model_internal::_dminternal_model = value;

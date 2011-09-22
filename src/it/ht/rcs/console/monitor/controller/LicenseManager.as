@@ -73,18 +73,18 @@ package it.ht.rcs.console.monitor.controller
       
       users.max = (limits['users'] == null) ? 'U' : limits['users'].toString();
       
-      agent_total.max = (limits['backdoors']['total'] == null) ? 'U' : limits['backdoors']['total'].toString();
-      agent_desktop.max = (limits['backdoors']['desktop'] == null) ? 'U' : limits['backdoors']['desktop'].toString();
-      agent_mobile.max = (limits['backdoors']['mobile'] == null) ? 'U' : limits['backdoors']['mobile'].toString();
+      agent_total.max = (limits['agents']['total'] == null) ? 'U' : limits['agents']['total'].toString();
+      agent_desktop.max = (limits['agents']['desktop'] == null) ? 'U' : limits['agents']['desktop'].toString();
+      agent_mobile.max = (limits['agents']['mobile'] == null) ? 'U' : limits['agents']['mobile'].toString();
       
-      agent_linux = limits['backdoors']['linux'][0];
-      agent_osx = limits['backdoors']['osx'][0];
-      agent_windows = limits['backdoors']['windows'][0];
-      agent_android = limits['backdoors']['android'][0];
-      agent_blackberry = limits['backdoors']['blackberry'][0];
-      agent_ios = limits['backdoors']['ios'][0];
-      agent_symbian = limits['backdoors']['symbian'][0];
-      agent_winmo = limits['backdoors']['winmo'][0];
+      agent_linux = limits['agents']['linux'][0];
+      agent_osx = limits['agents']['osx'][0];
+      agent_windows = limits['agents']['windows'][0];
+      agent_android = limits['agents']['android'][0];
+      agent_blackberry = limits['agents']['blackberry'][0];
+      agent_ios = limits['agents']['ios'][0];
+      agent_symbian = limits['agents']['symbian'][0];
+      agent_winmo = limits['agents']['winmo'][0];
       
       collectors.max = (limits['collectors']['collectors'] == null) ? 'U' : limits['collectors']['collectors'].toString();
       anonymizers.max = (limits['collectors']['anonymizers'] == null) ? 'U' : limits['collectors']['anonymizers'].toString();
@@ -104,9 +104,9 @@ package it.ht.rcs.console.monitor.controller
       
       users.curr = current['users'].toString();
       
-      agent_total.curr = current['backdoors']['total'].toString();
-      agent_desktop.curr = current['backdoors']['desktop'].toString();
-      agent_mobile.curr = current['backdoors']['mobile'].toString();
+      agent_total.curr = current['agents']['total'].toString();
+      agent_desktop.curr = current['agents']['desktop'].toString();
+      agent_mobile.curr = current['agents']['mobile'].toString();
       
       collectors.curr = current['collectors']['collectors'].toString();
       anonymizers.curr = current['collectors']['anonymizers'].toString();

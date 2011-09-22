@@ -1,4 +1,4 @@
-package it.ht.rcs.console.backdoor.controller
+package it.ht.rcs.console.agent.controller
 {
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.controller.ItemManager;
@@ -7,12 +7,12 @@ package it.ht.rcs.console.backdoor.controller
   import mx.collections.ArrayCollection;
   import mx.rpc.events.ResultEvent;
   
-  public class BackdoorManager extends ItemManager
+  public class AgentManager extends ItemManager
   {
-    private static var _instance:BackdoorManager = new BackdoorManager();
-    public static function get instance():BackdoorManager { return _instance; } 
+    private static var _instance:AgentManager = new AgentManager();
+    public static function get instance():AgentManager { return _instance; } 
     
-    public function BackdoorManager()
+    public function AgentManager()
     {
       super();
     }
@@ -20,7 +20,7 @@ package it.ht.rcs.console.backdoor.controller
     override protected function onRefresh(e:RefreshEvent):void
     {
       super.onRefresh(e);
-      DB.instance.backdoor.all(onResult);
+      DB.instance.agent.all(onResult);
     }
     
     private function onResult(e:ResultEvent):void

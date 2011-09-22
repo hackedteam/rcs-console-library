@@ -3,7 +3,7 @@
  * of this value object you may modify the generated sub-class of this class - Configs.as.
  */
 
-package it.ht.rcs.console.backdoor.model
+package it.ht.rcs.console.agent.model
 {
 import com.adobe.fiber.services.IFiberManagingService;
 import com.adobe.fiber.valueobjects.IValueObject;

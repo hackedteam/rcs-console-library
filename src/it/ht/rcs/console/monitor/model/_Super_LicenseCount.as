@@ -8,7 +8,7 @@ package it.ht.rcs.console.monitor.model
 import com.adobe.fiber.services.IFiberManagingService;
 import com.adobe.fiber.valueobjects.IValueObject;
 import flash.events.EventDispatcher;
-import it.ht.rcs.console.monitor.model.LicenseBackdoors;
+import it.ht.rcs.console.monitor.model.LicenseAgents;
 import it.ht.rcs.console.monitor.model.LicenseCollectors;
 import mx.collections.ArrayCollection;
 import mx.events.PropertyChangeEvent;
@@ -31,7 +31,7 @@ public class _Super_LicenseCount extends flash.events.EventDispatcher implements
     model_internal static function initRemoteClassAliasAllRelated() : void
     {
         it.ht.rcs.console.monitor.model.LicenseCollectors.initRemoteClassAliasSingleChild();
-        it.ht.rcs.console.monitor.model.LicenseBackdoors.initRemoteClassAliasSingleChild();
+        it.ht.rcs.console.monitor.model.LicenseAgents.initRemoteClassAliasSingleChild();
     }
 
     model_internal var _dminternal_model : _LicenseCountEntityMetadata;
@@ -55,7 +55,7 @@ public class _Super_LicenseCount extends flash.events.EventDispatcher implements
     private var _internal_users : int;
     private var _internal_shards : int;
     private var _internal_ipa : int;
-    private var _internal_backdoors : it.ht.rcs.console.monitor.model.LicenseBackdoors;
+    private var _internal_agents : it.ht.rcs.console.monitor.model.LicenseAgents;
 
     private static var emptyArray:Array = new Array();
 
@@ -104,9 +104,9 @@ public class _Super_LicenseCount extends flash.events.EventDispatcher implements
     }
 
     [Bindable(event="propertyChange")]
-    public function get backdoors() : it.ht.rcs.console.monitor.model.LicenseBackdoors
+    public function get agents() : it.ht.rcs.console.monitor.model.LicenseAgents
     {
-        return _internal_backdoors;
+        return _internal_agents;
     }
 
     public function clearAssociations() : void
@@ -157,13 +157,13 @@ public class _Super_LicenseCount extends flash.events.EventDispatcher implements
         }
     }
 
-    public function set backdoors(value:it.ht.rcs.console.monitor.model.LicenseBackdoors) : void
+    public function set agents(value:it.ht.rcs.console.monitor.model.LicenseAgents) : void
     {
-        var oldValue:it.ht.rcs.console.monitor.model.LicenseBackdoors = _internal_backdoors;
+        var oldValue:it.ht.rcs.console.monitor.model.LicenseAgents = _internal_agents;
         if (oldValue !== value)
         {
-            _internal_backdoors = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "backdoors", oldValue, _internal_backdoors));
+            _internal_agents = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "agents", oldValue, _internal_agents));
         }
     }
 

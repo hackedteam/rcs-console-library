@@ -3,140 +3,6 @@
   <annotation name="ActionScriptGeneration">
     <item name="FullyQualifyReferences">true</item>
   </annotation>
-  <service name="DBAudit">
-    <annotation name="ActionScriptGeneration">
-      <item name="ServiceType">HTTPMultiService</item>
-      <item name="Package">it.ht.rcs.console.audit.rest</item>
-      <item name="rootURL">https://localhost:4444</item>
-    </annotation>
-    <annotation name="ServiceTypeGroup">
-      <item name="ServiceBackendType">HTTPService</item>
-    </annotation>
-    <annotation name="ServiceConfig">
-      <item name="DEFAULT_ENTITY_PACKAGE">it.ht.rcs.console.audit.model</item>
-      <item name="LINKED_FILE"></item>
-    </annotation>
-    <function name="all_" return-type="Audit[]">
-      <annotation name="analyze group">
-        <item name="analyzed">true</item>
-      </annotation>
-      <annotation name="ActionScriptGeneration">
-        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
-        <item name="method">GET</item>
-        <item name="url">/audit</item>
-      </annotation>
-      <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/audit</item>
-      </annotation>
-      <annotation name="ValidProperties">
-        <item name="propertySpecifier">backdoor,operation,time,desc,_id,target,action,actor,group,user</item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="inputParamNames">filter,startIndex,numItems</item>
-        <item name="inputParams">string,integer,integer</item>
-        <item name="returnType">opaque</item>
-      </annotation>
-      <parameter name="filter" type="string"/>
-      <parameter name="startIndex" type="integer"/>
-      <parameter name="numItems" type="integer"/>
-    </function>
-    <function name="count_" return-type="integer">
-      <annotation name="analyze group">
-        <item name="analyzed">true</item>
-      </annotation>
-      <annotation name="ActionScriptGeneration">
-        <item name="SerializationFilter">com.adobe.serializers.xml.XMLSerializationFilter</item>
-        <item name="method">GET</item>
-        <item name="url">/audit/count</item>
-      </annotation>
-      <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/audit/count</item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="inputParamNames">filter</item>
-        <item name="inputParams">string</item>
-        <item name="returnType">opaque</item>
-      </annotation>
-      <parameter name="filter" type="string"/>
-    </function>
-    <function name="filters_" return-type="AuditFilter">
-      <annotation name="analyze group">
-        <item name="analyzed">true</item>
-      </annotation>
-      <annotation name="ActionScriptGeneration">
-        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
-        <item name="method">GET</item>
-        <item name="url">/audit/filters</item>
-      </annotation>
-      <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/audit/filters</item>
-      </annotation>
-      <annotation name="ValidProperties">
-        <item name="propertySpecifier">backdoor,operation,_id,target,action,actor,user</item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="returnType">opaque</item>
-      </annotation>
-    </function>
-  </service>
-  <entity name="AuditFilter">
-    <annotation name="EntityProperties">
-      <item name="EntityOriginalName">AuditFilter</item>
-    </annotation>
-    <annotation name="service Group">
-      <item name="service">DBAudit</item>
-    </annotation>
-    <annotation name="ServerProperties">
-      <item name="IncludeRemoteClass">nonempty</item>
-    </annotation>
-    <annotation name="filters_">
-      <item name="propertySpecifier">backdoor,operation,_id,target,action,actor,user</item>
-    </annotation>
-    <annotation name="ActionScriptGeneration">
-      <item name="Package">it.ht.rcs.console.audit.model</item>
-    </annotation>
-    <property name="backdoor" type="opaque[]" required="true"/>
-    <property name="operation" type="opaque[]" required="true"/>
-    <property name="_id" type="string" required="true"/>
-    <property name="target" type="opaque[]" required="true"/>
-    <property name="action" type="string[]" required="true"/>
-    <property name="actor" type="string[]" required="true"/>
-    <property name="user" type="string[]" required="true"/>
-  </entity>
-  <entity name="Audit" persistent="true">
-    <annotation name="EntityProperties">
-      <item name="EntityOriginalName">Audit</item>
-    </annotation>
-    <annotation name="service Group">
-      <item name="service">DBAudit</item>
-    </annotation>
-    <annotation name="ServerProperties">
-      <item name="IncludeRemoteClass">nonempty</item>
-    </annotation>
-    <annotation name="all_">
-      <item name="propertySpecifier">backdoor,operation,time,desc,_id,target,action,actor,group,user</item>
-      <item name="pagingEnabled">true</item>
-      <item name="positionalPagingParameters">true</item>
-      <item name="countOperation">count_</item>
-    </annotation>
-    <annotation name="ActionScriptGeneration">
-      <item name="Package">it.ht.rcs.console.audit.model</item>
-    </annotation>
-    <annotation name="DataManagement">
-      <item name="managingService">DBAudit</item>
-      <item name="fillFunc">all_</item>
-    </annotation>
-    <property name="backdoor" type="string" required="true"/>
-    <property name="operation" type="string" required="true"/>
-    <property name="time" type="integer" required="true"/>
-    <property name="desc" type="string" required="true"/>
-    <id name="_id" type="string"/>
-    <property name="target" type="string" required="true"/>
-    <property name="action" type="string" required="true"/>
-    <property name="actor" type="string" required="true"/>
-    <property name="group" type="string" required="true"/>
-    <property name="user" type="string" required="true"/>
-  </entity>
   <service name="DBSession">
     <annotation name="ActionScriptGeneration">
       <item name="ServiceType">HTTPMultiService</item>
@@ -1339,30 +1205,30 @@
     <property name="created_at" type="string"/>
     <property name="stat" type="Stat"/>
   </entity>
-  <service name="DBBackdoor">
+  <service name="DBAgent">
     <annotation name="ActionScriptGeneration">
       <item name="ServiceType">HTTPMultiService</item>
-      <item name="Package">it.ht.rcs.console.backdoor.rest</item>
+      <item name="Package">it.ht.rcs.console.agent.rest</item>
       <item name="rootURL">https://localhost:4443</item>
     </annotation>
     <annotation name="ServiceTypeGroup">
       <item name="ServiceBackendType">HTTPService</item>
     </annotation>
     <annotation name="ServiceConfig">
-      <item name="DEFAULT_ENTITY_PACKAGE">it.ht.rcs.console.backdoor.model</item>
+      <item name="DEFAULT_ENTITY_PACKAGE">it.ht.rcs.console.agent.model</item>
       <item name="LINKED_FILE"></item>
     </annotation>
-    <function name="all_" return-type="Backdoor[]">
+    <function name="all_" return-type="Agent[]">
       <annotation name="analyze group">
         <item name="analyzed">true</item>
       </annotation>
       <annotation name="ActionScriptGeneration">
         <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
         <item name="method">GET</item>
-        <item name="url">/backdoor</item>
+        <item name="url">/agent</item>
       </annotation>
       <annotation name="url group">
-        <item name="completeURL">https://localhost:4443/backdoor</item>
+        <item name="completeURL">https://localhost:4443/agent</item>
       </annotation>
       <annotation name="ValidProperties">
         <item name="propertySpecifier">_kind,desc,ident,_id,status,group_ids,name,path,upgradable,stat</item>
@@ -1371,17 +1237,17 @@
         <item name="returnType">opaque</item>
       </annotation>
     </function>
-    <function name="show_" return-type="Backdoor">
+    <function name="show_" return-type="Agent">
       <annotation name="analyze group">
         <item name="analyzed">true</item>
       </annotation>
       <annotation name="ActionScriptGeneration">
         <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
         <item name="method">GET</item>
-        <item name="url">/backdoor/{id}</item>
+        <item name="url">/agent/{id}</item>
       </annotation>
       <annotation name="url group">
-        <item name="completeURL">https://localhost:4443/backdoor/{id}</item>
+        <item name="completeURL">https://localhost:4443/agent/{id}</item>
       </annotation>
       <annotation name="ValidProperties">
         <item name="propertySpecifier">_kind,desc,ident,_id,status,group_ids,name,path,upgradable,stat</item>
@@ -1396,7 +1262,7 @@
       </annotation>
       <parameter name="id" type="string"/>
     </function>
-    <function name="create_" return-type="Backdoor">
+    <function name="create_" return-type="Agent">
       <annotation name="analyze group">
         <item name="analyzed">true</item>
       </annotation>
@@ -1405,10 +1271,10 @@
         <item name="method">POST</item>
         <item name="contentType">application/xml</item>
         <item name="requestBodyParameter">true</item>
-        <item name="url">/backdoor</item>
+        <item name="url">/agent</item>
       </annotation>
       <annotation name="url group">
-        <item name="completeURL">https://localhost:4443/backdoor</item>
+        <item name="completeURL">https://localhost:4443/agent</item>
       </annotation>
       <annotation name="ValidProperties">
         <item name="propertySpecifier">_kind,desc,ident,_id,status,group_ids,name,path,upgradable,stat</item>
@@ -1420,7 +1286,7 @@
       </annotation>
       <parameter name="strXml" type="string"/>
     </function>
-    <function name="update_" return-type="Backdoor">
+    <function name="update_" return-type="Agent">
       <annotation name="analyze group">
         <item name="analyzed">true</item>
       </annotation>
@@ -1429,10 +1295,10 @@
         <item name="method">POST</item>
         <item name="contentType">application/xml</item>
         <item name="requestBodyParameter">true</item>
-        <item name="url">/backdoor/update</item>
+        <item name="url">/agent/update</item>
       </annotation>
       <annotation name="url group">
-        <item name="completeURL">https://localhost:4443/backdoor/update</item>
+        <item name="completeURL">https://localhost:4443/agent/update</item>
       </annotation>
       <annotation name="ValidProperties">
         <item name="propertySpecifier">_kind,desc,ident,_id,status,group_ids,name,path,upgradable,stat</item>
@@ -1453,10 +1319,10 @@
         <item name="method">POST</item>
         <item name="contentType">application/xml</item>
         <item name="requestBodyParameter">true</item>
-        <item name="url">/backdoor/destroy</item>
+        <item name="url">/agent/destroy</item>
       </annotation>
       <annotation name="url group">
-        <item name="completeURL">https://localhost:4443/backdoor/destroy</item>
+        <item name="completeURL">https://localhost:4443/agent/destroy</item>
       </annotation>
       <annotation name="original signature">
         <item name="inputParamNames">strXml</item>
@@ -1466,12 +1332,12 @@
       <parameter name="strXml" type="string"/>
     </function>
   </service>
-  <entity name="Backdoor">
+  <entity name="Agent">
     <annotation name="EntityProperties">
-      <item name="EntityOriginalName">Backdoor</item>
+      <item name="EntityOriginalName">Agent</item>
     </annotation>
     <annotation name="service Group">
-      <item name="service">DBBackdoor</item>
+      <item name="service">DBAgent</item>
     </annotation>
     <annotation name="ServerProperties">
       <item name="IncludeRemoteClass">nonempty</item>
@@ -1480,7 +1346,7 @@
       <item name="propertySpecifier">_kind,desc,ident,_id,status,group_ids,name,path,upgradable,stat</item>
     </annotation>
     <annotation name="ActionScriptGeneration">
-      <item name="Package">it.ht.rcs.console.backdoor.model</item>
+      <item name="Package">it.ht.rcs.console.agent.model</item>
     </annotation>
     <annotation name="all_">
       <item name="propertySpecifier">_kind,desc,ident,_id,status,group_ids,name,path,upgradable,stat</item>
@@ -1670,13 +1536,13 @@
       <item name="EntityOriginalName">Configs</item>
     </annotation>
     <annotation name="service Group">
-      <item name="service">DBBackdoor,DBFactory</item>
+      <item name="service">DBAgent,DBFactory</item>
     </annotation>
     <annotation name="ServerProperties">
       <item name="IncludeRemoteClass">nonempty</item>
     </annotation>
     <annotation name="ActionScriptGeneration">
-      <item name="Package">it.ht.rcs.console.backdoor.model</item>
+      <item name="Package">it.ht.rcs.console.agent.model</item>
     </annotation>
     <property name="updated_at" type="string"/>
     <property name="desc" type="string"/>
@@ -2433,7 +2299,7 @@
         <item name="completeURL">https://localhost:4444/license/count</item>
       </annotation>
       <annotation name="ValidProperties">
-        <item name="propertySpecifier">collectors,users,shards,ipa,backdoors</item>
+        <item name="propertySpecifier">collectors,users,shards,ipa,agents</item>
       </annotation>
       <annotation name="original signature">
         <item name="returnType">opaque</item>
@@ -2452,7 +2318,7 @@
         <item name="completeURL">https://localhost:4444/license/limit</item>
       </annotation>
       <annotation name="ValidProperties">
-        <item name="propertySpecifier">collectors,users,shards,ipa,exploits,backdoors,alerting,correlation,type,serial,rmi</item>
+        <item name="propertySpecifier">collectors,users,shards,ipa,exploits,agents,alerting,correlation,type,serial,rmi</item>
       </annotation>
       <annotation name="original signature">
         <item name="returnType">opaque</item>
@@ -2470,20 +2336,20 @@
       <item name="IncludeRemoteClass">nonempty</item>
     </annotation>
     <annotation name="limit">
-      <item name="propertySpecifier">collectors,users,ipa,backdoors,alerting,correlation,type,serial,rmi</item>
+      <item name="propertySpecifier">collectors,users,ipa,agents,alerting,correlation,type,serial,rmi</item>
     </annotation>
     <annotation name="ActionScriptGeneration">
       <item name="Package">it.ht.rcs.console.monitor.model</item>
     </annotation>
     <annotation name="limit_">
-      <item name="propertySpecifier">collectors,users,shards,ipa,exploits,backdoors,alerting,correlation,type,serial,rmi</item>
+      <item name="propertySpecifier">collectors,users,shards,ipa,exploits,agents,alerting,correlation,type,serial,rmi</item>
     </annotation>
     <property name="collectors" type="LicenseCollectors"/>
     <property name="users" type="opaque"/>
     <property name="shards" type="opaque" required="true"/>
     <property name="ipa" type="opaque"/>
     <property name="exploits" type="string" required="true"/>
-    <property name="backdoors" type="LicenseBackdoors"/>
+    <property name="agents" type="LicenseAgents"/>
     <property name="alerting" type="boolean"/>
     <property name="correlation" type="boolean"/>
     <property name="type" type="string"/>
@@ -2501,19 +2367,19 @@
       <item name="IncludeRemoteClass">nonempty</item>
     </annotation>
     <annotation name="count">
-      <item name="propertySpecifier">collectors,users,ipa,backdoors</item>
+      <item name="propertySpecifier">collectors,users,ipa,agents</item>
     </annotation>
     <annotation name="ActionScriptGeneration">
       <item name="Package">it.ht.rcs.console.monitor.model</item>
     </annotation>
     <annotation name="count_">
-      <item name="propertySpecifier">collectors,users,shards,ipa,backdoors</item>
+      <item name="propertySpecifier">collectors,users,shards,ipa,agents</item>
     </annotation>
     <property name="collectors" type="LicenseCollectors"/>
     <property name="users" type="integer"/>
     <property name="shards" type="integer" required="true"/>
     <property name="ipa" type="integer"/>
-    <property name="backdoors" type="LicenseBackdoors"/>
+    <property name="agents" type="LicenseAgents"/>
   </entity>
   <entity name="LicenseCollectors">
     <annotation name="EntityProperties">
@@ -2531,9 +2397,9 @@
     <property name="collectors" type="opaque"/>
     <property name="anonymizers" type="opaque"/>
   </entity>
-  <entity name="LicenseBackdoors">
+  <entity name="LicenseAgents">
     <annotation name="EntityProperties">
-      <item name="EntityOriginalName">Backdoors</item>
+      <item name="EntityOriginalName">Agents</item>
     </annotation>
     <annotation name="service Group">
       <item name="service">DBLicense</item>
@@ -2756,5 +2622,139 @@
     </annotation>
     <property name="host" type="string" required="true"/>
     <property name="_id" type="string" required="true"/>
+  </entity>
+  <service name="DBAudit">
+    <annotation name="ActionScriptGeneration">
+      <item name="ServiceType">HTTPMultiService</item>
+      <item name="Package">it.ht.rcs.console.audit.rest</item>
+      <item name="rootURL">https://localhost:4444</item>
+    </annotation>
+    <annotation name="ServiceTypeGroup">
+      <item name="ServiceBackendType">HTTPService</item>
+    </annotation>
+    <annotation name="ServiceConfig">
+      <item name="DEFAULT_ENTITY_PACKAGE">it.ht.rcs.console.audit.model</item>
+      <item name="LINKED_FILE"></item>
+    </annotation>
+    <function name="all_" return-type="Audit[]">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/audit</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/audit</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">agent,operation,time,desc,_id,target,action,actor,group,user</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParamNames">filter,startIndex,numItems</item>
+        <item name="inputParams">string,integer,integer</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="filter" type="string"/>
+      <parameter name="startIndex" type="integer"/>
+      <parameter name="numItems" type="integer"/>
+    </function>
+    <function name="count_" return-type="integer">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.xml.XMLSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/audit/count</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/audit/count</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParamNames">filter</item>
+        <item name="inputParams">string</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="filter" type="string"/>
+    </function>
+    <function name="filters_" return-type="AuditFilter">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/audit/filters</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/audit/filters</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">agent,operation,_id,target,action,actor,user</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+      </annotation>
+    </function>
+  </service>
+  <entity name="AuditFilter">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">AuditFilter</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBAudit</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="filters_">
+      <item name="propertySpecifier">agent,operation,_id,target,action,actor,user</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.audit.model</item>
+    </annotation>
+    <property name="agent" type="opaque[]" required="true"/>
+    <property name="operation" type="opaque[]" required="true"/>
+    <property name="_id" type="string" required="true"/>
+    <property name="target" type="opaque[]" required="true"/>
+    <property name="action" type="string[]" required="true"/>
+    <property name="actor" type="string[]" required="true"/>
+    <property name="user" type="string[]" required="true"/>
+  </entity>
+  <entity name="Audit" persistent="true">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Audit</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBAudit</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="all_">
+      <item name="propertySpecifier">agent,operation,time,desc,_id,target,action,actor,group,user</item>
+      <item name="pagingEnabled">true</item>
+      <item name="positionalPagingParameters">true</item>
+      <item name="countOperation">count_</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.audit.model</item>
+    </annotation>
+    <annotation name="DataManagement">
+      <item name="managingService">DBAudit</item>
+      <item name="fillFunc">all_</item>
+    </annotation>
+    <property name="agent" type="string" required="true"/>
+    <property name="operation" type="string" required="true"/>
+    <property name="time" type="integer" required="true"/>
+    <property name="desc" type="string" required="true"/>
+    <id name="_id" type="string"/>
+    <property name="target" type="string" required="true"/>
+    <property name="action" type="string" required="true"/>
+    <property name="actor" type="string" required="true"/>
+    <property name="group" type="string" required="true"/>
+    <property name="user" type="string" required="true"/>
   </entity>
 </model>
