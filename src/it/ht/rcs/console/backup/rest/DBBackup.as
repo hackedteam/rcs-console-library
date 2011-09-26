@@ -8,6 +8,7 @@
 package it.ht.rcs.console.backup.rest
 {
   import it.ht.rcs.console.DB;
+  
   import mx.rpc.CallResponder;
 
   public class DBBackup extends _Super_DBBackup implements IDBBackup
@@ -27,10 +28,17 @@ package it.ht.rcs.console.backup.rest
       _serviceControl.baseURL = host;
     }
     
-    public function all(onResult:Function=null, onFault:Function=null):void
+    public function all_job(onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = all_();
+      resp.token = all_job_();
     }
+    
+    public function all_archive(onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = all_archive_();      
+    }
+    
   }
 }

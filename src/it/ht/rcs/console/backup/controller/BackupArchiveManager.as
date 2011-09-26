@@ -7,14 +7,14 @@ package it.ht.rcs.console.backup.controller
   import mx.collections.ArrayCollection;
   import mx.rpc.events.ResultEvent;
   
-  public class BackupManager extends ItemManager
+  public class BackupArchiveManager extends ItemManager
   {
     
     /* singleton */
-    private static var _instance:BackupManager = new BackupManager();
-    public static function get instance():BackupManager { return _instance; } 
+    private static var _instance:BackupArchiveManager = new BackupArchiveManager();
+    public static function get instance():BackupArchiveManager { return _instance; } 
     
-    public function BackupManager()
+    public function BackupArchiveManager()
     {
       super();
     }
@@ -23,7 +23,7 @@ package it.ht.rcs.console.backup.controller
     {
       super.onRefresh(e);
       
-      DB.instance.backup.all(onResult);
+      DB.instance.backup.all_archive(onResult);
     }
     
     private function onResult(e:ResultEvent):void

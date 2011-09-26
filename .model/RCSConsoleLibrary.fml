@@ -2770,20 +2770,39 @@
       <item name="DEFAULT_ENTITY_PACKAGE">it.ht.rcs.console.backup.model</item>
       <item name="LINKED_FILE"></item>
     </annotation>
-    <function name="all_" return-type="BackupJob[]">
+    <function name="all_job_" return-type="BackupJob[]">
       <annotation name="analyze group">
         <item name="analyzed">true</item>
       </annotation>
       <annotation name="ActionScriptGeneration">
         <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
         <item name="method">GET</item>
-        <item name="url">/backup</item>
+        <item name="url">/backupjob</item>
       </annotation>
       <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/backup</item>
+        <item name="completeURL">https://localhost:4444/backupjob</item>
       </annotation>
       <annotation name="ValidProperties">
         <item name="propertySpecifier">enabled,lastrun,updated_at,_id,what,status,when,name,created_at</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+      </annotation>
+    </function>
+    <function name="all_archive_" return-type="BackupArchive[]">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/backuparchive</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/backuparchive</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">_id,when,name,size</item>
       </annotation>
       <annotation name="original signature">
         <item name="returnType">opaque</item>
@@ -2815,5 +2834,26 @@
     <property name="when" type="string" required="true"/>
     <property name="name" type="string" required="true"/>
     <property name="created_at" type="string" required="true"/>
+  </entity>
+  <entity name="BackupArchive">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">BackupArchive</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBBackup</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="all_archive_">
+      <item name="propertySpecifier">_id,when,name,size</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.backup.model</item>
+    </annotation>
+    <property name="_id" type="string" required="true"/>
+    <property name="when" type="string" required="true"/>
+    <property name="name" type="string" required="true"/>
+    <property name="size" type="integer" required="true"/>
   </entity>
 </model>
