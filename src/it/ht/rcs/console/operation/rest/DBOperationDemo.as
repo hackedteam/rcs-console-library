@@ -35,7 +35,7 @@ package it.ht.rcs.console.operation.rest
       var operation:Operation = new Operation(params);
       operations.addItem(operation);
       
-      var event:ResultEvent = new ResultEvent("operation.create", false, true, operation);
+      var event:ResultEvent = new ResultEvent('operation.create', false, true, operation);
       onResult(event);
     }
     
@@ -45,6 +45,9 @@ package it.ht.rcs.console.operation.rest
     
     public function destroy(id:String, onResult:Function=null, onFault:Function=null):void
     {
+      var event:ResultEvent = new ResultEvent('operation.destroy', false, true);
+      if (onResult != null)
+        onResult(event);
     }
   }
 }

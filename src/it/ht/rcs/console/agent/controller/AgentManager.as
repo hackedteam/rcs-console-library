@@ -30,6 +30,7 @@ package it.ht.rcs.console.agent.controller
       items.source.forEach(function(element:*, index:int, arr:Array):void {
         addItem(element);
       });
+      dispatchDataLoadedEvent();
     }
   }
 }

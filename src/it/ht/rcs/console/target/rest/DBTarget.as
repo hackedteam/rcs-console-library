@@ -33,7 +33,7 @@ public class DBTarget extends _Super_DBTarget implements IDBTarget
   {
     var resp:CallResponder = DB.getCallResponder(onResult, onFault);
     params['operation'] = operation._id;
-    resp.token = create_(JSON.encode(params)); 
+    resp.token = create_(JSON.encode(params));
   }
   
   public function destroy(id:String, onResult:Function=null, onFault:Function=null):void

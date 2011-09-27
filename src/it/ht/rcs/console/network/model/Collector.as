@@ -18,7 +18,9 @@ package it.ht.rcs.console.network.model
         poll: false,
         port: 4444,
         type: 'remote',
-        version: ''
+        version: '',
+        next: [null],
+        prev: [null]
       };
     }
     
