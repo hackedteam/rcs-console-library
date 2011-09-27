@@ -12,15 +12,18 @@ package it.ht.rcs.console
   import it.ht.rcs.console.accounting.rest.IDBGroup;
   import it.ht.rcs.console.accounting.rest.IDBSession;
   import it.ht.rcs.console.accounting.rest.IDBUser;
+  import it.ht.rcs.console.agent.rest.DBAgent;
+  import it.ht.rcs.console.agent.rest.DBAgentDemo;
+  import it.ht.rcs.console.agent.rest.IDBAgent;
   import it.ht.rcs.console.alert.rest.DBAlert;
   import it.ht.rcs.console.alert.rest.DBAlertDemo;
   import it.ht.rcs.console.alert.rest.IDBAlert;
   import it.ht.rcs.console.audit.rest.DBAudit;
   import it.ht.rcs.console.audit.rest.DBAuditDemo;
   import it.ht.rcs.console.audit.rest.IDBAudit;
-  import it.ht.rcs.console.agent.rest.DBAgent;
-  import it.ht.rcs.console.agent.rest.DBAgentDemo;
-  import it.ht.rcs.console.agent.rest.IDBAgent;
+  import it.ht.rcs.console.backup.rest.DBBackdupDemo;
+  import it.ht.rcs.console.backup.rest.DBBackup;
+  import it.ht.rcs.console.backup.rest.IDBBackup;
   import it.ht.rcs.console.factory.rest.DBFactory;
   import it.ht.rcs.console.factory.rest.DBFactoryDemo;
   import it.ht.rcs.console.factory.rest.IDBFactory;
@@ -78,6 +81,7 @@ package it.ht.rcs.console
     public var update:IDBUpdate;
     public var system:IDBShard;
     public var search:IDBSearch;
+    public var backup:IDBBackup;
     
     private static var notifier:IFaultNotifier;
     public static var i18n:II18N;
@@ -119,6 +123,7 @@ package it.ht.rcs.console
       update = new DBUpdate(host);
       system = new DBShard(host);
       search = new DBSearch(host);
+      backup = new DBBackup(host);
     }
 
     private function initDemo():void
@@ -140,6 +145,7 @@ package it.ht.rcs.console
       update = new DBUpdateDemo();
       system = new DBShardDemo();
       search = new DBSearchDemo();
+      backup = new DBBackdupDemo();
     }
 
     public static function host_autocomplete(host:String):String
