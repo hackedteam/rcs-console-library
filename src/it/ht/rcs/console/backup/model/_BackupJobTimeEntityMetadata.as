@@ -9,7 +9,7 @@ import com.adobe.fiber.styles.Style;
 import com.adobe.fiber.valueobjects.AbstractEntityMetadata;
 import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 import com.adobe.fiber.valueobjects.IPropertyIterator;
-import it.ht.rcs.console.backup.model.BackupJobTime;
+import mx.collections.ArrayCollection;
 import com.adobe.fiber.core.model_internal;
 import com.adobe.fiber.valueobjects.IModelType;
 import mx.events.PropertyChangeEvent;
@@ -17,62 +17,52 @@ import mx.events.PropertyChangeEvent;
 use namespace model_internal;
 
 [ExcludeClass]
-internal class _BackupJobEntityMetadata extends com.adobe.fiber.valueobjects.AbstractEntityMetadata
+internal class _BackupJobTimeEntityMetadata extends com.adobe.fiber.valueobjects.AbstractEntityMetadata
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("enabled", "lastrun", "updated_at", "_id", "what", "status", "when", "name", "created_at");
+    model_internal static var allProperties:Array = new Array("time", "month", "week");
     model_internal static var allAssociationProperties:Array = new Array();
     model_internal static var allRequiredProperties:Array = new Array();
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("enabled", "lastrun", "updated_at", "_id", "what", "status", "when", "name", "created_at");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("time", "month", "week");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("enabled", "lastrun", "updated_at", "_id", "what", "status", "when", "name", "created_at");
+    model_internal static var dataProperties:Array = new Array("time", "month", "week");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("enabled", "lastrun", "updated_at", "_id", "what", "status", "when", "name", "created_at");
+    model_internal static var nonDerivedProperties:Array = new Array("time", "month", "week");
     model_internal static var derivedProperties:Array = new Array();
-    model_internal static var collectionProperties:Array = new Array();
+    model_internal static var collectionProperties:Array = new Array("month", "week");
     model_internal static var collectionBaseMap:Object;
-    model_internal static var entityName:String = "BackupJob";
+    model_internal static var entityName:String = "BackupJobTime";
     model_internal static var dependentsOnMap:Object;
     model_internal static var dependedOnServices:Array = new Array();
     model_internal static var propertyTypeMap:Object;
 
 
-    model_internal var _instance:_Super_BackupJob;
+    model_internal var _instance:_Super_BackupJobTime;
     model_internal static var _nullStyle:com.adobe.fiber.styles.Style = new com.adobe.fiber.styles.Style();
 
-    public function _BackupJobEntityMetadata(value : _Super_BackupJob)
+    public function _BackupJobTimeEntityMetadata(value : _Super_BackupJobTime)
     {
         // initialize property maps
         if (model_internal::dependentsOnMap == null)
         {
             // dependents map
             model_internal::dependentsOnMap = new Object();
-            model_internal::dependentsOnMap["enabled"] = new Array();
-            model_internal::dependentsOnMap["lastrun"] = new Array();
-            model_internal::dependentsOnMap["updated_at"] = new Array();
-            model_internal::dependentsOnMap["_id"] = new Array();
-            model_internal::dependentsOnMap["what"] = new Array();
-            model_internal::dependentsOnMap["status"] = new Array();
-            model_internal::dependentsOnMap["when"] = new Array();
-            model_internal::dependentsOnMap["name"] = new Array();
-            model_internal::dependentsOnMap["created_at"] = new Array();
+            model_internal::dependentsOnMap["time"] = new Array();
+            model_internal::dependentsOnMap["month"] = new Array();
+            model_internal::dependentsOnMap["week"] = new Array();
 
             // collection base map
             model_internal::collectionBaseMap = new Object();
+            model_internal::collectionBaseMap["month"] = "int";
+            model_internal::collectionBaseMap["week"] = "int";
         }
 
         // Property type Map
         model_internal::propertyTypeMap = new Object();
-        model_internal::propertyTypeMap["enabled"] = "Boolean";
-        model_internal::propertyTypeMap["lastrun"] = "int";
-        model_internal::propertyTypeMap["updated_at"] = "String";
-        model_internal::propertyTypeMap["_id"] = "String";
-        model_internal::propertyTypeMap["what"] = "String";
-        model_internal::propertyTypeMap["status"] = "String";
-        model_internal::propertyTypeMap["when"] = "it.ht.rcs.console.backup.model.BackupJobTime";
-        model_internal::propertyTypeMap["name"] = "String";
-        model_internal::propertyTypeMap["created_at"] = "String";
+        model_internal::propertyTypeMap["time"] = "String";
+        model_internal::propertyTypeMap["month"] = "ArrayCollection";
+        model_internal::propertyTypeMap["week"] = "ArrayCollection";
 
         model_internal::_instance = value;
     }
@@ -125,7 +115,7 @@ internal class _BackupJobEntityMetadata extends com.adobe.fiber.valueobjects.Abs
     override public function getDependants(propertyName:String):Array
     {
        if (model_internal::nonDerivedProperties.indexOf(propertyName) == -1)
-            throw new Error(propertyName + " is not a data property of entity BackupJob");
+            throw new Error(propertyName + " is not a data property of entity BackupJobTime");
             
        return model_internal::dependentsOnMap[propertyName] as Array;  
     }
@@ -143,7 +133,7 @@ internal class _BackupJobEntityMetadata extends com.adobe.fiber.valueobjects.Abs
     override public function getCollectionBase(propertyName:String):String
     {
         if (model_internal::collectionProperties.indexOf(propertyName) == -1)
-            throw new Error(propertyName + " is not a collection property of entity BackupJob");
+            throw new Error(propertyName + " is not a collection property of entity BackupJobTime");
 
         return model_internal::collectionBaseMap[propertyName];
     }
@@ -151,7 +141,7 @@ internal class _BackupJobEntityMetadata extends com.adobe.fiber.valueobjects.Abs
     override public function getPropertyType(propertyName:String):String
     {
         if (model_internal::allProperties.indexOf(propertyName) == -1)
-            throw new Error(propertyName + " is not a property of BackupJob");
+            throw new Error(propertyName + " is not a property of BackupJobTime");
 
         return model_internal::propertyTypeMap[propertyName];
     }
@@ -165,7 +155,7 @@ internal class _BackupJobEntityMetadata extends com.adobe.fiber.valueobjects.Abs
     {
         if (model_internal::allProperties.indexOf(propertyName) == -1)
         {
-            throw new Error(propertyName + " does not exist for entity BackupJob");
+            throw new Error(propertyName + " does not exist for entity BackupJobTime");
         }
 
         return model_internal::_instance[propertyName];
@@ -175,7 +165,7 @@ internal class _BackupJobEntityMetadata extends com.adobe.fiber.valueobjects.Abs
     {
         if (model_internal::nonDerivedProperties.indexOf(propertyName) == -1)
         {
-            throw new Error(propertyName + " is not a modifiable property of entity BackupJob");
+            throw new Error(propertyName + " is not a modifiable property of entity BackupJobTime");
         }
 
         model_internal::_instance[propertyName] = value;
@@ -207,7 +197,7 @@ internal class _BackupJobEntityMetadata extends com.adobe.fiber.valueobjects.Abs
     {
         if (model_internal::allProperties.indexOf(propertyName) == -1)
         {
-            throw new Error(propertyName + " does not exist for entity BackupJob");
+            throw new Error(propertyName + " does not exist for entity BackupJobTime");
         }
 
         if (model_internal::allAlwaysAvailableProperties.indexOf(propertyName) != -1)
@@ -302,55 +292,19 @@ internal class _BackupJobEntityMetadata extends com.adobe.fiber.valueobjects.Abs
     }
 
     [Bindable(event="propertyChange")]
-    public function get isEnabledAvailable():Boolean
+    public function get isTimeAvailable():Boolean
     {
         return true;
     }
 
     [Bindable(event="propertyChange")]
-    public function get isLastrunAvailable():Boolean
+    public function get isMonthAvailable():Boolean
     {
         return true;
     }
 
     [Bindable(event="propertyChange")]
-    public function get isUpdated_atAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get is_idAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get isWhatAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get isStatusAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get isWhenAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get isNameAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get isCreated_atAvailable():Boolean
+    public function get isWeekAvailable():Boolean
     {
         return true;
     }
@@ -366,55 +320,19 @@ internal class _BackupJobEntityMetadata extends com.adobe.fiber.valueobjects.Abs
     }
 
     [Bindable(event="propertyChange")]   
-    public function get enabledStyle():com.adobe.fiber.styles.Style
+    public function get timeStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
 
     [Bindable(event="propertyChange")]   
-    public function get lastrunStyle():com.adobe.fiber.styles.Style
+    public function get monthStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
 
     [Bindable(event="propertyChange")]   
-    public function get updated_atStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get _idStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get whatStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get statusStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get whenStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get nameStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get created_atStyle():com.adobe.fiber.styles.Style
+    public function get weekStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }

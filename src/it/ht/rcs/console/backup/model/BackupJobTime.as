@@ -1,5 +1,5 @@
 /**
- * This is a generated sub-class of _BackupJob.as and is intended for behavior
+ * This is a generated sub-class of _BackupJobTime.as and is intended for behavior
  * customization.  This class is only generated when there is no file already present
  * at its target location.  Thus custom behavior that you add here will survive regeneration
  * of the super-class. 
@@ -15,11 +15,7 @@ package it.ht.rcs.console.backup.model
 
 import com.adobe.fiber.core.model_internal;
 
-import it.ht.rcs.console.DB;
-
-import mx.effects.easing.Back;
-
-public class BackupJob extends _Super_BackupJob
+public class BackupJobTime extends _Super_BackupJobTime
 {
     /** 
      * DO NOT MODIFY THIS STATIC INITIALIZER - IT IS NECESSARY
@@ -34,45 +30,29 @@ public class BackupJob extends _Super_BackupJob
      */     
     public static function _initRemoteClassAlias() : void
     {
-        _Super_BackupJob.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.backup.model.BackupJob);
-        _Super_BackupJob.model_internal::initRemoteClassAliasAllRelated();
+        _Super_BackupJobTime.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.backup.model.BackupJobTime);
+        _Super_BackupJobTime.model_internal::initRemoteClassAliasAllRelated();
     }
      
     model_internal static function initRemoteClassAliasSingleChild() : void
     {
-        _Super_BackupJob.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.backup.model.BackupJob);
+        _Super_BackupJobTime.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.backup.model.BackupJobTime);
     }
     
     {
-        _Super_BackupJob.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.backup.model.BackupJob);
+        _Super_BackupJobTime.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.backup.model.BackupJobTime);
     }
     /** 
      * END OF DO NOT MODIFY SECTION
      *
-     **/   
+     **/    
     
-    public static function defaultJob():Object
-    {
-      var name:String = DB.i18n.getString('NEW_BACKUP');
-      return {
-        _id: '',
-        enabled: false,
-        what: 'metadata',
-        when: new BackupJobTime({week: [0], month: [], time: '00:00'}),
-        name: name
-      };
-    }
-    
-    public function BackupJob(data:Object=null)
+    public function BackupJobTime(data:Object=null)
     {
       if (data) {
-        _id = data._id;
-        enabled = data.enabled;
-        what = data.what;
-        when = data.when;
-        name = data.name;
-        lastrun = data.lastrun;
-        status = data.status;
+        time = data.time;
+        week = data.week;
+        month = data.month;
       }
     }
 }

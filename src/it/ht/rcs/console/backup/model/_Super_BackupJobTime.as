@@ -1,6 +1,6 @@
 /**
  * This is a generated class and is not intended for modification.  To customize behavior
- * of this value object you may modify the generated sub-class of this class - BackupJob.as.
+ * of this value object you may modify the generated sub-class of this class - BackupJobTime.as.
  */
 
 package it.ht.rcs.console.backup.model
@@ -8,7 +8,6 @@ package it.ht.rcs.console.backup.model
 import com.adobe.fiber.services.IFiberManagingService;
 import com.adobe.fiber.valueobjects.IValueObject;
 import flash.events.EventDispatcher;
-import it.ht.rcs.console.backup.model.BackupJobTime;
 import mx.collections.ArrayCollection;
 import mx.events.PropertyChangeEvent;
 
@@ -21,7 +20,7 @@ import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 use namespace model_internal;
 
 [ExcludeClass]
-public class _Super_BackupJob extends flash.events.EventDispatcher implements com.adobe.fiber.valueobjects.IValueObject
+public class _Super_BackupJobTime extends flash.events.EventDispatcher implements com.adobe.fiber.valueobjects.IValueObject
 {
     model_internal static function initRemoteClassAliasSingle(cz:Class) : void
     {
@@ -29,10 +28,9 @@ public class _Super_BackupJob extends flash.events.EventDispatcher implements co
 
     model_internal static function initRemoteClassAliasAllRelated() : void
     {
-        it.ht.rcs.console.backup.model.BackupJobTime.initRemoteClassAliasSingleChild();
     }
 
-    model_internal var _dminternal_model : _BackupJobEntityMetadata;
+    model_internal var _dminternal_model : _BackupJobTimeEntityMetadata;
     model_internal var _changedObjects:mx.collections.ArrayCollection = new ArrayCollection();
 
     public function getChangedObjects() : Array
@@ -49,15 +47,9 @@ public class _Super_BackupJob extends flash.events.EventDispatcher implements co
     /**
      * properties
      */
-    private var _internal_enabled : Boolean;
-    private var _internal_lastrun : int;
-    private var _internal_updated_at : String;
-    private var _internal__id : String;
-    private var _internal_what : String;
-    private var _internal_status : String;
-    private var _internal_when : it.ht.rcs.console.backup.model.BackupJobTime;
-    private var _internal_name : String;
-    private var _internal_created_at : String;
+    private var _internal_time : String;
+    private var _internal_month : ArrayCollection;
+    private var _internal_week : ArrayCollection;
 
     private static var emptyArray:Array = new Array();
 
@@ -69,9 +61,9 @@ public class _Super_BackupJob extends flash.events.EventDispatcher implements co
 
     model_internal var _changeWatcherArray:Array = new Array();
 
-    public function _Super_BackupJob()
+    public function _Super_BackupJobTime()
     {
-        _model = new _BackupJobEntityMetadata(this);
+        _model = new _BackupJobTimeEntityMetadata(this);
 
         // Bind to own data or source properties for cache invalidation triggering
 
@@ -82,57 +74,21 @@ public class _Super_BackupJob extends flash.events.EventDispatcher implements co
      */
 
     [Bindable(event="propertyChange")]
-    public function get enabled() : Boolean
+    public function get time() : String
     {
-        return _internal_enabled;
+        return _internal_time;
     }
 
     [Bindable(event="propertyChange")]
-    public function get lastrun() : int
+    public function get month() : ArrayCollection
     {
-        return _internal_lastrun;
+        return _internal_month;
     }
 
     [Bindable(event="propertyChange")]
-    public function get updated_at() : String
+    public function get week() : ArrayCollection
     {
-        return _internal_updated_at;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get _id() : String
-    {
-        return _internal__id;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get what() : String
-    {
-        return _internal_what;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get status() : String
-    {
-        return _internal_status;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get when() : it.ht.rcs.console.backup.model.BackupJobTime
-    {
-        return _internal_when;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get name() : String
-    {
-        return _internal_name;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get created_at() : String
-    {
-        return _internal_created_at;
+        return _internal_week;
     }
 
     public function clearAssociations() : void
@@ -143,93 +99,63 @@ public class _Super_BackupJob extends flash.events.EventDispatcher implements co
      * data/source property setters
      */
 
-    public function set enabled(value:Boolean) : void
+    public function set time(value:String) : void
     {
-        var oldValue:Boolean = _internal_enabled;
+        var oldValue:String = _internal_time;
         if (oldValue !== value)
         {
-            _internal_enabled = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "enabled", oldValue, _internal_enabled));
+            _internal_time = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "time", oldValue, _internal_time));
         }
     }
 
-    public function set lastrun(value:int) : void
+    public function set month(value:*) : void
     {
-        var oldValue:int = _internal_lastrun;
+        var oldValue:ArrayCollection = _internal_month;
         if (oldValue !== value)
         {
-            _internal_lastrun = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "lastrun", oldValue, _internal_lastrun));
+            if (value is ArrayCollection)
+            {
+                _internal_month = value;
+            }
+            else if (value is Array)
+            {
+                _internal_month = new ArrayCollection(value);
+            }
+            else if (value == null)
+            {
+                _internal_month = null;
+            }
+            else
+            {
+                throw new Error("value of month must be a collection");
+            }
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "month", oldValue, _internal_month));
         }
     }
 
-    public function set updated_at(value:String) : void
+    public function set week(value:*) : void
     {
-        var oldValue:String = _internal_updated_at;
+        var oldValue:ArrayCollection = _internal_week;
         if (oldValue !== value)
         {
-            _internal_updated_at = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "updated_at", oldValue, _internal_updated_at));
-        }
-    }
-
-    public function set _id(value:String) : void
-    {
-        var oldValue:String = _internal__id;
-        if (oldValue !== value)
-        {
-            _internal__id = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "_id", oldValue, _internal__id));
-        }
-    }
-
-    public function set what(value:String) : void
-    {
-        var oldValue:String = _internal_what;
-        if (oldValue !== value)
-        {
-            _internal_what = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "what", oldValue, _internal_what));
-        }
-    }
-
-    public function set status(value:String) : void
-    {
-        var oldValue:String = _internal_status;
-        if (oldValue !== value)
-        {
-            _internal_status = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "status", oldValue, _internal_status));
-        }
-    }
-
-    public function set when(value:it.ht.rcs.console.backup.model.BackupJobTime) : void
-    {
-        var oldValue:it.ht.rcs.console.backup.model.BackupJobTime = _internal_when;
-        if (oldValue !== value)
-        {
-            _internal_when = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "when", oldValue, _internal_when));
-        }
-    }
-
-    public function set name(value:String) : void
-    {
-        var oldValue:String = _internal_name;
-        if (oldValue !== value)
-        {
-            _internal_name = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "name", oldValue, _internal_name));
-        }
-    }
-
-    public function set created_at(value:String) : void
-    {
-        var oldValue:String = _internal_created_at;
-        if (oldValue !== value)
-        {
-            _internal_created_at = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "created_at", oldValue, _internal_created_at));
+            if (value is ArrayCollection)
+            {
+                _internal_week = value;
+            }
+            else if (value is Array)
+            {
+                _internal_week = new ArrayCollection(value);
+            }
+            else if (value == null)
+            {
+                _internal_week = null;
+            }
+            else
+            {
+                throw new Error("value of week must be a collection");
+            }
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "week", oldValue, _internal_week));
         }
     }
 
@@ -293,14 +219,14 @@ public class _Super_BackupJob extends flash.events.EventDispatcher implements co
 
     [Transient]
     [Bindable(event="propertyChange")]
-    public function get _model() : _BackupJobEntityMetadata
+    public function get _model() : _BackupJobTimeEntityMetadata
     {
         return model_internal::_dminternal_model;
     }
 
-    public function set _model(value : _BackupJobEntityMetadata) : void
+    public function set _model(value : _BackupJobTimeEntityMetadata) : void
     {
-        var oldValue : _BackupJobEntityMetadata = model_internal::_dminternal_model;
+        var oldValue : _BackupJobTimeEntityMetadata = model_internal::_dminternal_model;
         if (oldValue !== value)
         {
             model_internal::_dminternal_model = value;
