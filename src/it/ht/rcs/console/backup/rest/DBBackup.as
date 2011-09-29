@@ -64,16 +64,16 @@ package it.ht.rcs.console.backup.rest
       resp.token = all_archive_();      
     }
     
-    public function restore_archive(archive:BackupArchive, onResult:Function=null, onFault:Function=null):void
+    public function restore_archive(archive:BackupArchive, destructive:Boolean, onResult:Function=null, onFault:Function=null):void
     {
-      // TODO Auto Generated method stub
-      
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = restore_archive_(JSON.encode({_id: archive._id, drop: destructive}))
     }
 
     public function destroy_archive(archive:BackupArchive, onResult:Function=null, onFault:Function=null):void
     {
-      // TODO Auto Generated method stub
-      
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = destroy_archive_(JSON.encode({_id: archive._id}))
     }
 
   }

@@ -1,6 +1,7 @@
 package it.ht.rcs.console.backup.controller
 {
   import it.ht.rcs.console.DB;
+  import it.ht.rcs.console.backup.model.BackupArchive;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.events.RefreshEvent;
   
@@ -34,6 +35,16 @@ package it.ht.rcs.console.backup.controller
         addItem(element);
       });
       dispatchDataLoadedEvent();
+    }
+    
+    override protected function onItemRemove(o:*):void
+    { 
+      DB.instance.backup.destroy_archive(o);
+    }
+    
+    public function restoreArchive(a:BackupArchive, destructive:Boolean):void
+    {
+      DB.instance.backup.restore_archive(a, destructive);
     }
     
   }

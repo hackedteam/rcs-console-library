@@ -11,7 +11,7 @@ package it.ht.rcs.console.backup.rest
     function destroy_job(job:BackupJob, onResult:Function = null, onFault:Function = null):void;
     
     function all_archive(onResult:Function = null, onFault:Function = null):void;
-    function restore_archive(archive:BackupArchive, onResult:Function = null, onFault:Function = null):void;
+    function restore_archive(archive:BackupArchive, destructive:Boolean, onResult:Function = null, onFault:Function = null):void;
     function destroy_archive(archive:BackupArchive, onResult:Function = null, onFault:Function = null):void;
   }
 }

@@ -2,6 +2,7 @@ package it.ht.rcs.console.backup.controller
 {
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.backup.model.BackupJob;
+  import it.ht.rcs.console.backup.model.BackupJobTime;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.events.RefreshEvent;
   
@@ -48,8 +49,13 @@ package it.ht.rcs.console.backup.controller
     override protected function onItemUpdate(e:*):void
     { 
       var o:Object = new Object;
-        
-      o[e.property] = e.newValue;
+
+      if (e.newValue is BackupJobTime) {
+        var bjt:BackupJobTime = e.newValue as BackupJobTime;
+        o[e.property] = {week: bjt.week.source, month: bjt.month.source, time: bjt.time};
+      } else {
+        o[e.property] = e.newValue;
+      }
 
       DB.instance.backup.update_job(e.source, o);
     }

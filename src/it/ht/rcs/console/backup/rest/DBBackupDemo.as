@@ -64,7 +64,7 @@ package it.ht.rcs.console.backup.rest
       /* do nothing */
     }
 
-    public function restore_archive(archive:BackupArchive, onResult:Function=null, onFault:Function=null):void
+    public function restore_archive(archive:BackupArchive, destructive:Boolean, onResult:Function=null, onFault:Function=null):void
     {
       /* do nothing */
     }
