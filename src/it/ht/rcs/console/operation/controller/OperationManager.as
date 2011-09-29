@@ -30,7 +30,7 @@ package it.ht.rcs.console.operation.controller
     private function onResult(e:ResultEvent):void
     {
       var endMS:Number = new Date().time - startMS;
-      trace(endMS);
+      trace('Operations: ' + endMS);
       
       var items:ArrayCollection = e.result as ArrayCollection;
       _items.removeAll();
