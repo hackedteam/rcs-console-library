@@ -10,7 +10,7 @@ package it.ht.rcs.console.events
     
     public static const USER:String = "editUser";
     public static const GROUP:String = "editGroup";
-    public static const PROXY:String = "editProxy";
+    public static const INJECTOR:String = "editInjector";
     public var user:User;
     public var group:Group;
     public var object:Object;

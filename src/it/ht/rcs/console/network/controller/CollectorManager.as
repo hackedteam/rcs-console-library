@@ -51,7 +51,7 @@ package it.ht.rcs.console.network.controller
       dispatchDataLoadedEvent();
     }
     
-    public function addProxy(callback:Function):void
+    public function addCollector(callback:Function):void
     {
       DB.instance.collector.create(Collector.defaultCollector(), function (e:ResultEvent):void {
         var collector:Collector = e.result as Collector;

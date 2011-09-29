@@ -17,7 +17,7 @@ public class Proxy extends _Super_Proxy
       _id: '',
       address: '',
       desc: '',
-      name: DB.i18n.getString('NEW_PROXY'),
+      name: DB.i18n.getString('NEW_INJECTOR'),
       poll: false,
       port: 4444,
       redirect: 'auto',
