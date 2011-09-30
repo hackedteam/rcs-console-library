@@ -26,7 +26,7 @@ public class SearchItem extends _Super_SearchItem
       if (data) {
         _id = data._id;
         _kind = data._kind;
-        desc = data.desc;
+         desc = data.desc;
         name = data.name;
         status = data.status;
         path = data.path;
@@ -35,6 +35,7 @@ public class SearchItem extends _Super_SearchItem
       }
     }
     
+    [Bindable(event="propertyChange")]
     public function get text() : String
     {
       var string : String = name;
