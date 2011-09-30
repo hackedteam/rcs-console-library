@@ -30,7 +30,6 @@ package it.ht.rcs.console.monitor.controller
     public function MonitorManager()
     {
       super();
-      FlexGlobals.topLevelApplication.addEventListener(RefreshEvent.REFRESH, onRefreshCounter);
     }
     
     override protected function onRefresh(e:RefreshEvent):void
@@ -62,12 +61,14 @@ package it.ht.rcs.console.monitor.controller
     {
       super.start();
       _autorefresh.addEventListener(TimerEvent.TIMER, onAutoRefresh);
+      FlexGlobals.topLevelApplication.addEventListener(RefreshEvent.REFRESH, onRefreshCounter);
     }
 	
     override public function stop():void
     {
       super.stop();
       _autorefresh.removeEventListener(TimerEvent.TIMER, onAutoRefresh);
+      FlexGlobals.topLevelApplication.removeEventListener(RefreshEvent.REFRESH, onRefreshCounter);
     }
 
     

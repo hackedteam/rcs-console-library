@@ -22,17 +22,23 @@ package it.ht.rcs.console.task.controller
     public function DownloadManager()
     {
       super();
-      trace(_classname + ' (instance) -- Init');
-      /* always get new data upon startup */
-      onRefresh(null);
     }
     
-    override protected function onLoggingIn(e:SessionEvent):void
+    override public function start():void
     {
-      trace(_classname + ' (instance) -- Logging In');
+      super.start();
       // get all available tasks
       DB.instance.task.all(onTaskIndexResult);
     }
+    
+    /*
+    override protected function onLoggingIn(e:SessionEvent):void
+    {
+      trace(_classname + ' (instance) -- Logging In');
+        // get all available tasks
+        DB.instance.task.all(onTaskIndexResult);
+    }
+    */
     
     private function onTaskIndexResult(e:ResultEvent):void
     {
@@ -56,10 +62,10 @@ package it.ht.rcs.console.task.controller
     {
       trace(_classname + ' (instance) -- Logging Out');
       for each(var t:DownloadTask in _items)
-      if (t.state != DownloadTask.STATE_FINISHED) {
-        e.preventDefault();
-        return;
-      }
+        if (t.state != DownloadTask.STATE_FINISHED) {
+          e.preventDefault();
+          return;
+        }
     }
     
     override protected function onForceLogOut(e:SessionEvent):void
