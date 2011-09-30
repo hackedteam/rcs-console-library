@@ -4,14 +4,19 @@ package it.ht.rcs.console.events
   
   public class SectionEvent extends Event
   {
-    public static const ACCOUNTING:String = "accounting";
-    public static const CONSOLE:String = "console";
-    public static const DASHBOARD:String = "dashboard";
-    public static const ALERTING:String = "alerting";
-    public static const CORRELATION:String = "correlation";
-    public static const NETWORK:String = "network";
-    public static const AUDIT:String = "audit";
-    public static const MONITOR:String = "monitor";
+    
+    public static const CHANGE_SECTION:String = "changeSection";
+    
+    public static const ACCOUNTING:String = "Accounting";
+    public static const OPERATIONS:String = "Operations";
+    public static const DASHBOARD:String = "Dashboard";
+    public static const ALERTING:String = "Alerting";
+    public static const CORRELATION:String = "Correlation";
+    public static const SYSTEM:String = "System";
+    public static const AUDIT:String = "Audit";
+    public static const MONITOR:String = "Monitor";
+    
+    public var section:String;
     
     public function SectionEvent(type:String, bubbles:Boolean=false, cancelable:Boolean=false)
     {

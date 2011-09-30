@@ -20,7 +20,7 @@ public class LicenseCount extends _Super_LicenseCount
   
   public function LicenseCount(data:Object = null) {
     if (data) {
-      backdoors = data.backdoors;
+      agents = data.agents;
       collectors = data.collectors;
       ipa = data.ipa;
       users = data.users;

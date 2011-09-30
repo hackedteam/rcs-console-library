@@ -1,6 +1,6 @@
 package it.ht.rcs.console.search.rest
 {
-  import it.ht.rcs.console.backdoor.rest.DBBackdoorDemo;
+  import it.ht.rcs.console.agent.rest.DBAgentDemo;
   import it.ht.rcs.console.factory.rest.DBFactoryDemo;
   import it.ht.rcs.console.operation.rest.DBOperationDemo;
   import it.ht.rcs.console.search.model.SearchItem;
@@ -17,7 +17,7 @@ package it.ht.rcs.console.search.rest
     {
       DBOperationDemo.operations.source.forEach(addItemAsSearchItem);
       DBTargetDemo.targets.source.forEach(addItemAsSearchItem);
-      DBBackdoorDemo.backdoors.source.forEach(addItemAsSearchItem);
+      DBAgentDemo.agents.source.forEach(addItemAsSearchItem);
     }
     
     private function addItemAsSearchItem(item:*, index:int, array:Array) : void 

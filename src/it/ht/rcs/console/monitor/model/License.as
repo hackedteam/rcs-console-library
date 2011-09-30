@@ -21,7 +21,7 @@ public class License extends _Super_License
   public function License(data:Object = null) {
     if (data) {
       alerting = data.alerting;
-      backdoors = data.backdoors;
+      agents = data.agents;
       collectors = data.collectors;
       correlation = data.correlation;
       ipa = data.ipa;

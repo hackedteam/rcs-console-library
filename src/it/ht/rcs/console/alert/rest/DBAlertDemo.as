@@ -41,7 +41,10 @@ package it.ht.rcs.console.alert.rest
     {
       params._id = new Date().getTime().toString();
       params.path = new ArrayCollection(params.path);
-      var event:ResultEvent = new ResultEvent("alert.create", false, true, params);
+      
+      var alert:Alert = new Alert(params);
+      
+      var event:ResultEvent = new ResultEvent("alert.create", false, true, alert);
       onResult(event);
     }
     

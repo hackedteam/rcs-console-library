@@ -14,11 +14,13 @@ package it.ht.rcs.console.network.model
         _id: '',
         address: '',
         desc: '',
-        name: DB.i18n.getString('NEW_COLLECTOR'),
+        name: DB.i18n.getString('NEW_ANONYMIZER'),
         poll: false,
         port: 4444,
         type: 'remote',
-        version: ''
+        version: '',
+        next: [null],
+        prev: [null]
       };
     }
     

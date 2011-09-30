@@ -1,7 +1,7 @@
 package it.ht.rcs.console.monitor.rest
 {
   import it.ht.rcs.console.monitor.model.License;
-  import it.ht.rcs.console.monitor.model.LicenseBackdoors;
+  import it.ht.rcs.console.monitor.model.LicenseAgents;
   import it.ht.rcs.console.monitor.model.LicenseCollectors;
   import it.ht.rcs.console.monitor.model.LicenseCount;
   
@@ -15,7 +15,7 @@ package it.ht.rcs.console.monitor.rest
       var limits:License = new License(
         {
           alerting: true,
-          backdoors: new LicenseBackdoors(
+          agents: new LicenseAgents(
             {
               android: [true, true],
               blackberry: [true, true],
@@ -51,7 +51,7 @@ package it.ht.rcs.console.monitor.rest
     {
       var counters:LicenseCount = new LicenseCount(
         {
-          backdoors: new LicenseBackdoors(
+          agents: new LicenseAgents(
             {
               total: 5,
               desktop: 3,

@@ -1,6 +1,8 @@
 package it.ht.rcs.console
 {
   
+  import flash.events.Event;
+  
   import it.ht.rcs.console.accounting.rest.DBGroup;
   import it.ht.rcs.console.accounting.rest.DBGroupDemo;
   import it.ht.rcs.console.accounting.rest.DBSession;
@@ -10,15 +12,18 @@ package it.ht.rcs.console
   import it.ht.rcs.console.accounting.rest.IDBGroup;
   import it.ht.rcs.console.accounting.rest.IDBSession;
   import it.ht.rcs.console.accounting.rest.IDBUser;
+  import it.ht.rcs.console.agent.rest.DBAgent;
+  import it.ht.rcs.console.agent.rest.DBAgentDemo;
+  import it.ht.rcs.console.agent.rest.IDBAgent;
   import it.ht.rcs.console.alert.rest.DBAlert;
   import it.ht.rcs.console.alert.rest.DBAlertDemo;
   import it.ht.rcs.console.alert.rest.IDBAlert;
   import it.ht.rcs.console.audit.rest.DBAudit;
   import it.ht.rcs.console.audit.rest.DBAuditDemo;
   import it.ht.rcs.console.audit.rest.IDBAudit;
-  import it.ht.rcs.console.backdoor.rest.DBBackdoor;
-  import it.ht.rcs.console.backdoor.rest.DBBackdoorDemo;
-  import it.ht.rcs.console.backdoor.rest.IDBBackdoor;
+  import it.ht.rcs.console.backup.rest.DBBackupDemo;
+  import it.ht.rcs.console.backup.rest.DBBackup;
+  import it.ht.rcs.console.backup.rest.IDBBackup;
   import it.ht.rcs.console.factory.rest.DBFactory;
   import it.ht.rcs.console.factory.rest.DBFactoryDemo;
   import it.ht.rcs.console.factory.rest.IDBFactory;
@@ -40,9 +45,9 @@ package it.ht.rcs.console
   import it.ht.rcs.console.search.rest.DBSearch;
   import it.ht.rcs.console.search.rest.DBSearchDemo;
   import it.ht.rcs.console.search.rest.IDBSearch;
-  import it.ht.rcs.console.system.rest.DBSystem;
-  import it.ht.rcs.console.system.rest.DBSystemDemo;
-  import it.ht.rcs.console.system.rest.IDBSystem;
+  import it.ht.rcs.console.shard.rest.DBShard;
+  import it.ht.rcs.console.shard.rest.DBShardDemo;
+  import it.ht.rcs.console.shard.rest.IDBShard;
   import it.ht.rcs.console.target.rest.DBTarget;
   import it.ht.rcs.console.target.rest.DBTargetDemo;
   import it.ht.rcs.console.target.rest.IDBTarget;
@@ -71,11 +76,12 @@ package it.ht.rcs.console
     public var alert:IDBAlert;
     public var operation:IDBOperation;
     public var target:IDBTarget;
-    public var backdoor:IDBBackdoor;
+    public var agent:IDBAgent;
     public var factory:IDBFactory;
     public var update:IDBUpdate;
-    public var system:IDBSystem;
+    public var system:IDBShard;
     public var search:IDBSearch;
+    public var backup:IDBBackup;
     
     private static var notifier:IFaultNotifier;
     public static var i18n:II18N;
@@ -112,11 +118,12 @@ package it.ht.rcs.console
       alert = new DBAlert(host);
       operation = new DBOperation(host);
       target = new DBTarget(host);
-      backdoor = new DBBackdoor(host);
+      agent = new DBAgent(host);
       factory = new DBFactory(host);
       update = new DBUpdate(host);
-      system = new DBSystem(host);
+      system = new DBShard(host);
       search = new DBSearch(host);
+      backup = new DBBackup(host);
     }
 
     private function initDemo():void
@@ -133,11 +140,12 @@ package it.ht.rcs.console
       alert = new DBAlertDemo();
       operation = new DBOperationDemo();
       target = new DBTargetDemo();
-      backdoor = new DBBackdoorDemo();
+      agent = new DBAgentDemo();
       factory = new DBFactoryDemo();
       update = new DBUpdateDemo();
-      system = new DBSystemDemo();
+      system = new DBShardDemo();
       search = new DBSearchDemo();
+      backup = new DBBackupDemo();
     }
 
     public static function host_autocomplete(host:String):String

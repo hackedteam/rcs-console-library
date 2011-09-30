@@ -25,7 +25,7 @@ internal class _Super_DBTarget extends com.adobe.fiber.services.wrapper.HTTPServ
     public function _Super_DBTarget()
     {
         // initialize service control
-        _serviceControl = new mx.rpc.http.HTTPMultiService("http://localhost:4443");
+        _serviceControl = new mx.rpc.http.HTTPMultiService("https://localhost:4444");
          var operations:Array = new Array();
          var operation:mx.rpc.http.Operation;
          var argsArray:Array;

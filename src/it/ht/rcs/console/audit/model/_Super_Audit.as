@@ -52,7 +52,7 @@ public class _Super_Audit extends flash.events.EventDispatcher implements com.ad
     /**
      * properties
      */
-    private var _internal_backdoor : String;
+    private var _internal_agent : String;
     private var _internal_operation : String;
     private var _internal_time : int;
     private var _internal_desc : String;
@@ -78,7 +78,7 @@ public class _Super_Audit extends flash.events.EventDispatcher implements com.ad
         _model = new _AuditEntityMetadata(this);
 
         // Bind to own data or source properties for cache invalidation triggering
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "backdoor", model_internal::setterListenerBackdoor));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "agent", model_internal::setterListenerAgent));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "operation", model_internal::setterListenerOperation));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "desc", model_internal::setterListenerDesc));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "target", model_internal::setterListenerTarget));
@@ -94,9 +94,9 @@ public class _Super_Audit extends flash.events.EventDispatcher implements com.ad
      */
 
     [Bindable(event="propertyChange")]
-    public function get backdoor() : String
+    public function get agent() : String
     {
-        return _internal_backdoor;
+        return _internal_agent;
     }
 
     [Bindable(event="propertyChange")]
@@ -161,12 +161,12 @@ public class _Super_Audit extends flash.events.EventDispatcher implements com.ad
      * data/source property setters
      */
 
-    public function set backdoor(value:String) : void
+    public function set agent(value:String) : void
     {
-        var oldValue:String = _internal_backdoor;
+        var oldValue:String = _internal_agent;
         if (oldValue !== value)
         {
-            _internal_backdoor = value;
+            _internal_agent = value;
         }
     }
 
@@ -263,9 +263,9 @@ public class _Super_Audit extends flash.events.EventDispatcher implements com.ad
      *  - the validity of the property (and the containing entity) if the given data property is required.
      */
 
-    model_internal function setterListenerBackdoor(value:flash.events.Event):void
+    model_internal function setterListenerAgent(value:flash.events.Event):void
     {
-        _model.invalidateDependentOnBackdoor();
+        _model.invalidateDependentOnAgent();
     }
 
     model_internal function setterListenerOperation(value:flash.events.Event):void
@@ -324,10 +324,10 @@ public class _Super_Audit extends flash.events.EventDispatcher implements com.ad
         var validationFailureMessages:Array = new Array();
 
         var propertyValidity:Boolean = true;
-        if (!_model.backdoorIsValid)
+        if (!_model.agentIsValid)
         {
             propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_backdoorValidationFailureMessages);
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_agentValidationFailureMessages);
         }
         if (!_model.operationIsValid)
         {
@@ -443,29 +443,29 @@ public class _Super_Audit extends flash.events.EventDispatcher implements com.ad
         }
     }
 
-    model_internal var _doValidationCacheOfBackdoor : Array = null;
-    model_internal var _doValidationLastValOfBackdoor : String;
+    model_internal var _doValidationCacheOfAgent : Array = null;
+    model_internal var _doValidationLastValOfAgent : String;
 
-    model_internal function _doValidationForBackdoor(valueIn:Object):Array
+    model_internal function _doValidationForAgent(valueIn:Object):Array
     {
         var value : String = valueIn as String;
 
-        if (model_internal::_doValidationCacheOfBackdoor != null && model_internal::_doValidationLastValOfBackdoor == value)
-           return model_internal::_doValidationCacheOfBackdoor ;
+        if (model_internal::_doValidationCacheOfAgent != null && model_internal::_doValidationLastValOfAgent == value)
+           return model_internal::_doValidationCacheOfAgent ;
 
-        _model.model_internal::_backdoorIsValidCacheInitialized = true;
+        _model.model_internal::_agentIsValidCacheInitialized = true;
         var validationFailures:Array = new Array();
         var errorMessage:String;
         var failure:Boolean;
 
         var valRes:ValidationResult;
-        if (_model.isBackdoorAvailable && _internal_backdoor == null)
+        if (_model.isAgentAvailable && _internal_agent == null)
         {
-            validationFailures.push(new ValidationResult(true, "", "", "backdoor is required"));
+            validationFailures.push(new ValidationResult(true, "", "", "agent is required"));
         }
 
-        model_internal::_doValidationCacheOfBackdoor = validationFailures;
-        model_internal::_doValidationLastValOfBackdoor = value;
+        model_internal::_doValidationCacheOfAgent = validationFailures;
+        model_internal::_doValidationLastValOfAgent = value;
 
         return validationFailures;
     }

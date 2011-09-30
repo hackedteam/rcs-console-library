@@ -28,7 +28,10 @@ package it.ht.rcs.console.network.controller
     override protected function onItemUpdate(e:*):void
     {
       var o:Object = new Object;
-      o[e.property] = e.newValue;
+      if (e.newValue is ArrayCollection)
+        o[e.property] = e.newValue.source;
+      else
+        o[e.property] = e.newValue;
       DB.instance.collector.update(e.source, o);
     }
     
@@ -48,7 +51,7 @@ package it.ht.rcs.console.network.controller
       dispatchDataLoadedEvent();
     }
     
-    public function addProxy(callback:Function):void
+    public function addCollector(callback:Function):void
     {
       DB.instance.collector.create(Collector.defaultCollector(), function (e:ResultEvent):void {
         var collector:Collector = e.result as Collector;
