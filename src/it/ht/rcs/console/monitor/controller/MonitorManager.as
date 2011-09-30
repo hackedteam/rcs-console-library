@@ -93,7 +93,12 @@ package it.ht.rcs.console.monitor.controller
 
     public function stop_counters():void
     {
-      FlexGlobals.topLevelApplication.removeElement(_counterBaloon);
+      // TODO: rifattorizzare con skin
+      try {
+        FlexGlobals.topLevelApplication.getElementIndex(_counterBaloon);
+        FlexGlobals.topLevelApplication.removeElement(_counterBaloon);
+      } catch (e:Error) {
+      }
       
       /* stop the auto refresh when going away */
       _autorefresh.removeEventListener(TimerEvent.TIMER, onRefreshCounter);

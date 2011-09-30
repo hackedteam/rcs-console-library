@@ -97,7 +97,12 @@ package it.ht.rcs.console.alert.controller
     
     public function stop_counters():void
     {
-      FlexGlobals.topLevelApplication.removeElement(_counterBaloon);
+      // TODO: rifattorizzare con skin
+      try {
+        FlexGlobals.topLevelApplication.getElementIndex(_counterBaloon);
+        FlexGlobals.topLevelApplication.removeElement(_counterBaloon);
+      } catch (e:Error) {
+      }
       
       /* stop the auto refresh when going away */
       _autorefresh.removeEventListener(TimerEvent.TIMER, onRefreshCounter);
@@ -111,7 +116,7 @@ package it.ht.rcs.console.alert.controller
       DB.instance.alert.counters(onAlertCounters);
     }
     
-    // TODO: refactor the baloon outside the manager !!!!
+    // TODO: refactor the baloon outa side the manager !!!!
     
     private function onAlertCounters(e:ResultEvent):void
     {
