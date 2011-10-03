@@ -5,6 +5,7 @@ package it.ht.rcs.console.accounting.controller
   import it.ht.rcs.console.accounting.model.User;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.events.RefreshEvent;
+  import it.ht.rcs.console.operation.model.Operation;
   
   import mx.collections.ArrayCollection;
   import mx.collections.ArrayList;
@@ -68,12 +69,27 @@ package it.ht.rcs.console.accounting.controller
         UserManager.instance.reload(u);
       });
     }
+
+    public function removeOperation(g:Group, o:Operation):void
+    {
+      DB.instance.group.del_operation(g, o, function _():void {
+        reload(g);
+      });
+    }
+    
+    public function addOperation(g:Group, o:Operation):void
+    {
+      DB.instance.group.add_operation(g, o, function _():void {
+        reload(g);
+      });
+    }
     
     public function reload(g:Group):void
     {
       DB.instance.group.show(g._id, function (e:ResultEvent):void {
         g.name = e.result.name;
         g.user_ids = e.result.user_ids;
+        g.item_ids = e.result.item_ids;
       });
     }
     

@@ -12,6 +12,7 @@ package it.ht.rcs.console.accounting.rest
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.accounting.model.Group;
   import it.ht.rcs.console.accounting.model.User;
+  import it.ht.rcs.console.operation.model.Operation;
   
   import mx.rpc.CallResponder;
 
@@ -84,6 +85,17 @@ public class DBGroup extends _Super_DBGroup implements IDBGroup
       resp.token = update_(JSON.encode(property));
     }
     
+    public function add_operation(group:Group, op:Operation, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = add_operation_(JSON.encode( {_id: group._id, operation: {_id: op._id}} )); 
+    }
+    
+    public function del_operation(group:Group, op:Operation, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = del_operation_(JSON.encode( {_id: group._id, operation: {_id: op._id}} ));
+    }
     
 }
 

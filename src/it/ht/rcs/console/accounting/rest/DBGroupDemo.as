@@ -2,6 +2,7 @@ package it.ht.rcs.console.accounting.rest
 {
   import it.ht.rcs.console.accounting.model.Group;
   import it.ht.rcs.console.accounting.model.User;
+  import it.ht.rcs.console.operation.model.Operation;
   
   import mx.collections.ArrayCollection;
   import mx.rpc.events.ResultEvent;
@@ -15,9 +16,9 @@ package it.ht.rcs.console.accounting.rest
     public function all(onResult:Function=null, onFault:Function=null):void
     {
       var items:ArrayCollection = new ArrayCollection();
-      items.addItem(new Group({_id: '1', name: 'demo', user_ids:new ArrayCollection(['1','2','3']), alert: false}) );
-      items.addItem(new Group({_id: '2', name: 'developers', user_ids:new ArrayCollection(['2','3','4','5','6','7','8','9']), alert: false}) );
-      items.addItem(new Group({_id: '3', name: 'test', user_ids:new ArrayCollection(['10']), alert: true}) );
+      items.addItem(new Group({_id: '1', name: 'demo', user_ids:new ArrayCollection(['1','2','3']), item_ids:new ArrayCollection(['4df7246d963d350964000001', '4e259fe5963d35425c000001', '4e25a173963d354260000003']), alert: false}) );
+      items.addItem(new Group({_id: '2', name: 'developers', user_ids:new ArrayCollection(['2','3','4','5','6','7','8','9']), item_ids:new ArrayCollection(['4e25a173963d354260000003']), alert: false}) );
+      items.addItem(new Group({_id: '3', name: 'test', user_ids:new ArrayCollection(['10']), item_ids:new ArrayCollection([]), alert: true}) );
       var event:ResultEvent = new ResultEvent("group.index", false, true, items);
       if (onResult != null) 
         onResult(event);
@@ -76,5 +77,30 @@ package it.ht.rcs.console.accounting.rest
     {
       /* do nothing */
     }
+    
+    public function add_operation(group:Group, op:Operation, onResult:Function=null, onFault:Function=null):void
+    {
+      group.item_ids.addItem(op._id);
+      op.group_ids.addItem(group._id);
+      var event:ResultEvent = new ResultEvent("group.add_operation", false, true, group);
+      if (onResult != null) 
+        onResult(event);
+    }
+    
+    public function del_operation(group:Group, op:Operation, onResult:Function=null, onFault:Function=null):void
+    {
+      var idx:int = group.item_ids.getItemIndex(op._id);
+      if (idx >= 0)
+        group.item_ids.source.splice(idx, 1);
+      
+      var idy:int = op.group_ids.getItemIndex(group._id);
+      if (idy >= 0)
+        op.group_ids.source.splice(idy, 1);
+      
+      var event:ResultEvent = new ResultEvent("group.del_operation", false, true, group);
+      if (onResult != null) 
+        onResult(event);
+    }
+    
   }
 }
