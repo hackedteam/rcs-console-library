@@ -4,7 +4,7 @@ package it.ht.rcs.console.operation.rest
   
   public interface IDBOperation
   {
-    function all(params: Object, onResult:Function = null, onFault:Function = null):void;
+    function all(all:Boolean, onResult:Function = null, onFault:Function = null):void;
     
     function show(id:String, onResult:Function = null, onFault:Function = null):void;
     

@@ -24,7 +24,7 @@ package it.ht.rcs.console.operation.controller
       super.onRefresh(e);
       
       startMS = new Date().time;
-      DB.instance.operation.all(onResult);
+      DB.instance.operation.all(false, onResult);
     }
     
     private function onResult(e:ResultEvent):void

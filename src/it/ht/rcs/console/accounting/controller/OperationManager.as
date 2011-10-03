@@ -21,7 +21,7 @@ package it.ht.rcs.console.accounting.controller
     override protected function onRefresh(e:RefreshEvent):void
     {
       super.onRefresh(e);
-      DB.instance.operation.all({all: "true"}, onResult);
+      DB.instance.operation.all(true, onResult);
     }
     
     private function onResult(e:ResultEvent):void

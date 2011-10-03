@@ -22,10 +22,10 @@ public class DBOperation extends _Super_DBOperation implements IDBOperation
     _serviceControl.baseURL = host;
   }
   
-  public function all(params: Object, onResult:Function=null, onFault:Function=null):void
+  public function all(all:Boolean, onResult:Function=null, onFault:Function=null):void
   {
     var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-    resp.token = all_(JSON.encode(params));
+    resp.token = all_(all);
   }
   
   public function create(params:Object, onResult:Function=null, onFault:Function=null):void
