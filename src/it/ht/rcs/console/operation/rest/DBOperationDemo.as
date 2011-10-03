@@ -17,7 +17,7 @@ package it.ht.rcs.console.operation.rest
     {
     }
     
-    public function all(onResult:Function=null, onFault:Function=null):void
+    public function all(params:Object, onResult:Function=null, onFault:Function=null):void
     {     
       var event:ResultEvent = new ResultEvent('operation.all', false, true, operations);
       if (onResult != null)

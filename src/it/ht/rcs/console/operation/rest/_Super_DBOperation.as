@@ -33,6 +33,8 @@ internal class _Super_DBOperation extends com.adobe.fiber.services.wrapper.HTTPS
          operation = new mx.rpc.http.Operation(null, "all_");
          operation.url = "/operation";
          operation.method = "GET";
+         argsArray = new Array("params");
+         operation.argumentNames = argsArray;         
          operation.serializationFilter = serializer0;
          operation.resultElementType = it.ht.rcs.console.operation.model.Operation;
          operations.push(operation);
@@ -96,10 +98,10 @@ internal class _Super_DBOperation extends com.adobe.fiber.services.wrapper.HTTPS
       *
       * @return an mx.rpc.AsyncToken whose result property will be populated with the result of the operation when the server response is received.
       */
-    public function all_() : mx.rpc.AsyncToken
+    public function all_(params:String) : mx.rpc.AsyncToken
     {
         var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("all_");
-		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send() ;
+		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(params) ;
         return _internal_token;
     }
      
