@@ -45,9 +45,9 @@ package it.ht.rcs.console.operation.controller
       DB.instance.operation.destroy(o._id);
     }
     
-    public function addOperation(callback:Function):void
+    public function addOperation(operation:Operation, callback:Function):void
     {
-      DB.instance.operation.create(Operation.defaultOperation(), function (e:ResultEvent):void {
+      DB.instance.operation.create(operation, function (e:ResultEvent):void {
         var operation:Operation = e.result as Operation;
         addItem(operation);
         if (callback != null)

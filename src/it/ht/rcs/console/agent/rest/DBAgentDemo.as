@@ -61,6 +61,7 @@ package it.ht.rcs.console.agent.rest
     
     public function create(params:Object, operation:Operation, target:Target, onResult:Function=null, onFault:Function=null):void
     {
+      trace('create');
     }
     
     public function update(agent:Agent, property:Object, onResult:Function=null, onFault:Function=null):void

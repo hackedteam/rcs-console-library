@@ -1,6 +1,7 @@
 package it.ht.rcs.console.agent.controller
 {
   import it.ht.rcs.console.DB;
+  import it.ht.rcs.console.agent.model.Agent;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.events.RefreshEvent;
   
@@ -25,6 +26,12 @@ package it.ht.rcs.console.agent.controller
       startMS = new Date().time;
       DB.instance.agent.all(onResult);
     }
+    
+//    override public function addItem(o:Object):void
+//    {
+//      if (o is Agent)
+//        _items.addItem(o);
+//    }
     
     private function onResult(e:ResultEvent):void
     {

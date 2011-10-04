@@ -116,12 +116,8 @@ package it.ht.rcs.console.controller
     {
       trace(_classname + ' (itemManager) -- getView');
       
-      /* always return updated content when something requests a view */
-      //onRefresh(null);
-      
       /* create the view for the caller */
       var lcv:ListCollectionView = new ListCollectionView(_items);
-      //lcv.list = _items;
       
       if (sortCriteria == null) {
         /* default sorting is alphabetical */

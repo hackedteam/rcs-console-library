@@ -52,6 +52,7 @@ package it.ht.rcs.console.accounting.controller
       items.source.forEach(function toGroupArray(element:*, index:int, arr:Array):void {
         addItem(element as Group);
       });
+      dispatchDataLoadedEvent();
     }
     
     public function removeUser(g:Group, u:User):void
