@@ -47,6 +47,11 @@ package it.ht.rcs.console.backup.rest
     {
       /* do nothing */
     }
+
+    public function run_job(job:BackupJob, onResult:Function=null, onFault:Function=null):void
+    {
+      /* do nothing */
+    }
     
     public function all_archive(onResult:Function=null, onFault:Function=null):void
     {

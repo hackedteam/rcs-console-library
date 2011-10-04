@@ -69,6 +69,11 @@ package it.ht.rcs.console.backup.controller
       });
     }
     
+    public function runJob(j:BackupJob):void
+    {
+      DB.instance.backup.run_job(j);
+    }
+    
     override public function getView(sortCriteria:ISort=null, filterFunction:Function=null):ListCollectionView
     {
       var sort:Sort = new Sort();
