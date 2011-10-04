@@ -58,6 +58,12 @@ package it.ht.rcs.console.backup.rest
       resp.token = destroy_job_(JSON.encode({_id: job._id}))
     }
 
+    public function run_job(job:BackupJob, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = run_job_(JSON.encode({_id: job._id}))
+    }
+    
     public function all_archive(onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);

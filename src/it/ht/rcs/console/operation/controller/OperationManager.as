@@ -45,6 +45,15 @@ package it.ht.rcs.console.operation.controller
       DB.instance.operation.destroy(o._id);
     }
     
+    override protected function onItemUpdate(e:*):void
+    { 
+      var o:Object = new Object;
+
+      o[e.property] = e.newValue;
+
+      DB.instance.operation.update(e.source, o);
+    }
+    
     public function addOperation(operation:Operation, callback:Function):void
     {
       DB.instance.operation.create(operation, function (e:ResultEvent):void {
