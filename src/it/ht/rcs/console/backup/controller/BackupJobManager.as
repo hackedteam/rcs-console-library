@@ -69,9 +69,11 @@ package it.ht.rcs.console.backup.controller
       });
     }
     
-    public function runJob(j:BackupJob):void
+    public function runJob(j:BackupJob, callback:Function=null):void
     {
-      DB.instance.backup.run_job(j);
+      DB.instance.backup.run_job(j, function (e:ResultEvent):void {
+        callback(j);
+      });
     }
     
     override public function getView(sortCriteria:ISort=null, filterFunction:Function=null):ListCollectionView
