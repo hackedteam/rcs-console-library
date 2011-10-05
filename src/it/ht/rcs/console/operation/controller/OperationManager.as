@@ -18,20 +18,14 @@ package it.ht.rcs.console.operation.controller
       super();
     }
     
-    private static var startMS:Number;
     override protected function onRefresh(e:RefreshEvent):void
     {
       super.onRefresh(e);
-      
-      startMS = new Date().time;
       DB.instance.operation.all(false, onResult);
     }
     
     private function onResult(e:ResultEvent):void
     {
-      var endMS:Number = new Date().time - startMS;
-      trace('Operations: ' + endMS);
-      
       var items:ArrayCollection = e.result as ArrayCollection;
       _items.removeAll();
       items.source.forEach(function(element:*, index:int, arr:Array):void {
@@ -46,11 +40,12 @@ package it.ht.rcs.console.operation.controller
     }
     
     override protected function onItemUpdate(e:*):void
-    { 
+    {
       var o:Object = new Object;
-
-      o[e.property] = e.newValue;
-
+      if (e.newValue is ArrayCollection)
+        o[e.property] = e.newValue.source;
+      else
+        o[e.property] = e.newValue;
       DB.instance.operation.update(e.source, o);
     }
     
