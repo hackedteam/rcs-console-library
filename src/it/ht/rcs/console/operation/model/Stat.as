@@ -20,7 +20,11 @@ public class Stat extends _Super_Stat
   public function Stat(data: Object = null) 
   {
     if (data) {
-      
+      last_sync = data.last_sync;
+      user = data.user;
+      device = data.device;
+      source = data.source;
+      evidence = data.evidence;
     }
   }
   

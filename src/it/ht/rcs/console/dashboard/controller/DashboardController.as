@@ -15,6 +15,7 @@ package it.ht.rcs.console.dashboard.controller
   import it.ht.rcs.console.search.model.SearchItem;
   
   import mx.collections.ArrayCollection;
+  import mx.collections.ArrayList;
   import mx.collections.ISort;
   import mx.collections.ListCollectionView;
   import mx.rpc.events.ResultEvent;
@@ -65,16 +66,32 @@ package it.ht.rcs.console.dashboard.controller
     override protected function onRefresh(e:RefreshEvent):void
     {
       trace('DashboardController - Refresh')
-      _items.removeAll();
+      
+      /* don't remove all the element here to avoid flickering
+       * we instead use the addOrReplaceItem
+       */
+      //_items.removeAll();
 
       /* for each element in the user profile, get the items from the managers */ 
       _user.dashboard_ids.source.forEach(function _(element:*, index:int, arr:Array):void {
         SearchManager.instance.showItem(element, function (item:SearchItem):void {
-          _items.addItem(item);
+          addOrReplaceItem(_items, item);
         });
       });
       
       dispatchDataLoadedEvent();
+    }
+    
+    private function addOrReplaceItem(array:ArrayList, item:*):void
+    {
+      for (var idx:int = 0; idx < array.length; idx++) {
+        var elem:* = array.getItemAt(idx);
+        if (elem._id == item._id) {
+          array.setItemAt(item, idx);
+          return;
+        }
+      }
+      array.addItem(item);
     }
     
     public function newDashItem(id:String, callback:Function=null):void

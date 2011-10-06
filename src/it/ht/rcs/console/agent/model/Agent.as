@@ -30,6 +30,7 @@ public class Agent extends _Super_Agent
         path = data.path;
         group_ids = data.group_ids;
         upgradable = data.upgradable;
+        stat = data.stat;
       }
     }
     /** 

@@ -26,6 +26,7 @@ public class Target extends _Super_Target
       name = data.name;
       status = data.status;
       path = data.path;
+      stat = data.stat;
     }
   }
   

@@ -1,6 +1,7 @@
 package it.ht.rcs.console.target.rest
 {
   import it.ht.rcs.console.operation.model.Operation;
+  import it.ht.rcs.console.operation.model.Stat;
   import it.ht.rcs.console.target.model.Target;
   
   import mx.collections.ArrayCollection;
@@ -10,7 +11,7 @@ package it.ht.rcs.console.target.rest
   {   
     public static var targets:ArrayCollection = new ArrayCollection([
       // operation Swordfish
-      new Target({_id: "4e2683f3963d350658000001", _kind: "target", name: "John Doe", desc: "Head of the terrorist cell.", status: "open", path: ["4df7246d963d350964000001"]}),
+      new Target({_id: "4e2683f3963d350658000001", _kind: "target", name: "John Doe", desc: "Head of the terrorist cell.", status: "open", path: ["4df7246d963d350964000001"], stat: new Stat({last_sync: 1309354166, evidence: {}, grid_size: 0, size: 0})}),
       new Target({_id: "4e2686e1963d350658000002", _kind: "target", name: "Alejandro Reade", desc: "The tough guy.", status: "open", path: ["4df7246d963d350964000001"]}),
       new Target({_id: "4e268719963d350658000003", _kind: "target", name: "Joey Fargo", desc: "Smart, computer savvy.", status: "open", path: ["4df7246d963d350964000001"]}),
       
