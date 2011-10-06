@@ -32,5 +32,19 @@ package it.ht.rcs.console.search.rest
       if (onResult != null)
         onResult(event);
     }
+    
+    public function show(id:String, onResult:Function=null, onFault:Function=null):void
+    {
+      var idx:int;
+      /* search for the item with _id and return it */
+      for (idx = 0; idx < _search_items.length; idx++) {
+        var elem:* = _search_items.getItemAt(idx);
+        if (elem._id == id) {
+          var event:ResultEvent = new ResultEvent('search.show', false, true, elem);
+          if (onResult != null)
+            onResult(event);
+        }
+      }
+    }
   }
 }

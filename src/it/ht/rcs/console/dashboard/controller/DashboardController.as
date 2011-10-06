@@ -2,6 +2,8 @@ package it.ht.rcs.console.dashboard.controller
 {
   
   import flash.events.Event;
+  import flash.events.TimerEvent;
+  import flash.utils.Timer;
   
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.accounting.controller.UserManager;
@@ -27,9 +29,26 @@ package it.ht.rcs.console.dashboard.controller
     private var _user:User;
     private var _dashboard_ids:ArrayCollection;
     
+    /* for the auto refresh every 15 seconds */
+    private var _autorefresh:Timer = new Timer(15000);
+    
     public function DashboardController()
     {
       super();
+    }
+    
+    override public function start():void
+    {
+      super.start();
+      _autorefresh.addEventListener(TimerEvent.TIMER, onAutoRefresh);
+      _autorefresh.start();
+    }
+    
+    override public function stop():void
+    {
+      super.stop();
+      _autorefresh.removeEventListener(TimerEvent.TIMER, onAutoRefresh);
+      _autorefresh.stop();
     }
     
     public function set user(user:User):void
@@ -38,15 +57,21 @@ package it.ht.rcs.console.dashboard.controller
       _dashboard_ids = _user.dashboard_ids;
     }
     
+    private function onAutoRefresh(e:Event):void
+    {
+      onRefresh(null);
+    }
+    
     override protected function onRefresh(e:RefreshEvent):void
     {
+      trace('DashboardController - Refresh')
       _items.removeAll();
 
       /* for each element in the user profile, get the items from the managers */ 
       _user.dashboard_ids.source.forEach(function _(element:*, index:int, arr:Array):void {
-        var item:SearchItem = SearchManager.instance.getItem(element);
-        if (item)
-          addItem(item);
+        SearchManager.instance.showItem(element, function (item:SearchItem):void {
+          _items.addItem(item);
+        });
       });
       
       dispatchDataLoadedEvent();
@@ -56,12 +81,12 @@ package it.ht.rcs.console.dashboard.controller
     {     
       _dashboard_ids.addItem(id);
       
-      var item:SearchItem = SearchManager.instance.getItem(id);
-      if (item)
-        addItem(item);
+      SearchManager.instance.showItem(id, function (item:SearchItem):void {
+        _items.addItem(item);
+      });
       
       /* save in the user profile the new list of items */
-      UserManager.instance.update(_user, {dashboard_ids: _dashboard_ids});
+      UserManager.instance.update(_user, {dashboard_ids: _dashboard_ids.source});
       if (callback != null)
         callback(_dashboard_ids);
     }
@@ -74,7 +99,7 @@ package it.ht.rcs.console.dashboard.controller
       _items.removeItem(o);
       
       /* save in the user profile the new list of items */
-      UserManager.instance.update(_user, {dashboard_ids: _dashboard_ids});
+      UserManager.instance.update(_user, {dashboard_ids: _dashboard_ids.source});
     }
     
   }

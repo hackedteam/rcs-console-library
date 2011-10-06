@@ -1708,67 +1708,6 @@
     <property name="desktop" type="opaque"/>
     <property name="mobile" type="opaque"/>
   </entity>
-  <service name="DBSearch">
-    <annotation name="ActionScriptGeneration">
-      <item name="ServiceType">HTTPMultiService</item>
-      <item name="Package">it.ht.rcs.console.search.rest</item>
-      <item name="rootURL">https://localhost:4444</item>
-    </annotation>
-    <annotation name="ServiceTypeGroup">
-      <item name="ServiceBackendType">HTTPService</item>
-    </annotation>
-    <annotation name="ServiceConfig">
-      <item name="DEFAULT_ENTITY_PACKAGE">it.ht.rcs.console.search.model</item>
-      <item name="LINKED_FILE"></item>
-    </annotation>
-    <function name="all_" return-type="SearchItem[]">
-      <annotation name="analyze group">
-        <item name="analyzed">true</item>
-      </annotation>
-      <annotation name="ActionScriptGeneration">
-        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
-        <item name="method">GET</item>
-        <item name="url">/search</item>
-      </annotation>
-      <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/search</item>
-      </annotation>
-      <annotation name="ValidProperties">
-        <item name="propertySpecifier">_kind,desc,_id,status,group_ids,name,path,stat</item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="inputParamNames">filter</item>
-        <item name="inputParams">string</item>
-        <item name="returnType">opaque</item>
-      </annotation>
-      <parameter name="filter" type="string"/>
-    </function>
-  </service>
-  <entity name="SearchItem">
-    <annotation name="EntityProperties">
-      <item name="EntityOriginalName">SearchItem</item>
-    </annotation>
-    <annotation name="service Group">
-      <item name="service">DBSearch</item>
-    </annotation>
-    <annotation name="ServerProperties">
-      <item name="IncludeRemoteClass">nonempty</item>
-    </annotation>
-    <annotation name="all_">
-      <item name="propertySpecifier">_kind,desc,_id,status,group_ids,name,path,stat</item>
-    </annotation>
-    <annotation name="ActionScriptGeneration">
-      <item name="Package">it.ht.rcs.console.search.model</item>
-    </annotation>
-    <property name="_kind" type="string" required="true"/>
-    <property name="desc" type="string" required="true"/>
-    <property name="_id" type="string" required="true"/>
-    <property name="status" type="string" required="true"/>
-    <property name="group_ids" type="opaque[]" required="true"/>
-    <property name="name" type="string" required="true"/>
-    <property name="path" type="string[]" required="true"/>
-    <property name="stat" type="Stat" required="true"/>
-  </entity>
   <service name="DBShard">
     <annotation name="ActionScriptGeneration">
       <item name="ServiceType">HTTPMultiService</item>
@@ -2747,24 +2686,6 @@
       <parameter name="strXml" type="string"/>
     </function>
   </service>
-  <entity name="Stat">
-    <annotation name="EntityProperties">
-      <item name="EntityOriginalName">Stat</item>
-    </annotation>
-    <annotation name="service Group">
-      <item name="service">DBSearch,DBOperation,DBTarget,DBAgent</item>
-    </annotation>
-    <annotation name="ServerProperties">
-      <item name="IncludeRemoteClass">nonempty</item>
-    </annotation>
-    <annotation name="ActionScriptGeneration">
-      <item name="Package">it.ht.rcs.console.operation.model</item>
-    </annotation>
-    <property name="_id" type="string"/>
-    <property name="grid_size" type="integer"/>
-    <property name="evidence" type="opaque"/>
-    <property name="size" type="integer"/>
-  </entity>
   <entity name="Operation">
     <annotation name="EntityProperties">
       <item name="EntityOriginalName">Operation</item>
@@ -3058,5 +2979,116 @@
     <property name="time" type="string"/>
     <property name="month" type="integer[]"/>
     <property name="week" type="integer[]"/>
+  </entity>
+  <service name="DBSearch">
+    <annotation name="ActionScriptGeneration">
+      <item name="ServiceType">HTTPMultiService</item>
+      <item name="Package">it.ht.rcs.console.search.rest</item>
+      <item name="rootURL">https://localhost:4444</item>
+    </annotation>
+    <annotation name="ServiceTypeGroup">
+      <item name="ServiceBackendType">HTTPService</item>
+    </annotation>
+    <annotation name="ServiceConfig">
+      <item name="DEFAULT_ENTITY_PACKAGE">it.ht.rcs.console.search.model</item>
+      <item name="LINKED_FILE"></item>
+    </annotation>
+    <function name="all_" return-type="SearchItem[]">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/search</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/search</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">_kind,desc,_id,status,group_ids,name,path,stat</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+        <item name="inputParamNames">filter</item>
+        <item name="inputParams">string</item>
+      </annotation>
+      <parameter name="filter" type="string"/>
+    </function>
+    <function name="show_" return-type="SearchItem">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/search/{id}</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/search/{id}</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">_kind,desc,_id,status,group_ids,name,path,stat</item>
+      </annotation>
+      <annotation name="Properties">
+        <item name="urlParamNames">id</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParamNames">id</item>
+        <item name="inputParams">string</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="id" type="string"/>
+    </function>
+  </service>
+  <entity name="Stat">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Stat</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBSearch,DBOperation,DBTarget,DBAgent</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.operation.model</item>
+    </annotation>
+    <property name="last_sync" type="integer" required="true"/>
+    <property name="source" type="string" required="true"/>
+    <property name="_id" type="string"/>
+    <property name="grid_size" type="integer"/>
+    <property name="evidence" type="opaque"/>
+    <property name="device" type="string" required="true"/>
+    <property name="user" type="string" required="true"/>
+    <property name="size" type="integer"/>
+  </entity>
+  <entity name="SearchItem">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">SearchItem</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBSearch</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="all_">
+      <item name="propertySpecifier">_kind,desc,_id,status,group_ids,name,path,stat</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.search.model</item>
+    </annotation>
+    <annotation name="show_">
+      <item name="propertySpecifier">_kind,desc,_id,status,group_ids,name,path,stat</item>
+    </annotation>
+    <property name="_kind" type="string"/>
+    <property name="desc" type="string"/>
+    <property name="_id" type="string"/>
+    <property name="status" type="string"/>
+    <property name="group_ids" type="opaque[]"/>
+    <property name="name" type="string"/>
+    <property name="path" type="string[]"/>
+    <property name="stat" type="Stat"/>
   </entity>
 </model>

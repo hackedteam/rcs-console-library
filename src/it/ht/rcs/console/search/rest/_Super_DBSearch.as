@@ -37,6 +37,17 @@ internal class _Super_DBSearch extends com.adobe.fiber.services.wrapper.HTTPServ
          operation.resultElementType = it.ht.rcs.console.search.model.SearchItem;
          operations.push(operation);
 
+         operation = new mx.rpc.http.Operation(null, "show_");
+         operation.url = "/search/{id}";
+         operation.method = "GET";
+         argsArray = new Array("id");
+         operation.argumentNames = argsArray;         
+         operation.serializationFilter = serializer0;
+         operation.properties = new Object();
+         operation.properties["urlParamNames"] = ["id"];
+         operation.resultType = it.ht.rcs.console.search.model.SearchItem;
+         operations.push(operation);
+
          _serviceControl.operationList = operations;  
 
 
@@ -66,6 +77,24 @@ internal class _Super_DBSearch extends com.adobe.fiber.services.wrapper.HTTPServ
     {
         var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("all_");
 		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(filter) ;
+        return _internal_token;
+    }
+     
+    /**
+      * This method is a generated wrapper used to call the 'show_' operation. It returns an mx.rpc.AsyncToken whose 
+      * result property will be populated with the result of the operation when the server response is received. 
+      * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value. 
+      * You can then bind to CallResponder.lastResult or listen for the CallResponder.result or fault events.
+      *
+      * @see mx.rpc.AsyncToken
+      * @see mx.rpc.CallResponder 
+      *
+      * @return an mx.rpc.AsyncToken whose result property will be populated with the result of the operation when the server response is received.
+      */
+    public function show_(id:String) : mx.rpc.AsyncToken
+    {
+        var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("show_");
+		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(id) ;
         return _internal_token;
     }
      

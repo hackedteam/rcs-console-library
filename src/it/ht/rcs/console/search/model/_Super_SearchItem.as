@@ -6,16 +6,11 @@
 package it.ht.rcs.console.search.model
 {
 import com.adobe.fiber.services.IFiberManagingService;
-import com.adobe.fiber.util.FiberUtils;
 import com.adobe.fiber.valueobjects.IValueObject;
-import flash.events.Event;
 import flash.events.EventDispatcher;
 import it.ht.rcs.console.operation.model.Stat;
-import mx.binding.utils.ChangeWatcher;
 import mx.collections.ArrayCollection;
-import mx.events.CollectionEvent;
 import mx.events.PropertyChangeEvent;
-import mx.validators.ValidationResult;
 
 import flash.net.registerClassAlias;
 import flash.net.getClassByAlias;
@@ -78,14 +73,6 @@ public class _Super_SearchItem extends flash.events.EventDispatcher implements c
         _model = new _SearchItemEntityMetadata(this);
 
         // Bind to own data or source properties for cache invalidation triggering
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "_kind", model_internal::setterListener_kind));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "desc", model_internal::setterListenerDesc));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "_id", model_internal::setterListener_id));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "status", model_internal::setterListenerStatus));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "group_ids", model_internal::setterListenerGroup_ids));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "name", model_internal::setterListenerName));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "path", model_internal::setterListenerPath));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "stat", model_internal::setterListenerStat));
 
     }
 
@@ -271,60 +258,6 @@ public class _Super_SearchItem extends flash.events.EventDispatcher implements c
      *  - the validity of the property (and the containing entity) if the given data property is required.
      */
 
-    model_internal function setterListener_kind(value:flash.events.Event):void
-    {
-        _model.invalidateDependentOn_kind();
-    }
-
-    model_internal function setterListenerDesc(value:flash.events.Event):void
-    {
-        _model.invalidateDependentOnDesc();
-    }
-
-    model_internal function setterListener_id(value:flash.events.Event):void
-    {
-        _model.invalidateDependentOn_id();
-    }
-
-    model_internal function setterListenerStatus(value:flash.events.Event):void
-    {
-        _model.invalidateDependentOnStatus();
-    }
-
-    model_internal function setterListenerGroup_ids(value:flash.events.Event):void
-    {
-        if (value is mx.events.PropertyChangeEvent)
-        {
-            if (mx.events.PropertyChangeEvent(value).newValue)
-            {
-                mx.events.PropertyChangeEvent(value).newValue.addEventListener(mx.events.CollectionEvent.COLLECTION_CHANGE, model_internal::setterListenerGroup_ids);
-            }
-        }
-        _model.invalidateDependentOnGroup_ids();
-    }
-
-    model_internal function setterListenerName(value:flash.events.Event):void
-    {
-        _model.invalidateDependentOnName();
-    }
-
-    model_internal function setterListenerPath(value:flash.events.Event):void
-    {
-        if (value is mx.events.PropertyChangeEvent)
-        {
-            if (mx.events.PropertyChangeEvent(value).newValue)
-            {
-                mx.events.PropertyChangeEvent(value).newValue.addEventListener(mx.events.CollectionEvent.COLLECTION_CHANGE, model_internal::setterListenerPath);
-            }
-        }
-        _model.invalidateDependentOnPath();
-    }
-
-    model_internal function setterListenerStat(value:flash.events.Event):void
-    {
-        _model.invalidateDependentOnStat();
-    }
-
 
     /**
      * valid related derived properties
@@ -346,46 +279,6 @@ public class _Super_SearchItem extends flash.events.EventDispatcher implements c
         var validationFailureMessages:Array = new Array();
 
         var propertyValidity:Boolean = true;
-        if (!_model._kindIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::__kindValidationFailureMessages);
-        }
-        if (!_model.descIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_descValidationFailureMessages);
-        }
-        if (!_model._idIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::__idValidationFailureMessages);
-        }
-        if (!_model.statusIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_statusValidationFailureMessages);
-        }
-        if (!_model.group_idsIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_group_idsValidationFailureMessages);
-        }
-        if (!_model.nameIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_nameValidationFailureMessages);
-        }
-        if (!_model.pathIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_pathValidationFailureMessages);
-        }
-        if (!_model.statIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_statValidationFailureMessages);
-        }
 
         model_internal::_cacheInitialized_isValid = true;
         model_internal::invalidConstraints_der = violatedConsts;
@@ -465,222 +358,6 @@ public class _Super_SearchItem extends flash.events.EventDispatcher implements c
         }
     }
 
-    model_internal var _doValidationCacheOf_kind : Array = null;
-    model_internal var _doValidationLastValOf_kind : String;
-
-    model_internal function _doValidationFor_kind(valueIn:Object):Array
-    {
-        var value : String = valueIn as String;
-
-        if (model_internal::_doValidationCacheOf_kind != null && model_internal::_doValidationLastValOf_kind == value)
-           return model_internal::_doValidationCacheOf_kind ;
-
-        _model.model_internal::__kindIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.is_kindAvailable && _internal__kind == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "_kind is required"));
-        }
-
-        model_internal::_doValidationCacheOf_kind = validationFailures;
-        model_internal::_doValidationLastValOf_kind = value;
-
-        return validationFailures;
-    }
-    
-    model_internal var _doValidationCacheOfDesc : Array = null;
-    model_internal var _doValidationLastValOfDesc : String;
-
-    model_internal function _doValidationForDesc(valueIn:Object):Array
-    {
-        var value : String = valueIn as String;
-
-        if (model_internal::_doValidationCacheOfDesc != null && model_internal::_doValidationLastValOfDesc == value)
-           return model_internal::_doValidationCacheOfDesc ;
-
-        _model.model_internal::_descIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.isDescAvailable && _internal_desc == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "desc is required"));
-        }
-
-        model_internal::_doValidationCacheOfDesc = validationFailures;
-        model_internal::_doValidationLastValOfDesc = value;
-
-        return validationFailures;
-    }
-    
-    model_internal var _doValidationCacheOf_id : Array = null;
-    model_internal var _doValidationLastValOf_id : String;
-
-    model_internal function _doValidationFor_id(valueIn:Object):Array
-    {
-        var value : String = valueIn as String;
-
-        if (model_internal::_doValidationCacheOf_id != null && model_internal::_doValidationLastValOf_id == value)
-           return model_internal::_doValidationCacheOf_id ;
-
-        _model.model_internal::__idIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.is_idAvailable && _internal__id == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "_id is required"));
-        }
-
-        model_internal::_doValidationCacheOf_id = validationFailures;
-        model_internal::_doValidationLastValOf_id = value;
-
-        return validationFailures;
-    }
-    
-    model_internal var _doValidationCacheOfStatus : Array = null;
-    model_internal var _doValidationLastValOfStatus : String;
-
-    model_internal function _doValidationForStatus(valueIn:Object):Array
-    {
-        var value : String = valueIn as String;
-
-        if (model_internal::_doValidationCacheOfStatus != null && model_internal::_doValidationLastValOfStatus == value)
-           return model_internal::_doValidationCacheOfStatus ;
-
-        _model.model_internal::_statusIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.isStatusAvailable && _internal_status == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "status is required"));
-        }
-
-        model_internal::_doValidationCacheOfStatus = validationFailures;
-        model_internal::_doValidationLastValOfStatus = value;
-
-        return validationFailures;
-    }
-    
-    model_internal var _doValidationCacheOfGroup_ids : Array = null;
-    model_internal var _doValidationLastValOfGroup_ids : ArrayCollection;
-
-    model_internal function _doValidationForGroup_ids(valueIn:Object):Array
-    {
-        var value : ArrayCollection = valueIn as ArrayCollection;
-
-        if (model_internal::_doValidationCacheOfGroup_ids != null && model_internal::_doValidationLastValOfGroup_ids == value)
-           return model_internal::_doValidationCacheOfGroup_ids ;
-
-        _model.model_internal::_group_idsIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.isGroup_idsAvailable && _internal_group_ids == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "group_ids is required"));
-        }
-
-        model_internal::_doValidationCacheOfGroup_ids = validationFailures;
-        model_internal::_doValidationLastValOfGroup_ids = value;
-
-        return validationFailures;
-    }
-    
-    model_internal var _doValidationCacheOfName : Array = null;
-    model_internal var _doValidationLastValOfName : String;
-
-    model_internal function _doValidationForName(valueIn:Object):Array
-    {
-        var value : String = valueIn as String;
-
-        if (model_internal::_doValidationCacheOfName != null && model_internal::_doValidationLastValOfName == value)
-           return model_internal::_doValidationCacheOfName ;
-
-        _model.model_internal::_nameIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.isNameAvailable && _internal_name == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "name is required"));
-        }
-
-        model_internal::_doValidationCacheOfName = validationFailures;
-        model_internal::_doValidationLastValOfName = value;
-
-        return validationFailures;
-    }
-    
-    model_internal var _doValidationCacheOfPath : Array = null;
-    model_internal var _doValidationLastValOfPath : ArrayCollection;
-
-    model_internal function _doValidationForPath(valueIn:Object):Array
-    {
-        var value : ArrayCollection = valueIn as ArrayCollection;
-
-        if (model_internal::_doValidationCacheOfPath != null && model_internal::_doValidationLastValOfPath == value)
-           return model_internal::_doValidationCacheOfPath ;
-
-        _model.model_internal::_pathIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.isPathAvailable && _internal_path == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "path is required"));
-        }
-
-        model_internal::_doValidationCacheOfPath = validationFailures;
-        model_internal::_doValidationLastValOfPath = value;
-
-        return validationFailures;
-    }
-    
-    model_internal var _doValidationCacheOfStat : Array = null;
-    model_internal var _doValidationLastValOfStat : it.ht.rcs.console.operation.model.Stat;
-
-    model_internal function _doValidationForStat(valueIn:Object):Array
-    {
-        var value : it.ht.rcs.console.operation.model.Stat = valueIn as it.ht.rcs.console.operation.model.Stat;
-
-        if (model_internal::_doValidationCacheOfStat != null && model_internal::_doValidationLastValOfStat == value)
-           return model_internal::_doValidationCacheOfStat ;
-
-        _model.model_internal::_statIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.isStatAvailable && _internal_stat == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "stat is required"));
-        }
-
-        model_internal::_doValidationCacheOfStat = validationFailures;
-        model_internal::_doValidationLastValOfStat = value;
-
-        return validationFailures;
-    }
-    
 
 }
 

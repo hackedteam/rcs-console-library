@@ -3,6 +3,7 @@ package it.ht.rcs.console.search.controller
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.events.RefreshEvent;
+  import it.ht.rcs.console.search.model.SearchItem;
   
   import mx.collections.ArrayCollection;
   import mx.rpc.events.ResultEvent;
@@ -34,5 +35,13 @@ package it.ht.rcs.console.search.controller
         addItem(element);
       });
     }
+    
+    public function showItem(id:String, callback:Function):void
+    {
+      DB.instance.search.show(id, function (e:ResultEvent):void {
+        callback(e.result as SearchItem);
+      });
+    }
+    
   }
 }
