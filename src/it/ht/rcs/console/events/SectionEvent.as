@@ -2,6 +2,8 @@ package it.ht.rcs.console.events
 {
   import flash.events.Event;
   
+  import it.ht.rcs.console.search.model.SearchItem;
+  
   public class SectionEvent extends Event
   {
     
@@ -17,6 +19,7 @@ package it.ht.rcs.console.events
     public static const MONITOR:String = "Monitor";
     
     public var section:String;
+    public var item:SearchItem;
     
     public function SectionEvent(type:String, bubbles:Boolean=false, cancelable:Boolean=false)
     {
