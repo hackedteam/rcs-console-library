@@ -75,19 +75,23 @@ package it.ht.rcs.console.dashboard.controller
       /* for each element in the user profile, get the items from the managers */ 
       _user.dashboard_ids.source.forEach(function _(element:*, index:int, arr:Array):void {
         SearchManager.instance.showItem(element, function (item:SearchItem):void {
-          addOrReplaceItem(_items, item);
+          addOrUpdateItem(_items, item);
         });
       });
       
       dispatchDataLoadedEvent();
     }
     
-    private function addOrReplaceItem(array:ArrayList, item:*):void
+    private function addOrUpdateItem(array:ArrayList, item:*):void
     {
       for (var idx:int = 0; idx < array.length; idx++) {
         var elem:* = array.getItemAt(idx);
         if (elem._id == item._id) {
-          array.setItemAt(item, idx);
+          /* don't replace the item here, otherwise the renderer will be destroyed and recreated
+           * causing it to restart from initial state. Just update the stats
+           */
+          //array.setItemAt(item, idx);
+          elem.stat = item.stat;
           return;
         }
       }
