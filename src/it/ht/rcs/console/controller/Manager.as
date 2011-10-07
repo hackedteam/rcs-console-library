@@ -40,33 +40,37 @@ package it.ht.rcs.console.controller
       trace(_classname + ' (manager) -- Force Log Out');
     }
     
-    private var _isStarted:Boolean = false;
-    public function get isStarted():Boolean
-    {
-      return _isStarted;
-    }
-    
     public function start():void
     {
-      trace(_classname + ' (manager) -- Start');
       /* react to the global refresh event */
-      FlexGlobals.topLevelApplication.addEventListener(RefreshEvent.REFRESH, onRefresh);
-      _isStarted = true;
+      listenRefresh();
       /* retrieve the data on startup */
-      onRefresh(null);
+      refresh(null);
     }
     
     public function stop():void
     {
-      trace(_classname + ' (manager) -- Stop');
+      /* after stop, we don't want to refresh anymore */
+      unlistenRefresh();
+    }
+    
+    public function listenRefresh():void
+    {
+      trace(_classname + ' (manager) -- ListenRefresh');
+      /* react to the global refresh event */
+      FlexGlobals.topLevelApplication.addEventListener(RefreshEvent.REFRESH, onRefresh);
+    }
+    
+    public function unlistenRefresh():void
+    {
+      trace(_classname + ' (manager) -- UnlistenRefresh');
       /* after stop, we don't want to refresh anymore */
       FlexGlobals.topLevelApplication.removeEventListener(RefreshEvent.REFRESH, onRefresh);
-      _isStarted = false;
     }
     
     public function refresh(e:Event=null):void
     {
-      //trace(_classname + ' (manager) -- Explicit Refresh');
+      trace(_classname + ' (manager) -- Explicit Refresh');
       onRefresh(null);
     }
     
