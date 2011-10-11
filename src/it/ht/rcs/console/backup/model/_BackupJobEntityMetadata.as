@@ -65,7 +65,7 @@ internal class _BackupJobEntityMetadata extends com.adobe.fiber.valueobjects.Abs
         // Property type Map
         model_internal::propertyTypeMap = new Object();
         model_internal::propertyTypeMap["enabled"] = "Boolean";
-        model_internal::propertyTypeMap["lastrun"] = "int";
+        model_internal::propertyTypeMap["lastrun"] = "String";
         model_internal::propertyTypeMap["updated_at"] = "String";
         model_internal::propertyTypeMap["_id"] = "String";
         model_internal::propertyTypeMap["what"] = "String";

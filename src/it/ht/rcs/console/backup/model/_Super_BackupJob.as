@@ -50,7 +50,7 @@ public class _Super_BackupJob extends flash.events.EventDispatcher implements co
      * properties
      */
     private var _internal_enabled : Boolean;
-    private var _internal_lastrun : int;
+    private var _internal_lastrun : String;
     private var _internal_updated_at : String;
     private var _internal__id : String;
     private var _internal_what : String;
@@ -88,7 +88,7 @@ public class _Super_BackupJob extends flash.events.EventDispatcher implements co
     }
 
     [Bindable(event="propertyChange")]
-    public function get lastrun() : int
+    public function get lastrun() : String
     {
         return _internal_lastrun;
     }
@@ -153,9 +153,9 @@ public class _Super_BackupJob extends flash.events.EventDispatcher implements co
         }
     }
 
-    public function set lastrun(value:int) : void
+    public function set lastrun(value:String) : void
     {
-        var oldValue:int = _internal_lastrun;
+        var oldValue:String = _internal_lastrun;
         if (oldValue !== value)
         {
             _internal_lastrun = value;

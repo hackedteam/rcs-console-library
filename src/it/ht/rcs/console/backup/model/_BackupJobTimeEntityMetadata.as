@@ -54,8 +54,8 @@ internal class _BackupJobTimeEntityMetadata extends com.adobe.fiber.valueobjects
 
             // collection base map
             model_internal::collectionBaseMap = new Object();
-            model_internal::collectionBaseMap["month"] = "int";
-            model_internal::collectionBaseMap["week"] = "int";
+            model_internal::collectionBaseMap["month"] = "Object";
+            model_internal::collectionBaseMap["week"] = "Object";
         }
 
         // Property type Map
