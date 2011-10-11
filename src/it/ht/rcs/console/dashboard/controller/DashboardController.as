@@ -95,7 +95,7 @@ package it.ht.rcs.console.dashboard.controller
           return;
         }
       }
-      array.addItem(item);
+      addItem(item);
     }
     
     public function newDashItem(id:String, callback:Function=null):void
