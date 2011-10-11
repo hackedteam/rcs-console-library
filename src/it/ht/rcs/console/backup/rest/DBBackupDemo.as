@@ -16,14 +16,10 @@ package it.ht.rcs.console.backup.rest
     public function all_job(onResult:Function=null, onFault:Function=null):void
     {
       var items:ArrayCollection = new ArrayCollection();
-      var date:Date = new Date();
-      date.setTime(Date.UTC(2011,08,28,12,30));
-      items.addItem(new BackupJob({_id: '1', enabled:true, lastrun: date.time / 1000, status: 'COMPLETED', what: 'metadata', when: new BackupJobTime({week: [], month: [], time: '12:30'}), name: 'meta-data'}) );
-      items.addItem(new BackupJob({_id: '2', enabled:true, lastrun: new Date().time / 1000, status: 'RUNNING', what: 'full', when: new BackupJobTime({week: [0], month: [], time: '00:00'}), name: 'full-evidence'}) );
-      date.setTime(Date.UTC(2011,08,26,0,0));
-      items.addItem(new BackupJob({_id: '3', enabled:false, lastrun: date.time / 1000, status: 'ERROR', what: 'operation:4e259fe5963d35425c000001', when: new BackupJobTime({week: [1,3,5], month: [], time: '00:00'}), name: 'blackjack'}) );
-      date.setTime(Date.UTC(2011,09,1,0,0));
-      items.addItem(new BackupJob({_id: '4', enabled:true, lastrun: date.time / 1000, status: 'COMPLETED', what: 'target:4e2686e1963d350658000002', when: new BackupJobTime({week: [], month: [1], time: '00:00'}), name: 'critical'}) );
+      items.addItem(new BackupJob({_id: '1', enabled:true, lastrun: "2011-10-11 12:31", status: 'COMPLETED', what: 'metadata', when: new BackupJobTime({week: [], month: [], time: '12:30'}), name: 'meta-data'}) );
+      items.addItem(new BackupJob({_id: '2', enabled:true, lastrun: "2011-10-09 00:00", status: 'RUNNING', what: 'full', when: new BackupJobTime({week: [0], month: [], time: '00:00'}), name: 'full-evidence'}) );
+      items.addItem(new BackupJob({_id: '3', enabled:false, lastrun: "2011-10-10 00:05", status: 'ERROR', what: 'operation:4e259fe5963d35425c000001', when: new BackupJobTime({week: [1,3,5], month: [], time: '00:00'}), name: 'blackjack'}) );
+      items.addItem(new BackupJob({_id: '4', enabled:true, lastrun: "2011-10-01 00:00", status: 'COMPLETED', what: 'target:4e2686e1963d350658000002', when: new BackupJobTime({week: [], month: [1], time: '00:00'}), name: 'critical'}) );
       
       var event:ResultEvent = new ResultEvent("backupjob.index", false, true, items);
       if (onResult != null) 
