@@ -18,6 +18,7 @@ package it.ht.rcs.console.search.rest
       DBOperationDemo.operations.source.forEach(addItemAsSearchItem);
       DBTargetDemo.targets.source.forEach(addItemAsSearchItem);
       DBAgentDemo.agents.source.forEach(addItemAsSearchItem);
+      DBFactoryDemo.factories.source.forEach(addItemAsSearchItem);
     }
     
     private function addItemAsSearchItem(item:*, index:int, array:Array) : void 

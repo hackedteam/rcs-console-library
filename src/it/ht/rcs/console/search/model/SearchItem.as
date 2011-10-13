@@ -15,6 +15,8 @@ package it.ht.rcs.console.search.model
 
 import com.adobe.fiber.core.model_internal;
 
+import it.ht.rcs.console.operation.model.Stat;
+
 import mx.events.PropertyChangeEvent;
 
 public class SearchItem extends _Super_SearchItem
@@ -31,7 +33,10 @@ public class SearchItem extends _Super_SearchItem
         status = data.status;
         path = data.path;
         group_ids = data.group_ids;
-        stat = data.stat;
+        if (data.hasOwnProperty("stat"))
+          stat = data.stat;
+        else
+          stat = new Stat();
       }
     }
     
