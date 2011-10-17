@@ -66,6 +66,12 @@ package it.ht.rcs.console.network.rest
       resp.token = update_rule_(JSON.encode( { _id: proxy_id, rule: params } ));
     }
     
+    public function apply_rules(proxy_id:String, onResult:Function = null, onFault:Function = null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = apply_rules_(JSON.encode( { _id: proxy_id} ));
+    }
+    
     /**
      * Override super.init() to provide any initialization customization if needed.
      */
