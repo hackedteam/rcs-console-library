@@ -68,7 +68,8 @@ package it.ht.rcs.console.accounting.model
         locale: 'en_US',
         timezone: 0,
         group_ids: new Array(),
-        dashboard_ids: new Array()
+        dashboard_ids: new Array(),
+        recent_ids: new Array()
       };
     }
     
@@ -86,6 +87,7 @@ package it.ht.rcs.console.accounting.model
         timezone = data.timezone;
         group_ids = data.group_ids;
         dashboard_ids = data.dashboard_ids;
+        recent_ids = data.recent_ids;
       }
     }
 
