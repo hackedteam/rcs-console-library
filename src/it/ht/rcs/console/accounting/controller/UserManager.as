@@ -4,6 +4,7 @@ package it.ht.rcs.console.accounting.controller
   import it.ht.rcs.console.accounting.model.User;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.events.RefreshEvent;
+  import it.ht.rcs.console.search.model.SearchItem;
   import it.ht.rcs.console.utils.AlertPopUp;
   
   import mx.collections.ArrayCollection;
@@ -96,5 +97,9 @@ package it.ht.rcs.console.accounting.controller
       DB.instance.user.update(user, properties);
     }
 
+    public function add_recent(user:User, item:SearchItem):void
+    {
+      DB.instance.user.add_recent(user, item._id);   
+    }
   }
 }

@@ -62,10 +62,12 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
     private var _internal_timezone : int;
     private var _internal_updated_at : String;
     private var _internal__id : String;
+    private var _internal_recent_ids : ArrayCollection;
     private var _internal_privs : ArrayCollection;
     private var _internal_dashboard_ids : ArrayCollection;
     private var _internal_name : String;
     private var _internal_created_at : String;
+    private var _internal__mid : int;
 
     private static var emptyArray:Array = new Array();
 
@@ -82,7 +84,7 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
         _model = new _UserEntityMetadata(this);
 
         // Bind to own data or source properties for cache invalidation triggering
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "dashboard_ids", model_internal::setterListenerDashboard_ids));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "recent_ids", model_internal::setterListenerRecent_ids));
 
     }
 
@@ -151,6 +153,12 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
     }
 
     [Bindable(event="propertyChange")]
+    public function get recent_ids() : ArrayCollection
+    {
+        return _internal_recent_ids;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get privs() : ArrayCollection
     {
         return _internal_privs;
@@ -172,6 +180,12 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
     public function get created_at() : String
     {
         return _internal_created_at;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get _mid() : int
+    {
+        return _internal__mid;
     }
 
     public function clearAssociations() : void
@@ -297,6 +311,31 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
         }
     }
 
+    public function set recent_ids(value:*) : void
+    {
+        var oldValue:ArrayCollection = _internal_recent_ids;
+        if (oldValue !== value)
+        {
+            if (value is ArrayCollection)
+            {
+                _internal_recent_ids = value;
+            }
+            else if (value is Array)
+            {
+                _internal_recent_ids = new ArrayCollection(value);
+            }
+            else if (value == null)
+            {
+                _internal_recent_ids = null;
+            }
+            else
+            {
+                throw new Error("value of recent_ids must be a collection");
+            }
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "recent_ids", oldValue, _internal_recent_ids));
+        }
+    }
+
     public function set privs(value:*) : void
     {
         var oldValue:ArrayCollection = _internal_privs;
@@ -367,6 +406,16 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
         }
     }
 
+    public function set _mid(value:int) : void
+    {
+        var oldValue:int = _internal__mid;
+        if (oldValue !== value)
+        {
+            _internal__mid = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "_mid", oldValue, _internal__mid));
+        }
+    }
+
     /**
      * Data/source property setter listeners
      *
@@ -379,16 +428,16 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
      *  - the validity of the property (and the containing entity) if the given data property is required.
      */
 
-    model_internal function setterListenerDashboard_ids(value:flash.events.Event):void
+    model_internal function setterListenerRecent_ids(value:flash.events.Event):void
     {
         if (value is mx.events.PropertyChangeEvent)
         {
             if (mx.events.PropertyChangeEvent(value).newValue)
             {
-                mx.events.PropertyChangeEvent(value).newValue.addEventListener(mx.events.CollectionEvent.COLLECTION_CHANGE, model_internal::setterListenerDashboard_ids);
+                mx.events.PropertyChangeEvent(value).newValue.addEventListener(mx.events.CollectionEvent.COLLECTION_CHANGE, model_internal::setterListenerRecent_ids);
             }
         }
-        _model.invalidateDependentOnDashboard_ids();
+        _model.invalidateDependentOnRecent_ids();
     }
 
 
@@ -412,10 +461,10 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
         var validationFailureMessages:Array = new Array();
 
         var propertyValidity:Boolean = true;
-        if (!_model.dashboard_idsIsValid)
+        if (!_model.recent_idsIsValid)
         {
             propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_dashboard_idsValidationFailureMessages);
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_recent_idsValidationFailureMessages);
         }
 
         model_internal::_cacheInitialized_isValid = true;
@@ -496,29 +545,29 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
         }
     }
 
-    model_internal var _doValidationCacheOfDashboard_ids : Array = null;
-    model_internal var _doValidationLastValOfDashboard_ids : ArrayCollection;
+    model_internal var _doValidationCacheOfRecent_ids : Array = null;
+    model_internal var _doValidationLastValOfRecent_ids : ArrayCollection;
 
-    model_internal function _doValidationForDashboard_ids(valueIn:Object):Array
+    model_internal function _doValidationForRecent_ids(valueIn:Object):Array
     {
         var value : ArrayCollection = valueIn as ArrayCollection;
 
-        if (model_internal::_doValidationCacheOfDashboard_ids != null && model_internal::_doValidationLastValOfDashboard_ids == value)
-           return model_internal::_doValidationCacheOfDashboard_ids ;
+        if (model_internal::_doValidationCacheOfRecent_ids != null && model_internal::_doValidationLastValOfRecent_ids == value)
+           return model_internal::_doValidationCacheOfRecent_ids ;
 
-        _model.model_internal::_dashboard_idsIsValidCacheInitialized = true;
+        _model.model_internal::_recent_idsIsValidCacheInitialized = true;
         var validationFailures:Array = new Array();
         var errorMessage:String;
         var failure:Boolean;
 
         var valRes:ValidationResult;
-        if (_model.isDashboard_idsAvailable && _internal_dashboard_ids == null)
+        if (_model.isRecent_idsAvailable && _internal_recent_ids == null)
         {
-            validationFailures.push(new ValidationResult(true, "", "", "dashboard_ids is required"));
+            validationFailures.push(new ValidationResult(true, "", "", "recent_ids is required"));
         }
 
-        model_internal::_doValidationCacheOfDashboard_ids = validationFailures;
-        model_internal::_doValidationLastValOfDashboard_ids = value;
+        model_internal::_doValidationCacheOfRecent_ids = validationFailures;
+        model_internal::_doValidationLastValOfRecent_ids = value;
 
         return validationFailures;
     }

@@ -9,5 +9,6 @@ package it.ht.rcs.console.accounting.rest
     function create(params:Object, onResult:Function = null, onFault:Function = null):void;
     function update(user:User, property:Object, onResult:Function = null, onFault:Function = null):void;
     function destroy(user:User, onResult:Function = null, onFault:Function = null):void;
+    function add_recent(user:User, id:String, onResult:Function = null, onFault:Function = null):void;
   }
 }
