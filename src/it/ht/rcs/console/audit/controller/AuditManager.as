@@ -1,13 +1,10 @@
 package it.ht.rcs.console.audit.controller
 {
-  import flash.events.Event;
-  
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.events.FilterEvent;
   import it.ht.rcs.console.events.RefreshEvent;
   import it.ht.rcs.console.utils.DateUtils;
-  import it.ht.rcs.console.utils.TimeUtils;
   
   import mx.collections.ArrayCollection;
   import mx.collections.AsyncListView;
@@ -89,18 +86,18 @@ package it.ht.rcs.console.audit.controller
       filter.to = to.time / 1000;
     }
     
-    private function printFilterObject():void
-    {
-      trace('--- START');
-      for (var key:String in filter) {
-        trace(key + ": " + filter[key]);
-        if(key == 'from' || key == 'to') {
-          var d:Date = new Date(filter[key] * 1000);
-          trace(key + " date: " + d.fullYearUTC +"-"+ TimeUtils.zeroPad(d.monthUTC+1, 2) + "-"+d.dateUTC + " "+ d.hoursUTC + ':'+d.minutesUTC + ':'+ d.secondsUTC);
-        }
-      }
-      trace('--- END');
-    }
+//    private function printFilterObject():void
+//    {
+//      trace('--- START');
+//      for (var key:String in filter) {
+//        trace(key + ": " + filter[key]);
+//        if(key == 'from' || key == 'to') {
+//          var d:Date = new Date(filter[key] * 1000);
+//          trace(key + " date: " + d.fullYearUTC +"-"+ TimeUtils.zeroPad(d.monthUTC+1, 2) + "-"+d.dateUTC + " "+ d.hoursUTC + ':'+d.minutesUTC + ':'+ d.secondsUTC);
+//        }
+//      }
+//      trace('--- END');
+//    }
 
   }
 
