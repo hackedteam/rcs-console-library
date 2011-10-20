@@ -59,7 +59,7 @@ package it.ht.rcs.console.accounting.rest
     
     public function add_recent(user:User, id:String, onResult:Function = null, onFault:Function = null):void
     {
-      /* do nothing */
+      user.recent_ids.addItemAt(id, 0);
     }
   }
 }
