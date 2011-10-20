@@ -7,7 +7,7 @@ package it.ht.rcs.console.network.rest
 import com.adobe.fiber.core.model_internal;
 import com.adobe.fiber.services.wrapper.HTTPServiceWrapper;
 import it.ht.rcs.console.network.model.Collector;
-import it.ht.rcs.console.network.model.CollectorLog;
+import it.ht.rcs.console.network.model.NetworkLog;
 import mx.rpc.AbstractOperation;
 import mx.rpc.AsyncToken;
 import mx.rpc.http.HTTPMultiService;
@@ -57,7 +57,7 @@ internal class _Super_DBCollector extends com.adobe.fiber.services.wrapper.HTTPS
          operation.serializationFilter = serializer0;
          operation.properties = new Object();
          operation.properties["urlParamNames"] = ["id"];
-         operation.resultType = it.ht.rcs.console.network.model.CollectorLog;
+         operation.resultElementType = it.ht.rcs.console.network.model.NetworkLog;
          operations.push(operation);
 
          operation = new mx.rpc.http.Operation(null, "update_");

@@ -36,6 +36,7 @@ package it.ht.rcs.console.network.controller
     {
       var ruleObject:Object = rule.toObject();
       DB.instance.proxy.add_rule(proxy_id, ruleObject, function (e:ResultEvent):void {
+        rule._id = e.result._id;
         addItem(rule);
         callback(rule);
       });

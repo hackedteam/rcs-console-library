@@ -100,6 +100,13 @@ package it.ht.rcs.console.dashboard.controller
     
     public function newDashItem(id:String, callback:Function=null):void
     {     
+      // don't insert if already in list
+      for (var idx:int = 0; idx < _dashboard_ids.length; idx++) {
+        var elem:* = _dashboard_ids.getItemAt(idx);
+        if (elem == id) {
+          return;
+        }
+      }
       _dashboard_ids.addItem(id);
       
       SearchManager.instance.showItem(id, function (item:SearchItem):void {

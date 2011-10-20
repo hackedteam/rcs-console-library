@@ -56,7 +56,7 @@ package it.ht.rcs.console.network.rest
     public function del_logs(id:String, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = del_logs_(id);
+      resp.token = del_logs_(JSON.encode( { _id: id} ));
     }
     
     /**

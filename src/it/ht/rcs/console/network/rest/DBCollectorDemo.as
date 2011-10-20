@@ -1,7 +1,7 @@
 package it.ht.rcs.console.network.rest
 {
   import it.ht.rcs.console.network.model.Collector;
-  import it.ht.rcs.console.network.model.CollectorLog;
+  import it.ht.rcs.console.network.model.NetworkLog;
   
   import mx.collections.ArrayCollection;
   import mx.rpc.events.ResultEvent;
@@ -55,11 +55,10 @@ package it.ht.rcs.console.network.rest
     
     public function logs(id:String, onResult:Function=null, onFault:Function=null):void
     {
-      
       var logs:ArrayCollection = new ArrayCollection();
-      logs.addItem(new CollectorLog({time: '2011-01-01 12:00:00', type: 'INFO', info: 'Started'}));
-      logs.addItem(new CollectorLog({time: '2011-01-01 13:00:00', type: 'INFO', info: 'Forwarwed sync for 1.2.3.4'}));
-      logs.addItem(new CollectorLog({time: '2011-01-01 14:00:00', type: 'WARN', info: 'Forwarwed sync for 5.6.7.8'}));
+      logs.addItem(new NetworkLog({time: (new Date().time) / 1000, type: 'INFO', desc: 'Started'}));
+      logs.addItem(new NetworkLog({time: (new Date().time) / 1000, type: 'INFO', desc: 'Forwarwed sync for 1.2.3.4'}));
+      logs.addItem(new NetworkLog({time: (new Date().time) / 1000, type: 'WARN', desc: 'Forwarwed sync for 5.6.7.8'}));
       
       var event:ResultEvent = new ResultEvent('collector.logs', false, true, logs);
       if (onResult != null)

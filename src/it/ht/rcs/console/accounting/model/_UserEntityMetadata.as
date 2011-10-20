@@ -23,16 +23,16 @@ internal class _UserEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("not_exist", "enabled", "desc", "group_ids", "locale", "contact", "pass", "timezone", "updated_at", "_id", "privs", "dashboard_ids", "name", "created_at");
+    model_internal static var allProperties:Array = new Array("not_exist", "enabled", "desc", "group_ids", "locale", "contact", "pass", "timezone", "updated_at", "_id", "recent_ids", "privs", "dashboard_ids", "name", "created_at", "_mid");
     model_internal static var allAssociationProperties:Array = new Array();
-    model_internal static var allRequiredProperties:Array = new Array("dashboard_ids");
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("not_exist", "enabled", "desc", "group_ids", "locale", "contact", "pass", "timezone", "updated_at", "_id", "privs", "dashboard_ids", "name", "created_at");
+    model_internal static var allRequiredProperties:Array = new Array("recent_ids", "_mid");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("not_exist", "enabled", "desc", "group_ids", "locale", "contact", "pass", "timezone", "updated_at", "_id", "recent_ids", "privs", "dashboard_ids", "name", "created_at", "_mid");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("not_exist", "enabled", "desc", "group_ids", "locale", "contact", "pass", "timezone", "updated_at", "_id", "privs", "dashboard_ids", "name", "created_at");
+    model_internal static var dataProperties:Array = new Array("not_exist", "enabled", "desc", "group_ids", "locale", "contact", "pass", "timezone", "updated_at", "_id", "recent_ids", "privs", "dashboard_ids", "name", "created_at", "_mid");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("not_exist", "enabled", "desc", "group_ids", "locale", "contact", "pass", "timezone", "updated_at", "_id", "privs", "dashboard_ids", "name", "created_at");
+    model_internal static var nonDerivedProperties:Array = new Array("not_exist", "enabled", "desc", "group_ids", "locale", "contact", "pass", "timezone", "updated_at", "_id", "recent_ids", "privs", "dashboard_ids", "name", "created_at", "_mid");
     model_internal static var derivedProperties:Array = new Array();
-    model_internal static var collectionProperties:Array = new Array("group_ids", "privs", "dashboard_ids");
+    model_internal static var collectionProperties:Array = new Array("group_ids", "recent_ids", "privs", "dashboard_ids");
     model_internal static var collectionBaseMap:Object;
     model_internal static var entityName:String = "User";
     model_internal static var dependentsOnMap:Object;
@@ -40,10 +40,10 @@ internal class _UserEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
     model_internal static var propertyTypeMap:Object;
 
     
-    model_internal var _dashboard_idsIsValid:Boolean;
-    model_internal var _dashboard_idsValidator:com.adobe.fiber.styles.StyleValidator;
-    model_internal var _dashboard_idsIsValidCacheInitialized:Boolean = false;
-    model_internal var _dashboard_idsValidationFailureMessages:Array;
+    model_internal var _recent_idsIsValid:Boolean;
+    model_internal var _recent_idsValidator:com.adobe.fiber.styles.StyleValidator;
+    model_internal var _recent_idsIsValidCacheInitialized:Boolean = false;
+    model_internal var _recent_idsValidationFailureMessages:Array;
 
     model_internal var _instance:_Super_User;
     model_internal static var _nullStyle:com.adobe.fiber.styles.Style = new com.adobe.fiber.styles.Style();
@@ -65,14 +65,17 @@ internal class _UserEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
             model_internal::dependentsOnMap["timezone"] = new Array();
             model_internal::dependentsOnMap["updated_at"] = new Array();
             model_internal::dependentsOnMap["_id"] = new Array();
+            model_internal::dependentsOnMap["recent_ids"] = new Array();
             model_internal::dependentsOnMap["privs"] = new Array();
             model_internal::dependentsOnMap["dashboard_ids"] = new Array();
             model_internal::dependentsOnMap["name"] = new Array();
             model_internal::dependentsOnMap["created_at"] = new Array();
+            model_internal::dependentsOnMap["_mid"] = new Array();
 
             // collection base map
             model_internal::collectionBaseMap = new Object();
             model_internal::collectionBaseMap["group_ids"] = "String";
+            model_internal::collectionBaseMap["recent_ids"] = "String";
             model_internal::collectionBaseMap["privs"] = "String";
             model_internal::collectionBaseMap["dashboard_ids"] = "String";
         }
@@ -89,17 +92,19 @@ internal class _UserEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
         model_internal::propertyTypeMap["timezone"] = "int";
         model_internal::propertyTypeMap["updated_at"] = "String";
         model_internal::propertyTypeMap["_id"] = "String";
+        model_internal::propertyTypeMap["recent_ids"] = "ArrayCollection";
         model_internal::propertyTypeMap["privs"] = "ArrayCollection";
         model_internal::propertyTypeMap["dashboard_ids"] = "ArrayCollection";
         model_internal::propertyTypeMap["name"] = "String";
         model_internal::propertyTypeMap["created_at"] = "String";
+        model_internal::propertyTypeMap["_mid"] = "int";
 
         model_internal::_instance = value;
-        model_internal::_dashboard_idsValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForDashboard_ids);
-        model_internal::_dashboard_idsValidator.required = true;
-        model_internal::_dashboard_idsValidator.requiredFieldError = "dashboard_ids is required";
-        //model_internal::_dashboard_idsValidator.source = model_internal::_instance;
-        //model_internal::_dashboard_idsValidator.property = "dashboard_ids";
+        model_internal::_recent_idsValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForRecent_ids);
+        model_internal::_recent_idsValidator.required = true;
+        model_internal::_recent_idsValidator.requiredFieldError = "recent_ids is required";
+        //model_internal::_recent_idsValidator.source = model_internal::_instance;
+        //model_internal::_recent_idsValidator.property = "recent_ids";
     }
 
     override public function getEntityName():String
@@ -387,6 +392,12 @@ internal class _UserEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
     }
 
     [Bindable(event="propertyChange")]
+    public function get isRecent_idsAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get isPrivsAvailable():Boolean
     {
         return true;
@@ -410,16 +421,22 @@ internal class _UserEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
         return true;
     }
 
+    [Bindable(event="propertyChange")]
+    public function get is_midAvailable():Boolean
+    {
+        return true;
+    }
+
 
     /**
      * derived property recalculation
      */
-    public function invalidateDependentOnDashboard_ids():void
+    public function invalidateDependentOnRecent_ids():void
     {
-        if (model_internal::_dashboard_idsIsValidCacheInitialized )
+        if (model_internal::_recent_idsIsValidCacheInitialized )
         {
-            model_internal::_instance.model_internal::_doValidationCacheOfDashboard_ids = null;
-            model_internal::calculateDashboard_idsIsValid();
+            model_internal::_instance.model_internal::_doValidationCacheOfRecent_ids = null;
+            model_internal::calculateRecent_idsIsValid();
         }
     }
 
@@ -489,50 +506,44 @@ internal class _UserEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
     }
 
     [Bindable(event="propertyChange")]   
-    public function get privsStyle():com.adobe.fiber.styles.Style
+    public function get recent_idsStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
 
-    [Bindable(event="propertyChange")]   
-    public function get dashboard_idsStyle():com.adobe.fiber.styles.Style
+    public function get recent_idsValidator() : StyleValidator
     {
-        return model_internal::_nullStyle;
+        return model_internal::_recent_idsValidator;
     }
 
-    public function get dashboard_idsValidator() : StyleValidator
+    model_internal function set _recent_idsIsValid_der(value:Boolean):void 
     {
-        return model_internal::_dashboard_idsValidator;
-    }
-
-    model_internal function set _dashboard_idsIsValid_der(value:Boolean):void 
-    {
-        var oldValue:Boolean = model_internal::_dashboard_idsIsValid;         
+        var oldValue:Boolean = model_internal::_recent_idsIsValid;         
         if (oldValue !== value)
         {
-            model_internal::_dashboard_idsIsValid = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "dashboard_idsIsValid", oldValue, value));
+            model_internal::_recent_idsIsValid = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "recent_idsIsValid", oldValue, value));
         }                             
     }
 
     [Bindable(event="propertyChange")]
-    public function get dashboard_idsIsValid():Boolean
+    public function get recent_idsIsValid():Boolean
     {
-        if (!model_internal::_dashboard_idsIsValidCacheInitialized)
+        if (!model_internal::_recent_idsIsValidCacheInitialized)
         {
-            model_internal::calculateDashboard_idsIsValid();
+            model_internal::calculateRecent_idsIsValid();
         }
 
-        return model_internal::_dashboard_idsIsValid;
+        return model_internal::_recent_idsIsValid;
     }
 
-    model_internal function calculateDashboard_idsIsValid():void
+    model_internal function calculateRecent_idsIsValid():void
     {
-        var valRes:ValidationResultEvent = model_internal::_dashboard_idsValidator.validate(model_internal::_instance.dashboard_ids)
-        model_internal::_dashboard_idsIsValid_der = (valRes.results == null);
-        model_internal::_dashboard_idsIsValidCacheInitialized = true;
+        var valRes:ValidationResultEvent = model_internal::_recent_idsValidator.validate(model_internal::_instance.recent_ids)
+        model_internal::_recent_idsIsValid_der = (valRes.results == null);
+        model_internal::_recent_idsIsValidCacheInitialized = true;
         if (valRes.results == null)
-             model_internal::dashboard_idsValidationFailureMessages_der = emptyArray;
+             model_internal::recent_idsValidationFailureMessages_der = emptyArray;
         else
         {
             var _valFailures:Array = new Array();
@@ -540,22 +551,22 @@ internal class _UserEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
             {
                 _valFailures.push(valRes.results[a].errorMessage);
             }
-            model_internal::dashboard_idsValidationFailureMessages_der = _valFailures;
+            model_internal::recent_idsValidationFailureMessages_der = _valFailures;
         }
     }
 
     [Bindable(event="propertyChange")]
-    public function get dashboard_idsValidationFailureMessages():Array
+    public function get recent_idsValidationFailureMessages():Array
     {
-        if (model_internal::_dashboard_idsValidationFailureMessages == null)
-            model_internal::calculateDashboard_idsIsValid();
+        if (model_internal::_recent_idsValidationFailureMessages == null)
+            model_internal::calculateRecent_idsIsValid();
 
-        return _dashboard_idsValidationFailureMessages;
+        return _recent_idsValidationFailureMessages;
     }
 
-    model_internal function set dashboard_idsValidationFailureMessages_der(value:Array) : void
+    model_internal function set recent_idsValidationFailureMessages_der(value:Array) : void
     {
-        var oldValue:Array = model_internal::_dashboard_idsValidationFailureMessages;
+        var oldValue:Array = model_internal::_recent_idsValidationFailureMessages;
 
         var needUpdate : Boolean = false;
         if (oldValue == null)
@@ -583,8 +594,8 @@ internal class _UserEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
 
         if (needUpdate)
         {
-            model_internal::_dashboard_idsValidationFailureMessages = value;   
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "dashboard_idsValidationFailureMessages", oldValue, value));
+            model_internal::_recent_idsValidationFailureMessages = value;   
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "recent_idsValidationFailureMessages", oldValue, value));
             // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
             // the entire entity.
             if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
@@ -595,6 +606,18 @@ internal class _UserEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
     }
 
     [Bindable(event="propertyChange")]   
+    public function get privsStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get dashboard_idsStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
     public function get nameStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
@@ -602,6 +625,12 @@ internal class _UserEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
 
     [Bindable(event="propertyChange")]   
     public function get created_atStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get _midStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
@@ -631,9 +660,9 @@ internal class _UserEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
      {
          switch(propertyName)
          {
-            case("dashboard_ids"):
+            case("recent_ids"):
             {
-                return dashboard_idsValidationFailureMessages;
+                return recent_idsValidationFailureMessages;
             }
             default:
             {
