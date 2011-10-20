@@ -1,6 +1,7 @@
 package it.ht.rcs.console.network.rest
 {
   import it.ht.rcs.console.network.model.Collector;
+  import it.ht.rcs.console.network.model.NetworkLog;
   import it.ht.rcs.console.network.model.Proxy;
   import it.ht.rcs.console.network.model.ProxyRule;
   
@@ -72,6 +73,24 @@ package it.ht.rcs.console.network.rest
       onResult(event);
     }
 
+    public function logs(id:String, onResult:Function = null, onFault:Function = null):void
+    {
+      var logs:ArrayCollection = new ArrayCollection();
+      logs.addItem(new NetworkLog({time: (new Date().time) / 1000, type: 'INFO', desc: 'Started'}));
+      logs.addItem(new NetworkLog({time: (new Date().time) / 1000, type: 'INFO', desc: 'Injected 1.2.3.4'}));
+      
+      var event:ResultEvent = new ResultEvent('proxy.logs', false, true, logs);
+      if (onResult != null)
+        onResult(event);
+
+    }
+    
+    public function del_logs(id:String, onResult:Function = null, onFault:Function = null):void
+    {
+      var event:ResultEvent = new ResultEvent('proxy.del_logs', false, true);
+      if (onResult != null)
+        onResult(event);
+    }
   }
   
 }
