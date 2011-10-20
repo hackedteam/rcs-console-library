@@ -1,5 +1,7 @@
 package it.ht.rcs.console.operation.controller
 {
+  import flash.events.Event;
+  
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.events.RefreshEvent;
