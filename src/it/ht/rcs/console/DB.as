@@ -21,9 +21,12 @@ package it.ht.rcs.console
   import it.ht.rcs.console.audit.rest.DBAudit;
   import it.ht.rcs.console.audit.rest.DBAuditDemo;
   import it.ht.rcs.console.audit.rest.IDBAudit;
-  import it.ht.rcs.console.backup.rest.DBBackupDemo;
   import it.ht.rcs.console.backup.rest.DBBackup;
+  import it.ht.rcs.console.backup.rest.DBBackupDemo;
   import it.ht.rcs.console.backup.rest.IDBBackup;
+  import it.ht.rcs.console.evidence.rest.DBEvidence;
+  import it.ht.rcs.console.evidence.rest.DBEvidenceDemo;
+  import it.ht.rcs.console.evidence.rest.IDBEvidence;
   import it.ht.rcs.console.factory.rest.DBFactory;
   import it.ht.rcs.console.factory.rest.DBFactoryDemo;
   import it.ht.rcs.console.factory.rest.IDBFactory;
@@ -82,6 +85,7 @@ package it.ht.rcs.console
     public var system:IDBShard;
     public var search:IDBSearch;
     public var backup:IDBBackup;
+    public var evidence:IDBEvidence;
     
     private static var notifier:IFaultNotifier;
     public static var i18n:II18N;
@@ -124,6 +128,7 @@ package it.ht.rcs.console
       system = new DBShard(host);
       search = new DBSearch(host);
       backup = new DBBackup(host);
+      evidence = new DBEvidence(host);
     }
 
     private function initDemo():void
@@ -146,6 +151,7 @@ package it.ht.rcs.console
       system = new DBShardDemo();
       search = new DBSearchDemo();
       backup = new DBBackupDemo();
+      evidence = new DBEvidenceDemo();
     }
 
     public static function host_autocomplete(host:String):String
