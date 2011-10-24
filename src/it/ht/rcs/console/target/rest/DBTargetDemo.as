@@ -45,7 +45,7 @@ package it.ht.rcs.console.target.rest
       target.path = [operation._id];
       targets.addItem(target);
       
-      var event:ResultEvent = new ResultEvent("target.create", false, true, target);
+      var event:ResultEvent = new ResultEvent('target.create', false, true, target);
       onResult(event);
     }
     

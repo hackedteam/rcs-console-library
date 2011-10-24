@@ -33,7 +33,7 @@ package it.ht.rcs.console.factory.rest
     
     public function all(onResult:Function=null, onFault:Function=null):void
     {
-      var event:ResultEvent = new ResultEvent('factories.all', false, true, factories);
+      var event:ResultEvent = new ResultEvent('factory.all', false, true, factories);
       if (onResult != null)
         onResult(event);
     }
@@ -44,6 +44,14 @@ package it.ht.rcs.console.factory.rest
     
     public function create(params:Object, operation:Operation, target:Target, onResult:Function=null, onFault:Function=null):void
     {
+      params._id = new Date().getTime().toString();
+      
+      var factory:Factory = new Factory(params);
+      factory.path = [operation._id, target._id];
+      factories.addItem(factory);
+      
+      var event:ResultEvent = new ResultEvent('factory.create', false, true, factory);
+      onResult(event);
     }
     
     public function update(factory:Factory, property:Object, onResult:Function=null, onFault:Function=null):void

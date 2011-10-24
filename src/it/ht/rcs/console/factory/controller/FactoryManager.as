@@ -3,6 +3,9 @@ package it.ht.rcs.console.factory.controller
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.events.RefreshEvent;
+  import it.ht.rcs.console.factory.model.Factory;
+  import it.ht.rcs.console.operation.model.Operation;
+  import it.ht.rcs.console.target.model.Target;
   
   import mx.collections.ArrayCollection;
   import mx.rpc.events.ResultEvent;
@@ -20,7 +23,7 @@ package it.ht.rcs.console.factory.controller
     override protected function onRefresh(e:RefreshEvent):void
     {
       super.onRefresh(e);
-      DB.instance.agent.all(onResult);
+      DB.instance.factory.all(onResult);
     }
     
     private function onResult(e:ResultEvent):void
@@ -30,6 +33,33 @@ package it.ht.rcs.console.factory.controller
       items.source.forEach(function(element:*, index:int, arr:Array):void {
         addItem(element);
       });
+      dispatchDataLoadedEvent();
     }
+    
+    override protected function onItemRemove(o:*):void
+    {
+      DB.instance.factory.destroy(o._id);
+    }
+    
+    override protected function onItemUpdate(e:*):void
+    {
+      var o:Object = new Object;
+      if (e.newValue is ArrayCollection)
+        o[e.property] = e.newValue.source;
+      else
+        o[e.property] = e.newValue;
+      DB.instance.factory.update(e.source, o);
+    }
+    
+    public function addFactory(f:Factory, operation:Operation, target:Target, callback:Function):void
+    {
+      DB.instance.factory.create(f, operation, target, function (e:ResultEvent):void {
+        var factory:Factory = e.result as Factory;
+        addItem(factory);
+        if (callback != null)
+          callback(factory);
+      });
+    }
+    
   }
 }

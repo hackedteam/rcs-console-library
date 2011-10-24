@@ -47,7 +47,14 @@ package it.ht.rcs.console.agent.rest
     
     public function create(params:Object, operation:Operation, target:Target, onResult:Function=null, onFault:Function=null):void
     {
-      trace('create');
+      params._id = new Date().getTime().toString();
+      
+      var agent:Agent = new Agent(params);
+      agent.path = [operation._id, target._id];
+      agents.addItem(agent);
+      
+      var event:ResultEvent = new ResultEvent('agent.create', false, true, agent);
+      onResult(event);
     }
     
     public function update(agent:Agent, property:Object, onResult:Function=null, onFault:Function=null):void
