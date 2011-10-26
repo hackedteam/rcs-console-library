@@ -2,7 +2,7 @@
 /**
  * This is a generated class and is not intended for modification.  
  */
-package it.ht.rcs.console.agent.model
+package it.ht.rcs.console.factory.model
 {
 import com.adobe.fiber.styles.IStyle;
 import com.adobe.fiber.styles.Style;
@@ -16,44 +16,45 @@ import mx.events.PropertyChangeEvent;
 use namespace model_internal;
 
 [ExcludeClass]
-internal class _ConfigsEntityMetadata extends com.adobe.fiber.valueobjects.AbstractEntityMetadata
+internal class _ConfigEntityMetadata extends com.adobe.fiber.valueobjects.AbstractEntityMetadata
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("updated_at", "desc", "_id", "saved", "created_at", "config", "_mid", "user");
+    model_internal static var allProperties:Array = new Array("sent", "updated_at", "desc", "_id", "activated", "saved", "created_at", "config", "user");
     model_internal static var allAssociationProperties:Array = new Array();
     model_internal static var allRequiredProperties:Array = new Array();
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("updated_at", "desc", "_id", "saved", "created_at", "config", "_mid", "user");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("sent", "updated_at", "desc", "_id", "activated", "saved", "created_at", "config", "user");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("updated_at", "desc", "_id", "saved", "created_at", "config", "_mid", "user");
+    model_internal static var dataProperties:Array = new Array("sent", "updated_at", "desc", "_id", "activated", "saved", "created_at", "config", "user");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("updated_at", "desc", "_id", "saved", "created_at", "config", "_mid", "user");
+    model_internal static var nonDerivedProperties:Array = new Array("sent", "updated_at", "desc", "_id", "activated", "saved", "created_at", "config", "user");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array();
     model_internal static var collectionBaseMap:Object;
-    model_internal static var entityName:String = "Configs";
+    model_internal static var entityName:String = "Config";
     model_internal static var dependentsOnMap:Object;
     model_internal static var dependedOnServices:Array = new Array();
     model_internal static var propertyTypeMap:Object;
 
 
-    model_internal var _instance:_Super_Configs;
+    model_internal var _instance:_Super_Config;
     model_internal static var _nullStyle:com.adobe.fiber.styles.Style = new com.adobe.fiber.styles.Style();
 
-    public function _ConfigsEntityMetadata(value : _Super_Configs)
+    public function _ConfigEntityMetadata(value : _Super_Config)
     {
         // initialize property maps
         if (model_internal::dependentsOnMap == null)
         {
             // dependents map
             model_internal::dependentsOnMap = new Object();
+            model_internal::dependentsOnMap["sent"] = new Array();
             model_internal::dependentsOnMap["updated_at"] = new Array();
             model_internal::dependentsOnMap["desc"] = new Array();
             model_internal::dependentsOnMap["_id"] = new Array();
+            model_internal::dependentsOnMap["activated"] = new Array();
             model_internal::dependentsOnMap["saved"] = new Array();
             model_internal::dependentsOnMap["created_at"] = new Array();
             model_internal::dependentsOnMap["config"] = new Array();
-            model_internal::dependentsOnMap["_mid"] = new Array();
             model_internal::dependentsOnMap["user"] = new Array();
 
             // collection base map
@@ -62,13 +63,14 @@ internal class _ConfigsEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
 
         // Property type Map
         model_internal::propertyTypeMap = new Object();
+        model_internal::propertyTypeMap["sent"] = "int";
         model_internal::propertyTypeMap["updated_at"] = "String";
         model_internal::propertyTypeMap["desc"] = "String";
         model_internal::propertyTypeMap["_id"] = "String";
+        model_internal::propertyTypeMap["activated"] = "int";
         model_internal::propertyTypeMap["saved"] = "int";
         model_internal::propertyTypeMap["created_at"] = "String";
         model_internal::propertyTypeMap["config"] = "String";
-        model_internal::propertyTypeMap["_mid"] = "int";
         model_internal::propertyTypeMap["user"] = "String";
 
         model_internal::_instance = value;
@@ -122,7 +124,7 @@ internal class _ConfigsEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     override public function getDependants(propertyName:String):Array
     {
        if (model_internal::nonDerivedProperties.indexOf(propertyName) == -1)
-            throw new Error(propertyName + " is not a data property of entity Configs");
+            throw new Error(propertyName + " is not a data property of entity Config");
             
        return model_internal::dependentsOnMap[propertyName] as Array;  
     }
@@ -140,7 +142,7 @@ internal class _ConfigsEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     override public function getCollectionBase(propertyName:String):String
     {
         if (model_internal::collectionProperties.indexOf(propertyName) == -1)
-            throw new Error(propertyName + " is not a collection property of entity Configs");
+            throw new Error(propertyName + " is not a collection property of entity Config");
 
         return model_internal::collectionBaseMap[propertyName];
     }
@@ -148,7 +150,7 @@ internal class _ConfigsEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     override public function getPropertyType(propertyName:String):String
     {
         if (model_internal::allProperties.indexOf(propertyName) == -1)
-            throw new Error(propertyName + " is not a property of Configs");
+            throw new Error(propertyName + " is not a property of Config");
 
         return model_internal::propertyTypeMap[propertyName];
     }
@@ -162,7 +164,7 @@ internal class _ConfigsEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     {
         if (model_internal::allProperties.indexOf(propertyName) == -1)
         {
-            throw new Error(propertyName + " does not exist for entity Configs");
+            throw new Error(propertyName + " does not exist for entity Config");
         }
 
         return model_internal::_instance[propertyName];
@@ -172,7 +174,7 @@ internal class _ConfigsEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     {
         if (model_internal::nonDerivedProperties.indexOf(propertyName) == -1)
         {
-            throw new Error(propertyName + " is not a modifiable property of entity Configs");
+            throw new Error(propertyName + " is not a modifiable property of entity Config");
         }
 
         model_internal::_instance[propertyName] = value;
@@ -204,7 +206,7 @@ internal class _ConfigsEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     {
         if (model_internal::allProperties.indexOf(propertyName) == -1)
         {
-            throw new Error(propertyName + " does not exist for entity Configs");
+            throw new Error(propertyName + " does not exist for entity Config");
         }
 
         if (model_internal::allAlwaysAvailableProperties.indexOf(propertyName) != -1)
@@ -299,6 +301,12 @@ internal class _ConfigsEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     }
 
     [Bindable(event="propertyChange")]
+    public function get isSentAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get isUpdated_atAvailable():Boolean
     {
         return true;
@@ -312,6 +320,12 @@ internal class _ConfigsEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
 
     [Bindable(event="propertyChange")]
     public function get is_idAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isActivatedAvailable():Boolean
     {
         return true;
     }
@@ -335,12 +349,6 @@ internal class _ConfigsEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     }
 
     [Bindable(event="propertyChange")]
-    public function get is_midAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get isUserAvailable():Boolean
     {
         return true;
@@ -354,6 +362,12 @@ internal class _ConfigsEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     model_internal function fireChangeEvent(propertyName:String, oldValue:Object, newValue:Object):void
     {
         this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, propertyName, oldValue, newValue));
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get sentStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
     }
 
     [Bindable(event="propertyChange")]   
@@ -375,6 +389,12 @@ internal class _ConfigsEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     }
 
     [Bindable(event="propertyChange")]   
+    public function get activatedStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
     public function get savedStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
@@ -388,12 +408,6 @@ internal class _ConfigsEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
 
     [Bindable(event="propertyChange")]   
     public function get configStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get _midStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }

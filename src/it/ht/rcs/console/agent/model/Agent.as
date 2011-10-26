@@ -37,6 +37,7 @@ package it.ht.rcs.console.agent.model
         group_ids = data.group_ids;
         upgradable = data.upgradable;
         stat = data.stat;
+        configs = data.configs;
       }
     }
     

@@ -7,6 +7,7 @@ package it.ht.rcs.console.agent.rest
 import com.adobe.fiber.core.model_internal;
 import com.adobe.fiber.services.wrapper.HTTPServiceWrapper;
 import it.ht.rcs.console.agent.model.Agent;
+import it.ht.rcs.console.factory.model.Config;
 import mx.rpc.AbstractOperation;
 import mx.rpc.AsyncToken;
 import mx.rpc.http.HTTPMultiService;
@@ -69,6 +70,14 @@ internal class _Super_DBAgent extends com.adobe.fiber.services.wrapper.HTTPServi
          operation.method = "POST";
          operation.serializationFilter = serializer1;
          operation.contentType = "application/xml";
+         operations.push(operation);
+
+         operation = new mx.rpc.http.Operation(null, "add_config_");
+         operation.url = "/agent/add_config";
+         operation.method = "POST";
+         operation.serializationFilter = serializer0;
+         operation.contentType = "application/xml";
+         operation.resultType = it.ht.rcs.console.factory.model.Config;
          operations.push(operation);
 
          _serviceControl.operationList = operations;  
@@ -171,6 +180,24 @@ internal class _Super_DBAgent extends com.adobe.fiber.services.wrapper.HTTPServi
     public function destroy_(strXml:String) : mx.rpc.AsyncToken
     {
         var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("destroy_");
+		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(strXml) ;
+        return _internal_token;
+    }
+     
+    /**
+      * This method is a generated wrapper used to call the 'add_config_' operation. It returns an mx.rpc.AsyncToken whose 
+      * result property will be populated with the result of the operation when the server response is received. 
+      * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value. 
+      * You can then bind to CallResponder.lastResult or listen for the CallResponder.result or fault events.
+      *
+      * @see mx.rpc.AsyncToken
+      * @see mx.rpc.CallResponder 
+      *
+      * @return an mx.rpc.AsyncToken whose result property will be populated with the result of the operation when the server response is received.
+      */
+    public function add_config_(strXml:String) : mx.rpc.AsyncToken
+    {
+        var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("add_config_");
 		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(strXml) ;
         return _internal_token;
     }

@@ -1,5 +1,5 @@
 /**
- * This is a generated sub-class of _Configs.as and is intended for behavior
+ * This is a generated sub-class of _Config.as and is intended for behavior
  * customization.  This class is only generated when there is no file already present
  * at its target location.  Thus custom behavior that you add here will survive regeneration
  * of the super-class. 
@@ -10,13 +10,27 @@
  * corresponding entity 
  **/ 
  
-package it.ht.rcs.console.agent.model
+package it.ht.rcs.console.factory.model
 {
 
 import com.adobe.fiber.core.model_internal;
 
-public class Configs extends _Super_Configs
+public class Config extends _Super_Config
 {
+  
+    public function Config(data:Object = null) 
+    {
+      if (data) {
+        _id = data._id;
+        desc = data.desc;
+        sent = data.sent;
+        activated = data.activated;
+        saved = data.saved;
+        user = data.user;
+        config = data.config;
+      }
+    }
+  
     /** 
      * DO NOT MODIFY THIS STATIC INITIALIZER - IT IS NECESSARY
      * FOR PROPERLY SETTING UP THE REMOTE CLASS ALIAS FOR THIS CLASS
@@ -30,17 +44,17 @@ public class Configs extends _Super_Configs
      */     
     public static function _initRemoteClassAlias() : void
     {
-        _Super_Configs.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.agent.model.Configs);
-        _Super_Configs.model_internal::initRemoteClassAliasAllRelated();
+        _Super_Config.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.factory.model.Config);
+        _Super_Config.model_internal::initRemoteClassAliasAllRelated();
     }
      
     model_internal static function initRemoteClassAliasSingleChild() : void
     {
-        _Super_Configs.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.agent.model.Configs);
+        _Super_Config.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.factory.model.Config);
     }
     
     {
-        _Super_Configs.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.agent.model.Configs);
+        _Super_Config.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.factory.model.Config);
     }
     /** 
      * END OF DO NOT MODIFY SECTION

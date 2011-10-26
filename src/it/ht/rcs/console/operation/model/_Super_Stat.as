@@ -54,6 +54,7 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
     private var _internal_last_sync : int;
     private var _internal_source : String;
     private var _internal__id : String;
+    private var _internal_last_sync_status : String;
     private var _internal_grid_size : int;
     private var _internal_evidence : Object;
     private var _internal_device : String;
@@ -75,9 +76,7 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
         _model = new _StatEntityMetadata(this);
 
         // Bind to own data or source properties for cache invalidation triggering
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "source", model_internal::setterListenerSource));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "device", model_internal::setterListenerDevice));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "user", model_internal::setterListenerUser));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "last_sync_status", model_internal::setterListenerLast_sync_status));
 
     }
 
@@ -101,6 +100,12 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
     public function get _id() : String
     {
         return _internal__id;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get last_sync_status() : String
+    {
+        return _internal_last_sync_status;
     }
 
     [Bindable(event="propertyChange")]
@@ -171,6 +176,16 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
         }
     }
 
+    public function set last_sync_status(value:String) : void
+    {
+        var oldValue:String = _internal_last_sync_status;
+        if (oldValue !== value)
+        {
+            _internal_last_sync_status = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "last_sync_status", oldValue, _internal_last_sync_status));
+        }
+    }
+
     public function set grid_size(value:int) : void
     {
         var oldValue:int = _internal_grid_size;
@@ -233,19 +248,9 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
      *  - the validity of the property (and the containing entity) if the given data property is required.
      */
 
-    model_internal function setterListenerSource(value:flash.events.Event):void
+    model_internal function setterListenerLast_sync_status(value:flash.events.Event):void
     {
-        _model.invalidateDependentOnSource();
-    }
-
-    model_internal function setterListenerDevice(value:flash.events.Event):void
-    {
-        _model.invalidateDependentOnDevice();
-    }
-
-    model_internal function setterListenerUser(value:flash.events.Event):void
-    {
-        _model.invalidateDependentOnUser();
+        _model.invalidateDependentOnLast_sync_status();
     }
 
 
@@ -269,20 +274,10 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
         var validationFailureMessages:Array = new Array();
 
         var propertyValidity:Boolean = true;
-        if (!_model.sourceIsValid)
+        if (!_model.last_sync_statusIsValid)
         {
             propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_sourceValidationFailureMessages);
-        }
-        if (!_model.deviceIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_deviceValidationFailureMessages);
-        }
-        if (!_model.userIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_userValidationFailureMessages);
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_last_sync_statusValidationFailureMessages);
         }
 
         model_internal::_cacheInitialized_isValid = true;
@@ -363,83 +358,29 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
         }
     }
 
-    model_internal var _doValidationCacheOfSource : Array = null;
-    model_internal var _doValidationLastValOfSource : String;
+    model_internal var _doValidationCacheOfLast_sync_status : Array = null;
+    model_internal var _doValidationLastValOfLast_sync_status : String;
 
-    model_internal function _doValidationForSource(valueIn:Object):Array
+    model_internal function _doValidationForLast_sync_status(valueIn:Object):Array
     {
         var value : String = valueIn as String;
 
-        if (model_internal::_doValidationCacheOfSource != null && model_internal::_doValidationLastValOfSource == value)
-           return model_internal::_doValidationCacheOfSource ;
+        if (model_internal::_doValidationCacheOfLast_sync_status != null && model_internal::_doValidationLastValOfLast_sync_status == value)
+           return model_internal::_doValidationCacheOfLast_sync_status ;
 
-        _model.model_internal::_sourceIsValidCacheInitialized = true;
+        _model.model_internal::_last_sync_statusIsValidCacheInitialized = true;
         var validationFailures:Array = new Array();
         var errorMessage:String;
         var failure:Boolean;
 
         var valRes:ValidationResult;
-        if (_model.isSourceAvailable && _internal_source == null)
+        if (_model.isLast_sync_statusAvailable && _internal_last_sync_status == null)
         {
-            validationFailures.push(new ValidationResult(true, "", "", "source is required"));
+            validationFailures.push(new ValidationResult(true, "", "", "last_sync_status is required"));
         }
 
-        model_internal::_doValidationCacheOfSource = validationFailures;
-        model_internal::_doValidationLastValOfSource = value;
-
-        return validationFailures;
-    }
-    
-    model_internal var _doValidationCacheOfDevice : Array = null;
-    model_internal var _doValidationLastValOfDevice : String;
-
-    model_internal function _doValidationForDevice(valueIn:Object):Array
-    {
-        var value : String = valueIn as String;
-
-        if (model_internal::_doValidationCacheOfDevice != null && model_internal::_doValidationLastValOfDevice == value)
-           return model_internal::_doValidationCacheOfDevice ;
-
-        _model.model_internal::_deviceIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.isDeviceAvailable && _internal_device == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "device is required"));
-        }
-
-        model_internal::_doValidationCacheOfDevice = validationFailures;
-        model_internal::_doValidationLastValOfDevice = value;
-
-        return validationFailures;
-    }
-    
-    model_internal var _doValidationCacheOfUser : Array = null;
-    model_internal var _doValidationLastValOfUser : String;
-
-    model_internal function _doValidationForUser(valueIn:Object):Array
-    {
-        var value : String = valueIn as String;
-
-        if (model_internal::_doValidationCacheOfUser != null && model_internal::_doValidationLastValOfUser == value)
-           return model_internal::_doValidationCacheOfUser ;
-
-        _model.model_internal::_userIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.isUserAvailable && _internal_user == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "user is required"));
-        }
-
-        model_internal::_doValidationCacheOfUser = validationFailures;
-        model_internal::_doValidationLastValOfUser = value;
+        model_internal::_doValidationCacheOfLast_sync_status = validationFailures;
+        model_internal::_doValidationLastValOfLast_sync_status = value;
 
         return validationFailures;
     }
