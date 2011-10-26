@@ -6,10 +6,13 @@ package it.ht.rcs.console.factory.model
 {
 import com.adobe.fiber.styles.IStyle;
 import com.adobe.fiber.styles.Style;
+import com.adobe.fiber.styles.StyleValidator;
 import com.adobe.fiber.valueobjects.AbstractEntityMetadata;
 import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 import com.adobe.fiber.valueobjects.IPropertyIterator;
+import it.ht.rcs.console.factory.model.Config;
 import mx.collections.ArrayCollection;
+import mx.events.ValidationResultEvent;
 import com.adobe.fiber.core.model_internal;
 import com.adobe.fiber.valueobjects.IModelType;
 import mx.events.PropertyChangeEvent;
@@ -21,22 +24,27 @@ internal class _FactoryEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("configs", "_kind", "desc", "ident", "_id", "status", "group_ids", "name", "counter", "path");
+    model_internal static var allProperties:Array = new Array("status", "group_ids", "counter", "configs", "demo", "_kind", "desc", "ident", "_id", "name", "path", "type");
     model_internal static var allAssociationProperties:Array = new Array();
-    model_internal static var allRequiredProperties:Array = new Array();
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("configs", "_kind", "desc", "ident", "_id", "status", "group_ids", "name", "counter", "path");
+    model_internal static var allRequiredProperties:Array = new Array("demo", "type");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("status", "group_ids", "counter", "configs", "demo", "_kind", "desc", "ident", "_id", "name", "path", "type");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("configs", "_kind", "desc", "ident", "_id", "status", "group_ids", "name", "counter", "path");
+    model_internal static var dataProperties:Array = new Array("status", "group_ids", "counter", "configs", "demo", "_kind", "desc", "ident", "_id", "name", "path", "type");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("configs", "_kind", "desc", "ident", "_id", "status", "group_ids", "name", "counter", "path");
+    model_internal static var nonDerivedProperties:Array = new Array("status", "group_ids", "counter", "configs", "demo", "_kind", "desc", "ident", "_id", "name", "path", "type");
     model_internal static var derivedProperties:Array = new Array();
-    model_internal static var collectionProperties:Array = new Array("configs", "group_ids", "path");
+    model_internal static var collectionProperties:Array = new Array("group_ids", "configs", "path");
     model_internal static var collectionBaseMap:Object;
     model_internal static var entityName:String = "Factory";
     model_internal static var dependentsOnMap:Object;
     model_internal static var dependedOnServices:Array = new Array();
     model_internal static var propertyTypeMap:Object;
 
+    
+    model_internal var _typeIsValid:Boolean;
+    model_internal var _typeValidator:com.adobe.fiber.styles.StyleValidator;
+    model_internal var _typeIsValidCacheInitialized:Boolean = false;
+    model_internal var _typeValidationFailureMessages:Array;
 
     model_internal var _instance:_Super_Factory;
     model_internal static var _nullStyle:com.adobe.fiber.styles.Style = new com.adobe.fiber.styles.Style();
@@ -48,38 +56,47 @@ internal class _FactoryEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
         {
             // dependents map
             model_internal::dependentsOnMap = new Object();
+            model_internal::dependentsOnMap["status"] = new Array();
+            model_internal::dependentsOnMap["group_ids"] = new Array();
+            model_internal::dependentsOnMap["counter"] = new Array();
             model_internal::dependentsOnMap["configs"] = new Array();
+            model_internal::dependentsOnMap["demo"] = new Array();
             model_internal::dependentsOnMap["_kind"] = new Array();
             model_internal::dependentsOnMap["desc"] = new Array();
             model_internal::dependentsOnMap["ident"] = new Array();
             model_internal::dependentsOnMap["_id"] = new Array();
-            model_internal::dependentsOnMap["status"] = new Array();
-            model_internal::dependentsOnMap["group_ids"] = new Array();
             model_internal::dependentsOnMap["name"] = new Array();
-            model_internal::dependentsOnMap["counter"] = new Array();
             model_internal::dependentsOnMap["path"] = new Array();
+            model_internal::dependentsOnMap["type"] = new Array();
 
             // collection base map
             model_internal::collectionBaseMap = new Object();
-            model_internal::collectionBaseMap["configs"] = "Object";
             model_internal::collectionBaseMap["group_ids"] = "Object";
+            model_internal::collectionBaseMap["configs"] = "it.ht.rcs.console.factory.model.Config";
             model_internal::collectionBaseMap["path"] = "String";
         }
 
         // Property type Map
         model_internal::propertyTypeMap = new Object();
+        model_internal::propertyTypeMap["status"] = "String";
+        model_internal::propertyTypeMap["group_ids"] = "ArrayCollection";
+        model_internal::propertyTypeMap["counter"] = "int";
         model_internal::propertyTypeMap["configs"] = "ArrayCollection";
+        model_internal::propertyTypeMap["demo"] = "Boolean";
         model_internal::propertyTypeMap["_kind"] = "String";
         model_internal::propertyTypeMap["desc"] = "String";
         model_internal::propertyTypeMap["ident"] = "String";
         model_internal::propertyTypeMap["_id"] = "String";
-        model_internal::propertyTypeMap["status"] = "String";
-        model_internal::propertyTypeMap["group_ids"] = "ArrayCollection";
         model_internal::propertyTypeMap["name"] = "String";
-        model_internal::propertyTypeMap["counter"] = "int";
         model_internal::propertyTypeMap["path"] = "ArrayCollection";
+        model_internal::propertyTypeMap["type"] = "String";
 
         model_internal::_instance = value;
+        model_internal::_typeValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForType);
+        model_internal::_typeValidator.required = true;
+        model_internal::_typeValidator.requiredFieldError = "type is required";
+        //model_internal::_typeValidator.source = model_internal::_instance;
+        //model_internal::_typeValidator.property = "type";
     }
 
     override public function getEntityName():String
@@ -307,7 +324,31 @@ internal class _FactoryEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     }
 
     [Bindable(event="propertyChange")]
+    public function get isStatusAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isGroup_idsAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isCounterAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get isConfigsAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isDemoAvailable():Boolean
     {
         return true;
     }
@@ -337,25 +378,7 @@ internal class _FactoryEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     }
 
     [Bindable(event="propertyChange")]
-    public function get isStatusAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get isGroup_idsAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get isNameAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get isCounterAvailable():Boolean
     {
         return true;
     }
@@ -366,10 +389,24 @@ internal class _FactoryEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
         return true;
     }
 
+    [Bindable(event="propertyChange")]
+    public function get isTypeAvailable():Boolean
+    {
+        return true;
+    }
+
 
     /**
      * derived property recalculation
      */
+    public function invalidateDependentOnType():void
+    {
+        if (model_internal::_typeIsValidCacheInitialized )
+        {
+            model_internal::_instance.model_internal::_doValidationCacheOfType = null;
+            model_internal::calculateTypeIsValid();
+        }
+    }
 
     model_internal function fireChangeEvent(propertyName:String, oldValue:Object, newValue:Object):void
     {
@@ -377,7 +414,31 @@ internal class _FactoryEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     }
 
     [Bindable(event="propertyChange")]   
+    public function get statusStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get group_idsStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get counterStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
     public function get configsStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get demoStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
@@ -407,25 +468,7 @@ internal class _FactoryEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     }
 
     [Bindable(event="propertyChange")]   
-    public function get statusStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get group_idsStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
     public function get nameStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get counterStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
@@ -434,6 +477,106 @@ internal class _FactoryEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     public function get pathStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get typeStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    public function get typeValidator() : StyleValidator
+    {
+        return model_internal::_typeValidator;
+    }
+
+    model_internal function set _typeIsValid_der(value:Boolean):void 
+    {
+        var oldValue:Boolean = model_internal::_typeIsValid;         
+        if (oldValue !== value)
+        {
+            model_internal::_typeIsValid = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "typeIsValid", oldValue, value));
+        }                             
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get typeIsValid():Boolean
+    {
+        if (!model_internal::_typeIsValidCacheInitialized)
+        {
+            model_internal::calculateTypeIsValid();
+        }
+
+        return model_internal::_typeIsValid;
+    }
+
+    model_internal function calculateTypeIsValid():void
+    {
+        var valRes:ValidationResultEvent = model_internal::_typeValidator.validate(model_internal::_instance.type)
+        model_internal::_typeIsValid_der = (valRes.results == null);
+        model_internal::_typeIsValidCacheInitialized = true;
+        if (valRes.results == null)
+             model_internal::typeValidationFailureMessages_der = emptyArray;
+        else
+        {
+            var _valFailures:Array = new Array();
+            for (var a:int = 0 ; a<valRes.results.length ; a++)
+            {
+                _valFailures.push(valRes.results[a].errorMessage);
+            }
+            model_internal::typeValidationFailureMessages_der = _valFailures;
+        }
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get typeValidationFailureMessages():Array
+    {
+        if (model_internal::_typeValidationFailureMessages == null)
+            model_internal::calculateTypeIsValid();
+
+        return _typeValidationFailureMessages;
+    }
+
+    model_internal function set typeValidationFailureMessages_der(value:Array) : void
+    {
+        var oldValue:Array = model_internal::_typeValidationFailureMessages;
+
+        var needUpdate : Boolean = false;
+        if (oldValue == null)
+            needUpdate = true;
+    
+        // avoid firing the event when old and new value are different empty arrays
+        if (!needUpdate && (oldValue !== value && (oldValue.length > 0 || value.length > 0)))
+        {
+            if (oldValue.length == value.length)
+            {
+                for (var a:int=0; a < oldValue.length; a++)
+                {
+                    if (oldValue[a] !== value[a])
+                    {
+                        needUpdate = true;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                needUpdate = true;
+            }
+        }
+
+        if (needUpdate)
+        {
+            model_internal::_typeValidationFailureMessages = value;   
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "typeValidationFailureMessages", oldValue, value));
+            // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
+            // the entire entity.
+            if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
+            {
+                model_internal::_instance.model_internal::isValid_der = model_internal::_instance.model_internal::calculateIsValid();
+            }
+        }
     }
 
 
@@ -461,6 +604,10 @@ internal class _FactoryEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
      {
          switch(propertyName)
          {
+            case("type"):
+            {
+                return typeValidationFailureMessages;
+            }
             default:
             {
                 return emptyArray;
