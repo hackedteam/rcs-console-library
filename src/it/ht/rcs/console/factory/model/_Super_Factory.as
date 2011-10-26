@@ -54,7 +54,6 @@ public class _Super_Factory extends flash.events.EventDispatcher implements com.
      * properties
      */
     private var _internal_status : String;
-    private var _internal_group_ids : ArrayCollection;
     private var _internal_counter : int;
     private var _internal_configs : ArrayCollection;
     model_internal var _internal_configs_leaf:it.ht.rcs.console.factory.model.Config;
@@ -94,12 +93,6 @@ public class _Super_Factory extends flash.events.EventDispatcher implements com.
     public function get status() : String
     {
         return _internal_status;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get group_ids() : ArrayCollection
-    {
-        return _internal_group_ids;
     }
 
     [Bindable(event="propertyChange")]
@@ -177,31 +170,6 @@ public class _Super_Factory extends flash.events.EventDispatcher implements com.
         {
             _internal_status = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "status", oldValue, _internal_status));
-        }
-    }
-
-    public function set group_ids(value:*) : void
-    {
-        var oldValue:ArrayCollection = _internal_group_ids;
-        if (oldValue !== value)
-        {
-            if (value is ArrayCollection)
-            {
-                _internal_group_ids = value;
-            }
-            else if (value is Array)
-            {
-                _internal_group_ids = new ArrayCollection(value);
-            }
-            else if (value == null)
-            {
-                _internal_group_ids = null;
-            }
-            else
-            {
-                throw new Error("value of group_ids must be a collection");
-            }
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "group_ids", oldValue, _internal_group_ids));
         }
     }
 

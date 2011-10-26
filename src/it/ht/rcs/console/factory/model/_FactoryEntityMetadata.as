@@ -24,16 +24,16 @@ internal class _FactoryEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("status", "group_ids", "counter", "configs", "demo", "_kind", "desc", "ident", "_id", "name", "path", "type");
+    model_internal static var allProperties:Array = new Array("status", "counter", "configs", "demo", "_kind", "desc", "ident", "_id", "name", "path", "type");
     model_internal static var allAssociationProperties:Array = new Array();
     model_internal static var allRequiredProperties:Array = new Array("demo", "type");
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("status", "group_ids", "counter", "configs", "demo", "_kind", "desc", "ident", "_id", "name", "path", "type");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("status", "counter", "configs", "demo", "_kind", "desc", "ident", "_id", "name", "path", "type");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("status", "group_ids", "counter", "configs", "demo", "_kind", "desc", "ident", "_id", "name", "path", "type");
+    model_internal static var dataProperties:Array = new Array("status", "counter", "configs", "demo", "_kind", "desc", "ident", "_id", "name", "path", "type");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("status", "group_ids", "counter", "configs", "demo", "_kind", "desc", "ident", "_id", "name", "path", "type");
+    model_internal static var nonDerivedProperties:Array = new Array("status", "counter", "configs", "demo", "_kind", "desc", "ident", "_id", "name", "path", "type");
     model_internal static var derivedProperties:Array = new Array();
-    model_internal static var collectionProperties:Array = new Array("group_ids", "configs", "path");
+    model_internal static var collectionProperties:Array = new Array("configs", "path");
     model_internal static var collectionBaseMap:Object;
     model_internal static var entityName:String = "Factory";
     model_internal static var dependentsOnMap:Object;
@@ -57,7 +57,6 @@ internal class _FactoryEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
             // dependents map
             model_internal::dependentsOnMap = new Object();
             model_internal::dependentsOnMap["status"] = new Array();
-            model_internal::dependentsOnMap["group_ids"] = new Array();
             model_internal::dependentsOnMap["counter"] = new Array();
             model_internal::dependentsOnMap["configs"] = new Array();
             model_internal::dependentsOnMap["demo"] = new Array();
@@ -71,7 +70,6 @@ internal class _FactoryEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
 
             // collection base map
             model_internal::collectionBaseMap = new Object();
-            model_internal::collectionBaseMap["group_ids"] = "Object";
             model_internal::collectionBaseMap["configs"] = "it.ht.rcs.console.factory.model.Config";
             model_internal::collectionBaseMap["path"] = "String";
         }
@@ -79,7 +77,6 @@ internal class _FactoryEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
         // Property type Map
         model_internal::propertyTypeMap = new Object();
         model_internal::propertyTypeMap["status"] = "String";
-        model_internal::propertyTypeMap["group_ids"] = "ArrayCollection";
         model_internal::propertyTypeMap["counter"] = "int";
         model_internal::propertyTypeMap["configs"] = "ArrayCollection";
         model_internal::propertyTypeMap["demo"] = "Boolean";
@@ -330,12 +327,6 @@ internal class _FactoryEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     }
 
     [Bindable(event="propertyChange")]
-    public function get isGroup_idsAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get isCounterAvailable():Boolean
     {
         return true;
@@ -415,12 +406,6 @@ internal class _FactoryEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
 
     [Bindable(event="propertyChange")]   
     public function get statusStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get group_idsStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }

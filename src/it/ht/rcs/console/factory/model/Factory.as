@@ -30,7 +30,6 @@ package it.ht.rcs.console.factory.model
         _id = data._id;
         _kind = data._kind;
         desc = data.desc;
-        group_ids = data.group_ids;
         ident = data.ident;
         name = data.name;
         status = data.status;
