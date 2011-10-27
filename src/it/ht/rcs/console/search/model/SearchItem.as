@@ -32,7 +32,6 @@ public class SearchItem extends _Super_SearchItem
         name = data.name;
         status = data.status;
         path = data.path;
-        group_ids = data.group_ids;
         if (data.hasOwnProperty("stat"))
           stat = data.stat;
         else

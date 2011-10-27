@@ -18,9 +18,9 @@ package it.ht.rcs.console.agent.model
         ident: '',
         status: 'OPEN',
         path: [],
-        group_ids: [],
         upgradable: true,
-        stat: null
+        stat: null,
+        configs: []
       };
     }
     
@@ -34,10 +34,10 @@ package it.ht.rcs.console.agent.model
         ident = data.ident;
         status = data.status;
         path = data.path;
-        group_ids = data.group_ids;
         upgradable = data.upgradable;
         stat = data.stat;
         configs = data.configs;
+        version = data.version;
       }
     }
     
@@ -56,7 +56,7 @@ package it.ht.rcs.console.agent.model
       _Super_Agent.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.agent.model.Agent);
       _Super_Agent.model_internal::initRemoteClassAliasAllRelated();
     }
-     
+    
     model_internal static function initRemoteClassAliasSingleChild() : void
     {
       _Super_Agent.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.agent.model.Agent);

@@ -14,7 +14,6 @@ package it.ht.rcs.console.factory.model
         _id: '',
         _kind: 'factory',
         desc: '',
-        group_ids: [],
         ident: '',
         name: DB.i18n.getString('NEW_FACTORY'),
         status: 'OPEN',
