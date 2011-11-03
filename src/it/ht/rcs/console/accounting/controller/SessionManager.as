@@ -130,7 +130,7 @@ package it.ht.rcs.console.accounting.controller
       this.lastServer = server;
       
       /* this is for DEMO purpose only, no database will be contacted, all the data are fake */
-      if (user == 'demo' && pass == '' && server == 'demo') {
+      if (user.indexOf('demo') != -1 && pass == '' && server == 'demo') {
         DB.instance.connect(server, notifier, i18n, true);
         trace('SessionManager.login -- DEMO MODE');
       } else {

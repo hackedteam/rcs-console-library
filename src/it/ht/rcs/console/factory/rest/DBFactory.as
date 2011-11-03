@@ -35,7 +35,7 @@ public class DBFactory extends _Super_DBFactory implements IDBFactory
     var resp:CallResponder = DB.getCallResponder(onResult, onFault);
     params['operation'] = operation._id;
     params['target'] = target._id;
-    resp.token = create_(JSON.encode(params)); 
+    resp.token = create_(JSON.encode(params));
   }
   
   public function destroy(id:String, onResult:Function=null, onFault:Function=null):void

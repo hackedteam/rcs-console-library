@@ -1,9 +1,9 @@
 /**
  * This is a generated class and is not intended for modification.  To customize behavior
- * of this value object you may modify the generated sub-class of this class - Configs.as.
+ * of this value object you may modify the generated sub-class of this class - Config.as.
  */
 
-package it.ht.rcs.console.agent.model
+package it.ht.rcs.console.factory.model
 {
 import com.adobe.fiber.services.IFiberManagingService;
 import com.adobe.fiber.valueobjects.IValueObject;
@@ -20,7 +20,7 @@ import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 use namespace model_internal;
 
 [ExcludeClass]
-public class _Super_Configs extends flash.events.EventDispatcher implements com.adobe.fiber.valueobjects.IValueObject
+public class _Super_Config extends flash.events.EventDispatcher implements com.adobe.fiber.valueobjects.IValueObject
 {
     model_internal static function initRemoteClassAliasSingle(cz:Class) : void
     {
@@ -30,7 +30,7 @@ public class _Super_Configs extends flash.events.EventDispatcher implements com.
     {
     }
 
-    model_internal var _dminternal_model : _ConfigsEntityMetadata;
+    model_internal var _dminternal_model : _ConfigEntityMetadata;
     model_internal var _changedObjects:mx.collections.ArrayCollection = new ArrayCollection();
 
     public function getChangedObjects() : Array
@@ -47,13 +47,14 @@ public class _Super_Configs extends flash.events.EventDispatcher implements com.
     /**
      * properties
      */
+    private var _internal_sent : int;
     private var _internal_updated_at : String;
     private var _internal_desc : String;
     private var _internal__id : String;
+    private var _internal_activated : int;
     private var _internal_saved : int;
     private var _internal_created_at : String;
     private var _internal_config : String;
-    private var _internal__mid : int;
     private var _internal_user : String;
 
     private static var emptyArray:Array = new Array();
@@ -66,9 +67,9 @@ public class _Super_Configs extends flash.events.EventDispatcher implements com.
 
     model_internal var _changeWatcherArray:Array = new Array();
 
-    public function _Super_Configs()
+    public function _Super_Config()
     {
-        _model = new _ConfigsEntityMetadata(this);
+        _model = new _ConfigEntityMetadata(this);
 
         // Bind to own data or source properties for cache invalidation triggering
 
@@ -77,6 +78,12 @@ public class _Super_Configs extends flash.events.EventDispatcher implements com.
     /**
      * data/source property getters
      */
+
+    [Bindable(event="propertyChange")]
+    public function get sent() : int
+    {
+        return _internal_sent;
+    }
 
     [Bindable(event="propertyChange")]
     public function get updated_at() : String
@@ -94,6 +101,12 @@ public class _Super_Configs extends flash.events.EventDispatcher implements com.
     public function get _id() : String
     {
         return _internal__id;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get activated() : int
+    {
+        return _internal_activated;
     }
 
     [Bindable(event="propertyChange")]
@@ -115,12 +128,6 @@ public class _Super_Configs extends flash.events.EventDispatcher implements com.
     }
 
     [Bindable(event="propertyChange")]
-    public function get _mid() : int
-    {
-        return _internal__mid;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get user() : String
     {
         return _internal_user;
@@ -133,6 +140,16 @@ public class _Super_Configs extends flash.events.EventDispatcher implements com.
     /**
      * data/source property setters
      */
+
+    public function set sent(value:int) : void
+    {
+        var oldValue:int = _internal_sent;
+        if (oldValue !== value)
+        {
+            _internal_sent = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "sent", oldValue, _internal_sent));
+        }
+    }
 
     public function set updated_at(value:String) : void
     {
@@ -164,6 +181,16 @@ public class _Super_Configs extends flash.events.EventDispatcher implements com.
         }
     }
 
+    public function set activated(value:int) : void
+    {
+        var oldValue:int = _internal_activated;
+        if (oldValue !== value)
+        {
+            _internal_activated = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "activated", oldValue, _internal_activated));
+        }
+    }
+
     public function set saved(value:int) : void
     {
         var oldValue:int = _internal_saved;
@@ -191,16 +218,6 @@ public class _Super_Configs extends flash.events.EventDispatcher implements com.
         {
             _internal_config = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "config", oldValue, _internal_config));
-        }
-    }
-
-    public function set _mid(value:int) : void
-    {
-        var oldValue:int = _internal__mid;
-        if (oldValue !== value)
-        {
-            _internal__mid = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "_mid", oldValue, _internal__mid));
         }
     }
 
@@ -274,14 +291,14 @@ public class _Super_Configs extends flash.events.EventDispatcher implements com.
 
     [Transient]
     [Bindable(event="propertyChange")]
-    public function get _model() : _ConfigsEntityMetadata
+    public function get _model() : _ConfigEntityMetadata
     {
         return model_internal::_dminternal_model;
     }
 
-    public function set _model(value : _ConfigsEntityMetadata) : void
+    public function set _model(value : _ConfigEntityMetadata) : void
     {
-        var oldValue : _ConfigsEntityMetadata = model_internal::_dminternal_model;
+        var oldValue : _ConfigEntityMetadata = model_internal::_dminternal_model;
         if (oldValue !== value)
         {
             model_internal::_dminternal_model = value;

@@ -1,9 +1,9 @@
 /**
  * This is a generated class and is not intended for modification.  To customize behavior
- * of this value object you may modify the generated sub-class of this class - Stat.as.
+ * of this value object you may modify the generated sub-class of this class - Evidence.as.
  */
 
-package it.ht.rcs.console.operation.model
+package it.ht.rcs.console.evidence.model
 {
 import com.adobe.fiber.services.IFiberManagingService;
 import com.adobe.fiber.util.FiberUtils;
@@ -23,8 +23,9 @@ import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 
 use namespace model_internal;
 
+[Managed]
 [ExcludeClass]
-public class _Super_Stat extends flash.events.EventDispatcher implements com.adobe.fiber.valueobjects.IValueObject
+public class _Super_Evidence extends flash.events.EventDispatcher implements com.adobe.fiber.valueobjects.IValueObject
 {
     model_internal static function initRemoteClassAliasSingle(cz:Class) : void
     {
@@ -34,7 +35,7 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
     {
     }
 
-    model_internal var _dminternal_model : _StatEntityMetadata;
+    model_internal var _dminternal_model : _EvidenceEntityMetadata;
     model_internal var _changedObjects:mx.collections.ArrayCollection = new ArrayCollection();
 
     public function getChangedObjects() : Array
@@ -51,15 +52,14 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
     /**
      * properties
      */
-    private var _internal_last_sync : int;
-    private var _internal_source : String;
+    private var _internal_blotter : Boolean;
     private var _internal__id : String;
-    private var _internal_last_sync_status : String;
-    private var _internal_grid_size : int;
-    private var _internal_evidence : Object;
-    private var _internal_device : String;
-    private var _internal_user : String;
-    private var _internal_size : int;
+    private var _internal_relevance : int;
+    private var _internal_data : Object;
+    private var _internal_acquired : int;
+    private var _internal_received : int;
+    private var _internal_type : String;
+    private var _internal_note : Object;
 
     private static var emptyArray:Array = new Array();
 
@@ -71,12 +71,14 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
 
     model_internal var _changeWatcherArray:Array = new Array();
 
-    public function _Super_Stat()
+    public function _Super_Evidence()
     {
-        _model = new _StatEntityMetadata(this);
+        _model = new _EvidenceEntityMetadata(this);
 
         // Bind to own data or source properties for cache invalidation triggering
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "last_sync_status", model_internal::setterListenerLast_sync_status));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "data", model_internal::setterListenerData));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "type", model_internal::setterListenerType));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "note", model_internal::setterListenerNote));
 
     }
 
@@ -85,15 +87,9 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
      */
 
     [Bindable(event="propertyChange")]
-    public function get last_sync() : int
+    public function get blotter() : Boolean
     {
-        return _internal_last_sync;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get source() : String
-    {
-        return _internal_source;
+        return _internal_blotter;
     }
 
     [Bindable(event="propertyChange")]
@@ -103,39 +99,39 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
     }
 
     [Bindable(event="propertyChange")]
-    public function get last_sync_status() : String
+    public function get relevance() : int
     {
-        return _internal_last_sync_status;
+        return _internal_relevance;
     }
 
     [Bindable(event="propertyChange")]
-    public function get grid_size() : int
+    public function get data() : Object
     {
-        return _internal_grid_size;
+        return _internal_data;
     }
 
     [Bindable(event="propertyChange")]
-    public function get evidence() : Object
+    public function get acquired() : int
     {
-        return _internal_evidence;
+        return _internal_acquired;
     }
 
     [Bindable(event="propertyChange")]
-    public function get device() : String
+    public function get received() : int
     {
-        return _internal_device;
+        return _internal_received;
     }
 
     [Bindable(event="propertyChange")]
-    public function get user() : String
+    public function get type() : String
     {
-        return _internal_user;
+        return _internal_type;
     }
 
     [Bindable(event="propertyChange")]
-    public function get size() : int
+    public function get note() : Object
     {
-        return _internal_size;
+        return _internal_note;
     }
 
     public function clearAssociations() : void
@@ -146,23 +142,12 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
      * data/source property setters
      */
 
-    public function set last_sync(value:int) : void
+    public function set blotter(value:Boolean) : void
     {
-        var oldValue:int = _internal_last_sync;
+        var oldValue:Boolean = _internal_blotter;
         if (oldValue !== value)
         {
-            _internal_last_sync = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "last_sync", oldValue, _internal_last_sync));
-        }
-    }
-
-    public function set source(value:String) : void
-    {
-        var oldValue:String = _internal_source;
-        if (oldValue !== value)
-        {
-            _internal_source = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "source", oldValue, _internal_source));
+            _internal_blotter = value;
         }
     }
 
@@ -172,67 +157,60 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
         if (oldValue !== value)
         {
             _internal__id = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "_id", oldValue, _internal__id));
         }
     }
 
-    public function set last_sync_status(value:String) : void
+    public function set relevance(value:int) : void
     {
-        var oldValue:String = _internal_last_sync_status;
+        var oldValue:int = _internal_relevance;
         if (oldValue !== value)
         {
-            _internal_last_sync_status = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "last_sync_status", oldValue, _internal_last_sync_status));
+            _internal_relevance = value;
         }
     }
 
-    public function set grid_size(value:int) : void
+    public function set data(value:Object) : void
     {
-        var oldValue:int = _internal_grid_size;
+        var oldValue:Object = _internal_data;
         if (oldValue !== value)
         {
-            _internal_grid_size = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "grid_size", oldValue, _internal_grid_size));
+            _internal_data = value;
         }
     }
 
-    public function set evidence(value:Object) : void
+    public function set acquired(value:int) : void
     {
-        var oldValue:Object = _internal_evidence;
+        var oldValue:int = _internal_acquired;
         if (oldValue !== value)
         {
-            _internal_evidence = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "evidence", oldValue, _internal_evidence));
+            _internal_acquired = value;
         }
     }
 
-    public function set device(value:String) : void
+    public function set received(value:int) : void
     {
-        var oldValue:String = _internal_device;
+        var oldValue:int = _internal_received;
         if (oldValue !== value)
         {
-            _internal_device = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "device", oldValue, _internal_device));
+            _internal_received = value;
         }
     }
 
-    public function set user(value:String) : void
+    public function set type(value:String) : void
     {
-        var oldValue:String = _internal_user;
+        var oldValue:String = _internal_type;
         if (oldValue !== value)
         {
-            _internal_user = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "user", oldValue, _internal_user));
+            _internal_type = value;
         }
     }
 
-    public function set size(value:int) : void
+    public function set note(value:Object) : void
     {
-        var oldValue:int = _internal_size;
+        var oldValue:Object = _internal_note;
         if (oldValue !== value)
         {
-            _internal_size = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "size", oldValue, _internal_size));
+            _internal_note = value;
         }
     }
 
@@ -248,9 +226,19 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
      *  - the validity of the property (and the containing entity) if the given data property is required.
      */
 
-    model_internal function setterListenerLast_sync_status(value:flash.events.Event):void
+    model_internal function setterListenerData(value:flash.events.Event):void
     {
-        _model.invalidateDependentOnLast_sync_status();
+        _model.invalidateDependentOnData();
+    }
+
+    model_internal function setterListenerType(value:flash.events.Event):void
+    {
+        _model.invalidateDependentOnType();
+    }
+
+    model_internal function setterListenerNote(value:flash.events.Event):void
+    {
+        _model.invalidateDependentOnNote();
     }
 
 
@@ -274,10 +262,20 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
         var validationFailureMessages:Array = new Array();
 
         var propertyValidity:Boolean = true;
-        if (!_model.last_sync_statusIsValid)
+        if (!_model.dataIsValid)
         {
             propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_last_sync_statusValidationFailureMessages);
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_dataValidationFailureMessages);
+        }
+        if (!_model.typeIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_typeValidationFailureMessages);
+        }
+        if (!_model.noteIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_noteValidationFailureMessages);
         }
 
         model_internal::_cacheInitialized_isValid = true;
@@ -306,14 +304,14 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
 
     [Transient]
     [Bindable(event="propertyChange")]
-    public function get _model() : _StatEntityMetadata
+    public function get _model() : _EvidenceEntityMetadata
     {
         return model_internal::_dminternal_model;
     }
 
-    public function set _model(value : _StatEntityMetadata) : void
+    public function set _model(value : _EvidenceEntityMetadata) : void
     {
-        var oldValue : _StatEntityMetadata = model_internal::_dminternal_model;
+        var oldValue : _EvidenceEntityMetadata = model_internal::_dminternal_model;
         if (oldValue !== value)
         {
             model_internal::_dminternal_model = value;
@@ -358,29 +356,83 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
         }
     }
 
-    model_internal var _doValidationCacheOfLast_sync_status : Array = null;
-    model_internal var _doValidationLastValOfLast_sync_status : String;
+    model_internal var _doValidationCacheOfData : Array = null;
+    model_internal var _doValidationLastValOfData : Object;
 
-    model_internal function _doValidationForLast_sync_status(valueIn:Object):Array
+    model_internal function _doValidationForData(valueIn:Object):Array
     {
-        var value : String = valueIn as String;
+        var value : Object = valueIn as Object;
 
-        if (model_internal::_doValidationCacheOfLast_sync_status != null && model_internal::_doValidationLastValOfLast_sync_status == value)
-           return model_internal::_doValidationCacheOfLast_sync_status ;
+        if (model_internal::_doValidationCacheOfData != null && model_internal::_doValidationLastValOfData == value)
+           return model_internal::_doValidationCacheOfData ;
 
-        _model.model_internal::_last_sync_statusIsValidCacheInitialized = true;
+        _model.model_internal::_dataIsValidCacheInitialized = true;
         var validationFailures:Array = new Array();
         var errorMessage:String;
         var failure:Boolean;
 
         var valRes:ValidationResult;
-        if (_model.isLast_sync_statusAvailable && _internal_last_sync_status == null)
+        if (_model.isDataAvailable && _internal_data == null)
         {
-            validationFailures.push(new ValidationResult(true, "", "", "last_sync_status is required"));
+            validationFailures.push(new ValidationResult(true, "", "", "data is required"));
         }
 
-        model_internal::_doValidationCacheOfLast_sync_status = validationFailures;
-        model_internal::_doValidationLastValOfLast_sync_status = value;
+        model_internal::_doValidationCacheOfData = validationFailures;
+        model_internal::_doValidationLastValOfData = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfType : Array = null;
+    model_internal var _doValidationLastValOfType : String;
+
+    model_internal function _doValidationForType(valueIn:Object):Array
+    {
+        var value : String = valueIn as String;
+
+        if (model_internal::_doValidationCacheOfType != null && model_internal::_doValidationLastValOfType == value)
+           return model_internal::_doValidationCacheOfType ;
+
+        _model.model_internal::_typeIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isTypeAvailable && _internal_type == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "type is required"));
+        }
+
+        model_internal::_doValidationCacheOfType = validationFailures;
+        model_internal::_doValidationLastValOfType = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfNote : Array = null;
+    model_internal var _doValidationLastValOfNote : Object;
+
+    model_internal function _doValidationForNote(valueIn:Object):Array
+    {
+        var value : Object = valueIn as Object;
+
+        if (model_internal::_doValidationCacheOfNote != null && model_internal::_doValidationLastValOfNote == value)
+           return model_internal::_doValidationCacheOfNote ;
+
+        _model.model_internal::_noteIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isNoteAvailable && _internal_note == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "note is required"));
+        }
+
+        model_internal::_doValidationCacheOfNote = validationFailures;
+        model_internal::_doValidationLastValOfNote = value;
 
         return validationFailures;
     }

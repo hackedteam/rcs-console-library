@@ -3,6 +3,7 @@ package it.ht.rcs.console.target.controller
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.events.RefreshEvent;
+  import it.ht.rcs.console.operation.model.Operation;
   import it.ht.rcs.console.target.model.Target;
   
   import mx.collections.ArrayCollection;
@@ -42,13 +43,16 @@ package it.ht.rcs.console.target.controller
     override protected function onItemUpdate(e:*):void
     {
       var o:Object = new Object;
-      o[e.property] = e.newValue;
+      if (e.newValue is ArrayCollection)
+        o[e.property] = e.newValue.source;
+      else
+        o[e.property] = e.newValue;
       DB.instance.target.update(e.source, o);
     }
     
-    public function addTarget(target:Target, callback:Function):void
+    public function addTarget(t:Target, operation:Operation, callback:Function):void
     {
-      DB.instance.target.create(target, null, function (e:ResultEvent):void {
+      DB.instance.target.create(t, operation, function (e:ResultEvent):void {
         var target:Target = e.result as Target;
         addItem(target);
         if (callback != null)

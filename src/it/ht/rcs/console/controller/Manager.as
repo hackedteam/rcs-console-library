@@ -76,7 +76,7 @@ package it.ht.rcs.console.controller
     
     protected function dispatchDataLoadedEvent():void
     {
-      dispatchEvent(new DataLoadedEvent(DataLoadedEvent.DATA_LOADED));
+      dispatchEvent(new DataLoadedEvent(DataLoadedEvent.DATA_LOADED, this));
     }
     
     protected function onRefresh(e:RefreshEvent):void
