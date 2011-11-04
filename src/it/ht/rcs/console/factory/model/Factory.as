@@ -19,7 +19,8 @@ package it.ht.rcs.console.factory.model
         status: 'OPEN',
         path: [],
         configs: [],
-        counter: 0
+        counter: 0,
+        type: ''
       };
     }
     
@@ -35,6 +36,7 @@ package it.ht.rcs.console.factory.model
         path = data.path;
         configs = data.configs;
         counter = data.counter;
+        type = data.type;
       }
     }
     

@@ -20,7 +20,8 @@ package it.ht.rcs.console.agent.model
         path: [],
         upgradable: true,
         stat: null,
-        configs: []
+        configs: [],
+        instance: ''
       };
     }
     
@@ -38,6 +39,7 @@ package it.ht.rcs.console.agent.model
         stat = data.stat;
         configs = data.configs;
         version = data.version;
+        instance = data.instance;
       }
     }
     

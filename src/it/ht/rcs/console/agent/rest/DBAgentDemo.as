@@ -29,7 +29,7 @@ package it.ht.rcs.console.agent.rest
         new Agent({ _id:"4e26a85d963d350f4e000008",  _kind:"agent",  desc:"Guido's iPad",                 name: "Guido ipad (1)",    version: 10,  ident:"RCS_0000000007",  counter: 1,  path :["4e259fe5963d35425c000001", "4e268724963d350658000004"],  status: "open",    upgradable: false,  stat: new Stat({ _id:"4e26a89a963d350f4e00000f", last_sync: 1308514166, evidence: {}, grid_size: 0, size: 0 }) }),
         
         // Dmitry Vitaly (All In)
-        new Agent({ _id:"4e26a862963d350f4e000009",  _kind:"agent", desc:"Dmitry's Cellphone",            name: "Dimitry cell (1)",  version: 10,  ident:"RCS_0000000008",  counter: 1,  path :["4e25a173963d354260000003", "4e26872b963d350658000005"],  status: "open",    upgradable: false,  stat: new Stat({ _id:"4e26a8a0963d350f4e000010", last_sync: 1307514166, evidence: {}, grid_size: 0, size: 0 }),
+        new Agent({ _id:"4e26a862963d350f4e000009",  _kind:"agent", desc:"Dmitry's Cellphone",            name: "Dimitry cell (1)",  version: 10,  ident:"RCS_0000000008",  counter: 1,  path :["4e25a173963d354260000003", "4e26872b963d350658000005"],  status: "open",    upgradable: false,  stat: new Stat({ _id:"4e26a8a0963d350f4e000010", last_sync: 1307514166, evidence: {}, grid_size: 0, size: 0 }), instance: 'a1b2c3',
                     configs: [new Config({ _id: 'c1', desc: 'First config',  sent: 1319708409, activated: 1319708409, saved: 1319708409, user: 'Tech User', config: '' }),
                               new Config({ _id: 'c2', desc: 'Second config', sent: 1319708409, activated: 1319708409, saved: 1319708409, user: 'Tech User', config: '' })] })
       ]);

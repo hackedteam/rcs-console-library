@@ -43,7 +43,7 @@ package it.ht.rcs.console.agent.controller
     
     override protected function onItemUpdate(e:*):void
     {
-      var o:Object = new Object;
+      var o:Object = new Object();
       if (e.newValue is ArrayCollection)
         o[e.property] = e.newValue.source;
       else
