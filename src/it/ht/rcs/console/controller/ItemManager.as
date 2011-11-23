@@ -29,38 +29,37 @@ package it.ht.rcs.console.controller
       _items.addEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
     }
     
-    override protected function onForceLogOut(e:SessionEvent):void
+    override protected function onLogout(e:SessionEvent):void
     {
-      super.onForceLogOut(e);
-      trace(_classname + ' (itemManager) -- Force Log Out');
+      super.onLogout(e);
+      trace(_classname + ' (itemManager) -- Logout');
       _items.removeAll();
     }
     
-    protected function onItemsChange(event:CollectionEvent):void
+    protected function onItemsChange(e:CollectionEvent):void
     {
       
       /* all the logic to the db is here, override this method */
-      switch (event.kind) {
+      switch (e.kind) {
         case CollectionEventKind.ADD:
-          event.items.forEach(function _(element:*, index:int, arr:Array):void {
+          e.items.forEach(function _(element:*, index:int, arr:Array):void {
             onItemAdd(element);
           });
           break;
         
         case CollectionEventKind.REMOVE:
-          event.items.forEach(function _(element:*, index:int, arr:Array):void {
+          e.items.forEach(function _(element:*, index:int, arr:Array):void {
             onItemRemove(element);
           });
           break;
         
         case CollectionEventKind.UPDATE:
-          event.items.forEach(function _(element:*, index:int, arr:Array):void {
+          e.items.forEach(function _(element:*, index:int, arr:Array):void {
             onItemUpdate(element);
           });
           break;
         
-        case CollectionEventKind.RESET:
-          onReset();
+        default:
           break;
       }
       
@@ -96,10 +95,6 @@ package it.ht.rcs.console.controller
     { 
     }
     
-    protected function onReset():void
-    {
-    }
-    
     public function getItem(_id:String):*
     {
       var idx:int;
@@ -114,7 +109,7 @@ package it.ht.rcs.console.controller
     
     public function getView(sortCriteria:ISort=null, filterFunction:Function=null):ListCollectionView
     {
-      trace(_classname + ' (itemManager) -- getView');
+      trace(_classname + ' (itemManager) -- GetView');
       
       /* create the view for the caller */
       var lcv:ListCollectionView = new ListCollectionView(_items);

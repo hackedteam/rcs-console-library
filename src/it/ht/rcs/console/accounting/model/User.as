@@ -56,7 +56,7 @@ package it.ht.rcs.console.accounting.model
     
     public static function defaultUser():Object
     {
-      var name:String = DB.i18n.getString('NEW_USER');
+      var name:String = DB.i18n.get('NEW_USER');
       return {
         _id: '',
         enabled: false,

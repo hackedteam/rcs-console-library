@@ -6,9 +6,13 @@ package it.ht.rcs.console.events
   public class SessionEvent extends Event
   {
     
-    public static const LOGGING_IN:String = "loggingIn";
-    public static const LOGGING_OUT:String = "loggingOut";
-    public static const FORCE_LOG_OUT:String = "forceLogout";
+    public static const LOGIN:String = "login";
+    
+    public static const BEFORE_LOGOUT:String = "beforeLogout";
+    public static const ABORT_LOGOUT:String = "abortLogout";
+    public static const LOGOUT:String = "logout";
+    
+    public var exitApplicationAfterLogout:Boolean = false;
     
     public function SessionEvent(type:String, bubbles:Boolean=false, cancelable:Boolean=true)
     {

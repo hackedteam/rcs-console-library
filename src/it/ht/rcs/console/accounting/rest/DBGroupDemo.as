@@ -9,24 +9,23 @@ package it.ht.rcs.console.accounting.rest
   
   public class DBGroupDemo implements IDBGroup
   {
-    public function DBGroupDemo()
-    {
-    }
     
     public function all(onResult:Function=null, onFault:Function=null):void
     {
-      var items:ArrayCollection = new ArrayCollection();
-      items.addItem(new Group({_id: '1', name: 'demo', user_ids:new ArrayCollection(['1','2','3']), item_ids:new ArrayCollection(['4df7246d963d350964000001', '4e259fe5963d35425c000001', '4e25a173963d354260000003']), alert: false}) );
-      items.addItem(new Group({_id: '2', name: 'developers', user_ids:new ArrayCollection(['2','3','4','5','6','7','8','9']), item_ids:new ArrayCollection(['4e25a173963d354260000003']), alert: false}) );
-      items.addItem(new Group({_id: '3', name: 'test', user_ids:new ArrayCollection(['10']), item_ids:new ArrayCollection([]), alert: true}) );
-      var event:ResultEvent = new ResultEvent("group.index", false, true, items);
+      var a:Array = [
+        new Group({ _id: '1', name: 'demo',       alert: false, user_ids: new ArrayCollection(['1', '2', '3']),                          item_ids: new ArrayCollection(['4df7246d963d350964000001', '4e259fe5963d35425c000001', '4e25a173963d354260000003']) }),
+        new Group({ _id: '2', name: 'developers', alert: false, user_ids: new ArrayCollection(['2', '3', '4', '5', '6', '7', '8', '9']), item_ids: new ArrayCollection(['4e25a173963d354260000003']) }),
+        new Group({ _id: '3', name: 'test',       alert: true,  user_ids: new ArrayCollection(['10']),                                   item_ids: new ArrayCollection([]) })
+      ];
+      var items:ArrayCollection = new ArrayCollection(a);
+
+      var event:ResultEvent = new ResultEvent('group.index', false, true, items);
       if (onResult != null) 
         onResult(event);
     }
     
     public function show(id:String, onResult:Function=null, onFault:Function=null):void
     {
-      /* do nothing */
     }
     
     public function create(params:Object, onResult:Function=null, onFault:Function=null):void
@@ -34,26 +33,24 @@ package it.ht.rcs.console.accounting.rest
       var g:Group = new Group(params);
       g._id = new Date().getTime().toString();
       g.user_ids = new ArrayCollection(params.user_ids);
-      var event:ResultEvent = new ResultEvent("user.create", false, true, g);
+      var event:ResultEvent = new ResultEvent('user.create', false, true, g);
       if (onResult != null) 
         onResult(event);
     }
     
     public function update(group:Group, property:Object, onResult:Function=null, onFault:Function=null):void
     {
-      /* do nothing */
     }
     
     public function destroy(group:Group, onResult:Function=null, onFault:Function=null):void
     {
-      /* do nothing */
     }
     
     public function add_user(group:Group, user:User, onResult:Function=null, onFault:Function=null):void
     {
       group.user_ids.addItem(user._id);
       user.group_ids.addItem(group._id);
-      var event:ResultEvent = new ResultEvent("group.add_user", false, true, group);
+      var event:ResultEvent = new ResultEvent('group.add_user', false, true, group);
       if (onResult != null) 
         onResult(event);
     }
@@ -68,21 +65,20 @@ package it.ht.rcs.console.accounting.rest
       if (idy >= 0)
         user.group_ids.source.splice(idy, 1);
       
-      var event:ResultEvent = new ResultEvent("group.del_user", false, true, group);
+      var event:ResultEvent = new ResultEvent('group.del_user', false, true, group);
       if (onResult != null) 
         onResult(event);
     }
     
     public function alert(group:Group, onResult:Function=null, onFault:Function=null):void
     {
-      /* do nothing */
     }
     
     public function add_operation(group:Group, op:Operation, onResult:Function=null, onFault:Function=null):void
     {
       group.item_ids.addItem(op._id);
       op.group_ids.addItem(group._id);
-      var event:ResultEvent = new ResultEvent("group.add_operation", false, true, group);
+      var event:ResultEvent = new ResultEvent('group.add_operation', false, true, group);
       if (onResult != null) 
         onResult(event);
     }
@@ -97,10 +93,11 @@ package it.ht.rcs.console.accounting.rest
       if (idy >= 0)
         op.group_ids.source.splice(idy, 1);
       
-      var event:ResultEvent = new ResultEvent("group.del_operation", false, true, group);
+      var event:ResultEvent = new ResultEvent('group.del_operation', false, true, group);
       if (onResult != null) 
         onResult(event);
     }
     
   }
+  
 }

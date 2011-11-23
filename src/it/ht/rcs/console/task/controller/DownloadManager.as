@@ -58,9 +58,9 @@ package it.ht.rcs.console.task.controller
       downloadTask.start_update();
     }
     
-    override protected function onLoggingOut(e:SessionEvent):void
+    override protected function onBeforeLogout(e:SessionEvent):void
     {
-      trace(_classname + ' (instance) -- Logging Out');
+      trace(_classname + ' (instance) -- Before Log Out');
       for each(var t:DownloadTask in _items)
         if (t.state != DownloadTask.STATE_FINISHED) {
           e.preventDefault();
@@ -68,13 +68,13 @@ package it.ht.rcs.console.task.controller
         }
     }
     
-    override protected function onForceLogOut(e:SessionEvent):void
+    override protected function onLogout(e:SessionEvent):void
     {
-      trace(_classname + ' (instance) -- Force Log Out');
+      trace(_classname + ' (instance) -- Log Out');
       clearFinished();
       for each(var t:DownloadTask in _items)
         t.cleanup();
-      super.onForceLogOut(e);
+      super.onLogout(e);
     }
     
     public function clearFinished():void

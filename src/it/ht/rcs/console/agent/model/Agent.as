@@ -13,7 +13,7 @@ package it.ht.rcs.console.agent.model
       return {
         _id: '',
         _kind: 'agent',
-        name: DB.i18n.getString('NEW_AGENT'),
+        name: DB.i18n.get('NEW_AGENT'),
         desc: '',
         ident: '',
         status: 'OPEN',

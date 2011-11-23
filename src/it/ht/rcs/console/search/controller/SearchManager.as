@@ -31,7 +31,7 @@ package it.ht.rcs.console.search.controller
     {
       var items:ArrayCollection = e.result as ArrayCollection;
       _items.removeAll();
-      items.source.forEach(function(element:*, index:int, arr:Array):void {
+      items.source.forEach(function(element:*, index:int, array:Array):void {
         addItem(element);
       });
     }

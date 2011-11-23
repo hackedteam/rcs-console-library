@@ -1,8 +1,6 @@
 package it.ht.rcs.console
 {
   
-  import flash.events.Event;
-  
   import it.ht.rcs.console.accounting.rest.DBGroup;
   import it.ht.rcs.console.accounting.rest.DBGroupDemo;
   import it.ht.rcs.console.accounting.rest.DBSession;
@@ -67,7 +65,15 @@ package it.ht.rcs.console
   
   public class DB
   {
+    
     public var session:IDBSession;
+
+    public var operation:IDBOperation;
+    public var target:IDBTarget;
+    public var agent:IDBAgent;
+    public var factory:IDBFactory;
+    public var search:IDBSearch;
+    
     public var audit:IDBAudit;
     public var task:IDBTask;
     public var collector:IDBCollector;
@@ -77,26 +83,17 @@ package it.ht.rcs.console
     public var user:IDBUser;
     public var group:IDBGroup;
     public var alert:IDBAlert;
-    public var operation:IDBOperation;
-    public var target:IDBTarget;
-    public var agent:IDBAgent;
-    public var factory:IDBFactory;
     public var update:IDBUpdate;
     public var system:IDBShard;
-    public var search:IDBSearch;
     public var backup:IDBBackup;
     public var evidence:IDBEvidence;
-    
-    private static var notifier:IFaultNotifier;
-    public static var i18n:II18N;
     
     /* singleton */
     private static var _instance:DB = new DB();
     public static function get instance():DB { return _instance; } 
     
-    public function DB()
-    {
-    }
+    private static var notifier:IFaultNotifier;
+    public static var i18n:II18N;
     
     public function connect(host:String, notifier:IFaultNotifier, i18n:II18N, demo:Boolean=false):void
     {
@@ -108,81 +105,82 @@ package it.ht.rcs.console
     private function initRemote(host:String):void
     {
       /* auto completion of the host entered by the user */
-      host = host_autocomplete(host);
+      host = hostAutocomplete(host);
       
-      session = new DBSession(host);
-      audit = new DBAudit(host);
-      task = new DBTask(host);
-      collector = new DBCollector(host);
-      proxy = new DBProxy(host);
-      license = new DBLicense(host);
-      monitor = new DBMonitor(host);
-      user = new DBUser(host);
-      group = new DBGroup(host);
-      alert = new DBAlert(host);
+      session   = new DBSession(host);
+      
       operation = new DBOperation(host);
-      target = new DBTarget(host);
-      agent = new DBAgent(host);
-      factory = new DBFactory(host);
-      update = new DBUpdate(host);
-      system = new DBShard(host);
-      search = new DBSearch(host);
-      backup = new DBBackup(host);
-      evidence = new DBEvidence(host);
+      target    = new DBTarget(host);
+      agent     = new DBAgent(host);
+      factory   = new DBFactory(host);
+      search    = new DBSearch(host);
+      
+      audit     = new DBAudit(host);
+      task      = new DBTask(host);
+      collector = new DBCollector(host);
+      proxy     = new DBProxy(host);
+      license   = new DBLicense(host);
+      monitor   = new DBMonitor(host);
+      user      = new DBUser(host);
+      group     = new DBGroup(host);
+      alert     = new DBAlert(host);
+      update    = new DBUpdate(host);
+      system    = new DBShard(host);
+      backup    = new DBBackup(host);
+      evidence  = new DBEvidence(host);
     }
-
+    
     private function initDemo():void
     {
-      session = new DBSessionDemo();
-      audit = new DBAuditDemo();
-      task = new DBTaskDemo();
-      collector = new DBCollectorDemo();
-      proxy = new DBProxyDemo();
-      license = new DBLicenseDemo();
-      monitor = new DBMonitorDemo();
-      user = new DBUserDemo();
-      group = new DBGroupDemo();
-      alert = new DBAlertDemo();
+      session   = new DBSessionDemo();
+      
       operation = new DBOperationDemo();
-      target = new DBTargetDemo();
-      agent = new DBAgentDemo();
-      factory = new DBFactoryDemo();
-      update = new DBUpdateDemo();
-      system = new DBShardDemo();
-      search = new DBSearchDemo();
-      backup = new DBBackupDemo();
-      evidence = new DBEvidenceDemo();
+      target    = new DBTargetDemo();
+      agent     = new DBAgentDemo();
+      factory   = new DBFactoryDemo();
+      search    = new DBSearchDemo();
+      
+      audit     = new DBAuditDemo();
+      task      = new DBTaskDemo();
+      collector = new DBCollectorDemo();
+      proxy     = new DBProxyDemo();
+      license   = new DBLicenseDemo();
+      monitor   = new DBMonitorDemo();
+      user      = new DBUserDemo();
+      group     = new DBGroupDemo();
+      alert     = new DBAlertDemo();
+      update    = new DBUpdateDemo();
+      system    = new DBShardDemo();
+      backup    = new DBBackupDemo();
+      evidence  = new DBEvidenceDemo();
     }
-
-    public static function host_autocomplete(host:String):String
+    
+    public static function hostAutocomplete(host:String):String
     {
       /* if the user doesn't declare the protocol, go with https by default */ 
-      if (host.search("http") == -1) {
-        host = "https://" + host;
-      }
+      if (host.search('http') == -1)
+        host = 'https://' + host;
       
       /* if the user doesn't declare a specific port, go with default */ 
-      if (host.lastIndexOf(":") == host.indexOf(":")) {
-        host = host + ":4444/"
-      }
+      if (host.lastIndexOf(':') == host.indexOf(':'))
+        host = host + ':4444/';
       
-      /* always be sure the url ends with / */
-      if (host.lastIndexOf("/") != host.length -1) {
-        host = host + "/"
-      }
+      /* always be sure the url ends with '/' */
+      if (host.lastIndexOf('/') != host.length -1)
+        host = host + '/';
       
       return host;
     }
     
     public static function getCallResponder(onResult:Function, onFault:Function):CallResponder
     {
-      // Set up the responder
+      /* set up the responder */
       var resp:CallResponder = new CallResponder();
 
       if (onResult != null)
         resp.addEventListener(ResultEvent.RESULT, onResult);
 
-      // If the fault handler is provided, use it. Otherwise, use the default one.
+      /* if the fault handler is provided, use it. Otherwise, use the default one. */
       if (onFault != null)
         resp.addEventListener(FaultEvent.FAULT, onFault);
       else
@@ -191,11 +189,13 @@ package it.ht.rcs.console
       return resp;
     }
     
-    /* default Fault handler */
+    /* default fault handler */
     private static function onDeFault(e:FaultEvent):void
     {
       if (notifier)
         notifier.fault(e);
     }
+
   }
+
 }

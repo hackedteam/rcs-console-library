@@ -17,7 +17,7 @@ package it.ht.rcs.console.operation.model
         created_at: '',
         desc: '',
         group_ids: [],
-        name: DB.i18n.getString('NEW_OPERATION'),
+        name: DB.i18n.get('NEW_OPERATION'),
         path: [],
         stat: null,
         status: 'OPEN',

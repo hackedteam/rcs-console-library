@@ -1,6 +1,5 @@
 package it.ht.rcs.console.network.model
 {
-  
   import com.adobe.fiber.core.model_internal;
   
   import it.ht.rcs.console.DB;
@@ -14,7 +13,7 @@ package it.ht.rcs.console.network.model
         _id: '',
         address: '',
         desc: '',
-        name: DB.i18n.getString('NEW_ANONYMIZER'),
+        name: DB.i18n.get('NEW_ANONYMIZER'),
         poll: false,
         port: 4444,
         type: 'remote',
@@ -24,7 +23,7 @@ package it.ht.rcs.console.network.model
       };
     }
     
-    public function Collector(data:Object = null)
+    public function Collector(data:Object=null)
     {
       if (data) {
         _id = data._id;

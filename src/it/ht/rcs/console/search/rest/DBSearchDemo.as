@@ -23,7 +23,6 @@ package it.ht.rcs.console.search.rest
     
     private function addItemAsSearchItem(item:*, index:int, array:Array) : void 
     { 
-      trace(item._kind);
       _search_items.addItem(new SearchItem(item)); 
     }
     

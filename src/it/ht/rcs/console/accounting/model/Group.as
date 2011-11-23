@@ -12,7 +12,7 @@ package it.ht.rcs.console.accounting.model
     {
       return {
         _id: "",
-        name: DB.i18n.getString('NEW_GROUP'),
+        name: DB.i18n.get('NEW_GROUP'),
         alert: false,
         user_ids: [],
         item_ids: []
