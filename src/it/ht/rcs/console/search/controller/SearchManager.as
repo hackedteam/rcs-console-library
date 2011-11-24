@@ -10,6 +10,7 @@ package it.ht.rcs.console.search.controller
 
   public class SearchManager extends ItemManager
   {
+    
     [Bindable]
     public var filter:Object = {};
     
@@ -44,4 +45,5 @@ package it.ht.rcs.console.search.controller
     }
     
   }
+
 }

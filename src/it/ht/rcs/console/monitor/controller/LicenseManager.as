@@ -1,15 +1,12 @@
 package it.ht.rcs.console.monitor.controller
 {
-  import com.adobe.serialization.json.JSON;
-  
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.controller.Manager;
   import it.ht.rcs.console.events.RefreshEvent;
+  import it.ht.rcs.console.monitor.model.CurrMaxObject;
   import it.ht.rcs.console.monitor.model.License;
   import it.ht.rcs.console.monitor.model.LicenseCount;
-  import it.ht.rcs.console.utils.CurrMaxObject;
   
-  import mx.core.FlexGlobals;
   import mx.rpc.events.ResultEvent;
   
   [Bindable]
@@ -46,7 +43,7 @@ package it.ht.rcs.console.monitor.controller
     
     /* singleton */
     private static var _instance:LicenseManager = new LicenseManager();
-    public static function get instance():LicenseManager { return _instance; } 
+    public static function get instance():LicenseManager { return _instance; }
     
     public function LicenseManager()
     {
@@ -117,4 +114,5 @@ package it.ht.rcs.console.monitor.controller
     }
 
   }
+  
 }
