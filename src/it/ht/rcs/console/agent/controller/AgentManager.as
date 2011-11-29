@@ -1,9 +1,10 @@
 package it.ht.rcs.console.agent.controller
 {
+  import flash.events.Event;
+  
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.agent.model.Agent;
   import it.ht.rcs.console.controller.ItemManager;
-  import it.ht.rcs.console.events.RefreshEvent;
   import it.ht.rcs.console.operation.model.Operation;
   import it.ht.rcs.console.target.model.Target;
   
@@ -20,9 +21,9 @@ package it.ht.rcs.console.agent.controller
       super();
     }
     
-    override protected function onRefresh(e:RefreshEvent):void
+    override public function refresh():void
     {
-      super.onRefresh(e);
+      super.refresh();
       DB.instance.agent.all(onResult);
     }
     

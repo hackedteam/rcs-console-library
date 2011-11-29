@@ -16,4 +16,5 @@ package it.ht.rcs.console.events
     }
     
   }
+  
 }

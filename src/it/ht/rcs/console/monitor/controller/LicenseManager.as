@@ -49,14 +49,12 @@ package it.ht.rcs.console.monitor.controller
     {
       super();
       /* always get new data upon startup */
-      onRefresh(null);
+      refresh();
     }
     
-    override protected function onRefresh(e:RefreshEvent):void
+    override public function refresh():void
     {
-      super.onRefresh(e);
-      trace('LicenseManager -- Refresh');
-      
+      super.refresh();
       DB.instance.license.limit(onLoadLimit);
       DB.instance.license.count(onLoadCount);
     }

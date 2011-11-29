@@ -50,9 +50,9 @@ package it.ht.rcs.console.alert.controller
       DB.instance.alert.update(e.source, o);
     }
     
-    override protected function onRefresh(e:RefreshEvent):void
+    override public function refresh():void
     {
-      super.onRefresh(e);
+      super.refresh();
       DB.instance.alert.all(onAlertIndexResult);
     }
     

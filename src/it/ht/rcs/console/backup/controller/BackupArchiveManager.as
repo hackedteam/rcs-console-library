@@ -20,10 +20,9 @@ package it.ht.rcs.console.backup.controller
       super();
     }
     
-    override protected function onRefresh(e:RefreshEvent):void
+    override public function refresh():void
     {
-      super.onRefresh(e);
-      
+      super.refresh();
       DB.instance.backup.all_archive(onResult);
     }
     

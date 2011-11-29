@@ -1,5 +1,6 @@
 package it.ht.rcs.console.controller
 {
+  import flash.events.Event;
   import flash.events.EventDispatcher;
   import flash.utils.getQualifiedClassName;
   
@@ -58,8 +59,13 @@ package it.ht.rcs.console.controller
     
     public function refresh():void
     {
-      trace(_classname + ' (manager) -- Explicit Refresh');
-      onRefresh(null);
+      trace(_classname + ' (manager) -- Refresh');
+    }
+    
+    protected function onRefresh(e:Event=null):void
+    {
+      trace(_classname + ' (manager) -- Refresh');
+      refresh();
     }
     
     protected function dispatchDataLoadedEvent():void
@@ -67,11 +73,11 @@ package it.ht.rcs.console.controller
       dispatchEvent(new DataLoadedEvent(DataLoadedEvent.DATA_LOADED, this));
     }
     
-    protected function onRefresh(e:RefreshEvent):void
-    {
-      trace(_classname + ' (manager) -- Refresh');
-      /* get the new items from the DB, override this function */
-    }
+//    protected function onRefresh(e:RefreshEvent):void
+//    {
+//      trace(_classname + ' (manager) -- Refresh');
+//      /* get the new items from the DB, override this function */
+//    }
     
   }
   

@@ -25,5 +25,7 @@ package it.ht.rcs.console.events
     {
       super(type, bubbles, cancelable);
     }
+    
   }
+  
 }

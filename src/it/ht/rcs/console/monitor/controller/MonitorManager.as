@@ -32,9 +32,9 @@ package it.ht.rcs.console.monitor.controller
       super();
     }
     
-    override protected function onRefresh(e:RefreshEvent):void
+    override public function refresh():void
     {
-      super.onRefresh(e);
+      super.refresh();
       DB.instance.monitor.all(onMonitorIndexResult);
     }
     
@@ -54,7 +54,7 @@ package it.ht.rcs.console.monitor.controller
     
     private function onAutoRefresh(e:Event):void
     {
-      onRefresh(null);
+      refresh();
     }
     
     override public function start():void

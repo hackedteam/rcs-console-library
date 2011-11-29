@@ -19,9 +19,9 @@ package it.ht.rcs.console.target.controller
       super();
     }
     
-    override protected function onRefresh(e:RefreshEvent):void
+    override public function refresh():void
     {
-      super.onRefresh(e);
+      super.refresh();
       DB.instance.target.all(onResult);
     }
     

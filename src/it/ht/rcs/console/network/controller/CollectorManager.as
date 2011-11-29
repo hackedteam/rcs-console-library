@@ -35,9 +35,9 @@ package it.ht.rcs.console.network.controller
       DB.instance.collector.update(e.source, o);
     }
     
-    override protected function onRefresh(e:RefreshEvent):void
+    override public function refresh():void
     {
-      super.onRefresh(e);
+      super.refresh();
       DB.instance.collector.all(onResult);
     }
     

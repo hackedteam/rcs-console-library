@@ -24,7 +24,7 @@ package it.ht.rcs.console.alert.controller
       super();
     }
     
-    override protected function onRefresh(e:RefreshEvent):void
+    override public function refresh():void
     {
       AlertManager.instance.refresh();
     }

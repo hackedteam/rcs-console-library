@@ -22,9 +22,9 @@ package it.ht.rcs.console.search.controller
       super();
     }
     
-    override protected function onRefresh(e:RefreshEvent):void
+    override public function refresh():void
     {
-      super.onRefresh(e);
+      super.refresh();
       DB.instance.search.all(filter, onResult);
     }
     

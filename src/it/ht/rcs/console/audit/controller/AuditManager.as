@@ -27,18 +27,18 @@ package it.ht.rcs.console.audit.controller
     override public function start():void
     {
       super.start();
-      FlexGlobals.topLevelApplication.addEventListener(FilterEvent.FILTER_CHANGED, refresh);
+      FlexGlobals.topLevelApplication.addEventListener(FilterEvent.FILTER_CHANGED, onRefresh);
     }
     
     override public function stop():void
     {
       super.stop();
-      FlexGlobals.topLevelApplication.removeEventListener(FilterEvent.FILTER_CHANGED, refresh);
+      FlexGlobals.topLevelApplication.removeEventListener(FilterEvent.FILTER_CHANGED, onRefresh);
     }
     
-    override protected function onRefresh(e:RefreshEvent):void
+    override public function refresh():void
     {
-      super.onRefresh(e);
+      super.refresh();
       DB.instance.audit.filters(onFiltersResult);
       if(!filter.hasOwnProperty('from'))
         setDefaultDate();

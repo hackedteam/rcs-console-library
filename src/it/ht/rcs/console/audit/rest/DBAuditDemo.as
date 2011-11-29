@@ -5,6 +5,7 @@ package it.ht.rcs.console.audit.rest
 
 	public class DBAuditDemo implements IDBAudit
 	{
+    
 		public function DBAuditDemo()
 		{
 		}
@@ -33,13 +34,15 @@ package it.ht.rcs.console.audit.rest
       /*
       "{"_id":"4dd4e801963d350598000003","actions":["login","user.update","user.create","logout"],"actors":["admin"],"users":["admin","test","New User","finochky"]}"
       */
-      filters["_id"]    = "4dd4e801963d350598000003";
-      filters["action"] = ["login", "user.update", "user.create", "logout"];
-      filters["actor"]  = ["admin", "alor"];
-      filters["user"]   = ["admin", "test", "New User", "finochky"];
-      var event:ResultEvent = new ResultEvent("audit.filters", false, true, filters);
+      filters['_id']    = '4dd4e801963d350598000003';
+      filters['action'] = ['login', 'user.update', 'user.create', 'logout'];
+      filters['actor']  = ['admin', 'alor'];
+      filters['user']   = ['admin', 'test', 'New User', 'finochky'];
+      var event:ResultEvent = new ResultEvent('audit.filters', false, true, filters);
       if (onResult != null)
         onResult(event);
 		}
+    
 	}
+  
 }

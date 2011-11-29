@@ -44,9 +44,9 @@ package it.ht.rcs.console.accounting.controller
       DB.instance.user.update(e.source, o);
     }
     
-    override protected function onRefresh(e:RefreshEvent):void
+    override public function refresh():void
     {
-      super.onRefresh(e);
+      super.refresh();
       
       /* system users */
       DB.instance.user.all(onUserIndexResult);

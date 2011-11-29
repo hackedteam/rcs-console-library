@@ -45,9 +45,9 @@ package it.ht.rcs.console.accounting.controller
     
     /* SESSIONS LIST MANAGEMENT */
     
-    override protected function onRefresh(e:RefreshEvent):void
+    override public function refresh():void
     {
-      super.onRefresh(e);
+      super.refresh();
       DB.instance.session.all(onSessionIndexResult);
     }
     

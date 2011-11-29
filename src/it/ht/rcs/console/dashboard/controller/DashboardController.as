@@ -60,13 +60,11 @@ package it.ht.rcs.console.dashboard.controller
     
     private function onAutoRefresh(e:Event):void
     {
-      onRefresh(null);
+      refresh();
     }
     
-    override protected function onRefresh(e:RefreshEvent):void
+    override public function refresh():void
     {
-      trace('DashboardController - Refresh')
-      
       /* don't remove all the element here to avoid flickering
        * we instead use the addOrReplaceItem
        */
