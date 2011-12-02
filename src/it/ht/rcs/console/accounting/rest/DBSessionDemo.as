@@ -49,8 +49,7 @@ package it.ht.rcs.console.accounting.rest
       else if (credentials.user == 'demon') current_user = demo_user_nothing;
       
       var result:Session = new Session({cookie: 0, time: 0, user: current_user});
-      var event:ResultEvent = new ResultEvent('login', false, true, result);
-      onResult(event);
+      onResult(new ResultEvent('login', false, true, result));
     }
     
     public function logout(onResult:Function=null, onFault:Function=null):void
@@ -61,20 +60,21 @@ package it.ht.rcs.console.accounting.rest
     
     public function all(onResult:Function=null, onFault:Function=null):void
     {
-      var items:ArrayCollection = new ArrayCollection();
-      items.addItem(new Session({user: new User({name:'alor'}), address:'1.1.2.3', time:(new Date().time - 20000) / 1000, level: new ArrayCollection(['view'])}) );
-      items.addItem(new Session({user: new User({name:'demo'}), address:'demo', time:new Date().time / 1000, level: new ArrayCollection(['admin', 'sys', 'tech', 'view'])}) );
-      items.addItem(new Session({user: new User({name:'daniel'}), address:'5.6.7.8', time:(new Date().time - 5000) / 1000, level: new ArrayCollection(['tech', 'view'])}) );
-      items.addItem(new Session({user: new User({name:'admin'}), address:'10.11.12.13', time:(new Date().time - 2000) / 1000, level: new ArrayCollection(['admin'])}) );
-      items.addItem(new Session({user: new User({name:'sysadmin'}), address:'3.4.5.6', time:(new Date().time - 2000) / 1000, level: new ArrayCollection(['sys'])}) );
-      var event:ResultEvent = new ResultEvent('session.index', false, true, items);
+      var a:Array = [
+        new Session({ user: new User({ name:'alor' }),     address:'1.1.2.3',     time: (new Date().time - 20000) / 1000, level: new ArrayCollection(['view']) }),
+        new Session({ user: new User({ name:'demo' }),     address:'demo',        time: (new Date().time - 10000) / 1000, level: new ArrayCollection(['admin', 'sys', 'tech', 'view']) }),
+        new Session({ user: new User({ name:'daniel' }),   address:'5.6.7.8',     time: (new Date().time - 5000)  / 1000, level: new ArrayCollection(['tech', 'view']) }),
+        new Session({ user: new User({ name:'admin' }),    address:'10.11.12.13', time: (new Date().time - 2000)  / 1000, level: new ArrayCollection(['admin']) }),
+        new Session({ user: new User({ name:'sysadmin' }), address:'3.4.5.6',     time: (new Date().time - 1000)  / 1000, level: new ArrayCollection(['sys']) })
+      ];
+      var items:ArrayCollection = new ArrayCollection(a);
+
       if (onResult != null)
-        onResult(event);
+        onResult(new ResultEvent('session.index', false, true, items));
     }
     
     public function destroy(cookie:String, onResult:Function=null, onFault:Function=null):void
     {
-      /* do nothing */
     }
     
   }

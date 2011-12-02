@@ -10,7 +10,6 @@ package it.ht.rcs.console.accounting.controller
   import it.ht.rcs.console.II18N;
   import it.ht.rcs.console.accounting.model.Session;
   import it.ht.rcs.console.controller.ItemManager;
-  import it.ht.rcs.console.events.RefreshEvent;
   import it.ht.rcs.console.events.SessionEvent;
   
   import mx.collections.ArrayCollection;
@@ -179,7 +178,7 @@ package it.ht.rcs.console.accounting.controller
         lastLogon.server = this.lastServer;
         s.writeObject(lastLogon);
         s.close();
-      } catch(e:*) {        
+      } catch(e:*) {
       }
     }
     

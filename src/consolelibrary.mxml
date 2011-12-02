@@ -1,22 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
-					   xmlns:s="library://ns.adobe.com/flex/spark" 
-					   xmlns:mx="library://ns.adobe.com/flex/mx"
-             creationComplete="init()">
-	<fx:Declarations>
-		<!-- Place non-visual elements (e.g., services, value objects) here -->
-	</fx:Declarations>
-  
-  <fx:Script>
-    <![CDATA[
-      import it.ht.rcs.console.DB;
-      import it.ht.rcs.console.I18NImpl;
-      
-      private function init():void
-      {
-        DB.instance.connect('localhost', null, new I18NImpl());
-      }
-
-    ]]>
-  </fx:Script>
-</s:WindowedApplication>
+<s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009"
+                       xmlns:s="library://ns.adobe.com/flex/spark"
+                       xmlns:mx="library://ns.adobe.com/flex/mx"/>

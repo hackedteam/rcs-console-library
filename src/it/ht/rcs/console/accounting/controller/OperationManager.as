@@ -10,6 +10,7 @@ package it.ht.rcs.console.accounting.controller
   
   public class OperationManager extends ItemManager
   {
+    
     private static var _instance:OperationManager = new OperationManager();
     public static function get instance():OperationManager { return _instance; } 
     
@@ -32,5 +33,7 @@ package it.ht.rcs.console.accounting.controller
         addItem(element as Operation);
       });
     }
+    
   }
+  
 }
