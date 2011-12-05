@@ -7,7 +7,7 @@
  
 package it.ht.rcs.console.accounting.rest
 {
-  import com.adobe.serialization.json.JSON;
+  
   
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.accounting.model.Group;
@@ -36,16 +36,16 @@ public class DBGroup extends _Super_DBGroup implements IDBGroup
     public function add_user(group:Group, user:User, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = add_user_(JSON.encode( {_id: group._id, user: {_id: user._id}} )); 
+      resp.token = add_user_(JSON.stringify( {_id: group._id, user: {_id: user._id}} )); 
     }
     
     public function alert(group:Group, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
       if (group != null) 
-        resp.token = alert_(JSON.encode( {_id: group._id} ));
+        resp.token = alert_(JSON.stringify( {_id: group._id} ));
       else
-        resp.token = alert_(JSON.encode( {_id: null} ));
+        resp.token = alert_(JSON.stringify( {_id: null} ));
     }
     
     public function all(onResult:Function=null, onFault:Function=null):void
@@ -57,19 +57,19 @@ public class DBGroup extends _Super_DBGroup implements IDBGroup
     public function create(params:Object, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = create_(JSON.encode(params));
+      resp.token = create_(JSON.stringify(params));
     }
     
     public function del_user(group:Group, user:User, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = del_user_(JSON.encode( {_id: group._id, user: {_id: user._id}} ));
+      resp.token = del_user_(JSON.stringify( {_id: group._id, user: {_id: user._id}} ));
     }
     
     public function destroy(group:Group, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = destroy_(JSON.encode({_id: group._id}))
+      resp.token = destroy_(JSON.stringify({_id: group._id}))
     }
     
     public function show(id:String, onResult:Function=null, onFault:Function=null):void
@@ -82,19 +82,19 @@ public class DBGroup extends _Super_DBGroup implements IDBGroup
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
       property['_id'] = group._id;
-      resp.token = update_(JSON.encode(property));
+      resp.token = update_(JSON.stringify(property));
     }
     
     public function add_operation(group:Group, op:Operation, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = add_operation_(JSON.encode( {_id: group._id, operation: {_id: op._id}} )); 
+      resp.token = add_operation_(JSON.stringify( {_id: group._id, operation: {_id: op._id}} )); 
     }
     
     public function del_operation(group:Group, op:Operation, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = del_operation_(JSON.encode( {_id: group._id, operation: {_id: op._id}} ));
+      resp.token = del_operation_(JSON.stringify( {_id: group._id, operation: {_id: op._id}} ));
     }
     
 }

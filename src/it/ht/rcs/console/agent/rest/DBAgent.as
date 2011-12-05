@@ -7,7 +7,7 @@
  
 package it.ht.rcs.console.agent.rest
 {
-  import com.adobe.serialization.json.JSON;
+  
   
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.agent.model.Agent;
@@ -36,7 +36,7 @@ package it.ht.rcs.console.agent.rest
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
       params['operation'] = operation._id;
       params['target'] = target._id;
-      resp.token = create_(JSON.encode(params)); 
+      resp.token = create_(JSON.stringify(params)); 
     }
     
     public function destroy(id:String, onResult:Function=null, onFault:Function=null):void
@@ -55,7 +55,7 @@ package it.ht.rcs.console.agent.rest
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
       property['_id'] = agent._id;
-      resp.token = update_(JSON.encode(property));
+      resp.token = update_(JSON.stringify(property));
     }  
     
     /**

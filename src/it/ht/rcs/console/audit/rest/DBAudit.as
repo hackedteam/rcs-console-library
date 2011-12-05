@@ -7,7 +7,7 @@
  
 package it.ht.rcs.console.audit.rest
 {
-	import com.adobe.serialization.json.JSON;
+	
 	import it.ht.rcs.console.DB;	
 	import mx.rpc.CallResponder;
 
@@ -35,7 +35,7 @@ package it.ht.rcs.console.audit.rest
     public function all(filter:Object, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = all_(JSON.encode(filter));
+      resp.token = all_(JSON.stringify(filter));
     }
     
   }

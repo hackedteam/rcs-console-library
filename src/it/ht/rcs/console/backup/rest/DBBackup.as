@@ -7,7 +7,7 @@
  
 package it.ht.rcs.console.backup.rest
 {
-  import com.adobe.serialization.json.JSON;
+  
   
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.backup.model.BackupArchive;
@@ -42,26 +42,26 @@ package it.ht.rcs.console.backup.rest
     public function create_job(params:Object, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = create_job_(JSON.encode(params));
+      resp.token = create_job_(JSON.stringify(params));
     }
     
     public function update_job(job:BackupJob, property:Object, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
       property['_id'] = job._id;
-      resp.token = update_job_(JSON.encode(property));
+      resp.token = update_job_(JSON.stringify(property));
     }
 
     public function destroy_job(job:BackupJob, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = destroy_job_(JSON.encode({_id: job._id}))
+      resp.token = destroy_job_(JSON.stringify({_id: job._id}))
     }
 
     public function run_job(job:BackupJob, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = run_job_(JSON.encode({_id: job._id}))
+      resp.token = run_job_(JSON.stringify({_id: job._id}))
     }
     
     public function all_archive(onResult:Function=null, onFault:Function=null):void
@@ -73,13 +73,13 @@ package it.ht.rcs.console.backup.rest
     public function restore_archive(archive:BackupArchive, destructive:Boolean, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = restore_archive_(JSON.encode({_id: archive._id, drop: destructive}))
+      resp.token = restore_archive_(JSON.stringify({_id: archive._id, drop: destructive}))
     }
 
     public function destroy_archive(archive:BackupArchive, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = destroy_archive_(JSON.encode({_id: archive._id}))
+      resp.token = destroy_archive_(JSON.stringify({_id: archive._id}))
     }
 
   }

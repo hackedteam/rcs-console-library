@@ -7,7 +7,7 @@
  
 package it.ht.rcs.console.factory.rest
 {
-  import com.adobe.serialization.json.JSON;
+  
   
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.factory.model.Factory;
@@ -35,7 +35,7 @@ public class DBFactory extends _Super_DBFactory implements IDBFactory
     var resp:CallResponder = DB.getCallResponder(onResult, onFault);
     params['operation'] = operation._id;
     params['target'] = target._id;
-    resp.token = create_(JSON.encode(params));
+    resp.token = create_(JSON.stringify(params));
   }
   
   public function destroy(id:String, onResult:Function=null, onFault:Function=null):void
@@ -54,7 +54,7 @@ public class DBFactory extends _Super_DBFactory implements IDBFactory
   {
     var resp:CallResponder = DB.getCallResponder(onResult, onFault);
     property['_id'] = factory._id;
-    resp.token = update_(JSON.encode(property));
+    resp.token = update_(JSON.stringify(property));
   }  
   
   /**

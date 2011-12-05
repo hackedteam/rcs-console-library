@@ -1,6 +1,6 @@
 package it.ht.rcs.console.network.rest
 {
-  import com.adobe.serialization.json.JSON;
+  
   
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.network.model.Proxy;
@@ -32,44 +32,44 @@ package it.ht.rcs.console.network.rest
     public function create(params:Object, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = create_(JSON.encode(params));
+      resp.token = create_(JSON.stringify(params));
     }
     
     public function update(proxy:Proxy, property:Object, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
       property['_id'] = proxy._id;
-      resp.token = update_(JSON.encode(property));
+      resp.token = update_(JSON.stringify(property));
     }
     
     public function destroy(id:String, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = destroy_(JSON.encode( { _id: id } ));
+      resp.token = destroy_(JSON.stringify( { _id: id } ));
     }
     
     public function add_rule(proxy_id:String, params:Object, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = add_rule_(JSON.encode( { _id: proxy_id, rule: params } ));
+      resp.token = add_rule_(JSON.stringify( { _id: proxy_id, rule: params } ));
     }
     
     public function del_rule(proxy_id:String, rule_id:String, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = del_rule_(JSON.encode( { _id: proxy_id, rule: { _id: rule_id } } ));
+      resp.token = del_rule_(JSON.stringify( { _id: proxy_id, rule: { _id: rule_id } } ));
     }
     
     public function update_rule(proxy_id:String, params:Object, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = update_rule_(JSON.encode( { _id: proxy_id, rule: params } ));
+      resp.token = update_rule_(JSON.stringify( { _id: proxy_id, rule: params } ));
     }
     
     public function apply_rules(proxy_id:String, onResult:Function = null, onFault:Function = null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = apply_rules_(JSON.encode( { _id: proxy_id} ));
+      resp.token = apply_rules_(JSON.stringify( { _id: proxy_id} ));
     }
     
     public function logs(id:String, onResult:Function=null, onFault:Function=null):void
@@ -81,7 +81,7 @@ package it.ht.rcs.console.network.rest
     public function del_logs(id:String, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = del_logs_(JSON.encode( { _id: id} ));
+      resp.token = del_logs_(JSON.stringify( { _id: id} ));
     }
     
     /**
