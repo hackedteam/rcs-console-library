@@ -7,8 +7,11 @@
  
 package it.ht.rcs.console.build.rest
 {
+  import it.ht.rcs.console.DB;
+  
+  import mx.rpc.CallResponder;
 
-public class DBBuild extends _Super_DBBuild
+public class DBBuild extends _Super_DBBuild implements IDBBuild
 {
     /**
      * Override super.init() to provide any initialization customization if needed.
@@ -18,7 +21,19 @@ public class DBBuild extends _Super_DBBuild
         super.preInitializeService();
         // Initialization customization goes here
     }
-               
+    
+    public function DBBuild(host:String)
+    {
+      super();
+      _serviceControl.baseURL = host;
+    }
+    
+    public function exploit_all(onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = exploit_all_();
+    }
+    
 }
 
 }
