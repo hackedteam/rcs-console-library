@@ -16,7 +16,7 @@ package it.ht.rcs.console.agent.model
         name: DB.i18n.get('NEW_AGENT'),
         desc: '',
         ident: '',
-        status: 'OPEN',
+        status: 'open',
         path: [],
         upgradable: true,
         stat: null,

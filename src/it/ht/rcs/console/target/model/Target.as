@@ -17,7 +17,7 @@ package it.ht.rcs.console.target.model
         desc: '',
         group_ids: [],
         name: DB.i18n.get('NEW_TARGET'),
-        status: 'OPEN',
+        status: 'open',
         path: [],
         stat: null,
         updated_at: ''

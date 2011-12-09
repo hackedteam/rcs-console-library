@@ -20,7 +20,7 @@ package it.ht.rcs.console.operation.model
         name: DB.i18n.get('NEW_OPERATION'),
         path: [],
         stat: null,
-        status: 'OPEN',
+        status: 'open',
         updated_at: ''
       };
     }

@@ -46,15 +46,18 @@ package it.ht.rcs.console.controller
     private function listenRefresh():void
     {
       trace(_classname + ' (manager) -- ListenRefresh');
-      /* react to the global refresh event */
       FlexGlobals.topLevelApplication.addEventListener(RefreshEvent.REFRESH, onRefresh);
     }
     
     private function unlistenRefresh():void
     {
       trace(_classname + ' (manager) -- UnlistenRefresh');
-      /* after stop, we don't want to refresh anymore */
       FlexGlobals.topLevelApplication.removeEventListener(RefreshEvent.REFRESH, onRefresh);
+    }
+    
+    private function onRefresh(e:Event=null):void
+    {
+      refresh();
     }
     
     public function refresh():void
@@ -62,22 +65,10 @@ package it.ht.rcs.console.controller
       trace(_classname + ' (manager) -- Refresh');
     }
     
-    protected function onRefresh(e:Event=null):void
-    {
-      trace(_classname + ' (manager) -- Refresh');
-      refresh();
-    }
-    
     protected function dispatchDataLoadedEvent():void
     {
       dispatchEvent(new DataLoadedEvent(DataLoadedEvent.DATA_LOADED, this));
     }
-    
-//    protected function onRefresh(e:RefreshEvent):void
-//    {
-//      trace(_classname + ' (manager) -- Refresh');
-//      /* get the new items from the DB, override this function */
-//    }
     
   }
   

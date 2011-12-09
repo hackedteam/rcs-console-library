@@ -16,7 +16,7 @@ package it.ht.rcs.console.factory.model
         desc: '',
         ident: '',
         name: DB.i18n.get('NEW_FACTORY'),
-        status: 'OPEN',
+        status: 'open',
         path: [],
         configs: [],
         counter: 0,
