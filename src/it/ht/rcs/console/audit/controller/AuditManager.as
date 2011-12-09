@@ -27,13 +27,13 @@ package it.ht.rcs.console.audit.controller
     override public function start():void
     {
       super.start();
-      FlexGlobals.topLevelApplication.addEventListener(FilterEvent.FILTER_CHANGED, onRefresh);
+      //FlexGlobals.topLevelApplication.addEventListener(FilterEvent.FILTER_CHANGED, onRefresh);
     }
     
     override public function stop():void
     {
       super.stop();
-      FlexGlobals.topLevelApplication.removeEventListener(FilterEvent.FILTER_CHANGED, onRefresh);
+      //FlexGlobals.topLevelApplication.removeEventListener(FilterEvent.FILTER_CHANGED, onRefresh);
     }
     
     override public function refresh():void
