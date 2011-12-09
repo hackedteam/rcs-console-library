@@ -7,7 +7,7 @@
  
 package it.ht.rcs.console.alert.rest
 {
-  import com.adobe.serialization.json.JSON;
+  
   
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.alert.model.Alert;
@@ -41,13 +41,13 @@ public class DBAlert extends _Super_DBAlert implements IDBAlert
     public function create(params:Object, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = create_(JSON.encode(params));
+      resp.token = create_(JSON.stringify(params));
     }
     
     public function destroy(alert:Alert, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = destroy_(JSON.encode({_id: alert._id}))
+      resp.token = destroy_(JSON.stringify({_id: alert._id}))
     }
     
     public function show(id:String, onResult:Function=null, onFault:Function=null):void
@@ -60,7 +60,7 @@ public class DBAlert extends _Super_DBAlert implements IDBAlert
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
       property['_id'] = alert._id;
-      resp.token = update_(JSON.encode(property));
+      resp.token = update_(JSON.stringify(property));
     }
     
     public function counters(onResult:Function = null, onFault:Function = null):void
@@ -72,13 +72,13 @@ public class DBAlert extends _Super_DBAlert implements IDBAlert
     public function destroy_log(alert:Alert, log:AlertLog, onResult:Function = null, onFault:Function = null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = destroy_log_(JSON.encode({_id: alert._id, log: {_id: log._id}}))
+      resp.token = destroy_log_(JSON.stringify({_id: alert._id, log: {_id: log._id}}))
     }
     
     public function destroy_all_logs(alert:Alert, onResult:Function = null, onFault:Function = null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = destroy_all_logs_(JSON.encode({_id: alert._id}))
+      resp.token = destroy_all_logs_(JSON.stringify({_id: alert._id}))
     }
 }
 

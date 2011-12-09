@@ -7,7 +7,7 @@
  
 package it.ht.rcs.console.search.rest
 {
-  import com.adobe.serialization.json.JSON;
+  
   
   import it.ht.rcs.console.DB;
   
@@ -34,7 +34,7 @@ package it.ht.rcs.console.search.rest
     public function all(filter:Object, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = all_(JSON.encode(filter));
+      resp.token = all_(JSON.stringify(filter));
     }
     
     public function show(id:String, onResult:Function=null, onFault:Function=null):void

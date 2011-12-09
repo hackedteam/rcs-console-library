@@ -43,7 +43,7 @@ internal class _Super_DBCollector extends com.adobe.fiber.services.wrapper.HTTPS
          operation.method = "GET";
          argsArray = new Array("id");
          operation.argumentNames = argsArray;         
-         operation.serializationFilter = serializer1;
+         operation.serializationFilter = serializer0;
          operation.properties = new Object();
          operation.properties["urlParamNames"] = ["id"];
          operation.resultType = it.ht.rcs.console.network.model.Collector;

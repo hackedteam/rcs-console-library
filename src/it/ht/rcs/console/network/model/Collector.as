@@ -12,6 +12,7 @@ package it.ht.rcs.console.network.model
       return {
         _id: '',
         address: '',
+        internal_address: '',
         desc: '',
         name: DB.i18n.get('NEW_ANONYMIZER'),
         poll: false,
@@ -28,6 +29,7 @@ package it.ht.rcs.console.network.model
       if (data) {
         _id = data._id;
         address = data.address;
+        internal_address = data.internal_address;
         desc = data.desc;
         name = data.name;
         poll = data.poll;

@@ -1,6 +1,6 @@
 package it.ht.rcs.console.accounting.rest
 {
-  import com.adobe.serialization.json.JSON;
+  
   
   import it.ht.rcs.console.DB;
   
@@ -25,7 +25,7 @@ package it.ht.rcs.console.accounting.rest
     public function login(credentials:Object, onResult:Function, onFault:Function):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = login_(JSON.encode(credentials));  
+      resp.token = login_(JSON.stringify(credentials));  
     }
     
     public function logout(onResult:Function=null, onFault:Function=null):void
@@ -43,7 +43,7 @@ package it.ht.rcs.console.accounting.rest
     public function destroy(cookie:String, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = destroy_(JSON.encode({_id: cookie})); 
+      resp.token = destroy_(JSON.stringify({_id: cookie})); 
     }
       
   }

@@ -6,15 +6,10 @@
 package it.ht.rcs.console.network.model
 {
 import com.adobe.fiber.services.IFiberManagingService;
-import com.adobe.fiber.util.FiberUtils;
 import com.adobe.fiber.valueobjects.IValueObject;
-import flash.events.Event;
 import flash.events.EventDispatcher;
-import mx.binding.utils.ChangeWatcher;
 import mx.collections.ArrayCollection;
-import mx.events.CollectionEvent;
 import mx.events.PropertyChangeEvent;
-import mx.validators.ValidationResult;
 
 import flash.net.registerClassAlias;
 import flash.net.getClassByAlias;
@@ -52,20 +47,21 @@ public class _Super_Collector extends flash.events.EventDispatcher implements co
     /**
      * properties
      */
+    private var _internal_port : int;
+    private var _internal_desc : String;
+    private var _internal_configured : Boolean;
     private var _internal_next : ArrayCollection;
+    private var _internal_type : String;
     private var _internal_version : int;
     private var _internal_prev : ArrayCollection;
-    private var _internal_instance : String;
-    private var _internal_port : int;
     private var _internal_updated_at : String;
     private var _internal_poll : Boolean;
-    private var _internal_desc : String;
     private var _internal__id : String;
-    private var _internal_configured : Boolean;
     private var _internal_address : String;
     private var _internal_name : String;
+    private var _internal_internal_address : String;
     private var _internal_created_at : String;
-    private var _internal_type : String;
+    private var _internal_instance : String;
 
     private static var emptyArray:Array = new Array();
 
@@ -82,9 +78,6 @@ public class _Super_Collector extends flash.events.EventDispatcher implements co
         _model = new _CollectorEntityMetadata(this);
 
         // Bind to own data or source properties for cache invalidation triggering
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "next", model_internal::setterListenerNext));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "prev", model_internal::setterListenerPrev));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "instance", model_internal::setterListenerInstance));
 
     }
 
@@ -93,9 +86,33 @@ public class _Super_Collector extends flash.events.EventDispatcher implements co
      */
 
     [Bindable(event="propertyChange")]
+    public function get port() : int
+    {
+        return _internal_port;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get desc() : String
+    {
+        return _internal_desc;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get configured() : Boolean
+    {
+        return _internal_configured;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get next() : ArrayCollection
     {
         return _internal_next;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get type() : String
+    {
+        return _internal_type;
     }
 
     [Bindable(event="propertyChange")]
@@ -111,18 +128,6 @@ public class _Super_Collector extends flash.events.EventDispatcher implements co
     }
 
     [Bindable(event="propertyChange")]
-    public function get instance() : String
-    {
-        return _internal_instance;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get port() : int
-    {
-        return _internal_port;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get updated_at() : String
     {
         return _internal_updated_at;
@@ -135,21 +140,9 @@ public class _Super_Collector extends flash.events.EventDispatcher implements co
     }
 
     [Bindable(event="propertyChange")]
-    public function get desc() : String
-    {
-        return _internal_desc;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get _id() : String
     {
         return _internal__id;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get configured() : Boolean
-    {
-        return _internal_configured;
     }
 
     [Bindable(event="propertyChange")]
@@ -165,15 +158,21 @@ public class _Super_Collector extends flash.events.EventDispatcher implements co
     }
 
     [Bindable(event="propertyChange")]
+    public function get internal_address() : String
+    {
+        return _internal_internal_address;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get created_at() : String
     {
         return _internal_created_at;
     }
 
     [Bindable(event="propertyChange")]
-    public function get type() : String
+    public function get instance() : String
     {
-        return _internal_type;
+        return _internal_instance;
     }
 
     public function clearAssociations() : void
@@ -183,6 +182,36 @@ public class _Super_Collector extends flash.events.EventDispatcher implements co
     /**
      * data/source property setters
      */
+
+    public function set port(value:int) : void
+    {
+        var oldValue:int = _internal_port;
+        if (oldValue !== value)
+        {
+            _internal_port = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "port", oldValue, _internal_port));
+        }
+    }
+
+    public function set desc(value:String) : void
+    {
+        var oldValue:String = _internal_desc;
+        if (oldValue !== value)
+        {
+            _internal_desc = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "desc", oldValue, _internal_desc));
+        }
+    }
+
+    public function set configured(value:Boolean) : void
+    {
+        var oldValue:Boolean = _internal_configured;
+        if (oldValue !== value)
+        {
+            _internal_configured = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "configured", oldValue, _internal_configured));
+        }
+    }
 
     public function set next(value:*) : void
     {
@@ -206,6 +235,16 @@ public class _Super_Collector extends flash.events.EventDispatcher implements co
                 throw new Error("value of next must be a collection");
             }
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "next", oldValue, _internal_next));
+        }
+    }
+
+    public function set type(value:String) : void
+    {
+        var oldValue:String = _internal_type;
+        if (oldValue !== value)
+        {
+            _internal_type = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "type", oldValue, _internal_type));
         }
     }
 
@@ -244,26 +283,6 @@ public class _Super_Collector extends flash.events.EventDispatcher implements co
         }
     }
 
-    public function set instance(value:String) : void
-    {
-        var oldValue:String = _internal_instance;
-        if (oldValue !== value)
-        {
-            _internal_instance = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "instance", oldValue, _internal_instance));
-        }
-    }
-
-    public function set port(value:int) : void
-    {
-        var oldValue:int = _internal_port;
-        if (oldValue !== value)
-        {
-            _internal_port = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "port", oldValue, _internal_port));
-        }
-    }
-
     public function set updated_at(value:String) : void
     {
         var oldValue:String = _internal_updated_at;
@@ -284,16 +303,6 @@ public class _Super_Collector extends flash.events.EventDispatcher implements co
         }
     }
 
-    public function set desc(value:String) : void
-    {
-        var oldValue:String = _internal_desc;
-        if (oldValue !== value)
-        {
-            _internal_desc = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "desc", oldValue, _internal_desc));
-        }
-    }
-
     public function set _id(value:String) : void
     {
         var oldValue:String = _internal__id;
@@ -301,16 +310,6 @@ public class _Super_Collector extends flash.events.EventDispatcher implements co
         {
             _internal__id = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "_id", oldValue, _internal__id));
-        }
-    }
-
-    public function set configured(value:Boolean) : void
-    {
-        var oldValue:Boolean = _internal_configured;
-        if (oldValue !== value)
-        {
-            _internal_configured = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "configured", oldValue, _internal_configured));
         }
     }
 
@@ -334,6 +333,16 @@ public class _Super_Collector extends flash.events.EventDispatcher implements co
         }
     }
 
+    public function set internal_address(value:String) : void
+    {
+        var oldValue:String = _internal_internal_address;
+        if (oldValue !== value)
+        {
+            _internal_internal_address = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "internal_address", oldValue, _internal_internal_address));
+        }
+    }
+
     public function set created_at(value:String) : void
     {
         var oldValue:String = _internal_created_at;
@@ -344,13 +353,13 @@ public class _Super_Collector extends flash.events.EventDispatcher implements co
         }
     }
 
-    public function set type(value:String) : void
+    public function set instance(value:String) : void
     {
-        var oldValue:String = _internal_type;
+        var oldValue:String = _internal_instance;
         if (oldValue !== value)
         {
-            _internal_type = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "type", oldValue, _internal_type));
+            _internal_instance = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "instance", oldValue, _internal_instance));
         }
     }
 
@@ -365,35 +374,6 @@ public class _Super_Collector extends flash.events.EventDispatcher implements co
      *  - the validity of the property (and the containing entity) if the given data property has a length restriction.
      *  - the validity of the property (and the containing entity) if the given data property is required.
      */
-
-    model_internal function setterListenerNext(value:flash.events.Event):void
-    {
-        if (value is mx.events.PropertyChangeEvent)
-        {
-            if (mx.events.PropertyChangeEvent(value).newValue)
-            {
-                mx.events.PropertyChangeEvent(value).newValue.addEventListener(mx.events.CollectionEvent.COLLECTION_CHANGE, model_internal::setterListenerNext);
-            }
-        }
-        _model.invalidateDependentOnNext();
-    }
-
-    model_internal function setterListenerPrev(value:flash.events.Event):void
-    {
-        if (value is mx.events.PropertyChangeEvent)
-        {
-            if (mx.events.PropertyChangeEvent(value).newValue)
-            {
-                mx.events.PropertyChangeEvent(value).newValue.addEventListener(mx.events.CollectionEvent.COLLECTION_CHANGE, model_internal::setterListenerPrev);
-            }
-        }
-        _model.invalidateDependentOnPrev();
-    }
-
-    model_internal function setterListenerInstance(value:flash.events.Event):void
-    {
-        _model.invalidateDependentOnInstance();
-    }
 
 
     /**
@@ -416,21 +396,6 @@ public class _Super_Collector extends flash.events.EventDispatcher implements co
         var validationFailureMessages:Array = new Array();
 
         var propertyValidity:Boolean = true;
-        if (!_model.nextIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_nextValidationFailureMessages);
-        }
-        if (!_model.prevIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_prevValidationFailureMessages);
-        }
-        if (!_model.instanceIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_instanceValidationFailureMessages);
-        }
 
         model_internal::_cacheInitialized_isValid = true;
         model_internal::invalidConstraints_der = violatedConsts;
@@ -510,87 +475,6 @@ public class _Super_Collector extends flash.events.EventDispatcher implements co
         }
     }
 
-    model_internal var _doValidationCacheOfNext : Array = null;
-    model_internal var _doValidationLastValOfNext : ArrayCollection;
-
-    model_internal function _doValidationForNext(valueIn:Object):Array
-    {
-        var value : ArrayCollection = valueIn as ArrayCollection;
-
-        if (model_internal::_doValidationCacheOfNext != null && model_internal::_doValidationLastValOfNext == value)
-           return model_internal::_doValidationCacheOfNext ;
-
-        _model.model_internal::_nextIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.isNextAvailable && _internal_next == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "next is required"));
-        }
-
-        model_internal::_doValidationCacheOfNext = validationFailures;
-        model_internal::_doValidationLastValOfNext = value;
-
-        return validationFailures;
-    }
-    
-    model_internal var _doValidationCacheOfPrev : Array = null;
-    model_internal var _doValidationLastValOfPrev : ArrayCollection;
-
-    model_internal function _doValidationForPrev(valueIn:Object):Array
-    {
-        var value : ArrayCollection = valueIn as ArrayCollection;
-
-        if (model_internal::_doValidationCacheOfPrev != null && model_internal::_doValidationLastValOfPrev == value)
-           return model_internal::_doValidationCacheOfPrev ;
-
-        _model.model_internal::_prevIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.isPrevAvailable && _internal_prev == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "prev is required"));
-        }
-
-        model_internal::_doValidationCacheOfPrev = validationFailures;
-        model_internal::_doValidationLastValOfPrev = value;
-
-        return validationFailures;
-    }
-    
-    model_internal var _doValidationCacheOfInstance : Array = null;
-    model_internal var _doValidationLastValOfInstance : String;
-
-    model_internal function _doValidationForInstance(valueIn:Object):Array
-    {
-        var value : String = valueIn as String;
-
-        if (model_internal::_doValidationCacheOfInstance != null && model_internal::_doValidationLastValOfInstance == value)
-           return model_internal::_doValidationCacheOfInstance ;
-
-        _model.model_internal::_instanceIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.isInstanceAvailable && _internal_instance == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "instance is required"));
-        }
-
-        model_internal::_doValidationCacheOfInstance = validationFailures;
-        model_internal::_doValidationLastValOfInstance = value;
-
-        return validationFailures;
-    }
-    
 
 }
 

@@ -7,7 +7,7 @@
 
 package it.ht.rcs.console.monitor.rest
 {
-  import com.adobe.serialization.json.JSON;
+  
   import it.ht.rcs.console.DB;
   import mx.rpc.CallResponder;
 
@@ -43,7 +43,7 @@ package it.ht.rcs.console.monitor.rest
     public function destroy(id:String, onResult:Function = null, onFault:Function = null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = destroy_(JSON.encode({_id: id}));
+      resp.token = destroy_(JSON.stringify({_id: id}));
     }
 
   }

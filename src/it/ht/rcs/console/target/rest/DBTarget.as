@@ -7,7 +7,7 @@
  
 package it.ht.rcs.console.target.rest
 {
-  import com.adobe.serialization.json.JSON;
+  
   
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.operation.model.Operation;
@@ -33,7 +33,7 @@ public class DBTarget extends _Super_DBTarget implements IDBTarget
   {
     var resp:CallResponder = DB.getCallResponder(onResult, onFault);
     params['operation'] = operation._id;
-    resp.token = create_(JSON.encode(params));
+    resp.token = create_(JSON.stringify(params));
   }
   
   public function destroy(id:String, onResult:Function=null, onFault:Function=null):void
@@ -52,7 +52,7 @@ public class DBTarget extends _Super_DBTarget implements IDBTarget
   {
     var resp:CallResponder = DB.getCallResponder(onResult, onFault);
     property['_id'] = target._id;
-    resp.token = update_(JSON.encode(property));
+    resp.token = update_(JSON.stringify(property));
   }
   
   /**

@@ -7,7 +7,7 @@
  
 package it.ht.rcs.console.task.rest
 {
-  import com.adobe.serialization.json.JSON;
+  
   
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.task.model.Task;
@@ -39,13 +39,13 @@ public class DBTask extends _Super_DBTask implements IDBTask
     public function create(params:Object, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = create_(JSON.encode(params));
+      resp.token = create_(JSON.stringify(params));
     }
     
     public function destroy(task:Task, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = destroy_(JSON.encode({_id: task._id}));  
+      resp.token = destroy_(JSON.stringify({_id: task._id}));  
     }
     
     public function show(id:String, onResult:Function=null, onFault:Function=null):void

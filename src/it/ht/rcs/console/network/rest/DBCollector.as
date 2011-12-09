@@ -1,6 +1,6 @@
 package it.ht.rcs.console.network.rest
 {
-  import com.adobe.serialization.json.JSON;
+  
   
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.network.model.Collector;
@@ -31,20 +31,20 @@ package it.ht.rcs.console.network.rest
     public function create(params:Object, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = create_(JSON.encode(params));
+      resp.token = create_(JSON.stringify(params));
     }
     
     public function update(collector:Collector, property:Object, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
       property['_id'] = collector._id;
-      resp.token = update_(JSON.encode(property));
+      resp.token = update_(JSON.stringify(property));
     }
     
     public function destroy(id:String, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = destroy_(JSON.encode({_id: id}));
+      resp.token = destroy_(JSON.stringify({_id: id}));
     }
     
     public function logs(id:String, onResult:Function=null, onFault:Function=null):void
@@ -56,7 +56,7 @@ package it.ht.rcs.console.network.rest
     public function del_logs(id:String, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = del_logs_(JSON.encode( { _id: id} ));
+      resp.token = del_logs_(JSON.stringify( { _id: id} ));
     }
     
     /**

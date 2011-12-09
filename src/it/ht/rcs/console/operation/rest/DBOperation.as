@@ -7,7 +7,7 @@
  
 package it.ht.rcs.console.operation.rest
 {
-  import com.adobe.serialization.json.JSON;
+  
   
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.operation.model.Operation;
@@ -31,7 +31,7 @@ public class DBOperation extends _Super_DBOperation implements IDBOperation
   public function create(params:Object, onResult:Function=null, onFault:Function=null):void
   {
     var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-    resp.token = create_(JSON.encode(params)); 
+    resp.token = create_(JSON.stringify(params)); 
   }
   
   public function destroy(id:String, onResult:Function=null, onFault:Function=null):void
@@ -50,7 +50,7 @@ public class DBOperation extends _Super_DBOperation implements IDBOperation
   {
     var resp:CallResponder = DB.getCallResponder(onResult, onFault);
     property['_id'] = operation._id;
-    resp.token = update_(JSON.encode(property));
+    resp.token = update_(JSON.stringify(property));
   }
   
   /**

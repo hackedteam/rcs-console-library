@@ -7,7 +7,7 @@
  
 package it.ht.rcs.console.accounting.rest
 {
-  import com.adobe.serialization.json.JSON;
+  
   
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.accounting.model.User;
@@ -40,13 +40,13 @@ public class DBUser extends _Super_DBUser implements IDBUser
     public function create(params:Object, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = create_(JSON.encode(params));
+      resp.token = create_(JSON.stringify(params));
     }
     
     public function destroy(user:User, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = destroy_(JSON.encode({_id: user._id}))
+      resp.token = destroy_(JSON.stringify({_id: user._id}))
     }
     
     public function show(id:String, onResult:Function=null, onFault:Function=null):void
@@ -59,13 +59,13 @@ public class DBUser extends _Super_DBUser implements IDBUser
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
       property['_id'] = user._id;
-      resp.token = update_(JSON.encode(property));
+      resp.token = update_(JSON.stringify(property));
     }
     
     public function add_recent(user:User, id:String, onResult:Function = null, onFault:Function = null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = add_recent_(JSON.encode({_id: user._id, item_id: id}));
+      resp.token = add_recent_(JSON.stringify({_id: user._id, item_id: id}));
     }
     
 }
