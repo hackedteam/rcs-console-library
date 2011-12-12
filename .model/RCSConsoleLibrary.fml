@@ -3419,5 +3419,7 @@
       <item name="Package">it.ht.rcs.console.build.model</item>
     </annotation>
     <property name="string" type="string" required="true"/>
+    <property name="file" type="string" required="true"/>
+    <property name="combo" type="string" required="true"/>
   </entity>
 </model>

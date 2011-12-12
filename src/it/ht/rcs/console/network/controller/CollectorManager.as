@@ -6,6 +6,8 @@ package it.ht.rcs.console.network.controller
   import it.ht.rcs.console.network.model.Collector;
   
   import mx.collections.ArrayCollection;
+  import mx.collections.ISort;
+  import mx.collections.ListCollectionView;
   import mx.rpc.events.ResultEvent;
   
   public class CollectorManager extends ItemManager
@@ -72,6 +74,22 @@ package it.ht.rcs.console.network.controller
       DB.instance.collector.del_logs(_id, function(e:ResultEvent):void {
         callback();
       });
+    }
+    
+    private function entryFilter(item:Object):Boolean
+    {
+      if (item['type'] == 'local' && item['next'][0] == null)
+        return true;
+      
+      if (item['type'] == 'remote' && item['next'][0] == null && item['prev'][0] != null)
+        return true;
+      
+      return false;
+    }
+    
+    public function getEntryPointsView(sortCriteria:ISort=null, filterFunction:Function=null):ListCollectionView
+    {
+      return super.getView(null, entryFilter);
     }
     
   }
