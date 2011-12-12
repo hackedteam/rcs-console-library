@@ -22,6 +22,9 @@ package it.ht.rcs.console
   import it.ht.rcs.console.backup.rest.DBBackup;
   import it.ht.rcs.console.backup.rest.DBBackupDemo;
   import it.ht.rcs.console.backup.rest.IDBBackup;
+  import it.ht.rcs.console.build.rest.DBBuild;
+  import it.ht.rcs.console.build.rest.DBBuildDemo;
+  import it.ht.rcs.console.build.rest.IDBBuild;
   import it.ht.rcs.console.evidence.rest.DBEvidence;
   import it.ht.rcs.console.evidence.rest.DBEvidenceDemo;
   import it.ht.rcs.console.evidence.rest.IDBEvidence;
@@ -87,6 +90,7 @@ package it.ht.rcs.console
     public var system:IDBShard;
     public var backup:IDBBackup;
     public var evidence:IDBEvidence;
+    public var build:IDBBuild;
     
     /* singleton */
     private static var _instance:DB = new DB();
@@ -114,7 +118,6 @@ package it.ht.rcs.console
       agent     = new DBAgent(host);
       factory   = new DBFactory(host);
       search    = new DBSearch(host);
-      
       audit     = new DBAudit(host);
       task      = new DBTask(host);
       collector = new DBCollector(host);
@@ -128,6 +131,7 @@ package it.ht.rcs.console
       system    = new DBShard(host);
       backup    = new DBBackup(host);
       evidence  = new DBEvidence(host);
+      build     = new DBBuild(host);
     }
     
     private function initDemo():void
@@ -153,6 +157,7 @@ package it.ht.rcs.console
       system    = new DBShardDemo();
       backup    = new DBBackupDemo();
       evidence  = new DBEvidenceDemo();
+      build     = new DBBuildDemo();
     }
     
     public static function hostAutocomplete(host:String):String
