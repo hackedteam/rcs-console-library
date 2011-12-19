@@ -3,7 +3,6 @@ package it.ht.rcs.console.audit.controller
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.events.FilterEvent;
-  import it.ht.rcs.console.events.RefreshEvent;
   import it.ht.rcs.console.utils.DateUtils;
   
   import mx.collections.ArrayCollection;
@@ -27,13 +26,13 @@ package it.ht.rcs.console.audit.controller
     override public function start():void
     {
       super.start();
-      //FlexGlobals.topLevelApplication.addEventListener(FilterEvent.FILTER_CHANGED, onRefresh);
+      FlexGlobals.topLevelApplication.addEventListener(FilterEvent.FILTER_CHANGED, onFilterChanged);
     }
     
     override public function stop():void
     {
       super.stop();
-      //FlexGlobals.topLevelApplication.removeEventListener(FilterEvent.FILTER_CHANGED, onRefresh);
+      FlexGlobals.topLevelApplication.removeEventListener(FilterEvent.FILTER_CHANGED, onFilterChanged);
     }
     
     override public function refresh():void
@@ -57,6 +56,11 @@ package it.ht.rcs.console.audit.controller
       var alv:AsyncListView = new AsyncListView(e.result as ArrayCollection)
       alv.addEventListener(CollectionEvent.COLLECTION_CHANGE, onDataProviderChange);
       _view = new ListCollectionView(alv);
+    }
+    
+    private function onFilterChanged(event:FilterEvent):void
+    {
+      refresh();
     }
     
     private function onDataProviderChange(event:CollectionEvent):void

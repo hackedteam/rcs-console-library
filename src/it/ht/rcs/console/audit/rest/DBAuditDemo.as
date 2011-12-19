@@ -1,46 +1,44 @@
 package it.ht.rcs.console.audit.rest
 {
+  import it.ht.rcs.console.audit.model.Audit;
+  import it.ht.rcs.console.audit.model.AuditFilter;
+  
   import mx.collections.ArrayCollection;
   import mx.rpc.events.ResultEvent;
 
 	public class DBAuditDemo implements IDBAudit
 	{
-    
-		public function DBAuditDemo()
-		{
-		}
 		
 		public function all(filter:Object, onResult:Function=null, onFault:Function=null):void
 		{
-      var items:ArrayCollection = new ArrayCollection();
       var time:int = (new Date().time) / 1000;
-      items.addItem({_id: "4dd1312b963d351900000003", action: "user.update", actor: "admin", desc: "Updated 'privs' to '[\"ADMIN\", \"TECH\", \"VIEW\"]' for user 'test'", time: time, user: "test" });
-      items.addItem({_id: "4dd133ef963d351a90000004", action: "user.update", actor: "admin", desc: "Updated 'desc' to 'This is a test user' for user 'test'", time: time, user: "test"});
-      items.addItem({_id: "4dd134b9963d351af6000005", action: "login",       actor: "alor",  desc: "User 'alor' logged in", time: time, user: "test"});
-      items.addItem({_id: "4dd134b9963d351af6000003", action: "user.update", actor: "admin", desc: "Updated 'desc' to 'This is a test user ' for user 'test'", time: time, user: "test"});
-      items.addItem({_id: "4dd134b9963d351af6000004", action: "user.update", actor: "admin", desc: "Updated 'contact' to 'ask@me.it' for user 'test'", time: time, user: "test"});
-      items.addItem({_id: "4dd134ec963d351af6000007", action: "user.create", actor: "alor",  desc: "Created a new user 'disgrunted'", time: time, user: "test"});
-      items.addItem({_id: "4dd134ec963d351af6000007", action: "user.update", actor: "admin", desc: "Changed password for user 'New User'", time: time, user: "test"});
-      items.addItem({_id: "4dd134f5963d351af6000008", action: "user.update", actor: "admin", desc: "Updated 'privs' to '[\"ADMIN\", \"TECH\"]' for user 'admin'", time: time, user: "test"});
-      items.addItem({_id: "4dd134b9963d351af6000005", action: "logout",      actor: "alor",  desc: "User 'alor' logged out", time: time, user: "test"});
-      var event:ResultEvent = new ResultEvent("audit.index", false, true, items);
+      var a:Array = [
+        new Audit({_id: "a1", action: "user.update", actor: "admin", desc: "Updated 'privs' to '[ADMIN, TECH, VIEW]' for user 'test'", time: time, user: "test"}),
+        new Audit({_id: "a2", action: "user.update", actor: "admin", desc: "Updated 'desc' to 'This is a test user' for user 'test'",  time: time, user: "test"}),
+        new Audit({_id: "a3", action: "login",       actor: "alor",  desc: "User 'alor' logged in",                                    time: time, user: "test"}),
+        new Audit({_id: "a4", action: "user.update", actor: "admin", desc: "Updated 'desc' to 'This is a test user ' for user 'test'", time: time, user: "test"}),
+        new Audit({_id: "a5", action: "user.update", actor: "admin", desc: "Updated 'contact' to 'ask@me.it' for user 'test'",         time: time, user: "test"}),
+        new Audit({_id: "a6", action: "user.create", actor: "alor",  desc: "Created a new user 'disgrunted'",                          time: time, user: "test"}),
+        new Audit({_id: "a7", action: "user.update", actor: "admin", desc: "Changed password for user 'test'",                         time: time, user: "test"}),
+        new Audit({_id: "a8", action: "user.update", actor: "admin", desc: "Updated 'privs' to '[ADMIN, TECH]' for user 'admin'",      time: time, user: "test"}),
+        new Audit({_id: "a9", action: "logout",      actor: "alor",  desc: "User 'alor' logged out",                                   time: time, user: "test"})
+      ];
+      var items:ArrayCollection = new ArrayCollection(a);
+      
       if (onResult != null) 
-        onResult(event);
+        onResult(new ResultEvent('audit.index', false, true, items));
 		}
 		
 		public function filters(onResult:Function=null, onFault:Function=null):void
 		{
-      var filters:Object = new Object;
-      /*
-      "{"_id":"4dd4e801963d350598000003","actions":["login","user.update","user.create","logout"],"actors":["admin"],"users":["admin","test","New User","finochky"]}"
-      */
-      filters['_id']    = '4dd4e801963d350598000003';
-      filters['action'] = ['login', 'user.update', 'user.create', 'logout'];
-      filters['actor']  = ['admin', 'alor'];
-      filters['user']   = ['admin', 'test', 'New User', 'finochky'];
-      var event:ResultEvent = new ResultEvent('audit.filters', false, true, filters);
+      var filters:AuditFilter = new AuditFilter;
+      filters._id    = 'f1';
+      filters.action = ['login', 'user.update', 'user.create', 'logout'];
+      filters.actor  = ['admin', 'alor'];
+      filters.user   = ['admin', 'test'];
+
       if (onResult != null)
-        onResult(event);
+        onResult(new ResultEvent('audit.filters', false, true, filters));
 		}
     
 	}

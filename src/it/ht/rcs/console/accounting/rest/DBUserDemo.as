@@ -31,7 +31,7 @@ package it.ht.rcs.console.accounting.rest
     
     public function create(params:Object, onResult:Function=null, onFault:Function=null):void
     {
-      params._id = new Date().getTime().toString();
+      params._id = new Date().time.toString();
       params.privs = new ArrayCollection(params.privs);
       params.group_ids = new ArrayCollection(params.group_ids);
       
