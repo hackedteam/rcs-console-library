@@ -32,10 +32,13 @@ package it.ht.rcs.console.audit.rest
 		public function filters(onResult:Function=null, onFault:Function=null):void
 		{
       var filters:AuditFilter = new AuditFilter;
-      filters._id    = 'f1';
-      filters.action = ['login', 'user.update', 'user.create', 'logout'];
-      filters.actor  = ['admin', 'alor'];
-      filters.user   = ['admin', 'test'];
+      filters._id       = 'f1';
+      filters.action    = ['login', 'user.update', 'user.create', 'logout'];
+      filters.actor     = ['admin', 'alor'];
+      filters.agent     = [];
+      filters.operation = []
+      filters.target    = [];
+      filters.user      = ['admin', 'test'];
 
       if (onResult != null)
         onResult(new ResultEvent('audit.filters', false, true, filters));

@@ -52,13 +52,14 @@ public class _Super_AuditFilter extends flash.events.EventDispatcher implements 
     /**
      * properties
      */
-    private var _internal_agent : ArrayCollection;
     private var _internal_operation : ArrayCollection;
     private var _internal__id : String;
     private var _internal_target : ArrayCollection;
     private var _internal_action : ArrayCollection;
     private var _internal_actor : ArrayCollection;
+    private var _internal_group : ArrayCollection;
     private var _internal_user : ArrayCollection;
+    private var _internal_agent : ArrayCollection;
 
     private static var emptyArray:Array = new Array();
 
@@ -75,25 +76,20 @@ public class _Super_AuditFilter extends flash.events.EventDispatcher implements 
         _model = new _AuditFilterEntityMetadata(this);
 
         // Bind to own data or source properties for cache invalidation triggering
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "agent", model_internal::setterListenerAgent));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "operation", model_internal::setterListenerOperation));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "_id", model_internal::setterListener_id));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "target", model_internal::setterListenerTarget));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "action", model_internal::setterListenerAction));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "actor", model_internal::setterListenerActor));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "group", model_internal::setterListenerGroup));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "user", model_internal::setterListenerUser));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "agent", model_internal::setterListenerAgent));
 
     }
 
     /**
      * data/source property getters
      */
-
-    [Bindable(event="propertyChange")]
-    public function get agent() : ArrayCollection
-    {
-        return _internal_agent;
-    }
 
     [Bindable(event="propertyChange")]
     public function get operation() : ArrayCollection
@@ -126,9 +122,21 @@ public class _Super_AuditFilter extends flash.events.EventDispatcher implements 
     }
 
     [Bindable(event="propertyChange")]
+    public function get group() : ArrayCollection
+    {
+        return _internal_group;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get user() : ArrayCollection
     {
         return _internal_user;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get agent() : ArrayCollection
+    {
+        return _internal_agent;
     }
 
     public function clearAssociations() : void
@@ -138,31 +146,6 @@ public class _Super_AuditFilter extends flash.events.EventDispatcher implements 
     /**
      * data/source property setters
      */
-
-    public function set agent(value:*) : void
-    {
-        var oldValue:ArrayCollection = _internal_agent;
-        if (oldValue !== value)
-        {
-            if (value is ArrayCollection)
-            {
-                _internal_agent = value;
-            }
-            else if (value is Array)
-            {
-                _internal_agent = new ArrayCollection(value);
-            }
-            else if (value == null)
-            {
-                _internal_agent = null;
-            }
-            else
-            {
-                throw new Error("value of agent must be a collection");
-            }
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "agent", oldValue, _internal_agent));
-        }
-    }
 
     public function set operation(value:*) : void
     {
@@ -274,6 +257,31 @@ public class _Super_AuditFilter extends flash.events.EventDispatcher implements 
         }
     }
 
+    public function set group(value:*) : void
+    {
+        var oldValue:ArrayCollection = _internal_group;
+        if (oldValue !== value)
+        {
+            if (value is ArrayCollection)
+            {
+                _internal_group = value;
+            }
+            else if (value is Array)
+            {
+                _internal_group = new ArrayCollection(value);
+            }
+            else if (value == null)
+            {
+                _internal_group = null;
+            }
+            else
+            {
+                throw new Error("value of group must be a collection");
+            }
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "group", oldValue, _internal_group));
+        }
+    }
+
     public function set user(value:*) : void
     {
         var oldValue:ArrayCollection = _internal_user;
@@ -299,6 +307,31 @@ public class _Super_AuditFilter extends flash.events.EventDispatcher implements 
         }
     }
 
+    public function set agent(value:*) : void
+    {
+        var oldValue:ArrayCollection = _internal_agent;
+        if (oldValue !== value)
+        {
+            if (value is ArrayCollection)
+            {
+                _internal_agent = value;
+            }
+            else if (value is Array)
+            {
+                _internal_agent = new ArrayCollection(value);
+            }
+            else if (value == null)
+            {
+                _internal_agent = null;
+            }
+            else
+            {
+                throw new Error("value of agent must be a collection");
+            }
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "agent", oldValue, _internal_agent));
+        }
+    }
+
     /**
      * Data/source property setter listeners
      *
@@ -310,18 +343,6 @@ public class _Super_AuditFilter extends flash.events.EventDispatcher implements 
      *  - the validity of the property (and the containing entity) if the given data property has a length restriction.
      *  - the validity of the property (and the containing entity) if the given data property is required.
      */
-
-    model_internal function setterListenerAgent(value:flash.events.Event):void
-    {
-        if (value is mx.events.PropertyChangeEvent)
-        {
-            if (mx.events.PropertyChangeEvent(value).newValue)
-            {
-                mx.events.PropertyChangeEvent(value).newValue.addEventListener(mx.events.CollectionEvent.COLLECTION_CHANGE, model_internal::setterListenerAgent);
-            }
-        }
-        _model.invalidateDependentOnAgent();
-    }
 
     model_internal function setterListenerOperation(value:flash.events.Event):void
     {
@@ -376,6 +397,18 @@ public class _Super_AuditFilter extends flash.events.EventDispatcher implements 
         _model.invalidateDependentOnActor();
     }
 
+    model_internal function setterListenerGroup(value:flash.events.Event):void
+    {
+        if (value is mx.events.PropertyChangeEvent)
+        {
+            if (mx.events.PropertyChangeEvent(value).newValue)
+            {
+                mx.events.PropertyChangeEvent(value).newValue.addEventListener(mx.events.CollectionEvent.COLLECTION_CHANGE, model_internal::setterListenerGroup);
+            }
+        }
+        _model.invalidateDependentOnGroup();
+    }
+
     model_internal function setterListenerUser(value:flash.events.Event):void
     {
         if (value is mx.events.PropertyChangeEvent)
@@ -386,6 +419,18 @@ public class _Super_AuditFilter extends flash.events.EventDispatcher implements 
             }
         }
         _model.invalidateDependentOnUser();
+    }
+
+    model_internal function setterListenerAgent(value:flash.events.Event):void
+    {
+        if (value is mx.events.PropertyChangeEvent)
+        {
+            if (mx.events.PropertyChangeEvent(value).newValue)
+            {
+                mx.events.PropertyChangeEvent(value).newValue.addEventListener(mx.events.CollectionEvent.COLLECTION_CHANGE, model_internal::setterListenerAgent);
+            }
+        }
+        _model.invalidateDependentOnAgent();
     }
 
 
@@ -409,11 +454,6 @@ public class _Super_AuditFilter extends flash.events.EventDispatcher implements 
         var validationFailureMessages:Array = new Array();
 
         var propertyValidity:Boolean = true;
-        if (!_model.agentIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_agentValidationFailureMessages);
-        }
         if (!_model.operationIsValid)
         {
             propertyValidity = false;
@@ -439,10 +479,20 @@ public class _Super_AuditFilter extends flash.events.EventDispatcher implements 
             propertyValidity = false;
             com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_actorValidationFailureMessages);
         }
+        if (!_model.groupIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_groupValidationFailureMessages);
+        }
         if (!_model.userIsValid)
         {
             propertyValidity = false;
             com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_userValidationFailureMessages);
+        }
+        if (!_model.agentIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_agentValidationFailureMessages);
         }
 
         model_internal::_cacheInitialized_isValid = true;
@@ -523,33 +573,6 @@ public class _Super_AuditFilter extends flash.events.EventDispatcher implements 
         }
     }
 
-    model_internal var _doValidationCacheOfAgent : Array = null;
-    model_internal var _doValidationLastValOfAgent : ArrayCollection;
-
-    model_internal function _doValidationForAgent(valueIn:Object):Array
-    {
-        var value : ArrayCollection = valueIn as ArrayCollection;
-
-        if (model_internal::_doValidationCacheOfAgent != null && model_internal::_doValidationLastValOfAgent == value)
-           return model_internal::_doValidationCacheOfAgent ;
-
-        _model.model_internal::_agentIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.isAgentAvailable && _internal_agent == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "agent is required"));
-        }
-
-        model_internal::_doValidationCacheOfAgent = validationFailures;
-        model_internal::_doValidationLastValOfAgent = value;
-
-        return validationFailures;
-    }
-    
     model_internal var _doValidationCacheOfOperation : Array = null;
     model_internal var _doValidationLastValOfOperation : ArrayCollection;
 
@@ -685,6 +708,33 @@ public class _Super_AuditFilter extends flash.events.EventDispatcher implements 
         return validationFailures;
     }
     
+    model_internal var _doValidationCacheOfGroup : Array = null;
+    model_internal var _doValidationLastValOfGroup : ArrayCollection;
+
+    model_internal function _doValidationForGroup(valueIn:Object):Array
+    {
+        var value : ArrayCollection = valueIn as ArrayCollection;
+
+        if (model_internal::_doValidationCacheOfGroup != null && model_internal::_doValidationLastValOfGroup == value)
+           return model_internal::_doValidationCacheOfGroup ;
+
+        _model.model_internal::_groupIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isGroupAvailable && _internal_group == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "group is required"));
+        }
+
+        model_internal::_doValidationCacheOfGroup = validationFailures;
+        model_internal::_doValidationLastValOfGroup = value;
+
+        return validationFailures;
+    }
+    
     model_internal var _doValidationCacheOfUser : Array = null;
     model_internal var _doValidationLastValOfUser : ArrayCollection;
 
@@ -708,6 +758,33 @@ public class _Super_AuditFilter extends flash.events.EventDispatcher implements 
 
         model_internal::_doValidationCacheOfUser = validationFailures;
         model_internal::_doValidationLastValOfUser = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfAgent : Array = null;
+    model_internal var _doValidationLastValOfAgent : ArrayCollection;
+
+    model_internal function _doValidationForAgent(valueIn:Object):Array
+    {
+        var value : ArrayCollection = valueIn as ArrayCollection;
+
+        if (model_internal::_doValidationCacheOfAgent != null && model_internal::_doValidationLastValOfAgent == value)
+           return model_internal::_doValidationCacheOfAgent ;
+
+        _model.model_internal::_agentIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isAgentAvailable && _internal_agent == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "agent is required"));
+        }
+
+        model_internal::_doValidationCacheOfAgent = validationFailures;
+        model_internal::_doValidationLastValOfAgent = value;
 
         return validationFailures;
     }

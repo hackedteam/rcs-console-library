@@ -16,7 +16,7 @@ package it.ht.rcs.console.audit.model
         group = data.group;
         operation = data.operation;
         target = data.target;
-        time = data.target;
+        time = data.time;
         user = data.user;
       }
     }
