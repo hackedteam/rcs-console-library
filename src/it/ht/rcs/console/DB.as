@@ -168,7 +168,7 @@ package it.ht.rcs.console
       
       /* if the user doesn't declare a specific port, go with default */ 
       if (host.lastIndexOf(':') == host.indexOf(':'))
-        host = host + ':4444/';
+        host = host + ':443/';
       
       /* always be sure the url ends with '/' */
       if (host.lastIndexOf('/') != host.length -1)
