@@ -35,8 +35,9 @@ package it.ht.rcs.console.audit.rest
       filters._id       = 'f1';
       filters.action    = ['login', 'user.update', 'user.create', 'logout'];
       filters.actor     = ['admin', 'alor'];
-      filters.agent     = [];
-      filters.operation = []
+      filters.agent     = []; // If we do not explicitely set a dataProvider, we get a bad internal NPE in the filter comboboxes...
+      filters.group     = [];
+      filters.operation = [];
       filters.target    = [];
       filters.user      = ['admin', 'test'];
 
