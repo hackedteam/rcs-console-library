@@ -41,6 +41,8 @@ package it.ht.rcs.console.monitor.controller
     public var shards:CurrMaxObject = new CurrMaxObject("0", "0");
     public var exploits:String;
     
+    public var limits:License;
+    
     /* singleton */
     private static var _instance:LicenseManager = new LicenseManager();
     public static function get instance():LicenseManager { return _instance; }
@@ -61,7 +63,7 @@ package it.ht.rcs.console.monitor.controller
     
     private function onLoadLimit(e:ResultEvent):void
     {
-      var limits:License = e.result as License;
+      limits = e.result as License;
         
       type = limits['type'];
       serial = limits['serial'].toString();
@@ -111,6 +113,17 @@ package it.ht.rcs.console.monitor.controller
       shards.curr = current['shards'].toString();
     }
 
+    public function haveDemo(platform:String):Boolean
+    {
+      return limits['agents'][platform][1];
+    }
+
+    public function canBuild(platform:String):Boolean
+    {
+      return limits['agents'][platform][0]; 
+    }
+
+    
   }
   
 }
