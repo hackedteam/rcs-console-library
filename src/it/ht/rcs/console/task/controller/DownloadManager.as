@@ -2,12 +2,17 @@ package it.ht.rcs.console.task.controller
 {
   
   
+  import flash.events.ErrorEvent;
+  
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.events.SessionEvent;
+  import it.ht.rcs.console.notifications.NotificationPopup;
   import it.ht.rcs.console.task.model.Task;
   
   import mx.collections.ArrayCollection;
+  import mx.resources.ResourceManager;
+  import mx.rpc.events.FaultEvent;
   import mx.rpc.events.ResultEvent;
   
   public class DownloadManager extends ItemManager
@@ -67,7 +72,7 @@ package it.ht.rcs.console.task.controller
       trace(_classname + ' (instance) -- Before Log Out');
       for (var i:int = 0; i < _items.length; i++) {
         var t:DownloadTask = _items.getItemAt(i) as DownloadTask;
-        if (t.state != DownloadTask.STATE_FINISHED) {
+        if (t.isFinished()) {
           e.preventDefault();
           return;
         }
@@ -108,16 +113,31 @@ package it.ht.rcs.console.task.controller
     
     public function createTask(type:String, fileName:String, params:Object, onSuccess:Function=null, onFailure:Function=null):void
     {
-      DB.instance.task.create({type: type, file_name: fileName, params: params}, function (e:ResultEvent):void { 
-        onTaskCreateResult(e); 
-        if (onSuccess != null) 
-          onSuccess(e); 
-      }, onFailure);
+      DB.instance.task.create({type: type, file_name: fileName, params: params}, 
+        function (e:ResultEvent):void { 
+          // success
+          onTaskCreateResult(e); 
+          if (onSuccess != null) 
+            onSuccess(e); 
+        }, 
+        function (e:FaultEvent):void { 
+          // failure
+          onTaskCreateError(e);
+          if (onFailure != null)
+            onFailure(e);
+        }
+      );
     }
     
     public function onTaskCreateResult(e:ResultEvent):void
     {
       itemToDownloadTask(new Task(e.result), 0, null);
+    }
+    
+    public function onTaskCreateError(e:FaultEvent):void
+    {
+      trace(e.statusCode);
+      NotificationPopup.showNotification(ResourceManager.getInstance().getString('localized_main', 'TASK_CREATE_ERROR', [e.message.body.toString().replace('"', '').replace('"', '')]));
     }
     
     override protected function onItemRemove(t:*):void

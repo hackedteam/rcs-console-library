@@ -54,8 +54,7 @@ public class _Super_Task extends flash.events.EventDispatcher implements com.ado
     private var _internal_total : int;
     private var _internal_desc : String;
     private var _internal__id : String;
-    private var _internal_error : Boolean;
-    private var _internal_stopped : Boolean;
+    private var _internal_status : String;
     private var _internal_resource : it.ht.rcs.console.task.model.TaskResource;
     private var _internal_current : int;
     private var _internal_generator : it.ht.rcs.console.task.model.TaskGenerator;
@@ -103,15 +102,9 @@ public class _Super_Task extends flash.events.EventDispatcher implements com.ado
     }
 
     [Bindable(event="propertyChange")]
-    public function get error() : Boolean
+    public function get status() : String
     {
-        return _internal_error;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get stopped() : Boolean
-    {
-        return _internal_stopped;
+        return _internal_status;
     }
 
     [Bindable(event="propertyChange")]
@@ -182,23 +175,13 @@ public class _Super_Task extends flash.events.EventDispatcher implements com.ado
         }
     }
 
-    public function set error(value:Boolean) : void
+    public function set status(value:String) : void
     {
-        var oldValue:Boolean = _internal_error;
+        var oldValue:String = _internal_status;
         if (oldValue !== value)
         {
-            _internal_error = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "error", oldValue, _internal_error));
-        }
-    }
-
-    public function set stopped(value:Boolean) : void
-    {
-        var oldValue:Boolean = _internal_stopped;
-        if (oldValue !== value)
-        {
-            _internal_stopped = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "stopped", oldValue, _internal_stopped));
+            _internal_status = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "status", oldValue, _internal_status));
         }
     }
 
