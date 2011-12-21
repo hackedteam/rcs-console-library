@@ -22,14 +22,14 @@ internal class _TaskEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("total", "desc", "_id", "stopped", "resource", "current", "generator", "type", "file_name");
+    model_internal static var allProperties:Array = new Array("total", "desc", "_id", "error", "stopped", "resource", "current", "generator", "type", "file_name");
     model_internal static var allAssociationProperties:Array = new Array();
     model_internal static var allRequiredProperties:Array = new Array();
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("total", "desc", "_id", "stopped", "resource", "current", "generator", "type", "file_name");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("total", "desc", "_id", "error", "stopped", "resource", "current", "generator", "type", "file_name");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("total", "desc", "_id", "stopped", "resource", "current", "generator", "type", "file_name");
+    model_internal static var dataProperties:Array = new Array("total", "desc", "_id", "error", "stopped", "resource", "current", "generator", "type", "file_name");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("total", "desc", "_id", "stopped", "resource", "current", "generator", "type", "file_name");
+    model_internal static var nonDerivedProperties:Array = new Array("total", "desc", "_id", "error", "stopped", "resource", "current", "generator", "type", "file_name");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array();
     model_internal static var collectionBaseMap:Object;
@@ -52,6 +52,7 @@ internal class _TaskEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
             model_internal::dependentsOnMap["total"] = new Array();
             model_internal::dependentsOnMap["desc"] = new Array();
             model_internal::dependentsOnMap["_id"] = new Array();
+            model_internal::dependentsOnMap["error"] = new Array();
             model_internal::dependentsOnMap["stopped"] = new Array();
             model_internal::dependentsOnMap["resource"] = new Array();
             model_internal::dependentsOnMap["current"] = new Array();
@@ -68,6 +69,7 @@ internal class _TaskEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
         model_internal::propertyTypeMap["total"] = "int";
         model_internal::propertyTypeMap["desc"] = "String";
         model_internal::propertyTypeMap["_id"] = "String";
+        model_internal::propertyTypeMap["error"] = "Boolean";
         model_internal::propertyTypeMap["stopped"] = "Boolean";
         model_internal::propertyTypeMap["resource"] = "it.ht.rcs.console.task.model.TaskResource";
         model_internal::propertyTypeMap["current"] = "int";
@@ -321,6 +323,12 @@ internal class _TaskEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
     }
 
     [Bindable(event="propertyChange")]
+    public function get isErrorAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get isStoppedAvailable():Boolean
     {
         return true;
@@ -380,6 +388,12 @@ internal class _TaskEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
 
     [Bindable(event="propertyChange")]   
     public function get _idStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get errorStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }

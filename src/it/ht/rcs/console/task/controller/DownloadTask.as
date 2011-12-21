@@ -9,6 +9,7 @@ package it.ht.rcs.console.task.controller
   import it.ht.rcs.console.task.model.Task;
   import it.ht.rcs.console.utils.FileDownloader;
   
+  import mx.resources.ResourceManager;
   import mx.rpc.events.FaultEvent;
   import mx.rpc.events.ResultEvent;
   
@@ -19,7 +20,7 @@ package it.ht.rcs.console.task.controller
     public static const STATE_DOWNLOADING:String = 'downloading';
     public static const STATE_FINISHED:String = 'finished';
     
-    private var creationTimer: Timer;
+    private var updateTimer: Timer;
     private var fileDownloader: FileDownloader;
     
     [Bindable]
@@ -44,6 +45,7 @@ package it.ht.rcs.console.task.controller
       trace("Creating DownloadTask " + task._id);
       this.task = new Task(task);
       this.db = db;
+      NotificationPopup.showNotification(ResourceManager.getInstance().getString('localized_main', 'TASK_NEW', [task.file_name]));
     }
     
     public function factory(type:String, fileName:String):DownloadTask
@@ -65,11 +67,11 @@ package it.ht.rcs.console.task.controller
     public function start_update():void
     {
       if (state != STATE_IDLE) return;
-      creationTimer = new Timer(1000);
-      creationTimer.addEventListener(TimerEvent.TIMER, function ():void {
+      updateTimer = new Timer(1000);
+      updateTimer.addEventListener(TimerEvent.TIMER, function ():void {
         db.task.show(task._id, onUpdate, onUpdateFailure);
       });
-      creationTimer.start();
+      updateTimer.start();
     }
     
     public function isFinished():Boolean
@@ -96,9 +98,15 @@ package it.ht.rcs.console.task.controller
     {
       // update description, progress and resource
       task.desc = event.result.desc;
+      task.error = event.result.error;
       task.current = event.result.current;
       task.resource = event.result.resource;
       trace ("Updating task " + event.result._id + "[current: " + task.current + " | total: " + task.total + "]");
+      
+      if (task.error) {
+        updateTimer.stop();
+        NotificationPopup.showNotification(ResourceManager.getInstance().getString('localized_main', 'TASK_ERROR', [task.file_name]));
+      }
       
       // update creation progress bar
       creation_percentage.bytesTotal = task.total;
@@ -106,8 +114,8 @@ package it.ht.rcs.console.task.controller
       
       // if creation is complete, start the download
       if (task.current == task.total) {  
-        creationTimer.stop();
-        creationTimer = null;
+        updateTimer.stop();
+        updateTimer = null;
         
         trace("Task " + task._id +" creation complete.");
         
@@ -121,11 +129,12 @@ package it.ht.rcs.console.task.controller
           new File(path).createDirectory();
           
           // start the downloader
-          var remote_uri:String = task.resource.type + '/' + task.resource._id;
+          var remote_uri:String = 'file/' + task.resource._id;
           var local_path:String = path + '/' + task.file_name;
           fileDownloader = new FileDownloader(remote_uri, local_path);
           fileDownloader.onProgress = onDownloadUpdate;
           fileDownloader.onComplete = onDownloadComplete;
+          task.desc = "Downloading file";
           fileDownloader.download();
           
           trace("Task " + task._id + "is downloading.");
@@ -134,6 +143,7 @@ package it.ht.rcs.console.task.controller
         } else {
           trace("Task " + task._id + "is finished.");
           state = STATE_FINISHED;
+          NotificationPopup.showNotification(ResourceManager.getInstance().getString('localized_main', 'TASK_COMPLETE', [task.file_name]));
         }
         
       } else {
@@ -159,9 +169,9 @@ package it.ht.rcs.console.task.controller
     
     public function cleanup():void
     {
-      if (creationTimer) {
-        creationTimer.stop();
-        creationTimer = null;
+      if (updateTimer) {
+        updateTimer.stop();
+        updateTimer = null;
       }
       
       if (fileDownloader) {

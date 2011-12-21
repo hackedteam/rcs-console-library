@@ -75,11 +75,13 @@ package it.ht.rcs.console.task.controller
       }
     }
     
-    public function createTask(type:String, fileName:String, onSuccess:Function=null, onFailure:Function=null):void
+    public function createTask(type:String, fileName:String, params:Object, onSuccess:Function=null, onFailure:Function=null):void
     {
-      if (onSuccess == null)
-        onSuccess = onTaskCreateResult;
-      DB.instance.task.create({type: type, file_name: fileName}, onSuccess, onFailure);
+      DB.instance.task.create({type: type, file_name: fileName, params: params}, function (e:ResultEvent):void { 
+        onTaskCreateResult(e); 
+        if (onSuccess != null) 
+          onSuccess(e); 
+      }, onFailure);
     }
     
     public function onTaskCreateResult(e:ResultEvent):void
