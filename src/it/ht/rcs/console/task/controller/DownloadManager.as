@@ -19,6 +19,9 @@ package it.ht.rcs.console.task.controller
     [Bindable]
     public var active:Boolean = false;
     
+    [Bindable]
+    public var running:Boolean = false;
+    
     public function DownloadManager()
     {
       super();
@@ -46,6 +49,7 @@ package it.ht.rcs.console.task.controller
       _items.removeAll();
       
       active = items.length > 0;
+      
       if (items.length > 0)
         items.source.forEach(itemToDownloadTask);
     }
@@ -61,20 +65,36 @@ package it.ht.rcs.console.task.controller
     override protected function onBeforeLogout(e:SessionEvent):void
     {
       trace(_classname + ' (instance) -- Before Log Out');
-      for each(var t:DownloadTask in _items)
+      for (var i:int = 0; i < _items.length; i++) {
+        var t:DownloadTask = _items.getItemAt(i) as DownloadTask;
         if (t.state != DownloadTask.STATE_FINISHED) {
           e.preventDefault();
           return;
         }
+      }
     }
     
     override protected function onLogout(e:SessionEvent):void
     {
       trace(_classname + ' (instance) -- Log Out');
       clearFinished();
-      for each(var t:DownloadTask in _items)
-        t.cleanup();
+      for (var i:int = 0; i < _items.length; i++) {
+        var t:DownloadTask = _items.getItemAt(i) as DownloadTask;
+        //t.cleanup();
+      }
       super.onLogout(e);
+    }
+    
+    public function checkRunning():void
+    {
+      for (var i:int = 0; i < _items.length; i++) {
+        var t:DownloadTask = _items.getItemAt(i) as DownloadTask;
+        if (t.running()) {
+          running = true;
+          return;
+        }
+      }
+      running = false;
     }
     
     public function clearFinished():void
@@ -110,13 +130,14 @@ package it.ht.rcs.console.task.controller
     public function addTask(t:DownloadTask):void
     {
       addItem(t);
-      if (_items.length > 0) active = true;
+      active = _items.length > 0;
+      running = true;
     }
     
     public function removeTask(t:DownloadTask):void
     {
       removeItem(t);
-      if (_items.length > 0) active = true;
+      active = _items.length > 0;
     }
   }
 }
