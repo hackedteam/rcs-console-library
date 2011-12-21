@@ -54,6 +54,7 @@ public class _Super_Task extends flash.events.EventDispatcher implements com.ado
     private var _internal_total : int;
     private var _internal_desc : String;
     private var _internal__id : String;
+    private var _internal_error : Boolean;
     private var _internal_stopped : Boolean;
     private var _internal_resource : it.ht.rcs.console.task.model.TaskResource;
     private var _internal_current : int;
@@ -99,6 +100,12 @@ public class _Super_Task extends flash.events.EventDispatcher implements com.ado
     public function get _id() : String
     {
         return _internal__id;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get error() : Boolean
+    {
+        return _internal_error;
     }
 
     [Bindable(event="propertyChange")]
@@ -172,6 +179,16 @@ public class _Super_Task extends flash.events.EventDispatcher implements com.ado
         {
             _internal__id = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "_id", oldValue, _internal__id));
+        }
+    }
+
+    public function set error(value:Boolean) : void
+    {
+        var oldValue:Boolean = _internal_error;
+        if (oldValue !== value)
+        {
+            _internal_error = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "error", oldValue, _internal_error));
         }
     }
 

@@ -90,7 +90,7 @@ package it.ht.rcs.console.task.controller
     {
       DB.instance.task.create({type: type, file_name: fileName, params: params}, function (e:ResultEvent):void { 
         onTaskCreateResult(e); 
-        if (onSuccess) 
+        if (onSuccess != null) 
           onSuccess(e); 
       }, onFailure);
     }
