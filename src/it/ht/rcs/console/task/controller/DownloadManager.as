@@ -24,21 +24,10 @@ package it.ht.rcs.console.task.controller
       super();
     }
     
-    override public function start():void
+    override public function refresh():void
     {
-      super.start();
-      // get all available tasks
       DB.instance.task.all(onTaskIndexResult);
     }
-    
-    /*
-    override protected function onLoggingIn(e:SessionEvent):void
-    {
-      trace(_classname + ' (instance) -- Logging In');
-        // get all available tasks
-        DB.instance.task.all(onTaskIndexResult);
-    }
-    */
     
     private function onTaskIndexResult(e:ResultEvent):void
     {
