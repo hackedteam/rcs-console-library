@@ -105,6 +105,11 @@ package it.ht.rcs.console.task.controller
       return task.status == 'download_available';
     }
     
+    public function isError(): Boolean
+    {
+      return task.status == 'error';
+    }
+    
     public function onUpdateFailure(event:FaultEvent):void
     {
       trace("Update failure!!! " + event);
@@ -181,7 +186,7 @@ package it.ht.rcs.console.task.controller
           trace("Task " + task._id +" error.");
           break;
       }
-       
+      
       DownloadManager.instance.checkRunning();
     
     }
@@ -196,7 +201,6 @@ package it.ht.rcs.console.task.controller
     public function onDownloadComplete():void
     {
       trace("Task " + task._id + " download finished.");
-      NotificationPopup.showNotification(ResourceManager.getInstance().getString('localized_main', 'TASK_COMPLETE', [task.file_name]));
       DownloadManager.instance.checkRunning();
     }
     
