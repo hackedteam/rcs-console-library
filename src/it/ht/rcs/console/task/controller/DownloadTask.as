@@ -124,7 +124,10 @@ package it.ht.rcs.console.task.controller
       
       switch (task.status) {
         case "in_progress":
-          // DO NOTHING
+          // update creation progress bar
+          creation_percentage.bytesTotal = task.total;
+          creation_percentage.bytesLoaded = task.current;
+          
           trace("Task " + task._id +" in progress.");
           break;
         
@@ -150,22 +153,30 @@ package it.ht.rcs.console.task.controller
           break;
         
         case "downloading":
+          
           trace("Task " + task._id +" is downloading.");
           break;
         
         case "finished":
+          // update creation progress bar
+          creation_percentage.bytesTotal = task.total;
+          creation_percentage.bytesLoaded = task.current;
+          
           // stop the update timer
-          updateTimer.stop(); updateTimer = null;
+          updateTimer.stop();
           
           task.desc = "Completed";
           NotificationPopup.showNotification(ResourceManager.getInstance().getString('localized_main', 'TASK_COMPLETE', [task.file_name]));
           trace("Task " + task._id +" completed.");
           break;
-        
+          
         case "error":
+          // update creation progress bar
+          creation_percentage.bytesTotal = task.total;
+          creation_percentage.bytesLoaded = task.current;
           
           // stop the update timer
-          updateTimer.stop(); updateTimer = null;
+          updateTimer.stop();
           NotificationPopup.showNotification(ResourceManager.getInstance().getString('localized_main', 'TASK_ERROR', [task.file_name]));
           trace("Task " + task._id +" error.");
           break;
