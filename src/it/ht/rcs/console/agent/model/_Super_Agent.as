@@ -10,7 +10,7 @@ import com.adobe.fiber.util.FiberUtils;
 import com.adobe.fiber.valueobjects.IValueObject;
 import flash.events.Event;
 import flash.events.EventDispatcher;
-import it.ht.rcs.console.factory.model.Config;
+import it.ht.rcs.console.agent.model.Config;
 import it.ht.rcs.console.operation.model.Stat;
 import mx.binding.utils.ChangeWatcher;
 import mx.collections.ArrayCollection;
@@ -36,7 +36,7 @@ public class _Super_Agent extends flash.events.EventDispatcher implements com.ad
     model_internal static function initRemoteClassAliasAllRelated() : void
     {
         it.ht.rcs.console.operation.model.Stat.initRemoteClassAliasSingleChild();
-        it.ht.rcs.console.factory.model.Config.initRemoteClassAliasSingleChild();
+        it.ht.rcs.console.agent.model.Config.initRemoteClassAliasSingleChild();
     }
 
     model_internal var _dminternal_model : _AgentEntityMetadata;
@@ -68,7 +68,7 @@ public class _Super_Agent extends flash.events.EventDispatcher implements com.ad
     private var _internal_stat : it.ht.rcs.console.operation.model.Stat;
     private var _internal_version : int;
     private var _internal_configs : ArrayCollection;
-    model_internal var _internal_configs_leaf:it.ht.rcs.console.factory.model.Config;
+    model_internal var _internal_configs_leaf:it.ht.rcs.console.agent.model.Config;
     private var _internal_updated_at : Object;
     private var _internal__id : String;
     private var _internal_ident : String;
@@ -76,6 +76,7 @@ public class _Super_Agent extends flash.events.EventDispatcher implements com.ad
     private var _internal_path : ArrayCollection;
     private var _internal_upgradable : Boolean;
     private var _internal_instance : String;
+    private var _internal_counter : int;
 
     private static var emptyArray:Array = new Array();
 
@@ -216,6 +217,12 @@ public class _Super_Agent extends flash.events.EventDispatcher implements com.ad
     public function get instance() : String
     {
         return _internal_instance;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get counter() : int
+    {
+        return _internal_counter;
     }
 
     public function clearAssociations() : void
@@ -458,6 +465,16 @@ public class _Super_Agent extends flash.events.EventDispatcher implements com.ad
         {
             _internal_instance = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "instance", oldValue, _internal_instance));
+        }
+    }
+
+    public function set counter(value:int) : void
+    {
+        var oldValue:int = _internal_counter;
+        if (oldValue !== value)
+        {
+            _internal_counter = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "counter", oldValue, _internal_counter));
         }
     }
 

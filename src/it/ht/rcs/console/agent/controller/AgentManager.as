@@ -1,7 +1,5 @@
 package it.ht.rcs.console.agent.controller
 {
-  import flash.events.Event;
-  
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.agent.model.Agent;
   import it.ht.rcs.console.controller.ItemManager;
@@ -13,13 +11,14 @@ package it.ht.rcs.console.agent.controller
   
   public class AgentManager extends ItemManager
   {
-    private static var _instance:AgentManager = new AgentManager();
-    public static function get instance():AgentManager { return _instance; } 
     
     public function AgentManager()
     {
-      super();
+      super(Agent);
     }
+    
+    private static var _instance:AgentManager = new AgentManager();
+    public static function get instance():AgentManager { return _instance; }
     
     override public function refresh():void
     {
@@ -29,38 +28,32 @@ package it.ht.rcs.console.agent.controller
     
     private function onResult(e:ResultEvent):void
     {
-      var items:ArrayCollection = e.result as ArrayCollection;
-      _items.removeAll();
-      items.source.forEach(function(element:*, index:int, arr:Array):void {
-        addItem(element);
-      });
+      clear();
+      for each (var item:* in e.result.source)
+        addItem(item);
       dispatchDataLoadedEvent();
     }
     
-    override protected function onItemRemove(o:*):void
+    override protected function onItemRemove(item:*):void
     {
-      DB.instance.agent.destroy(o._id);
+      DB.instance.agent.destroy(item._id);
     }
     
-    override protected function onItemUpdate(e:*):void
+    override protected function onItemUpdate(event:*):void
     {
-      var o:Object = new Object();
-      if (e.newValue is ArrayCollection)
-        o[e.property] = e.newValue.source;
-      else
-        o[e.property] = e.newValue;
-      DB.instance.agent.update(e.source, o);
+      var property:Object = new Object();
+      property[event.property] = event.newValue is ArrayCollection ? event.newValue.source : event.newValue;
+      DB.instance.agent.update(event.source, property);
     }
     
-    public function addAgent(a:Object, operation:Operation, target:Target, callback:Function):void
+    public function addFactory(f:Object, o:Operation, t:Target, callback:Function):void
     {
-      DB.instance.agent.create(a, operation, target, function (e:ResultEvent):void {
-        var agent:Agent = e.result as Agent;
-        addItem(agent);
+      DB.instance.agent.create(f, o, t, function(e:ResultEvent):void {
+        var factory:Agent = e.result as Agent;
+        addItem(factory);
         if (callback != null)
-          callback(agent);
+          callback(factory);
       });
     }
-    
   }
 }

@@ -1,6 +1,5 @@
 package it.ht.rcs.console.operation.model
 {
-
   import com.adobe.fiber.core.model_internal;
   
   import it.ht.rcs.console.DB;
@@ -46,7 +45,7 @@ package it.ht.rcs.console.operation.model
      * DO NOT MODIFY THIS STATIC INITIALIZER - IT IS NECESSARY
      * FOR PROPERLY SETTING UP THE REMOTE CLASS ALIAS FOR THIS CLASS
      **/
-     
+    
     /**
      * Calling this static function will initialize RemoteClass aliases
      * for this value object as well as all of the value objects corresponding
@@ -57,19 +56,17 @@ package it.ht.rcs.console.operation.model
       _Super_Operation.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.operation.model.Operation);
       _Super_Operation.model_internal::initRemoteClassAliasAllRelated();
     }
-     
+    
     model_internal static function initRemoteClassAliasSingleChild():void
     {
       _Super_Operation.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.operation.model.Operation);
     }
-    
     {
       _Super_Operation.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.operation.model.Operation);
     }
     /**
      * END OF DO NOT MODIFY SECTION
      **/
-    
   }
 
 }

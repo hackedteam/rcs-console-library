@@ -23,17 +23,17 @@ package it.ht.rcs.console.audit.controller
     [Bindable]
     public var filter:Object = {};
     
-    override public function start():void
-    {
-      super.start();
-      FlexGlobals.topLevelApplication.addEventListener(FilterEvent.FILTER_CHANGED, onFilterChanged);
-    }
-    
-    override public function stop():void
-    {
-      super.stop();
-      FlexGlobals.topLevelApplication.removeEventListener(FilterEvent.FILTER_CHANGED, onFilterChanged);
-    }
+//    override public function start():void
+//    {
+//      super.start();
+//      FlexGlobals.topLevelApplication.addEventListener(FilterEvent.FILTER_CHANGED, onFilterChanged);
+//    }
+//    
+//    override public function stop():void
+//    {
+//      super.stop();
+//      FlexGlobals.topLevelApplication.removeEventListener(FilterEvent.FILTER_CHANGED, onFilterChanged);
+//    }
     
     override public function refresh():void
     {

@@ -1,17 +1,7 @@
-/**
- * This is a generated sub-class of _DBAgent.as and is intended for behavior
- * customization.  This class is only generated when there is no file already present
- * at its target location.  Thus custom behavior that you add here will survive regeneration
- * of the super-class. 
- **/
- 
 package it.ht.rcs.console.agent.rest
 {
-  
-  
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.agent.model.Agent;
-  import it.ht.rcs.console.agent.rest.IDBAgent;
   import it.ht.rcs.console.operation.model.Operation;
   import it.ht.rcs.console.target.model.Target;
   
@@ -19,6 +9,7 @@ package it.ht.rcs.console.agent.rest
   
   public class DBAgent extends _Super_DBAgent implements IDBAgent
   {
+    
     public function DBAgent(host: String)
     {
       super();
@@ -56,7 +47,25 @@ package it.ht.rcs.console.agent.rest
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
       property['_id'] = agent._id;
       resp.token = update_(JSON.stringify(property));
-    }  
+    } 
+    
+    public function add_config(agent:Agent, config: String, onResult:Function=null, onFault:Function=null):void
+    {
+      var params:Object;
+      params['_id'] = agent._id;
+      params['config'] = config;
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = create_(JSON.stringify(params)); 
+    }
+    
+    public function del_config(agent:Agent, config_id: String, onResult:Function=null, onFault:Function=null):void
+    {
+      var params:Object;
+      params['_id'] = agent._id;
+      params['config_id'] = config_id;
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = create_(JSON.stringify(params)); 
+    }
     
     /**
      * Override super.init() to provide any initialization customization if needed.
@@ -64,7 +73,6 @@ package it.ht.rcs.console.agent.rest
     protected override function preInitializeService():void
     {
       super.preInitializeService();
-      // Initialization customization goes here
     }
     
   }

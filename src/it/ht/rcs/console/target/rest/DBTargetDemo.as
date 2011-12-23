@@ -35,7 +35,7 @@ package it.ht.rcs.console.target.rest
     
     public function create(params:Object, operation:Operation, onResult:Function=null, onFault:Function=null):void
     {
-      params._id = new Date().getTime().toString();
+      params._id = new Date().time.toString();
       
       var target:Target = new Target(params);
       target.path = [operation._id];
@@ -47,6 +47,8 @@ package it.ht.rcs.console.target.rest
     
     public function update(target:Target, property:Object, onResult:Function=null, onFault:Function=null):void
     {
+      if (onResult != null)
+        onResult(new ResultEvent('target.update'));
     }
     
     public function destroy(id:String, onResult:Function=null, onFault:Function=null):void

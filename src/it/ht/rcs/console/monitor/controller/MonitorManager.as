@@ -6,8 +6,6 @@ package it.ht.rcs.console.monitor.controller
 	
 	import it.ht.rcs.console.DB;
 	import it.ht.rcs.console.controller.ItemManager;
-	import it.ht.rcs.console.events.RefreshEvent;
-	import it.ht.rcs.console.monitor.model.Status;
 	import it.ht.rcs.console.monitor.model.StatusCounters;
 	import it.ht.rcs.console.utils.CounterBaloon;
 	
@@ -18,38 +16,33 @@ package it.ht.rcs.console.monitor.controller
   public class MonitorManager extends ItemManager
   {
     
+    /* singleton */
+    private static var _instance:MonitorManager = new MonitorManager();
+    public static function get instance():MonitorManager { return _instance; }
+    
     private var _counterBaloon:CounterBaloon = new CounterBaloon();
     
     /* for the auto refresh every 15 seconds */
     private var _autorefresh:Timer = new Timer(15000);
     
-    /* singleton */
-    private static var _instance:MonitorManager = new MonitorManager();
-    public static function get instance():MonitorManager { return _instance; } 
-    
-    public function MonitorManager()
-    {
-      super();
-    }
-    
     override public function refresh():void
     {
       super.refresh();
-      DB.instance.monitor.all(onMonitorIndexResult);
+      DB.instance.monitor.all(onResult);
     }
     
-    private function onMonitorIndexResult(e:ResultEvent):void
+    private function onResult(e:ResultEvent):void
     {
-      var items:ArrayCollection = e.result as ArrayCollection;
-      _items.removeAll();
-      items.source.forEach(function toMonitorArray(element:*, index:int, arr:Array):void {
-        addItem(element as Status);
-      });
+      clear();
+      for each (var item:* in e.result.source)
+        addItem(item);
+      dispatchDataLoadedEvent();
     }
     
     override protected function onItemRemove(o:*):void 
     { 
       DB.instance.monitor.destroy(o._id);
+      onRefreshCounter(null);
     }
     
     private function onAutoRefresh(e:Event):void
@@ -57,27 +50,26 @@ package it.ht.rcs.console.monitor.controller
       refresh();
     }
     
-    override public function start():void
-    {
-      super.start();
-      _autorefresh.addEventListener(TimerEvent.TIMER, onAutoRefresh);
-      FlexGlobals.topLevelApplication.addEventListener(RefreshEvent.REFRESH, onRefreshCounter);
-    }
+//    override public function start():void
+//    {
+//      super.start();
+//      _autorefresh.addEventListener(TimerEvent.TIMER, onAutoRefresh);
+//      FlexGlobals.topLevelApplication.addEventListener(RefreshEvent.REFRESH, onRefreshCounter);
+//    }
 	
-    override public function stop():void
-    {
-      super.stop();
-      _autorefresh.removeEventListener(TimerEvent.TIMER, onAutoRefresh);
-      FlexGlobals.topLevelApplication.removeEventListener(RefreshEvent.REFRESH, onRefreshCounter);
-    }
+//    override public function stop():void
+//    {
+//      super.stop();
+//      _autorefresh.removeEventListener(TimerEvent.TIMER, onAutoRefresh);
+//      FlexGlobals.topLevelApplication.removeEventListener(RefreshEvent.REFRESH, onRefreshCounter);
+//    }
 
     
-    override public function removeItem(o:Object):void
-    {
-      super.removeItem(o);
-      /* update the couters without waiting for next auto-refresh */
-      onRefreshCounter(null);
-    }
+//    public function removeItem(o:Object):void
+//    {
+//      _items.removeItem(o);
+//      /* update the couters without waiting for next auto-refresh */
+//    }
     
     public function start_counters():void
     {
@@ -147,4 +139,5 @@ package it.ht.rcs.console.monitor.controller
     }
         
   }
+  
 }

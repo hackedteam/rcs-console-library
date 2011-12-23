@@ -1,10 +1,6 @@
 package it.ht.rcs.console.controller
 {
-  
   import flash.utils.getQualifiedClassName;
-  
-  import it.ht.rcs.console.events.RefreshEvent;
-  import it.ht.rcs.console.events.SessionEvent;
   
   import mx.collections.ArrayCollection;
   import mx.events.CollectionEvent;
@@ -59,14 +55,6 @@ package it.ht.rcs.console.controller
           onReset();
           break;
       } 
-    }
-    
-    /* SPECIALIZE THIS: to specialize the type of object returned  */
-    public function newItem():Object
-    {
-      var obj:Object = new Object();
-      _items.addItem(obj);
-      return obj;
     }
     
     public function addItem(o:Object):void

@@ -2,7 +2,6 @@ package it.ht.rcs.console.operation.controller
 {
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.controller.ItemManager;
-  import it.ht.rcs.console.events.RefreshEvent;
   import it.ht.rcs.console.operation.model.Operation;
   
   import mx.collections.ArrayCollection;
@@ -10,13 +9,14 @@ package it.ht.rcs.console.operation.controller
   
   public class OperationManager extends ItemManager
   {
-    private static var _instance:OperationManager = new OperationManager();
-    public static function get instance():OperationManager { return _instance; } 
     
     public function OperationManager()
     {
-      super();
+      super(Operation);
     }
+    
+    private static var _instance:OperationManager = new OperationManager();
+    public static function get instance():OperationManager { return _instance; }
     
     override public function refresh():void
     {
@@ -26,38 +26,33 @@ package it.ht.rcs.console.operation.controller
     
     private function onResult(e:ResultEvent):void
     {
-      var items:ArrayCollection = e.result as ArrayCollection;
-      _items.removeAll();
-      items.source.forEach(function(element:*, index:int, arr:Array):void {
-        addItem(element);
-      });
+      clear();
+      for each (var item:* in e.result.source)
+        addItem(item);
       dispatchDataLoadedEvent();
     }
     
-    override protected function onItemRemove(o:*):void
+    override protected function onItemRemove(item:*):void
     {
-      DB.instance.operation.destroy(o._id);
+      DB.instance.operation.destroy(item._id);
     }
     
-    override protected function onItemUpdate(e:*):void
+    override protected function onItemUpdate(event:*):void
     {
-      var o:Object = new Object;
-      if (e.newValue is ArrayCollection)
-        o[e.property] = e.newValue.source;
-      else
-        o[e.property] = e.newValue;
-      DB.instance.operation.update(e.source, o);
+      var property:Object = new Object();
+      property[event.property] = event.newValue is ArrayCollection ? event.newValue.source : event.newValue;
+      DB.instance.operation.update(event.source, property);
     }
     
     public function addOperation(o:Operation, callback:Function):void
     {
-      DB.instance.operation.create(o, function (e:ResultEvent):void {
+      DB.instance.operation.create(o, function(e:ResultEvent):void {
         var operation:Operation = e.result as Operation;
         addItem(operation);
-        if (callback != null)
-          callback(operation);
+        callback(operation);
       });
     }
     
   }
+  
 }

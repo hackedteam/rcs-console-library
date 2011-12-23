@@ -28,9 +28,6 @@ package it.ht.rcs.console
   import it.ht.rcs.console.evidence.rest.DBEvidence;
   import it.ht.rcs.console.evidence.rest.DBEvidenceDemo;
   import it.ht.rcs.console.evidence.rest.IDBEvidence;
-  import it.ht.rcs.console.factory.rest.DBFactory;
-  import it.ht.rcs.console.factory.rest.DBFactoryDemo;
-  import it.ht.rcs.console.factory.rest.IDBFactory;
   import it.ht.rcs.console.monitor.rest.DBLicense;
   import it.ht.rcs.console.monitor.rest.DBLicenseDemo;
   import it.ht.rcs.console.monitor.rest.DBMonitor;
@@ -74,7 +71,6 @@ package it.ht.rcs.console
     public var operation:IDBOperation;
     public var target:IDBTarget;
     public var agent:IDBAgent;
-    public var factory:IDBFactory;
     public var search:IDBSearch;
     
     public var audit:IDBAudit;
@@ -116,7 +112,6 @@ package it.ht.rcs.console
       operation = new DBOperation(host);
       target    = new DBTarget(host);
       agent     = new DBAgent(host);
-      factory   = new DBFactory(host);
       search    = new DBSearch(host);
       audit     = new DBAudit(host);
       task      = new DBTask(host);
@@ -141,7 +136,6 @@ package it.ht.rcs.console
       operation = new DBOperationDemo();
       target    = new DBTargetDemo();
       agent     = new DBAgentDemo();
-      factory   = new DBFactoryDemo();
       search    = new DBSearchDemo();
       
       audit     = new DBAuditDemo();
