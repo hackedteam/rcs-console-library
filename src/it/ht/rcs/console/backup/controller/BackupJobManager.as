@@ -33,11 +33,9 @@ package it.ht.rcs.console.backup.controller
     
     private function onResult(e:ResultEvent):void
     {
-      var items:ArrayCollection = e.result as ArrayCollection;
       _items.removeAll();
-      items.source.forEach(function(element:*, index:int, arr:Array):void {
-        addItem(element);
-      });
+      for each (var item:* in e.result.source)
+        _items.addItem(item);
       dispatchDataLoadedEvent();
     }
     
@@ -64,7 +62,7 @@ package it.ht.rcs.console.backup.controller
     {     
       DB.instance.backup.create_job(BackupJob.defaultJob(), function (e:ResultEvent):void {
         var j:BackupJob = e.result as BackupJob;
-        addItem(j);
+        _items.addItem(j);
         callback(j);
       });
     }

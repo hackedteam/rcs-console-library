@@ -27,7 +27,7 @@ package it.ht.rcs.console.operation.rest
     
     public function create(params:Object, onResult:Function=null, onFault:Function=null):void
     {
-      params._id = new Date().getTime().toString();
+      params._id = new Date().time.toString();
       
       var operation:Operation = new Operation(params);
       operations.addItem(operation);
@@ -38,6 +38,8 @@ package it.ht.rcs.console.operation.rest
     
     public function update(operation:Operation, property:Object, onResult:Function=null, onFault:Function=null):void
     {
+      if (onResult != null)
+        onResult(new ResultEvent('operation.update'));
     }
     
     public function destroy(id:String, onResult:Function=null, onFault:Function=null):void

@@ -2,23 +2,19 @@ package it.ht.rcs.console.factory.controller
 {
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.controller.ItemManager;
-  import it.ht.rcs.console.events.RefreshEvent;
   import it.ht.rcs.console.factory.model.Factory;
   import it.ht.rcs.console.operation.model.Operation;
   import it.ht.rcs.console.target.model.Target;
   
   import mx.collections.ArrayCollection;
+  import mx.events.PropertyChangeEvent;
   import mx.rpc.events.ResultEvent;
   
   public class FactoryManager extends ItemManager
   {
+    
     private static var _instance:FactoryManager = new FactoryManager();
     public static function get instance():FactoryManager { return _instance; } 
-    
-    public function FactoryManager()
-    {
-      super();
-    }
     
     override public function refresh():void
     {
@@ -28,38 +24,34 @@ package it.ht.rcs.console.factory.controller
     
     private function onResult(e:ResultEvent):void
     {
-      var items:ArrayCollection = e.result as ArrayCollection;
       _items.removeAll();
-      items.source.forEach(function(element:*, index:int, arr:Array):void {
-        addItem(element);
-      });
+      for each (var item:* in e.result.source)
+        _items.addItem(item);
       dispatchDataLoadedEvent();
     }
     
-    override protected function onItemRemove(o:*):void
+    override protected function onItemRemove(item:*):void
     {
-      DB.instance.factory.destroy(o._id);
+      DB.instance.factory.destroy(item._id);
     }
     
-    override protected function onItemUpdate(e:*):void
+    override protected function onItemUpdate(event:*):void
     {
-      var o:Object = new Object;
-      if (e.newValue is ArrayCollection)
-        o[e.property] = e.newValue.source;
-      else
-        o[e.property] = e.newValue;
-      DB.instance.factory.update(e.source, o);
+      var property:Object = new Object();
+      property[event.property] = event.newValue is ArrayCollection ? event.newValue.source : event.newValue;
+      DB.instance.factory.update(event.source, property);
     }
     
-    public function addFactory(f:Factory, operation:Operation, target:Target, callback:Function):void
+    public function addFactory(f:Factory, o:Operation, t:Target, callback:Function):void
     {
-      DB.instance.factory.create(f, operation, target, function (e:ResultEvent):void {
+      DB.instance.factory.create(f, o, t, function (e:ResultEvent):void {
         var factory:Factory = e.result as Factory;
-        addItem(factory);
+        _items.addItem(factory);
         if (callback != null)
           callback(factory);
       });
     }
     
   }
+  
 }

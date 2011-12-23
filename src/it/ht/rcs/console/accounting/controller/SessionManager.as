@@ -47,21 +47,20 @@ package it.ht.rcs.console.accounting.controller
     override public function refresh():void
     {
       super.refresh();
-      DB.instance.session.all(onSessionIndexResult);
+      DB.instance.session.all(onResult);
     }
     
-    public function onSessionIndexResult(e:ResultEvent):void
+    public function onResult(e:ResultEvent):void
     {
-      var items:ArrayCollection = e.result as ArrayCollection;
-      _items.removeAll();
-      items.source.forEach(function toUserArray(element:*, index:int, arr:Array):void {
-        addItem(element as Session);
-      });
+      clear();
+      for each (var item:* in e.result.source)
+        addItem(item);
+      dispatchDataLoadedEvent();
     }
     
     public function disconnectUser(user:Object):void
     {
-      _items.removeItem(user);
+      removeItem(user);
       
       /* disconnect call to db */
       DB.instance.session.destroy(user.cookie);

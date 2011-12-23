@@ -1,7 +1,5 @@
 package it.ht.rcs.console.network.rest
 {
-  
-  
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.network.model.Collector;
   
@@ -56,7 +54,7 @@ package it.ht.rcs.console.network.rest
     public function del_logs(id:String, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = del_logs_(JSON.stringify( { _id: id} ));
+      resp.token = del_logs_(JSON.stringify({_id: id}));
     }
     
     /**
@@ -65,7 +63,6 @@ package it.ht.rcs.console.network.rest
     protected override function preInitializeService():void
     {
       super.preInitializeService();
-      // Initialization customization goes here
     }
     
   }

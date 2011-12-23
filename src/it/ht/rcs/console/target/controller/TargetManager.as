@@ -2,7 +2,6 @@ package it.ht.rcs.console.target.controller
 {
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.controller.ItemManager;
-  import it.ht.rcs.console.events.RefreshEvent;
   import it.ht.rcs.console.operation.model.Operation;
   import it.ht.rcs.console.target.model.Target;
   
@@ -11,13 +10,14 @@ package it.ht.rcs.console.target.controller
   
   public class TargetManager extends ItemManager
   {
-    private static var _instance:TargetManager = new TargetManager();
-    public static function get instance():TargetManager { return _instance; } 
     
     public function TargetManager()
     {
-      super();
+      super(Target);
     }
+    
+    private static var _instance:TargetManager = new TargetManager();
+    public static function get instance():TargetManager { return _instance; }
     
     override public function refresh():void
     {
@@ -27,38 +27,33 @@ package it.ht.rcs.console.target.controller
     
     private function onResult(e:ResultEvent):void
     {
-      var items:ArrayCollection = e.result as ArrayCollection;
-      _items.removeAll();
-      items.source.forEach(function(element:*, index:int, arr:Array):void {
-        addItem(element);
-      });
+      clear();
+      for each (var item:* in e.result.source)
+        addItem(item);
       dispatchDataLoadedEvent();
     }
     
-    override protected function onItemRemove(o:*):void
+    override protected function onItemRemove(item:*):void
     {
-      DB.instance.target.destroy(o._id);
+      DB.instance.target.destroy(item._id);
     }
     
-    override protected function onItemUpdate(e:*):void
+    override protected function onItemUpdate(event:*):void
     {
-      var o:Object = new Object;
-      if (e.newValue is ArrayCollection)
-        o[e.property] = e.newValue.source;
-      else
-        o[e.property] = e.newValue;
-      DB.instance.target.update(e.source, o);
+      var property:Object = new Object();
+      property[event.property] = event.newValue is ArrayCollection ? event.newValue.source : event.newValue;
+      DB.instance.target.update(event.source, property);
     }
     
-    public function addTarget(t:Target, operation:Operation, callback:Function):void
+    public function addTarget(t:Target, o:Operation, callback:Function):void
     {
-      DB.instance.target.create(t, operation, function (e:ResultEvent):void {
+      DB.instance.target.create(t, o, function(e:ResultEvent):void {
         var target:Target = e.result as Target;
         addItem(target);
-        if (callback != null)
-          callback(target);
+        callback(target);
       });
     }
     
   }
+  
 }

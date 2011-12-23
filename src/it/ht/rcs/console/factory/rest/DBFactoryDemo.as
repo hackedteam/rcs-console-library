@@ -9,6 +9,7 @@ package it.ht.rcs.console.factory.rest
   
   public class DBFactoryDemo implements IDBFactory
   {
+    
     public static var factories:ArrayCollection = new ArrayCollection([
       // John Doe (SwordFish)
       new Factory({ _id: "f1", _kind: "factory", name: "John's Laptop Configuration", type: 'desktop', desc: "Catch all",                                   status: "open",   path: ["o1", "t1"], ident: "RCS_01", counter: 1 }),
@@ -39,7 +40,7 @@ package it.ht.rcs.console.factory.rest
     
     public function create(params:Object, operation:Operation, target:Target, onResult:Function=null, onFault:Function=null):void
     {
-      params._id = new Date().getTime().toString();
+      params._id = new Date().time.toString();
       
       var factory:Factory = new Factory(params);
       factory.path = [operation._id, target._id];
@@ -51,6 +52,8 @@ package it.ht.rcs.console.factory.rest
     
     public function update(factory:Factory, property:Object, onResult:Function=null, onFault:Function=null):void
     {
+      if (onResult != null)
+        onResult(new ResultEvent('factory.update'));
     }
     
     public function destroy(id:String, onResult:Function=null, onFault:Function=null):void

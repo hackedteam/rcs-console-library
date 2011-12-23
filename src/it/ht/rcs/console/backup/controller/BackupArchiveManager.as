@@ -3,7 +3,6 @@ package it.ht.rcs.console.backup.controller
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.backup.model.BackupArchive;
   import it.ht.rcs.console.controller.ItemManager;
-  import it.ht.rcs.console.events.RefreshEvent;
   
   import mx.collections.ArrayCollection;
   import mx.rpc.events.ResultEvent;
@@ -11,14 +10,8 @@ package it.ht.rcs.console.backup.controller
   public class BackupArchiveManager extends ItemManager
   {
     
-    /* singleton */
     private static var _instance:BackupArchiveManager = new BackupArchiveManager();
     public static function get instance():BackupArchiveManager { return _instance; } 
-    
-    public function BackupArchiveManager()
-    {
-      super();
-    }
     
     override public function refresh():void
     {
@@ -28,11 +21,9 @@ package it.ht.rcs.console.backup.controller
     
     private function onResult(e:ResultEvent):void
     {
-      var items:ArrayCollection = e.result as ArrayCollection;
       _items.removeAll();
-      items.source.forEach(function(element:*, index:int, arr:Array):void {
-        addItem(element);
-      });
+      for each (var item:* in e.result.source)
+        _items.addItem(item);
       dispatchDataLoadedEvent();
     }
     
@@ -47,4 +38,5 @@ package it.ht.rcs.console.backup.controller
     }
     
   }
+  
 }

@@ -11,7 +11,8 @@ package it.ht.rcs.console.search.rest
   
   public class DBSearchDemo implements IDBSearch
   {
-    private var _search_items : ArrayCollection = new ArrayCollection();
+    
+    private var _search_items:ArrayCollection = new ArrayCollection();
     
     public function DBSearchDemo()
     {
@@ -28,9 +29,8 @@ package it.ht.rcs.console.search.rest
     
     public function all(filter:Object, onResult:Function=null, onFault:Function=null):void
     {
-      var event:ResultEvent = new ResultEvent('search.all', false, true, _search_items);
       if (onResult != null)
-        onResult(event);
+        onResult(new ResultEvent('search.all', false, true, _search_items));
     }
     
     public function show(id:String, onResult:Function=null, onFault:Function=null):void
@@ -45,5 +45,7 @@ package it.ht.rcs.console.search.rest
         }
       }
     }
+    
   }
+  
 }

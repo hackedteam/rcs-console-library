@@ -38,19 +38,19 @@ package it.ht.rcs.console.dashboard.controller
       super();
     }
     
-    override public function start():void
-    {
-      super.start();
-      _autorefresh.addEventListener(TimerEvent.TIMER, onAutoRefresh);
-      _autorefresh.start();
-    }
-    
-    override public function stop():void
-    {
-      super.stop();
-      _autorefresh.removeEventListener(TimerEvent.TIMER, onAutoRefresh);
-      _autorefresh.stop();
-    }
+//    override public function start():void
+//    {
+//      super.start();
+//      _autorefresh.addEventListener(TimerEvent.TIMER, onAutoRefresh);
+//      _autorefresh.start();
+//    }
+//    
+//    override public function stop():void
+//    {
+//      super.stop();
+//      _autorefresh.removeEventListener(TimerEvent.TIMER, onAutoRefresh);
+//      _autorefresh.stop();
+//    }
     
     public function set user(user:User):void
     {
@@ -108,7 +108,7 @@ package it.ht.rcs.console.dashboard.controller
       _dashboard_ids.addItem(id);
       
       SearchManager.instance.showItem(id, function (item:SearchItem):void {
-        _items.addItem(item);
+        addItem(item);
       });
       
       /* save in the user profile the new list of items */
@@ -122,7 +122,7 @@ package it.ht.rcs.console.dashboard.controller
       var idx:int = _dashboard_ids.getItemIndex(o._id as String);
       _dashboard_ids.removeItemAt(idx);
       
-      _items.removeItem(o);
+      removeItem(o);
       
       /* save in the user profile the new list of items */
       UserManager.instance.update(_user, {dashboard_ids: _dashboard_ids.source});
