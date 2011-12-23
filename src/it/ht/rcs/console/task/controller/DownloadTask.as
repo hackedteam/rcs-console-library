@@ -54,7 +54,8 @@ package it.ht.rcs.console.task.controller
       trace("Creating DownloadTask " + task._id);
       this.task = new Task(task);
       this.db = db;
-      NotificationPopup.showNotification(ResourceManager.getInstance().getString('localized_main', 'TASK_NEW', [task.file_name]), 3);
+      if (task.status != 'finished')
+        NotificationPopup.showNotification(ResourceManager.getInstance().getString('localized_main', 'TASK_NEW', [task.file_name]), 3);
     }
     
     public function factory(type:String, fileName:String):DownloadTask
@@ -75,8 +76,13 @@ package it.ht.rcs.console.task.controller
     
     public function start_update():void
     {
-      if (isFinished() || isError()) 
+      if (isFinished() || isError()) {
+        creation_percentage.bytesTotal = task.total;
+        creation_percentage.bytesLoaded = task.current;
+        download_percentage.bytesLoaded = task.total;
+        download_percentage.bytesTotal = task.current;
         return;
+      }
       
       updateTimer = new Timer(1000);
       updateTimer.addEventListener(TimerEvent.TIMER, function ():void {
