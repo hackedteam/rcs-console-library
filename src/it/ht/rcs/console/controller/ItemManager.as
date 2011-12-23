@@ -1,29 +1,25 @@
 package it.ht.rcs.console.controller
 {
-  import flash.utils.getQualifiedClassName;
-  
   import it.ht.rcs.console.events.SessionEvent;
   
   import mx.collections.ArrayList;
   import mx.collections.ISort;
   import mx.collections.ListCollectionView;
-  import mx.collections.Sort;
-  import mx.collections.SortField;
   import mx.events.CollectionEvent;
   import mx.events.CollectionEventKind;
   
   public class ItemManager extends Manager
   {
     
-    [Bindable]
     protected var _items:ArrayList = new ArrayList();
+    protected var _class:Class = null;
     
-    public function ItemManager()
+    public function ItemManager(_class:Class=null)
     {
       super();
-      
-      _classname = flash.utils.getQualifiedClassName(this).split('::')[1];
       trace(_classname + ' (itemManager) -- Init');
+      
+      this._class = _class;
       
       /* detect changes on the list */
       _items.addEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
@@ -38,92 +34,69 @@ package it.ht.rcs.console.controller
     
     protected function onItemsChange(e:CollectionEvent):void
     {
-      
-      /* all the logic to the db is here, override this method */
       switch (e.kind) {
+        
         case CollectionEventKind.ADD:
-          e.items.forEach(function _(element:*, index:int, arr:Array):void {
-            onItemAdd(element);
-          });
+          for each (var added:* in e.items)
+            if (_class && added is _class)
+              onItemAdd(added);
           break;
         
         case CollectionEventKind.REMOVE:
-          e.items.forEach(function _(element:*, index:int, arr:Array):void {
-            onItemRemove(element);
-          });
+          for each (var removed:* in e.items)
+            if (_class && removed is _class)
+              onItemRemove(removed);
           break;
         
         case CollectionEventKind.UPDATE:
-          e.items.forEach(function _(element:*, index:int, arr:Array):void {
-            onItemUpdate(element);
-          });
+          for each (var event:* in e.items) // event is PropertyChangeEvent
+            if (_class && event.source is _class)
+              onItemUpdate(event);
           break;
         
         default:
           break;
-      }
       
+      }
     }
     
-    /* SPECIALIZE THIS: to specialize the type of object returned  */
-    public function newItem():Object
+    protected function onItemAdd(item:*):void {}
+    protected function onItemRemove(item:*):void {}
+    protected function onItemUpdate(event:*):void {}
+    
+    public function addItem(item:Object):void
     {
-      var obj:Object = new Object();
-      _items.addItem(obj);
-      return obj;
+      _items.addItem(item);
     }
     
-    public function addItem(o:Object):void
+    public function removeItem(item:Object):void
     {
-      _items.addItem(o);
+      _items.removeItem(item);
     }
     
-    protected function onItemAdd(element:*):void
+    public function clear():void
     {
-    }
-    
-    public function removeItem(o:Object):void
-    {
-      _items.removeItem(o);
-    }
-
-    protected function onItemRemove(element:*):void
-    { 
-    }
-
-    protected function onItemUpdate(element:*):void
-    { 
+      _items.removeAll();
     }
     
     public function getItem(_id:String):*
     {
-      var idx:int;
-      /* search for the item with _id and return it */
-      for (idx = 0; idx < _items.length; idx++) {
-        var elem:* = _items.getItemAt(idx);
-        if (elem._id == _id)
-          return elem;
-      }
+      for each (var o:* in _items.source)
+        if (o._id == _id)
+          return o;
       return null;
     }
     
-    public function getView(sortCriteria:ISort=null, filterFunction:Function=null):ListCollectionView
+    public function getView(sort:ISort=null, filterFunction:Function=null):ListCollectionView
     {
       trace(_classname + ' (itemManager) -- GetView');
       
       /* create the view for the caller */
       var lcv:ListCollectionView = new ListCollectionView(_items);
       
-      if (sortCriteria == null) {
-        /* default sorting is alphabetical */
-        var sort:Sort = new Sort();
-        sort.fields = [new SortField('name', true, false, false)];
-        lcv.sort = sort;
-      } else {
-        lcv.sort = sortCriteria;
-      }
-      
+      lcv.sort = sort ? sort : new Sort();
       lcv.filterFunction = filterFunction;
+      
       lcv.refresh();
       
       return lcv;

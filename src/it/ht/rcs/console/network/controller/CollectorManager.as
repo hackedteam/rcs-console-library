@@ -13,28 +13,19 @@ package it.ht.rcs.console.network.controller
   public class CollectorManager extends ItemManager
   {
     
-    /* singleton */
     private static var _instance:CollectorManager = new CollectorManager();
-    public static function get instance():CollectorManager { return _instance; } 
-    
-    public function CollectorManager()
-    {
-      super();
-    }
+    public static function get instance():CollectorManager { return _instance; }
     
     override protected function onItemRemove(o:*):void
     {
       DB.instance.collector.destroy(o._id);
     }
     
-    override protected function onItemUpdate(e:*):void
+    override protected function onItemUpdate(event:*):void
     {
-      var o:Object = new Object;
-      if (e.newValue is ArrayCollection)
-        o[e.property] = e.newValue.source;
-      else
-        o[e.property] = e.newValue;
-      DB.instance.collector.update(e.source, o);
+      var property:Object = new Object();
+      property[event.property] = event.newValue is ArrayCollection ? event.newValue.source : event.newValue;
+      DB.instance.collector.update(event.source, property);
     }
     
     override public function refresh():void
@@ -45,11 +36,9 @@ package it.ht.rcs.console.network.controller
     
     private function onResult(e:ResultEvent):void
     {
-      var items:ArrayCollection = e.result as ArrayCollection;
-      _items.removeAll();
-      items.source.forEach(function(element:*, index:int, arr:Array):void {
-        addItem(element);
-      });
+      clear();
+      for each (var item:* in e.result.source)
+        addItem(item);
       dispatchDataLoadedEvent();
     }
     

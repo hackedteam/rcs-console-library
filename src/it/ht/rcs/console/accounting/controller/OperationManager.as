@@ -14,11 +14,6 @@ package it.ht.rcs.console.accounting.controller
     private static var _instance:OperationManager = new OperationManager();
     public static function get instance():OperationManager { return _instance; } 
     
-    public function OperationManager()
-    {
-      super();
-    }
-    
     override public function refresh():void
     {
       super.refresh();
@@ -27,11 +22,10 @@ package it.ht.rcs.console.accounting.controller
     
     private function onResult(e:ResultEvent):void
     {
-      var items:ArrayCollection = e.result as ArrayCollection;
-      _items.removeAll();
-      items.source.forEach(function toGroupArray(element:*, index:int, arr:Array):void {
-        addItem(element as Operation);
-      });
+      clear();
+      for each (var item:* in e.result.source)
+        addItem(item);
+      dispatchDataLoadedEvent();
     }
     
   }

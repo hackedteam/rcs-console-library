@@ -5,14 +5,15 @@ package it.ht.rcs.console.target.rest
 
   public interface IDBTarget
   {
-    function all(onResult:Function = null, onFault:Function = null):void;
+    function all(onResult:Function=null, onFault:Function=null):void;
     
-    function show(id:String, onResult:Function = null, onFault:Function = null):void;
+    function show(id:String, onResult:Function=null, onFault:Function=null):void;
     
-    function create(params:Object, operation:Operation, onResult:Function = null, onFault:Function = null):void;
+    function create(params:Object, operation:Operation, onResult:Function=null, onFault:Function=null):void;
     
-    function update(target:Target, property:Object, onResult:Function = null, onFault:Function = null):void;
+    function update(target:Target, property:Object, onResult:Function=null, onFault:Function=null):void;
     
-    function destroy(id:String, onResult:Function = null, onFault:Function = null):void;
+    function destroy(id:String, onResult:Function=null, onFault:Function=null):void;
   }
+  
 }

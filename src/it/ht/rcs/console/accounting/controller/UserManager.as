@@ -3,30 +3,31 @@ package it.ht.rcs.console.accounting.controller
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.accounting.model.User;
   import it.ht.rcs.console.controller.ItemManager;
-  import it.ht.rcs.console.events.RefreshEvent;
   import it.ht.rcs.console.search.model.SearchItem;
   import it.ht.rcs.console.utils.AlertPopUp;
   
   import mx.collections.ArrayCollection;
-  import mx.collections.ArrayList;
-  import mx.collections.ListCollectionView;
-  import mx.collections.Sort;
-  import mx.collections.SortField;
-  import mx.core.FlexGlobals;
-  import mx.events.CollectionEvent;
   import mx.resources.ResourceManager;
-  import mx.rpc.events.FaultEvent;
   import mx.rpc.events.ResultEvent;
   
   public class UserManager extends ItemManager
   {
-    /* singleton */
+
     private static var _instance:UserManager = new UserManager();
     public static function get instance():UserManager { return _instance; } 
     
-    public function UserManager()
+    override public function refresh():void
     {
-      super();
+      super.refresh();
+      DB.instance.user.all(onResult);
+    }
+    
+    public function onResult(e:ResultEvent):void
+    {
+      clear();
+      for each (var item:* in e.result.source)
+        addItem(item);
+      dispatchDataLoadedEvent();
     }
     
     override protected function onItemRemove(o:*):void
@@ -34,31 +35,11 @@ package it.ht.rcs.console.accounting.controller
       DB.instance.user.destroy(o);
     }
     
-    override protected function onItemUpdate(e:*):void
+    override protected function onItemUpdate(event:*):void
     { 
-      var o:Object = new Object;
-      if (e.newValue is ArrayCollection)
-        o[e.property] = e.newValue.source;
-      else
-        o[e.property] = e.newValue;
-      DB.instance.user.update(e.source, o);
-    }
-    
-    override public function refresh():void
-    {
-      super.refresh();
-      
-      /* system users */
-      DB.instance.user.all(onUserIndexResult);
-    }
-    
-    public function onUserIndexResult(e:ResultEvent):void
-    {
-      var items:ArrayCollection = e.result as ArrayCollection;
-      _items.removeAll();
-      items.source.forEach(function toUserArray(element:*, index:int, arr:Array):void {
-        addItem(element as User);
-      });
+      var property:Object = new Object();
+      property[event.property] = event.newValue is ArrayCollection ? event.newValue.source : event.newValue;
+      DB.instance.user.update(event.source, property);
     }
     
     public function reload(u:User):void
@@ -101,5 +82,7 @@ package it.ht.rcs.console.accounting.controller
     {
       DB.instance.user.add_recent(user, item._id);   
     }
+    
   }
+  
 }

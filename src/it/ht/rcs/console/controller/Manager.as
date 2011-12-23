@@ -12,6 +12,7 @@ package it.ht.rcs.console.controller
   
   public class Manager extends EventDispatcher
   {
+    
     protected var _classname:String;
     
     public function Manager()
@@ -27,29 +28,19 @@ package it.ht.rcs.console.controller
     /* OVERRIDE WHEN NEEDED */
     protected function onLogin(e:SessionEvent):void {}
     protected function onBeforeLogout(e:SessionEvent):void {}
-    protected function onLogout(e:SessionEvent):void { stop(); }
-    
-    public function start():void
+    protected function onLogout(e:SessionEvent):void
     {
-      /* react to the global refresh event */
-      listenRefresh();
-      /* retrieve the data on startup */
-      refresh();
-    }
-    
-    public function stop():void
-    {
-      /* after stop, we don't want to refresh anymore */
+      trace(_classname + ' (manager) -- Logout');
       unlistenRefresh();
     }
     
-    private function listenRefresh():void
+    public function listenRefresh():void
     {
       trace(_classname + ' (manager) -- ListenRefresh');
       FlexGlobals.topLevelApplication.addEventListener(RefreshEvent.REFRESH, onRefresh);
     }
     
-    private function unlistenRefresh():void
+    public function unlistenRefresh():void
     {
       trace(_classname + ' (manager) -- UnlistenRefresh');
       FlexGlobals.topLevelApplication.removeEventListener(RefreshEvent.REFRESH, onRefresh);

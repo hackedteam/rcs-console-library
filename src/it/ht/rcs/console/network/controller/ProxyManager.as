@@ -2,7 +2,6 @@ package it.ht.rcs.console.network.controller
 {
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.controller.ItemManager;
-  import it.ht.rcs.console.events.RefreshEvent;
   import it.ht.rcs.console.network.model.Proxy;
   
   import mx.collections.ArrayCollection;
@@ -11,26 +10,8 @@ package it.ht.rcs.console.network.controller
   public class ProxyManager extends ItemManager
   {
     
-    /* singleton */
     private static var _instance:ProxyManager = new ProxyManager();
-    public static function get instance():ProxyManager { return _instance; } 
-    
-    public function ProxyManager()
-    {
-      super();
-    }
-    
-    override protected function onItemRemove(o:*):void
-    {
-      DB.instance.proxy.destroy(o._id);
-    }
-    
-    override protected function onItemUpdate(e:*):void
-    {
-      var o:Object = new Object;
-      o[e.property] = e.newValue;
-      DB.instance.proxy.update(e.source, o);
-    }
+    public static function get instance():ProxyManager { return _instance; }
     
     override public function refresh():void
     {
@@ -40,11 +21,22 @@ package it.ht.rcs.console.network.controller
     
     private function onResult(e:ResultEvent):void
     {
-      var items:ArrayCollection = e.result as ArrayCollection;
-      _items.removeAll();
-      items.source.forEach(function(element:*, index:int, arr:Array):void {
-        addItem(element);
-      });
+      clear();
+      for each (var item:* in e.result.source)
+        addItem(item);
+      dispatchDataLoadedEvent();
+    }
+    
+    override protected function onItemRemove(o:*):void
+    {
+      DB.instance.proxy.destroy(o._id);
+    }
+    
+    override protected function onItemUpdate(event:*):void
+    {
+      var property:Object = new Object();
+      property[event.property] = event.newValue is ArrayCollection ? event.newValue.source : event.newValue;
+      DB.instance.proxy.update(event.source, property);
     }
     
     public function addProxy(callback:Function):void
@@ -69,6 +61,7 @@ package it.ht.rcs.console.network.controller
         callback();
       });
     }
+    
   }
   
 }

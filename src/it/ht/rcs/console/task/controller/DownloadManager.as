@@ -1,9 +1,5 @@
 package it.ht.rcs.console.task.controller
 {
-  
-  
-  import flash.events.ErrorEvent;
-  
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.events.SessionEvent;
@@ -17,41 +13,26 @@ package it.ht.rcs.console.task.controller
   
   public class DownloadManager extends ItemManager
   {
-    /* singleton */
+
     private static var _instance:DownloadManager = new DownloadManager();
-    public static function get instance():DownloadManager { return _instance; } 
+    public static function get instance():DownloadManager { return _instance; }
     
     [Bindable]
     public var active:Boolean = false;
-    
+
     [Bindable]
     public var running:Boolean = false;
     
-    public function DownloadManager()
+    override public function refresh():void
     {
-      super();
+      super.refresh();
+      DB.instance.task.all(onResult);
     }
     
-    override public function start():void
-    {
-      super.start();
-      // get all available tasks
-      DB.instance.task.all(onTaskIndexResult);
-    }
-    
-    /*
-    override protected function onLoggingIn(e:SessionEvent):void
-    {
-      trace(_classname + ' (instance) -- Logging In');
-        // get all available tasks
-        DB.instance.task.all(onTaskIndexResult);
-    }
-    */
-    
-    private function onTaskIndexResult(e:ResultEvent):void
+    private function onResult(e:ResultEvent):void
     {
       var items:ArrayCollection = e.result as ArrayCollection;
-      _items.removeAll();
+      clear();
       
       active = items.length > 0;
       
