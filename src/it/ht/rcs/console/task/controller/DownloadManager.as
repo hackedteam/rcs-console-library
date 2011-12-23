@@ -3,9 +3,12 @@ package it.ht.rcs.console.task.controller
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.events.SessionEvent;
+  import it.ht.rcs.console.notifications.NotificationPopup;
   import it.ht.rcs.console.task.model.Task;
   
   import mx.collections.ArrayCollection;
+  import mx.resources.ResourceManager;
+  import mx.rpc.events.FaultEvent;
   import mx.rpc.events.ResultEvent;
   
   public class DownloadManager extends ItemManager
@@ -16,19 +19,23 @@ package it.ht.rcs.console.task.controller
     
     [Bindable]
     public var active:Boolean = false;
+
+    [Bindable]
+    public var running:Boolean = false;
     
     override public function refresh():void
     {
       super.refresh();
-      DB.instance.task.all(onTaskIndexResult);
+      DB.instance.task.all(onResult);
     }
     
-    private function onTaskIndexResult(e:ResultEvent):void
+    private function onResult(e:ResultEvent):void
     {
       var items:ArrayCollection = e.result as ArrayCollection;
       clear();
       
       active = items.length > 0;
+      
       if (items.length > 0)
         items.source.forEach(itemToDownloadTask);
     }
@@ -44,20 +51,36 @@ package it.ht.rcs.console.task.controller
     override protected function onBeforeLogout(e:SessionEvent):void
     {
       trace(_classname + ' (instance) -- Before Log Out');
-      for each(var t:DownloadTask in _items)
-        if (t.state != DownloadTask.STATE_FINISHED) {
+      for (var i:int = 0; i < _items.length; i++) {
+        var t:DownloadTask = _items.getItemAt(i) as DownloadTask;
+        if (t.isFinished()) {
           e.preventDefault();
           return;
         }
+      }
     }
     
     override protected function onLogout(e:SessionEvent):void
     {
       trace(_classname + ' (instance) -- Log Out');
       clearFinished();
-      for each(var t:DownloadTask in _items)
-        t.cleanup();
+      for (var i:int = 0; i < _items.length; i++) {
+        var t:DownloadTask = _items.getItemAt(i) as DownloadTask;
+        //t.cleanup();
+      }
       super.onLogout(e);
+    }
+    
+    public function checkRunning():void
+    {
+      for (var i:int = 0; i < _items.length; i++) {
+        var t:DownloadTask = _items.getItemAt(i) as DownloadTask;
+        if (t.running()) {
+          running = true;
+          return;
+        }
+      }
+      running = false;
     }
     
     public function clearFinished():void
@@ -71,16 +94,31 @@ package it.ht.rcs.console.task.controller
     
     public function createTask(type:String, fileName:String, params:Object, onSuccess:Function=null, onFailure:Function=null):void
     {
-      DB.instance.task.create({type: type, file_name: fileName, params: params}, function (e:ResultEvent):void { 
-        onTaskCreateResult(e); 
-        if (onSuccess != null) 
-          onSuccess(e); 
-      }, onFailure);
+      DB.instance.task.create({type: type, file_name: fileName, params: params}, 
+        function (e:ResultEvent):void { 
+          // success
+          onTaskCreateResult(e); 
+          if (onSuccess != null) 
+            onSuccess(e); 
+        }, 
+        function (e:FaultEvent):void { 
+          // failure
+          onTaskCreateError(e);
+          if (onFailure != null)
+            onFailure(e);
+        }
+      );
     }
     
     public function onTaskCreateResult(e:ResultEvent):void
     {
       itemToDownloadTask(new Task(e.result), 0, null);
+    }
+    
+    public function onTaskCreateError(e:FaultEvent):void
+    {
+      trace(e.statusCode);
+      NotificationPopup.showNotification(ResourceManager.getInstance().getString('localized_main', 'TASK_CREATE_ERROR', [e.message.body.toString().replace('"', '').replace('"', '')]));
     }
     
     override protected function onItemRemove(t:*):void
@@ -93,13 +131,14 @@ package it.ht.rcs.console.task.controller
     public function addTask(t:DownloadTask):void
     {
       addItem(t);
-      if (_items.length > 0) active = true;
+      active = _items.length > 0;
+      running = true;
     }
     
     public function removeTask(t:DownloadTask):void
     {
       removeItem(t);
-      if (_items.length > 0) active = true;
+      active = _items.length > 0;
     }
   }
 }
