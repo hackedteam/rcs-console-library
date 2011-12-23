@@ -51,9 +51,10 @@ package it.ht.rcs.console.agent.controller
       DB.instance.agent.create(f, o, t, function(e:ResultEvent):void {
         var factory:Agent = e.result as Agent;
         addItem(factory);
-        if (callback != null)
-          callback(factory);
+        callback(factory);
       });
     }
+    
   }
+  
 }
