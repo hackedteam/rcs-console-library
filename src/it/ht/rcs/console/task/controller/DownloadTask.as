@@ -105,11 +105,6 @@ package it.ht.rcs.console.task.controller
       return task.status == 'download_available';
     }
     
-    public function isError(): Boolean
-    {
-      return task.status == 'error';
-    }
-    
     public function onUpdateFailure(event:FaultEvent):void
     {
       trace("Update failure!!! " + event);
