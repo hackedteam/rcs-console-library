@@ -52,15 +52,14 @@ package it.ht.rcs.console.agent.controller
       DB.instance.agent.update(e.source, o);
     }
     
-    public function addAgent(a:Object, operation:Operation, target:Target, callback:Function):void
+    public function addFactory(factory:Object, operation:Operation, target:Target, callback:Function):void
     {
-      DB.instance.agent.create(a, operation, target, function (e:ResultEvent):void {
+      DB.instance.agent.create(factory, operation, target, function (e:ResultEvent):void {
         var agent:Agent = e.result as Agent;
         addItem(agent);
         if (callback != null)
           callback(agent);
       });
     }
-    
   }
 }
