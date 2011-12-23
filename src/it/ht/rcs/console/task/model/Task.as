@@ -31,6 +31,7 @@ public class Task extends _Super_Task
       current = data.current;
       total = data.total;
       desc = data.desc;
+      status = data.status;
       resource = data.resource;
       file_name = data.file_name;
     }

@@ -72,7 +72,7 @@ package it.ht.rcs.console.task.controller
       trace(_classname + ' (instance) -- Before Log Out');
       for (var i:int = 0; i < _items.length; i++) {
         var t:DownloadTask = _items.getItemAt(i) as DownloadTask;
-        if (t.isFinished()) {
+        if (t.running()) {
           e.preventDefault();
           return;
         }
@@ -85,7 +85,7 @@ package it.ht.rcs.console.task.controller
       clearFinished();
       for (var i:int = 0; i < _items.length; i++) {
         var t:DownloadTask = _items.getItemAt(i) as DownloadTask;
-        //t.cleanup();
+        t.cleanup();
       }
       super.onLogout(e);
     }
@@ -151,7 +151,7 @@ package it.ht.rcs.console.task.controller
     {
       addItem(t);
       active = _items.length > 0;
-      running = true;
+      checkRunning();
     }
     
     public function removeTask(t:DownloadTask):void
