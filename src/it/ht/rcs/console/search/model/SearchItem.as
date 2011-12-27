@@ -4,19 +4,15 @@ package it.ht.rcs.console.search.model
   
   import it.ht.rcs.console.operation.model.Stat;
   
-  import mx.events.PropertyChangeEvent;
-  
   public class SearchItem extends _Super_SearchItem
   {
-    
-    private var _internal_separator:Boolean = false;
     
     public function SearchItem(data:Object = null)
     {
       if (data) {
         _id = data._id;
         _kind = data._kind;
-         desc = data.desc;
+        desc = data.desc;
         name = data.name;
         status = data.status;
         path = data.path;
@@ -36,22 +32,6 @@ package it.ht.rcs.console.search.model
       return string;
     }
     
-    [Bindable(event='propertyChange')]
-    public function get separator() : Boolean
-    {
-      return _internal_separator;
-    }
-    
-    public function set separator(value:Boolean) : void
-    {
-      var oldValue:Boolean = _internal_separator;
-      if (oldValue !== value)
-      {
-        _internal_separator = value;
-        dispatchEvent(PropertyChangeEvent.createUpdateEvent(this, 'separator', oldValue, _internal_separator));
-      }
-    }
-    
     /**
      * DO NOT MODIFY THIS STATIC INITIALIZER - IT IS NECESSARY
      * FOR PROPERLY SETTING UP THE REMOTE CLASS ALIAS FOR THIS CLASS
@@ -67,7 +47,7 @@ package it.ht.rcs.console.search.model
       _Super_SearchItem.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.search.model.SearchItem);
       _Super_SearchItem.model_internal::initRemoteClassAliasAllRelated();
     }
-     
+    
     model_internal static function initRemoteClassAliasSingleChild():void
     {
       _Super_SearchItem.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.search.model.SearchItem);
