@@ -67,11 +67,6 @@ package it.ht.rcs.console.network.rest
     {
     }
     
-    public function apply_rules(proxy_id:String, onResult:Function = null, onFault:Function = null):void
-    {
-      var event:ResultEvent = new ResultEvent('proxy.apply_rules', false, true, null);
-      onResult(event);
-    }
 
     public function logs(id:String, onResult:Function = null, onFault:Function = null):void
     {

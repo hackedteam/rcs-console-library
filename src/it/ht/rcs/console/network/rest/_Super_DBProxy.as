@@ -96,13 +96,6 @@ internal class _Super_DBProxy extends com.adobe.fiber.services.wrapper.HTTPServi
          operation.resultType = it.ht.rcs.console.network.model.ProxyRule;
          operations.push(operation);
 
-         operation = new mx.rpc.http.Operation(null, "apply_rules_");
-         operation.url = "/proxy/apply_rules";
-         operation.method = "POST";
-         operation.serializationFilter = serializer1;
-         operation.contentType = "application/xml";
-         operations.push(operation);
-
          operation = new mx.rpc.http.Operation(null, "logs_");
          operation.url = "/proxy/logs/{id}";
          operation.method = "GET";
@@ -275,24 +268,6 @@ internal class _Super_DBProxy extends com.adobe.fiber.services.wrapper.HTTPServi
     public function update_rule_(strXml:String) : mx.rpc.AsyncToken
     {
         var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("update_rule_");
-		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(strXml) ;
-        return _internal_token;
-    }
-     
-    /**
-      * This method is a generated wrapper used to call the 'apply_rules_' operation. It returns an mx.rpc.AsyncToken whose 
-      * result property will be populated with the result of the operation when the server response is received. 
-      * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value. 
-      * You can then bind to CallResponder.lastResult or listen for the CallResponder.result or fault events.
-      *
-      * @see mx.rpc.AsyncToken
-      * @see mx.rpc.CallResponder 
-      *
-      * @return an mx.rpc.AsyncToken whose result property will be populated with the result of the operation when the server response is received.
-      */
-    public function apply_rules_(strXml:String) : mx.rpc.AsyncToken
-    {
-        var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("apply_rules_");
 		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(strXml) ;
         return _internal_token;
     }

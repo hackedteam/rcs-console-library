@@ -66,12 +66,6 @@ package it.ht.rcs.console.network.rest
       resp.token = update_rule_(JSON.stringify( { _id: proxy_id, rule: params } ));
     }
     
-    public function apply_rules(proxy_id:String, onResult:Function = null, onFault:Function = null):void
-    {
-      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = apply_rules_(JSON.stringify( { _id: proxy_id} ));
-    }
-    
     public function logs(id:String, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);

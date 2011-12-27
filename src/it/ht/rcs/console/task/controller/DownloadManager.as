@@ -68,6 +68,8 @@ package it.ht.rcs.console.task.controller
         var t:DownloadTask = _items.getItemAt(i) as DownloadTask;
         t.cleanup();
       }
+      active = false;
+      running = false;
       super.onLogout(e);
     }
     
