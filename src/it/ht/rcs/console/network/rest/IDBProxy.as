@@ -12,7 +12,6 @@ package it.ht.rcs.console.network.rest
     function add_rule(proxy_id:String, params:Object, onResult:Function = null, onFault:Function = null):void;
     function del_rule(proxy_id:String, rule_id:String, onResult:Function = null, onFault:Function = null):void;
     function update_rule(proxy_id:String, params:Object, onResult:Function = null, onFault:Function = null):void;
-    function apply_rules(proxy_id:String, onResult:Function = null, onFault:Function = null):void;
     function logs(id:String, onResult:Function = null, onFault:Function = null):void;
     function del_logs(id:String, onResult:Function = null, onFault:Function = null):void;
   }
