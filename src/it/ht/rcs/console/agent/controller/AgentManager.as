@@ -55,6 +55,11 @@ package it.ht.rcs.console.agent.controller
       });
     }
     
+    public function show(_id:String, callback:Function):void
+    {
+      DB.instance.agent.show(_id, callback);
+    }
+    
   }
   
 }

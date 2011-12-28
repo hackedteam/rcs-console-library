@@ -30,7 +30,7 @@ package it.ht.rcs.console.agent.rest
       // Dmitry Vitaly (All In)
       new Agent({ _id:"a9", _kind: "agent", name: "Dmitry cell (1)", desc:"Dmitry's Cellphone",          status: "closed", path :["o3", "t5"], version: 10, ident:"RCS_09", counter: 1, upgradable: false, stat: new Stat({ _id: "s9", last_sync: 1307514166, evidence: {}, grid_size: 0, size: 0 }), instance: 'i1',
                   configs: [new Config({ _id: 'c1', desc: 'First config',  sent: 1319708409, activated: 1319708409, saved: 1319708409, user: 'Tech User', config: '' }),
-                            new Config({ _id: 'c2', desc: 'Second config', sent: 1319708409, activated: 1319708409, saved: 1319708409, user: 'Tech User', config: '' })]}),
+                            new Config({ _id: 'c2', desc: 'Second config', sent: 1319708409, activated: 1319708409, saved: 1319708409, user: 'Tech User', config: '' })] }),
       
       // FACTORIES
       

@@ -13,6 +13,11 @@ package it.ht.rcs.console.accounting.controller
   public class UserManager extends ItemManager
   {
 
+    public function UserManager()
+    {
+      super(User);
+    }
+    
     private static var _instance:UserManager = new UserManager();
     public static function get instance():UserManager { return _instance; } 
     
