@@ -60,6 +60,8 @@ package it.ht.rcs.console.agent.rest
     
     public function show(id:String, onResult:Function=null, onFault:Function=null):void
     {
+      if (onResult != null)
+        onResult(new ResultEvent('agent.show')); // TODO: find real agent
     }
     
     public function create(params:Object, operation:Operation, target:Target, onResult:Function=null, onFault:Function=null):void
