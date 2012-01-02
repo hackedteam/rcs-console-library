@@ -22,14 +22,14 @@ internal class _TaskEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("total", "desc", "_id", "status", "resource", "current", "generator", "type", "file_name");
+    model_internal static var allProperties:Array = new Array("total", "description", "_id", "status", "resource", "current", "generator", "type", "file_name");
     model_internal static var allAssociationProperties:Array = new Array();
     model_internal static var allRequiredProperties:Array = new Array();
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("total", "desc", "_id", "status", "resource", "current", "generator", "type", "file_name");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("total", "description", "_id", "status", "resource", "current", "generator", "type", "file_name");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("total", "desc", "_id", "status", "resource", "current", "generator", "type", "file_name");
+    model_internal static var dataProperties:Array = new Array("total", "description", "_id", "status", "resource", "current", "generator", "type", "file_name");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("total", "desc", "_id", "status", "resource", "current", "generator", "type", "file_name");
+    model_internal static var nonDerivedProperties:Array = new Array("total", "description", "_id", "status", "resource", "current", "generator", "type", "file_name");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array();
     model_internal static var collectionBaseMap:Object;
@@ -50,7 +50,7 @@ internal class _TaskEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
             // dependents map
             model_internal::dependentsOnMap = new Object();
             model_internal::dependentsOnMap["total"] = new Array();
-            model_internal::dependentsOnMap["desc"] = new Array();
+            model_internal::dependentsOnMap["description"] = new Array();
             model_internal::dependentsOnMap["_id"] = new Array();
             model_internal::dependentsOnMap["status"] = new Array();
             model_internal::dependentsOnMap["resource"] = new Array();
@@ -66,7 +66,7 @@ internal class _TaskEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
         // Property type Map
         model_internal::propertyTypeMap = new Object();
         model_internal::propertyTypeMap["total"] = "int";
-        model_internal::propertyTypeMap["desc"] = "String";
+        model_internal::propertyTypeMap["description"] = "String";
         model_internal::propertyTypeMap["_id"] = "String";
         model_internal::propertyTypeMap["status"] = "String";
         model_internal::propertyTypeMap["resource"] = "it.ht.rcs.console.task.model.TaskResource";
@@ -309,7 +309,7 @@ internal class _TaskEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
     }
 
     [Bindable(event="propertyChange")]
-    public function get isDescAvailable():Boolean
+    public function get isDescriptionAvailable():Boolean
     {
         return true;
     }
@@ -373,7 +373,7 @@ internal class _TaskEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
     }
 
     [Bindable(event="propertyChange")]   
-    public function get descStyle():com.adobe.fiber.styles.Style
+    public function get descriptionStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }

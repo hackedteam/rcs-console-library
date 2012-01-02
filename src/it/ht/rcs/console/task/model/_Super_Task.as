@@ -52,7 +52,7 @@ public class _Super_Task extends flash.events.EventDispatcher implements com.ado
      * properties
      */
     private var _internal_total : int;
-    private var _internal_desc : String;
+    private var _internal_description : String;
     private var _internal__id : String;
     private var _internal_status : String;
     private var _internal_resource : it.ht.rcs.console.task.model.TaskResource;
@@ -90,9 +90,9 @@ public class _Super_Task extends flash.events.EventDispatcher implements com.ado
     }
 
     [Bindable(event="propertyChange")]
-    public function get desc() : String
+    public function get description() : String
     {
-        return _internal_desc;
+        return _internal_description;
     }
 
     [Bindable(event="propertyChange")]
@@ -155,13 +155,13 @@ public class _Super_Task extends flash.events.EventDispatcher implements com.ado
         }
     }
 
-    public function set desc(value:String) : void
+    public function set description(value:String) : void
     {
-        var oldValue:String = _internal_desc;
+        var oldValue:String = _internal_description;
         if (oldValue !== value)
         {
-            _internal_desc = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "desc", oldValue, _internal_desc));
+            _internal_description = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "description", oldValue, _internal_description));
         }
     }
 

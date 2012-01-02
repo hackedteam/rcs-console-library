@@ -67,6 +67,9 @@ package it.ht.rcs.console.network.controller
     
     private function entryFilter(item:Object):Boolean
     {
+      if (item['address'] == null || item['address'] == '')
+        return false;
+      
       if (item['type'] == 'local' && item['next'][0] == null)
         return true;
       

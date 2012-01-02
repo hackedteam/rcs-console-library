@@ -16,14 +16,7 @@ package it.ht.rcs.console.task.controller
   
   public class DownloadTask
   {
-    /*
-    //public static const STATE_IDLE:String = 'idle';
-    public static const STATE_CREATING:String = 'creating';
-    public static const STATE_DOWNLOADING:String = 'downloading';
-    public static const STATE_FINISHED:String = 'finished';
-    public static const STATE_ERROR:String = 'error';
-    */
-    
+   
     private var updateTimer: Timer;
     private var fileDownloader: FileDownloader;
     
@@ -32,8 +25,6 @@ package it.ht.rcs.console.task.controller
     
     [Bindable]
     public var task: Task;
-    //[Bindable]
-    //public var state:String = STATE_CREATING;
     [Bindable]
     public var creation_percentage:Object = {bytesLoaded:0, bytesTotal:0};
     [Bindable]
@@ -46,7 +37,7 @@ package it.ht.rcs.console.task.controller
     
     public function get desc():String
     {
-      return this.task.desc;
+      return this.task.description;
     }
     
     public function DownloadTask(task: Object, db: DB)
@@ -124,7 +115,7 @@ package it.ht.rcs.console.task.controller
       task.current = event.result.current;
       task.total = event.result.total;
       task.resource = event.result.resource;
-      task.desc = event.result.desc;
+      task.description = event.result.description;
       
       trace ("Updating task " + event.result._id + " (" + task.status + ") [current: " + task.current + " | total: " + task.total + "]");
       
@@ -152,7 +143,7 @@ package it.ht.rcs.console.task.controller
           fileDownloader = new FileDownloader(remote_uri, local_path);
           fileDownloader.onProgress = onDownloadUpdate;
           fileDownloader.onComplete = onDownloadComplete;
-          task.desc = "Downloading";
+          // task.description = "Downloading";
           fileDownloader.download();
           
           trace("Task " + task._id +" is available for download.");
@@ -171,7 +162,7 @@ package it.ht.rcs.console.task.controller
           // stop the update timer
           updateTimer.stop();
           
-          task.desc = "Completed";
+          // task.description = "Completed";
           NotificationPopup.showNotification(ResourceManager.getInstance().getString('localized_main', 'TASK_COMPLETE', [task.file_name]));
           trace("Task " + task._id +" completed.");
           break;
