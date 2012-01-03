@@ -9,31 +9,53 @@ package it.ht.rcs.console.evidence.rest
 {
   
   
+  import flash.filesystem.File;
+  import flash.utils.ByteArray;
+  
   import it.ht.rcs.console.DB;
   
   import mx.rpc.CallResponder;
 
-public class DBEvidence extends _Super_DBEvidence implements IDBEvidence
-{
-    /**
-     * Override super.init() to provide any initialization customization if needed.
-     */
-    protected override function preInitializeService():void
-    {
-        super.preInitializeService();
-        // Initialization customization goes here
-    }
-        
-    public function DBEvidence(host: String) {
-      super();
-      _serviceControl.baseURL = host;
-    }
-    
-    public function all(filter:Object, onResult:Function=null, onFault:Function=null):void
-    {
-      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = all_(JSON.stringify(filter));
-    }
-}
+  public class DBEvidence extends _Super_DBEvidence implements IDBEvidence
+  {
+      /**
+       * Override super.init() to provide any initialization customization if needed.
+       */
+      protected override function preInitializeService():void
+      {
+          super.preInitializeService();
+          // Initialization customization goes here
+      }
+          
+      public function DBEvidence(host: String) {
+        super();
+        _serviceControl.baseURL = host;
+      }
+      
+      public function all(filter:Object, onResult:Function=null, onFault:Function=null):void
+      {
+        var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+        resp.token = all_(JSON.stringify(filter));
+      }
+      
+      public function sync_start(params:Object, onResult:Function=null, onFault:Function=null):void
+      {
+        var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+        resp.token = sync_start_(JSON.stringify(params));
+      }
+      
+      public function sync_stop(params:Object, onResult:Function=null, onFault:Function=null):void
+      {
+        var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+        resp.token = sync_stop_(JSON.stringify(params));
+      }
+      
+      public function agent_status(params:Object, onResult:Function=null, onFault:Function=null):void
+      {
+        var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+        resp.token = agent_status_(JSON.stringify(params));
+      }
+      
+  }
 
 }

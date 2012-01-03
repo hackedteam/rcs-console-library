@@ -7,6 +7,7 @@ package it.ht.rcs.console.evidence.rest
 import com.adobe.fiber.core.model_internal;
 import com.adobe.fiber.services.wrapper.HTTPServiceWrapper;
 import com.adobe.fiber.valueobjects.IValueObject;
+import it.ht.rcs.console.evidence.model.AgentStatus;
 import it.ht.rcs.console.evidence.model.Evidence;
 import mx.collections.ListCollectionView;
 import mx.data.DataManager;
@@ -157,6 +158,28 @@ internal class _Super_DBEvidence extends com.adobe.fiber.services.wrapper.HTTPSe
          operation.resultType = int;
          operations.push(operation);
 
+         operation = new mx.rpc.http.Operation(null, "agent_status_");
+         operation.url = "/agent/status";
+         operation.method = "POST";
+         operation.serializationFilter = serializer0;
+         operation.contentType = "application/xml";
+         operation.resultType = it.ht.rcs.console.evidence.model.AgentStatus;
+         operations.push(operation);
+
+         operation = new mx.rpc.http.Operation(null, "sync_start_");
+         operation.url = "/evidence/start";
+         operation.method = "POST";
+         operation.serializationFilter = serializer1;
+         operation.contentType = "application/xml";
+         operations.push(operation);
+
+         operation = new mx.rpc.http.Operation(null, "sync_stop_");
+         operation.url = "/evidence/stop";
+         operation.method = "POST";
+         operation.serializationFilter = serializer1;
+         operation.contentType = "application/xml";
+         operations.push(operation);
+
          _serviceControl.operationList = operations;  
         var managedAssociation : mx.data.ManagedAssociation;
         var managedAssocsArray : Array;
@@ -230,6 +253,60 @@ internal class _Super_DBEvidence extends com.adobe.fiber.services.wrapper.HTTPSe
     {
         var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("count_");
 		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(filter) ;
+        return _internal_token;
+    }
+     
+    /**
+      * This method is a generated wrapper used to call the 'agent_status_' operation. It returns an mx.rpc.AsyncToken whose 
+      * result property will be populated with the result of the operation when the server response is received. 
+      * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value. 
+      * You can then bind to CallResponder.lastResult or listen for the CallResponder.result or fault events.
+      *
+      * @see mx.rpc.AsyncToken
+      * @see mx.rpc.CallResponder 
+      *
+      * @return an mx.rpc.AsyncToken whose result property will be populated with the result of the operation when the server response is received.
+      */
+    public function agent_status_(strXml:String) : mx.rpc.AsyncToken
+    {
+        var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("agent_status_");
+		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(strXml) ;
+        return _internal_token;
+    }
+     
+    /**
+      * This method is a generated wrapper used to call the 'sync_start_' operation. It returns an mx.rpc.AsyncToken whose 
+      * result property will be populated with the result of the operation when the server response is received. 
+      * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value. 
+      * You can then bind to CallResponder.lastResult or listen for the CallResponder.result or fault events.
+      *
+      * @see mx.rpc.AsyncToken
+      * @see mx.rpc.CallResponder 
+      *
+      * @return an mx.rpc.AsyncToken whose result property will be populated with the result of the operation when the server response is received.
+      */
+    public function sync_start_(strXml:String) : mx.rpc.AsyncToken
+    {
+        var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("sync_start_");
+		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(strXml) ;
+        return _internal_token;
+    }
+     
+    /**
+      * This method is a generated wrapper used to call the 'sync_stop_' operation. It returns an mx.rpc.AsyncToken whose 
+      * result property will be populated with the result of the operation when the server response is received. 
+      * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value. 
+      * You can then bind to CallResponder.lastResult or listen for the CallResponder.result or fault events.
+      *
+      * @see mx.rpc.AsyncToken
+      * @see mx.rpc.CallResponder 
+      *
+      * @return an mx.rpc.AsyncToken whose result property will be populated with the result of the operation when the server response is received.
+      */
+    public function sync_stop_(strXml:String) : mx.rpc.AsyncToken
+    {
+        var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("sync_stop_");
+		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(strXml) ;
         return _internal_token;
     }
      
