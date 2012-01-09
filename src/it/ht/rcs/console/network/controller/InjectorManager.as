@@ -2,7 +2,7 @@ package it.ht.rcs.console.network.controller
 {
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.controller.ItemManager;
-  import it.ht.rcs.console.network.model.Proxy;
+  import it.ht.rcs.console.network.model.Injector;
   
   import mx.collections.ArrayCollection;
   import mx.rpc.events.ResultEvent;
@@ -41,10 +41,10 @@ package it.ht.rcs.console.network.controller
     
     public function addProxy(callback:Function):void
     {
-      DB.instance.injector.create(Proxy.defaultProxy(), function (e:ResultEvent):void {
-        var proxy:Proxy = e.result as Proxy;
-        addItem(proxy);
-        callback(proxy);
+      DB.instance.injector.create(Injector.defaultInjector(), function (e:ResultEvent):void {
+        var injector:Injector = e.result as Injector;
+        addItem(injector);
+        callback(injector);
       });
     }
     

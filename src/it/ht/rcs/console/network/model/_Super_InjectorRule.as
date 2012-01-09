@@ -1,6 +1,6 @@
 /**
  * This is a generated class and is not intended for modification.  To customize behavior
- * of this value object you may modify the generated sub-class of this class - Proxy.as.
+ * of this value object you may modify the generated sub-class of this class - InjectorRule.as.
  */
 
 package it.ht.rcs.console.network.model
@@ -8,7 +8,6 @@ package it.ht.rcs.console.network.model
 import com.adobe.fiber.services.IFiberManagingService;
 import com.adobe.fiber.valueobjects.IValueObject;
 import flash.events.EventDispatcher;
-import it.ht.rcs.console.network.model.ProxyRule;
 import mx.collections.ArrayCollection;
 import mx.events.PropertyChangeEvent;
 
@@ -21,7 +20,7 @@ import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 use namespace model_internal;
 
 [ExcludeClass]
-public class _Super_Proxy extends flash.events.EventDispatcher implements com.adobe.fiber.valueobjects.IValueObject
+public class _Super_InjectorRule extends flash.events.EventDispatcher implements com.adobe.fiber.valueobjects.IValueObject
 {
     model_internal static function initRemoteClassAliasSingle(cz:Class) : void
     {
@@ -29,10 +28,9 @@ public class _Super_Proxy extends flash.events.EventDispatcher implements com.ad
 
     model_internal static function initRemoteClassAliasAllRelated() : void
     {
-        it.ht.rcs.console.network.model.ProxyRule.initRemoteClassAliasSingleChild();
     }
 
-    model_internal var _dminternal_model : _ProxyEntityMetadata;
+    model_internal var _dminternal_model : _InjectorRuleEntityMetadata;
     model_internal var _changedObjects:mx.collections.ArrayCollection = new ArrayCollection();
 
     public function getChangedObjects() : Array
@@ -49,20 +47,19 @@ public class _Super_Proxy extends flash.events.EventDispatcher implements com.ad
     /**
      * properties
      */
-    private var _internal_rules : ArrayCollection;
-    model_internal var _internal_rules_leaf:it.ht.rcs.console.network.model.ProxyRule;
-    private var _internal_version : int;
-    private var _internal_redirection_tag : String;
-    private var _internal_port : int;
+    private var _internal_action_param : String;
+    private var _internal_enabled : Boolean;
+    private var _internal_action_param_name : String;
+    private var _internal_resource : String;
+    private var _internal_target_id : ArrayCollection;
     private var _internal_updated_at : String;
-    private var _internal_poll : Boolean;
-    private var _internal_desc : String;
     private var _internal__id : String;
-    private var _internal_configured : Boolean;
-    private var _internal_address : String;
-    private var _internal_name : String;
+    private var _internal_ident : String;
+    private var _internal_action : String;
     private var _internal_created_at : String;
-    private var _internal_redirect : String;
+    private var _internal_disable_sync : Boolean;
+    private var _internal_ident_param : String;
+    private var _internal_probability : int;
 
     private static var emptyArray:Array = new Array();
 
@@ -74,9 +71,9 @@ public class _Super_Proxy extends flash.events.EventDispatcher implements com.ad
 
     model_internal var _changeWatcherArray:Array = new Array();
 
-    public function _Super_Proxy()
+    public function _Super_InjectorRule()
     {
-        _model = new _ProxyEntityMetadata(this);
+        _model = new _InjectorRuleEntityMetadata(this);
 
         // Bind to own data or source properties for cache invalidation triggering
 
@@ -87,27 +84,33 @@ public class _Super_Proxy extends flash.events.EventDispatcher implements com.ad
      */
 
     [Bindable(event="propertyChange")]
-    public function get rules() : ArrayCollection
+    public function get action_param() : String
     {
-        return _internal_rules;
+        return _internal_action_param;
     }
 
     [Bindable(event="propertyChange")]
-    public function get version() : int
+    public function get enabled() : Boolean
     {
-        return _internal_version;
+        return _internal_enabled;
     }
 
     [Bindable(event="propertyChange")]
-    public function get redirection_tag() : String
+    public function get action_param_name() : String
     {
-        return _internal_redirection_tag;
+        return _internal_action_param_name;
     }
 
     [Bindable(event="propertyChange")]
-    public function get port() : int
+    public function get resource() : String
     {
-        return _internal_port;
+        return _internal_resource;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get target_id() : ArrayCollection
+    {
+        return _internal_target_id;
     }
 
     [Bindable(event="propertyChange")]
@@ -117,39 +120,21 @@ public class _Super_Proxy extends flash.events.EventDispatcher implements com.ad
     }
 
     [Bindable(event="propertyChange")]
-    public function get poll() : Boolean
-    {
-        return _internal_poll;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get desc() : String
-    {
-        return _internal_desc;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get _id() : String
     {
         return _internal__id;
     }
 
     [Bindable(event="propertyChange")]
-    public function get configured() : Boolean
+    public function get ident() : String
     {
-        return _internal_configured;
+        return _internal_ident;
     }
 
     [Bindable(event="propertyChange")]
-    public function get address() : String
+    public function get action() : String
     {
-        return _internal_address;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get name() : String
-    {
-        return _internal_name;
+        return _internal_action;
     }
 
     [Bindable(event="propertyChange")]
@@ -159,9 +144,21 @@ public class _Super_Proxy extends flash.events.EventDispatcher implements com.ad
     }
 
     [Bindable(event="propertyChange")]
-    public function get redirect() : String
+    public function get disable_sync() : Boolean
     {
-        return _internal_redirect;
+        return _internal_disable_sync;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get ident_param() : String
+    {
+        return _internal_ident_param;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get probability() : int
+    {
+        return _internal_probability;
     }
 
     public function clearAssociations() : void
@@ -172,58 +169,68 @@ public class _Super_Proxy extends flash.events.EventDispatcher implements com.ad
      * data/source property setters
      */
 
-    public function set rules(value:*) : void
+    public function set action_param(value:String) : void
     {
-        var oldValue:ArrayCollection = _internal_rules;
+        var oldValue:String = _internal_action_param;
+        if (oldValue !== value)
+        {
+            _internal_action_param = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "action_param", oldValue, _internal_action_param));
+        }
+    }
+
+    public function set enabled(value:Boolean) : void
+    {
+        var oldValue:Boolean = _internal_enabled;
+        if (oldValue !== value)
+        {
+            _internal_enabled = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "enabled", oldValue, _internal_enabled));
+        }
+    }
+
+    public function set action_param_name(value:String) : void
+    {
+        var oldValue:String = _internal_action_param_name;
+        if (oldValue !== value)
+        {
+            _internal_action_param_name = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "action_param_name", oldValue, _internal_action_param_name));
+        }
+    }
+
+    public function set resource(value:String) : void
+    {
+        var oldValue:String = _internal_resource;
+        if (oldValue !== value)
+        {
+            _internal_resource = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "resource", oldValue, _internal_resource));
+        }
+    }
+
+    public function set target_id(value:*) : void
+    {
+        var oldValue:ArrayCollection = _internal_target_id;
         if (oldValue !== value)
         {
             if (value is ArrayCollection)
             {
-                _internal_rules = value;
+                _internal_target_id = value;
             }
             else if (value is Array)
             {
-                _internal_rules = new ArrayCollection(value);
+                _internal_target_id = new ArrayCollection(value);
             }
             else if (value == null)
             {
-                _internal_rules = null;
+                _internal_target_id = null;
             }
             else
             {
-                throw new Error("value of rules must be a collection");
+                throw new Error("value of target_id must be a collection");
             }
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "rules", oldValue, _internal_rules));
-        }
-    }
-
-    public function set version(value:int) : void
-    {
-        var oldValue:int = _internal_version;
-        if (oldValue !== value)
-        {
-            _internal_version = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "version", oldValue, _internal_version));
-        }
-    }
-
-    public function set redirection_tag(value:String) : void
-    {
-        var oldValue:String = _internal_redirection_tag;
-        if (oldValue !== value)
-        {
-            _internal_redirection_tag = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "redirection_tag", oldValue, _internal_redirection_tag));
-        }
-    }
-
-    public function set port(value:int) : void
-    {
-        var oldValue:int = _internal_port;
-        if (oldValue !== value)
-        {
-            _internal_port = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "port", oldValue, _internal_port));
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "target_id", oldValue, _internal_target_id));
         }
     }
 
@@ -237,26 +244,6 @@ public class _Super_Proxy extends flash.events.EventDispatcher implements com.ad
         }
     }
 
-    public function set poll(value:Boolean) : void
-    {
-        var oldValue:Boolean = _internal_poll;
-        if (oldValue !== value)
-        {
-            _internal_poll = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "poll", oldValue, _internal_poll));
-        }
-    }
-
-    public function set desc(value:String) : void
-    {
-        var oldValue:String = _internal_desc;
-        if (oldValue !== value)
-        {
-            _internal_desc = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "desc", oldValue, _internal_desc));
-        }
-    }
-
     public function set _id(value:String) : void
     {
         var oldValue:String = _internal__id;
@@ -267,33 +254,23 @@ public class _Super_Proxy extends flash.events.EventDispatcher implements com.ad
         }
     }
 
-    public function set configured(value:Boolean) : void
+    public function set ident(value:String) : void
     {
-        var oldValue:Boolean = _internal_configured;
+        var oldValue:String = _internal_ident;
         if (oldValue !== value)
         {
-            _internal_configured = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "configured", oldValue, _internal_configured));
+            _internal_ident = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "ident", oldValue, _internal_ident));
         }
     }
 
-    public function set address(value:String) : void
+    public function set action(value:String) : void
     {
-        var oldValue:String = _internal_address;
+        var oldValue:String = _internal_action;
         if (oldValue !== value)
         {
-            _internal_address = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "address", oldValue, _internal_address));
-        }
-    }
-
-    public function set name(value:String) : void
-    {
-        var oldValue:String = _internal_name;
-        if (oldValue !== value)
-        {
-            _internal_name = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "name", oldValue, _internal_name));
+            _internal_action = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "action", oldValue, _internal_action));
         }
     }
 
@@ -307,13 +284,33 @@ public class _Super_Proxy extends flash.events.EventDispatcher implements com.ad
         }
     }
 
-    public function set redirect(value:String) : void
+    public function set disable_sync(value:Boolean) : void
     {
-        var oldValue:String = _internal_redirect;
+        var oldValue:Boolean = _internal_disable_sync;
         if (oldValue !== value)
         {
-            _internal_redirect = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "redirect", oldValue, _internal_redirect));
+            _internal_disable_sync = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "disable_sync", oldValue, _internal_disable_sync));
+        }
+    }
+
+    public function set ident_param(value:String) : void
+    {
+        var oldValue:String = _internal_ident_param;
+        if (oldValue !== value)
+        {
+            _internal_ident_param = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "ident_param", oldValue, _internal_ident_param));
+        }
+    }
+
+    public function set probability(value:int) : void
+    {
+        var oldValue:int = _internal_probability;
+        if (oldValue !== value)
+        {
+            _internal_probability = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "probability", oldValue, _internal_probability));
         }
     }
 
@@ -377,14 +374,14 @@ public class _Super_Proxy extends flash.events.EventDispatcher implements com.ad
 
     [Transient]
     [Bindable(event="propertyChange")]
-    public function get _model() : _ProxyEntityMetadata
+    public function get _model() : _InjectorRuleEntityMetadata
     {
         return model_internal::_dminternal_model;
     }
 
-    public function set _model(value : _ProxyEntityMetadata) : void
+    public function set _model(value : _InjectorRuleEntityMetadata) : void
     {
-        var oldValue : _ProxyEntityMetadata = model_internal::_dminternal_model;
+        var oldValue : _InjectorRuleEntityMetadata = model_internal::_dminternal_model;
         if (oldValue !== value)
         {
             model_internal::_dminternal_model = value;

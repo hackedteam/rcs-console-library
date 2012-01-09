@@ -2645,7 +2645,7 @@
     <property name="instance" type="string" required="true"/>
     <property name="counter" type="integer"/>
   </entity>
-  <service name="DBProxy">
+  <service name="DBInjector">
     <annotation name="ActionScriptGeneration">
       <item name="ServiceType">HTTPMultiService</item>
       <item name="Package">it.ht.rcs.console.network.rest</item>
@@ -2658,17 +2658,17 @@
       <item name="DEFAULT_ENTITY_PACKAGE">it.ht.rcs.console.network.model</item>
       <item name="LINKED_FILE"></item>
     </annotation>
-    <function name="all_" return-type="Proxy[]">
+    <function name="all_" return-type="Injector[]">
       <annotation name="analyze group">
         <item name="analyzed">true</item>
       </annotation>
       <annotation name="ActionScriptGeneration">
         <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
         <item name="method">GET</item>
-        <item name="url">/proxy</item>
+        <item name="url">/injector</item>
       </annotation>
       <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/proxy</item>
+        <item name="completeURL">https://localhost:4444/injector</item>
       </annotation>
       <annotation name="ValidProperties">
         <item name="propertySpecifier">port,desc,configured,rules,version,poll,updated_at,_id,address,name,created_at,redirect,redirection_tag</item>
@@ -2677,17 +2677,17 @@
         <item name="returnType">opaque</item>
       </annotation>
     </function>
-    <function name="show_" return-type="Proxy">
+    <function name="show_" return-type="Injector">
       <annotation name="analyze group">
         <item name="analyzed">true</item>
       </annotation>
       <annotation name="ActionScriptGeneration">
         <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
         <item name="method">GET</item>
-        <item name="url">/proxy/{id}</item>
+        <item name="url">/injector/{id}</item>
       </annotation>
       <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/proxy/{id}</item>
+        <item name="completeURL">https://localhost:4444/injector/{id}</item>
       </annotation>
       <annotation name="ValidProperties">
         <item name="propertySpecifier">port,desc,configured,rules,version,poll,updated_at,_id,address,name,created_at,redirect,redirection_tag</item>
@@ -2702,7 +2702,7 @@
       </annotation>
       <parameter name="id" type="string"/>
     </function>
-    <function name="create_" return-type="Proxy">
+    <function name="create_" return-type="Injector">
       <annotation name="analyze group">
         <item name="analyzed">true</item>
       </annotation>
@@ -2711,10 +2711,10 @@
         <item name="method">POST</item>
         <item name="contentType">application/xml</item>
         <item name="requestBodyParameter">true</item>
-        <item name="url">/proxy/create</item>
+        <item name="url">/injector/create</item>
       </annotation>
       <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/proxy/create</item>
+        <item name="completeURL">https://localhost:4444/injector/create</item>
       </annotation>
       <annotation name="ValidProperties">
         <item name="propertySpecifier">port,updated_at,poll,_id,configured,name,created_at,redirect</item>
@@ -2726,7 +2726,7 @@
       </annotation>
       <parameter name="strXml" type="string"/>
     </function>
-    <function name="update_" return-type="Proxy">
+    <function name="update_" return-type="Injector">
       <annotation name="analyze group">
         <item name="analyzed">true</item>
       </annotation>
@@ -2735,10 +2735,10 @@
         <item name="method">POST</item>
         <item name="contentType">application/xml</item>
         <item name="requestBodyParameter">true</item>
-        <item name="url">/proxy/update</item>
+        <item name="url">/injector/update</item>
       </annotation>
       <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/proxy/update</item>
+        <item name="completeURL">https://localhost:4444/injector/update</item>
       </annotation>
       <annotation name="ValidProperties">
         <item name="propertySpecifier">port,updated_at,poll,desc,_id,configured,address,name,created_at,redirect</item>
@@ -2759,10 +2759,10 @@
         <item name="method">POST</item>
         <item name="contentType">application/xml</item>
         <item name="requestBodyParameter">true</item>
-        <item name="url">/proxy/destroy</item>
+        <item name="url">/injector/destroy</item>
       </annotation>
       <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/proxy/destroy</item>
+        <item name="completeURL">https://localhost:4444/injector/destroy</item>
       </annotation>
       <annotation name="original signature">
         <item name="returnType">opaque</item>
@@ -2771,7 +2771,7 @@
       </annotation>
       <parameter name="strXml" type="string"/>
     </function>
-    <function name="add_rule_" return-type="ProxyRule">
+    <function name="add_rule_" return-type="InjectorRule">
       <annotation name="analyze group">
         <item name="analyzed">true</item>
       </annotation>
@@ -2780,10 +2780,10 @@
         <item name="method">POST</item>
         <item name="contentType">application/xml</item>
         <item name="requestBodyParameter">true</item>
-        <item name="url">/proxy/add_rule</item>
+        <item name="url">/injector/add_rule</item>
       </annotation>
       <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/proxy/add_rule</item>
+        <item name="completeURL">https://localhost:4444/injector/add_rule</item>
       </annotation>
       <annotation name="ValidProperties">
         <item name="propertySpecifier">action_param,enabled,action_param_name,resource,target_id,updated_at,_id,ident,action,created_at,disable_sync,ident_param,probability</item>
@@ -2804,10 +2804,10 @@
         <item name="method">POST</item>
         <item name="contentType">application/xml</item>
         <item name="requestBodyParameter">true</item>
-        <item name="url">/proxy/del_rule</item>
+        <item name="url">/injector/del_rule</item>
       </annotation>
       <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/proxy/del_rule</item>
+        <item name="completeURL">https://localhost:4444/injector/del_rule</item>
       </annotation>
       <annotation name="original signature">
         <item name="returnType">opaque</item>
@@ -2816,7 +2816,7 @@
       </annotation>
       <parameter name="strXml" type="string"/>
     </function>
-    <function name="update_rule_" return-type="ProxyRule">
+    <function name="update_rule_" return-type="InjectorRule">
       <annotation name="analyze group">
         <item name="analyzed">true</item>
       </annotation>
@@ -2825,10 +2825,10 @@
         <item name="method">POST</item>
         <item name="contentType">application/xml</item>
         <item name="requestBodyParameter">true</item>
-        <item name="url">/proxy/update_rule</item>
+        <item name="url">/injector/update_rule</item>
       </annotation>
       <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/proxy/update_rule</item>
+        <item name="completeURL">https://localhost:4444/injector/update_rule</item>
       </annotation>
       <annotation name="ValidProperties">
         <item name="propertySpecifier">enabled,action_param,updated_at,ident,_id,target_id,resource,action,ident_param,disable_sync,created_at,probability</item>
@@ -2847,10 +2847,10 @@
       <annotation name="ActionScriptGeneration">
         <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
         <item name="method">GET</item>
-        <item name="url">/proxy/logs/{id}</item>
+        <item name="url">/injector/logs/{id}</item>
       </annotation>
       <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/proxy/logs/{id}</item>
+        <item name="completeURL">https://localhost:4444/injector/logs/{id}</item>
       </annotation>
       <annotation name="ValidProperties">
         <item name="propertySpecifier">time,desc,_id,type</item>
@@ -2874,10 +2874,10 @@
         <item name="method">POST</item>
         <item name="contentType">application/xml</item>
         <item name="requestBodyParameter">true</item>
-        <item name="url">/proxy/del_logs</item>
+        <item name="url">/injector/del_logs</item>
       </annotation>
       <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/proxy/del_logs</item>
+        <item name="completeURL">https://localhost:4444/injector/del_logs</item>
       </annotation>
       <annotation name="original signature">
         <item name="returnType">opaque</item>
@@ -2887,12 +2887,12 @@
       <parameter name="strXml" type="string"/>
     </function>
   </service>
-  <entity name="Proxy">
+  <entity name="Injector">
     <annotation name="EntityProperties">
-      <item name="EntityOriginalName">Proxy</item>
+      <item name="EntityOriginalName">Injector</item>
     </annotation>
     <annotation name="service Group">
-      <item name="service">DBProxy</item>
+      <item name="service">DBInjector</item>
     </annotation>
     <annotation name="ServerProperties">
       <item name="IncludeRemoteClass">nonempty</item>
@@ -2912,7 +2912,7 @@
     <annotation name="update_">
       <item name="propertySpecifier">port,updated_at,poll,desc,_id,configured,address,name,created_at,redirect</item>
     </annotation>
-    <property name="rules" type="ProxyRule[]"/>
+    <property name="rules" type="InjectorRule[]"/>
     <property name="version" type="integer"/>
     <property name="redirection_tag" type="string"/>
     <property name="port" type="integer"/>
@@ -2926,12 +2926,12 @@
     <property name="created_at" type="string"/>
     <property name="redirect" type="string"/>
   </entity>
-  <entity name="ProxyRule">
+  <entity name="InjectorRule">
     <annotation name="EntityProperties">
       <item name="EntityOriginalName">Rules</item>
     </annotation>
     <annotation name="service Group">
-      <item name="service">DBProxy</item>
+      <item name="service">DBInjector</item>
     </annotation>
     <annotation name="ServerProperties">
       <item name="IncludeRemoteClass">nonempty</item>
@@ -2964,7 +2964,7 @@
       <item name="EntityOriginalName">NetworkLog</item>
     </annotation>
     <annotation name="service Group">
-      <item name="service">DBProxy,DBCollector</item>
+      <item name="service">DBInjector,DBCollector</item>
     </annotation>
     <annotation name="ServerProperties">
       <item name="IncludeRemoteClass">nonempty</item>
