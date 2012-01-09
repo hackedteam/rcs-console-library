@@ -7,37 +7,37 @@ package it.ht.rcs.console.network.controller
   import mx.collections.ISort;
   import mx.collections.ListCollectionView;
   
-  public class ProxyController extends Manager
+  public class InjectorController extends Manager
   {
     
     /* singleton */
-    private static var _instance:ProxyController = new ProxyController();
-    public static function get instance():ProxyController { return _instance; } 
+    private static var _instance:InjectorController = new InjectorController();
+    public static function get instance():InjectorController { return _instance; } 
     
-    public function ProxyController()
+    public function InjectorController()
     {
       super();
     }
     
     override public function refresh():void
     {
-      ProxyManager.instance.refresh();
+      InjectorManager.instance.refresh();
       //TargetManager.instance.refresh();
     }
     
     public function getView(sortCriteria:ISort=null, filterFunction:Function=null):ListCollectionView
     {
-      return ProxyManager.instance.getView();
+      return InjectorManager.instance.getView();
     }
     
     public function addProxy(callback:Function):void
     {
-      ProxyManager.instance.addProxy(callback);
+      InjectorManager.instance.addProxy(callback);
     }
     
     public function removeItem(o:Object):void
     {
-      ProxyManager.instance.removeItem(o);
+      InjectorManager.instance.removeItem(o);
     }
     
     public function getTargetList():ListCollectionView

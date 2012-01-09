@@ -39,7 +39,7 @@ package it.ht.rcs.console
   import it.ht.rcs.console.network.rest.DBProxy;
   import it.ht.rcs.console.network.rest.DBProxyDemo;
   import it.ht.rcs.console.network.rest.IDBCollector;
-  import it.ht.rcs.console.network.rest.IDBProxy;
+  import it.ht.rcs.console.network.rest.IDBInjector;
   import it.ht.rcs.console.operation.rest.DBOperation;
   import it.ht.rcs.console.operation.rest.DBOperationDemo;
   import it.ht.rcs.console.operation.rest.IDBOperation;
@@ -76,7 +76,7 @@ package it.ht.rcs.console
     public var audit:IDBAudit;
     public var task:IDBTask;
     public var collector:IDBCollector;
-    public var proxy:IDBProxy;
+    public var injector:IDBInjector;
     public var license:IDBLicense;
     public var monitor:IDBMonitor;
     public var user:IDBUser;
@@ -116,7 +116,7 @@ package it.ht.rcs.console
       audit     = new DBAudit(host);
       task      = new DBTask(host);
       collector = new DBCollector(host);
-      proxy     = new DBProxy(host);
+      injector  = new DBProxy(host);
       license   = new DBLicense(host);
       monitor   = new DBMonitor(host);
       user      = new DBUser(host);
@@ -137,11 +137,10 @@ package it.ht.rcs.console
       target    = new DBTargetDemo();
       agent     = new DBAgentDemo();
       search    = new DBSearchDemo();
-      
       audit     = new DBAuditDemo();
       task      = new DBTaskDemo();
       collector = new DBCollectorDemo();
-      proxy     = new DBProxyDemo();
+      injector  = new DBProxyDemo();
       license   = new DBLicenseDemo();
       monitor   = new DBMonitorDemo();
       user      = new DBUserDemo();

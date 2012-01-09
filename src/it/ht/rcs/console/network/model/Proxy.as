@@ -4,12 +4,12 @@ package it.ht.rcs.console.network.model
 import com.adobe.fiber.core.model_internal;
 
 import it.ht.rcs.console.DB;
-import it.ht.rcs.console.network.controller.ProxyRuleManager;
+import it.ht.rcs.console.network.controller.InjectorRuleManager;
 
 public class Proxy extends _Super_Proxy
 {
   
-  public var rulesManager:ProxyRuleManager;
+  public var rulesManager:InjectorRuleManager;
   
   public static function defaultProxy():Object
   {
@@ -30,7 +30,7 @@ public class Proxy extends _Super_Proxy
   public function Proxy(data:Object = null)
   {
     // We always create an empty rulesManager to prevent NPE if the proxy has no rules.
-    rulesManager = new ProxyRuleManager(this, null);
+    rulesManager = new InjectorRuleManager(this, null);
     if (data) {
       _id = data._id;
       address = data.address;
@@ -53,7 +53,7 @@ public class Proxy extends _Super_Proxy
     
     /* attach the submanager for the rules list */
     if (rules != null)
-      rulesManager = new ProxyRuleManager(this, rules);
+      rulesManager = new InjectorRuleManager(this, rules);
   }
   
   /** 

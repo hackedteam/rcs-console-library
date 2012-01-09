@@ -8,7 +8,7 @@ package it.ht.rcs.console.network.rest
   import mx.collections.ArrayCollection;
   import mx.rpc.events.ResultEvent;
   
-  public class DBProxyDemo implements IDBProxy
+  public class DBProxyDemo implements IDBInjector
   {
     
     public function all(onResult:Function=null, onFault:Function=null):void
@@ -51,7 +51,7 @@ package it.ht.rcs.console.network.rest
     {
     }
     
-    public function add_rule(proxy_id:String, params:Object, onResult:Function=null, onFault:Function=null):void
+    public function add_rule(injector_id:String, params:Object, onResult:Function=null, onFault:Function=null):void
     {
       var rule:ProxyRule = new ProxyRule(params);
       
@@ -59,11 +59,11 @@ package it.ht.rcs.console.network.rest
       onResult(event);
     }
     
-    public function update_rule(proxy_id:String, params:Object, onResult:Function=null, onFault:Function=null):void
+    public function update_rule(injector_id:String, params:Object, onResult:Function=null, onFault:Function=null):void
     {
     }
     
-    public function del_rule(proxy_id:String, rule_id:String, onResult:Function=null, onFault:Function=null):void
+    public function del_rule(injector_id:String, rule_id:String, onResult:Function=null, onFault:Function=null):void
     {
     }
     
