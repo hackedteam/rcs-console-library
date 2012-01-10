@@ -98,6 +98,6 @@ public class InjectorRule extends _Super_InjectorRule
      * END OF DO NOT MODIFY SECTION
      *
      **/    
-}
+  }
 
 }
