@@ -2,21 +2,21 @@ package it.ht.rcs.console.network.controller
 {
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.controller.ItemManager;
-  import it.ht.rcs.console.network.model.Proxy;
+  import it.ht.rcs.console.network.model.Injector;
   
   import mx.collections.ArrayCollection;
   import mx.rpc.events.ResultEvent;
   
-  public class ProxyManager extends ItemManager
+  public class InjectorManager extends ItemManager
   {
     
-    private static var _instance:ProxyManager = new ProxyManager();
-    public static function get instance():ProxyManager { return _instance; }
+    private static var _instance:InjectorManager = new InjectorManager();
+    public static function get instance():InjectorManager { return _instance; }
     
     override public function refresh():void
     {
       super.refresh();
-      DB.instance.proxy.all(onResult);
+      DB.instance.injector.all(onResult);
     }
     
     private function onResult(e:ResultEvent):void
@@ -29,35 +29,35 @@ package it.ht.rcs.console.network.controller
     
     override protected function onItemRemove(o:*):void
     {
-      DB.instance.proxy.destroy(o._id);
+      DB.instance.injector.destroy(o._id);
     }
     
     override protected function onItemUpdate(event:*):void
     {
       var property:Object = new Object();
       property[event.property] = event.newValue is ArrayCollection ? event.newValue.source : event.newValue;
-      DB.instance.proxy.update(event.source, property);
+      DB.instance.injector.update(event.source, property);
     }
     
     public function addProxy(callback:Function):void
     {
-      DB.instance.proxy.create(Proxy.defaultProxy(), function (e:ResultEvent):void {
-        var proxy:Proxy = e.result as Proxy;
-        addItem(proxy);
-        callback(proxy);
+      DB.instance.injector.create(Injector.defaultInjector(), function (e:ResultEvent):void {
+        var injector:Injector = e.result as Injector;
+        addItem(injector);
+        callback(injector);
       });
     }
     
     public function getLogs(_id:String, callback:Function):void
     {
-      DB.instance.proxy.logs(_id, function(e:ResultEvent):void {
+      DB.instance.injector.logs(_id, function(e:ResultEvent):void {
         callback(e.result as ArrayCollection);
       });
     }
     
     public function clearLogs(_id:String, callback:Function):void
     {
-      DB.instance.proxy.del_logs(_id, function(e:ResultEvent):void {
+      DB.instance.injector.del_logs(_id, function(e:ResultEvent):void {
         callback();
       });
     }

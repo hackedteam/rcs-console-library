@@ -1,12 +1,24 @@
+/**
+ * This is a generated sub-class of _InjectorRule.as and is intended for behavior
+ * customization.  This class is only generated when there is no file already present
+ * at its target location.  Thus custom behavior that you add here will survive regeneration
+ * of the super-class. 
+ *
+ * NOTE: Do not manually modify the RemoteClass mapping unless
+ * your server representation of this class has changed and you've 
+ * updated your ActionScriptGeneration,RemoteClass annotation on the
+ * corresponding entity 
+ **/ 
+ 
 package it.ht.rcs.console.network.model
 {
 
 import com.adobe.fiber.core.model_internal;
 
-public class ProxyRule extends _Super_ProxyRule
+public class InjectorRule extends _Super_InjectorRule
 {
-    
-  public static function defaultProxyRule():Object
+  
+  public static function defaultInjectorRule():Object
   {
     return {
       _id: '',
@@ -23,7 +35,7 @@ public class ProxyRule extends _Super_ProxyRule
     };
   }
   
-  public function ProxyRule(data:Object = null)
+  public function InjectorRule(data:Object = null)
   {
     if (data) {
       _id = data._id;
@@ -60,6 +72,7 @@ public class ProxyRule extends _Super_ProxyRule
     /** 
      * DO NOT MODIFY THIS STATIC INITIALIZER - IT IS NECESSARY
      * FOR PROPERLY SETTING UP THE REMOTE CLASS ALIAS FOR THIS CLASS
+     *
      **/
      
     /**
@@ -69,22 +82,22 @@ public class ProxyRule extends _Super_ProxyRule
      */     
     public static function _initRemoteClassAlias() : void
     {
-      _Super_ProxyRule.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.network.model.ProxyRule);
-      _Super_ProxyRule.model_internal::initRemoteClassAliasAllRelated();
+        _Super_InjectorRule.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.network.model.InjectorRule);
+        _Super_InjectorRule.model_internal::initRemoteClassAliasAllRelated();
     }
      
     model_internal static function initRemoteClassAliasSingleChild() : void
     {
-      _Super_ProxyRule.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.network.model.ProxyRule);
+        _Super_InjectorRule.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.network.model.InjectorRule);
     }
     
     {
-      _Super_ProxyRule.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.network.model.ProxyRule);
+        _Super_InjectorRule.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.network.model.InjectorRule);
     }
     /** 
      * END OF DO NOT MODIFY SECTION
-     **/
-    
+     *
+     **/    
 }
 
 }

@@ -9,7 +9,6 @@ import com.adobe.fiber.styles.Style;
 import com.adobe.fiber.valueobjects.AbstractEntityMetadata;
 import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 import com.adobe.fiber.valueobjects.IPropertyIterator;
-import it.ht.rcs.console.network.model.ProxyRule;
 import mx.collections.ArrayCollection;
 import com.adobe.fiber.core.model_internal;
 import com.adobe.fiber.valueobjects.IModelType;
@@ -18,71 +17,71 @@ import mx.events.PropertyChangeEvent;
 use namespace model_internal;
 
 [ExcludeClass]
-internal class _ProxyEntityMetadata extends com.adobe.fiber.valueobjects.AbstractEntityMetadata
+internal class _InjectorRuleEntityMetadata extends com.adobe.fiber.valueobjects.AbstractEntityMetadata
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("rules", "version", "redirection_tag", "port", "updated_at", "poll", "desc", "_id", "configured", "address", "name", "created_at", "redirect");
+    model_internal static var allProperties:Array = new Array("action_param", "enabled", "action_param_name", "resource", "target_id", "updated_at", "_id", "ident", "action", "created_at", "disable_sync", "ident_param", "probability");
     model_internal static var allAssociationProperties:Array = new Array();
     model_internal static var allRequiredProperties:Array = new Array();
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("rules", "version", "redirection_tag", "port", "updated_at", "poll", "desc", "_id", "configured", "address", "name", "created_at", "redirect");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("action_param", "enabled", "action_param_name", "resource", "target_id", "updated_at", "_id", "ident", "action", "created_at", "disable_sync", "ident_param", "probability");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("rules", "version", "redirection_tag", "port", "updated_at", "poll", "desc", "_id", "configured", "address", "name", "created_at", "redirect");
+    model_internal static var dataProperties:Array = new Array("action_param", "enabled", "action_param_name", "resource", "target_id", "updated_at", "_id", "ident", "action", "created_at", "disable_sync", "ident_param", "probability");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("rules", "version", "redirection_tag", "port", "updated_at", "poll", "desc", "_id", "configured", "address", "name", "created_at", "redirect");
+    model_internal static var nonDerivedProperties:Array = new Array("action_param", "enabled", "action_param_name", "resource", "target_id", "updated_at", "_id", "ident", "action", "created_at", "disable_sync", "ident_param", "probability");
     model_internal static var derivedProperties:Array = new Array();
-    model_internal static var collectionProperties:Array = new Array("rules");
+    model_internal static var collectionProperties:Array = new Array("target_id");
     model_internal static var collectionBaseMap:Object;
-    model_internal static var entityName:String = "Proxy";
+    model_internal static var entityName:String = "InjectorRule";
     model_internal static var dependentsOnMap:Object;
     model_internal static var dependedOnServices:Array = new Array();
     model_internal static var propertyTypeMap:Object;
 
 
-    model_internal var _instance:_Super_Proxy;
+    model_internal var _instance:_Super_InjectorRule;
     model_internal static var _nullStyle:com.adobe.fiber.styles.Style = new com.adobe.fiber.styles.Style();
 
-    public function _ProxyEntityMetadata(value : _Super_Proxy)
+    public function _InjectorRuleEntityMetadata(value : _Super_InjectorRule)
     {
         // initialize property maps
         if (model_internal::dependentsOnMap == null)
         {
             // dependents map
             model_internal::dependentsOnMap = new Object();
-            model_internal::dependentsOnMap["rules"] = new Array();
-            model_internal::dependentsOnMap["version"] = new Array();
-            model_internal::dependentsOnMap["redirection_tag"] = new Array();
-            model_internal::dependentsOnMap["port"] = new Array();
+            model_internal::dependentsOnMap["action_param"] = new Array();
+            model_internal::dependentsOnMap["enabled"] = new Array();
+            model_internal::dependentsOnMap["action_param_name"] = new Array();
+            model_internal::dependentsOnMap["resource"] = new Array();
+            model_internal::dependentsOnMap["target_id"] = new Array();
             model_internal::dependentsOnMap["updated_at"] = new Array();
-            model_internal::dependentsOnMap["poll"] = new Array();
-            model_internal::dependentsOnMap["desc"] = new Array();
             model_internal::dependentsOnMap["_id"] = new Array();
-            model_internal::dependentsOnMap["configured"] = new Array();
-            model_internal::dependentsOnMap["address"] = new Array();
-            model_internal::dependentsOnMap["name"] = new Array();
+            model_internal::dependentsOnMap["ident"] = new Array();
+            model_internal::dependentsOnMap["action"] = new Array();
             model_internal::dependentsOnMap["created_at"] = new Array();
-            model_internal::dependentsOnMap["redirect"] = new Array();
+            model_internal::dependentsOnMap["disable_sync"] = new Array();
+            model_internal::dependentsOnMap["ident_param"] = new Array();
+            model_internal::dependentsOnMap["probability"] = new Array();
 
             // collection base map
             model_internal::collectionBaseMap = new Object();
-            model_internal::collectionBaseMap["rules"] = "it.ht.rcs.console.network.model.ProxyRule";
+            model_internal::collectionBaseMap["target_id"] = "String";
         }
 
         // Property type Map
         model_internal::propertyTypeMap = new Object();
-        model_internal::propertyTypeMap["rules"] = "ArrayCollection";
-        model_internal::propertyTypeMap["version"] = "int";
-        model_internal::propertyTypeMap["redirection_tag"] = "String";
-        model_internal::propertyTypeMap["port"] = "int";
+        model_internal::propertyTypeMap["action_param"] = "String";
+        model_internal::propertyTypeMap["enabled"] = "Boolean";
+        model_internal::propertyTypeMap["action_param_name"] = "String";
+        model_internal::propertyTypeMap["resource"] = "String";
+        model_internal::propertyTypeMap["target_id"] = "ArrayCollection";
         model_internal::propertyTypeMap["updated_at"] = "String";
-        model_internal::propertyTypeMap["poll"] = "Boolean";
-        model_internal::propertyTypeMap["desc"] = "String";
         model_internal::propertyTypeMap["_id"] = "String";
-        model_internal::propertyTypeMap["configured"] = "Boolean";
-        model_internal::propertyTypeMap["address"] = "String";
-        model_internal::propertyTypeMap["name"] = "String";
+        model_internal::propertyTypeMap["ident"] = "String";
+        model_internal::propertyTypeMap["action"] = "String";
         model_internal::propertyTypeMap["created_at"] = "String";
-        model_internal::propertyTypeMap["redirect"] = "String";
+        model_internal::propertyTypeMap["disable_sync"] = "Boolean";
+        model_internal::propertyTypeMap["ident_param"] = "String";
+        model_internal::propertyTypeMap["probability"] = "int";
 
         model_internal::_instance = value;
     }
@@ -135,7 +134,7 @@ internal class _ProxyEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
     override public function getDependants(propertyName:String):Array
     {
        if (model_internal::nonDerivedProperties.indexOf(propertyName) == -1)
-            throw new Error(propertyName + " is not a data property of entity Proxy");
+            throw new Error(propertyName + " is not a data property of entity InjectorRule");
             
        return model_internal::dependentsOnMap[propertyName] as Array;  
     }
@@ -153,7 +152,7 @@ internal class _ProxyEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
     override public function getCollectionBase(propertyName:String):String
     {
         if (model_internal::collectionProperties.indexOf(propertyName) == -1)
-            throw new Error(propertyName + " is not a collection property of entity Proxy");
+            throw new Error(propertyName + " is not a collection property of entity InjectorRule");
 
         return model_internal::collectionBaseMap[propertyName];
     }
@@ -161,7 +160,7 @@ internal class _ProxyEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
     override public function getPropertyType(propertyName:String):String
     {
         if (model_internal::allProperties.indexOf(propertyName) == -1)
-            throw new Error(propertyName + " is not a property of Proxy");
+            throw new Error(propertyName + " is not a property of InjectorRule");
 
         return model_internal::propertyTypeMap[propertyName];
     }
@@ -175,7 +174,7 @@ internal class _ProxyEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
     {
         if (model_internal::allProperties.indexOf(propertyName) == -1)
         {
-            throw new Error(propertyName + " does not exist for entity Proxy");
+            throw new Error(propertyName + " does not exist for entity InjectorRule");
         }
 
         return model_internal::_instance[propertyName];
@@ -185,7 +184,7 @@ internal class _ProxyEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
     {
         if (model_internal::nonDerivedProperties.indexOf(propertyName) == -1)
         {
-            throw new Error(propertyName + " is not a modifiable property of entity Proxy");
+            throw new Error(propertyName + " is not a modifiable property of entity InjectorRule");
         }
 
         model_internal::_instance[propertyName] = value;
@@ -217,7 +216,7 @@ internal class _ProxyEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
     {
         if (model_internal::allProperties.indexOf(propertyName) == -1)
         {
-            throw new Error(propertyName + " does not exist for entity Proxy");
+            throw new Error(propertyName + " does not exist for entity InjectorRule");
         }
 
         if (model_internal::allAlwaysAvailableProperties.indexOf(propertyName) != -1)
@@ -312,25 +311,31 @@ internal class _ProxyEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
     }
 
     [Bindable(event="propertyChange")]
-    public function get isRulesAvailable():Boolean
+    public function get isAction_paramAvailable():Boolean
     {
         return true;
     }
 
     [Bindable(event="propertyChange")]
-    public function get isVersionAvailable():Boolean
+    public function get isEnabledAvailable():Boolean
     {
         return true;
     }
 
     [Bindable(event="propertyChange")]
-    public function get isRedirection_tagAvailable():Boolean
+    public function get isAction_param_nameAvailable():Boolean
     {
         return true;
     }
 
     [Bindable(event="propertyChange")]
-    public function get isPortAvailable():Boolean
+    public function get isResourceAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isTarget_idAvailable():Boolean
     {
         return true;
     }
@@ -342,37 +347,19 @@ internal class _ProxyEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
     }
 
     [Bindable(event="propertyChange")]
-    public function get isPollAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get isDescAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get is_idAvailable():Boolean
     {
         return true;
     }
 
     [Bindable(event="propertyChange")]
-    public function get isConfiguredAvailable():Boolean
+    public function get isIdentAvailable():Boolean
     {
         return true;
     }
 
     [Bindable(event="propertyChange")]
-    public function get isAddressAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get isNameAvailable():Boolean
+    public function get isActionAvailable():Boolean
     {
         return true;
     }
@@ -384,7 +371,19 @@ internal class _ProxyEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
     }
 
     [Bindable(event="propertyChange")]
-    public function get isRedirectAvailable():Boolean
+    public function get isDisable_syncAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isIdent_paramAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isProbabilityAvailable():Boolean
     {
         return true;
     }
@@ -400,25 +399,31 @@ internal class _ProxyEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
     }
 
     [Bindable(event="propertyChange")]   
-    public function get rulesStyle():com.adobe.fiber.styles.Style
+    public function get action_paramStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
 
     [Bindable(event="propertyChange")]   
-    public function get versionStyle():com.adobe.fiber.styles.Style
+    public function get enabledStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
 
     [Bindable(event="propertyChange")]   
-    public function get redirection_tagStyle():com.adobe.fiber.styles.Style
+    public function get action_param_nameStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
 
     [Bindable(event="propertyChange")]   
-    public function get portStyle():com.adobe.fiber.styles.Style
+    public function get resourceStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get target_idStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
@@ -430,37 +435,19 @@ internal class _ProxyEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
     }
 
     [Bindable(event="propertyChange")]   
-    public function get pollStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get descStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
     public function get _idStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
 
     [Bindable(event="propertyChange")]   
-    public function get configuredStyle():com.adobe.fiber.styles.Style
+    public function get identStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
 
     [Bindable(event="propertyChange")]   
-    public function get addressStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get nameStyle():com.adobe.fiber.styles.Style
+    public function get actionStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
@@ -472,7 +459,19 @@ internal class _ProxyEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
     }
 
     [Bindable(event="propertyChange")]   
-    public function get redirectStyle():com.adobe.fiber.styles.Style
+    public function get disable_syncStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get ident_paramStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get probabilityStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }

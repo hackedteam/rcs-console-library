@@ -1,14 +1,14 @@
 /**
  * This is a generated class and is not intended for modification.  To customize behavior
- * of this service wrapper you may modify the generated sub-class of this class - DBProxy.as.
+ * of this service wrapper you may modify the generated sub-class of this class - DBInjector.as.
  */
 package it.ht.rcs.console.network.rest
 {
 import com.adobe.fiber.core.model_internal;
 import com.adobe.fiber.services.wrapper.HTTPServiceWrapper;
+import it.ht.rcs.console.network.model.Injector;
+import it.ht.rcs.console.network.model.InjectorRule;
 import it.ht.rcs.console.network.model.NetworkLog;
-import it.ht.rcs.console.network.model.Proxy;
-import it.ht.rcs.console.network.model.ProxyRule;
 import mx.rpc.AbstractOperation;
 import mx.rpc.AsyncToken;
 import mx.rpc.http.HTTPMultiService;
@@ -18,13 +18,13 @@ import com.adobe.serializers.json.JSONSerializationFilter;
 import com.adobe.serializers.xml.XMLSerializationFilter;
 
 [ExcludeClass]
-internal class _Super_DBProxy extends com.adobe.fiber.services.wrapper.HTTPServiceWrapper
+internal class _Super_DBInjector extends com.adobe.fiber.services.wrapper.HTTPServiceWrapper
 {
     private static var serializer0:JSONSerializationFilter = new JSONSerializationFilter();
     private static var serializer1:XMLSerializationFilter = new XMLSerializationFilter();
 
     // Constructor
-    public function _Super_DBProxy()
+    public function _Super_DBInjector()
     {
         // initialize service control
         _serviceControl = new mx.rpc.http.HTTPMultiService("https://localhost:4444");
@@ -33,71 +33,71 @@ internal class _Super_DBProxy extends com.adobe.fiber.services.wrapper.HTTPServi
          var argsArray:Array;
 
          operation = new mx.rpc.http.Operation(null, "all_");
-         operation.url = "/proxy";
+         operation.url = "/injector";
          operation.method = "GET";
          operation.serializationFilter = serializer0;
-         operation.resultElementType = it.ht.rcs.console.network.model.Proxy;
+         operation.resultElementType = it.ht.rcs.console.network.model.Injector;
          operations.push(operation);
 
          operation = new mx.rpc.http.Operation(null, "show_");
-         operation.url = "/proxy/{id}";
+         operation.url = "/injector/{id}";
          operation.method = "GET";
          argsArray = new Array("id");
          operation.argumentNames = argsArray;         
          operation.serializationFilter = serializer0;
          operation.properties = new Object();
          operation.properties["urlParamNames"] = ["id"];
-         operation.resultType = it.ht.rcs.console.network.model.Proxy;
+         operation.resultType = it.ht.rcs.console.network.model.Injector;
          operations.push(operation);
 
          operation = new mx.rpc.http.Operation(null, "create_");
-         operation.url = "/proxy/create";
+         operation.url = "/injector/create";
          operation.method = "POST";
          operation.serializationFilter = serializer0;
          operation.contentType = "application/xml";
-         operation.resultType = it.ht.rcs.console.network.model.Proxy;
+         operation.resultType = it.ht.rcs.console.network.model.Injector;
          operations.push(operation);
 
          operation = new mx.rpc.http.Operation(null, "update_");
-         operation.url = "/proxy/update";
+         operation.url = "/injector/update";
          operation.method = "POST";
          operation.serializationFilter = serializer0;
          operation.contentType = "application/xml";
-         operation.resultType = it.ht.rcs.console.network.model.Proxy;
+         operation.resultType = it.ht.rcs.console.network.model.Injector;
          operations.push(operation);
 
          operation = new mx.rpc.http.Operation(null, "destroy_");
-         operation.url = "/proxy/destroy";
+         operation.url = "/injector/destroy";
          operation.method = "POST";
          operation.serializationFilter = serializer1;
          operation.contentType = "application/xml";
          operations.push(operation);
 
          operation = new mx.rpc.http.Operation(null, "add_rule_");
-         operation.url = "/proxy/add_rule";
+         operation.url = "/injector/add_rule";
          operation.method = "POST";
          operation.serializationFilter = serializer0;
          operation.contentType = "application/xml";
-         operation.resultType = it.ht.rcs.console.network.model.ProxyRule;
+         operation.resultType = it.ht.rcs.console.network.model.InjectorRule;
          operations.push(operation);
 
          operation = new mx.rpc.http.Operation(null, "del_rule_");
-         operation.url = "/proxy/del_rule";
+         operation.url = "/injector/del_rule";
          operation.method = "POST";
          operation.serializationFilter = serializer1;
          operation.contentType = "application/xml";
          operations.push(operation);
 
          operation = new mx.rpc.http.Operation(null, "update_rule_");
-         operation.url = "/proxy/update_rule";
+         operation.url = "/injector/update_rule";
          operation.method = "POST";
          operation.serializationFilter = serializer1;
          operation.contentType = "application/xml";
-         operation.resultType = it.ht.rcs.console.network.model.ProxyRule;
+         operation.resultType = it.ht.rcs.console.network.model.InjectorRule;
          operations.push(operation);
 
          operation = new mx.rpc.http.Operation(null, "logs_");
-         operation.url = "/proxy/logs/{id}";
+         operation.url = "/injector/logs/{id}";
          operation.method = "GET";
          argsArray = new Array("id");
          operation.argumentNames = argsArray;         
@@ -108,7 +108,7 @@ internal class _Super_DBProxy extends com.adobe.fiber.services.wrapper.HTTPServi
          operations.push(operation);
 
          operation = new mx.rpc.http.Operation(null, "del_logs_");
-         operation.url = "/proxy/del_logs";
+         operation.url = "/injector/del_logs";
          operation.method = "POST";
          operation.serializationFilter = serializer1;
          operation.contentType = "application/xml";
