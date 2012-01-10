@@ -32,7 +32,7 @@ package it.ht.rcs.console.alert.controller
     
     public function AlertManager()
     {
-      super();
+      super(Alert);
     }
     
     override protected function onItemRemove(o:*):void
