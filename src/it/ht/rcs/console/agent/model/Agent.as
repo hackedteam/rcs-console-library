@@ -37,8 +37,9 @@ package it.ht.rcs.console.agent.model
         upgradable = data.upgradable;
         stat = data.stat;
         configs = data.configs;
-        version = data.version;
         instance = data.instance;
+        type = data.type;
+        platform = data.platform;
       }
     }
     

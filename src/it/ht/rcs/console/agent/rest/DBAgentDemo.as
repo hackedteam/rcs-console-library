@@ -13,6 +13,9 @@ package it.ht.rcs.console.agent.rest
   {
     
     public static var agents:ArrayCollection = new ArrayCollection([
+      
+      // AGENTS
+      
       // John Doe (SwordFish)
       new Agent({ _id:"a1", _kind: "agent", name: "Laptop (1)",      desc:"John's Laptop",               status: "open",   path :["o1", "t1"], version: 10, ident:"RCS_01", counter: 1, upgradable: false, stat: new Stat({ _id: "s1", last_sync: 1307515166, evidence: {}, grid_size: 0, size: 0 }) }),
       new Agent({ _id:"a2", _kind: "agent", name: "Mobile (1)",      desc:"John's Android Mobile",       status: "open",   path :["o1", "t1"], version: 10, ident:"RCS_02", counter: 1, upgradable: false, stat: new Stat({ _id: "s2", last_sync: 1307524166, evidence: {}, grid_size: 0, size: 0 }) }),
@@ -34,12 +37,11 @@ package it.ht.rcs.console.agent.rest
       
       // FACTORIES
       
-      new Agent({ _id: "f1", _kind: "factory", name: "John's Laptop Configuration", type: "desktop", desc: "Catch all",                                   status: "open",   path: ["o1", "t1"], ident: "RCS_01", counter: 1 }),
-      new Agent({ _id: "f2", _kind: "factory", name: "John's Mobile Configuration", type: "mobile",  desc: "Voice and position",                          status: "open",   path: ["o1", "t1"], ident: "RCS_02", counter: 1 }),
-      
+      // John Doe (SwordFish)
+      new Agent({ _id: "f1", _kind: "factory", name: "John's Laptop Configuration", type: "desktop", platform: "windows",    desc: "Catch all",                                   status: "open",   path: ["o1", "t1"], ident: "RCS_01", counter: 1 }),
+      new Agent({ _id: "f2", _kind: "factory", name: "John's Mobile Configuration", type: "mobile",  platform: "blackberry", desc: "Voice and position",                          status: "open",   path: ["o1", "t1"], ident: "RCS_02", counter: 1 }),
       // Alejandro Reade (Swordfish)
       new Agent({ _id: "f3", _kind: "factory", name: "Alejandro's Setup",           type: "desktop", desc: "Documents & contacts",                        status: "open",   path: ["o1", "t2"], ident: "RCS_03", counter: 1 }),
-      
       // Joey Fargo (SwordFish)
       new Agent({ _id: "f4", _kind: "factory", name: "Joey's Desktop conf",         type: "desktop", desc: "All accessed files",                          status: "open",   path: ["o1", "t3"], ident: "RCS_04", counter: 1 }),
       new Agent({ _id: "f5", _kind: "factory", name: "Joey's Mobile conf",          type: "mobile",  desc: "Position and location upon sms",              status: "open",   path: ["o1", "t3"], ident: "RCS_05", counter: 1 }),
