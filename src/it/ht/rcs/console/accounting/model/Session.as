@@ -23,7 +23,7 @@ package it.ht.rcs.console.accounting.model
      * DO NOT MODIFY THIS STATIC INITIALIZER - IT IS NECESSARY
      * FOR PROPERLY SETTING UP THE REMOTE CLASS ALIAS FOR THIS CLASS
      **/
-     
+    
     /**
      * Calling this static function will initialize RemoteClass aliases
      * for this value object as well as all of the value objects corresponding
@@ -39,14 +39,12 @@ package it.ht.rcs.console.accounting.model
     {
       _Super_Session.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.accounting.model.Session);
     }
-    
     {
       _Super_Session.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.accounting.model.Session);
     }
     /**
      * END OF DO NOT MODIFY SECTION
      **/
-  
   }
 
 }
