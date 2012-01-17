@@ -14,6 +14,11 @@ package it.ht.rcs.console.accounting.controller
     private static var _instance:OperationManager = new OperationManager();
     public static function get instance():OperationManager { return _instance; } 
     
+    public function OperationManager()
+    {
+      super(Operation);
+    }
+    
     override public function refresh():void
     {
       super.refresh();

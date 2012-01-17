@@ -6,6 +6,8 @@ package it.ht.rcs.console.accounting.controller
   import it.ht.rcs.console.search.model.SearchItem;
   import it.ht.rcs.console.utils.AlertPopUp;
   
+  import locale.R;
+  
   import mx.collections.ArrayCollection;
   import mx.resources.ResourceManager;
   import mx.rpc.events.ResultEvent;
@@ -62,9 +64,9 @@ package it.ht.rcs.console.accounting.controller
       });
     }
       
-    public function newUser(callback:Function):void
+    public function addUser(user:User, callback:Function):void
     {     
-      DB.instance.user.create(User.defaultUser(), function (e:ResultEvent):void {
+      DB.instance.user.create(user, function (e:ResultEvent):void {
         var u:User = e.result as User;
         addItem(u);
         callback(u);
@@ -74,7 +76,7 @@ package it.ht.rcs.console.accounting.controller
     public function changePassword(user:User, password:String):void
     {
       DB.instance.user.update(user, {pass: password}, function (e:ResultEvent):void {
-        AlertPopUp.show(ResourceManager.getInstance().getString('localized_main', 'PASSWORD_CHANGED'));
+        AlertPopUp.show(R.get('PASSWORD_CHANGED'));
       });
     }
     

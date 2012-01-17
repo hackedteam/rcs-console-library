@@ -9,17 +9,16 @@ package it.ht.rcs.console.accounting.rest
   
   public class DBGroupDemo implements IDBGroup
   {
+
+    private var groups:ArrayCollection = new ArrayCollection([
+      new Group({ _id: '1', name: 'demo',       alert: false, user_ids: ['1', '2', '3'],                          item_ids: ['o1', 'o2', 'o3'] }),
+      new Group({ _id: '2', name: 'developers', alert: false, user_ids: ['2', '3', '4', '5', '6', '7', '8', '9'], item_ids: ['o3'] }),
+      new Group({ _id: '3', name: 'test',       alert: true,  user_ids: ['10'],                                   item_ids: [] })
+    ]);
     
     public function all(onResult:Function=null, onFault:Function=null):void
     {
-      var a:Array = [
-        new Group({ _id: '1', name: 'demo',       alert: false, user_ids: ['1', '2', '3'],                          item_ids: ['o1', 'o2', 'o3'] }),
-        new Group({ _id: '2', name: 'developers', alert: false, user_ids: ['2', '3', '4', '5', '6', '7', '8', '9'], item_ids: ['o3'] }),
-        new Group({ _id: '3', name: 'test',       alert: true,  user_ids: ['10'],                                   item_ids: [] })
-      ];
-      var items:ArrayCollection = new ArrayCollection(a);
-
-      var event:ResultEvent = new ResultEvent('group.index', false, true, items);
+      var event:ResultEvent = new ResultEvent('group.index', false, true, groups);
       if (onResult != null) 
         onResult(event);
     }
@@ -30,20 +29,24 @@ package it.ht.rcs.console.accounting.rest
     
     public function create(params:Object, onResult:Function=null, onFault:Function=null):void
     {
-      var g:Group = new Group(params);
-      g._id = new Date().time.toString();
-      g.user_ids = new ArrayCollection(params.user_ids);
-      var event:ResultEvent = new ResultEvent('user.create', false, true, g);
+      var group:Group = new Group(params);
+      group._id = new Date().time.toString();
+      groups.addItem(group);
+      
       if (onResult != null) 
-        onResult(event);
+        onResult(new ResultEvent('user.create', false, true, group));
     }
     
     public function update(group:Group, property:Object, onResult:Function=null, onFault:Function=null):void
     {
+      if (onResult != null)
+        onResult(new ResultEvent('group.update'));
     }
     
     public function destroy(group:Group, onResult:Function=null, onFault:Function=null):void
     {
+      if (onResult != null)
+        onResult(new ResultEvent('group.destroy'));
     }
     
     public function add_user(group:Group, user:User, onResult:Function=null, onFault:Function=null):void

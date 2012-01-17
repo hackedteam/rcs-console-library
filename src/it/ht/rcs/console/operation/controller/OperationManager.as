@@ -10,13 +10,13 @@ package it.ht.rcs.console.operation.controller
   public class OperationManager extends ItemManager
   {
     
+    private static var _instance:OperationManager = new OperationManager();
+    public static function get instance():OperationManager { return _instance; }
+    
     public function OperationManager()
     {
       super(Operation);
     }
-    
-    private static var _instance:OperationManager = new OperationManager();
-    public static function get instance():OperationManager { return _instance; }
     
     override public function refresh():void
     {
@@ -44,12 +44,12 @@ package it.ht.rcs.console.operation.controller
       DB.instance.operation.update(event.source, property);
     }
     
-    public function addOperation(o:Operation, callback:Function):void
+    public function addOperation(operation:Operation, callback:Function):void
     {
-      DB.instance.operation.create(o, function(e:ResultEvent):void {
-        var operation:Operation = e.result as Operation;
-        addItem(operation);
-        callback(operation);
+      DB.instance.operation.create(operation, function(e:ResultEvent):void {
+        var o:Operation = e.result as Operation;
+        addItem(o);
+        callback(o);
       });
     }
     

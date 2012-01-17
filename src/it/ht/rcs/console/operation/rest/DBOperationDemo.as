@@ -27,9 +27,8 @@ package it.ht.rcs.console.operation.rest
     
     public function create(params:Object, onResult:Function=null, onFault:Function=null):void
     {
-      params._id = new Date().time.toString();
-      
       var operation:Operation = new Operation(params);
+      params._id = new Date().time.toString();
       operations.addItem(operation);
       
       if (onResult != null)

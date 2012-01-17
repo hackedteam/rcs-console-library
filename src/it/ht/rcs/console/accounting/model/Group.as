@@ -1,6 +1,5 @@
 package it.ht.rcs.console.accounting.model
 {
-  
   import com.adobe.fiber.core.model_internal;
   
   import it.ht.rcs.console.DB;
@@ -19,7 +18,7 @@ package it.ht.rcs.console.accounting.model
       }
     }
     
-    public function Group(data:Object = null)
+    public function Group(data:Object=null)
     {
       if (data) {
         _id = data._id;
@@ -50,15 +49,12 @@ package it.ht.rcs.console.accounting.model
     {
       _Super_Group.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.accounting.model.Group);
     }
-    
     {
       _Super_Group.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.accounting.model.Group);
     }
-    
     /**
      * END OF DO NOT MODIFY SECTION
      **/
-  
   }
 
 }

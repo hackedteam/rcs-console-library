@@ -85,9 +85,9 @@ package it.ht.rcs.console.accounting.controller
       });
     }
     
-    public function newGroup(callback:Function):void
+    public function addGroup(group:Group, callback:Function):void
     {
-      DB.instance.group.create(Group.defaultGroup(), function(e:ResultEvent):void {
+      DB.instance.group.create(group, function(e:ResultEvent):void {
         var g:Group = e.result as Group;
         addItem(g);
         callback(g);
