@@ -22,14 +22,14 @@ internal class _AuditEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("agent", "operation", "time", "desc", "_id", "target", "action", "actor", "group", "user");
+    model_internal static var allProperties:Array = new Array("agent_name", "operation_name", "time", "desc", "_id", "target_name", "action", "actor", "group_name", "user_name");
     model_internal static var allAssociationProperties:Array = new Array();
-    model_internal static var allRequiredProperties:Array = new Array("agent", "operation", "time", "desc", "_id", "target", "action", "actor", "group", "user");
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("agent", "operation", "time", "desc", "_id", "target", "action", "actor", "group", "user");
+    model_internal static var allRequiredProperties:Array = new Array("agent_name", "operation_name", "time", "desc", "_id", "target_name", "action", "actor", "group_name", "user_name");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("agent_name", "operation_name", "time", "desc", "_id", "target_name", "action", "actor", "group_name", "user_name");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("agent", "operation", "time", "desc", "_id", "target", "action", "actor", "group", "user");
+    model_internal static var dataProperties:Array = new Array("agent_name", "operation_name", "time", "desc", "_id", "target_name", "action", "actor", "group_name", "user_name");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("agent", "operation", "time", "desc", "_id", "target", "action", "actor", "group", "user");
+    model_internal static var nonDerivedProperties:Array = new Array("agent_name", "operation_name", "time", "desc", "_id", "target_name", "action", "actor", "group_name", "user_name");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array();
     model_internal static var collectionBaseMap:Object;
@@ -39,25 +39,25 @@ internal class _AuditEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
     model_internal static var propertyTypeMap:Object;
 
     
-    model_internal var _agentIsValid:Boolean;
-    model_internal var _agentValidator:com.adobe.fiber.styles.StyleValidator;
-    model_internal var _agentIsValidCacheInitialized:Boolean = false;
-    model_internal var _agentValidationFailureMessages:Array;
+    model_internal var _agent_nameIsValid:Boolean;
+    model_internal var _agent_nameValidator:com.adobe.fiber.styles.StyleValidator;
+    model_internal var _agent_nameIsValidCacheInitialized:Boolean = false;
+    model_internal var _agent_nameValidationFailureMessages:Array;
     
-    model_internal var _operationIsValid:Boolean;
-    model_internal var _operationValidator:com.adobe.fiber.styles.StyleValidator;
-    model_internal var _operationIsValidCacheInitialized:Boolean = false;
-    model_internal var _operationValidationFailureMessages:Array;
+    model_internal var _operation_nameIsValid:Boolean;
+    model_internal var _operation_nameValidator:com.adobe.fiber.styles.StyleValidator;
+    model_internal var _operation_nameIsValidCacheInitialized:Boolean = false;
+    model_internal var _operation_nameValidationFailureMessages:Array;
     
     model_internal var _descIsValid:Boolean;
     model_internal var _descValidator:com.adobe.fiber.styles.StyleValidator;
     model_internal var _descIsValidCacheInitialized:Boolean = false;
     model_internal var _descValidationFailureMessages:Array;
     
-    model_internal var _targetIsValid:Boolean;
-    model_internal var _targetValidator:com.adobe.fiber.styles.StyleValidator;
-    model_internal var _targetIsValidCacheInitialized:Boolean = false;
-    model_internal var _targetValidationFailureMessages:Array;
+    model_internal var _target_nameIsValid:Boolean;
+    model_internal var _target_nameValidator:com.adobe.fiber.styles.StyleValidator;
+    model_internal var _target_nameIsValidCacheInitialized:Boolean = false;
+    model_internal var _target_nameValidationFailureMessages:Array;
     
     model_internal var _actionIsValid:Boolean;
     model_internal var _actionValidator:com.adobe.fiber.styles.StyleValidator;
@@ -69,15 +69,15 @@ internal class _AuditEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
     model_internal var _actorIsValidCacheInitialized:Boolean = false;
     model_internal var _actorValidationFailureMessages:Array;
     
-    model_internal var _groupIsValid:Boolean;
-    model_internal var _groupValidator:com.adobe.fiber.styles.StyleValidator;
-    model_internal var _groupIsValidCacheInitialized:Boolean = false;
-    model_internal var _groupValidationFailureMessages:Array;
+    model_internal var _group_nameIsValid:Boolean;
+    model_internal var _group_nameValidator:com.adobe.fiber.styles.StyleValidator;
+    model_internal var _group_nameIsValidCacheInitialized:Boolean = false;
+    model_internal var _group_nameValidationFailureMessages:Array;
     
-    model_internal var _userIsValid:Boolean;
-    model_internal var _userValidator:com.adobe.fiber.styles.StyleValidator;
-    model_internal var _userIsValidCacheInitialized:Boolean = false;
-    model_internal var _userValidationFailureMessages:Array;
+    model_internal var _user_nameIsValid:Boolean;
+    model_internal var _user_nameValidator:com.adobe.fiber.styles.StyleValidator;
+    model_internal var _user_nameIsValidCacheInitialized:Boolean = false;
+    model_internal var _user_nameValidationFailureMessages:Array;
 
     model_internal var _instance:_Super_Audit;
     model_internal static var _nullStyle:com.adobe.fiber.styles.Style = new com.adobe.fiber.styles.Style();
@@ -89,16 +89,16 @@ internal class _AuditEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
         {
             // dependents map
             model_internal::dependentsOnMap = new Object();
-            model_internal::dependentsOnMap["agent"] = new Array();
-            model_internal::dependentsOnMap["operation"] = new Array();
+            model_internal::dependentsOnMap["agent_name"] = new Array();
+            model_internal::dependentsOnMap["operation_name"] = new Array();
             model_internal::dependentsOnMap["time"] = new Array();
             model_internal::dependentsOnMap["desc"] = new Array();
             model_internal::dependentsOnMap["_id"] = new Array();
-            model_internal::dependentsOnMap["target"] = new Array();
+            model_internal::dependentsOnMap["target_name"] = new Array();
             model_internal::dependentsOnMap["action"] = new Array();
             model_internal::dependentsOnMap["actor"] = new Array();
-            model_internal::dependentsOnMap["group"] = new Array();
-            model_internal::dependentsOnMap["user"] = new Array();
+            model_internal::dependentsOnMap["group_name"] = new Array();
+            model_internal::dependentsOnMap["user_name"] = new Array();
 
             // collection base map
             model_internal::collectionBaseMap = new Object();
@@ -106,38 +106,38 @@ internal class _AuditEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
 
         // Property type Map
         model_internal::propertyTypeMap = new Object();
-        model_internal::propertyTypeMap["agent"] = "String";
-        model_internal::propertyTypeMap["operation"] = "String";
+        model_internal::propertyTypeMap["agent_name"] = "String";
+        model_internal::propertyTypeMap["operation_name"] = "String";
         model_internal::propertyTypeMap["time"] = "int";
         model_internal::propertyTypeMap["desc"] = "String";
         model_internal::propertyTypeMap["_id"] = "String";
-        model_internal::propertyTypeMap["target"] = "String";
+        model_internal::propertyTypeMap["target_name"] = "String";
         model_internal::propertyTypeMap["action"] = "String";
         model_internal::propertyTypeMap["actor"] = "String";
-        model_internal::propertyTypeMap["group"] = "String";
-        model_internal::propertyTypeMap["user"] = "String";
+        model_internal::propertyTypeMap["group_name"] = "String";
+        model_internal::propertyTypeMap["user_name"] = "String";
 
         model_internal::_instance = value;
-        model_internal::_agentValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForAgent);
-        model_internal::_agentValidator.required = true;
-        model_internal::_agentValidator.requiredFieldError = "agent is required";
-        //model_internal::_agentValidator.source = model_internal::_instance;
-        //model_internal::_agentValidator.property = "agent";
-        model_internal::_operationValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForOperation);
-        model_internal::_operationValidator.required = true;
-        model_internal::_operationValidator.requiredFieldError = "operation is required";
-        //model_internal::_operationValidator.source = model_internal::_instance;
-        //model_internal::_operationValidator.property = "operation";
+        model_internal::_agent_nameValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForAgent_name);
+        model_internal::_agent_nameValidator.required = true;
+        model_internal::_agent_nameValidator.requiredFieldError = "agent_name is required";
+        //model_internal::_agent_nameValidator.source = model_internal::_instance;
+        //model_internal::_agent_nameValidator.property = "agent_name";
+        model_internal::_operation_nameValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForOperation_name);
+        model_internal::_operation_nameValidator.required = true;
+        model_internal::_operation_nameValidator.requiredFieldError = "operation_name is required";
+        //model_internal::_operation_nameValidator.source = model_internal::_instance;
+        //model_internal::_operation_nameValidator.property = "operation_name";
         model_internal::_descValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForDesc);
         model_internal::_descValidator.required = true;
         model_internal::_descValidator.requiredFieldError = "desc is required";
         //model_internal::_descValidator.source = model_internal::_instance;
         //model_internal::_descValidator.property = "desc";
-        model_internal::_targetValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForTarget);
-        model_internal::_targetValidator.required = true;
-        model_internal::_targetValidator.requiredFieldError = "target is required";
-        //model_internal::_targetValidator.source = model_internal::_instance;
-        //model_internal::_targetValidator.property = "target";
+        model_internal::_target_nameValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForTarget_name);
+        model_internal::_target_nameValidator.required = true;
+        model_internal::_target_nameValidator.requiredFieldError = "target_name is required";
+        //model_internal::_target_nameValidator.source = model_internal::_instance;
+        //model_internal::_target_nameValidator.property = "target_name";
         model_internal::_actionValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForAction);
         model_internal::_actionValidator.required = true;
         model_internal::_actionValidator.requiredFieldError = "action is required";
@@ -148,16 +148,16 @@ internal class _AuditEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
         model_internal::_actorValidator.requiredFieldError = "actor is required";
         //model_internal::_actorValidator.source = model_internal::_instance;
         //model_internal::_actorValidator.property = "actor";
-        model_internal::_groupValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForGroup);
-        model_internal::_groupValidator.required = true;
-        model_internal::_groupValidator.requiredFieldError = "group is required";
-        //model_internal::_groupValidator.source = model_internal::_instance;
-        //model_internal::_groupValidator.property = "group";
-        model_internal::_userValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForUser);
-        model_internal::_userValidator.required = true;
-        model_internal::_userValidator.requiredFieldError = "user is required";
-        //model_internal::_userValidator.source = model_internal::_instance;
-        //model_internal::_userValidator.property = "user";
+        model_internal::_group_nameValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForGroup_name);
+        model_internal::_group_nameValidator.required = true;
+        model_internal::_group_nameValidator.requiredFieldError = "group_name is required";
+        //model_internal::_group_nameValidator.source = model_internal::_instance;
+        //model_internal::_group_nameValidator.property = "group_name";
+        model_internal::_user_nameValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForUser_name);
+        model_internal::_user_nameValidator.required = true;
+        model_internal::_user_nameValidator.requiredFieldError = "user_name is required";
+        //model_internal::_user_nameValidator.source = model_internal::_instance;
+        //model_internal::_user_nameValidator.property = "user_name";
     }
 
     override public function getEntityName():String
@@ -386,13 +386,13 @@ internal class _AuditEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
     }
 
     [Bindable(event="propertyChange")]
-    public function get isAgentAvailable():Boolean
+    public function get isAgent_nameAvailable():Boolean
     {
         return true;
     }
 
     [Bindable(event="propertyChange")]
-    public function get isOperationAvailable():Boolean
+    public function get isOperation_nameAvailable():Boolean
     {
         return true;
     }
@@ -416,7 +416,7 @@ internal class _AuditEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
     }
 
     [Bindable(event="propertyChange")]
-    public function get isTargetAvailable():Boolean
+    public function get isTarget_nameAvailable():Boolean
     {
         return true;
     }
@@ -434,13 +434,13 @@ internal class _AuditEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
     }
 
     [Bindable(event="propertyChange")]
-    public function get isGroupAvailable():Boolean
+    public function get isGroup_nameAvailable():Boolean
     {
         return true;
     }
 
     [Bindable(event="propertyChange")]
-    public function get isUserAvailable():Boolean
+    public function get isUser_nameAvailable():Boolean
     {
         return true;
     }
@@ -449,20 +449,20 @@ internal class _AuditEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
     /**
      * derived property recalculation
      */
-    public function invalidateDependentOnAgent():void
+    public function invalidateDependentOnAgent_name():void
     {
-        if (model_internal::_agentIsValidCacheInitialized )
+        if (model_internal::_agent_nameIsValidCacheInitialized )
         {
-            model_internal::_instance.model_internal::_doValidationCacheOfAgent = null;
-            model_internal::calculateAgentIsValid();
+            model_internal::_instance.model_internal::_doValidationCacheOfAgent_name = null;
+            model_internal::calculateAgent_nameIsValid();
         }
     }
-    public function invalidateDependentOnOperation():void
+    public function invalidateDependentOnOperation_name():void
     {
-        if (model_internal::_operationIsValidCacheInitialized )
+        if (model_internal::_operation_nameIsValidCacheInitialized )
         {
-            model_internal::_instance.model_internal::_doValidationCacheOfOperation = null;
-            model_internal::calculateOperationIsValid();
+            model_internal::_instance.model_internal::_doValidationCacheOfOperation_name = null;
+            model_internal::calculateOperation_nameIsValid();
         }
     }
     public function invalidateDependentOnDesc():void
@@ -473,12 +473,12 @@ internal class _AuditEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
             model_internal::calculateDescIsValid();
         }
     }
-    public function invalidateDependentOnTarget():void
+    public function invalidateDependentOnTarget_name():void
     {
-        if (model_internal::_targetIsValidCacheInitialized )
+        if (model_internal::_target_nameIsValidCacheInitialized )
         {
-            model_internal::_instance.model_internal::_doValidationCacheOfTarget = null;
-            model_internal::calculateTargetIsValid();
+            model_internal::_instance.model_internal::_doValidationCacheOfTarget_name = null;
+            model_internal::calculateTarget_nameIsValid();
         }
     }
     public function invalidateDependentOnAction():void
@@ -497,20 +497,20 @@ internal class _AuditEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
             model_internal::calculateActorIsValid();
         }
     }
-    public function invalidateDependentOnGroup():void
+    public function invalidateDependentOnGroup_name():void
     {
-        if (model_internal::_groupIsValidCacheInitialized )
+        if (model_internal::_group_nameIsValidCacheInitialized )
         {
-            model_internal::_instance.model_internal::_doValidationCacheOfGroup = null;
-            model_internal::calculateGroupIsValid();
+            model_internal::_instance.model_internal::_doValidationCacheOfGroup_name = null;
+            model_internal::calculateGroup_nameIsValid();
         }
     }
-    public function invalidateDependentOnUser():void
+    public function invalidateDependentOnUser_name():void
     {
-        if (model_internal::_userIsValidCacheInitialized )
+        if (model_internal::_user_nameIsValidCacheInitialized )
         {
-            model_internal::_instance.model_internal::_doValidationCacheOfUser = null;
-            model_internal::calculateUserIsValid();
+            model_internal::_instance.model_internal::_doValidationCacheOfUser_name = null;
+            model_internal::calculateUser_nameIsValid();
         }
     }
 
@@ -520,44 +520,44 @@ internal class _AuditEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
     }
 
     [Bindable(event="propertyChange")]   
-    public function get agentStyle():com.adobe.fiber.styles.Style
+    public function get agent_nameStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
 
-    public function get agentValidator() : StyleValidator
+    public function get agent_nameValidator() : StyleValidator
     {
-        return model_internal::_agentValidator;
+        return model_internal::_agent_nameValidator;
     }
 
-    model_internal function set _agentIsValid_der(value:Boolean):void 
+    model_internal function set _agent_nameIsValid_der(value:Boolean):void 
     {
-        var oldValue:Boolean = model_internal::_agentIsValid;         
+        var oldValue:Boolean = model_internal::_agent_nameIsValid;         
         if (oldValue !== value)
         {
-            model_internal::_agentIsValid = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "agentIsValid", oldValue, value));
+            model_internal::_agent_nameIsValid = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "agent_nameIsValid", oldValue, value));
         }                             
     }
 
     [Bindable(event="propertyChange")]
-    public function get agentIsValid():Boolean
+    public function get agent_nameIsValid():Boolean
     {
-        if (!model_internal::_agentIsValidCacheInitialized)
+        if (!model_internal::_agent_nameIsValidCacheInitialized)
         {
-            model_internal::calculateAgentIsValid();
+            model_internal::calculateAgent_nameIsValid();
         }
 
-        return model_internal::_agentIsValid;
+        return model_internal::_agent_nameIsValid;
     }
 
-    model_internal function calculateAgentIsValid():void
+    model_internal function calculateAgent_nameIsValid():void
     {
-        var valRes:ValidationResultEvent = model_internal::_agentValidator.validate(model_internal::_instance.agent)
-        model_internal::_agentIsValid_der = (valRes.results == null);
-        model_internal::_agentIsValidCacheInitialized = true;
+        var valRes:ValidationResultEvent = model_internal::_agent_nameValidator.validate(model_internal::_instance.agent_name)
+        model_internal::_agent_nameIsValid_der = (valRes.results == null);
+        model_internal::_agent_nameIsValidCacheInitialized = true;
         if (valRes.results == null)
-             model_internal::agentValidationFailureMessages_der = emptyArray;
+             model_internal::agent_nameValidationFailureMessages_der = emptyArray;
         else
         {
             var _valFailures:Array = new Array();
@@ -565,22 +565,22 @@ internal class _AuditEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
             {
                 _valFailures.push(valRes.results[a].errorMessage);
             }
-            model_internal::agentValidationFailureMessages_der = _valFailures;
+            model_internal::agent_nameValidationFailureMessages_der = _valFailures;
         }
     }
 
     [Bindable(event="propertyChange")]
-    public function get agentValidationFailureMessages():Array
+    public function get agent_nameValidationFailureMessages():Array
     {
-        if (model_internal::_agentValidationFailureMessages == null)
-            model_internal::calculateAgentIsValid();
+        if (model_internal::_agent_nameValidationFailureMessages == null)
+            model_internal::calculateAgent_nameIsValid();
 
-        return _agentValidationFailureMessages;
+        return _agent_nameValidationFailureMessages;
     }
 
-    model_internal function set agentValidationFailureMessages_der(value:Array) : void
+    model_internal function set agent_nameValidationFailureMessages_der(value:Array) : void
     {
-        var oldValue:Array = model_internal::_agentValidationFailureMessages;
+        var oldValue:Array = model_internal::_agent_nameValidationFailureMessages;
 
         var needUpdate : Boolean = false;
         if (oldValue == null)
@@ -608,8 +608,8 @@ internal class _AuditEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
 
         if (needUpdate)
         {
-            model_internal::_agentValidationFailureMessages = value;   
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "agentValidationFailureMessages", oldValue, value));
+            model_internal::_agent_nameValidationFailureMessages = value;   
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "agent_nameValidationFailureMessages", oldValue, value));
             // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
             // the entire entity.
             if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
@@ -620,44 +620,44 @@ internal class _AuditEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
     }
 
     [Bindable(event="propertyChange")]   
-    public function get operationStyle():com.adobe.fiber.styles.Style
+    public function get operation_nameStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
 
-    public function get operationValidator() : StyleValidator
+    public function get operation_nameValidator() : StyleValidator
     {
-        return model_internal::_operationValidator;
+        return model_internal::_operation_nameValidator;
     }
 
-    model_internal function set _operationIsValid_der(value:Boolean):void 
+    model_internal function set _operation_nameIsValid_der(value:Boolean):void 
     {
-        var oldValue:Boolean = model_internal::_operationIsValid;         
+        var oldValue:Boolean = model_internal::_operation_nameIsValid;         
         if (oldValue !== value)
         {
-            model_internal::_operationIsValid = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "operationIsValid", oldValue, value));
+            model_internal::_operation_nameIsValid = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "operation_nameIsValid", oldValue, value));
         }                             
     }
 
     [Bindable(event="propertyChange")]
-    public function get operationIsValid():Boolean
+    public function get operation_nameIsValid():Boolean
     {
-        if (!model_internal::_operationIsValidCacheInitialized)
+        if (!model_internal::_operation_nameIsValidCacheInitialized)
         {
-            model_internal::calculateOperationIsValid();
+            model_internal::calculateOperation_nameIsValid();
         }
 
-        return model_internal::_operationIsValid;
+        return model_internal::_operation_nameIsValid;
     }
 
-    model_internal function calculateOperationIsValid():void
+    model_internal function calculateOperation_nameIsValid():void
     {
-        var valRes:ValidationResultEvent = model_internal::_operationValidator.validate(model_internal::_instance.operation)
-        model_internal::_operationIsValid_der = (valRes.results == null);
-        model_internal::_operationIsValidCacheInitialized = true;
+        var valRes:ValidationResultEvent = model_internal::_operation_nameValidator.validate(model_internal::_instance.operation_name)
+        model_internal::_operation_nameIsValid_der = (valRes.results == null);
+        model_internal::_operation_nameIsValidCacheInitialized = true;
         if (valRes.results == null)
-             model_internal::operationValidationFailureMessages_der = emptyArray;
+             model_internal::operation_nameValidationFailureMessages_der = emptyArray;
         else
         {
             var _valFailures:Array = new Array();
@@ -665,22 +665,22 @@ internal class _AuditEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
             {
                 _valFailures.push(valRes.results[a].errorMessage);
             }
-            model_internal::operationValidationFailureMessages_der = _valFailures;
+            model_internal::operation_nameValidationFailureMessages_der = _valFailures;
         }
     }
 
     [Bindable(event="propertyChange")]
-    public function get operationValidationFailureMessages():Array
+    public function get operation_nameValidationFailureMessages():Array
     {
-        if (model_internal::_operationValidationFailureMessages == null)
-            model_internal::calculateOperationIsValid();
+        if (model_internal::_operation_nameValidationFailureMessages == null)
+            model_internal::calculateOperation_nameIsValid();
 
-        return _operationValidationFailureMessages;
+        return _operation_nameValidationFailureMessages;
     }
 
-    model_internal function set operationValidationFailureMessages_der(value:Array) : void
+    model_internal function set operation_nameValidationFailureMessages_der(value:Array) : void
     {
-        var oldValue:Array = model_internal::_operationValidationFailureMessages;
+        var oldValue:Array = model_internal::_operation_nameValidationFailureMessages;
 
         var needUpdate : Boolean = false;
         if (oldValue == null)
@@ -708,8 +708,8 @@ internal class _AuditEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
 
         if (needUpdate)
         {
-            model_internal::_operationValidationFailureMessages = value;   
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "operationValidationFailureMessages", oldValue, value));
+            model_internal::_operation_nameValidationFailureMessages = value;   
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "operation_nameValidationFailureMessages", oldValue, value));
             // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
             // the entire entity.
             if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
@@ -832,44 +832,44 @@ internal class _AuditEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
     }
 
     [Bindable(event="propertyChange")]   
-    public function get targetStyle():com.adobe.fiber.styles.Style
+    public function get target_nameStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
 
-    public function get targetValidator() : StyleValidator
+    public function get target_nameValidator() : StyleValidator
     {
-        return model_internal::_targetValidator;
+        return model_internal::_target_nameValidator;
     }
 
-    model_internal function set _targetIsValid_der(value:Boolean):void 
+    model_internal function set _target_nameIsValid_der(value:Boolean):void 
     {
-        var oldValue:Boolean = model_internal::_targetIsValid;         
+        var oldValue:Boolean = model_internal::_target_nameIsValid;         
         if (oldValue !== value)
         {
-            model_internal::_targetIsValid = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "targetIsValid", oldValue, value));
+            model_internal::_target_nameIsValid = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "target_nameIsValid", oldValue, value));
         }                             
     }
 
     [Bindable(event="propertyChange")]
-    public function get targetIsValid():Boolean
+    public function get target_nameIsValid():Boolean
     {
-        if (!model_internal::_targetIsValidCacheInitialized)
+        if (!model_internal::_target_nameIsValidCacheInitialized)
         {
-            model_internal::calculateTargetIsValid();
+            model_internal::calculateTarget_nameIsValid();
         }
 
-        return model_internal::_targetIsValid;
+        return model_internal::_target_nameIsValid;
     }
 
-    model_internal function calculateTargetIsValid():void
+    model_internal function calculateTarget_nameIsValid():void
     {
-        var valRes:ValidationResultEvent = model_internal::_targetValidator.validate(model_internal::_instance.target)
-        model_internal::_targetIsValid_der = (valRes.results == null);
-        model_internal::_targetIsValidCacheInitialized = true;
+        var valRes:ValidationResultEvent = model_internal::_target_nameValidator.validate(model_internal::_instance.target_name)
+        model_internal::_target_nameIsValid_der = (valRes.results == null);
+        model_internal::_target_nameIsValidCacheInitialized = true;
         if (valRes.results == null)
-             model_internal::targetValidationFailureMessages_der = emptyArray;
+             model_internal::target_nameValidationFailureMessages_der = emptyArray;
         else
         {
             var _valFailures:Array = new Array();
@@ -877,22 +877,22 @@ internal class _AuditEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
             {
                 _valFailures.push(valRes.results[a].errorMessage);
             }
-            model_internal::targetValidationFailureMessages_der = _valFailures;
+            model_internal::target_nameValidationFailureMessages_der = _valFailures;
         }
     }
 
     [Bindable(event="propertyChange")]
-    public function get targetValidationFailureMessages():Array
+    public function get target_nameValidationFailureMessages():Array
     {
-        if (model_internal::_targetValidationFailureMessages == null)
-            model_internal::calculateTargetIsValid();
+        if (model_internal::_target_nameValidationFailureMessages == null)
+            model_internal::calculateTarget_nameIsValid();
 
-        return _targetValidationFailureMessages;
+        return _target_nameValidationFailureMessages;
     }
 
-    model_internal function set targetValidationFailureMessages_der(value:Array) : void
+    model_internal function set target_nameValidationFailureMessages_der(value:Array) : void
     {
-        var oldValue:Array = model_internal::_targetValidationFailureMessages;
+        var oldValue:Array = model_internal::_target_nameValidationFailureMessages;
 
         var needUpdate : Boolean = false;
         if (oldValue == null)
@@ -920,8 +920,8 @@ internal class _AuditEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
 
         if (needUpdate)
         {
-            model_internal::_targetValidationFailureMessages = value;   
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "targetValidationFailureMessages", oldValue, value));
+            model_internal::_target_nameValidationFailureMessages = value;   
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "target_nameValidationFailureMessages", oldValue, value));
             // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
             // the entire entity.
             if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
@@ -1132,44 +1132,44 @@ internal class _AuditEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
     }
 
     [Bindable(event="propertyChange")]   
-    public function get groupStyle():com.adobe.fiber.styles.Style
+    public function get group_nameStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
 
-    public function get groupValidator() : StyleValidator
+    public function get group_nameValidator() : StyleValidator
     {
-        return model_internal::_groupValidator;
+        return model_internal::_group_nameValidator;
     }
 
-    model_internal function set _groupIsValid_der(value:Boolean):void 
+    model_internal function set _group_nameIsValid_der(value:Boolean):void 
     {
-        var oldValue:Boolean = model_internal::_groupIsValid;         
+        var oldValue:Boolean = model_internal::_group_nameIsValid;         
         if (oldValue !== value)
         {
-            model_internal::_groupIsValid = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "groupIsValid", oldValue, value));
+            model_internal::_group_nameIsValid = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "group_nameIsValid", oldValue, value));
         }                             
     }
 
     [Bindable(event="propertyChange")]
-    public function get groupIsValid():Boolean
+    public function get group_nameIsValid():Boolean
     {
-        if (!model_internal::_groupIsValidCacheInitialized)
+        if (!model_internal::_group_nameIsValidCacheInitialized)
         {
-            model_internal::calculateGroupIsValid();
+            model_internal::calculateGroup_nameIsValid();
         }
 
-        return model_internal::_groupIsValid;
+        return model_internal::_group_nameIsValid;
     }
 
-    model_internal function calculateGroupIsValid():void
+    model_internal function calculateGroup_nameIsValid():void
     {
-        var valRes:ValidationResultEvent = model_internal::_groupValidator.validate(model_internal::_instance.group)
-        model_internal::_groupIsValid_der = (valRes.results == null);
-        model_internal::_groupIsValidCacheInitialized = true;
+        var valRes:ValidationResultEvent = model_internal::_group_nameValidator.validate(model_internal::_instance.group_name)
+        model_internal::_group_nameIsValid_der = (valRes.results == null);
+        model_internal::_group_nameIsValidCacheInitialized = true;
         if (valRes.results == null)
-             model_internal::groupValidationFailureMessages_der = emptyArray;
+             model_internal::group_nameValidationFailureMessages_der = emptyArray;
         else
         {
             var _valFailures:Array = new Array();
@@ -1177,22 +1177,22 @@ internal class _AuditEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
             {
                 _valFailures.push(valRes.results[a].errorMessage);
             }
-            model_internal::groupValidationFailureMessages_der = _valFailures;
+            model_internal::group_nameValidationFailureMessages_der = _valFailures;
         }
     }
 
     [Bindable(event="propertyChange")]
-    public function get groupValidationFailureMessages():Array
+    public function get group_nameValidationFailureMessages():Array
     {
-        if (model_internal::_groupValidationFailureMessages == null)
-            model_internal::calculateGroupIsValid();
+        if (model_internal::_group_nameValidationFailureMessages == null)
+            model_internal::calculateGroup_nameIsValid();
 
-        return _groupValidationFailureMessages;
+        return _group_nameValidationFailureMessages;
     }
 
-    model_internal function set groupValidationFailureMessages_der(value:Array) : void
+    model_internal function set group_nameValidationFailureMessages_der(value:Array) : void
     {
-        var oldValue:Array = model_internal::_groupValidationFailureMessages;
+        var oldValue:Array = model_internal::_group_nameValidationFailureMessages;
 
         var needUpdate : Boolean = false;
         if (oldValue == null)
@@ -1220,8 +1220,8 @@ internal class _AuditEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
 
         if (needUpdate)
         {
-            model_internal::_groupValidationFailureMessages = value;   
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "groupValidationFailureMessages", oldValue, value));
+            model_internal::_group_nameValidationFailureMessages = value;   
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "group_nameValidationFailureMessages", oldValue, value));
             // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
             // the entire entity.
             if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
@@ -1232,44 +1232,44 @@ internal class _AuditEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
     }
 
     [Bindable(event="propertyChange")]   
-    public function get userStyle():com.adobe.fiber.styles.Style
+    public function get user_nameStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
 
-    public function get userValidator() : StyleValidator
+    public function get user_nameValidator() : StyleValidator
     {
-        return model_internal::_userValidator;
+        return model_internal::_user_nameValidator;
     }
 
-    model_internal function set _userIsValid_der(value:Boolean):void 
+    model_internal function set _user_nameIsValid_der(value:Boolean):void 
     {
-        var oldValue:Boolean = model_internal::_userIsValid;         
+        var oldValue:Boolean = model_internal::_user_nameIsValid;         
         if (oldValue !== value)
         {
-            model_internal::_userIsValid = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "userIsValid", oldValue, value));
+            model_internal::_user_nameIsValid = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "user_nameIsValid", oldValue, value));
         }                             
     }
 
     [Bindable(event="propertyChange")]
-    public function get userIsValid():Boolean
+    public function get user_nameIsValid():Boolean
     {
-        if (!model_internal::_userIsValidCacheInitialized)
+        if (!model_internal::_user_nameIsValidCacheInitialized)
         {
-            model_internal::calculateUserIsValid();
+            model_internal::calculateUser_nameIsValid();
         }
 
-        return model_internal::_userIsValid;
+        return model_internal::_user_nameIsValid;
     }
 
-    model_internal function calculateUserIsValid():void
+    model_internal function calculateUser_nameIsValid():void
     {
-        var valRes:ValidationResultEvent = model_internal::_userValidator.validate(model_internal::_instance.user)
-        model_internal::_userIsValid_der = (valRes.results == null);
-        model_internal::_userIsValidCacheInitialized = true;
+        var valRes:ValidationResultEvent = model_internal::_user_nameValidator.validate(model_internal::_instance.user_name)
+        model_internal::_user_nameIsValid_der = (valRes.results == null);
+        model_internal::_user_nameIsValidCacheInitialized = true;
         if (valRes.results == null)
-             model_internal::userValidationFailureMessages_der = emptyArray;
+             model_internal::user_nameValidationFailureMessages_der = emptyArray;
         else
         {
             var _valFailures:Array = new Array();
@@ -1277,22 +1277,22 @@ internal class _AuditEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
             {
                 _valFailures.push(valRes.results[a].errorMessage);
             }
-            model_internal::userValidationFailureMessages_der = _valFailures;
+            model_internal::user_nameValidationFailureMessages_der = _valFailures;
         }
     }
 
     [Bindable(event="propertyChange")]
-    public function get userValidationFailureMessages():Array
+    public function get user_nameValidationFailureMessages():Array
     {
-        if (model_internal::_userValidationFailureMessages == null)
-            model_internal::calculateUserIsValid();
+        if (model_internal::_user_nameValidationFailureMessages == null)
+            model_internal::calculateUser_nameIsValid();
 
-        return _userValidationFailureMessages;
+        return _user_nameValidationFailureMessages;
     }
 
-    model_internal function set userValidationFailureMessages_der(value:Array) : void
+    model_internal function set user_nameValidationFailureMessages_der(value:Array) : void
     {
-        var oldValue:Array = model_internal::_userValidationFailureMessages;
+        var oldValue:Array = model_internal::_user_nameValidationFailureMessages;
 
         var needUpdate : Boolean = false;
         if (oldValue == null)
@@ -1320,8 +1320,8 @@ internal class _AuditEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
 
         if (needUpdate)
         {
-            model_internal::_userValidationFailureMessages = value;   
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "userValidationFailureMessages", oldValue, value));
+            model_internal::_user_nameValidationFailureMessages = value;   
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "user_nameValidationFailureMessages", oldValue, value));
             // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
             // the entire entity.
             if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
@@ -1356,21 +1356,21 @@ internal class _AuditEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
      {
          switch(propertyName)
          {
-            case("agent"):
+            case("agent_name"):
             {
-                return agentValidationFailureMessages;
+                return agent_nameValidationFailureMessages;
             }
-            case("operation"):
+            case("operation_name"):
             {
-                return operationValidationFailureMessages;
+                return operation_nameValidationFailureMessages;
             }
             case("desc"):
             {
                 return descValidationFailureMessages;
             }
-            case("target"):
+            case("target_name"):
             {
-                return targetValidationFailureMessages;
+                return target_nameValidationFailureMessages;
             }
             case("action"):
             {
@@ -1380,13 +1380,13 @@ internal class _AuditEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
             {
                 return actorValidationFailureMessages;
             }
-            case("group"):
+            case("group_name"):
             {
-                return groupValidationFailureMessages;
+                return group_nameValidationFailureMessages;
             }
-            case("user"):
+            case("user_name"):
             {
-                return userValidationFailureMessages;
+                return user_nameValidationFailureMessages;
             }
             default:
             {

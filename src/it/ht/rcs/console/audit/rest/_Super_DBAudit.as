@@ -185,7 +185,7 @@ internal class _Super_DBAudit extends com.adobe.fiber.services.wrapper.HTTPServi
         var dmQuery : mx.data.ManagedQuery;
 
         dmQuery = new mx.data.ManagedQuery("all_");
-        dmQuery.propertySpecifier = "agent,operation,time,desc,_id,target,action,actor,group,user";
+        dmQuery.propertySpecifier = "agent_name,operation_name,time,desc,_id,target_name,action,actor,group_name,user_name";
         dmQuery.countOperation = "count_";
         dmQuery.pagingEnabled = true;
         dmQuery.positionalPagingParameters = true;

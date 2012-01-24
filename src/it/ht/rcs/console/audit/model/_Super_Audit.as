@@ -52,16 +52,16 @@ public class _Super_Audit extends flash.events.EventDispatcher implements com.ad
     /**
      * properties
      */
-    private var _internal_agent : String;
-    private var _internal_operation : String;
+    private var _internal_agent_name : String;
+    private var _internal_operation_name : String;
     private var _internal_time : int;
     private var _internal_desc : String;
     private var _internal__id : String;
-    private var _internal_target : String;
+    private var _internal_target_name : String;
     private var _internal_action : String;
     private var _internal_actor : String;
-    private var _internal_group : String;
-    private var _internal_user : String;
+    private var _internal_group_name : String;
+    private var _internal_user_name : String;
 
     private static var emptyArray:Array = new Array();
 
@@ -78,14 +78,14 @@ public class _Super_Audit extends flash.events.EventDispatcher implements com.ad
         _model = new _AuditEntityMetadata(this);
 
         // Bind to own data or source properties for cache invalidation triggering
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "agent", model_internal::setterListenerAgent));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "operation", model_internal::setterListenerOperation));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "agent_name", model_internal::setterListenerAgent_name));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "operation_name", model_internal::setterListenerOperation_name));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "desc", model_internal::setterListenerDesc));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "target", model_internal::setterListenerTarget));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "target_name", model_internal::setterListenerTarget_name));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "action", model_internal::setterListenerAction));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "actor", model_internal::setterListenerActor));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "group", model_internal::setterListenerGroup));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "user", model_internal::setterListenerUser));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "group_name", model_internal::setterListenerGroup_name));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "user_name", model_internal::setterListenerUser_name));
 
     }
 
@@ -94,15 +94,15 @@ public class _Super_Audit extends flash.events.EventDispatcher implements com.ad
      */
 
     [Bindable(event="propertyChange")]
-    public function get agent() : String
+    public function get agent_name() : String
     {
-        return _internal_agent;
+        return _internal_agent_name;
     }
 
     [Bindable(event="propertyChange")]
-    public function get operation() : String
+    public function get operation_name() : String
     {
-        return _internal_operation;
+        return _internal_operation_name;
     }
 
     [Bindable(event="propertyChange")]
@@ -124,9 +124,9 @@ public class _Super_Audit extends flash.events.EventDispatcher implements com.ad
     }
 
     [Bindable(event="propertyChange")]
-    public function get target() : String
+    public function get target_name() : String
     {
-        return _internal_target;
+        return _internal_target_name;
     }
 
     [Bindable(event="propertyChange")]
@@ -142,15 +142,15 @@ public class _Super_Audit extends flash.events.EventDispatcher implements com.ad
     }
 
     [Bindable(event="propertyChange")]
-    public function get group() : String
+    public function get group_name() : String
     {
-        return _internal_group;
+        return _internal_group_name;
     }
 
     [Bindable(event="propertyChange")]
-    public function get user() : String
+    public function get user_name() : String
     {
-        return _internal_user;
+        return _internal_user_name;
     }
 
     public function clearAssociations() : void
@@ -161,21 +161,21 @@ public class _Super_Audit extends flash.events.EventDispatcher implements com.ad
      * data/source property setters
      */
 
-    public function set agent(value:String) : void
+    public function set agent_name(value:String) : void
     {
-        var oldValue:String = _internal_agent;
+        var oldValue:String = _internal_agent_name;
         if (oldValue !== value)
         {
-            _internal_agent = value;
+            _internal_agent_name = value;
         }
     }
 
-    public function set operation(value:String) : void
+    public function set operation_name(value:String) : void
     {
-        var oldValue:String = _internal_operation;
+        var oldValue:String = _internal_operation_name;
         if (oldValue !== value)
         {
-            _internal_operation = value;
+            _internal_operation_name = value;
         }
     }
 
@@ -206,12 +206,12 @@ public class _Super_Audit extends flash.events.EventDispatcher implements com.ad
         }
     }
 
-    public function set target(value:String) : void
+    public function set target_name(value:String) : void
     {
-        var oldValue:String = _internal_target;
+        var oldValue:String = _internal_target_name;
         if (oldValue !== value)
         {
-            _internal_target = value;
+            _internal_target_name = value;
         }
     }
 
@@ -233,21 +233,21 @@ public class _Super_Audit extends flash.events.EventDispatcher implements com.ad
         }
     }
 
-    public function set group(value:String) : void
+    public function set group_name(value:String) : void
     {
-        var oldValue:String = _internal_group;
+        var oldValue:String = _internal_group_name;
         if (oldValue !== value)
         {
-            _internal_group = value;
+            _internal_group_name = value;
         }
     }
 
-    public function set user(value:String) : void
+    public function set user_name(value:String) : void
     {
-        var oldValue:String = _internal_user;
+        var oldValue:String = _internal_user_name;
         if (oldValue !== value)
         {
-            _internal_user = value;
+            _internal_user_name = value;
         }
     }
 
@@ -263,14 +263,14 @@ public class _Super_Audit extends flash.events.EventDispatcher implements com.ad
      *  - the validity of the property (and the containing entity) if the given data property is required.
      */
 
-    model_internal function setterListenerAgent(value:flash.events.Event):void
+    model_internal function setterListenerAgent_name(value:flash.events.Event):void
     {
-        _model.invalidateDependentOnAgent();
+        _model.invalidateDependentOnAgent_name();
     }
 
-    model_internal function setterListenerOperation(value:flash.events.Event):void
+    model_internal function setterListenerOperation_name(value:flash.events.Event):void
     {
-        _model.invalidateDependentOnOperation();
+        _model.invalidateDependentOnOperation_name();
     }
 
     model_internal function setterListenerDesc(value:flash.events.Event):void
@@ -278,9 +278,9 @@ public class _Super_Audit extends flash.events.EventDispatcher implements com.ad
         _model.invalidateDependentOnDesc();
     }
 
-    model_internal function setterListenerTarget(value:flash.events.Event):void
+    model_internal function setterListenerTarget_name(value:flash.events.Event):void
     {
-        _model.invalidateDependentOnTarget();
+        _model.invalidateDependentOnTarget_name();
     }
 
     model_internal function setterListenerAction(value:flash.events.Event):void
@@ -293,14 +293,14 @@ public class _Super_Audit extends flash.events.EventDispatcher implements com.ad
         _model.invalidateDependentOnActor();
     }
 
-    model_internal function setterListenerGroup(value:flash.events.Event):void
+    model_internal function setterListenerGroup_name(value:flash.events.Event):void
     {
-        _model.invalidateDependentOnGroup();
+        _model.invalidateDependentOnGroup_name();
     }
 
-    model_internal function setterListenerUser(value:flash.events.Event):void
+    model_internal function setterListenerUser_name(value:flash.events.Event):void
     {
-        _model.invalidateDependentOnUser();
+        _model.invalidateDependentOnUser_name();
     }
 
 
@@ -324,25 +324,25 @@ public class _Super_Audit extends flash.events.EventDispatcher implements com.ad
         var validationFailureMessages:Array = new Array();
 
         var propertyValidity:Boolean = true;
-        if (!_model.agentIsValid)
+        if (!_model.agent_nameIsValid)
         {
             propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_agentValidationFailureMessages);
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_agent_nameValidationFailureMessages);
         }
-        if (!_model.operationIsValid)
+        if (!_model.operation_nameIsValid)
         {
             propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_operationValidationFailureMessages);
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_operation_nameValidationFailureMessages);
         }
         if (!_model.descIsValid)
         {
             propertyValidity = false;
             com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_descValidationFailureMessages);
         }
-        if (!_model.targetIsValid)
+        if (!_model.target_nameIsValid)
         {
             propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_targetValidationFailureMessages);
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_target_nameValidationFailureMessages);
         }
         if (!_model.actionIsValid)
         {
@@ -354,15 +354,15 @@ public class _Super_Audit extends flash.events.EventDispatcher implements com.ad
             propertyValidity = false;
             com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_actorValidationFailureMessages);
         }
-        if (!_model.groupIsValid)
+        if (!_model.group_nameIsValid)
         {
             propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_groupValidationFailureMessages);
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_group_nameValidationFailureMessages);
         }
-        if (!_model.userIsValid)
+        if (!_model.user_nameIsValid)
         {
             propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_userValidationFailureMessages);
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_user_nameValidationFailureMessages);
         }
 
         model_internal::_cacheInitialized_isValid = true;
@@ -443,56 +443,56 @@ public class _Super_Audit extends flash.events.EventDispatcher implements com.ad
         }
     }
 
-    model_internal var _doValidationCacheOfAgent : Array = null;
-    model_internal var _doValidationLastValOfAgent : String;
+    model_internal var _doValidationCacheOfAgent_name : Array = null;
+    model_internal var _doValidationLastValOfAgent_name : String;
 
-    model_internal function _doValidationForAgent(valueIn:Object):Array
+    model_internal function _doValidationForAgent_name(valueIn:Object):Array
     {
         var value : String = valueIn as String;
 
-        if (model_internal::_doValidationCacheOfAgent != null && model_internal::_doValidationLastValOfAgent == value)
-           return model_internal::_doValidationCacheOfAgent ;
+        if (model_internal::_doValidationCacheOfAgent_name != null && model_internal::_doValidationLastValOfAgent_name == value)
+           return model_internal::_doValidationCacheOfAgent_name ;
 
-        _model.model_internal::_agentIsValidCacheInitialized = true;
+        _model.model_internal::_agent_nameIsValidCacheInitialized = true;
         var validationFailures:Array = new Array();
         var errorMessage:String;
         var failure:Boolean;
 
         var valRes:ValidationResult;
-        if (_model.isAgentAvailable && _internal_agent == null)
+        if (_model.isAgent_nameAvailable && _internal_agent_name == null)
         {
-            validationFailures.push(new ValidationResult(true, "", "", "agent is required"));
+            validationFailures.push(new ValidationResult(true, "", "", "agent_name is required"));
         }
 
-        model_internal::_doValidationCacheOfAgent = validationFailures;
-        model_internal::_doValidationLastValOfAgent = value;
+        model_internal::_doValidationCacheOfAgent_name = validationFailures;
+        model_internal::_doValidationLastValOfAgent_name = value;
 
         return validationFailures;
     }
     
-    model_internal var _doValidationCacheOfOperation : Array = null;
-    model_internal var _doValidationLastValOfOperation : String;
+    model_internal var _doValidationCacheOfOperation_name : Array = null;
+    model_internal var _doValidationLastValOfOperation_name : String;
 
-    model_internal function _doValidationForOperation(valueIn:Object):Array
+    model_internal function _doValidationForOperation_name(valueIn:Object):Array
     {
         var value : String = valueIn as String;
 
-        if (model_internal::_doValidationCacheOfOperation != null && model_internal::_doValidationLastValOfOperation == value)
-           return model_internal::_doValidationCacheOfOperation ;
+        if (model_internal::_doValidationCacheOfOperation_name != null && model_internal::_doValidationLastValOfOperation_name == value)
+           return model_internal::_doValidationCacheOfOperation_name ;
 
-        _model.model_internal::_operationIsValidCacheInitialized = true;
+        _model.model_internal::_operation_nameIsValidCacheInitialized = true;
         var validationFailures:Array = new Array();
         var errorMessage:String;
         var failure:Boolean;
 
         var valRes:ValidationResult;
-        if (_model.isOperationAvailable && _internal_operation == null)
+        if (_model.isOperation_nameAvailable && _internal_operation_name == null)
         {
-            validationFailures.push(new ValidationResult(true, "", "", "operation is required"));
+            validationFailures.push(new ValidationResult(true, "", "", "operation_name is required"));
         }
 
-        model_internal::_doValidationCacheOfOperation = validationFailures;
-        model_internal::_doValidationLastValOfOperation = value;
+        model_internal::_doValidationCacheOfOperation_name = validationFailures;
+        model_internal::_doValidationLastValOfOperation_name = value;
 
         return validationFailures;
     }
@@ -524,29 +524,29 @@ public class _Super_Audit extends flash.events.EventDispatcher implements com.ad
         return validationFailures;
     }
     
-    model_internal var _doValidationCacheOfTarget : Array = null;
-    model_internal var _doValidationLastValOfTarget : String;
+    model_internal var _doValidationCacheOfTarget_name : Array = null;
+    model_internal var _doValidationLastValOfTarget_name : String;
 
-    model_internal function _doValidationForTarget(valueIn:Object):Array
+    model_internal function _doValidationForTarget_name(valueIn:Object):Array
     {
         var value : String = valueIn as String;
 
-        if (model_internal::_doValidationCacheOfTarget != null && model_internal::_doValidationLastValOfTarget == value)
-           return model_internal::_doValidationCacheOfTarget ;
+        if (model_internal::_doValidationCacheOfTarget_name != null && model_internal::_doValidationLastValOfTarget_name == value)
+           return model_internal::_doValidationCacheOfTarget_name ;
 
-        _model.model_internal::_targetIsValidCacheInitialized = true;
+        _model.model_internal::_target_nameIsValidCacheInitialized = true;
         var validationFailures:Array = new Array();
         var errorMessage:String;
         var failure:Boolean;
 
         var valRes:ValidationResult;
-        if (_model.isTargetAvailable && _internal_target == null)
+        if (_model.isTarget_nameAvailable && _internal_target_name == null)
         {
-            validationFailures.push(new ValidationResult(true, "", "", "target is required"));
+            validationFailures.push(new ValidationResult(true, "", "", "target_name is required"));
         }
 
-        model_internal::_doValidationCacheOfTarget = validationFailures;
-        model_internal::_doValidationLastValOfTarget = value;
+        model_internal::_doValidationCacheOfTarget_name = validationFailures;
+        model_internal::_doValidationLastValOfTarget_name = value;
 
         return validationFailures;
     }
@@ -605,56 +605,56 @@ public class _Super_Audit extends flash.events.EventDispatcher implements com.ad
         return validationFailures;
     }
     
-    model_internal var _doValidationCacheOfGroup : Array = null;
-    model_internal var _doValidationLastValOfGroup : String;
+    model_internal var _doValidationCacheOfGroup_name : Array = null;
+    model_internal var _doValidationLastValOfGroup_name : String;
 
-    model_internal function _doValidationForGroup(valueIn:Object):Array
+    model_internal function _doValidationForGroup_name(valueIn:Object):Array
     {
         var value : String = valueIn as String;
 
-        if (model_internal::_doValidationCacheOfGroup != null && model_internal::_doValidationLastValOfGroup == value)
-           return model_internal::_doValidationCacheOfGroup ;
+        if (model_internal::_doValidationCacheOfGroup_name != null && model_internal::_doValidationLastValOfGroup_name == value)
+           return model_internal::_doValidationCacheOfGroup_name ;
 
-        _model.model_internal::_groupIsValidCacheInitialized = true;
+        _model.model_internal::_group_nameIsValidCacheInitialized = true;
         var validationFailures:Array = new Array();
         var errorMessage:String;
         var failure:Boolean;
 
         var valRes:ValidationResult;
-        if (_model.isGroupAvailable && _internal_group == null)
+        if (_model.isGroup_nameAvailable && _internal_group_name == null)
         {
-            validationFailures.push(new ValidationResult(true, "", "", "group is required"));
+            validationFailures.push(new ValidationResult(true, "", "", "group_name is required"));
         }
 
-        model_internal::_doValidationCacheOfGroup = validationFailures;
-        model_internal::_doValidationLastValOfGroup = value;
+        model_internal::_doValidationCacheOfGroup_name = validationFailures;
+        model_internal::_doValidationLastValOfGroup_name = value;
 
         return validationFailures;
     }
     
-    model_internal var _doValidationCacheOfUser : Array = null;
-    model_internal var _doValidationLastValOfUser : String;
+    model_internal var _doValidationCacheOfUser_name : Array = null;
+    model_internal var _doValidationLastValOfUser_name : String;
 
-    model_internal function _doValidationForUser(valueIn:Object):Array
+    model_internal function _doValidationForUser_name(valueIn:Object):Array
     {
         var value : String = valueIn as String;
 
-        if (model_internal::_doValidationCacheOfUser != null && model_internal::_doValidationLastValOfUser == value)
-           return model_internal::_doValidationCacheOfUser ;
+        if (model_internal::_doValidationCacheOfUser_name != null && model_internal::_doValidationLastValOfUser_name == value)
+           return model_internal::_doValidationCacheOfUser_name ;
 
-        _model.model_internal::_userIsValidCacheInitialized = true;
+        _model.model_internal::_user_nameIsValidCacheInitialized = true;
         var validationFailures:Array = new Array();
         var errorMessage:String;
         var failure:Boolean;
 
         var valRes:ValidationResult;
-        if (_model.isUserAvailable && _internal_user == null)
+        if (_model.isUser_nameAvailable && _internal_user_name == null)
         {
-            validationFailures.push(new ValidationResult(true, "", "", "user is required"));
+            validationFailures.push(new ValidationResult(true, "", "", "user_name is required"));
         }
 
-        model_internal::_doValidationCacheOfUser = validationFailures;
-        model_internal::_doValidationLastValOfUser = value;
+        model_internal::_doValidationCacheOfUser_name = validationFailures;
+        model_internal::_doValidationLastValOfUser_name = value;
 
         return validationFailures;
     }
