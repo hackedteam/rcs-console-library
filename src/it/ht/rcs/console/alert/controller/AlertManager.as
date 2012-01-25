@@ -7,21 +7,31 @@ package it.ht.rcs.console.alert.controller
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.alert.model.Alert;
   import it.ht.rcs.console.controller.ItemManager;
-  import it.ht.rcs.console.events.RefreshEvent;
   import it.ht.rcs.console.utils.CounterBaloon;
   
   import mx.collections.ArrayCollection;
-  import mx.collections.ISort;
-  import mx.collections.ListCollectionView;
-  import mx.collections.Sort;
-  import mx.collections.SortField;
   import mx.core.FlexGlobals;
+  import mx.events.PropertyChangeEvent;
   import mx.rpc.events.ResultEvent;
   
   public class AlertManager extends ItemManager
   {
     
     private var _counterBaloon:CounterBaloon = new CounterBaloon();
+    
+    private var _alertCount:Number = Number.NaN;
+
+    [Bindable(event="propertyChange")]
+    public function get alertCount():Number
+    {
+      return _alertCount;
+    }
+    
+    public function toggle():void
+    {
+      _alertCount = isNaN(_alertCount) ? 1 : ++_alertCount;
+      dispatchEvent(PropertyChangeEvent.createUpdateEvent(this, alertCount, null, _alertCount));
+    }
     
     /* for the auto refresh every 15 seconds */
     private var _autorefresh:Timer = new Timer(15000);
@@ -65,13 +75,13 @@ package it.ht.rcs.console.alert.controller
       });
     }
     
-    override public function getView(sortCriteria:ISort=null, filterFunction:Function=null):ListCollectionView
-    {
-      /* sorting by time */
-      var sort:Sort = new Sort();
-      sort.fields = [new SortField('_id', true, false, true)];
-      return super.getView(sort);
-    }
+//    override public function getView(sortCriteria:ISort=null, filterFunction:Function=null):ListCollectionView
+//    {
+//      /* sorting by time */
+//      var sort:Sort = new Sort();
+//      sort.fields = [new SortField('_id', true, false, true)];
+//      return super.getView(sort, filterFunction);
+//    }
     
     public function newAlert(callback:Function):void
     {     
@@ -116,7 +126,7 @@ package it.ht.rcs.console.alert.controller
       DB.instance.alert.counters(onAlertCounters);
     }
     
-    // TODO: refactor the baloon outa side the manager !!!!
+    // TODO: refactor the baloon outside the manager !!!!
     
     private function onAlertCounters(e:ResultEvent):void
     {

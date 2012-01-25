@@ -45,6 +45,10 @@ package it.ht.rcs.console.accounting.rest
       else if (credentials.user == 'demov') current_user = demo_user_view;
       else if (credentials.user == 'demon') current_user = demo_user_nothing;
       
+      if (DBUserDemo.users.getItemAt(0)._id == '1')
+        DBUserDemo.users.removeItemAt(0);
+      DBUserDemo.users.addItemAt(current_user, 0);
+           
       var result:Session = new Session({ cookie: 0, time: 0, user: current_user });
       onResult(new ResultEvent('login', false, true, result));
     }
@@ -58,11 +62,9 @@ package it.ht.rcs.console.accounting.rest
     public function all(onResult:Function=null, onFault:Function=null):void
     {
       var sessions:ArrayCollection = new ArrayCollection([
-        new Session({ user: new User({ name: 'alor' }),     address: '1.1.2.3',     time: (new Date().time - 20000) / 1000, level: ['VIEW'] }),
-        new Session({ user: new User({ name: 'demo' }),     address: 'demo',        time: (new Date().time - 10000) / 1000, level: ['ADMIN', 'SYS', 'TECH', 'VIEW'] }),
-        new Session({ user: new User({ name: 'daniel' }),   address: '5.6.7.8',     time: (new Date().time - 5000)  / 1000, level: ['TECH', 'VIEW'] }),
-        new Session({ user: new User({ name: 'admin' }),    address: '10.11.12.13', time: (new Date().time - 2000)  / 1000, level: ['ADMIN'] }),
-        new Session({ user: new User({ name: 'sysadmin' }), address: '3.4.5.6',     time: (new Date().time - 1000)  / 1000, level: ['SYS'] })
+        new Session({ user: new User({ _id: '1', name: 'demo' }),   address: 'demo',        time: (new Date().time - 10000) / 1000, level: ['ADMIN', 'SYS', 'TECH', 'VIEW'] }),
+        new Session({ user: new User({ _id: '2', name: 'alor' }),   address: '1.1.2.3',     time: (new Date().time - 20000) / 1000, level: ['VIEW'] }),
+        new Session({ user: new User({ _id: '4', name: 'naga' }),   address: '10.11.12.13', time: (new Date().time - 2000)  / 1000, level: ['ADMIN'] })
       ]);
 
       if (onResult != null)
@@ -71,6 +73,8 @@ package it.ht.rcs.console.accounting.rest
     
     public function destroy(cookie:String, onResult:Function=null, onFault:Function=null):void
     {
+      if (onResult != null)
+        onResult(new ResultEvent('session.destroy'));
     }
     
   }

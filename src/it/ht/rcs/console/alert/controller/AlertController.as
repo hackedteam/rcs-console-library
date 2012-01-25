@@ -1,16 +1,11 @@
 package it.ht.rcs.console.alert.controller
 {
-  
-  import it.ht.rcs.console.DB;
-  import it.ht.rcs.console.alert.model.Alert;
   import it.ht.rcs.console.controller.Manager;
-  import it.ht.rcs.console.events.RefreshEvent;
   import it.ht.rcs.console.search.controller.SearchManager;
   import it.ht.rcs.console.search.model.SearchItem;
   
   import mx.collections.ISort;
   import mx.collections.ListCollectionView;
-  import mx.rpc.events.ResultEvent;
   
   public class AlertController extends Manager
   {
@@ -29,9 +24,9 @@ package it.ht.rcs.console.alert.controller
       AlertManager.instance.refresh();
     }
     
-    public function getView(sortCriteria:ISort=null, filterFunction:Function=null):ListCollectionView
+    public function getView(sort:ISort=null, filterFunction:Function=null):ListCollectionView
     {
-      return AlertManager.instance.getView();
+      return AlertManager.instance.getView(sort, filterFunction);
     }
     
     public function newAlert(callback:Function):void

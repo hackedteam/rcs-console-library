@@ -1,6 +1,8 @@
 package it.ht.rcs.console.accounting.controller
 {
   import it.ht.rcs.console.DB;
+  import it.ht.rcs.console.accounting.model.Group;
+  import it.ht.rcs.console.accounting.model.Session;
   import it.ht.rcs.console.accounting.model.User;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.search.model.SearchItem;
@@ -9,36 +11,61 @@ package it.ht.rcs.console.accounting.controller
   import locale.R;
   
   import mx.collections.ArrayCollection;
-  import mx.resources.ResourceManager;
+  import mx.events.PropertyChangeEvent;
   import mx.rpc.events.ResultEvent;
   
   public class UserManager extends ItemManager
   {
 
-    public function UserManager()
-    {
-      super(User);
-    }
+    public function UserManager() { super(User); }
     
     private static var _instance:UserManager = new UserManager();
-    public static function get instance():UserManager { return _instance; } 
+    public static function get instance():UserManager { return _instance; }
     
     override public function refresh():void
     {
       super.refresh();
-      DB.instance.user.all(onResult);
+      loadData();
+      //DB.instance.user.all(onResult);
     }
     
-    public function onResult(e:ResultEvent):void
+    private function loadData():void
     {
-      clear();
-      for each (var item:* in e.result.source)
-        addItem(item);
-      dispatchDataLoadedEvent();
+      DB.instance.session.all(function(e1:ResultEvent):void
+      {
+        DB.instance.user.all(function(e2:ResultEvent):void
+        {
+          clear();
+          for each (var item:* in e2.result.source)
+            addItem(item);
+          
+          for each (var session:Session in e1.result)
+            for each (var user:User in e2.result)
+              if (session.user._id == user._id) {
+                user.session = session;
+                break;
+              }
+
+          dispatchDataLoadedEvent();
+        });
+      });
     }
+    
+//    private function onResult(e:ResultEvent):void
+//    {
+//      clear();
+//      for each (var item:* in e.result.source)
+//        addItem(item);
+//      dispatchDataLoadedEvent();
+//    }
     
     override protected function onItemRemove(o:*):void
-    { 
+    {
+      for each (var g:String in (o as User).group_ids) {
+        var group:Group = GroupManager.instance.getItem(g);
+        group.user_ids.removeItemAt(group.user_ids.getItemIndex(o._id));
+        group.dispatchEvent(new PropertyChangeEvent(PropertyChangeEvent.PROPERTY_CHANGE));
+      }
       DB.instance.user.destroy(o);
     }
     

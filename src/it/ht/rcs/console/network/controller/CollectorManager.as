@@ -2,7 +2,6 @@ package it.ht.rcs.console.network.controller
 {
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.controller.ItemManager;
-  import it.ht.rcs.console.events.RefreshEvent;
   import it.ht.rcs.console.network.model.Collector;
   
   import mx.collections.ArrayCollection;
@@ -13,20 +12,10 @@ package it.ht.rcs.console.network.controller
   public class CollectorManager extends ItemManager
   {
     
+    public function CollectorManager() { super(Collector); }
+    
     private static var _instance:CollectorManager = new CollectorManager();
     public static function get instance():CollectorManager { return _instance; }
-    
-    override protected function onItemRemove(o:*):void
-    {
-      DB.instance.collector.destroy(o._id);
-    }
-    
-    override protected function onItemUpdate(event:*):void
-    {
-      var property:Object = new Object();
-      property[event.property] = event.newValue is ArrayCollection ? event.newValue.source : event.newValue;
-      DB.instance.collector.update(event.source, property);
-    }
     
     override public function refresh():void
     {
@@ -40,6 +29,18 @@ package it.ht.rcs.console.network.controller
       for each (var item:* in e.result.source)
         addItem(item);
       dispatchDataLoadedEvent();
+    }
+    
+    override protected function onItemRemove(o:*):void
+    {
+      DB.instance.collector.destroy(o._id);
+    }
+    
+    override protected function onItemUpdate(event:*):void
+    {
+      var property:Object = new Object();
+      property[event.property] = event.newValue is ArrayCollection ? event.newValue.source : event.newValue;
+      DB.instance.collector.update(event.source, property);
     }
     
     public function addCollector(callback:Function):void

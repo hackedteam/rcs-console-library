@@ -1,6 +1,5 @@
 package it.ht.rcs.console.accounting.controller
 {
-  
   import flash.filesystem.File;
   import flash.filesystem.FileMode;
   import flash.filesystem.FileStream;
@@ -9,10 +8,10 @@ package it.ht.rcs.console.accounting.controller
   import it.ht.rcs.console.IFaultNotifier;
   import it.ht.rcs.console.II18N;
   import it.ht.rcs.console.accounting.model.Session;
+  import it.ht.rcs.console.accounting.model.User;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.events.SessionEvent;
   
-  import mx.collections.ArrayCollection;
   import mx.collections.ISort;
   import mx.collections.ListCollectionView;
   import mx.collections.Sort;
@@ -24,8 +23,14 @@ package it.ht.rcs.console.accounting.controller
   public class SessionManager extends ItemManager
   {
     
+    public function SessionManager()
+    {
+      super(Session);
+      loadPreviousLoginDetails();
+    }
+    
     private static var _instance:SessionManager = new SessionManager();
-    public static function get instance():SessionManager { return _instance; } 
+    public static function get instance():SessionManager { return _instance; }
     
     [Bindable]
     public var lastUsername:String;
@@ -35,12 +40,6 @@ package it.ht.rcs.console.accounting.controller
     
     private var _onLoginResult:Function;
     private var _onLoginFault:Function;
-    
-    public function SessionManager()
-    {
-      super();
-      loadPreviousLoginDetails();
-    }
     
     /* SESSIONS LIST MANAGEMENT */
     
@@ -58,12 +57,13 @@ package it.ht.rcs.console.accounting.controller
       dispatchDataLoadedEvent();
     }
     
-    public function disconnectUser(user:Object):void
+    public function disconnectUser(user:User):void
     {
-      removeItem(user);
-      
-      /* disconnect call to db */
-      DB.instance.session.destroy(user.cookie);
+      DB.instance.session.destroy(user.session.cookie, function(e:ResultEvent):void
+      {
+        removeItem(user.session);
+        user.session = null;
+      });
     }
     
     override public function getView(sortCriteria:ISort=null, filterFunction:Function=null):ListCollectionView

@@ -34,13 +34,14 @@ package it.ht.rcs.console.accounting.rest
       
       var user:User = new User(params);
       
-      var event:ResultEvent = new ResultEvent('user.create', false, true, user);
-        onResult(event);
+      if (onResult != null)
+        onResult(new ResultEvent('user.create', false, true, user));
     }
     
     public function destroy(user:User, onResult:Function=null, onFault:Function=null):void
     {
-      /* do nothing */
+      if (onResult != null)
+        onResult(new ResultEvent('user.destroy'));
     }
     
     public function show(id:String, onResult:Function=null, onFault:Function=null):void

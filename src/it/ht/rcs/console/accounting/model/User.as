@@ -3,9 +3,29 @@ package it.ht.rcs.console.accounting.model
   import com.adobe.fiber.core.model_internal;
   
   import it.ht.rcs.console.DB;
+  
+  import mx.events.PropertyChangeEvent;
 
   public class User extends _Super_User
   {
+    
+    public var _session:Session;
+    
+    [Bindable(event="propertyChange")]
+    public function get session():Session
+    {
+      return _session;
+    }
+    
+    public function set session(value:Session):void
+    {
+      var oldValue:Session = _session;
+      if (oldValue !== value)
+      {
+        _session = value;
+        this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "session", oldValue, _session));
+      }
+    }
     
     public static function defaultUser():Object
     {
