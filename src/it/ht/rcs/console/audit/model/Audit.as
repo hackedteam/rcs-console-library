@@ -11,13 +11,13 @@ package it.ht.rcs.console.audit.model
         _id = data._id;
         action = data.action;
         actor = data.actor;
-        agent = data.agent;
+        agent_name = data.agent_name;
         desc = data.desc;
-        group = data.group;
-        operation = data.operation;
-        target = data.target;
+        group_name = data.group_name;
+        operation_name = data.operation_name;
+        target_name = data.target_name;
         time = data.time;
-        user = data.user;
+        user_name = data.user_name;
       }
     }
     
