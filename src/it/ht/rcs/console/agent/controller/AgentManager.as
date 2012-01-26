@@ -46,6 +46,11 @@ package it.ht.rcs.console.agent.controller
       DB.instance.agent.update(event.source, property);
     }
     
+    public function addConfig(agent:Agent, config:String):void
+    {
+      DB.instance.agent.add_config(agent, config);
+    }
+    
     public function addFactory(f:Object, o:Operation, t:Target, callback:Function):void
     {
       DB.instance.agent.create(f, o, t, function(e:ResultEvent):void {

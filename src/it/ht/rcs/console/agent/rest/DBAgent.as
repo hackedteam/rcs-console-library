@@ -51,20 +51,20 @@ package it.ht.rcs.console.agent.rest
     
     public function add_config(agent:Agent, config: String, onResult:Function=null, onFault:Function=null):void
     {
-      var params:Object;
+      var params:Object = {};
       params['_id'] = agent._id;
       params['config'] = config;
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = create_(JSON.stringify(params)); 
+      resp.token = add_config_(JSON.stringify(params)); 
     }
     
     public function del_config(agent:Agent, config_id: String, onResult:Function=null, onFault:Function=null):void
     {
-      var params:Object;
+      var params:Object = {};
       params['_id'] = agent._id;
       params['config_id'] = config_id;
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = create_(JSON.stringify(params)); 
+      resp.token = del_config_(JSON.stringify(params)); 
     }
     
     /**
