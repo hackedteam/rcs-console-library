@@ -71,6 +71,7 @@ package it.ht.rcs.console.accounting.controller
     
     override protected function onItemUpdate(event:*):void
     { 
+      if (event.property == 'session') return;
       var property:Object = new Object();
       property[event.property] = event.newValue is ArrayCollection ? event.newValue.source : event.newValue;
       DB.instance.user.update(event.source, property);
