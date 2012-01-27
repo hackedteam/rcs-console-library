@@ -10,6 +10,7 @@ import com.adobe.fiber.styles.StyleValidator;
 import com.adobe.fiber.valueobjects.AbstractEntityMetadata;
 import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 import com.adobe.fiber.valueobjects.IPropertyIterator;
+import mx.collections.ArrayCollection;
 import mx.events.ValidationResultEvent;
 import com.adobe.fiber.core.model_internal;
 import com.adobe.fiber.valueobjects.IModelType;
@@ -22,16 +23,16 @@ internal class _StatEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("last_sync", "source", "_id", "last_sync_status", "grid_size", "evidence", "device", "user", "size");
+    model_internal static var allProperties:Array = new Array("last_sync", "source", "_id", "last_sync_status", "grid_size", "evidence", "device", "user", "size", "last_child");
     model_internal static var allAssociationProperties:Array = new Array();
     model_internal static var allRequiredProperties:Array = new Array("last_sync_status");
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("last_sync", "source", "_id", "last_sync_status", "grid_size", "evidence", "device", "user", "size");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("last_sync", "source", "_id", "last_sync_status", "grid_size", "evidence", "device", "user", "size", "last_child");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("last_sync", "source", "_id", "last_sync_status", "grid_size", "evidence", "device", "user", "size");
+    model_internal static var dataProperties:Array = new Array("last_sync", "source", "_id", "last_sync_status", "grid_size", "evidence", "device", "user", "size", "last_child");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("last_sync", "source", "_id", "last_sync_status", "grid_size", "evidence", "device", "user", "size");
+    model_internal static var nonDerivedProperties:Array = new Array("last_sync", "source", "_id", "last_sync_status", "grid_size", "evidence", "device", "user", "size", "last_child");
     model_internal static var derivedProperties:Array = new Array();
-    model_internal static var collectionProperties:Array = new Array();
+    model_internal static var collectionProperties:Array = new Array("last_child");
     model_internal static var collectionBaseMap:Object;
     model_internal static var entityName:String = "Stat";
     model_internal static var dependentsOnMap:Object;
@@ -63,9 +64,11 @@ internal class _StatEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
             model_internal::dependentsOnMap["device"] = new Array();
             model_internal::dependentsOnMap["user"] = new Array();
             model_internal::dependentsOnMap["size"] = new Array();
+            model_internal::dependentsOnMap["last_child"] = new Array();
 
             // collection base map
             model_internal::collectionBaseMap = new Object();
+            model_internal::collectionBaseMap["last_child"] = "String";
         }
 
         // Property type Map
@@ -79,6 +82,7 @@ internal class _StatEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
         model_internal::propertyTypeMap["device"] = "String";
         model_internal::propertyTypeMap["user"] = "String";
         model_internal::propertyTypeMap["size"] = "int";
+        model_internal::propertyTypeMap["last_child"] = "ArrayCollection";
 
         model_internal::_instance = value;
         model_internal::_last_sync_statusValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForLast_sync_status);
@@ -366,6 +370,12 @@ internal class _StatEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
         return true;
     }
 
+    [Bindable(event="propertyChange")]
+    public function get isLast_childAvailable():Boolean
+    {
+        return true;
+    }
+
 
     /**
      * derived property recalculation
@@ -528,6 +538,12 @@ internal class _StatEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
 
     [Bindable(event="propertyChange")]   
     public function get sizeStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get last_childStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }

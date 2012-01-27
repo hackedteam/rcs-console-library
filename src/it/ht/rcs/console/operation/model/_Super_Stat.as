@@ -60,6 +60,7 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
     private var _internal_device : String;
     private var _internal_user : String;
     private var _internal_size : int;
+    private var _internal_last_child : ArrayCollection;
 
     private static var emptyArray:Array = new Array();
 
@@ -136,6 +137,12 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
     public function get size() : int
     {
         return _internal_size;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get last_child() : ArrayCollection
+    {
+        return _internal_last_child;
     }
 
     public function clearAssociations() : void
@@ -233,6 +240,31 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
         {
             _internal_size = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "size", oldValue, _internal_size));
+        }
+    }
+
+    public function set last_child(value:*) : void
+    {
+        var oldValue:ArrayCollection = _internal_last_child;
+        if (oldValue !== value)
+        {
+            if (value is ArrayCollection)
+            {
+                _internal_last_child = value;
+            }
+            else if (value is Array)
+            {
+                _internal_last_child = new ArrayCollection(value);
+            }
+            else if (value == null)
+            {
+                _internal_last_child = null;
+            }
+            else
+            {
+                throw new Error("value of last_child must be a collection");
+            }
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "last_child", oldValue, _internal_last_child));
         }
     }
 

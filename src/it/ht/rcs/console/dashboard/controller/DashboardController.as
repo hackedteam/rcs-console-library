@@ -23,7 +23,7 @@ package it.ht.rcs.console.dashboard.controller
     private var _dashboard_ids:ArrayCollection;
     
     /* auto refresh every 15 seconds */
-    private var autoRefresh:Timer = new Timer(2000);
+    private var autoRefresh:Timer = new Timer(10000);
     
     public function startAutoRefresh():void
     {
