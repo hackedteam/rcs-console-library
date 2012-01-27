@@ -9,7 +9,7 @@ import com.adobe.fiber.styles.Style;
 import com.adobe.fiber.valueobjects.AbstractEntityMetadata;
 import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 import com.adobe.fiber.valueobjects.IPropertyIterator;
-import it.ht.rcs.console.operation.model.Stat;
+import it.ht.rcs.console.search.model.Stat;
 import mx.collections.ArrayCollection;
 import com.adobe.fiber.core.model_internal;
 import com.adobe.fiber.valueobjects.IModelType;
@@ -79,7 +79,7 @@ internal class _OperationEntityMetadata extends com.adobe.fiber.valueobjects.Abs
         model_internal::propertyTypeMap["path"] = "ArrayCollection";
         model_internal::propertyTypeMap["created_at"] = "String";
         model_internal::propertyTypeMap["contact"] = "String";
-        model_internal::propertyTypeMap["stat"] = "it.ht.rcs.console.operation.model.Stat";
+        model_internal::propertyTypeMap["stat"] = "it.ht.rcs.console.search.model.Stat";
 
         model_internal::_instance = value;
     }

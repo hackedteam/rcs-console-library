@@ -2,7 +2,7 @@ package it.ht.rcs.console.search.model
 {
   import com.adobe.fiber.core.model_internal;
   
-  import it.ht.rcs.console.operation.model.Stat;
+  import it.ht.rcs.console.search.model.Stat;
   
   public class SearchItem extends _Super_SearchItem
   {

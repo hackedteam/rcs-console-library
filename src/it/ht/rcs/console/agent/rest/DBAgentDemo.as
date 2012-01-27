@@ -3,7 +3,7 @@ package it.ht.rcs.console.agent.rest
   import it.ht.rcs.console.agent.model.Agent;
   import it.ht.rcs.console.agent.model.Config;
   import it.ht.rcs.console.operation.model.Operation;
-  import it.ht.rcs.console.operation.model.Stat;
+  import it.ht.rcs.console.search.model.Stat;
   import it.ht.rcs.console.target.model.Target;
   
   import mx.collections.ArrayCollection;

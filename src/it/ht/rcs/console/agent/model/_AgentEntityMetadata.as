@@ -11,7 +11,7 @@ import com.adobe.fiber.valueobjects.AbstractEntityMetadata;
 import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 import com.adobe.fiber.valueobjects.IPropertyIterator;
 import it.ht.rcs.console.agent.model.Config;
-import it.ht.rcs.console.operation.model.Stat;
+import it.ht.rcs.console.search.model.Stat;
 import mx.collections.ArrayCollection;
 import mx.events.ValidationResultEvent;
 import com.adobe.fiber.core.model_internal;
@@ -116,7 +116,7 @@ internal class _AgentEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
         model_internal::propertyTypeMap["uninstalled"] = "Boolean";
         model_internal::propertyTypeMap["type"] = "String";
         model_internal::propertyTypeMap["deleted"] = "Boolean";
-        model_internal::propertyTypeMap["stat"] = "it.ht.rcs.console.operation.model.Stat";
+        model_internal::propertyTypeMap["stat"] = "it.ht.rcs.console.search.model.Stat";
         model_internal::propertyTypeMap["version"] = "int";
         model_internal::propertyTypeMap["configs"] = "ArrayCollection";
         model_internal::propertyTypeMap["updated_at"] = "Object";

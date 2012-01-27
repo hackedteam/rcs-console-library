@@ -1,7 +1,7 @@
 package it.ht.rcs.console.operation.rest
 {
   import it.ht.rcs.console.operation.model.Operation;
-  import it.ht.rcs.console.operation.model.Stat;
+  import it.ht.rcs.console.search.model.Stat;
   
   import mx.collections.ArrayCollection;
   import mx.rpc.events.ResultEvent;

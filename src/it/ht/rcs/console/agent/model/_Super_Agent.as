@@ -11,7 +11,7 @@ import com.adobe.fiber.valueobjects.IValueObject;
 import flash.events.Event;
 import flash.events.EventDispatcher;
 import it.ht.rcs.console.agent.model.Config;
-import it.ht.rcs.console.operation.model.Stat;
+import it.ht.rcs.console.search.model.Stat;
 import mx.binding.utils.ChangeWatcher;
 import mx.collections.ArrayCollection;
 import mx.events.CollectionEvent;
@@ -35,7 +35,7 @@ public class _Super_Agent extends flash.events.EventDispatcher implements com.ad
 
     model_internal static function initRemoteClassAliasAllRelated() : void
     {
-        it.ht.rcs.console.operation.model.Stat.initRemoteClassAliasSingleChild();
+        it.ht.rcs.console.search.model.Stat.initRemoteClassAliasSingleChild();
         it.ht.rcs.console.agent.model.Config.initRemoteClassAliasSingleChild();
     }
 
@@ -65,7 +65,7 @@ public class _Super_Agent extends flash.events.EventDispatcher implements com.ad
     private var _internal_uninstalled : Boolean;
     private var _internal_type : String;
     private var _internal_deleted : Boolean;
-    private var _internal_stat : it.ht.rcs.console.operation.model.Stat;
+    private var _internal_stat : it.ht.rcs.console.search.model.Stat;
     private var _internal_version : int;
     private var _internal_configs : ArrayCollection;
     model_internal var _internal_configs_leaf:it.ht.rcs.console.agent.model.Config;
@@ -160,7 +160,7 @@ public class _Super_Agent extends flash.events.EventDispatcher implements com.ad
     }
 
     [Bindable(event="propertyChange")]
-    public function get stat() : it.ht.rcs.console.operation.model.Stat
+    public function get stat() : it.ht.rcs.console.search.model.Stat
     {
         return _internal_stat;
     }
@@ -338,9 +338,9 @@ public class _Super_Agent extends flash.events.EventDispatcher implements com.ad
         }
     }
 
-    public function set stat(value:it.ht.rcs.console.operation.model.Stat) : void
+    public function set stat(value:it.ht.rcs.console.search.model.Stat) : void
     {
-        var oldValue:it.ht.rcs.console.operation.model.Stat = _internal_stat;
+        var oldValue:it.ht.rcs.console.search.model.Stat = _internal_stat;
         if (oldValue !== value)
         {
             _internal_stat = value;

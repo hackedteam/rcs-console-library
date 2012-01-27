@@ -8,7 +8,7 @@ package it.ht.rcs.console.search.model
 import com.adobe.fiber.services.IFiberManagingService;
 import com.adobe.fiber.valueobjects.IValueObject;
 import flash.events.EventDispatcher;
-import it.ht.rcs.console.operation.model.Stat;
+import it.ht.rcs.console.search.model.Stat;
 import mx.collections.ArrayCollection;
 import mx.events.PropertyChangeEvent;
 
@@ -29,7 +29,7 @@ public class _Super_SearchItem extends flash.events.EventDispatcher implements c
 
     model_internal static function initRemoteClassAliasAllRelated() : void
     {
-        it.ht.rcs.console.operation.model.Stat.initRemoteClassAliasSingleChild();
+        it.ht.rcs.console.search.model.Stat.initRemoteClassAliasSingleChild();
     }
 
     model_internal var _dminternal_model : _SearchItemEntityMetadata;
@@ -56,7 +56,7 @@ public class _Super_SearchItem extends flash.events.EventDispatcher implements c
     private var _internal_group_ids : ArrayCollection;
     private var _internal_name : String;
     private var _internal_path : ArrayCollection;
-    private var _internal_stat : it.ht.rcs.console.operation.model.Stat;
+    private var _internal_stat : it.ht.rcs.console.search.model.Stat;
 
     private static var emptyArray:Array = new Array();
 
@@ -123,7 +123,7 @@ public class _Super_SearchItem extends flash.events.EventDispatcher implements c
     }
 
     [Bindable(event="propertyChange")]
-    public function get stat() : it.ht.rcs.console.operation.model.Stat
+    public function get stat() : it.ht.rcs.console.search.model.Stat
     {
         return _internal_stat;
     }
@@ -236,9 +236,9 @@ public class _Super_SearchItem extends flash.events.EventDispatcher implements c
         }
     }
 
-    public function set stat(value:it.ht.rcs.console.operation.model.Stat) : void
+    public function set stat(value:it.ht.rcs.console.search.model.Stat) : void
     {
-        var oldValue:it.ht.rcs.console.operation.model.Stat = _internal_stat;
+        var oldValue:it.ht.rcs.console.search.model.Stat = _internal_stat;
         if (oldValue !== value)
         {
             _internal_stat = value;
