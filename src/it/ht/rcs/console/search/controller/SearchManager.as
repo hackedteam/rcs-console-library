@@ -26,6 +26,7 @@ package it.ht.rcs.console.search.controller
       clear();
       for each (var item:* in e.result.source)
         addItem(item);
+      dispatchDataLoadedEvent();
     }
     
     public function showItem(id:String, callback:Function):void

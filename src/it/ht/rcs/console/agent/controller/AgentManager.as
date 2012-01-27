@@ -51,7 +51,7 @@ package it.ht.rcs.console.agent.controller
       DB.instance.agent.add_config(agent, config);
     }
     
-    public function addFactory(f:Object, o:Operation, t:Target, callback:Function):void
+    public function addFactory(f:Agent, o:Operation, t:Target, callback:Function):void
     {
       DB.instance.agent.create(f, o, t, function(e:ResultEvent):void {
         var factory:Agent = e.result as Agent;

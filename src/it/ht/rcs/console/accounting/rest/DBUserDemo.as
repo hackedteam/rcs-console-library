@@ -57,6 +57,8 @@ package it.ht.rcs.console.accounting.rest
     public function add_recent(user:User, id:String, onResult:Function = null, onFault:Function = null):void
     {
       user.recent_ids.addItemAt(id, 0);
+      if (user.recent_ids.length > 5)
+        user.recent_ids.removeItemAt(5);
     }
     
   }

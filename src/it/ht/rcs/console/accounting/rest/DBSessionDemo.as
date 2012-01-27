@@ -11,7 +11,7 @@ package it.ht.rcs.console.accounting.rest
     
     public static var demo_user:User         = new User({ _id: '1', name: 'demo', contact: 'demo@hackingteam.it',
                                                           privs: ['ADMIN', 'SYS', 'TECH', 'VIEW'], locale: 'en_US', group_ids: ['1'],
-                                                          dashboard_ids: ['o1', 't1', 'a1'], recent_ids: ['o1', 't1', 'a6', 't3', 'f6', 'o2'],
+                                                          dashboard_ids: ['o1', 't1', 'a1'], recent_ids: ['o1', 't1', 'a6', 't3', 'f6'],
                                                           timezone: 0, enabled: true});
     
     public static var demo_user_admin:User   = new User({ _id: '1', name: 'demoa', contact: 'demoa@hackingteam.it',
