@@ -36,6 +36,7 @@ public class _Super_Agent extends flash.events.EventDispatcher implements com.ad
     model_internal static function initRemoteClassAliasAllRelated() : void
     {
         it.ht.rcs.console.search.model.Stat.initRemoteClassAliasSingleChild();
+        it.ht.rcs.console.search.model.StatEvidence.initRemoteClassAliasSingleChild();
         it.ht.rcs.console.agent.model.Config.initRemoteClassAliasSingleChild();
     }
 
