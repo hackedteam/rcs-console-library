@@ -77,6 +77,17 @@ package it.ht.rcs.console.dashboard.controller
            */
           //array.setItemAt(item, idx);
           elem.stat = item.stat;
+          
+          trace('elem.stat.evidence');
+          for (var p:* in elem.stat.evidence) {
+            trace('.');
+            trace( p + ": " + elem.stat.evidence[p]);
+          }
+          trace('elem.stat.dashboard');
+          for (var p:String in elem.stat.dashboard) {
+            trace( p + ": " + elem.stat.dashboard[p]);
+          }
+          
           return;
         }
       }
@@ -107,12 +118,12 @@ package it.ht.rcs.console.dashboard.controller
     override public function removeItem(o:Object):void
     {
       var idx:int = _dashboard_ids.getItemIndex(o._id as String);
-      _dashboard_ids.removeItemAt(idx);
-      
-      removeItem(o);
-      
-      /* save in the user profile the new list of items */
-      UserManager.instance.update(_user, {dashboard_ids: _dashboard_ids.source});
+      if (idx != -1) {
+        _dashboard_ids.removeItemAt(idx);
+        _items.removeItem(o);
+        /* save in the user profile the new list of items */
+        UserManager.instance.update(_user, {dashboard_ids: _dashboard_ids.source});
+      }
     }
     
   }
