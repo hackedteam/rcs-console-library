@@ -1,5 +1,7 @@
 package it.ht.rcs.console.dashboard.controller
 {
+  import it.ht.rcs.console.search.model.StatEvidence;
+  
   import mx.collections.ArrayCollection;
 
   public class DashboardItem
@@ -18,5 +20,9 @@ package it.ht.rcs.console.dashboard.controller
     public var totTot:Number;
     [Bindable]
     public var totSync:Number;
+    
+    public var baseline:StatEvidence;
+    public var lastSyncBaseline:int;
+    
   }
 }
