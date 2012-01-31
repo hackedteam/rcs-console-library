@@ -22,7 +22,7 @@ public class LicenseCount extends _Super_LicenseCount
     if (data) {
       agents = data.agents;
       collectors = data.collectors;
-      ipa = data.ipa;
+      nia = data.nia;
       users = data.users;
       shards = data.shards;
     }

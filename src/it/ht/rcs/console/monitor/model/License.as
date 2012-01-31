@@ -24,7 +24,7 @@ public class License extends _Super_License
       agents = data.agents;
       collectors = data.collectors;
       correlation = data.correlation;
-      ipa = data.ipa;
+      nia = data.nia;
       rmi = data.rmi;
       serial = data.serial;
       type = data.type;
