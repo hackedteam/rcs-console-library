@@ -35,7 +35,7 @@ package it.ht.rcs.console.monitor.controller
     public var alerting:Boolean = false;
     public var correlation:Boolean = false;
     
-    public var ipa:CurrMaxObject = new CurrMaxObject("0", "0");
+    public var nia:CurrMaxObject = new CurrMaxObject("0", "0");
     public var rmi:Boolean = false;
     
     public var shards:CurrMaxObject = new CurrMaxObject("0", "0");
@@ -89,7 +89,7 @@ package it.ht.rcs.console.monitor.controller
       alerting = limits['alerting'];
       correlation = limits['correlation'];
       
-      ipa.max = (limits['ipa'] == null) ? 'U' : limits['ipa'].toString();
+      nia.max = (limits['nia'] == null) ? 'U' : limits['nia'].toString();
       rmi = limits['rmi'];
       
       shards.max = (limits['shards'] == null) ? 'U' : limits['shards'].toString();
@@ -108,7 +108,7 @@ package it.ht.rcs.console.monitor.controller
       collectors.curr = current['collectors']['collectors'].toString();
       anonymizers.curr = current['collectors']['anonymizers'].toString();
       
-      ipa.curr = current['ipa'].toString();
+      nia.curr = current['ipa'].toString();
       
       shards.curr = current['shards'].toString();
     }

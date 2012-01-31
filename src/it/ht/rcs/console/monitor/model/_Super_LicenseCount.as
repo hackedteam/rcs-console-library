@@ -54,7 +54,7 @@ public class _Super_LicenseCount extends flash.events.EventDispatcher implements
     private var _internal_collectors : it.ht.rcs.console.monitor.model.LicenseCollectors;
     private var _internal_users : int;
     private var _internal_shards : int;
-    private var _internal_ipa : int;
+    private var _internal_nia : int;
     private var _internal_agents : it.ht.rcs.console.monitor.model.LicenseAgents;
 
     private static var emptyArray:Array = new Array();
@@ -98,9 +98,9 @@ public class _Super_LicenseCount extends flash.events.EventDispatcher implements
     }
 
     [Bindable(event="propertyChange")]
-    public function get ipa() : int
+    public function get nia() : int
     {
-        return _internal_ipa;
+        return _internal_nia;
     }
 
     [Bindable(event="propertyChange")]
@@ -147,13 +147,13 @@ public class _Super_LicenseCount extends flash.events.EventDispatcher implements
         }
     }
 
-    public function set ipa(value:int) : void
+    public function set nia(value:int) : void
     {
-        var oldValue:int = _internal_ipa;
+        var oldValue:int = _internal_nia;
         if (oldValue !== value)
         {
-            _internal_ipa = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "ipa", oldValue, _internal_ipa));
+            _internal_nia = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "nia", oldValue, _internal_nia));
         }
     }
 
