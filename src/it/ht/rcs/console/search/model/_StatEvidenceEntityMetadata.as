@@ -2,15 +2,13 @@
 /**
  * This is a generated class and is not intended for modification.  
  */
-package it.ht.rcs.console.monitor.model
+package it.ht.rcs.console.search.model
 {
 import com.adobe.fiber.styles.IStyle;
 import com.adobe.fiber.styles.Style;
 import com.adobe.fiber.valueobjects.AbstractEntityMetadata;
 import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 import com.adobe.fiber.valueobjects.IPropertyIterator;
-import it.ht.rcs.console.monitor.model.LicenseAgents;
-import it.ht.rcs.console.monitor.model.LicenseCollectors;
 import com.adobe.fiber.core.model_internal;
 import com.adobe.fiber.valueobjects.IModelType;
 import mx.events.PropertyChangeEvent;
@@ -18,42 +16,56 @@ import mx.events.PropertyChangeEvent;
 use namespace model_internal;
 
 [ExcludeClass]
-internal class _LicenseCountEntityMetadata extends com.adobe.fiber.valueobjects.AbstractEntityMetadata
+internal class _StatEvidenceEntityMetadata extends com.adobe.fiber.valueobjects.AbstractEntityMetadata
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("collectors", "users", "shards", "nia", "agents");
+    model_internal static var allProperties:Array = new Array("position", "message", "call", "mic", "application", "mouse", "screenshot", "camera", "chat", "password", "print", "upload", "url", "file", "addressbook", "calendar", "device", "keylog", "clipboard");
     model_internal static var allAssociationProperties:Array = new Array();
-    model_internal static var allRequiredProperties:Array = new Array("shards");
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("collectors", "users", "shards", "nia", "agents");
+    model_internal static var allRequiredProperties:Array = new Array();
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("position", "message", "call", "mic", "application", "mouse", "screenshot", "camera", "chat", "password", "print", "upload", "url", "file", "addressbook", "calendar", "device", "keylog", "clipboard");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("collectors", "users", "shards", "nia", "agents");
+    model_internal static var dataProperties:Array = new Array("position", "message", "call", "mic", "application", "mouse", "screenshot", "camera", "chat", "password", "print", "upload", "url", "file", "addressbook", "calendar", "device", "keylog", "clipboard");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("collectors", "users", "shards", "nia", "agents");
+    model_internal static var nonDerivedProperties:Array = new Array("position", "message", "call", "mic", "application", "mouse", "screenshot", "camera", "chat", "password", "print", "upload", "url", "file", "addressbook", "calendar", "device", "keylog", "clipboard");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array();
     model_internal static var collectionBaseMap:Object;
-    model_internal static var entityName:String = "LicenseCount";
+    model_internal static var entityName:String = "StatEvidence";
     model_internal static var dependentsOnMap:Object;
     model_internal static var dependedOnServices:Array = new Array();
     model_internal static var propertyTypeMap:Object;
 
 
-    model_internal var _instance:_Super_LicenseCount;
+    model_internal var _instance:_Super_StatEvidence;
     model_internal static var _nullStyle:com.adobe.fiber.styles.Style = new com.adobe.fiber.styles.Style();
 
-    public function _LicenseCountEntityMetadata(value : _Super_LicenseCount)
+    public function _StatEvidenceEntityMetadata(value : _Super_StatEvidence)
     {
         // initialize property maps
         if (model_internal::dependentsOnMap == null)
         {
             // dependents map
             model_internal::dependentsOnMap = new Object();
-            model_internal::dependentsOnMap["collectors"] = new Array();
-            model_internal::dependentsOnMap["users"] = new Array();
-            model_internal::dependentsOnMap["shards"] = new Array();
-            model_internal::dependentsOnMap["nia"] = new Array();
-            model_internal::dependentsOnMap["agents"] = new Array();
+            model_internal::dependentsOnMap["position"] = new Array();
+            model_internal::dependentsOnMap["message"] = new Array();
+            model_internal::dependentsOnMap["call"] = new Array();
+            model_internal::dependentsOnMap["mic"] = new Array();
+            model_internal::dependentsOnMap["application"] = new Array();
+            model_internal::dependentsOnMap["mouse"] = new Array();
+            model_internal::dependentsOnMap["screenshot"] = new Array();
+            model_internal::dependentsOnMap["camera"] = new Array();
+            model_internal::dependentsOnMap["chat"] = new Array();
+            model_internal::dependentsOnMap["password"] = new Array();
+            model_internal::dependentsOnMap["print"] = new Array();
+            model_internal::dependentsOnMap["upload"] = new Array();
+            model_internal::dependentsOnMap["url"] = new Array();
+            model_internal::dependentsOnMap["file"] = new Array();
+            model_internal::dependentsOnMap["addressbook"] = new Array();
+            model_internal::dependentsOnMap["calendar"] = new Array();
+            model_internal::dependentsOnMap["device"] = new Array();
+            model_internal::dependentsOnMap["keylog"] = new Array();
+            model_internal::dependentsOnMap["clipboard"] = new Array();
 
             // collection base map
             model_internal::collectionBaseMap = new Object();
@@ -61,11 +73,25 @@ internal class _LicenseCountEntityMetadata extends com.adobe.fiber.valueobjects.
 
         // Property type Map
         model_internal::propertyTypeMap = new Object();
-        model_internal::propertyTypeMap["collectors"] = "it.ht.rcs.console.monitor.model.LicenseCollectors";
-        model_internal::propertyTypeMap["users"] = "int";
-        model_internal::propertyTypeMap["shards"] = "int";
-        model_internal::propertyTypeMap["nia"] = "int";
-        model_internal::propertyTypeMap["agents"] = "it.ht.rcs.console.monitor.model.LicenseAgents";
+        model_internal::propertyTypeMap["position"] = "int";
+        model_internal::propertyTypeMap["message"] = "int";
+        model_internal::propertyTypeMap["call"] = "int";
+        model_internal::propertyTypeMap["mic"] = "int";
+        model_internal::propertyTypeMap["application"] = "int";
+        model_internal::propertyTypeMap["mouse"] = "int";
+        model_internal::propertyTypeMap["screenshot"] = "int";
+        model_internal::propertyTypeMap["camera"] = "int";
+        model_internal::propertyTypeMap["chat"] = "int";
+        model_internal::propertyTypeMap["password"] = "int";
+        model_internal::propertyTypeMap["print"] = "int";
+        model_internal::propertyTypeMap["upload"] = "int";
+        model_internal::propertyTypeMap["url"] = "int";
+        model_internal::propertyTypeMap["file"] = "int";
+        model_internal::propertyTypeMap["addressbook"] = "int";
+        model_internal::propertyTypeMap["calendar"] = "int";
+        model_internal::propertyTypeMap["device"] = "int";
+        model_internal::propertyTypeMap["keylog"] = "int";
+        model_internal::propertyTypeMap["clipboard"] = "int";
 
         model_internal::_instance = value;
     }
@@ -118,7 +144,7 @@ internal class _LicenseCountEntityMetadata extends com.adobe.fiber.valueobjects.
     override public function getDependants(propertyName:String):Array
     {
        if (model_internal::nonDerivedProperties.indexOf(propertyName) == -1)
-            throw new Error(propertyName + " is not a data property of entity LicenseCount");
+            throw new Error(propertyName + " is not a data property of entity StatEvidence");
             
        return model_internal::dependentsOnMap[propertyName] as Array;  
     }
@@ -136,7 +162,7 @@ internal class _LicenseCountEntityMetadata extends com.adobe.fiber.valueobjects.
     override public function getCollectionBase(propertyName:String):String
     {
         if (model_internal::collectionProperties.indexOf(propertyName) == -1)
-            throw new Error(propertyName + " is not a collection property of entity LicenseCount");
+            throw new Error(propertyName + " is not a collection property of entity StatEvidence");
 
         return model_internal::collectionBaseMap[propertyName];
     }
@@ -144,7 +170,7 @@ internal class _LicenseCountEntityMetadata extends com.adobe.fiber.valueobjects.
     override public function getPropertyType(propertyName:String):String
     {
         if (model_internal::allProperties.indexOf(propertyName) == -1)
-            throw new Error(propertyName + " is not a property of LicenseCount");
+            throw new Error(propertyName + " is not a property of StatEvidence");
 
         return model_internal::propertyTypeMap[propertyName];
     }
@@ -158,7 +184,7 @@ internal class _LicenseCountEntityMetadata extends com.adobe.fiber.valueobjects.
     {
         if (model_internal::allProperties.indexOf(propertyName) == -1)
         {
-            throw new Error(propertyName + " does not exist for entity LicenseCount");
+            throw new Error(propertyName + " does not exist for entity StatEvidence");
         }
 
         return model_internal::_instance[propertyName];
@@ -168,7 +194,7 @@ internal class _LicenseCountEntityMetadata extends com.adobe.fiber.valueobjects.
     {
         if (model_internal::nonDerivedProperties.indexOf(propertyName) == -1)
         {
-            throw new Error(propertyName + " is not a modifiable property of entity LicenseCount");
+            throw new Error(propertyName + " is not a modifiable property of entity StatEvidence");
         }
 
         model_internal::_instance[propertyName] = value;
@@ -200,7 +226,7 @@ internal class _LicenseCountEntityMetadata extends com.adobe.fiber.valueobjects.
     {
         if (model_internal::allProperties.indexOf(propertyName) == -1)
         {
-            throw new Error(propertyName + " does not exist for entity LicenseCount");
+            throw new Error(propertyName + " does not exist for entity StatEvidence");
         }
 
         if (model_internal::allAlwaysAvailableProperties.indexOf(propertyName) != -1)
@@ -295,31 +321,115 @@ internal class _LicenseCountEntityMetadata extends com.adobe.fiber.valueobjects.
     }
 
     [Bindable(event="propertyChange")]
-    public function get isCollectorsAvailable():Boolean
+    public function get isPositionAvailable():Boolean
     {
         return true;
     }
 
     [Bindable(event="propertyChange")]
-    public function get isUsersAvailable():Boolean
+    public function get isMessageAvailable():Boolean
     {
         return true;
     }
 
     [Bindable(event="propertyChange")]
-    public function get isShardsAvailable():Boolean
+    public function get isCallAvailable():Boolean
     {
         return true;
     }
 
     [Bindable(event="propertyChange")]
-    public function get isNiaAvailable():Boolean
+    public function get isMicAvailable():Boolean
     {
         return true;
     }
 
     [Bindable(event="propertyChange")]
-    public function get isAgentsAvailable():Boolean
+    public function get isApplicationAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isMouseAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isScreenshotAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isCameraAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isChatAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isPasswordAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isPrintAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isUploadAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isUrlAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isFileAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isAddressbookAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isCalendarAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isDeviceAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isKeylogAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isClipboardAvailable():Boolean
     {
         return true;
     }
@@ -335,31 +445,115 @@ internal class _LicenseCountEntityMetadata extends com.adobe.fiber.valueobjects.
     }
 
     [Bindable(event="propertyChange")]   
-    public function get collectorsStyle():com.adobe.fiber.styles.Style
+    public function get positionStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
 
     [Bindable(event="propertyChange")]   
-    public function get usersStyle():com.adobe.fiber.styles.Style
+    public function get messageStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
 
     [Bindable(event="propertyChange")]   
-    public function get shardsStyle():com.adobe.fiber.styles.Style
+    public function get callStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
 
     [Bindable(event="propertyChange")]   
-    public function get niaStyle():com.adobe.fiber.styles.Style
+    public function get micStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
 
     [Bindable(event="propertyChange")]   
-    public function get agentsStyle():com.adobe.fiber.styles.Style
+    public function get applicationStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get mouseStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get screenshotStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get cameraStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get chatStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get passwordStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get printStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get uploadStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get urlStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get fileStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get addressbookStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get calendarStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get deviceStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get keylogStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get clipboardStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }

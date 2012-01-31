@@ -30,6 +30,7 @@ public class _Super_Operation extends flash.events.EventDispatcher implements co
     model_internal static function initRemoteClassAliasAllRelated() : void
     {
         it.ht.rcs.console.search.model.Stat.initRemoteClassAliasSingleChild();
+        it.ht.rcs.console.search.model.StatEvidence.initRemoteClassAliasSingleChild();
     }
 
     model_internal var _dminternal_model : _OperationEntityMetadata;

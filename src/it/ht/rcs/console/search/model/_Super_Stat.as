@@ -10,6 +10,7 @@ import com.adobe.fiber.util.FiberUtils;
 import com.adobe.fiber.valueobjects.IValueObject;
 import flash.events.Event;
 import flash.events.EventDispatcher;
+import it.ht.rcs.console.search.model.StatEvidence;
 import mx.binding.utils.ChangeWatcher;
 import mx.collections.ArrayCollection;
 import mx.events.PropertyChangeEvent;
@@ -32,6 +33,7 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
 
     model_internal static function initRemoteClassAliasAllRelated() : void
     {
+        it.ht.rcs.console.search.model.StatEvidence.initRemoteClassAliasSingleChild();
     }
 
     model_internal var _dminternal_model : _StatEntityMetadata;
@@ -51,20 +53,22 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
     /**
      * properties
      */
-    private var _internal_last_sync : int;
+    private var _internal_last_child : ArrayCollection;
+    private var _internal_last_sync : Number = Number(0);
     private var _internal_source : String;
     private var _internal__id : String;
-    private var _internal_last_sync_status : String;
+    private var _internal_last_sync_status : int;
     private var _internal_grid_size : int;
-    private var _internal_evidence : Object;
-    private var _internal_dashboard : Object;
+    private var _internal_evidence : it.ht.rcs.console.search.model.StatEvidence;
     private var _internal_device : String;
+    private var _internal_dashboard : it.ht.rcs.console.search.model.StatEvidence;
     private var _internal_user : String;
     private var _internal_size : int;
-    private var _internal_last_child : ArrayCollection;
 
     private static var emptyArray:Array = new Array();
 
+    // Change this value according to your application's floating-point precision
+    private static var epsilon:Number = 0.0001;
 
     /**
      * derived property cache initialization
@@ -78,7 +82,12 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
         _model = new _StatEntityMetadata(this);
 
         // Bind to own data or source properties for cache invalidation triggering
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "last_sync_status", model_internal::setterListenerLast_sync_status));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "source", model_internal::setterListenerSource));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "_id", model_internal::setterListener_id));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "evidence", model_internal::setterListenerEvidence));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "device", model_internal::setterListenerDevice));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "dashboard", model_internal::setterListenerDashboard));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "user", model_internal::setterListenerUser));
 
     }
 
@@ -87,7 +96,13 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
      */
 
     [Bindable(event="propertyChange")]
-    public function get last_sync() : int
+    public function get last_child() : ArrayCollection
+    {
+        return _internal_last_child;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get last_sync() : Number
     {
         return _internal_last_sync;
     }
@@ -105,7 +120,7 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
     }
 
     [Bindable(event="propertyChange")]
-    public function get last_sync_status() : String
+    public function get last_sync_status() : int
     {
         return _internal_last_sync_status;
     }
@@ -117,21 +132,21 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
     }
 
     [Bindable(event="propertyChange")]
-    public function get evidence() : Object
+    public function get evidence() : it.ht.rcs.console.search.model.StatEvidence
     {
         return _internal_evidence;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get dashboard() : Object
-    {
-        return _internal_dashboard;
     }
 
     [Bindable(event="propertyChange")]
     public function get device() : String
     {
         return _internal_device;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get dashboard() : it.ht.rcs.console.search.model.StatEvidence
+    {
+        return _internal_dashboard;
     }
 
     [Bindable(event="propertyChange")]
@@ -146,12 +161,6 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
         return _internal_size;
     }
 
-    [Bindable(event="propertyChange")]
-    public function get last_child() : ArrayCollection
-    {
-        return _internal_last_child;
-    }
-
     public function clearAssociations() : void
     {
     }
@@ -159,106 +168,6 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
     /**
      * data/source property setters
      */
-
-    public function set last_sync(value:int) : void
-    {
-        var oldValue:int = _internal_last_sync;
-        if (oldValue !== value)
-        {
-            _internal_last_sync = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "last_sync", oldValue, _internal_last_sync));
-        }
-    }
-
-    public function set source(value:String) : void
-    {
-        var oldValue:String = _internal_source;
-        if (oldValue !== value)
-        {
-            _internal_source = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "source", oldValue, _internal_source));
-        }
-    }
-
-    public function set _id(value:String) : void
-    {
-        var oldValue:String = _internal__id;
-        if (oldValue !== value)
-        {
-            _internal__id = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "_id", oldValue, _internal__id));
-        }
-    }
-
-    public function set last_sync_status(value:String) : void
-    {
-        var oldValue:String = _internal_last_sync_status;
-        if (oldValue !== value)
-        {
-            _internal_last_sync_status = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "last_sync_status", oldValue, _internal_last_sync_status));
-        }
-    }
-
-    public function set grid_size(value:int) : void
-    {
-        var oldValue:int = _internal_grid_size;
-        if (oldValue !== value)
-        {
-            _internal_grid_size = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "grid_size", oldValue, _internal_grid_size));
-        }
-    }
-
-    public function set evidence(value:Object) : void
-    {
-        var oldValue:Object = _internal_evidence;
-        if (oldValue !== value)
-        {
-            _internal_evidence = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "evidence", oldValue, _internal_evidence));
-        }
-    }
-
-    public function set dashboard(value:Object) : void
-    {
-        var oldValue:Object = _internal_dashboard;
-        if (oldValue !== value)
-        {
-            _internal_dashboard = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "dashboard", oldValue, _internal_dashboard));
-        }
-    }
-
-    public function set device(value:String) : void
-    {
-        var oldValue:String = _internal_device;
-        if (oldValue !== value)
-        {
-            _internal_device = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "device", oldValue, _internal_device));
-        }
-    }
-
-    public function set user(value:String) : void
-    {
-        var oldValue:String = _internal_user;
-        if (oldValue !== value)
-        {
-            _internal_user = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "user", oldValue, _internal_user));
-        }
-    }
-
-    public function set size(value:int) : void
-    {
-        var oldValue:int = _internal_size;
-        if (oldValue !== value)
-        {
-            _internal_size = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "size", oldValue, _internal_size));
-        }
-    }
 
     public function set last_child(value:*) : void
     {
@@ -285,6 +194,106 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
         }
     }
 
+    public function set last_sync(value:Number) : void
+    {
+        var oldValue:Number = _internal_last_sync;
+        if (isNaN(_internal_last_sync) == true || Math.abs(oldValue - value) > epsilon)
+        {
+            _internal_last_sync = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "last_sync", oldValue, _internal_last_sync));
+        }
+    }
+
+    public function set source(value:String) : void
+    {
+        var oldValue:String = _internal_source;
+        if (oldValue !== value)
+        {
+            _internal_source = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "source", oldValue, _internal_source));
+        }
+    }
+
+    public function set _id(value:String) : void
+    {
+        var oldValue:String = _internal__id;
+        if (oldValue !== value)
+        {
+            _internal__id = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "_id", oldValue, _internal__id));
+        }
+    }
+
+    public function set last_sync_status(value:int) : void
+    {
+        var oldValue:int = _internal_last_sync_status;
+        if (oldValue !== value)
+        {
+            _internal_last_sync_status = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "last_sync_status", oldValue, _internal_last_sync_status));
+        }
+    }
+
+    public function set grid_size(value:int) : void
+    {
+        var oldValue:int = _internal_grid_size;
+        if (oldValue !== value)
+        {
+            _internal_grid_size = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "grid_size", oldValue, _internal_grid_size));
+        }
+    }
+
+    public function set evidence(value:it.ht.rcs.console.search.model.StatEvidence) : void
+    {
+        var oldValue:it.ht.rcs.console.search.model.StatEvidence = _internal_evidence;
+        if (oldValue !== value)
+        {
+            _internal_evidence = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "evidence", oldValue, _internal_evidence));
+        }
+    }
+
+    public function set device(value:String) : void
+    {
+        var oldValue:String = _internal_device;
+        if (oldValue !== value)
+        {
+            _internal_device = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "device", oldValue, _internal_device));
+        }
+    }
+
+    public function set dashboard(value:it.ht.rcs.console.search.model.StatEvidence) : void
+    {
+        var oldValue:it.ht.rcs.console.search.model.StatEvidence = _internal_dashboard;
+        if (oldValue !== value)
+        {
+            _internal_dashboard = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "dashboard", oldValue, _internal_dashboard));
+        }
+    }
+
+    public function set user(value:String) : void
+    {
+        var oldValue:String = _internal_user;
+        if (oldValue !== value)
+        {
+            _internal_user = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "user", oldValue, _internal_user));
+        }
+    }
+
+    public function set size(value:int) : void
+    {
+        var oldValue:int = _internal_size;
+        if (oldValue !== value)
+        {
+            _internal_size = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "size", oldValue, _internal_size));
+        }
+    }
+
     /**
      * Data/source property setter listeners
      *
@@ -297,9 +306,34 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
      *  - the validity of the property (and the containing entity) if the given data property is required.
      */
 
-    model_internal function setterListenerLast_sync_status(value:flash.events.Event):void
+    model_internal function setterListenerSource(value:flash.events.Event):void
     {
-        _model.invalidateDependentOnLast_sync_status();
+        _model.invalidateDependentOnSource();
+    }
+
+    model_internal function setterListener_id(value:flash.events.Event):void
+    {
+        _model.invalidateDependentOn_id();
+    }
+
+    model_internal function setterListenerEvidence(value:flash.events.Event):void
+    {
+        _model.invalidateDependentOnEvidence();
+    }
+
+    model_internal function setterListenerDevice(value:flash.events.Event):void
+    {
+        _model.invalidateDependentOnDevice();
+    }
+
+    model_internal function setterListenerDashboard(value:flash.events.Event):void
+    {
+        _model.invalidateDependentOnDashboard();
+    }
+
+    model_internal function setterListenerUser(value:flash.events.Event):void
+    {
+        _model.invalidateDependentOnUser();
     }
 
 
@@ -323,10 +357,35 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
         var validationFailureMessages:Array = new Array();
 
         var propertyValidity:Boolean = true;
-        if (!_model.last_sync_statusIsValid)
+        if (!_model.sourceIsValid)
         {
             propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_last_sync_statusValidationFailureMessages);
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_sourceValidationFailureMessages);
+        }
+        if (!_model._idIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::__idValidationFailureMessages);
+        }
+        if (!_model.evidenceIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_evidenceValidationFailureMessages);
+        }
+        if (!_model.deviceIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_deviceValidationFailureMessages);
+        }
+        if (!_model.dashboardIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_dashboardValidationFailureMessages);
+        }
+        if (!_model.userIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_userValidationFailureMessages);
         }
 
         model_internal::_cacheInitialized_isValid = true;
@@ -407,29 +466,164 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
         }
     }
 
-    model_internal var _doValidationCacheOfLast_sync_status : Array = null;
-    model_internal var _doValidationLastValOfLast_sync_status : String;
+    model_internal var _doValidationCacheOfSource : Array = null;
+    model_internal var _doValidationLastValOfSource : String;
 
-    model_internal function _doValidationForLast_sync_status(valueIn:Object):Array
+    model_internal function _doValidationForSource(valueIn:Object):Array
     {
         var value : String = valueIn as String;
 
-        if (model_internal::_doValidationCacheOfLast_sync_status != null && model_internal::_doValidationLastValOfLast_sync_status == value)
-           return model_internal::_doValidationCacheOfLast_sync_status ;
+        if (model_internal::_doValidationCacheOfSource != null && model_internal::_doValidationLastValOfSource == value)
+           return model_internal::_doValidationCacheOfSource ;
 
-        _model.model_internal::_last_sync_statusIsValidCacheInitialized = true;
+        _model.model_internal::_sourceIsValidCacheInitialized = true;
         var validationFailures:Array = new Array();
         var errorMessage:String;
         var failure:Boolean;
 
         var valRes:ValidationResult;
-        if (_model.isLast_sync_statusAvailable && _internal_last_sync_status == null)
+        if (_model.isSourceAvailable && _internal_source == null)
         {
-            validationFailures.push(new ValidationResult(true, "", "", "last_sync_status is required"));
+            validationFailures.push(new ValidationResult(true, "", "", "source is required"));
         }
 
-        model_internal::_doValidationCacheOfLast_sync_status = validationFailures;
-        model_internal::_doValidationLastValOfLast_sync_status = value;
+        model_internal::_doValidationCacheOfSource = validationFailures;
+        model_internal::_doValidationLastValOfSource = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOf_id : Array = null;
+    model_internal var _doValidationLastValOf_id : String;
+
+    model_internal function _doValidationFor_id(valueIn:Object):Array
+    {
+        var value : String = valueIn as String;
+
+        if (model_internal::_doValidationCacheOf_id != null && model_internal::_doValidationLastValOf_id == value)
+           return model_internal::_doValidationCacheOf_id ;
+
+        _model.model_internal::__idIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.is_idAvailable && _internal__id == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "_id is required"));
+        }
+
+        model_internal::_doValidationCacheOf_id = validationFailures;
+        model_internal::_doValidationLastValOf_id = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfEvidence : Array = null;
+    model_internal var _doValidationLastValOfEvidence : it.ht.rcs.console.search.model.StatEvidence;
+
+    model_internal function _doValidationForEvidence(valueIn:Object):Array
+    {
+        var value : it.ht.rcs.console.search.model.StatEvidence = valueIn as it.ht.rcs.console.search.model.StatEvidence;
+
+        if (model_internal::_doValidationCacheOfEvidence != null && model_internal::_doValidationLastValOfEvidence == value)
+           return model_internal::_doValidationCacheOfEvidence ;
+
+        _model.model_internal::_evidenceIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isEvidenceAvailable && _internal_evidence == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "evidence is required"));
+        }
+
+        model_internal::_doValidationCacheOfEvidence = validationFailures;
+        model_internal::_doValidationLastValOfEvidence = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfDevice : Array = null;
+    model_internal var _doValidationLastValOfDevice : String;
+
+    model_internal function _doValidationForDevice(valueIn:Object):Array
+    {
+        var value : String = valueIn as String;
+
+        if (model_internal::_doValidationCacheOfDevice != null && model_internal::_doValidationLastValOfDevice == value)
+           return model_internal::_doValidationCacheOfDevice ;
+
+        _model.model_internal::_deviceIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isDeviceAvailable && _internal_device == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "device is required"));
+        }
+
+        model_internal::_doValidationCacheOfDevice = validationFailures;
+        model_internal::_doValidationLastValOfDevice = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfDashboard : Array = null;
+    model_internal var _doValidationLastValOfDashboard : it.ht.rcs.console.search.model.StatEvidence;
+
+    model_internal function _doValidationForDashboard(valueIn:Object):Array
+    {
+        var value : it.ht.rcs.console.search.model.StatEvidence = valueIn as it.ht.rcs.console.search.model.StatEvidence;
+
+        if (model_internal::_doValidationCacheOfDashboard != null && model_internal::_doValidationLastValOfDashboard == value)
+           return model_internal::_doValidationCacheOfDashboard ;
+
+        _model.model_internal::_dashboardIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isDashboardAvailable && _internal_dashboard == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "dashboard is required"));
+        }
+
+        model_internal::_doValidationCacheOfDashboard = validationFailures;
+        model_internal::_doValidationLastValOfDashboard = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfUser : Array = null;
+    model_internal var _doValidationLastValOfUser : String;
+
+    model_internal function _doValidationForUser(valueIn:Object):Array
+    {
+        var value : String = valueIn as String;
+
+        if (model_internal::_doValidationCacheOfUser != null && model_internal::_doValidationLastValOfUser == value)
+           return model_internal::_doValidationCacheOfUser ;
+
+        _model.model_internal::_userIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isUserAvailable && _internal_user == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "user is required"));
+        }
+
+        model_internal::_doValidationCacheOfUser = validationFailures;
+        model_internal::_doValidationLastValOfUser = value;
 
         return validationFailures;
     }

@@ -98,6 +98,23 @@ package it.ht.rcs.console.dashboard.controller
       _dashboard_ids = _user.dashboard_ids;
     }
     
+//<<<<<<< HEAD
+////    private function addOrUpdateItem(array:ArrayList, item:*):void
+////    {
+////      for (var idx:int = 0; idx < array.length; idx++) {
+////        var elem:* = array.getItemAt(idx);
+////        if (elem._id == item._id) {
+////          /* don't replace the item here, otherwise the renderer will be destroyed and recreated
+////           * causing it to restart from initial state. Just update the stats
+////           */
+////          //array.setItemAt(item, idx);
+////          elem.stat = item.stat;
+////          return;
+////        }
+////      }
+////      addItem(item);
+////    }
+//=======
 //    private function addOrUpdateItem(array:ArrayList, item:*):void
 //    {
 //      for (var idx:int = 0; idx < array.length; idx++) {
@@ -108,11 +125,23 @@ package it.ht.rcs.console.dashboard.controller
 //           */
 //          //array.setItemAt(item, idx);
 //          elem.stat = item.stat;
+//          
+//          trace('elem.stat.evidence');
+//          for (var p:* in elem.stat.evidence) {
+//            trace('.');
+//            trace( p + ": " + elem.stat.evidence[p]);
+//          }
+//          trace('elem.stat.dashboard');
+//          for (var p:String in elem.stat.dashboard) {
+//            trace( p + ": " + elem.stat.dashboard[p]);
+//          }
+//          
 //          return;
 //        }
 //      }
 //      addItem(item);
 //    }
+//>>>>>>> 83074fbff3c4458df59a72892eab903f5b12fd04
     
     public function newDashItem(id:String, callback:Function=null):void
     {

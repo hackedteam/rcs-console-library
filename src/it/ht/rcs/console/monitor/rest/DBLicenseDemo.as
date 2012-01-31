@@ -35,7 +35,7 @@ package it.ht.rcs.console.monitor.rest
               anonymizers: 5
             }),
           correlation: false,
-          ipa: 5,
+          nia: 5,
           rmi: true,
           serial: 1234567890,
           type: 'reusable',
@@ -62,7 +62,7 @@ package it.ht.rcs.console.monitor.rest
               collectors: 1,
               anonymizers: 1
             }),
-          ipa: 2,
+          nia: 2,
           users: 10,
           shards: 1
         });

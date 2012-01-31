@@ -24,14 +24,14 @@ internal class _LicenseEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("collectors", "users", "shards", "ipa", "exploits", "agents", "alerting", "correlation", "type", "serial", "rmi");
+    model_internal static var allProperties:Array = new Array("collectors", "users", "shards", "nia", "exploits", "agents", "alerting", "correlation", "type", "serial", "rmi");
     model_internal static var allAssociationProperties:Array = new Array();
     model_internal static var allRequiredProperties:Array = new Array("shards", "exploits");
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("collectors", "users", "shards", "ipa", "exploits", "agents", "alerting", "correlation", "type", "serial", "rmi");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("collectors", "users", "shards", "nia", "exploits", "agents", "alerting", "correlation", "type", "serial", "rmi");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("collectors", "users", "shards", "ipa", "exploits", "agents", "alerting", "correlation", "type", "serial", "rmi");
+    model_internal static var dataProperties:Array = new Array("collectors", "users", "shards", "nia", "exploits", "agents", "alerting", "correlation", "type", "serial", "rmi");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("collectors", "users", "shards", "ipa", "exploits", "agents", "alerting", "correlation", "type", "serial", "rmi");
+    model_internal static var nonDerivedProperties:Array = new Array("collectors", "users", "shards", "nia", "exploits", "agents", "alerting", "correlation", "type", "serial", "rmi");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array();
     model_internal static var collectionBaseMap:Object;
@@ -64,7 +64,7 @@ internal class _LicenseEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
             model_internal::dependentsOnMap["collectors"] = new Array();
             model_internal::dependentsOnMap["users"] = new Array();
             model_internal::dependentsOnMap["shards"] = new Array();
-            model_internal::dependentsOnMap["ipa"] = new Array();
+            model_internal::dependentsOnMap["nia"] = new Array();
             model_internal::dependentsOnMap["exploits"] = new Array();
             model_internal::dependentsOnMap["agents"] = new Array();
             model_internal::dependentsOnMap["alerting"] = new Array();
@@ -82,7 +82,7 @@ internal class _LicenseEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
         model_internal::propertyTypeMap["collectors"] = "it.ht.rcs.console.monitor.model.LicenseCollectors";
         model_internal::propertyTypeMap["users"] = "Object";
         model_internal::propertyTypeMap["shards"] = "Object";
-        model_internal::propertyTypeMap["ipa"] = "Object";
+        model_internal::propertyTypeMap["nia"] = "Object";
         model_internal::propertyTypeMap["exploits"] = "String";
         model_internal::propertyTypeMap["agents"] = "it.ht.rcs.console.monitor.model.LicenseAgents";
         model_internal::propertyTypeMap["alerting"] = "Boolean";
@@ -347,7 +347,7 @@ internal class _LicenseEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     }
 
     [Bindable(event="propertyChange")]
-    public function get isIpaAvailable():Boolean
+    public function get isNiaAvailable():Boolean
     {
         return true;
     }
@@ -533,7 +533,7 @@ internal class _LicenseEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     }
 
     [Bindable(event="propertyChange")]   
-    public function get ipaStyle():com.adobe.fiber.styles.Style
+    public function get niaStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }

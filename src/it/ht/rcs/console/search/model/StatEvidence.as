@@ -1,5 +1,5 @@
 /**
- * This is a generated sub-class of _License.as and is intended for behavior
+ * This is a generated sub-class of _StatEvidence.as and is intended for behavior
  * customization.  This class is only generated when there is no file already present
  * at its target location.  Thus custom behavior that you add here will survive regeneration
  * of the super-class. 
@@ -10,29 +10,13 @@
  * corresponding entity 
  **/ 
  
-package it.ht.rcs.console.monitor.model
+package it.ht.rcs.console.search.model
 {
 
 import com.adobe.fiber.core.model_internal;
 
-public class License extends _Super_License
+public class StatEvidence extends _Super_StatEvidence
 {
-  
-  public function License(data:Object = null) {
-    if (data) {
-      alerting = data.alerting;
-      agents = data.agents;
-      collectors = data.collectors;
-      correlation = data.correlation;
-      nia = data.nia;
-      rmi = data.rmi;
-      serial = data.serial;
-      type = data.type;
-      users = data.users;
-      shards = data.shards;
-    }
-  }
-  
     /** 
      * DO NOT MODIFY THIS STATIC INITIALIZER - IT IS NECESSARY
      * FOR PROPERLY SETTING UP THE REMOTE CLASS ALIAS FOR THIS CLASS
@@ -46,17 +30,17 @@ public class License extends _Super_License
      */     
     public static function _initRemoteClassAlias() : void
     {
-        _Super_License.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.monitor.model.License);
-        _Super_License.model_internal::initRemoteClassAliasAllRelated();
+        _Super_StatEvidence.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.search.model.StatEvidence);
+        _Super_StatEvidence.model_internal::initRemoteClassAliasAllRelated();
     }
      
     model_internal static function initRemoteClassAliasSingleChild() : void
     {
-        _Super_License.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.monitor.model.License);
+        _Super_StatEvidence.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.search.model.StatEvidence);
     }
     
     {
-        _Super_License.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.monitor.model.License);
+        _Super_StatEvidence.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.search.model.StatEvidence);
     }
     /** 
      * END OF DO NOT MODIFY SECTION
