@@ -45,7 +45,7 @@ package it.ht.rcs.console.target.controller
       DB.instance.target.update(event.source, property);
     }
     
-    public function addTarget(t:Target, o:Operation, callback:Function):void
+    public function addTarget(t:Object, o:Operation, callback:Function):void
     {
       DB.instance.target.create(t, o, function(e:ResultEvent):void {
         var target:Target = e.result as Target;

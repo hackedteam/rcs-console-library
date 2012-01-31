@@ -11,7 +11,7 @@ package it.ht.rcs.console.search.rest
   public class DBSearchDemo implements IDBSearch
   {
     
-    private var _search_items:ArrayCollection = new ArrayCollection();
+    private var items:ArrayCollection = new ArrayCollection();
     
     public function DBSearchDemo()
     {
@@ -20,28 +20,29 @@ package it.ht.rcs.console.search.rest
       DBAgentDemo.agents.source.forEach(addItemAsSearchItem);
     }
     
-    private function addItemAsSearchItem(item:*, index:int, array:Array) : void 
+    private function addItemAsSearchItem(item:*, index:int, array:Array):void 
     { 
-      _search_items.addItem(new SearchItem(item)); 
+      items.addItem(new SearchItem(item)); 
     }
     
     public function all(filter:Object, onResult:Function=null, onFault:Function=null):void
     {
       if (onResult != null)
-        onResult(new ResultEvent('search.all', false, true, _search_items));
+        onResult(new ResultEvent('search.all', false, true, items));
     }
     
     public function show(id:String, onResult:Function=null, onFault:Function=null):void
     {
-      /* search for the item with _id and return it */
-      for (var idx:int = 0; idx < _search_items.length; idx++) {
-        var elem:* = _search_items.getItemAt(idx);
-        if (elem._id == id) {
-          var event:ResultEvent = new ResultEvent('search.show', false, true, elem);
-          if (onResult != null)
-            onResult(event);
+      var found:* = null;
+      for each (var item:* in items.source) {
+        if (item._id == id) {
+          found = item;
+          break;
         }
       }
+      
+      if (onResult != null)
+        onResult(new ResultEvent('search.show', false, true, found));
     }
     
   }

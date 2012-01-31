@@ -11,8 +11,8 @@ package it.ht.rcs.console.agent.model
     {
       return {
         _id: '',
-        _kind: 'agent',
-        name: DB.i18n.get('NEW_AGENT'),
+        _kind: 'factory',
+        name: DB.i18n.get('NEW_FACTORY'),
         desc: '',
         ident: '',
         status: 'open',

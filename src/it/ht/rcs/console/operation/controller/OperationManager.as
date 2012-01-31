@@ -44,7 +44,7 @@ package it.ht.rcs.console.operation.controller
       DB.instance.operation.update(event.source, property);
     }
     
-    public function addOperation(o:Operation, callback:Function):void
+    public function addOperation(o:Object, callback:Function):void
     {
       DB.instance.operation.create(o, function(e:ResultEvent):void {
         var operation:Operation = e.result as Operation;
