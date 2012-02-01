@@ -70,22 +70,49 @@ package it.ht.rcs.console.dashboard.controller
         addItem(dashboardItem);
       }
       
-      dashboardItem.targets = getTargetList(item);
+      dashboardItem.totSync = 0;
+      dashboardItem.totTot = 0;
+      dashboardItem.targets = updateTargetList(dashboardItem, item);
       dashboardItem.name = item.name;
       
     }
     
-    private function getTargetList(item:SearchItem):ArrayCollection
+    private function updateTargetList(dashboardItem:DashboardItem, item:SearchItem):ArrayCollection
     {
       var targets:ArrayCollection = new ArrayCollection();
       
       var view:ListCollectionView = TargetManager.instance.getView();
       for each (var target:Target in view) {
         if (target.path[0] == item._id) {
-          var t:DashboardItem = new DashboardItem();
-          t._id = target._id;
-          t.name = target.name;
-          targets.addItem(t);
+          SearchManager.instance.showItem(target._id, function(item:SearchItem):void {
+            
+            if (!dashboardItem.targetBaselines.hasOwnProperty(item._id))
+              dashboardItem.targetBaselines[item._id] = item.stat;
+            
+            var totTot:Number = 0;
+            var totSync:Number = 0;
+            
+            var evidenceHash:Object = ObjectUtils.toHash(item.stat.evidence);
+            var dashboardHash:Object = ObjectUtils.toHash(item.stat.dashboard);
+            
+            var model:Object = {};
+            model.name = item.name;
+            for (var type:String in evidenceHash)
+            {
+              if (evidenceHash[type] == 0)
+                continue;
+
+              model.tot = evidenceHash[type] - dashboardItem.targetBaselines[item._id].evidence[type];
+              model.sync = dashboardHash[type];
+            }
+            dashboardItem.totTot += model.tot;
+            dashboardItem.totSync += model.sync;
+            
+            if (dashboardItem.targetBaselines[item._id].last_sync == item.stat.last_sync)
+              model.sync = 0;
+            
+            targets.addItem(model);
+          });
         }
       }
       
@@ -104,6 +131,7 @@ package it.ht.rcs.console.dashboard.controller
       }
       
       dashboardItem.name = item.name;
+      dashboardItem.lastSync = item.stat.last_sync;
       
       var totTot:Number = 0;
       var totSync:Number = 0;

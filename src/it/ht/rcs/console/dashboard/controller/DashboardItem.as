@@ -14,9 +14,12 @@ package it.ht.rcs.console.dashboard.controller
     [Bindable] public var modules:ArrayCollection;
     [Bindable] public var targets:ArrayCollection;
     
-    [Bindable] public var totTot:Number;
-    [Bindable] public var totSync:Number;
+    [Bindable] public var totSync:Number = 0;
+    [Bindable] public var totTot:Number = 0;
     
-    public var baseline:Stat;
+    [Bindable] public var lastSync:Number = 0;
+    
+    [Bindable] public var baseline:Stat;
+    public var targetBaselines:Object = {};
   }
 }
