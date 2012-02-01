@@ -92,7 +92,7 @@ package it.ht.rcs.console.accounting.controller
 //      });
 //    }
       
-    public function addUser(user:User, callback:Function):void
+    public function addUser(user:Object, callback:Function):void
     {
       DB.instance.user.create(user, function (e:ResultEvent):void {
         var u:User = e.result as User;

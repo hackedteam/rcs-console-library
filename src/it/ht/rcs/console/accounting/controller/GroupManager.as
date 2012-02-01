@@ -47,7 +47,7 @@ package it.ht.rcs.console.accounting.controller
       DB.instance.group.update(event.source, property);
     }
     
-    public function addUser(g:Group, u:User, callback:Function):void
+    public function addUser(g:Group, u:User, callback:Function=null):void
     {
       DB.instance.group.add_user(g, u, function(e:ResultEvent):void {
         if (g.user_ids.getItemIndex(u._id)  == -1) g.user_ids.addItem(u._id);
@@ -104,7 +104,7 @@ package it.ht.rcs.console.accounting.controller
 //      });
 //    }
     
-    public function addGroup(group:Group, callback:Function):void
+    public function addGroup(group:Object, callback:Function):void
     {
       DB.instance.group.create(group, function(e:ResultEvent):void {
         var g:Group = e.result as Group;
