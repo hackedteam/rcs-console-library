@@ -67,10 +67,10 @@ package it.ht.rcs.console.dashboard.controller
         dashboardItem = new DashboardItem();
         dashboardItem._id = item._id;
         dashboardItem._kind = item._kind;
-        dashboardItem.targets = getTargetList(item);
         addItem(dashboardItem);
       }
       
+      dashboardItem.targets = getTargetList(item);
       dashboardItem.name = item.name;
       
     }
