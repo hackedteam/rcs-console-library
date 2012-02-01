@@ -108,7 +108,7 @@ package it.ht.rcs.console.monitor.controller
       collectors.curr = current['collectors']['collectors'].toString();
       anonymizers.curr = current['collectors']['anonymizers'].toString();
       
-      nia.curr = current['ipa'].toString();
+      nia.curr = current['nia'].toString();
       
       shards.curr = current['shards'].toString();
     }
