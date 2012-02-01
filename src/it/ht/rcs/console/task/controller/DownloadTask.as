@@ -45,8 +45,12 @@ package it.ht.rcs.console.task.controller
       trace("Creating DownloadTask " + task._id);
       this.task = new Task(task);
       this.db = db;
-      if (task.status != 'finished')
-        NotificationPopup.showNotification(ResourceManager.getInstance().getString('localized_main', 'TASK_NEW', [task.file_name]), 3);
+      if (task.status != 'finished') {
+        if (task.file_name != null) 
+          NotificationPopup.showNotification(ResourceManager.getInstance().getString('localized_main', 'TASK_NEW', [task.file_name]), 3);
+        else
+          NotificationPopup.showNotification(ResourceManager.getInstance().getString('localized_main', 'TASK_NOFILE_NEW'));
+      }
     }
     
     public function factory(type:String, fileName:String):DownloadTask
@@ -163,7 +167,10 @@ package it.ht.rcs.console.task.controller
           updateTimer.stop();
           
           // task.description = "Completed";
-          NotificationPopup.showNotification(ResourceManager.getInstance().getString('localized_main', 'TASK_COMPLETE', [task.file_name]));
+          if (task.file_name != null)
+            NotificationPopup.showNotification(ResourceManager.getInstance().getString('localized_main', 'TASK_COMPLETE', [task.file_name]));
+          else
+            NotificationPopup.showNotification(ResourceManager.getInstance().getString('localized_main', 'TASK_NOFILE_COMPLETE'));
           trace("Task " + task._id +" completed.");
           break;
           
