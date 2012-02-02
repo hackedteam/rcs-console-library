@@ -3376,12 +3376,18 @@
     <annotation name="ActionScriptGeneration">
       <item name="Package">it.ht.rcs.console.evidence.model</item>
     </annotation>
-    <property name="window" type="string" required="true"/>
-    <property name="_grid_size" type="integer" required="true"/>
-    <property name="program" type="string" required="true"/>
-    <property name="resolution" type="string" required="true"/>
-    <property name="_grid" type="string" required="true"/>
-    <property name="y" type="integer" required="true"/>
-    <property name="x" type="integer" required="true"/>
+    <property name="window" type="string" required="false"/>
+    <property name="_grid_size" type="integer" required="false"/>
+    <property name="program" type="string" required="false"/>
+    <property name="process" type="string" required="false"/>
+    <property name="content" type="string" required="false"/>
+    <property name="window" type="string" required="false"/>
+    <property name="service" type="string" required="false"/>
+    <property name="user" type="string" required="false"/>
+    <property name="pass" type="string" required="false"/>
+    <property name="resolution" type="string" required="false"/>
+    <property name="_grid" type="string" required="false"/>
+    <property name="y" type="integer" required="false"/>
+    <property name="x" type="integer" required="false"/>
   </entity>
 </model>
