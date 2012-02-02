@@ -3213,7 +3213,7 @@
         <item name="completeURL">https://localhost:4444/evidence</item>
       </annotation>
       <annotation name="ValidProperties">
-        <item name="propertySpecifier">blotter,_id,relevance,data,acquired,received,type,note</item>
+        <item name="propertySpecifier">blotter,_id,relevance,data,acquired,received,agent_id,type,note</item>
       </annotation>
       <annotation name="original signature">
         <item name="returnType">opaque</item>
@@ -3321,7 +3321,7 @@
       <item name="IncludeRemoteClass">nonempty</item>
     </annotation>
     <annotation name="all_">
-      <item name="propertySpecifier">blotter,_id,relevance,data,acquired,received,type,note</item>
+      <item name="propertySpecifier">blotter,_id,relevance,data,acquired,received,agent_id,type,note</item>
       <item name="pagingEnabled">true</item>
       <item name="positionalPagingParameters">true</item>
       <item name="countOperation">count_</item>
@@ -3339,6 +3339,7 @@
     <property name="data" type="EvidenceData" required="true"/>
     <property name="acquired" type="integer" required="true"/>
     <property name="received" type="integer" required="true"/>
+    <property name="agent_id" type="string" required="true"/>
     <property name="type" type="string" required="true"/>
     <property name="note" type="string" required="true"/>
   </entity>
