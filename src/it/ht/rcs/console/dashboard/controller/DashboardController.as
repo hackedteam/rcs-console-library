@@ -15,6 +15,8 @@ package it.ht.rcs.console.dashboard.controller
   
   import mx.collections.ArrayCollection;
   import mx.collections.ListCollectionView;
+  import mx.collections.Sort;
+  import mx.collections.SortField;
   
   public class DashboardController extends ItemManager
   {
@@ -81,6 +83,11 @@ package it.ht.rcs.console.dashboard.controller
     {
       var targets:ArrayCollection = new ArrayCollection();
       
+      var sort:Sort = new Sort();
+      sort.fields = [new SortField('name', true, false)];
+      targets.sort = sort;
+      targets.refresh();
+      
       var view:ListCollectionView = TargetManager.instance.getView();
       for each (var target:Target in view) {
         if (target.path[0] == item._id) {
@@ -140,26 +147,31 @@ package it.ht.rcs.console.dashboard.controller
       var evidenceHash:Object = ObjectUtils.toHash(item.stat.evidence);
       var dashboardHash:Object = ObjectUtils.toHash(item.stat.dashboard);
       
-      var ev:Object;
+      var module:Object;
       for (var type:String in evidenceHash)
       {
         if (evidenceHash[type] == 0)
           continue;
         
-        ev = {};
-        ev.type = type;
-        ev.tot = evidenceHash[type] - dashboardItem.baseline.evidence[type];
-        totTot += ev.tot;
-        ev.sync = dashboardHash[type];
-        totSync += ev.sync;
-        modules.addItem(ev);
+        module = {};
+        module.type = type;
+        module.tot = evidenceHash[type] - dashboardItem.baseline.evidence[type];
+        totTot += module.tot;
+        module.sync = dashboardHash[type];
+        totSync += module.sync;
+        modules.addItem(module);
       }
       
       if (dashboardItem.baseline.last_sync == item.stat.last_sync) {
         totSync = 0;
-        for each (var module:Object in modules)
+        for each (module in modules)
           module.sync = null;
       }
+      
+      var sort:Sort = new Sort();
+      sort.fields = [new SortField('type', true, false)];
+      modules.sort = sort;
+      modules.refresh();
       
       dashboardItem.modules = modules;
       dashboardItem.totTot = totTot;
