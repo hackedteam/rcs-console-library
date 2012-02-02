@@ -10,6 +10,7 @@ import com.adobe.fiber.styles.StyleValidator;
 import com.adobe.fiber.valueobjects.AbstractEntityMetadata;
 import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 import com.adobe.fiber.valueobjects.IPropertyIterator;
+import it.ht.rcs.console.evidence.model.EvidenceData;
 import mx.events.ValidationResultEvent;
 import com.adobe.fiber.core.model_internal;
 import com.adobe.fiber.valueobjects.IModelType;
@@ -82,11 +83,11 @@ internal class _EvidenceEntityMetadata extends com.adobe.fiber.valueobjects.Abst
         model_internal::propertyTypeMap["blotter"] = "Boolean";
         model_internal::propertyTypeMap["_id"] = "String";
         model_internal::propertyTypeMap["relevance"] = "int";
-        model_internal::propertyTypeMap["data"] = "Object";
+        model_internal::propertyTypeMap["data"] = "it.ht.rcs.console.evidence.model.EvidenceData";
         model_internal::propertyTypeMap["acquired"] = "int";
         model_internal::propertyTypeMap["received"] = "int";
         model_internal::propertyTypeMap["type"] = "String";
-        model_internal::propertyTypeMap["note"] = "Object";
+        model_internal::propertyTypeMap["note"] = "String";
 
         model_internal::_instance = value;
         model_internal::_dataValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForData);

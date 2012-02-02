@@ -10,6 +10,7 @@ import com.adobe.fiber.util.FiberUtils;
 import com.adobe.fiber.valueobjects.IValueObject;
 import flash.events.Event;
 import flash.events.EventDispatcher;
+import it.ht.rcs.console.evidence.model.EvidenceData;
 import mx.binding.utils.ChangeWatcher;
 import mx.collections.ArrayCollection;
 import mx.events.PropertyChangeEvent;
@@ -33,6 +34,7 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
 
     model_internal static function initRemoteClassAliasAllRelated() : void
     {
+        it.ht.rcs.console.evidence.model.EvidenceData.initRemoteClassAliasSingleChild();
     }
 
     model_internal var _dminternal_model : _EvidenceEntityMetadata;
@@ -55,11 +57,11 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
     private var _internal_blotter : Boolean;
     private var _internal__id : String;
     private var _internal_relevance : int;
-    private var _internal_data : Object;
+    private var _internal_data : it.ht.rcs.console.evidence.model.EvidenceData;
     private var _internal_acquired : int;
     private var _internal_received : int;
     private var _internal_type : String;
-    private var _internal_note : Object;
+    private var _internal_note : String;
 
     private static var emptyArray:Array = new Array();
 
@@ -105,7 +107,7 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
     }
 
     [Bindable(event="propertyChange")]
-    public function get data() : Object
+    public function get data() : it.ht.rcs.console.evidence.model.EvidenceData
     {
         return _internal_data;
     }
@@ -129,7 +131,7 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
     }
 
     [Bindable(event="propertyChange")]
-    public function get note() : Object
+    public function get note() : String
     {
         return _internal_note;
     }
@@ -169,9 +171,9 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
         }
     }
 
-    public function set data(value:Object) : void
+    public function set data(value:it.ht.rcs.console.evidence.model.EvidenceData) : void
     {
-        var oldValue:Object = _internal_data;
+        var oldValue:it.ht.rcs.console.evidence.model.EvidenceData = _internal_data;
         if (oldValue !== value)
         {
             _internal_data = value;
@@ -205,9 +207,9 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
         }
     }
 
-    public function set note(value:Object) : void
+    public function set note(value:String) : void
     {
-        var oldValue:Object = _internal_note;
+        var oldValue:String = _internal_note;
         if (oldValue !== value)
         {
             _internal_note = value;
@@ -357,11 +359,11 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
     }
 
     model_internal var _doValidationCacheOfData : Array = null;
-    model_internal var _doValidationLastValOfData : Object;
+    model_internal var _doValidationLastValOfData : it.ht.rcs.console.evidence.model.EvidenceData;
 
     model_internal function _doValidationForData(valueIn:Object):Array
     {
-        var value : Object = valueIn as Object;
+        var value : it.ht.rcs.console.evidence.model.EvidenceData = valueIn as it.ht.rcs.console.evidence.model.EvidenceData;
 
         if (model_internal::_doValidationCacheOfData != null && model_internal::_doValidationLastValOfData == value)
            return model_internal::_doValidationCacheOfData ;
@@ -411,11 +413,11 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
     }
     
     model_internal var _doValidationCacheOfNote : Array = null;
-    model_internal var _doValidationLastValOfNote : Object;
+    model_internal var _doValidationLastValOfNote : String;
 
     model_internal function _doValidationForNote(valueIn:Object):Array
     {
-        var value : Object = valueIn as Object;
+        var value : String = valueIn as String;
 
         if (model_internal::_doValidationCacheOfNote != null && model_internal::_doValidationLastValOfNote == value)
            return model_internal::_doValidationCacheOfNote ;
