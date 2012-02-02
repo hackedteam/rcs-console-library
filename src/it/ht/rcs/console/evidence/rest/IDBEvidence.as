@@ -1,8 +1,5 @@
 package it.ht.rcs.console.evidence.rest
 {
-  import flash.filesystem.File;
-  import flash.utils.ByteArray;
-
   public interface IDBEvidence
   {
     function all(filter: Object, onResult:Function = null, onFault:Function = null):void;
