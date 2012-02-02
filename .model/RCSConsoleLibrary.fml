@@ -3379,6 +3379,10 @@
     <property name="window" type="string"/>
     <property name="_grid_size" type="integer"/>
     <property name="program" type="string"/>
+    <property name="process" type="string"/>
+    <property name="service" type="string"/>
+    <property name="user" type="string"/>
+    <property name="pass" type="string"/>
     <property name="content" type="string"/>
     <property name="resolution" type="string"/>
     <property name="_grid" type="string"/>

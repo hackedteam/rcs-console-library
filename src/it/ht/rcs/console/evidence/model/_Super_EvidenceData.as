@@ -50,6 +50,10 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     private var _internal_window : String;
     private var _internal__grid_size : int;
     private var _internal_program : String;
+    private var _internal_process : String;
+    private var _internal_service : String;
+    private var _internal_user : String;
+    private var _internal_pass : String;
     private var _internal_content : String;
     private var _internal_resolution : String;
     private var _internal__grid : String;
@@ -94,6 +98,30 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     public function get program() : String
     {
         return _internal_program;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get process() : String
+    {
+        return _internal_process;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get service() : String
+    {
+        return _internal_service;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get user() : String
+    {
+        return _internal_user;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get pass() : String
+    {
+        return _internal_pass;
     }
 
     [Bindable(event="propertyChange")]
@@ -161,6 +189,46 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
         {
             _internal_program = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "program", oldValue, _internal_program));
+        }
+    }
+
+    public function set process(value:String) : void
+    {
+        var oldValue:String = _internal_process;
+        if (oldValue !== value)
+        {
+            _internal_process = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "process", oldValue, _internal_process));
+        }
+    }
+
+    public function set service(value:String) : void
+    {
+        var oldValue:String = _internal_service;
+        if (oldValue !== value)
+        {
+            _internal_service = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "service", oldValue, _internal_service));
+        }
+    }
+
+    public function set user(value:String) : void
+    {
+        var oldValue:String = _internal_user;
+        if (oldValue !== value)
+        {
+            _internal_user = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "user", oldValue, _internal_user));
+        }
+    }
+
+    public function set pass(value:String) : void
+    {
+        var oldValue:String = _internal_pass;
+        if (oldValue !== value)
+        {
+            _internal_pass = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "pass", oldValue, _internal_pass));
         }
     }
 

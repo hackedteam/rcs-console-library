@@ -20,14 +20,14 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("window", "_grid_size", "program", "content", "resolution", "_grid", "y", "x");
+    model_internal static var allProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "resolution", "_grid", "y", "x");
     model_internal static var allAssociationProperties:Array = new Array();
     model_internal static var allRequiredProperties:Array = new Array();
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("window", "_grid_size", "program", "content", "resolution", "_grid", "y", "x");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "resolution", "_grid", "y", "x");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("window", "_grid_size", "program", "content", "resolution", "_grid", "y", "x");
+    model_internal static var dataProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "resolution", "_grid", "y", "x");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("window", "_grid_size", "program", "content", "resolution", "_grid", "y", "x");
+    model_internal static var nonDerivedProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "resolution", "_grid", "y", "x");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array();
     model_internal static var collectionBaseMap:Object;
@@ -50,6 +50,10 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
             model_internal::dependentsOnMap["window"] = new Array();
             model_internal::dependentsOnMap["_grid_size"] = new Array();
             model_internal::dependentsOnMap["program"] = new Array();
+            model_internal::dependentsOnMap["process"] = new Array();
+            model_internal::dependentsOnMap["service"] = new Array();
+            model_internal::dependentsOnMap["user"] = new Array();
+            model_internal::dependentsOnMap["pass"] = new Array();
             model_internal::dependentsOnMap["content"] = new Array();
             model_internal::dependentsOnMap["resolution"] = new Array();
             model_internal::dependentsOnMap["_grid"] = new Array();
@@ -65,6 +69,10 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
         model_internal::propertyTypeMap["window"] = "String";
         model_internal::propertyTypeMap["_grid_size"] = "int";
         model_internal::propertyTypeMap["program"] = "String";
+        model_internal::propertyTypeMap["process"] = "String";
+        model_internal::propertyTypeMap["service"] = "String";
+        model_internal::propertyTypeMap["user"] = "String";
+        model_internal::propertyTypeMap["pass"] = "String";
         model_internal::propertyTypeMap["content"] = "String";
         model_internal::propertyTypeMap["resolution"] = "String";
         model_internal::propertyTypeMap["_grid"] = "String";
@@ -317,6 +325,30 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
     }
 
     [Bindable(event="propertyChange")]
+    public function get isProcessAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isServiceAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isUserAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isPassAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get isContentAvailable():Boolean
     {
         return true;
@@ -370,6 +402,30 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
 
     [Bindable(event="propertyChange")]   
     public function get programStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get processStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get serviceStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get userStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get passStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
