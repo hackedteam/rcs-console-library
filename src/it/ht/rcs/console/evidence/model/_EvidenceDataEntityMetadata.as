@@ -6,11 +6,9 @@ package it.ht.rcs.console.evidence.model
 {
 import com.adobe.fiber.styles.IStyle;
 import com.adobe.fiber.styles.Style;
-import com.adobe.fiber.styles.StyleValidator;
 import com.adobe.fiber.valueobjects.AbstractEntityMetadata;
 import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 import com.adobe.fiber.valueobjects.IPropertyIterator;
-import mx.events.ValidationResultEvent;
 import com.adobe.fiber.core.model_internal;
 import com.adobe.fiber.valueobjects.IModelType;
 import mx.events.PropertyChangeEvent;
@@ -22,14 +20,14 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("window", "_grid_size", "program", "resolution", "_grid", "y", "x");
+    model_internal static var allProperties:Array = new Array("window", "_grid_size", "program", "content", "resolution", "_grid", "y", "x");
     model_internal static var allAssociationProperties:Array = new Array();
-    model_internal static var allRequiredProperties:Array = new Array("window", "_grid_size", "program", "resolution", "_grid", "y", "x");
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("window", "_grid_size", "program", "resolution", "_grid", "y", "x");
+    model_internal static var allRequiredProperties:Array = new Array();
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("window", "_grid_size", "program", "content", "resolution", "_grid", "y", "x");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("window", "_grid_size", "program", "resolution", "_grid", "y", "x");
+    model_internal static var dataProperties:Array = new Array("window", "_grid_size", "program", "content", "resolution", "_grid", "y", "x");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("window", "_grid_size", "program", "resolution", "_grid", "y", "x");
+    model_internal static var nonDerivedProperties:Array = new Array("window", "_grid_size", "program", "content", "resolution", "_grid", "y", "x");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array();
     model_internal static var collectionBaseMap:Object;
@@ -38,26 +36,6 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
     model_internal static var dependedOnServices:Array = new Array();
     model_internal static var propertyTypeMap:Object;
 
-    
-    model_internal var _windowIsValid:Boolean;
-    model_internal var _windowValidator:com.adobe.fiber.styles.StyleValidator;
-    model_internal var _windowIsValidCacheInitialized:Boolean = false;
-    model_internal var _windowValidationFailureMessages:Array;
-    
-    model_internal var _programIsValid:Boolean;
-    model_internal var _programValidator:com.adobe.fiber.styles.StyleValidator;
-    model_internal var _programIsValidCacheInitialized:Boolean = false;
-    model_internal var _programValidationFailureMessages:Array;
-    
-    model_internal var _resolutionIsValid:Boolean;
-    model_internal var _resolutionValidator:com.adobe.fiber.styles.StyleValidator;
-    model_internal var _resolutionIsValidCacheInitialized:Boolean = false;
-    model_internal var _resolutionValidationFailureMessages:Array;
-    
-    model_internal var __gridIsValid:Boolean;
-    model_internal var __gridValidator:com.adobe.fiber.styles.StyleValidator;
-    model_internal var __gridIsValidCacheInitialized:Boolean = false;
-    model_internal var __gridValidationFailureMessages:Array;
 
     model_internal var _instance:_Super_EvidenceData;
     model_internal static var _nullStyle:com.adobe.fiber.styles.Style = new com.adobe.fiber.styles.Style();
@@ -72,6 +50,7 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
             model_internal::dependentsOnMap["window"] = new Array();
             model_internal::dependentsOnMap["_grid_size"] = new Array();
             model_internal::dependentsOnMap["program"] = new Array();
+            model_internal::dependentsOnMap["content"] = new Array();
             model_internal::dependentsOnMap["resolution"] = new Array();
             model_internal::dependentsOnMap["_grid"] = new Array();
             model_internal::dependentsOnMap["y"] = new Array();
@@ -86,32 +65,13 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
         model_internal::propertyTypeMap["window"] = "String";
         model_internal::propertyTypeMap["_grid_size"] = "int";
         model_internal::propertyTypeMap["program"] = "String";
+        model_internal::propertyTypeMap["content"] = "String";
         model_internal::propertyTypeMap["resolution"] = "String";
         model_internal::propertyTypeMap["_grid"] = "String";
         model_internal::propertyTypeMap["y"] = "int";
         model_internal::propertyTypeMap["x"] = "int";
 
         model_internal::_instance = value;
-        model_internal::_windowValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForWindow);
-        model_internal::_windowValidator.required = true;
-        model_internal::_windowValidator.requiredFieldError = "window is required";
-        //model_internal::_windowValidator.source = model_internal::_instance;
-        //model_internal::_windowValidator.property = "window";
-        model_internal::_programValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForProgram);
-        model_internal::_programValidator.required = true;
-        model_internal::_programValidator.requiredFieldError = "program is required";
-        //model_internal::_programValidator.source = model_internal::_instance;
-        //model_internal::_programValidator.property = "program";
-        model_internal::_resolutionValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForResolution);
-        model_internal::_resolutionValidator.required = true;
-        model_internal::_resolutionValidator.requiredFieldError = "resolution is required";
-        //model_internal::_resolutionValidator.source = model_internal::_instance;
-        //model_internal::_resolutionValidator.property = "resolution";
-        model_internal::__gridValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationFor_grid);
-        model_internal::__gridValidator.required = true;
-        model_internal::__gridValidator.requiredFieldError = "_grid is required";
-        //model_internal::__gridValidator.source = model_internal::_instance;
-        //model_internal::__gridValidator.property = "_grid";
     }
 
     override public function getEntityName():String
@@ -357,6 +317,12 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
     }
 
     [Bindable(event="propertyChange")]
+    public function get isContentAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get isResolutionAvailable():Boolean
     {
         return true;
@@ -384,38 +350,6 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
     /**
      * derived property recalculation
      */
-    public function invalidateDependentOnWindow():void
-    {
-        if (model_internal::_windowIsValidCacheInitialized )
-        {
-            model_internal::_instance.model_internal::_doValidationCacheOfWindow = null;
-            model_internal::calculateWindowIsValid();
-        }
-    }
-    public function invalidateDependentOnProgram():void
-    {
-        if (model_internal::_programIsValidCacheInitialized )
-        {
-            model_internal::_instance.model_internal::_doValidationCacheOfProgram = null;
-            model_internal::calculateProgramIsValid();
-        }
-    }
-    public function invalidateDependentOnResolution():void
-    {
-        if (model_internal::_resolutionIsValidCacheInitialized )
-        {
-            model_internal::_instance.model_internal::_doValidationCacheOfResolution = null;
-            model_internal::calculateResolutionIsValid();
-        }
-    }
-    public function invalidateDependentOn_grid():void
-    {
-        if (model_internal::__gridIsValidCacheInitialized )
-        {
-            model_internal::_instance.model_internal::_doValidationCacheOf_grid = null;
-            model_internal::calculate_gridIsValid();
-        }
-    }
 
     model_internal function fireChangeEvent(propertyName:String, oldValue:Object, newValue:Object):void
     {
@@ -426,100 +360,6 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
     public function get windowStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
-    }
-
-    public function get windowValidator() : StyleValidator
-    {
-        return model_internal::_windowValidator;
-    }
-
-    model_internal function set _windowIsValid_der(value:Boolean):void 
-    {
-        var oldValue:Boolean = model_internal::_windowIsValid;         
-        if (oldValue !== value)
-        {
-            model_internal::_windowIsValid = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "windowIsValid", oldValue, value));
-        }                             
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get windowIsValid():Boolean
-    {
-        if (!model_internal::_windowIsValidCacheInitialized)
-        {
-            model_internal::calculateWindowIsValid();
-        }
-
-        return model_internal::_windowIsValid;
-    }
-
-    model_internal function calculateWindowIsValid():void
-    {
-        var valRes:ValidationResultEvent = model_internal::_windowValidator.validate(model_internal::_instance.window)
-        model_internal::_windowIsValid_der = (valRes.results == null);
-        model_internal::_windowIsValidCacheInitialized = true;
-        if (valRes.results == null)
-             model_internal::windowValidationFailureMessages_der = emptyArray;
-        else
-        {
-            var _valFailures:Array = new Array();
-            for (var a:int = 0 ; a<valRes.results.length ; a++)
-            {
-                _valFailures.push(valRes.results[a].errorMessage);
-            }
-            model_internal::windowValidationFailureMessages_der = _valFailures;
-        }
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get windowValidationFailureMessages():Array
-    {
-        if (model_internal::_windowValidationFailureMessages == null)
-            model_internal::calculateWindowIsValid();
-
-        return _windowValidationFailureMessages;
-    }
-
-    model_internal function set windowValidationFailureMessages_der(value:Array) : void
-    {
-        var oldValue:Array = model_internal::_windowValidationFailureMessages;
-
-        var needUpdate : Boolean = false;
-        if (oldValue == null)
-            needUpdate = true;
-    
-        // avoid firing the event when old and new value are different empty arrays
-        if (!needUpdate && (oldValue !== value && (oldValue.length > 0 || value.length > 0)))
-        {
-            if (oldValue.length == value.length)
-            {
-                for (var a:int=0; a < oldValue.length; a++)
-                {
-                    if (oldValue[a] !== value[a])
-                    {
-                        needUpdate = true;
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                needUpdate = true;
-            }
-        }
-
-        if (needUpdate)
-        {
-            model_internal::_windowValidationFailureMessages = value;   
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "windowValidationFailureMessages", oldValue, value));
-            // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
-            // the entire entity.
-            if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
-            {
-                model_internal::_instance.model_internal::isValid_der = model_internal::_instance.model_internal::calculateIsValid();
-            }
-        }
     }
 
     [Bindable(event="propertyChange")]   
@@ -534,98 +374,10 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
         return model_internal::_nullStyle;
     }
 
-    public function get programValidator() : StyleValidator
+    [Bindable(event="propertyChange")]   
+    public function get contentStyle():com.adobe.fiber.styles.Style
     {
-        return model_internal::_programValidator;
-    }
-
-    model_internal function set _programIsValid_der(value:Boolean):void 
-    {
-        var oldValue:Boolean = model_internal::_programIsValid;         
-        if (oldValue !== value)
-        {
-            model_internal::_programIsValid = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "programIsValid", oldValue, value));
-        }                             
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get programIsValid():Boolean
-    {
-        if (!model_internal::_programIsValidCacheInitialized)
-        {
-            model_internal::calculateProgramIsValid();
-        }
-
-        return model_internal::_programIsValid;
-    }
-
-    model_internal function calculateProgramIsValid():void
-    {
-        var valRes:ValidationResultEvent = model_internal::_programValidator.validate(model_internal::_instance.program)
-        model_internal::_programIsValid_der = (valRes.results == null);
-        model_internal::_programIsValidCacheInitialized = true;
-        if (valRes.results == null)
-             model_internal::programValidationFailureMessages_der = emptyArray;
-        else
-        {
-            var _valFailures:Array = new Array();
-            for (var a:int = 0 ; a<valRes.results.length ; a++)
-            {
-                _valFailures.push(valRes.results[a].errorMessage);
-            }
-            model_internal::programValidationFailureMessages_der = _valFailures;
-        }
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get programValidationFailureMessages():Array
-    {
-        if (model_internal::_programValidationFailureMessages == null)
-            model_internal::calculateProgramIsValid();
-
-        return _programValidationFailureMessages;
-    }
-
-    model_internal function set programValidationFailureMessages_der(value:Array) : void
-    {
-        var oldValue:Array = model_internal::_programValidationFailureMessages;
-
-        var needUpdate : Boolean = false;
-        if (oldValue == null)
-            needUpdate = true;
-    
-        // avoid firing the event when old and new value are different empty arrays
-        if (!needUpdate && (oldValue !== value && (oldValue.length > 0 || value.length > 0)))
-        {
-            if (oldValue.length == value.length)
-            {
-                for (var a:int=0; a < oldValue.length; a++)
-                {
-                    if (oldValue[a] !== value[a])
-                    {
-                        needUpdate = true;
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                needUpdate = true;
-            }
-        }
-
-        if (needUpdate)
-        {
-            model_internal::_programValidationFailureMessages = value;   
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "programValidationFailureMessages", oldValue, value));
-            // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
-            // the entire entity.
-            if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
-            {
-                model_internal::_instance.model_internal::isValid_der = model_internal::_instance.model_internal::calculateIsValid();
-            }
-        }
+        return model_internal::_nullStyle;
     }
 
     [Bindable(event="propertyChange")]   
@@ -634,198 +386,10 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
         return model_internal::_nullStyle;
     }
 
-    public function get resolutionValidator() : StyleValidator
-    {
-        return model_internal::_resolutionValidator;
-    }
-
-    model_internal function set _resolutionIsValid_der(value:Boolean):void 
-    {
-        var oldValue:Boolean = model_internal::_resolutionIsValid;         
-        if (oldValue !== value)
-        {
-            model_internal::_resolutionIsValid = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "resolutionIsValid", oldValue, value));
-        }                             
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get resolutionIsValid():Boolean
-    {
-        if (!model_internal::_resolutionIsValidCacheInitialized)
-        {
-            model_internal::calculateResolutionIsValid();
-        }
-
-        return model_internal::_resolutionIsValid;
-    }
-
-    model_internal function calculateResolutionIsValid():void
-    {
-        var valRes:ValidationResultEvent = model_internal::_resolutionValidator.validate(model_internal::_instance.resolution)
-        model_internal::_resolutionIsValid_der = (valRes.results == null);
-        model_internal::_resolutionIsValidCacheInitialized = true;
-        if (valRes.results == null)
-             model_internal::resolutionValidationFailureMessages_der = emptyArray;
-        else
-        {
-            var _valFailures:Array = new Array();
-            for (var a:int = 0 ; a<valRes.results.length ; a++)
-            {
-                _valFailures.push(valRes.results[a].errorMessage);
-            }
-            model_internal::resolutionValidationFailureMessages_der = _valFailures;
-        }
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get resolutionValidationFailureMessages():Array
-    {
-        if (model_internal::_resolutionValidationFailureMessages == null)
-            model_internal::calculateResolutionIsValid();
-
-        return _resolutionValidationFailureMessages;
-    }
-
-    model_internal function set resolutionValidationFailureMessages_der(value:Array) : void
-    {
-        var oldValue:Array = model_internal::_resolutionValidationFailureMessages;
-
-        var needUpdate : Boolean = false;
-        if (oldValue == null)
-            needUpdate = true;
-    
-        // avoid firing the event when old and new value are different empty arrays
-        if (!needUpdate && (oldValue !== value && (oldValue.length > 0 || value.length > 0)))
-        {
-            if (oldValue.length == value.length)
-            {
-                for (var a:int=0; a < oldValue.length; a++)
-                {
-                    if (oldValue[a] !== value[a])
-                    {
-                        needUpdate = true;
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                needUpdate = true;
-            }
-        }
-
-        if (needUpdate)
-        {
-            model_internal::_resolutionValidationFailureMessages = value;   
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "resolutionValidationFailureMessages", oldValue, value));
-            // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
-            // the entire entity.
-            if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
-            {
-                model_internal::_instance.model_internal::isValid_der = model_internal::_instance.model_internal::calculateIsValid();
-            }
-        }
-    }
-
     [Bindable(event="propertyChange")]   
     public function get _gridStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
-    }
-
-    public function get _gridValidator() : StyleValidator
-    {
-        return model_internal::__gridValidator;
-    }
-
-    model_internal function set __gridIsValid_der(value:Boolean):void 
-    {
-        var oldValue:Boolean = model_internal::__gridIsValid;         
-        if (oldValue !== value)
-        {
-            model_internal::__gridIsValid = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "_gridIsValid", oldValue, value));
-        }                             
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get _gridIsValid():Boolean
-    {
-        if (!model_internal::__gridIsValidCacheInitialized)
-        {
-            model_internal::calculate_gridIsValid();
-        }
-
-        return model_internal::__gridIsValid;
-    }
-
-    model_internal function calculate_gridIsValid():void
-    {
-        var valRes:ValidationResultEvent = model_internal::__gridValidator.validate(model_internal::_instance._grid)
-        model_internal::__gridIsValid_der = (valRes.results == null);
-        model_internal::__gridIsValidCacheInitialized = true;
-        if (valRes.results == null)
-             model_internal::_gridValidationFailureMessages_der = emptyArray;
-        else
-        {
-            var _valFailures:Array = new Array();
-            for (var a:int = 0 ; a<valRes.results.length ; a++)
-            {
-                _valFailures.push(valRes.results[a].errorMessage);
-            }
-            model_internal::_gridValidationFailureMessages_der = _valFailures;
-        }
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get _gridValidationFailureMessages():Array
-    {
-        if (model_internal::__gridValidationFailureMessages == null)
-            model_internal::calculate_gridIsValid();
-
-        return __gridValidationFailureMessages;
-    }
-
-    model_internal function set _gridValidationFailureMessages_der(value:Array) : void
-    {
-        var oldValue:Array = model_internal::__gridValidationFailureMessages;
-
-        var needUpdate : Boolean = false;
-        if (oldValue == null)
-            needUpdate = true;
-    
-        // avoid firing the event when old and new value are different empty arrays
-        if (!needUpdate && (oldValue !== value && (oldValue.length > 0 || value.length > 0)))
-        {
-            if (oldValue.length == value.length)
-            {
-                for (var a:int=0; a < oldValue.length; a++)
-                {
-                    if (oldValue[a] !== value[a])
-                    {
-                        needUpdate = true;
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                needUpdate = true;
-            }
-        }
-
-        if (needUpdate)
-        {
-            model_internal::__gridValidationFailureMessages = value;   
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "_gridValidationFailureMessages", oldValue, value));
-            // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
-            // the entire entity.
-            if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
-            {
-                model_internal::_instance.model_internal::isValid_der = model_internal::_instance.model_internal::calculateIsValid();
-            }
-        }
     }
 
     [Bindable(event="propertyChange")]   
@@ -865,22 +429,6 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
      {
          switch(propertyName)
          {
-            case("window"):
-            {
-                return windowValidationFailureMessages;
-            }
-            case("program"):
-            {
-                return programValidationFailureMessages;
-            }
-            case("resolution"):
-            {
-                return resolutionValidationFailureMessages;
-            }
-            case("_grid"):
-            {
-                return _gridValidationFailureMessages;
-            }
             default:
             {
                 return emptyArray;
