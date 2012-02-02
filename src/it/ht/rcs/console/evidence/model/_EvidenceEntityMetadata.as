@@ -10,6 +10,7 @@ import com.adobe.fiber.styles.StyleValidator;
 import com.adobe.fiber.valueobjects.AbstractEntityMetadata;
 import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 import com.adobe.fiber.valueobjects.IPropertyIterator;
+import it.ht.rcs.console.evidence.model.EvidenceData;
 import mx.events.ValidationResultEvent;
 import com.adobe.fiber.core.model_internal;
 import com.adobe.fiber.valueobjects.IModelType;
@@ -22,14 +23,14 @@ internal class _EvidenceEntityMetadata extends com.adobe.fiber.valueobjects.Abst
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("blotter", "_id", "relevance", "data", "acquired", "received", "type", "note");
+    model_internal static var allProperties:Array = new Array("blotter", "_id", "relevance", "data", "acquired", "received", "agent_id", "type", "note");
     model_internal static var allAssociationProperties:Array = new Array();
-    model_internal static var allRequiredProperties:Array = new Array("blotter", "_id", "relevance", "data", "acquired", "received", "type", "note");
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("blotter", "_id", "relevance", "data", "acquired", "received", "type", "note");
+    model_internal static var allRequiredProperties:Array = new Array("blotter", "_id", "relevance", "data", "acquired", "received", "agent_id", "type", "note");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("blotter", "_id", "relevance", "data", "acquired", "received", "agent_id", "type", "note");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("blotter", "_id", "relevance", "data", "acquired", "received", "type", "note");
+    model_internal static var dataProperties:Array = new Array("blotter", "_id", "relevance", "data", "acquired", "received", "agent_id", "type", "note");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("blotter", "_id", "relevance", "data", "acquired", "received", "type", "note");
+    model_internal static var nonDerivedProperties:Array = new Array("blotter", "_id", "relevance", "data", "acquired", "received", "agent_id", "type", "note");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array();
     model_internal static var collectionBaseMap:Object;
@@ -43,6 +44,11 @@ internal class _EvidenceEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     model_internal var _dataValidator:com.adobe.fiber.styles.StyleValidator;
     model_internal var _dataIsValidCacheInitialized:Boolean = false;
     model_internal var _dataValidationFailureMessages:Array;
+    
+    model_internal var _agent_idIsValid:Boolean;
+    model_internal var _agent_idValidator:com.adobe.fiber.styles.StyleValidator;
+    model_internal var _agent_idIsValidCacheInitialized:Boolean = false;
+    model_internal var _agent_idValidationFailureMessages:Array;
     
     model_internal var _typeIsValid:Boolean;
     model_internal var _typeValidator:com.adobe.fiber.styles.StyleValidator;
@@ -70,6 +76,7 @@ internal class _EvidenceEntityMetadata extends com.adobe.fiber.valueobjects.Abst
             model_internal::dependentsOnMap["data"] = new Array();
             model_internal::dependentsOnMap["acquired"] = new Array();
             model_internal::dependentsOnMap["received"] = new Array();
+            model_internal::dependentsOnMap["agent_id"] = new Array();
             model_internal::dependentsOnMap["type"] = new Array();
             model_internal::dependentsOnMap["note"] = new Array();
 
@@ -82,11 +89,12 @@ internal class _EvidenceEntityMetadata extends com.adobe.fiber.valueobjects.Abst
         model_internal::propertyTypeMap["blotter"] = "Boolean";
         model_internal::propertyTypeMap["_id"] = "String";
         model_internal::propertyTypeMap["relevance"] = "int";
-        model_internal::propertyTypeMap["data"] = "Object";
+        model_internal::propertyTypeMap["data"] = "it.ht.rcs.console.evidence.model.EvidenceData";
         model_internal::propertyTypeMap["acquired"] = "int";
         model_internal::propertyTypeMap["received"] = "int";
+        model_internal::propertyTypeMap["agent_id"] = "String";
         model_internal::propertyTypeMap["type"] = "String";
-        model_internal::propertyTypeMap["note"] = "Object";
+        model_internal::propertyTypeMap["note"] = "String";
 
         model_internal::_instance = value;
         model_internal::_dataValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForData);
@@ -94,6 +102,11 @@ internal class _EvidenceEntityMetadata extends com.adobe.fiber.valueobjects.Abst
         model_internal::_dataValidator.requiredFieldError = "data is required";
         //model_internal::_dataValidator.source = model_internal::_instance;
         //model_internal::_dataValidator.property = "data";
+        model_internal::_agent_idValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForAgent_id);
+        model_internal::_agent_idValidator.required = true;
+        model_internal::_agent_idValidator.requiredFieldError = "agent_id is required";
+        //model_internal::_agent_idValidator.source = model_internal::_instance;
+        //model_internal::_agent_idValidator.property = "agent_id";
         model_internal::_typeValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForType);
         model_internal::_typeValidator.required = true;
         model_internal::_typeValidator.requiredFieldError = "type is required";
@@ -368,6 +381,12 @@ internal class _EvidenceEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     }
 
     [Bindable(event="propertyChange")]
+    public function get isAgent_idAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get isTypeAvailable():Boolean
     {
         return true;
@@ -389,6 +408,14 @@ internal class _EvidenceEntityMetadata extends com.adobe.fiber.valueobjects.Abst
         {
             model_internal::_instance.model_internal::_doValidationCacheOfData = null;
             model_internal::calculateDataIsValid();
+        }
+    }
+    public function invalidateDependentOnAgent_id():void
+    {
+        if (model_internal::_agent_idIsValidCacheInitialized )
+        {
+            model_internal::_instance.model_internal::_doValidationCacheOfAgent_id = null;
+            model_internal::calculateAgent_idIsValid();
         }
     }
     public function invalidateDependentOnType():void
@@ -541,6 +568,106 @@ internal class _EvidenceEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     public function get receivedStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get agent_idStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    public function get agent_idValidator() : StyleValidator
+    {
+        return model_internal::_agent_idValidator;
+    }
+
+    model_internal function set _agent_idIsValid_der(value:Boolean):void 
+    {
+        var oldValue:Boolean = model_internal::_agent_idIsValid;         
+        if (oldValue !== value)
+        {
+            model_internal::_agent_idIsValid = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "agent_idIsValid", oldValue, value));
+        }                             
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get agent_idIsValid():Boolean
+    {
+        if (!model_internal::_agent_idIsValidCacheInitialized)
+        {
+            model_internal::calculateAgent_idIsValid();
+        }
+
+        return model_internal::_agent_idIsValid;
+    }
+
+    model_internal function calculateAgent_idIsValid():void
+    {
+        var valRes:ValidationResultEvent = model_internal::_agent_idValidator.validate(model_internal::_instance.agent_id)
+        model_internal::_agent_idIsValid_der = (valRes.results == null);
+        model_internal::_agent_idIsValidCacheInitialized = true;
+        if (valRes.results == null)
+             model_internal::agent_idValidationFailureMessages_der = emptyArray;
+        else
+        {
+            var _valFailures:Array = new Array();
+            for (var a:int = 0 ; a<valRes.results.length ; a++)
+            {
+                _valFailures.push(valRes.results[a].errorMessage);
+            }
+            model_internal::agent_idValidationFailureMessages_der = _valFailures;
+        }
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get agent_idValidationFailureMessages():Array
+    {
+        if (model_internal::_agent_idValidationFailureMessages == null)
+            model_internal::calculateAgent_idIsValid();
+
+        return _agent_idValidationFailureMessages;
+    }
+
+    model_internal function set agent_idValidationFailureMessages_der(value:Array) : void
+    {
+        var oldValue:Array = model_internal::_agent_idValidationFailureMessages;
+
+        var needUpdate : Boolean = false;
+        if (oldValue == null)
+            needUpdate = true;
+    
+        // avoid firing the event when old and new value are different empty arrays
+        if (!needUpdate && (oldValue !== value && (oldValue.length > 0 || value.length > 0)))
+        {
+            if (oldValue.length == value.length)
+            {
+                for (var a:int=0; a < oldValue.length; a++)
+                {
+                    if (oldValue[a] !== value[a])
+                    {
+                        needUpdate = true;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                needUpdate = true;
+            }
+        }
+
+        if (needUpdate)
+        {
+            model_internal::_agent_idValidationFailureMessages = value;   
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "agent_idValidationFailureMessages", oldValue, value));
+            // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
+            // the entire entity.
+            if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
+            {
+                model_internal::_instance.model_internal::isValid_der = model_internal::_instance.model_internal::calculateIsValid();
+            }
+        }
     }
 
     [Bindable(event="propertyChange")]   
@@ -771,6 +898,10 @@ internal class _EvidenceEntityMetadata extends com.adobe.fiber.valueobjects.Abst
             case("data"):
             {
                 return dataValidationFailureMessages;
+            }
+            case("agent_id"):
+            {
+                return agent_idValidationFailureMessages;
             }
             case("type"):
             {

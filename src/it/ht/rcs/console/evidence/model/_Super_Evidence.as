@@ -10,6 +10,7 @@ import com.adobe.fiber.util.FiberUtils;
 import com.adobe.fiber.valueobjects.IValueObject;
 import flash.events.Event;
 import flash.events.EventDispatcher;
+import it.ht.rcs.console.evidence.model.EvidenceData;
 import mx.binding.utils.ChangeWatcher;
 import mx.collections.ArrayCollection;
 import mx.events.PropertyChangeEvent;
@@ -33,6 +34,7 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
 
     model_internal static function initRemoteClassAliasAllRelated() : void
     {
+        it.ht.rcs.console.evidence.model.EvidenceData.initRemoteClassAliasSingleChild();
     }
 
     model_internal var _dminternal_model : _EvidenceEntityMetadata;
@@ -55,11 +57,12 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
     private var _internal_blotter : Boolean;
     private var _internal__id : String;
     private var _internal_relevance : int;
-    private var _internal_data : Object;
+    private var _internal_data : it.ht.rcs.console.evidence.model.EvidenceData;
     private var _internal_acquired : int;
     private var _internal_received : int;
+    private var _internal_agent_id : String;
     private var _internal_type : String;
-    private var _internal_note : Object;
+    private var _internal_note : String;
 
     private static var emptyArray:Array = new Array();
 
@@ -77,6 +80,7 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
 
         // Bind to own data or source properties for cache invalidation triggering
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "data", model_internal::setterListenerData));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "agent_id", model_internal::setterListenerAgent_id));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "type", model_internal::setterListenerType));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "note", model_internal::setterListenerNote));
 
@@ -105,7 +109,7 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
     }
 
     [Bindable(event="propertyChange")]
-    public function get data() : Object
+    public function get data() : it.ht.rcs.console.evidence.model.EvidenceData
     {
         return _internal_data;
     }
@@ -123,13 +127,19 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
     }
 
     [Bindable(event="propertyChange")]
+    public function get agent_id() : String
+    {
+        return _internal_agent_id;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get type() : String
     {
         return _internal_type;
     }
 
     [Bindable(event="propertyChange")]
-    public function get note() : Object
+    public function get note() : String
     {
         return _internal_note;
     }
@@ -169,9 +179,9 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
         }
     }
 
-    public function set data(value:Object) : void
+    public function set data(value:it.ht.rcs.console.evidence.model.EvidenceData) : void
     {
-        var oldValue:Object = _internal_data;
+        var oldValue:it.ht.rcs.console.evidence.model.EvidenceData = _internal_data;
         if (oldValue !== value)
         {
             _internal_data = value;
@@ -196,6 +206,15 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
         }
     }
 
+    public function set agent_id(value:String) : void
+    {
+        var oldValue:String = _internal_agent_id;
+        if (oldValue !== value)
+        {
+            _internal_agent_id = value;
+        }
+    }
+
     public function set type(value:String) : void
     {
         var oldValue:String = _internal_type;
@@ -205,9 +224,9 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
         }
     }
 
-    public function set note(value:Object) : void
+    public function set note(value:String) : void
     {
-        var oldValue:Object = _internal_note;
+        var oldValue:String = _internal_note;
         if (oldValue !== value)
         {
             _internal_note = value;
@@ -229,6 +248,11 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
     model_internal function setterListenerData(value:flash.events.Event):void
     {
         _model.invalidateDependentOnData();
+    }
+
+    model_internal function setterListenerAgent_id(value:flash.events.Event):void
+    {
+        _model.invalidateDependentOnAgent_id();
     }
 
     model_internal function setterListenerType(value:flash.events.Event):void
@@ -266,6 +290,11 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
         {
             propertyValidity = false;
             com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_dataValidationFailureMessages);
+        }
+        if (!_model.agent_idIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_agent_idValidationFailureMessages);
         }
         if (!_model.typeIsValid)
         {
@@ -357,11 +386,11 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
     }
 
     model_internal var _doValidationCacheOfData : Array = null;
-    model_internal var _doValidationLastValOfData : Object;
+    model_internal var _doValidationLastValOfData : it.ht.rcs.console.evidence.model.EvidenceData;
 
     model_internal function _doValidationForData(valueIn:Object):Array
     {
-        var value : Object = valueIn as Object;
+        var value : it.ht.rcs.console.evidence.model.EvidenceData = valueIn as it.ht.rcs.console.evidence.model.EvidenceData;
 
         if (model_internal::_doValidationCacheOfData != null && model_internal::_doValidationLastValOfData == value)
            return model_internal::_doValidationCacheOfData ;
@@ -379,6 +408,33 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
 
         model_internal::_doValidationCacheOfData = validationFailures;
         model_internal::_doValidationLastValOfData = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfAgent_id : Array = null;
+    model_internal var _doValidationLastValOfAgent_id : String;
+
+    model_internal function _doValidationForAgent_id(valueIn:Object):Array
+    {
+        var value : String = valueIn as String;
+
+        if (model_internal::_doValidationCacheOfAgent_id != null && model_internal::_doValidationLastValOfAgent_id == value)
+           return model_internal::_doValidationCacheOfAgent_id ;
+
+        _model.model_internal::_agent_idIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isAgent_idAvailable && _internal_agent_id == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "agent_id is required"));
+        }
+
+        model_internal::_doValidationCacheOfAgent_id = validationFailures;
+        model_internal::_doValidationLastValOfAgent_id = value;
 
         return validationFailures;
     }
@@ -411,11 +467,11 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
     }
     
     model_internal var _doValidationCacheOfNote : Array = null;
-    model_internal var _doValidationLastValOfNote : Object;
+    model_internal var _doValidationLastValOfNote : String;
 
     model_internal function _doValidationForNote(valueIn:Object):Array
     {
-        var value : Object = valueIn as Object;
+        var value : String = valueIn as String;
 
         if (model_internal::_doValidationCacheOfNote != null && model_internal::_doValidationLastValOfNote == value)
            return model_internal::_doValidationCacheOfNote ;

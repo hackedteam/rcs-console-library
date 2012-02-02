@@ -200,7 +200,7 @@ internal class _Super_DBEvidence extends com.adobe.fiber.services.wrapper.HTTPSe
         var dmQuery : mx.data.ManagedQuery;
 
         dmQuery = new mx.data.ManagedQuery("all_");
-        dmQuery.propertySpecifier = "blotter,_id,relevance,data,acquired,received,type,note";
+        dmQuery.propertySpecifier = "blotter,_id,relevance,data,acquired,received,agent_id,type,note";
         dmQuery.countOperation = "count_";
         dmQuery.pagingEnabled = true;
         dmQuery.positionalPagingParameters = true;
