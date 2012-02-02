@@ -50,14 +50,48 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     private var _internal_window : String;
     private var _internal__grid_size : int;
     private var _internal_program : String;
+    private var _internal_process : String;
+    private var _internal_service : String;
+    private var _internal_user : String;
+    private var _internal_pass : String;
     private var _internal_content : String;
     private var _internal_resolution : String;
     private var _internal__grid : String;
     private var _internal_y : int;
     private var _internal_x : int;
+    private var _internal_name : String;
+    private var _internal_contact : String;
+    private var _internal_info : String;
+    private var _internal_action : String;
+    private var _internal_desc : String;
+    private var _internal_event : String;
+    private var _internal_type : String;
+    private var _internal_begin : int;
+    private var _internal_end : int;
+    private var _internal_peer : String;
+    private var _internal_duration : int;
+    private var _internal_status : int;
+    private var _internal_topic : String;
+    private var _internal_users : String;
+    private var _internal_path : String;
+    private var _internal_spool : String;
+    private var _internal_access : int;
+    private var _internal_attr : int;
+    private var _internal_size : int;
+    private var _internal_from : String;
+    private var _internal_rcpt : String;
+    private var _internal_subject : String;
+    private var _internal_url : String;
+    private var _internal_browser : String;
+    private var _internal_title : String;
+    private var _internal_keywords : String;
+    private var _internal_latitude : Number;
+    private var _internal_longitude : Number;
 
     private static var emptyArray:Array = new Array();
 
+    // Change this value according to your application's floating-point precision
+    private static var epsilon:Number = 0.0001;
 
     /**
      * derived property cache initialization
@@ -97,6 +131,30 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     }
 
     [Bindable(event="propertyChange")]
+    public function get process() : String
+    {
+        return _internal_process;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get service() : String
+    {
+        return _internal_service;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get user() : String
+    {
+        return _internal_user;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get pass() : String
+    {
+        return _internal_pass;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get content() : String
     {
         return _internal_content;
@@ -124,6 +182,174 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     public function get x() : int
     {
         return _internal_x;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get name() : String
+    {
+        return _internal_name;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get contact() : String
+    {
+        return _internal_contact;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get info() : String
+    {
+        return _internal_info;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get action() : String
+    {
+        return _internal_action;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get desc() : String
+    {
+        return _internal_desc;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get event() : String
+    {
+        return _internal_event;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get type() : String
+    {
+        return _internal_type;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get begin() : int
+    {
+        return _internal_begin;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get end() : int
+    {
+        return _internal_end;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get peer() : String
+    {
+        return _internal_peer;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get duration() : int
+    {
+        return _internal_duration;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get status() : int
+    {
+        return _internal_status;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get topic() : String
+    {
+        return _internal_topic;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get users() : String
+    {
+        return _internal_users;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get path() : String
+    {
+        return _internal_path;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get spool() : String
+    {
+        return _internal_spool;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get access() : int
+    {
+        return _internal_access;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get attr() : int
+    {
+        return _internal_attr;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get size() : int
+    {
+        return _internal_size;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get from() : String
+    {
+        return _internal_from;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get rcpt() : String
+    {
+        return _internal_rcpt;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get subject() : String
+    {
+        return _internal_subject;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get url() : String
+    {
+        return _internal_url;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get browser() : String
+    {
+        return _internal_browser;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get title() : String
+    {
+        return _internal_title;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get keywords() : String
+    {
+        return _internal_keywords;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get latitude() : Number
+    {
+        return _internal_latitude;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get longitude() : Number
+    {
+        return _internal_longitude;
     }
 
     public function clearAssociations() : void
@@ -161,6 +387,46 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
         {
             _internal_program = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "program", oldValue, _internal_program));
+        }
+    }
+
+    public function set process(value:String) : void
+    {
+        var oldValue:String = _internal_process;
+        if (oldValue !== value)
+        {
+            _internal_process = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "process", oldValue, _internal_process));
+        }
+    }
+
+    public function set service(value:String) : void
+    {
+        var oldValue:String = _internal_service;
+        if (oldValue !== value)
+        {
+            _internal_service = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "service", oldValue, _internal_service));
+        }
+    }
+
+    public function set user(value:String) : void
+    {
+        var oldValue:String = _internal_user;
+        if (oldValue !== value)
+        {
+            _internal_user = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "user", oldValue, _internal_user));
+        }
+    }
+
+    public function set pass(value:String) : void
+    {
+        var oldValue:String = _internal_pass;
+        if (oldValue !== value)
+        {
+            _internal_pass = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "pass", oldValue, _internal_pass));
         }
     }
 
@@ -211,6 +477,286 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
         {
             _internal_x = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "x", oldValue, _internal_x));
+        }
+    }
+
+    public function set name(value:String) : void
+    {
+        var oldValue:String = _internal_name;
+        if (oldValue !== value)
+        {
+            _internal_name = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "name", oldValue, _internal_name));
+        }
+    }
+
+    public function set contact(value:String) : void
+    {
+        var oldValue:String = _internal_contact;
+        if (oldValue !== value)
+        {
+            _internal_contact = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "contact", oldValue, _internal_contact));
+        }
+    }
+
+    public function set info(value:String) : void
+    {
+        var oldValue:String = _internal_info;
+        if (oldValue !== value)
+        {
+            _internal_info = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "info", oldValue, _internal_info));
+        }
+    }
+
+    public function set action(value:String) : void
+    {
+        var oldValue:String = _internal_action;
+        if (oldValue !== value)
+        {
+            _internal_action = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "action", oldValue, _internal_action));
+        }
+    }
+
+    public function set desc(value:String) : void
+    {
+        var oldValue:String = _internal_desc;
+        if (oldValue !== value)
+        {
+            _internal_desc = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "desc", oldValue, _internal_desc));
+        }
+    }
+
+    public function set event(value:String) : void
+    {
+        var oldValue:String = _internal_event;
+        if (oldValue !== value)
+        {
+            _internal_event = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "event", oldValue, _internal_event));
+        }
+    }
+
+    public function set type(value:String) : void
+    {
+        var oldValue:String = _internal_type;
+        if (oldValue !== value)
+        {
+            _internal_type = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "type", oldValue, _internal_type));
+        }
+    }
+
+    public function set begin(value:int) : void
+    {
+        var oldValue:int = _internal_begin;
+        if (oldValue !== value)
+        {
+            _internal_begin = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "begin", oldValue, _internal_begin));
+        }
+    }
+
+    public function set end(value:int) : void
+    {
+        var oldValue:int = _internal_end;
+        if (oldValue !== value)
+        {
+            _internal_end = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "end", oldValue, _internal_end));
+        }
+    }
+
+    public function set peer(value:String) : void
+    {
+        var oldValue:String = _internal_peer;
+        if (oldValue !== value)
+        {
+            _internal_peer = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "peer", oldValue, _internal_peer));
+        }
+    }
+
+    public function set duration(value:int) : void
+    {
+        var oldValue:int = _internal_duration;
+        if (oldValue !== value)
+        {
+            _internal_duration = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "duration", oldValue, _internal_duration));
+        }
+    }
+
+    public function set status(value:int) : void
+    {
+        var oldValue:int = _internal_status;
+        if (oldValue !== value)
+        {
+            _internal_status = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "status", oldValue, _internal_status));
+        }
+    }
+
+    public function set topic(value:String) : void
+    {
+        var oldValue:String = _internal_topic;
+        if (oldValue !== value)
+        {
+            _internal_topic = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "topic", oldValue, _internal_topic));
+        }
+    }
+
+    public function set users(value:String) : void
+    {
+        var oldValue:String = _internal_users;
+        if (oldValue !== value)
+        {
+            _internal_users = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "users", oldValue, _internal_users));
+        }
+    }
+
+    public function set path(value:String) : void
+    {
+        var oldValue:String = _internal_path;
+        if (oldValue !== value)
+        {
+            _internal_path = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "path", oldValue, _internal_path));
+        }
+    }
+
+    public function set spool(value:String) : void
+    {
+        var oldValue:String = _internal_spool;
+        if (oldValue !== value)
+        {
+            _internal_spool = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "spool", oldValue, _internal_spool));
+        }
+    }
+
+    public function set access(value:int) : void
+    {
+        var oldValue:int = _internal_access;
+        if (oldValue !== value)
+        {
+            _internal_access = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "access", oldValue, _internal_access));
+        }
+    }
+
+    public function set attr(value:int) : void
+    {
+        var oldValue:int = _internal_attr;
+        if (oldValue !== value)
+        {
+            _internal_attr = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "attr", oldValue, _internal_attr));
+        }
+    }
+
+    public function set size(value:int) : void
+    {
+        var oldValue:int = _internal_size;
+        if (oldValue !== value)
+        {
+            _internal_size = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "size", oldValue, _internal_size));
+        }
+    }
+
+    public function set from(value:String) : void
+    {
+        var oldValue:String = _internal_from;
+        if (oldValue !== value)
+        {
+            _internal_from = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "from", oldValue, _internal_from));
+        }
+    }
+
+    public function set rcpt(value:String) : void
+    {
+        var oldValue:String = _internal_rcpt;
+        if (oldValue !== value)
+        {
+            _internal_rcpt = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "rcpt", oldValue, _internal_rcpt));
+        }
+    }
+
+    public function set subject(value:String) : void
+    {
+        var oldValue:String = _internal_subject;
+        if (oldValue !== value)
+        {
+            _internal_subject = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "subject", oldValue, _internal_subject));
+        }
+    }
+
+    public function set url(value:String) : void
+    {
+        var oldValue:String = _internal_url;
+        if (oldValue !== value)
+        {
+            _internal_url = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "url", oldValue, _internal_url));
+        }
+    }
+
+    public function set browser(value:String) : void
+    {
+        var oldValue:String = _internal_browser;
+        if (oldValue !== value)
+        {
+            _internal_browser = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "browser", oldValue, _internal_browser));
+        }
+    }
+
+    public function set title(value:String) : void
+    {
+        var oldValue:String = _internal_title;
+        if (oldValue !== value)
+        {
+            _internal_title = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "title", oldValue, _internal_title));
+        }
+    }
+
+    public function set keywords(value:String) : void
+    {
+        var oldValue:String = _internal_keywords;
+        if (oldValue !== value)
+        {
+            _internal_keywords = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "keywords", oldValue, _internal_keywords));
+        }
+    }
+
+    public function set latitude(value:Number) : void
+    {
+        var oldValue:Number = _internal_latitude;
+        if (isNaN(_internal_latitude) == true || Math.abs(oldValue - value) > epsilon)
+        {
+            _internal_latitude = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "latitude", oldValue, _internal_latitude));
+        }
+    }
+
+    public function set longitude(value:Number) : void
+    {
+        var oldValue:Number = _internal_longitude;
+        if (isNaN(_internal_longitude) == true || Math.abs(oldValue - value) > epsilon)
+        {
+            _internal_longitude = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "longitude", oldValue, _internal_longitude));
         }
     }
 

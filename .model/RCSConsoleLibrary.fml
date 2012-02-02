@@ -3379,10 +3379,42 @@
     <property name="window" type="string"/>
     <property name="_grid_size" type="integer"/>
     <property name="program" type="string"/>
+    <property name="process" type="string"/>
+    <property name="service" type="string"/>
+    <property name="user" type="string"/>
+    <property name="pass" type="string"/>
     <property name="content" type="string"/>
     <property name="resolution" type="string"/>
     <property name="_grid" type="string"/>
     <property name="y" type="integer"/>
     <property name="x" type="integer"/>
+    <property name="name" type="string"/>
+    <property name="contact" type="string"/>
+    <property name="info" type="string"/>
+    <property name="action" type="string"/>
+    <property name="desc" type="string"/>
+    <property name="event" type="string"/>
+    <property name="type" type="string"/>
+    <property name="begin" type="integer"/>
+    <property name="end" type="integer"/>
+    <property name="peer" type="string"/>
+    <property name="duration" type="integer"/>
+    <property name="status" type="integer"/>
+    <property name="topic" type="string"/>
+    <property name="users" type="string"/>
+    <property name="path" type="string"/>
+    <property name="spool" type="string"/>
+    <property name="access" type="integer"/>
+    <property name="attr" type="integer"/>
+    <property name="size" type="integer"/>
+    <property name="from" type="string"/>
+    <property name="rcpt" type="string"/>
+    <property name="subject" type="string"/>
+    <property name="url" type="string"/>
+    <property name="browser" type="string"/>
+    <property name="title" type="string"/>
+    <property name="keywords" type="string"/>
+    <property name="latitude" type="double"/>
+    <property name="longitude" type="double"/>
   </entity>
 </model>
