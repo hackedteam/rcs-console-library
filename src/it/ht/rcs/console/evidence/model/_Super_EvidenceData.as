@@ -79,6 +79,7 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     private var _internal_attr : int;
     private var _internal_size : int;
     private var _internal_from : String;
+    private var _internal_rcpt : String;
     private var _internal_subject : String;
     private var _internal_url : String;
     private var _internal_browser : String;
@@ -301,6 +302,12 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     public function get from() : String
     {
         return _internal_from;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get rcpt() : String
+    {
+        return _internal_rcpt;
     }
 
     [Bindable(event="propertyChange")]
@@ -670,6 +677,16 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
         {
             _internal_from = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "from", oldValue, _internal_from));
+        }
+    }
+
+    public function set rcpt(value:String) : void
+    {
+        var oldValue:String = _internal_rcpt;
+        if (oldValue !== value)
+        {
+            _internal_rcpt = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "rcpt", oldValue, _internal_rcpt));
         }
     }
 

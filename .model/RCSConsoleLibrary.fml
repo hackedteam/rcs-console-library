@@ -3408,6 +3408,7 @@
     <property name="attr" type="integer"/>
     <property name="size" type="integer"/>
     <property name="from" type="string"/>
+    <property name="rcpt" type="string"/>
     <property name="subject" type="string"/>
     <property name="url" type="string"/>
     <property name="browser" type="string"/>
