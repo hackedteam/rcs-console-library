@@ -83,9 +83,9 @@ package it.ht.rcs.console.alert.controller
 //      return super.getView(sort, filterFunction);
 //    }
     
-    public function newAlert(callback:Function):void
+    public function addAlert(alert:Object, callback:Function):void
     {     
-      DB.instance.alert.create(Alert.defaultAlert(), function (e:ResultEvent):void {
+      DB.instance.alert.create(alert, function (e:ResultEvent):void {
         var a:Alert = e.result as Alert;
         addItem(a);
         callback(a);

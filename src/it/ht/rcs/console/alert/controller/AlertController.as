@@ -29,9 +29,9 @@ package it.ht.rcs.console.alert.controller
       return AlertManager.instance.getView(sort, filterFunction);
     }
     
-    public function newAlert(callback:Function):void
+    public function addAlert(alert:Object, callback:Function):void
     {     
-      AlertManager.instance.newAlert(callback);
+      AlertManager.instance.addAlert(alert, callback);
     }
     
     public function removeItem(o:Object):void
