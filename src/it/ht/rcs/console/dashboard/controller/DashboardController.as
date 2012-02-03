@@ -21,6 +21,7 @@ package it.ht.rcs.console.dashboard.controller
   public class DashboardController extends ItemManager
   {
     public function DashboardController() { super(DashboardItem); }
+    
     private static var _instance:DashboardController = new DashboardController();
     public static function get instance():DashboardController { return _instance; } 
     

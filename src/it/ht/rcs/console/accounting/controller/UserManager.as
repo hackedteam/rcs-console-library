@@ -27,7 +27,6 @@ package it.ht.rcs.console.accounting.controller
     {
       super.refresh();
       loadData();
-      //DB.instance.user.all(onResult);
     }
     
     private function loadData():void
@@ -52,14 +51,6 @@ package it.ht.rcs.console.accounting.controller
       });
     }
     
-//    private function onResult(e:ResultEvent):void
-//    {
-//      clear();
-//      for each (var item:* in e.result.source)
-//        addItem(item);
-//      dispatchDataLoadedEvent();
-//    }
-    
     override protected function onItemRemove(o:*):void
     {
       for each (var g:String in (o as User).group_ids) {
@@ -78,21 +69,6 @@ package it.ht.rcs.console.accounting.controller
       DB.instance.user.update(event.source, property);
     }
     
-//    public function reload(u:User):void
-//    {
-//      DB.instance.user.show(u._id, function (e:ResultEvent):void {
-//        u.enabled = e.result.enabled;
-//        u.name = e.result.name;
-//        u.pass = e.result.pass;
-//        u.desc = e.result.desc;
-//        u.contact = e.result.contact;
-//        u.privs = e.result.privs;
-//        u.locale = e.result.locale;
-//        u.timezone = e.result.timezone;
-//        u.group_ids = e.result.group_ids;
-//      });
-//    }
-      
     public function addUser(user:User, callback:Function):void
     {
       DB.instance.user.create(ObjectUtils.toHash(user), function (e:ResultEvent):void {

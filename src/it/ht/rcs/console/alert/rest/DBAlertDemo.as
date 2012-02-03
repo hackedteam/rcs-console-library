@@ -52,7 +52,8 @@ package it.ht.rcs.console.alert.rest
     
     public function destroy(alert:Alert, onResult:Function=null, onFault:Function=null):void
     {
-      /* do nothing */
+      if (onResult != null)
+        onResult(new ResultEvent('alert.destroy'));
     }
     
     public function counters(onResult:Function=null, onFault:Function=null):void

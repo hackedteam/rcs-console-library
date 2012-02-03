@@ -8,6 +8,8 @@ package it.ht.rcs.console.controller
   import mx.events.CollectionEvent;
   import mx.events.CollectionEventKind;
   
+  import spark.collections.SortField;
+  
   public class ItemManager extends Manager
   {
     
@@ -94,7 +96,11 @@ package it.ht.rcs.console.controller
       /* create the view for the caller */
       var lcv:ListCollectionView = new ListCollectionView(_items);
       
-      lcv.sort = sort ? sort : new Sort();
+      var def:spark.collections.Sort = new spark.collections.Sort();
+      def.fields = [new SortField('name')];
+      
+      //lcv.sort = sort ? sort : new Sort();
+      lcv.sort = sort || def;
       lcv.filterFunction = filterFunction;
       
       lcv.refresh();

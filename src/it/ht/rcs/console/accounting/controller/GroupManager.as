@@ -96,15 +96,6 @@ package it.ht.rcs.console.accounting.controller
       });
     }
     
-//    public function reload(g:Group):void
-//    {
-//      DB.instance.group.show(g._id, function(e:ResultEvent):void {
-//        g.name = e.result.name;
-//        g.user_ids = e.result.user_ids;
-//        g.item_ids = e.result.item_ids;
-//      });
-//    }
-    
     public function addGroup(group:Object, callback:Function):void
     {
       DB.instance.group.create(group, function(e:ResultEvent):void {

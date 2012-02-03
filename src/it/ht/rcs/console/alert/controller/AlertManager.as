@@ -1,6 +1,5 @@
 package it.ht.rcs.console.alert.controller
 {
-  import flash.events.Event;
   import flash.events.TimerEvent;
   import flash.utils.Timer;
   
@@ -14,25 +13,26 @@ package it.ht.rcs.console.alert.controller
   
   public class AlertManager extends ItemManager
   {
+    public function AlertManager() { super(Alert); }
     
-    private var _alertCount:Number = Number.NaN;
-
-    [Bindable(event="propertyChange")]
-    public function get alertCount():Number
-    {
-      return _alertCount;
-    }
-    
-    /* for the auto refresh every 15 seconds */
-    private var _autorefresh:Timer = new Timer(15000);
-    
-    /* singleton */
     private static var _instance:AlertManager = new AlertManager();
     public static function get instance():AlertManager { return _instance; } 
     
-    public function AlertManager()
+    /* for the auto refresh every 15 seconds */
+    private var autoRefresh:Timer = new Timer(15000);
+    
+    override public function refresh():void
     {
-      super(Alert);
+      super.refresh();
+      DB.instance.alert.all(onResult);
+    }
+    
+    private function onResult(e:ResultEvent):void
+    {
+      clear();
+      for each (var item:* in e.result.source)
+        addItem(item);
+      dispatchDataLoadedEvent();
     }
     
     override protected function onItemRemove(o:*):void
@@ -47,22 +47,6 @@ package it.ht.rcs.console.alert.controller
       DB.instance.alert.update(event.source, property);
     }
     
-    override public function refresh():void
-    {
-      super.refresh();
-      DB.instance.alert.all(onAlertIndexResult);
-    }
-    
-    private function onAlertIndexResult(e:ResultEvent):void
-    {
-      var items:ArrayCollection = e.result as ArrayCollection;
-      _items.removeAll();
-      items.source.forEach(function _(element:*, index:int, arr:Array):void {
-        addItem(element as Alert);
-      });
-      dispatchDataLoadedEvent();
-    }
-    
     public function addAlert(alert:Object, callback:Function):void
     {     
       DB.instance.alert.create(alert, function (e:ResultEvent):void {
@@ -72,34 +56,39 @@ package it.ht.rcs.console.alert.controller
       });
     }
     
-    public function start_counters():void
+    private var _alertCounter:Object = {value: NaN, style: 'info'};
+    
+    public function startCounters():void
     {
-      /* start the auto refresh when the section is open */
-      _autorefresh.addEventListener(TimerEvent.TIMER, onRefreshCounter);
-      _autorefresh.start();
+      autoRefresh.addEventListener(TimerEvent.TIMER, onRefreshCounter);
+      autoRefresh.start();
       
       /* the first refresh */
       onRefreshCounter(null);
     }
     
-    public function stop_counters():void
+    public function stopCounters():void
     {
-      /* stop the auto refresh when going away */
-      _autorefresh.removeEventListener(TimerEvent.TIMER, onRefreshCounter);
-      _autorefresh.stop();
+      autoRefresh.removeEventListener(TimerEvent.TIMER, onRefreshCounter);
+      autoRefresh.stop();
     }
     
-    private function onRefreshCounter(e:Event):void
+    private function onRefreshCounter(e:TimerEvent):void
     {
-      trace(_classname + ' -- Refresh Counters');
-      
       DB.instance.alert.counters(onAlertCounters);
     }
     
     private function onAlertCounters(e:ResultEvent):void
     {
-      _alertCount = e.result as int;
-      dispatchEvent(PropertyChangeEvent.createUpdateEvent(this, alertCount, null, _alertCount));
+      _alertCounter.value = e.result as int;
+      _alertCounter.style = _alertCounter.value > 3 ? 'alert' : 'warn'; // Demo usage
+      dispatchEvent(PropertyChangeEvent.createUpdateEvent(this, 'alertCounter', null, _alertCounter));
+    }
+    
+    [Bindable(event='propertyChange')]
+    public function get alertCounter():Object
+    {
+      return _alertCounter;
     }
 
   }

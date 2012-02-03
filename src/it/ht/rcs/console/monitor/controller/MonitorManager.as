@@ -132,10 +132,10 @@ package it.ht.rcs.console.monitor.controller
       }
       
       /* display it or not */
-      if (_counterBaloon.value > 0)
-        _counterBaloon.visible = true;
-      else
-        _counterBaloon.visible = false;
+//      if (_counterBaloon.value > 0)
+//        _counterBaloon.visible = true;
+//      else
+//        _counterBaloon.visible = false;
     }
         
   }
