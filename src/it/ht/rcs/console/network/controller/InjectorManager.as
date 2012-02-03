@@ -10,6 +10,8 @@ package it.ht.rcs.console.network.controller
   public class InjectorManager extends ItemManager
   {
     
+    public function InjectorManager() { super(Injector); }
+    
     private static var _instance:InjectorManager = new InjectorManager();
     public static function get instance():InjectorManager { return _instance; }
     
@@ -51,7 +53,7 @@ package it.ht.rcs.console.network.controller
     public function getLogs(_id:String, callback:Function):void
     {
       DB.instance.injector.logs(_id, function(e:ResultEvent):void {
-        callback(e.result as ArrayCollection);
+        callback(e.result);
       });
     }
     

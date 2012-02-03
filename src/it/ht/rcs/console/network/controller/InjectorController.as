@@ -1,7 +1,6 @@
 package it.ht.rcs.console.network.controller
 {
   import it.ht.rcs.console.controller.Manager;
-  import it.ht.rcs.console.events.RefreshEvent;
   
   import mx.collections.ArrayCollection;
   import mx.collections.ISort;
@@ -13,11 +12,6 @@ package it.ht.rcs.console.network.controller
     /* singleton */
     private static var _instance:InjectorController = new InjectorController();
     public static function get instance():InjectorController { return _instance; } 
-    
-    public function InjectorController()
-    {
-      super();
-    }
     
     override public function refresh():void
     {

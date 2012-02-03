@@ -1,6 +1,7 @@
 package it.ht.rcs.console.network.controller
 {
   import it.ht.rcs.console.DB;
+  import it.ht.rcs.console.ObjectUtils;
   import it.ht.rcs.console.controller.SubManager;
   import it.ht.rcs.console.network.model.Injector;
   import it.ht.rcs.console.network.model.InjectorRule;
@@ -21,21 +22,17 @@ package it.ht.rcs.console.network.controller
       DB.instance.injector.del_rule(_owner._id, o._id);
     }
     
-    override protected function onItemUpdate(e:*):void
+    override protected function onItemUpdate(event:*):void
     {
-      var o:Object = new Object;
-      if (e.newValue is ArrayCollection)
-        o[e.property] = e.newValue.source;
-      else
-        o[e.property] = e.newValue;
-      o._id = e.source._id;
-      DB.instance.injector.update_rule(_owner._id, o);
+      var property:Object = new Object();
+      property[event.property] = event.newValue is ArrayCollection ? event.newValue.source : event.newValue;
+      property._id = event.source._id;
+      DB.instance.injector.update_rule(_owner._id, property);
     }
     
     public function addRule(injector_id:String, rule:InjectorRule, callback:Function):void
     {
-      var ruleObject:Object = rule.toObject();
-      DB.instance.injector.add_rule(injector_id, ruleObject, function (e:ResultEvent):void {
+      DB.instance.injector.add_rule(injector_id, ObjectUtils.toHash(rule), function (e:ResultEvent):void {
         rule._id = e.result._id;
         addItem(rule);
         callback(rule);
