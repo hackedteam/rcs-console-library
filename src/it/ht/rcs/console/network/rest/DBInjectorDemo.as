@@ -11,7 +11,7 @@ package it.ht.rcs.console.network.rest
   public class DBInjectorDemo implements IDBInjector
   {
     
-    var items:ArrayCollection = new ArrayCollection([
+    public var items:ArrayCollection = new ArrayCollection([
       new Injector({ _id: 'p1', address: '192.168.1.101', desc: 'Desc 192.168.1.101', name: 'Injector Telecom',    poll: true, port: 4444, redirect: 'auto', redirection_tag: '', created_at: '2011-06-22T17:29:41+02:00', updated_at: '2011-06-22T17:29:41+02:00', version: 0,
                      rules: [new InjectorRule({ _id: '', action: 'INJECT-EXE',  action_param_name: 'a1', action_param: 'a1', disable_sync: false, enabled:  true, ident: 'STATIC-IP', ident_param: '1.2.3.4', probability:   0, resource: '*.exe', target_id: ['t1'] }),
                              new InjectorRule({ _id: '', action: 'REPLACE',     action_param_name: 'Document.doc',    disable_sync:  true, enabled: false, ident: 'STRING-CLIENT', ident_param: 'joey@gmail.com', probability: 100, resource: '*manual*.doc', target_id: ['t1'] })] }),
