@@ -73,6 +73,7 @@ package it.ht.rcs.console.alert.controller
       items.source.forEach(function _(element:*, index:int, arr:Array):void {
         addItem(element as Alert);
       });
+      dispatchDataLoadedEvent();
     }
     
 //    override public function getView(sortCriteria:ISort=null, filterFunction:Function=null):ListCollectionView
