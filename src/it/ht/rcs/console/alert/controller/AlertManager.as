@@ -7,17 +7,13 @@ package it.ht.rcs.console.alert.controller
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.alert.model.Alert;
   import it.ht.rcs.console.controller.ItemManager;
-  import it.ht.rcs.console.utils.CounterBaloon;
   
   import mx.collections.ArrayCollection;
-  import mx.core.FlexGlobals;
   import mx.events.PropertyChangeEvent;
   import mx.rpc.events.ResultEvent;
   
   public class AlertManager extends ItemManager
   {
-    
-    private var _counterBaloon:CounterBaloon = new CounterBaloon();
     
     private var _alertCount:Number = Number.NaN;
 
@@ -25,12 +21,6 @@ package it.ht.rcs.console.alert.controller
     public function get alertCount():Number
     {
       return _alertCount;
-    }
-    
-    public function toggle():void
-    {
-      _alertCount = isNaN(_alertCount) ? 1 : ++_alertCount;
-      dispatchEvent(PropertyChangeEvent.createUpdateEvent(this, alertCount, null, _alertCount));
     }
     
     /* for the auto refresh every 15 seconds */
@@ -76,14 +66,6 @@ package it.ht.rcs.console.alert.controller
       dispatchDataLoadedEvent();
     }
     
-//    override public function getView(sortCriteria:ISort=null, filterFunction:Function=null):ListCollectionView
-//    {
-//      /* sorting by time */
-//      var sort:Sort = new Sort();
-//      sort.fields = [new SortField('_id', true, false, true)];
-//      return super.getView(sort, filterFunction);
-//    }
-    
     public function addAlert(alert:Object, callback:Function):void
     {     
       DB.instance.alert.create(alert, function (e:ResultEvent):void {
@@ -95,9 +77,6 @@ package it.ht.rcs.console.alert.controller
     
     public function start_counters():void
     {
-      /* add the baloon to the screen */
-      FlexGlobals.topLevelApplication.addElement(_counterBaloon);
-      
       /* start the auto refresh when the section is open */
       _autorefresh.addEventListener(TimerEvent.TIMER, onRefreshCounter);
       _autorefresh.start();
@@ -108,13 +87,6 @@ package it.ht.rcs.console.alert.controller
     
     public function stop_counters():void
     {
-      // TODO: rifattorizzare con skin
-      try {
-        FlexGlobals.topLevelApplication.getElementIndex(_counterBaloon);
-        FlexGlobals.topLevelApplication.removeElement(_counterBaloon);
-      } catch (e:Error) {
-      }
-      
       /* stop the auto refresh when going away */
       _autorefresh.removeEventListener(TimerEvent.TIMER, onRefreshCounter);
       _autorefresh.stop();
@@ -127,27 +99,10 @@ package it.ht.rcs.console.alert.controller
       DB.instance.alert.counters(onAlertCounters);
     }
     
-    // TODO: refactor the baloon outside the manager !!!!
-    
     private function onAlertCounters(e:ResultEvent):void
     {
-      /* get the position of the Monitor button */
-      var buttons:ArrayCollection = FlexGlobals.topLevelApplication.mainPanel.sectionsButtonBar.dataProvider;
-      var len:int = buttons.length;
-      var index:int = buttons.toArray().indexOf("Alerting") + 1;
-      
-      /* find the correct displacement (starting from right) */
-      _counterBaloon.right = 3 + ((len - index) * 90);
-      _counterBaloon.top = 43;
-      
-      _counterBaloon.value = e.result as int;
-      _counterBaloon.style = 'info';
-
-      /* display it or not */
-      if (_counterBaloon.value > 0)
-        _counterBaloon.visible = true;
-      else
-        _counterBaloon.visible = false;
+      _alertCount = e.result as int;
+      dispatchEvent(PropertyChangeEvent.createUpdateEvent(this, alertCount, null, _alertCount));
     }
   }
 }
