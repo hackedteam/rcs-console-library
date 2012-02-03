@@ -12,8 +12,8 @@ package it.ht.rcs.console.alert.rest
     private var alerts:ArrayCollection = new ArrayCollection([
       new Alert({ _id: '1', enabled: false, suppression: 600, type: 'LOG',  action: 'EVIDENCE', evidence: 'print',  keywords: 'secret', tag: 1, path: ['o1', 't1', 'a1'] }),
       new Alert({ _id: '2', enabled: false, suppression: 600, type: 'LOG',  action: 'EVIDENCE', evidence: 'keylog', keywords: 'RCS',    tag: 4, path: ['o1', 't1'] }),
-      new Alert({ _id: '3', enabled: true,  suppression: 600, type: 'MAIL', action: 'SYNC',                                                     path: ['o1'] }),
-      new Alert({ _id: '4', enabled: true,  suppression: 600, type: 'MAIL', action: 'INSTANCE',                                                 path: ['o1', 't1', 'a1'] }),
+      new Alert({ _id: '3', enabled: true,  suppression: 600, type: 'MAIL', action: 'SYNC',                         keywords: '',               path: ['o1'] }),
+      new Alert({ _id: '4', enabled: true,  suppression: 600, type: 'MAIL', action: 'INSTANCE',                     keywords: '',               path: ['o1', 't1', 'a1'] }),
       
       new Alert({ _id: '5', enabled: true,  suppression: 600, type: 'MAIL', action: 'EVIDENCE', evidence: '*',      keywords: 'HT',     tag: 2, path: [], 
         logs: [new AlertLog({ time: new Date().time / 1000, path: ['o1', 't1', 'a1'], evidence: [2132468] })] }),

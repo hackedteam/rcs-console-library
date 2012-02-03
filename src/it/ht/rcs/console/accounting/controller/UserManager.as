@@ -1,6 +1,7 @@
 package it.ht.rcs.console.accounting.controller
 {
   import it.ht.rcs.console.DB;
+  import it.ht.rcs.console.ObjectUtils;
   import it.ht.rcs.console.accounting.model.Group;
   import it.ht.rcs.console.accounting.model.Session;
   import it.ht.rcs.console.accounting.model.User;
@@ -92,9 +93,9 @@ package it.ht.rcs.console.accounting.controller
 //      });
 //    }
       
-    public function addUser(user:Object, callback:Function):void
+    public function addUser(user:User, callback:Function):void
     {
-      DB.instance.user.create(user, function (e:ResultEvent):void {
+      DB.instance.user.create(ObjectUtils.toHash(user), function (e:ResultEvent):void {
         var u:User = e.result as User;
         addItem(u);
         callback(u);
