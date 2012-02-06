@@ -13,6 +13,11 @@ package it.ht.rcs.console.backup.controller
     private static var _instance:BackupArchiveManager = new BackupArchiveManager();
     public static function get instance():BackupArchiveManager { return _instance; } 
     
+    public function BackupArchiveManager()
+    {
+      super(BackupArchive);
+    }
+    
     override public function refresh():void
     {
       super.refresh();
