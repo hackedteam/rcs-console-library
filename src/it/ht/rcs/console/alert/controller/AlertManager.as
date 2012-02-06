@@ -81,7 +81,7 @@ package it.ht.rcs.console.alert.controller
     private function onAlertCounters(e:ResultEvent):void
     {
       _alertCounter.value = e.result as int;
-      _alertCounter.style = _alertCounter.value > 3 ? 'alert' : 'warn'; // Demo usage
+      _alertCounter.style = 'info';
       dispatchEvent(PropertyChangeEvent.createUpdateEvent(this, 'alertCounter', null, _alertCounter));
     }
     
