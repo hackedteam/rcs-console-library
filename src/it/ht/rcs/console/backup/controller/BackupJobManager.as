@@ -1,6 +1,7 @@
 package it.ht.rcs.console.backup.controller
 {
   import it.ht.rcs.console.DB;
+  import it.ht.rcs.console.ObjectUtils;
   import it.ht.rcs.console.backup.model.BackupJob;
   import it.ht.rcs.console.backup.model.BackupJobTime;
   import it.ht.rcs.console.controller.ItemManager;
@@ -22,7 +23,7 @@ package it.ht.rcs.console.backup.controller
     
     public function BackupJobManager()
     {
-      super();
+      super(BackupJob);
     }
     
     override public function refresh():void
@@ -58,9 +59,10 @@ package it.ht.rcs.console.backup.controller
       DB.instance.backup.update_job(e.source, o);
     }
     
-    public function newJob(callback:Function):void
+    public function addJob(b:Object, callback:Function):void
     {     
-      DB.instance.backup.create_job(BackupJob.defaultJob(), function (e:ResultEvent):void {
+      b.when = {week: b.when.week.source, month: b.when.month.source, time: b.when.time};
+      DB.instance.backup.create_job(b, function (e:ResultEvent):void {
         var j:BackupJob = e.result as BackupJob;
         _items.addItem(j);
         callback(j);

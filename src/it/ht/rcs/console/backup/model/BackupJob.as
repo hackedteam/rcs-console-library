@@ -53,7 +53,7 @@ public class BackupJob extends _Super_BackupJob
     
     public static function defaultJob():Object
     {
-      var name:String = DB.i18n.get('NEW_BACKUP');
+      var name:String = DB.i18n.get('NEW_BACKUP_NAME');
       return {
         _id: '',
         enabled: false,
