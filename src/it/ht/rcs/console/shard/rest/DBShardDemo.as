@@ -8,18 +8,16 @@ package it.ht.rcs.console.shard.rest
 
   public class DBShardDemo implements IDBShard
   {
-    public function DBShardDemo()
-    {
-    }
+    
+    private var system:System = new System({ shards: [
+      new Shard({ _id: "shard0000", host: "shard-server-a:27018" }),
+      new Shard({ _id: "shard0001", host: "shard-server-b:27018" })
+    ], ok: "1" });
     
     public function all(onResult:Function=null, onFault:Function=null):void
     {
-      var event:ResultEvent = new ResultEvent("system.index", false, true, 
-        new System({ shards: [new Shard({ _id: "shard0000", host: "shard-server-a:27018" }),
-                              new Shard({ _id: "shard0001", host: "shard-server-b:27018" })],
-                     ok: "1" }));
       if (onResult != null)
-        onResult(event);
+        onResult(new ResultEvent("system.index", false, true, system));
     }
     
     public function show(id:String, onResult:Function=null, onFault:Function=null):void
@@ -29,10 +27,12 @@ package it.ht.rcs.console.shard.rest
       if (id == "shard0000")
         event = new ResultEvent("system.show", false, true, new ShardStat({ dataSize: 141897900, storageSize: 282641664, ok: 1 }));
       else if (id == "shard0001")
-        event = new ResultEvent("system.show", false, true, new ShardStat({ dataSize: 40325641, storageSize: 55632187, ok: 1 }));
+        event = new ResultEvent("system.show", false, true, new ShardStat({ dataSize: 40325641,  storageSize: 55632187,  ok: 1 }));
       
       if (onResult != null)
         onResult(event);
     }
+    
   }
+  
 }

@@ -14,8 +14,8 @@ package it.ht.rcs.console.target.rest
     public static var targets:ArrayCollection = new ArrayCollection([
       // Swordfish
       new Target({ _id: 't1', _kind: 'target', name: 'John Doe',        desc: 'Head of the terrorist cell', status: 'open',   path: ['o1'], stat: new Stat({ last_sync: 1309354166, evidence: new StatEvidence({screenshot: 10, file: 100}), dashboard: new StatEvidence({screenshot: 5}), grid_size: 0, size: 0 }) }),
-      new Target({ _id: 't2', _kind: 'target', name: 'Alejandro Reade', desc: 'The tough guy',              status: 'open',   path: ['o1'], stat: new Stat({ last_sync: 1306354166, evidence: null, grid_size: 0, size: 0 }) }),
-      new Target({ _id: 't3', _kind: 'target', name: 'Joey Fargo',      desc: 'Smart, computer savvy',      status: 'open',   path: ['o1'], stat: new Stat({ last_sync: 1309355336, evidence: null, grid_size: 0, size: 0 }) }),
+      new Target({ _id: 't2', _kind: 'target', name: 'Alejandro Reade', desc: 'The tough guy',              status: 'open',   path: ['o1'], stat: new Stat({ last_sync: 1308354166, evidence: null, grid_size: 0, size: 0 }) }),
+      new Target({ _id: 't3', _kind: 'target', name: 'Joey Fargo',      desc: 'Smart, computer savvy',      status: 'open',   path: ['o1'], stat: new Stat({ last_sync: 1307354166, evidence: null, grid_size: 0, size: 0 }) }),
       
       // Blackjack
       new Target({ _id: 't4', _kind: 'target', name: 'Guido',           desc: 'The bomber',                 status: 'open',   path: ['o2'], stat: new Stat({ last_sync: 1309965166, evidence: null, grid_size: 0, size: 0 }) }),
