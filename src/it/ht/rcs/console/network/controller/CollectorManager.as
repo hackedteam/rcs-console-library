@@ -43,9 +43,9 @@ package it.ht.rcs.console.network.controller
       DB.instance.collector.update(event.source, property);
     }
     
-    public function addCollector(callback:Function):void
+    public function addCollector(c:Object, callback:Function):void
     {
-      DB.instance.collector.create(Collector.defaultCollector(), function (e:ResultEvent):void {
+      DB.instance.collector.create(c, function (e:ResultEvent):void {
         var collector:Collector = e.result as Collector;
         addItem(collector);
         callback(collector);

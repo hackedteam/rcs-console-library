@@ -41,9 +41,9 @@ package it.ht.rcs.console.network.controller
       DB.instance.injector.update(event.source, property);
     }
     
-    public function addProxy(callback:Function):void
+    public function addProxy(i:Object, callback:Function):void
     {
-      DB.instance.injector.create(Injector.defaultInjector(), function (e:ResultEvent):void {
+      DB.instance.injector.create(i, function (e:ResultEvent):void {
         var injector:Injector = e.result as Injector;
         addItem(injector);
         callback(injector);
