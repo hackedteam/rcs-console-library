@@ -70,6 +70,7 @@ package it.ht.rcs.console.dashboard.controller
         dashboardItem = new DashboardItem();
         dashboardItem._id = item._id;
         dashboardItem._kind = item._kind;
+        dashboardItem.status = item.status;
         addItem(dashboardItem);
       }
       
@@ -135,6 +136,10 @@ package it.ht.rcs.console.dashboard.controller
         dashboardItem = new DashboardItem();
         dashboardItem._id = item._id;
         dashboardItem._kind = item._kind;
+        dashboardItem.status = item.status;
+        dashboardItem.type = item.type;
+        dashboardItem.platform = item.platform;
+        dashboardItem.demo = item.demo;
         dashboardItem.baseline = item.stat;
         addItem(dashboardItem);
       }

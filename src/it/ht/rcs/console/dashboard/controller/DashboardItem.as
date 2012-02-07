@@ -10,6 +10,12 @@ package it.ht.rcs.console.dashboard.controller
     public var _kind:String;
 
     [Bindable] public var name:String;
+
+    [Bindable] public var type:String;
+    [Bindable] public var platform:String;
+
+    [Bindable] public var status:String;
+    [Bindable] public var demo:Boolean;
     
     [Bindable] public var modules:ArrayCollection;
     [Bindable] public var targets:ArrayCollection;
