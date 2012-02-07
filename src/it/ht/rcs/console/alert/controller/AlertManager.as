@@ -6,14 +6,20 @@ package it.ht.rcs.console.alert.controller
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.alert.model.Alert;
   import it.ht.rcs.console.controller.ItemManager;
+  import it.ht.rcs.console.events.SessionEvent;
   
   import mx.collections.ArrayCollection;
+  import mx.core.FlexGlobals;
   import mx.events.PropertyChangeEvent;
   import mx.rpc.events.ResultEvent;
   
   public class AlertManager extends ItemManager
   {
-    public function AlertManager() { super(Alert); }
+    public function AlertManager() 
+    { 
+      super(Alert);
+      FlexGlobals.topLevelApplication.addEventListener(SessionEvent.LOGOUT, onLogout);
+    }
     
     private static var _instance:AlertManager = new AlertManager();
     public static function get instance():AlertManager { return _instance; } 
@@ -56,10 +62,16 @@ package it.ht.rcs.console.alert.controller
       });
     }
     
+    override protected function onLogout(e:SessionEvent):void
+    {
+      stopCounters();
+    }
+    
     private var _alertCounter:Object = {value: NaN, style: 'info'};
     
     public function startCounters():void
     {
+
       autoRefresh.addEventListener(TimerEvent.TIMER, onRefreshCounter);
       autoRefresh.start();
       
