@@ -61,7 +61,7 @@ package it.ht.rcs.console.accounting.rest
         user.recent_ids.removeItemAt(5);
       
       if (onResult != null)
-        onResult(new ResultEvent('user.add_recent'));
+        onResult(new ResultEvent('user.add_recent', false, true, user));
     }
     
   }
