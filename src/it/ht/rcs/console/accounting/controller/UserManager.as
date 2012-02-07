@@ -92,7 +92,9 @@ package it.ht.rcs.console.accounting.controller
 
     public function add_recent(user:User, item:SearchItem):void
     {
-      DB.instance.user.add_recent(user, item._id);   
+      DB.instance.user.add_recent(user, item._id, function(e:ResultEvent):void {
+        user.recent_ids = (e.result as User).recent_ids;
+      });
     }
     
   }

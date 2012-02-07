@@ -10,13 +10,10 @@ package it.ht.rcs.console.operation.controller
   public class OperationManager extends ItemManager
   {
     
+    public function OperationManager() { super(Operation); }
+    
     private static var _instance:OperationManager = new OperationManager();
     public static function get instance():OperationManager { return _instance; }
-    
-    public function OperationManager()
-    {
-      super(Operation);
-    }
     
     override public function refresh():void
     {

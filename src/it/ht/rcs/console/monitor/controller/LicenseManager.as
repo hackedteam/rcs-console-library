@@ -2,7 +2,6 @@ package it.ht.rcs.console.monitor.controller
 {
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.controller.Manager;
-  import it.ht.rcs.console.events.RefreshEvent;
   import it.ht.rcs.console.monitor.model.CurrMaxObject;
   import it.ht.rcs.console.monitor.model.License;
   import it.ht.rcs.console.monitor.model.LicenseCount;
@@ -122,7 +121,6 @@ package it.ht.rcs.console.monitor.controller
     {
       return limits['agents'][platform][0]; 
     }
-
     
   }
   

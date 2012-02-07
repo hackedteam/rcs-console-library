@@ -2,22 +2,17 @@ package it.ht.rcs.console.accounting.controller
 {
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.controller.ItemManager;
-  import it.ht.rcs.console.events.RefreshEvent;
   import it.ht.rcs.console.operation.model.Operation;
   
-  import mx.collections.ArrayCollection;
   import mx.rpc.events.ResultEvent;
   
   public class OperationManager extends ItemManager
   {
     
+    public function OperationManager() { super(Operation); }
+    
     private static var _instance:OperationManager = new OperationManager();
     public static function get instance():OperationManager { return _instance; } 
-    
-    public function OperationManager()
-    {
-      super(Operation);
-    }
     
     override public function refresh():void
     {

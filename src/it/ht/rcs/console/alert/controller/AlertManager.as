@@ -9,17 +9,13 @@ package it.ht.rcs.console.alert.controller
   import it.ht.rcs.console.events.SessionEvent;
   
   import mx.collections.ArrayCollection;
-  import mx.core.FlexGlobals;
   import mx.events.PropertyChangeEvent;
   import mx.rpc.events.ResultEvent;
   
   public class AlertManager extends ItemManager
   {
-    public function AlertManager() 
-    { 
-      super(Alert);
-      FlexGlobals.topLevelApplication.addEventListener(SessionEvent.LOGOUT, onLogout);
-    }
+    
+    public function AlertManager() { super(Alert); }
     
     private static var _instance:AlertManager = new AlertManager();
     public static function get instance():AlertManager { return _instance; } 
@@ -64,6 +60,7 @@ package it.ht.rcs.console.alert.controller
     
     override protected function onLogout(e:SessionEvent):void
     {
+      super.onLogout(e);
       stopCounters();
     }
     
