@@ -8,9 +8,6 @@ package it.ht.rcs.console.monitor.rest
 
   public class DBMonitorDemo implements IDBMonitor
   {
-    public function DBMonitorDemo()
-    {
-    }
     
     public function all(onResult:Function=null, onFault:Function=null):void
     {
@@ -25,7 +22,8 @@ package it.ht.rcs.console.monitor.rest
           name: 'Collector',
           pcpu:15,
           status:'0',
-          time: new Date().time / 1000
+          time: new Date().time / 1000,
+          type: 'collector'
         }));
       
       items.addItem(new Status(
@@ -38,7 +36,8 @@ package it.ht.rcs.console.monitor.rest
           name: 'Database',
           pcpu:15,
           status:'1',
-          time: new Date().time / 1000
+          time: new Date().time / 1000,
+          type: 'db'
         }));
       
       items.addItem(new Status(
@@ -48,15 +47,29 @@ package it.ht.rcs.console.monitor.rest
           cpu:90,
           disk:70,
           info: 'Houston we have a problem!',
-          name: 'Collector',
-          pcpu:70,
+          name: 'Network Controller',
+          pcpu:85,
           status:'2',
-          time: new Date().time / 1000
+          time: new Date().time / 1000,
+          type: 'nc'
         }));
       
-      var event:ResultEvent = new ResultEvent("monitor.index", false, true, items);
+      items.addItem(new Status(
+        {
+          _id: '4',
+          address: '9.10.11.12',
+          cpu:90,
+          disk:70,
+          info: 'Houston we have a problem!',
+          name: 'Anonymizer',
+          pcpu:70,
+          status:'2',
+          time: new Date().time / 1000,
+          type: 'anon'
+        }));
+      
       if (onResult != null) 
-        onResult(event);
+        onResult(new ResultEvent('monitor.index', false, true, items));
     }
     
     public function counters(onResult:Function=null, onFault:Function=null):void
@@ -68,14 +81,14 @@ package it.ht.rcs.console.monitor.rest
           warn: 1
         });
       
-      var event:ResultEvent = new ResultEvent("monitor.counters", false, true, counters);
       if (onResult != null) 
-        onResult(event);
+        onResult(new ResultEvent('monitor.counters', false, true, counters));
     }
     
     public function destroy(id:String, onResult:Function=null, onFault:Function=null):void
     {
-      /* do nothing */
     }
+    
   }
+  
 }

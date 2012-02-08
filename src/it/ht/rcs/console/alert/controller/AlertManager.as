@@ -18,7 +18,7 @@ package it.ht.rcs.console.alert.controller
     public function AlertManager() { super(Alert); }
     
     private static var _instance:AlertManager = new AlertManager();
-    public static function get instance():AlertManager { return _instance; } 
+    public static function get instance():AlertManager { return _instance; }
     
     /* for the auto refresh every 15 seconds */
     private var autoRefresh:Timer = new Timer(15000);
@@ -40,6 +40,7 @@ package it.ht.rcs.console.alert.controller
     override protected function onItemRemove(o:*):void
     { 
       DB.instance.alert.destroy(o);
+      // update baloon?
     }
     
     override protected function onItemUpdate(event:*):void

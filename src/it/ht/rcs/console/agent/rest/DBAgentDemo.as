@@ -18,7 +18,7 @@ package it.ht.rcs.console.agent.rest
       // AGENTS
       
       // John Doe (SwordFish)
-      new Agent({ _id:"a1", _kind: "agent", name: "Laptop (1)",      desc:"John's Laptop",               status: "open",   path :["o1", "t1"], version: 10, ident:"RCS_01", counter: 1, upgradable: false, stat: new Stat({ _id: "s1", last_sync: 1307515166, evidence:  new StatEvidence({camera: 150}),
+      new Agent({ _id:"a1", _kind: "agent", name: "Laptop (1)",      desc:"John's Laptop",               type: 'desktop', platform: 'android', status: "open",   path :["o1", "t1"], version: 10, ident:"RCS_01", counter: 1, upgradable: false, stat: new Stat({ _id: "s1", last_sync: 1307515166, evidence:  new StatEvidence({camera: 150}),
                                                                                                                                                                                                                                                               dashboard: new StatEvidence({camera: 20}),
                                                                                                                                                                                                                             grid_size: 0, size: 0, source: "1.2.3.4", user: "John", device: "device" }) }),
       new Agent({ _id:"a2", _kind: "agent", name: "Mobile (1)",      desc:"John's Android Mobile",       status: "open",   path :["o1", "t1"], version: 10, ident:"RCS_02", counter: 1, upgradable: false, stat: new Stat({ _id: "s2", last_sync: 1307524166, evidence: null, grid_size: 0, size: 0 }) }),
@@ -41,8 +41,8 @@ package it.ht.rcs.console.agent.rest
       // FACTORIES
       
       // John Doe (SwordFish)
-      new Agent({ _id: "f1", _kind: "factory", name: "John's Laptop Configuration", type: "desktop", platform: "windows",    desc: "Catch all",                                   status: "open",   path: ["o1", "t1"], ident: "RCS_01", counter: 1 }),
-      new Agent({ _id: "f2", _kind: "factory", name: "John's Mobile Configuration", type: "mobile",  platform: "blackberry", desc: "Voice and position",                          status: "open",   path: ["o1", "t1"], ident: "RCS_02", counter: 1 }),
+      new Agent({ _id: "f1", _kind: "factory", name: "John's Laptop Configuration", type: "desktop", desc: "Catch all",                                   status: "open",   path: ["o1", "t1"], ident: "RCS_01", counter: 1 }),
+      new Agent({ _id: "f2", _kind: "factory", name: "John's Mobile Configuration", type: "mobile",  desc: "Voice and position",                          status: "open",   path: ["o1", "t1"], ident: "RCS_02", counter: 1 }),
       // Alejandro Reade (Swordfish)
       new Agent({ _id: "f3", _kind: "factory", name: "Alejandro's Setup",           type: "desktop", desc: "Documents & contacts",                        status: "open",   path: ["o1", "t2"], ident: "RCS_03", counter: 1 }),
       // Joey Fargo (SwordFish)
