@@ -17,7 +17,7 @@ package it.ht.rcs.console.network.model
         desc: '',
         name: DB.i18n.get('NEW_INJECTOR'),
         poll: false,
-        port: 4444,
+        port: 443,
         redirect: 'auto',
         redirection_tag: '',
         rules: [],
