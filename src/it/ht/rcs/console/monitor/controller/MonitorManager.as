@@ -49,26 +49,38 @@ package it.ht.rcs.console.monitor.controller
       stopCounters();
     }
     
+    public function getStatusByAddress(address:String):Status
+    {
+      for each (var o:* in _items.source)
+      if (o.address == address)
+        return o;
+      return null;
+    }
+    
     private var _monitorCounter:Object = {value: NaN, style: 'info'};
     
     public function startCounters():void
     {
-      autoRefresh.addEventListener(TimerEvent.TIMER, onRefreshCounter);
+      autoRefresh.addEventListener(TimerEvent.TIMER, onAutoRefresh);
       autoRefresh.start();
       
       /* the first refresh */
-      onRefreshCounter(null);
+      onAutoRefresh(null);
     }
 
     public function stopCounters():void
     {
-      autoRefresh.removeEventListener(TimerEvent.TIMER, onRefreshCounter);
+      autoRefresh.removeEventListener(TimerEvent.TIMER, onAutoRefresh);
       autoRefresh.stop();
     }
 
-    private function onRefreshCounter(e:Event):void
+    public var refreshView:Boolean = false;
+    private function onAutoRefresh(e:Event):void
     {
       DB.instance.monitor.counters(onMonitorCounters);
+      
+      if (refreshView)
+        refresh();
     }
     
     private function onMonitorCounters(e:ResultEvent):void
