@@ -94,8 +94,7 @@ package it.ht.rcs.console.monitor.controller
       if (error > 0) {
         _monitorCounter.value = error 
         _monitorCounter.style = 'alert';
-      }
-      if (warn > 0) {
+      } else if (warn > 0) {
         _monitorCounter.value = warn 
         _monitorCounter.style = 'warn';
       }
