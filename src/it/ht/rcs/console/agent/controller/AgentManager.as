@@ -1,7 +1,10 @@
 package it.ht.rcs.console.agent.controller
 {
   import it.ht.rcs.console.DB;
+  import it.ht.rcs.console.DefaultConfigBuilder;
+  import it.ht.rcs.console.ObjectUtils;
   import it.ht.rcs.console.agent.model.Agent;
+  import it.ht.rcs.console.agent.model.Config;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.operation.model.Operation;
   import it.ht.rcs.console.target.model.Target;
@@ -47,16 +50,19 @@ package it.ht.rcs.console.agent.controller
     {
       DB.instance.agent.add_config(agent, config, function(e:ResultEvent):void {
         if (callback != null)
-          callback();
+          callback(e.result);
       });
     }
     
-    public function addFactory(f:Object, o:Operation, t:Target, callback:Function):void
+    public function addFactory(f:Agent, o:Operation, t:Target, callback:Function):void
     {
-      DB.instance.agent.create(f, o, t, function(e:ResultEvent):void {
-        var factory:Agent = e.result as Agent;
-        addItem(factory);
-        callback(factory);
+      DB.instance.agent.create(ObjectUtils.toHash(f), o, t, function(e1:ResultEvent):void {
+        var factory:Agent = e1.result as Agent;
+        var defaultConfig:Object = DefaultConfigBuilder.getDefaultConfig(factory);
+        AgentManager.instance.addConfig(factory, JSON.stringify(defaultConfig), function(c:Config):void {
+          addItem(factory);
+          callback(factory);
+        });
       });
     }
     

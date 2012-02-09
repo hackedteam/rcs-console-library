@@ -1,6 +1,7 @@
 package it.ht.rcs.console.target.controller
 {
   import it.ht.rcs.console.DB;
+  import it.ht.rcs.console.ObjectUtils;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.operation.model.Operation;
   import it.ht.rcs.console.target.model.Target;
@@ -45,9 +46,9 @@ package it.ht.rcs.console.target.controller
       DB.instance.target.update(event.source, property);
     }
     
-    public function addTarget(t:Object, o:Operation, callback:Function):void
+    public function addTarget(t:Target, o:Operation, callback:Function):void
     {
-      DB.instance.target.create(t, o, function(e:ResultEvent):void {
+      DB.instance.target.create(ObjectUtils.toHash(t), o, function(e:ResultEvent):void {
         var target:Target = e.result as Target;
         addItem(target);
         callback(target);
