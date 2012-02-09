@@ -85,8 +85,18 @@ package it.ht.rcs.console.monitor.controller
     
     private function onMonitorCounters(e:ResultEvent):void
     {
-      _monitorCounter.value = e.result.error as int;
-      _monitorCounter.style = 'alert';
+      var error:int = e.result.error as int;
+      var warn:int = e.result.warn as int;
+      
+      if (error > 0) {
+        _monitorCounter.value = error 
+        _monitorCounter.style = 'alert';
+      }
+      if (warn > 0) {
+        _monitorCounter.value = warn 
+        _monitorCounter.style = 'warn';
+      }
+
       dispatchEvent(PropertyChangeEvent.createUpdateEvent(this, 'monitorCounter', null, _monitorCounter));
     }
     
