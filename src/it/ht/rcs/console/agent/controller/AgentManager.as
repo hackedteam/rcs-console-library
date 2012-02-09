@@ -12,10 +12,7 @@ package it.ht.rcs.console.agent.controller
   public class AgentManager extends ItemManager
   {
     
-    public function AgentManager()
-    {
-      super(Agent);
-    }
+    public function AgentManager() { super(Agent); }
     
     private static var _instance:AgentManager = new AgentManager();
     public static function get instance():AgentManager { return _instance; }
@@ -46,9 +43,12 @@ package it.ht.rcs.console.agent.controller
       DB.instance.agent.update(event.source, property);
     }
     
-    public function addConfig(agent:Agent, config:String):void
+    public function addConfig(agent:Agent, config:String, callback:Function=null):void
     {
-      DB.instance.agent.add_config(agent, config);
+      DB.instance.agent.add_config(agent, config, function(e:ResultEvent):void {
+        if (callback != null)
+          callback();
+      });
     }
     
     public function addFactory(f:Object, o:Operation, t:Target, callback:Function):void

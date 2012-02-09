@@ -93,14 +93,23 @@ package it.ht.rcs.console.agent.rest
         onResult(new ResultEvent('agent.destroy'));
     }
     
-    public function add_config(agent:Agent, config: String, onResult:Function=null, onFault:Function=null):void
+    public function add_config(agent:Agent, config:String, onResult:Function=null, onFault:Function=null):void
     {
       // TODO: what happens in demo when we add a config?
+      var a:Agent = agents.getItemAt(agents.getItemIndex(agent)) as Agent;
+      if (a._kind == 'factory')
+        if (a.configs.length == 0)
+          a.configs.addItem(config);
+        else
+          a.configs.setItemAt(config, 0);
+      else
+        a.configs.addItemAt(config, 0);
+      
       if (onResult != null)
         onResult(new ResultEvent('agent.add_config'));
     }
     
-    public function del_config(agent:Agent, config_id: String, onResult:Function=null, onFault:Function=null):void
+    public function del_config(agent:Agent, config_id:String, onResult:Function=null, onFault:Function=null):void
     {
       // TODO: what happens in demo when we delete a config?
       if (onResult != null)
