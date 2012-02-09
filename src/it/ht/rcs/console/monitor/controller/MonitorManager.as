@@ -51,6 +51,9 @@ package it.ht.rcs.console.monitor.controller
     
     public function getStatusByAddress(address:String):Status
     {
+      if (address == null)
+        return null;
+      
       for each (var o:* in _items.source)
       if (o.address == address)
         return o;
