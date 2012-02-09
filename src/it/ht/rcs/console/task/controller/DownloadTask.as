@@ -181,7 +181,10 @@ package it.ht.rcs.console.task.controller
           
           // stop the update timer
           updateTimer.stop();
-          NotificationPopup.showNotification(ResourceManager.getInstance().getString('localized_main', 'TASK_ERROR', [task.file_name]));
+          if (task.file_name != null)
+            NotificationPopup.showNotification(ResourceManager.getInstance().getString('localized_main', 'TASK_ERROR', [task.file_name]));
+          else
+            NotificationPopup.showNotification(ResourceManager.getInstance().getString('localized_main', 'TASK_NOFILE_ERROR'));
           trace("Task " + task._id +" error.");
           break;
       }
