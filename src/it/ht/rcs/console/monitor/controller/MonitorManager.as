@@ -92,11 +92,13 @@ package it.ht.rcs.console.monitor.controller
       var warn:int = e.result.warn as int;
       
       if (error > 0) {
-        _monitorCounter.value = error 
+        _monitorCounter.value = error;
         _monitorCounter.style = 'alert';
       } else if (warn > 0) {
-        _monitorCounter.value = warn 
+        _monitorCounter.value = warn;
         _monitorCounter.style = 'warn';
+      } else {
+        _monitorCounter.value = null;
       }
 
       dispatchEvent(PropertyChangeEvent.createUpdateEvent(this, 'monitorCounter', null, _monitorCounter));
