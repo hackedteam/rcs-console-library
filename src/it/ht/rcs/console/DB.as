@@ -87,6 +87,10 @@ package it.ht.rcs.console
     public var evidence:IDBEvidence;
     public var build:IDBBuild;
     
+    /* expose if we are in demo mode */
+    [Bindable]
+    public var demo:Boolean;
+    
     /* singleton */
     private static var _instance:DB = new DB();
     public static function get instance():DB { return _instance; } 
@@ -94,11 +98,12 @@ package it.ht.rcs.console
     private static var notifier:IFaultNotifier;
     public static var i18n:II18N;
     
-    public function connect(host:String, notifier:IFaultNotifier, i18n:II18N, demo:Boolean=false):void
+    public function connect(host:String, notifier:IFaultNotifier, i18n:II18N, enable_demo:Boolean=false):void
     {
       DB.notifier = notifier;
       DB.i18n = i18n;
-      demo ? initDemo() : initRemote(host);
+      enable_demo ? initDemo() : initRemote(host);
+      demo = enable_demo;
     }
     
     private function initRemote(host:String):void
