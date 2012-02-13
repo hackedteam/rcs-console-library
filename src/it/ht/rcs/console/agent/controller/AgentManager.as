@@ -7,6 +7,7 @@ package it.ht.rcs.console.agent.controller
   import it.ht.rcs.console.agent.model.Config;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.operation.model.Operation;
+  import it.ht.rcs.console.search.controller.SearchManager;
   import it.ht.rcs.console.target.model.Target;
   
   import mx.collections.ArrayCollection;
@@ -61,6 +62,7 @@ package it.ht.rcs.console.agent.controller
         var defaultConfig:Object = DefaultConfigBuilder.getDefaultConfig(factory);
         AgentManager.instance.addConfig(factory, JSON.stringify(defaultConfig), function(c:Config):void {
           addItem(factory);
+          SearchManager.instance.showItem(factory._id);
           callback(factory);
         });
       });

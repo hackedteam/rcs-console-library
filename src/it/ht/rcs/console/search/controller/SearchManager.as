@@ -29,10 +29,14 @@ package it.ht.rcs.console.search.controller
       dispatchDataLoadedEvent();
     }
     
-    public function showItem(id:String, callback:Function):void
+    public function showItem(id:String, callback:Function=null):void
     {
       DB.instance.search.show(id, function(e:ResultEvent):void {
-        callback(e.result as SearchItem);
+        var item:SearchItem = e.result as SearchItem;
+        if (getItem(item._id) == null)
+          addItem(item);
+        if (callback != null)
+          callback(item);
       });
     }
     

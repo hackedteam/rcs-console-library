@@ -4,6 +4,7 @@ package it.ht.rcs.console.operation.controller
   import it.ht.rcs.console.ObjectUtils;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.operation.model.Operation;
+  import it.ht.rcs.console.search.controller.SearchManager;
   
   import mx.collections.ArrayCollection;
   import mx.rpc.events.ResultEvent;
@@ -47,6 +48,7 @@ package it.ht.rcs.console.operation.controller
       DB.instance.operation.create(ObjectUtils.toHash(o), function(e:ResultEvent):void {
         var operation:Operation = e.result as Operation;
         addItem(operation);
+        SearchManager.instance.showItem(operation._id);
         callback(operation);
       });
     }

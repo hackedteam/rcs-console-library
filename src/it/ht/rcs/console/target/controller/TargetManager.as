@@ -4,6 +4,7 @@ package it.ht.rcs.console.target.controller
   import it.ht.rcs.console.ObjectUtils;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.operation.model.Operation;
+  import it.ht.rcs.console.search.controller.SearchManager;
   import it.ht.rcs.console.target.model.Target;
   
   import mx.collections.ArrayCollection;
@@ -51,6 +52,7 @@ package it.ht.rcs.console.target.controller
       DB.instance.target.create(ObjectUtils.toHash(t), o, function(e:ResultEvent):void {
         var target:Target = e.result as Target;
         addItem(target);
+        SearchManager.instance.showItem(target._id);
         callback(target);
       });
     }
