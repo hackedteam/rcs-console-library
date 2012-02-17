@@ -12,7 +12,7 @@ package it.ht.rcs.console.forwarder.rest
     }
     
     public static var forwarders:ArrayCollection = new ArrayCollection([
-      new Forwarder({name: 'Third party integration', keep: true, raw: false, dest: '\export\thirdparty', path: ['o1'], enabled: true, type: 'JSON'})
+      new Forwarder({name: 'Third party integration', keep: true, raw: false, dest: '\\export\\thirdparty', path: ['o1'], enabled: true, type: 'JSON'})
     ]);
     
     public function all(onResult:Function=null, onFault:Function=null):void

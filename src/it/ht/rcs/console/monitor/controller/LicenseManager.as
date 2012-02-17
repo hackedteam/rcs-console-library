@@ -33,12 +33,12 @@ package it.ht.rcs.console.monitor.controller
     
     public var alerting:Boolean = false;
     public var correlation:Boolean = false;
+    public var forwarders:Boolean = false;
     
     public var nia:CurrMaxObject = new CurrMaxObject("0", "0");
     public var rmi:Boolean = false;
     
     public var shards:CurrMaxObject = new CurrMaxObject("0", "0");
-    public var exploits:String;
     
     public var limits:License;
     
@@ -87,6 +87,7 @@ package it.ht.rcs.console.monitor.controller
       
       alerting = limits['alerting'];
       correlation = limits['correlation'];
+      forwarders = limits['forwarders'];
       
       nia.max = (limits['nia'] == null) ? 'U' : limits['nia'].toString();
       rmi = limits['rmi'];

@@ -24,14 +24,14 @@ internal class _LicenseEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("collectors", "users", "shards", "nia", "exploits", "agents", "alerting", "correlation", "type", "serial", "rmi");
+    model_internal static var allProperties:Array = new Array("collectors", "users", "shards", "nia", "forwarders", "agents", "alerting", "correlation", "type", "serial", "rmi");
     model_internal static var allAssociationProperties:Array = new Array();
-    model_internal static var allRequiredProperties:Array = new Array("shards", "exploits");
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("collectors", "users", "shards", "nia", "exploits", "agents", "alerting", "correlation", "type", "serial", "rmi");
+    model_internal static var allRequiredProperties:Array = new Array("shards");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("collectors", "users", "shards", "nia", "forwarders", "agents", "alerting", "correlation", "type", "serial", "rmi");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("collectors", "users", "shards", "nia", "exploits", "agents", "alerting", "correlation", "type", "serial", "rmi");
+    model_internal static var dataProperties:Array = new Array("collectors", "users", "shards", "nia", "forwarders", "agents", "alerting", "correlation", "type", "serial", "rmi");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("collectors", "users", "shards", "nia", "exploits", "agents", "alerting", "correlation", "type", "serial", "rmi");
+    model_internal static var nonDerivedProperties:Array = new Array("collectors", "users", "shards", "nia", "forwarders", "agents", "alerting", "correlation", "type", "serial", "rmi");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array();
     model_internal static var collectionBaseMap:Object;
@@ -45,11 +45,6 @@ internal class _LicenseEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     model_internal var _shardsValidator:com.adobe.fiber.styles.StyleValidator;
     model_internal var _shardsIsValidCacheInitialized:Boolean = false;
     model_internal var _shardsValidationFailureMessages:Array;
-    
-    model_internal var _exploitsIsValid:Boolean;
-    model_internal var _exploitsValidator:com.adobe.fiber.styles.StyleValidator;
-    model_internal var _exploitsIsValidCacheInitialized:Boolean = false;
-    model_internal var _exploitsValidationFailureMessages:Array;
 
     model_internal var _instance:_Super_License;
     model_internal static var _nullStyle:com.adobe.fiber.styles.Style = new com.adobe.fiber.styles.Style();
@@ -65,7 +60,7 @@ internal class _LicenseEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
             model_internal::dependentsOnMap["users"] = new Array();
             model_internal::dependentsOnMap["shards"] = new Array();
             model_internal::dependentsOnMap["nia"] = new Array();
-            model_internal::dependentsOnMap["exploits"] = new Array();
+            model_internal::dependentsOnMap["forwarders"] = new Array();
             model_internal::dependentsOnMap["agents"] = new Array();
             model_internal::dependentsOnMap["alerting"] = new Array();
             model_internal::dependentsOnMap["correlation"] = new Array();
@@ -83,7 +78,7 @@ internal class _LicenseEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
         model_internal::propertyTypeMap["users"] = "Object";
         model_internal::propertyTypeMap["shards"] = "Object";
         model_internal::propertyTypeMap["nia"] = "Object";
-        model_internal::propertyTypeMap["exploits"] = "String";
+        model_internal::propertyTypeMap["forwarders"] = "Boolean";
         model_internal::propertyTypeMap["agents"] = "it.ht.rcs.console.monitor.model.LicenseAgents";
         model_internal::propertyTypeMap["alerting"] = "Boolean";
         model_internal::propertyTypeMap["correlation"] = "Boolean";
@@ -97,11 +92,6 @@ internal class _LicenseEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
         model_internal::_shardsValidator.requiredFieldError = "shards is required";
         //model_internal::_shardsValidator.source = model_internal::_instance;
         //model_internal::_shardsValidator.property = "shards";
-        model_internal::_exploitsValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForExploits);
-        model_internal::_exploitsValidator.required = true;
-        model_internal::_exploitsValidator.requiredFieldError = "exploits is required";
-        //model_internal::_exploitsValidator.source = model_internal::_instance;
-        //model_internal::_exploitsValidator.property = "exploits";
     }
 
     override public function getEntityName():String
@@ -353,7 +343,7 @@ internal class _LicenseEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     }
 
     [Bindable(event="propertyChange")]
-    public function get isExploitsAvailable():Boolean
+    public function get isForwardersAvailable():Boolean
     {
         return true;
     }
@@ -404,14 +394,6 @@ internal class _LicenseEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
         {
             model_internal::_instance.model_internal::_doValidationCacheOfShards = null;
             model_internal::calculateShardsIsValid();
-        }
-    }
-    public function invalidateDependentOnExploits():void
-    {
-        if (model_internal::_exploitsIsValidCacheInitialized )
-        {
-            model_internal::_instance.model_internal::_doValidationCacheOfExploits = null;
-            model_internal::calculateExploitsIsValid();
         }
     }
 
@@ -539,103 +521,9 @@ internal class _LicenseEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     }
 
     [Bindable(event="propertyChange")]   
-    public function get exploitsStyle():com.adobe.fiber.styles.Style
+    public function get forwardersStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
-    }
-
-    public function get exploitsValidator() : StyleValidator
-    {
-        return model_internal::_exploitsValidator;
-    }
-
-    model_internal function set _exploitsIsValid_der(value:Boolean):void 
-    {
-        var oldValue:Boolean = model_internal::_exploitsIsValid;         
-        if (oldValue !== value)
-        {
-            model_internal::_exploitsIsValid = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "exploitsIsValid", oldValue, value));
-        }                             
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get exploitsIsValid():Boolean
-    {
-        if (!model_internal::_exploitsIsValidCacheInitialized)
-        {
-            model_internal::calculateExploitsIsValid();
-        }
-
-        return model_internal::_exploitsIsValid;
-    }
-
-    model_internal function calculateExploitsIsValid():void
-    {
-        var valRes:ValidationResultEvent = model_internal::_exploitsValidator.validate(model_internal::_instance.exploits)
-        model_internal::_exploitsIsValid_der = (valRes.results == null);
-        model_internal::_exploitsIsValidCacheInitialized = true;
-        if (valRes.results == null)
-             model_internal::exploitsValidationFailureMessages_der = emptyArray;
-        else
-        {
-            var _valFailures:Array = new Array();
-            for (var a:int = 0 ; a<valRes.results.length ; a++)
-            {
-                _valFailures.push(valRes.results[a].errorMessage);
-            }
-            model_internal::exploitsValidationFailureMessages_der = _valFailures;
-        }
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get exploitsValidationFailureMessages():Array
-    {
-        if (model_internal::_exploitsValidationFailureMessages == null)
-            model_internal::calculateExploitsIsValid();
-
-        return _exploitsValidationFailureMessages;
-    }
-
-    model_internal function set exploitsValidationFailureMessages_der(value:Array) : void
-    {
-        var oldValue:Array = model_internal::_exploitsValidationFailureMessages;
-
-        var needUpdate : Boolean = false;
-        if (oldValue == null)
-            needUpdate = true;
-    
-        // avoid firing the event when old and new value are different empty arrays
-        if (!needUpdate && (oldValue !== value && (oldValue.length > 0 || value.length > 0)))
-        {
-            if (oldValue.length == value.length)
-            {
-                for (var a:int=0; a < oldValue.length; a++)
-                {
-                    if (oldValue[a] !== value[a])
-                    {
-                        needUpdate = true;
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                needUpdate = true;
-            }
-        }
-
-        if (needUpdate)
-        {
-            model_internal::_exploitsValidationFailureMessages = value;   
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "exploitsValidationFailureMessages", oldValue, value));
-            // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
-            // the entire entity.
-            if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
-            {
-                model_internal::_instance.model_internal::isValid_der = model_internal::_instance.model_internal::calculateIsValid();
-            }
-        }
     }
 
     [Bindable(event="propertyChange")]   
@@ -702,10 +590,6 @@ internal class _LicenseEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
             case("shards"):
             {
                 return shardsValidationFailureMessages;
-            }
-            case("exploits"):
-            {
-                return exploitsValidationFailureMessages;
             }
             default:
             {

@@ -35,6 +35,7 @@ package it.ht.rcs.console.monitor.rest
               anonymizers: 5
             }),
           correlation: false,
+          forwarders: true,
           nia: 5,
           rmi: true,
           serial: 1234567890,

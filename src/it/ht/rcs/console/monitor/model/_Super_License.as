@@ -59,7 +59,7 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
     private var _internal_users : Object;
     private var _internal_shards : Object;
     private var _internal_nia : Object;
-    private var _internal_exploits : String;
+    private var _internal_forwarders : Boolean;
     private var _internal_agents : it.ht.rcs.console.monitor.model.LicenseAgents;
     private var _internal_alerting : Boolean;
     private var _internal_correlation : Boolean;
@@ -83,7 +83,6 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
 
         // Bind to own data or source properties for cache invalidation triggering
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "shards", model_internal::setterListenerShards));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "exploits", model_internal::setterListenerExploits));
 
     }
 
@@ -116,9 +115,9 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
     }
 
     [Bindable(event="propertyChange")]
-    public function get exploits() : String
+    public function get forwarders() : Boolean
     {
-        return _internal_exploits;
+        return _internal_forwarders;
     }
 
     [Bindable(event="propertyChange")]
@@ -205,13 +204,13 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
         }
     }
 
-    public function set exploits(value:String) : void
+    public function set forwarders(value:Boolean) : void
     {
-        var oldValue:String = _internal_exploits;
+        var oldValue:Boolean = _internal_forwarders;
         if (oldValue !== value)
         {
-            _internal_exploits = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "exploits", oldValue, _internal_exploits));
+            _internal_forwarders = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "forwarders", oldValue, _internal_forwarders));
         }
     }
 
@@ -292,11 +291,6 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
         _model.invalidateDependentOnShards();
     }
 
-    model_internal function setterListenerExploits(value:flash.events.Event):void
-    {
-        _model.invalidateDependentOnExploits();
-    }
-
 
     /**
      * valid related derived properties
@@ -322,11 +316,6 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
         {
             propertyValidity = false;
             com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_shardsValidationFailureMessages);
-        }
-        if (!_model.exploitsIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_exploitsValidationFailureMessages);
         }
 
         model_internal::_cacheInitialized_isValid = true;
@@ -430,33 +419,6 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
 
         model_internal::_doValidationCacheOfShards = validationFailures;
         model_internal::_doValidationLastValOfShards = value;
-
-        return validationFailures;
-    }
-    
-    model_internal var _doValidationCacheOfExploits : Array = null;
-    model_internal var _doValidationLastValOfExploits : String;
-
-    model_internal function _doValidationForExploits(valueIn:Object):Array
-    {
-        var value : String = valueIn as String;
-
-        if (model_internal::_doValidationCacheOfExploits != null && model_internal::_doValidationLastValOfExploits == value)
-           return model_internal::_doValidationCacheOfExploits ;
-
-        _model.model_internal::_exploitsIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.isExploitsAvailable && _internal_exploits == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "exploits is required"));
-        }
-
-        model_internal::_doValidationCacheOfExploits = validationFailures;
-        model_internal::_doValidationLastValOfExploits = value;
 
         return validationFailures;
     }
