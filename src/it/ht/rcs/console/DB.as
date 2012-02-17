@@ -27,6 +27,9 @@ package it.ht.rcs.console
   import it.ht.rcs.console.evidence.rest.DBEvidence;
   import it.ht.rcs.console.evidence.rest.DBEvidenceDemo;
   import it.ht.rcs.console.evidence.rest.IDBEvidence;
+  import it.ht.rcs.console.forwarder.rest.DBForwarder;
+  import it.ht.rcs.console.forwarder.rest.DBForwarderDemo;
+  import it.ht.rcs.console.forwarder.rest.IDBForwarder;
   import it.ht.rcs.console.monitor.rest.DBLicense;
   import it.ht.rcs.console.monitor.rest.DBLicenseDemo;
   import it.ht.rcs.console.monitor.rest.DBMonitor;
@@ -86,6 +89,7 @@ package it.ht.rcs.console
     public var backup:IDBBackup;
     public var evidence:IDBEvidence;
     public var build:IDBBuild;
+    public var forwarder:IDBForwarder;
     
     /* expose if we are in demo mode */
     [Bindable]
@@ -131,6 +135,7 @@ package it.ht.rcs.console
       backup    = new DBBackup(host);
       evidence  = new DBEvidence(host);
       build     = new DBBuild(host);
+      forwarder = new DBForwarder(host);
     }
     
     private function initDemo():void
@@ -155,6 +160,7 @@ package it.ht.rcs.console
       backup    = new DBBackupDemo();
       evidence  = new DBEvidenceDemo();
       build     = new DBBuildDemo();
+      forwarder = new DBForwarderDemo();
     }
     
     public static function hostAutocomplete(host:String):String

@@ -27,6 +27,7 @@ package it.ht.rcs.console.monitor.controller
     {
       super.refresh();
       DB.instance.monitor.all(onResult);
+      DB.instance.monitor.counters(onMonitorCounters);
     }
     
     private function onResult(e:ResultEvent):void
