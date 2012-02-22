@@ -98,7 +98,7 @@ internal class _ForwarderEntityMetadata extends com.adobe.fiber.valueobjects.Abs
 
             // collection base map
             model_internal::collectionBaseMap = new Object();
-            model_internal::collectionBaseMap["path"] = "String";
+            model_internal::collectionBaseMap["path"] = "Object";
         }
 
         // Property type Map

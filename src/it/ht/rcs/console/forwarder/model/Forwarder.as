@@ -18,6 +18,18 @@ import com.adobe.fiber.core.model_internal;
 public class Forwarder extends _Super_Forwarder
 {
   
+    public static function defaultForwarder():Object
+    {
+      return {
+        _id: '',
+        enabled: false,
+        type: 'JSON',
+        keep: true,
+        raw: false,
+        dest: ''
+      };
+    }
+  
     public function Forwarder(data:Object=null)
     {
       if (data) {

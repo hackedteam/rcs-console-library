@@ -44,9 +44,9 @@ package it.ht.rcs.console.forwarder.controller
     public function addForwarder(f:Object, callback:Function):void
     {     
       DB.instance.forwarder.create(f, function (e:ResultEvent):void {
-        var j:Forwarder = e.result as Forwarder;
-        _items.addItem(j);
-        callback(j);
+        var fo:Forwarder = e.result as Forwarder;
+        addItem(fo);
+        callback(fo);
       });
     }
   }

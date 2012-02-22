@@ -40,7 +40,7 @@ internal class _Super_DBForwarder extends com.adobe.fiber.services.wrapper.HTTPS
          operation = new mx.rpc.http.Operation(null, "create_");
          operation.url = "/forwarder";
          operation.method = "POST";
-         operation.serializationFilter = serializer1;
+         operation.serializationFilter = serializer0;
          operation.contentType = "application/xml";
          operation.resultType = it.ht.rcs.console.forwarder.model.Forwarder;
          operations.push(operation);
