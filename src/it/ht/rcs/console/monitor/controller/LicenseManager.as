@@ -93,6 +93,7 @@ package it.ht.rcs.console.monitor.controller
       rmi = limits['rmi'];
       
       shards.max = (limits['shards'] == null) ? 'U' : limits['shards'].toString();
+      dispatchDataLoadedEvent();
     }
 
     private function onLoadCount(e:ResultEvent):void

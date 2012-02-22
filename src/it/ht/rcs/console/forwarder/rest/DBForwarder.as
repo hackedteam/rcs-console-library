@@ -44,7 +44,7 @@ public class DBForwarder extends _Super_DBForwarder implements IDBForwarder
     public function destroy(f:Forwarder, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = destroy_(f._id);
+      resp.token = destroy_(JSON.stringify({_id: f._id}));
     }
     
     public function update(f:Forwarder, property:Object, onResult:Function=null, onFault:Function=null):void
