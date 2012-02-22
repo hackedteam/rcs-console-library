@@ -11,7 +11,7 @@ package it.ht.rcs.console.search.rest
   public class DBSearchDemo implements IDBSearch
   {
     
-    private var items:ArrayCollection = new ArrayCollection();
+    private static var items:ArrayCollection = new ArrayCollection();
     
     public function DBSearchDemo()
     {
@@ -20,7 +20,7 @@ package it.ht.rcs.console.search.rest
       DBAgentDemo.agents.source.forEach(addItemAsSearchItem);
     }
     
-    private function addItemAsSearchItem(item:*, index:int, array:Array):void 
+    public static function addItemAsSearchItem(item:*, index:int, array:Array):void 
     { 
       items.addItem(new SearchItem(item)); 
     }

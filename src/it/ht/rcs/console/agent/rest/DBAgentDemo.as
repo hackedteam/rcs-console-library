@@ -5,6 +5,7 @@ package it.ht.rcs.console.agent.rest
   import it.ht.rcs.console.operation.model.Operation;
   import it.ht.rcs.console.search.model.Stat;
   import it.ht.rcs.console.search.model.StatEvidence;
+  import it.ht.rcs.console.search.rest.DBSearchDemo;
   import it.ht.rcs.console.target.model.Target;
   
   import mx.collections.ArrayCollection;
@@ -65,8 +66,16 @@ package it.ht.rcs.console.agent.rest
     
     public function show(id:String, onResult:Function=null, onFault:Function=null):void
     {
+      var found:* = null;
+      for each (var item:* in agents.source) {
+        if (item._id == id) {
+          found = item;
+          break;
+        }
+      }
+      
       if (onResult != null)
-        onResult(new ResultEvent('agent.show')); // TODO: find real agent
+        onResult(new ResultEvent('agent.show', false, true, found));
     }
     
     public function create(params:Object, operation:Operation, target:Target, onResult:Function=null, onFault:Function=null):void
@@ -76,6 +85,7 @@ package it.ht.rcs.console.agent.rest
       var agent:Agent = new Agent(params);
       agent.path = [operation._id, target._id];
       agents.addItem(agent);
+      DBSearchDemo.addItemAsSearchItem(agent, 0, null);
       
       if (onResult != null)
         onResult(new ResultEvent('agent.create', false, true, agent));
@@ -97,13 +107,14 @@ package it.ht.rcs.console.agent.rest
     {
       // TODO: what happens in demo when we add a config?
       var a:Agent = agents.getItemAt(agents.getItemIndex(agent)) as Agent;
+      var c:Config = new Config({_id: new Date().time.toString(), config: config});
       if (a._kind == 'factory')
         if (a.configs.length == 0)
-          a.configs.addItem(config);
+          a.configs.addItem(c);
         else
-          a.configs.setItemAt(config, 0);
+          a.configs.setItemAt(c, 0);
       else
-        a.configs.addItemAt(config, 0);
+        a.configs.addItemAt(c, 0);
       
       if (onResult != null)
         onResult(new ResultEvent('agent.add_config'));
