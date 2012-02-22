@@ -3,6 +3,7 @@ package it.ht.rcs.console.target.rest
   import it.ht.rcs.console.operation.model.Operation;
   import it.ht.rcs.console.search.model.Stat;
   import it.ht.rcs.console.search.model.StatEvidence;
+  import it.ht.rcs.console.search.rest.DBSearchDemo;
   import it.ht.rcs.console.target.model.Target;
   
   import mx.collections.ArrayCollection;
@@ -41,6 +42,7 @@ package it.ht.rcs.console.target.rest
       var target:Target = new Target(params);
       target.path = [operation._id];
       targets.addItem(target);
+      DBSearchDemo.addItemAsSearchItem(target, 0, null);
       
       if (onResult != null)
         onResult(new ResultEvent('target.create', false, true, target));

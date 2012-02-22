@@ -1,7 +1,9 @@
 package it.ht.rcs.console.operation.rest
 {
+  import it.ht.rcs.console.DB;
   import it.ht.rcs.console.operation.model.Operation;
   import it.ht.rcs.console.search.model.Stat;
+  import it.ht.rcs.console.search.rest.DBSearchDemo;
   
   import mx.collections.ArrayCollection;
   import mx.rpc.events.ResultEvent;
@@ -27,9 +29,11 @@ package it.ht.rcs.console.operation.rest
     
     public function create(params:Object, onResult:Function=null, onFault:Function=null):void
     {
-      var operation:Operation = new Operation(params);
       params._id = new Date().time.toString();
+      
+      var operation:Operation = new Operation(params);
       operations.addItem(operation);
+      DBSearchDemo.addItemAsSearchItem(operation, 0, null);
       
       if (onResult != null)
         onResult(new ResultEvent('operation.create', false, true, operation));
