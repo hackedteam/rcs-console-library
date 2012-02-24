@@ -1,5 +1,7 @@
 package it.ht.rcs.console.network.controller
 {
+  import flash.globalization.Collator;
+  
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.network.model.Collector;
@@ -37,6 +39,10 @@ package it.ht.rcs.console.network.controller
       {
         var current:Collector = item as Collector;
         var next:Collector;
+        var prev:Collector = current.prev[0] == null ? null : getItem(current.prev[0]) as Collector;
+        if (prev)
+          prev.next = [null];
+        
         do {
           current.prev = [null];
           next = current.next[0] == null ? null : getItem(current.next[0]) as Collector;
