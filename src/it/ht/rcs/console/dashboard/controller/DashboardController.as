@@ -79,6 +79,7 @@ package it.ht.rcs.console.dashboard.controller
       dashboardItem.targets = updateTargetList(dashboardItem, item);
       dashboardItem.name = item.name;
       dashboardItem.lastSync = item.stat.last_sync;
+      dashboardItem.lastSyncStatus = item.stat.last_sync_status;
       
     }
     

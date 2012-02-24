@@ -19,6 +19,7 @@ package it.ht.rcs.console.events
     public static const MONITOR:String     = "Monitor";
     
     public var section:String;
+    public var subsection:String;
     public var item:SearchItem;
     
     public function SectionEvent(type:String, bubbles:Boolean=false, cancelable:Boolean=false)
