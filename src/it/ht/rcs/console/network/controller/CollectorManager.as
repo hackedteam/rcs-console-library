@@ -31,6 +31,23 @@ package it.ht.rcs.console.network.controller
       dispatchDataLoadedEvent();
     }
     
+    override public function removeItem(item:Object):void
+    {
+      if (item is Collector)
+      {
+        var current:Collector = item as Collector;
+        var next:Collector;
+        do {
+          current.prev = [null];
+          next = current.next[0] == null ? null : getItem(current.next[0]) as Collector;
+          current.next = [null];
+          current = next;
+        } while (next != null);
+      }
+      
+      super.removeItem(item);
+    }
+    
     override protected function onItemRemove(o:*):void
     {
       DB.instance.collector.destroy(o._id);
