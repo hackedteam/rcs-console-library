@@ -24,6 +24,7 @@ package it.ht.rcs.console.dashboard.controller
     [Bindable] public var totTot:Number = 0;
     
     [Bindable] public var lastSync:Number = 0;
+    [Bindable] public var lastSyncStatus:Number = 0;
     
     [Bindable] public var baseline:Stat;
     public var targetBaselines:Object = {};
