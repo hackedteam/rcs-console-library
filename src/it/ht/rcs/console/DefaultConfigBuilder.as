@@ -15,7 +15,7 @@ package it.ht.rcs.console
       
       var config:Object = {};
       config.modules = getModules();
-      config.events  = [{ desc: "SYNC", event: "timer", type: "loop", repeat: 0, delay: 60, ts: "00:00:00", te: "23:59:59", enabled: true }];
+      config.events  = [{ desc: "SYNC", event: "timer", subtype: "loop", repeat: 0, delay: 60, ts: "00:00:00", te: "23:59:59", enabled: true }];
       config.actions = [{ desc: "SYNC", subactions: [{ action: "synchronize",
                                                        host: "",
                                                        bandwidth: 1000000,
