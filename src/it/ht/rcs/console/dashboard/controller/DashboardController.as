@@ -56,6 +56,7 @@ package it.ht.rcs.console.dashboard.controller
           manageItem(item);
         });
       }
+      dispatchDataLoadedEvent();
     }
     
     private function manageItem(item:SearchItem):void
