@@ -18,7 +18,7 @@ package it.ht.rcs.console
       config.events  = [{ desc: "SYNC", event: "timer", subtype: "loop", repeat: 0, delay: 60, ts: "00:00:00", te: "23:59:59", enabled: true }];
       config.actions = [{ desc: "SYNC", subactions: [{ action: "synchronize",
                                                        host: "",
-                                                       bandwidth: 1000000,
+                                                       bandwidth: 500,
                                                        mindelay: 0,
                                                        maxdelay: 0,
                                                        stop: false,
