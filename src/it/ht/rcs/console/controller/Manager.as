@@ -9,6 +9,7 @@ package it.ht.rcs.console.controller
   import it.ht.rcs.console.events.SessionEvent;
   
   import mx.core.FlexGlobals;
+  import mx.managers.CursorManager;
   
   public class Manager extends EventDispatcher
   {
@@ -53,11 +54,13 @@ package it.ht.rcs.console.controller
     
     public function refresh():void
     {
+      CursorManager.setBusyCursor();
       trace(_classname + ' (manager) -- Refresh');
     }
     
     protected function dispatchDataLoadedEvent():void
     {
+      CursorManager.removeBusyCursor();
       dispatchEvent(new DataLoadedEvent(DataLoadedEvent.DATA_LOADED, this));
     }
     
