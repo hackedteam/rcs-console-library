@@ -29,7 +29,7 @@ package it.ht.rcs.console.operation.rest
     public function destroy(id:String, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = destroy_(id);
+      resp.token = destroy_(JSON.stringify({_id: id}));
     }
     
     public function show(id:String, onResult:Function=null, onFault:Function=null):void
