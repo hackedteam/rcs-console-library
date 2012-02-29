@@ -67,6 +67,12 @@ package it.ht.rcs.console.agent.rest
       resp.token = del_config_(JSON.stringify(params)); 
     }
     
+    public function upgrade(agent:Agent, onResult:Function=null, onFault:Function=null):void
+    {      
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = upgrade_(JSON.stringify({_id: agent._id}));
+    }
+    
     /**
      * Override super.init() to provide any initialization customization if needed.
      */
