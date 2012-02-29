@@ -2,6 +2,7 @@ package it.ht.rcs.console.update.rest
 {
   import it.ht.rcs.console.update.model.UpdateVersions;
   
+  import mx.collections.ArrayCollection;
   import mx.rpc.events.ResultEvent;
 
   public class DBUpdateDemo implements IDBUpdate
@@ -19,7 +20,9 @@ package it.ht.rcs.console.update.rest
 
     public function core_all(onResult:Function=null, onFault:Function=null):void
     {
-
+      var event:ResultEvent = new ResultEvent("update.core_all", false, true, new ArrayCollection());
+      if (onResult != null) 
+        onResult(event);
     }
   }
 }
