@@ -14,6 +14,8 @@ package it.ht.rcs.console.agent.rest
     
     function update(agent:Agent, property:Object, onResult:Function=null, onFault:Function=null):void;
     
+    function upgrade(agent:Agent, onResult:Function=null, onFault:Function=null):void;
+    
     function destroy(id:String, onResult:Function=null, onFault:Function=null):void;
     
     function add_config(agent:Agent, config: String, onResult:Function=null, onFault:Function=null):void;

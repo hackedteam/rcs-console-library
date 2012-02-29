@@ -34,7 +34,12 @@ public class DBUpdate extends _Super_DBUpdate implements IDBUpdate
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
       resp.token = all_();
     }
-    
+
+    public function core_all(onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = core_all_();
+    }
 }
 
 }

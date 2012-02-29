@@ -73,6 +73,12 @@ package it.ht.rcs.console.agent.controller
       DB.instance.agent.show(_id, callback);
     }
     
+    public function upgrade(a:Agent):void
+    {
+      a.upgradable = true;
+      DB.instance.agent.upgrade(a); 
+    }
+    
   }
   
 }
