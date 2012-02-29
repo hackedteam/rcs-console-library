@@ -20,7 +20,9 @@ package it.ht.rcs.console.update.rest
 
     public function core_all(onResult:Function=null, onFault:Function=null):void
     {
-      var event:ResultEvent = new ResultEvent("core.index", false, true, new ArrayCollection());
+      var event:ResultEvent = new ResultEvent("core.index", false, true, new ArrayCollection([
+        
+        ]));
       if (onResult != null) 
         onResult(event);
     }
