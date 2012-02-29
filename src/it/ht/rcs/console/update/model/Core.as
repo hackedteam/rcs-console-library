@@ -46,6 +46,14 @@ public class Core extends _Super_Core
      * END OF DO NOT MODIFY SECTION
      *
      **/    
+    
+    public function Core(data:Object=null)
+    {
+      if (data) {
+        name = data.name;
+        version = data.version;
+      }
+    }
 }
 
 }

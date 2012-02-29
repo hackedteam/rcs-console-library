@@ -1,5 +1,6 @@
 package it.ht.rcs.console.update.rest
 {
+  import it.ht.rcs.console.update.model.Core;
   import it.ht.rcs.console.update.model.UpdateVersions;
   
   import mx.collections.ArrayCollection;
@@ -20,7 +21,15 @@ package it.ht.rcs.console.update.rest
 
     public function core_all(onResult:Function=null, onFault:Function=null):void
     {
-      var event:ResultEvent = new ResultEvent("update.core_all", false, true, new ArrayCollection());
+      var event:ResultEvent = new ResultEvent("core.index", false, true, new ArrayCollection([
+          new Core({name: 'windows', version: '2012010101'}),
+          new Core({name: 'osx', version: '2012010101'}),
+          new Core({name: 'android', version: '2012010101'}),
+          new Core({name: 'blackberry', version: '2012010101'}),
+          new Core({name: 'ios', version: '2012010101'}),
+          new Core({name: 'symbian', version: '2012010101'}),
+          new Core({name: 'winmo', version: '2012010101'})
+        ]));
       if (onResult != null) 
         onResult(event);
     }
