@@ -35,11 +35,6 @@ package it.ht.rcs.console.agent.controller
       dispatchDataLoadedEvent();
     }
     
-    override protected function onItemRemove(item:*):void
-    {
-      DB.instance.agent.destroy(item._id);
-    }
-    
     override protected function onItemUpdate(event:*):void
     {
       var property:Object = new Object();
@@ -77,6 +72,17 @@ package it.ht.rcs.console.agent.controller
     {
       a.upgradable = true;
       DB.instance.agent.upgrade(a); 
+    }
+
+    override protected function onItemRemove(item:*):void
+    {
+      // don't do it here, we use the method below to use the permament flag
+    }
+    
+    public function delAgent(a:Object, permanent:Boolean=false):void
+    {
+      removeItem(a);
+      DB.instance.agent.destroy(a._id, permanent);
     }
     
   }
