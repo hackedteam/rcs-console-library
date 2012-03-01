@@ -5,16 +5,12 @@ package it.ht.rcs.console.evidence.controller
   import flash.events.IOErrorEvent;
   import flash.events.SecurityErrorEvent;
   import flash.filesystem.File;
-  import flash.filesystem.FileMode;
-  import flash.filesystem.FileStream;
   import flash.net.URLRequest;
-  import flash.utils.ByteArray;
   
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.events.FilterEvent;
   import it.ht.rcs.console.utils.AlertPopUp;
-  import it.ht.rcs.console.utils.DateUtils;
   
   import mx.collections.ArrayCollection;
   import mx.collections.AsyncListView;
@@ -22,7 +18,6 @@ package it.ht.rcs.console.evidence.controller
   import mx.collections.ListCollectionView;
   import mx.core.FlexGlobals;
   import mx.events.CollectionEvent;
-  import mx.rpc.events.FaultEvent;
   import mx.rpc.events.ResultEvent;
 
   
@@ -39,9 +34,6 @@ package it.ht.rcs.console.evidence.controller
     override public function refresh():void
     {
       super.refresh();
-      //DB.instance.audit.filters(onFiltersResult);
-      //if(!filter.hasOwnProperty('from'))
-      //  setDefaultDate();
       DB.instance.evidence.all(filter, onResult);
     }
     
@@ -57,6 +49,7 @@ package it.ht.rcs.console.evidence.controller
       var alv:AsyncListView = new AsyncListView(e.result as ArrayCollection)
       alv.addEventListener(CollectionEvent.COLLECTION_CHANGE, onDataProviderChange);
       _view = new ListCollectionView(alv);
+      dispatchDataLoadedEvent();
     }
     
     private function onFilterChanged(event:FilterEvent):void
@@ -69,7 +62,6 @@ package it.ht.rcs.console.evidence.controller
       _view.list.removeEventListener(CollectionEvent.COLLECTION_CHANGE, onDataProviderChange);
     }
     
-    
     [Bindable]
     public var _view:ListCollectionView;
     
@@ -79,21 +71,6 @@ package it.ht.rcs.console.evidence.controller
       return _view;
     }
     
-    private function setDefaultDate():void
-    {
-      var today:Date = new Date();
-      today.hours = today.minutes = today.seconds = today.milliseconds = 0;
-      
-      var from:Date = DateUtils.addDays(today, -5);
-      filter.from = from.time / 1000;
-      
-      var to:Date = today;
-      to.hours = 23; to.minutes = 59;
-      filter.to = to.time / 1000;
-    }
-    
-    
-
     public function sync(factory:String, instance:String, platform:String, version:String, user:String, device:String, onResult:Function = null):void
     {
       DB.instance.evidence.agent_status({ident: factory, instance: instance, subtype: platform}, function (event:ResultEvent):void {
@@ -120,4 +97,5 @@ package it.ht.rcs.console.evidence.controller
     }
     
   }
+  
 }

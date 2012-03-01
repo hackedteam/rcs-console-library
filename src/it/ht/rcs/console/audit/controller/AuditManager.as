@@ -23,23 +23,11 @@ package it.ht.rcs.console.audit.controller
     [Bindable]
     public var filter:Object = {};
     
-//    override public function start():void
-//    {
-//      super.start();
-//      FlexGlobals.topLevelApplication.addEventListener(FilterEvent.FILTER_CHANGED, onFilterChanged);
-//    }
-//    
-//    override public function stop():void
-//    {
-//      super.stop();
-//      FlexGlobals.topLevelApplication.removeEventListener(FilterEvent.FILTER_CHANGED, onFilterChanged);
-//    }
-    
     override public function refresh():void
     {
       super.refresh();
       DB.instance.audit.filters(onFiltersResult);
-      if(!filter.hasOwnProperty('from'))
+      if (!filter.hasOwnProperty('from'))
         setDefaultDate();
       DB.instance.audit.all(filter, onResult);
     }
@@ -56,11 +44,7 @@ package it.ht.rcs.console.audit.controller
       var alv:AsyncListView = new AsyncListView(e.result as ArrayCollection)
       alv.addEventListener(CollectionEvent.COLLECTION_CHANGE, onDataProviderChange);
       _view = new ListCollectionView(alv);
-    }
-    
-    private function onFilterChanged(event:FilterEvent):void
-    {
-      refresh();
+      dispatchDataLoadedEvent();
     }
     
     private function onDataProviderChange(event:CollectionEvent):void
@@ -82,7 +66,7 @@ package it.ht.rcs.console.audit.controller
       var today:Date = new Date();
       today.hours = today.minutes = today.seconds = today.milliseconds = 0;
       
-      var from:Date = DateUtils.addDays(today, -5);
+      var from:Date = DateUtils.addDays(today, -1);
       filter.from = from.time / 1000;
       
       var to:Date = today;
