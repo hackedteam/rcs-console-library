@@ -98,7 +98,7 @@ package it.ht.rcs.console.agent.rest
         onResult(new ResultEvent('agent.update'));
     }
     
-    public function destroy(id:String, onResult:Function=null, onFault:Function=null):void
+    public function destroy(id:String, permanent:Boolean=false, onResult:Function=null, onFault:Function=null):void
     {
       if (onResult != null)
         onResult(new ResultEvent('agent.destroy'));
