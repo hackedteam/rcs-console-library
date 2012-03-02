@@ -28,7 +28,7 @@ package it.ht.rcs.console.evidence.controller
     public static function get instance():EvidenceManager { return _instance; } 
     
     [Bindable]
-    public var filter:Object = {};
+    public var filter:Object = {relevance: ['all']};
     
     override public function refresh():void
     {
