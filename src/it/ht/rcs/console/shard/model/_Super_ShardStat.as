@@ -54,9 +54,9 @@ public class _Super_ShardStat extends flash.events.EventDispatcher implements co
     private var _internal_fileSize : int;
     private var _internal_numExtents : int;
     private var _internal_db : String;
-    private var _internal_dataSize : int;
+    private var _internal_dataSize : Number;
     private var _internal_indexes : int;
-    private var _internal_storageSize : int;
+    private var _internal_storageSize : Number;
     private var _internal_ok : Number;
     private var _internal_indexSize : int;
     private var _internal_errmsg : String;
@@ -108,7 +108,7 @@ public class _Super_ShardStat extends flash.events.EventDispatcher implements co
     }
 
     [Bindable(event="propertyChange")]
-    public function get dataSize() : int
+    public function get dataSize() : Number
     {
         return _internal_dataSize;
     }
@@ -120,7 +120,7 @@ public class _Super_ShardStat extends flash.events.EventDispatcher implements co
     }
 
     [Bindable(event="propertyChange")]
-    public function get storageSize() : int
+    public function get storageSize() : Number
     {
         return _internal_storageSize;
     }
@@ -199,10 +199,10 @@ public class _Super_ShardStat extends flash.events.EventDispatcher implements co
         }
     }
 
-    public function set dataSize(value:int) : void
+    public function set dataSize(value:Number) : void
     {
-        var oldValue:int = _internal_dataSize;
-        if (oldValue !== value)
+        var oldValue:Number = _internal_dataSize;
+        if (isNaN(_internal_dataSize) == true || Math.abs(oldValue - value) > epsilon)
         {
             _internal_dataSize = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "dataSize", oldValue, _internal_dataSize));
@@ -219,10 +219,10 @@ public class _Super_ShardStat extends flash.events.EventDispatcher implements co
         }
     }
 
-    public function set storageSize(value:int) : void
+    public function set storageSize(value:Number) : void
     {
-        var oldValue:int = _internal_storageSize;
-        if (oldValue !== value)
+        var oldValue:Number = _internal_storageSize;
+        if (isNaN(_internal_storageSize) == true || Math.abs(oldValue - value) > epsilon)
         {
             _internal_storageSize = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "storageSize", oldValue, _internal_storageSize));

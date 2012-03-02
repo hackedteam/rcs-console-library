@@ -76,9 +76,9 @@ internal class _ShardStatEntityMetadata extends com.adobe.fiber.valueobjects.Abs
         model_internal::propertyTypeMap["fileSize"] = "int";
         model_internal::propertyTypeMap["numExtents"] = "int";
         model_internal::propertyTypeMap["db"] = "String";
-        model_internal::propertyTypeMap["dataSize"] = "int";
+        model_internal::propertyTypeMap["dataSize"] = "Number";
         model_internal::propertyTypeMap["indexes"] = "int";
-        model_internal::propertyTypeMap["storageSize"] = "int";
+        model_internal::propertyTypeMap["storageSize"] = "Number";
         model_internal::propertyTypeMap["ok"] = "Number";
         model_internal::propertyTypeMap["indexSize"] = "int";
         model_internal::propertyTypeMap["errmsg"] = "String";
