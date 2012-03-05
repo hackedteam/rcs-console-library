@@ -28,7 +28,10 @@ package it.ht.rcs.console.evidence.controller
     public static function get instance():EvidenceManager { return _instance; } 
     
     [Bindable]
-    public var filter:Object = {relevance: ['all']};
+    public const filter:Object = {relevance: ['all']};
+    
+    [Bindable]
+    public const infoFilter:Object = {};
     
     override public function refresh():void
     {
