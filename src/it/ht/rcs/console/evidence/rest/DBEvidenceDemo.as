@@ -22,6 +22,10 @@ package it.ht.rcs.console.evidence.rest
     public function sync_stop(params:Object, onResult:Function=null, onFault:Function=null):void
     {
     }
+	
+	public function info(filter:Object, onResult:Function=null, onFault:Function=null):void
+	{
+	}
     
   }
   
