@@ -39,9 +39,9 @@ package it.ht.rcs.console.monitor.controller
     }
     
     override protected function onItemRemove(o:*):void 
-    { 
-      DB.instance.monitor.destroy(o._id);
-      // update baloon?
+    {
+      // refresh the counters after deletion
+      DB.instance.monitor.destroy(o._id, onAutoRefresh);
     }
     
     override protected function onLogout(e:SessionEvent):void
@@ -78,6 +78,11 @@ package it.ht.rcs.console.monitor.controller
       autoRefresh.stop();
     }
 
+    public function refreshCounters():void
+    {
+      onAutoRefresh(null);
+    }
+    
     public var refreshView:Boolean = false;
     private function onAutoRefresh(e:Event):void
     {
