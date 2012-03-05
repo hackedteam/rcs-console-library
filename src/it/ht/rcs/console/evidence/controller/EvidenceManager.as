@@ -28,10 +28,7 @@ package it.ht.rcs.console.evidence.controller
     public static function get instance():EvidenceManager { return _instance; } 
     
     [Bindable]
-    public const filter:Object = {relevance: ['all']};
-    
-    [Bindable]
-    public const infoFilter:Object = {};
+    public var filter:Object = {relevance: ['all']};
     
     override public function refresh():void
     {
@@ -63,8 +60,6 @@ package it.ht.rcs.console.evidence.controller
       _view = new ListCollectionView(alv);
       dispatchDataLoadedEvent();
     }
-	
-	
     
     private function onFilterChanged(event:FilterEvent):void
     {
@@ -75,13 +70,6 @@ package it.ht.rcs.console.evidence.controller
     {
       _view.list.removeEventListener(CollectionEvent.COLLECTION_CHANGE, onDataProviderChange);
     }
-	
-    public function info(filter:Object, onInfoResult:Function):void
-    {
-    	DB.instance.evidence.info(filter, onInfoResult)
-    }
-	
-	
     
     [Bindable]
     public var _view:ListCollectionView;
