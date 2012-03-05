@@ -60,6 +60,8 @@ package it.ht.rcs.console.evidence.controller
       _view = new ListCollectionView(alv);
       dispatchDataLoadedEvent();
     }
+	
+	
     
     private function onFilterChanged(event:FilterEvent):void
     {
@@ -70,6 +72,13 @@ package it.ht.rcs.console.evidence.controller
     {
       _view.list.removeEventListener(CollectionEvent.COLLECTION_CHANGE, onDataProviderChange);
     }
+	
+    public function info(filter:Object, onInfoResult:Function):void
+    {
+    	DB.instance.evidence.info(filter, onInfoResult)
+    }
+	
+	
     
     [Bindable]
     public var _view:ListCollectionView;
