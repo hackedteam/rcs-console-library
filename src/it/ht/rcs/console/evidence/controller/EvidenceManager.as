@@ -28,23 +28,18 @@ package it.ht.rcs.console.evidence.controller
     public static function get instance():EvidenceManager { return _instance; } 
     
     [Bindable]
-    public var filter:Object = {relevance: ['all']};
+    public var evidenceFilter:Object = {relevance: ['all']};
+    
+    [Bindable]
+    public var infoFilter:Object = {relevance: ['all']};
     
     override public function refresh():void
     {
       super.refresh();
-      printFilterObject();
-      DB.instance.evidence.all(filter, onResult);
+      DB.instance.evidence.all(evidenceFilter, onResult);
     }
     
-    private function printFilterObject():void
-    {
-      trace('--- START');
-      for (var key:String in filter) {
-        trace(key + ": " + filter[key]);
-      }
-      trace('--- END');
-    }
+    
     
     private function onFiltersResult(event:ResultEvent):void
     {
@@ -61,8 +56,6 @@ package it.ht.rcs.console.evidence.controller
       dispatchDataLoadedEvent();
     }
 	
-	
-    
     private function onFilterChanged(event:FilterEvent):void
     {
       refresh();
@@ -73,9 +66,9 @@ package it.ht.rcs.console.evidence.controller
       _view.list.removeEventListener(CollectionEvent.COLLECTION_CHANGE, onDataProviderChange);
     }
 	
-    public function info(filter:Object, onInfoResult:Function):void
+    public function info( onInfoResult:Function):void
     {
-    	DB.instance.evidence.info(filter, onInfoResult)
+    	DB.instance.evidence.info(infoFilter, onInfoResult)
     }
 	
 	
