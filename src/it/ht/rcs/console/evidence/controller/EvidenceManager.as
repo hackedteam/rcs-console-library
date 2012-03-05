@@ -19,7 +19,6 @@ package it.ht.rcs.console.evidence.controller
   import mx.core.FlexGlobals;
   import mx.events.CollectionEvent;
   import mx.rpc.events.ResultEvent;
-
   
   public class EvidenceManager extends ItemManager
   {
@@ -29,12 +28,22 @@ package it.ht.rcs.console.evidence.controller
     public static function get instance():EvidenceManager { return _instance; } 
     
     [Bindable]
-    public var filter:Object = {};
+    public var filter:Object = {relevance: ['all']};
     
     override public function refresh():void
     {
       super.refresh();
+      printFilterObject();
       DB.instance.evidence.all(filter, onResult);
+    }
+    
+    private function printFilterObject():void
+    {
+      trace('--- START');
+      for (var key:String in filter) {
+        trace(key + ": " + filter[key]);
+      }
+      trace('--- END');
     }
     
     private function onFiltersResult(event:ResultEvent):void
