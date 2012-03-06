@@ -28,7 +28,7 @@ package it.ht.rcs.console.evidence.controller
     public static function get instance():EvidenceManager { return _instance; } 
     
     [Bindable]
-    public var evidenceFilter:Object = {relevance: ['all']};
+    public var evidenceFilter:Object = {};
     
     [Bindable]
     public var infoFilter:Object = {};
