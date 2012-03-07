@@ -39,31 +39,39 @@ package it.ht.rcs.console.evidence.controller
       DB.instance.evidence.all(evidenceFilter, onResult);
     }
     
-    private function onFiltersResult(event:ResultEvent):void
+  /*  private function onFiltersResult(event:ResultEvent):void
     {
       var e:FilterEvent = new FilterEvent(FilterEvent.FILTER_VALUES_CHANGED);
       e.filterValues = event.result;
       FlexGlobals.topLevelApplication.dispatchEvent(e);
     }
-    
-    private function onResult(e:ResultEvent):void
+    */
+   /* private function onResult(e:ResultEvent):void
     {
       var alv:AsyncListView = new AsyncListView(e.result as ArrayCollection)
       alv.addEventListener(CollectionEvent.COLLECTION_CHANGE, onDataProviderChange);
       _view = new ListCollectionView(alv);
       dispatchDataLoadedEvent();
+    }*/
+    
+    private function onResult(e:ResultEvent):void
+    {
+      clear();
+      for each (var item:* in e.result.source)
+        addItem(item);
+      dispatchDataLoadedEvent();
     }
     
-    private function onDataProviderChange(event:CollectionEvent):void
+    /*private function onDataProviderChange(event:CollectionEvent):void
     {
       _view.list.removeEventListener(CollectionEvent.COLLECTION_CHANGE, onDataProviderChange);
     }
-	
+	*/
     public function info(onInfoResult:Function):void
     {
     	DB.instance.evidence.info(infoFilter, onInfoResult)
     }
-    
+    /*
     [Bindable]
     public var _view:ListCollectionView;
     
@@ -71,7 +79,7 @@ package it.ht.rcs.console.evidence.controller
     {
       super.getView(sortCriteria, filterFunction);
       return _view;
-    }
+    }*/
     
     public function sync(factory:String, instance:String, platform:String, version:String, user:String, device:String, onResult:Function = null):void
     {
@@ -87,6 +95,11 @@ package it.ht.rcs.console.evidence.controller
           AlertPopUp.show("Invalid Agent Status, cannot import");
         }
       });
+    }
+    
+    override protected function onItemUpdate(event:*):void
+    {
+      trace("update")
     }
     
     public function uploadEvidence(id:String, file:File, onResult:Function = null, onFault:Function = null):void

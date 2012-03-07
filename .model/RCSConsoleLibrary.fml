@@ -3398,49 +3398,6 @@
       <item name="DEFAULT_ENTITY_PACKAGE">it.ht.rcs.console.evidence.model</item>
       <item name="LINKED_FILE"></item>
     </annotation>
-    <function name="all_" return-type="Evidence[]">
-      <annotation name="analyze group">
-        <item name="analyzed">true</item>
-      </annotation>
-      <annotation name="ActionScriptGeneration">
-        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
-        <item name="method">GET</item>
-        <item name="url">/evidence</item>
-      </annotation>
-      <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/evidence</item>
-      </annotation>
-      <annotation name="ValidProperties">
-        <item name="propertySpecifier">blotter,_id,relevance,data,acquired,received,agent_id,type,note</item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="returnType">opaque</item>
-        <item name="inputParamNames">filter,startIndex,numItems</item>
-        <item name="inputParams">string,integer,integer</item>
-      </annotation>
-      <parameter name="filter" type="string"/>
-      <parameter name="startIndex" type="integer"/>
-      <parameter name="numItems" type="integer"/>
-    </function>
-    <function name="count_" return-type="integer">
-      <annotation name="analyze group">
-        <item name="analyzed">true</item>
-      </annotation>
-      <annotation name="ActionScriptGeneration">
-        <item name="SerializationFilter">com.adobe.serializers.xml.XMLSerializationFilter</item>
-        <item name="method">GET</item>
-        <item name="url">/evidence/count</item>
-      </annotation>
-      <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/evidence/count</item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="returnType">opaque</item>
-        <item name="inputParamNames">filter</item>
-        <item name="inputParams">string</item>
-      </annotation>
-      <parameter name="filter" type="string"/>
-    </function>
     <function name="agent_status_" return-type="AgentStatus">
       <annotation name="analyze group">
         <item name="analyzed">true</item>
@@ -3464,6 +3421,28 @@
         <item name="inputParams">string</item>
       </annotation>
       <parameter name="strXml" type="string"/>
+    </function>
+    <function name="info_" return-type="Evidence">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/evidence/info</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/evidence/info</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">blotter,_id,data,relevance,acquired,received,agent_id,type,_mid</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+        <item name="inputParamNames">filter</item>
+        <item name="inputParams">string</item>
+      </annotation>
+      <parameter name="filter" type="string"/>
     </function>
     <function name="sync_start_" return-type="void">
       <annotation name="analyze group">
@@ -3507,25 +3486,25 @@
       </annotation>
       <parameter name="strXml" type="string"/>
     </function>
-    <function name="info_" return-type="Evidence">
+    <function name="all_" return-type="Evidence">
       <annotation name="analyze group">
         <item name="analyzed">true</item>
       </annotation>
       <annotation name="ActionScriptGeneration">
-        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
         <item name="method">GET</item>
-        <item name="url">/evidence/info</item>
+        <item name="url">/evidence</item>
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
       </annotation>
       <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/evidence/info</item>
-      </annotation>
-      <annotation name="ValidProperties">
-        <item name="propertySpecifier">blotter,_id,data,relevance,acquired,received,agent_id,type,_mid</item>
+        <item name="completeURL">https://localhost:4444/evidence</item>
       </annotation>
       <annotation name="original signature">
         <item name="returnType">opaque</item>
         <item name="inputParamNames">filter</item>
         <item name="inputParams">string</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">blotter,_id,data,relevance,acquired,received,agent_id,type,_mid</item>
       </annotation>
       <parameter name="filter" type="string"/>
     </function>
@@ -3541,7 +3520,7 @@
       <item name="IncludeRemoteClass">nonempty</item>
     </annotation>
     <annotation name="all_">
-      <item name="propertySpecifier">blotter,_id,relevance,data,acquired,received,agent_id,type,note</item>
+      <item name="propertySpecifier">blotter,_id,data,relevance,acquired,received,agent_id,type,_mid</item>
       <item name="pagingEnabled">true</item>
       <item name="positionalPagingParameters">true</item>
       <item name="countOperation">count_</item>
@@ -3552,6 +3531,7 @@
     <annotation name="DataManagement">
       <item name="managingService">DBEvidence</item>
       <item name="fillFunc">all_</item>
+      <item name="findItem">info_</item>
     </annotation>
     <annotation name="info_">
       <item name="propertySpecifier">blotter,_id,data,relevance,acquired,received,agent_id,type,_mid</item>
