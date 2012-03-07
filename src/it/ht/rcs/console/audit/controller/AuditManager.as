@@ -6,10 +6,8 @@ package it.ht.rcs.console.audit.controller
   
   import mx.collections.ArrayCollection;
   import mx.collections.AsyncListView;
-  import mx.collections.ISort;
   import mx.collections.ListCollectionView;
   import mx.core.FlexGlobals;
-  import mx.events.CollectionEvent;
   import mx.rpc.events.ResultEvent;
   
   public class AuditManager extends ItemManager
@@ -26,8 +24,6 @@ package it.ht.rcs.console.audit.controller
     {
       super.refresh();
       DB.instance.audit.filters(onFiltersResult);
-//      if (!filter.hasOwnProperty('from'))
-//        setDefaultDate();
       DB.instance.audit.all(filter, onResult);
     }
     
@@ -38,40 +34,15 @@ package it.ht.rcs.console.audit.controller
       FlexGlobals.topLevelApplication.dispatchEvent(e);
     }
     
-    private function onResult(e:ResultEvent):void
-    {
-      var alv:AsyncListView = new AsyncListView(e.result as ArrayCollection)
-      alv.addEventListener(CollectionEvent.COLLECTION_CHANGE, onDataProviderChange);
-      _view = new ListCollectionView(alv);
-      dispatchDataLoadedEvent();
-    }
-    
-    private function onDataProviderChange(event:CollectionEvent):void
-    {
-      _view.list.removeEventListener(CollectionEvent.COLLECTION_CHANGE, onDataProviderChange);
-    }
-    
     [Bindable]
     public var _view:ListCollectionView;
     
-    override public function getView(sortCriteria:ISort=null, filterFunction:Function=null):ListCollectionView
+    private function onResult(e:ResultEvent):void
     {
-      super.getView(sortCriteria, filterFunction);
-      return _view;
+      var alv:AsyncListView = new AsyncListView(e.result as ArrayCollection)
+      _view = new ListCollectionView(alv);
+      dispatchDataLoadedEvent();
     }
-    
-//    private function setDefaultDate():void
-//    {
-//      var today:Date = new Date();
-//      today.hours = today.minutes = today.seconds = today.milliseconds = 0;
-//      
-//      var from:Date = DateUtils.addDays(today, -1);
-//      filter.from = from.time / 1000;
-//      
-//      var to:Date = today;
-//      to.hours = 23; to.minutes = 59;
-//      filter.to = to.time / 1000;
-//    }
     
 //    private function printFilterObject():void
 //    {

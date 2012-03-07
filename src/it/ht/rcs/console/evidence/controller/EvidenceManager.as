@@ -9,15 +9,12 @@ package it.ht.rcs.console.evidence.controller
   
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.controller.ItemManager;
-  import it.ht.rcs.console.events.FilterEvent;
   import it.ht.rcs.console.evidence.model.Evidence;
   import it.ht.rcs.console.utils.AlertPopUp;
   
   import mx.collections.ArrayCollection;
   import mx.collections.AsyncListView;
-  import mx.collections.ISort;
   import mx.collections.ListCollectionView;
-  import mx.core.FlexGlobals;
   import mx.events.CollectionEvent;
   import mx.rpc.events.ResultEvent;
   
@@ -52,19 +49,6 @@ package it.ht.rcs.console.evidence.controller
       _view = new ListCollectionView(alv);
       dispatchDataLoadedEvent();
     }
-    
-    /*
-    private function onDataProviderChange(event:CollectionEvent):void
-    {
-      _view.list.removeEventListener(CollectionEvent.COLLECTION_CHANGE, onDataProviderChange);
-    }
-    
-    override public function getView(sortCriteria:ISort=null, filterFunction:Function=null):ListCollectionView
-    {
-      super.getView(sortCriteria, filterFunction);
-      return _view;
-    }
-    */
     
     override protected function onItemUpdate(event:*):void
     {
