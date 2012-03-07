@@ -10,6 +10,7 @@ package it.ht.rcs.console.evidence.controller
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.events.FilterEvent;
+  import it.ht.rcs.console.evidence.model.Evidence;
   import it.ht.rcs.console.utils.AlertPopUp;
   
   import mx.collections.ArrayCollection;
@@ -22,6 +23,8 @@ package it.ht.rcs.console.evidence.controller
   
   public class EvidenceManager extends ItemManager
   {
+    
+    public function EvidenceManager() { super(Evidence); }
     
     /* singleton */
     private static var _instance:EvidenceManager = new EvidenceManager();
@@ -39,47 +42,41 @@ package it.ht.rcs.console.evidence.controller
       DB.instance.evidence.all(evidenceFilter, onResult);
     }
     
-  /*  private function onFiltersResult(event:ResultEvent):void
-    {
-      var e:FilterEvent = new FilterEvent(FilterEvent.FILTER_VALUES_CHANGED);
-      e.filterValues = event.result;
-      FlexGlobals.topLevelApplication.dispatchEvent(e);
-    }
-    */
-   /* private function onResult(e:ResultEvent):void
-    {
-      var alv:AsyncListView = new AsyncListView(e.result as ArrayCollection)
-      alv.addEventListener(CollectionEvent.COLLECTION_CHANGE, onDataProviderChange);
-      _view = new ListCollectionView(alv);
-      dispatchDataLoadedEvent();
-    }*/
+    [Bindable]
+    public var _view:ListCollectionView;
     
     private function onResult(e:ResultEvent):void
     {
-      clear();
-      for each (var item:* in e.result.source)
-        addItem(item);
+      var alv:AsyncListView = new AsyncListView(e.result as ArrayCollection);
+      alv.list.addEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
+      _view = new ListCollectionView(alv);
       dispatchDataLoadedEvent();
     }
     
-    /*private function onDataProviderChange(event:CollectionEvent):void
+    /*
+    private function onDataProviderChange(event:CollectionEvent):void
     {
       _view.list.removeEventListener(CollectionEvent.COLLECTION_CHANGE, onDataProviderChange);
     }
-	*/
-    public function info(onInfoResult:Function):void
-    {
-    	DB.instance.evidence.info(infoFilter, onInfoResult)
-    }
-    /*
-    [Bindable]
-    public var _view:ListCollectionView;
     
     override public function getView(sortCriteria:ISort=null, filterFunction:Function=null):ListCollectionView
     {
       super.getView(sortCriteria, filterFunction);
       return _view;
-    }*/
+    }
+    */
+    
+    override protected function onItemUpdate(event:*):void
+    {
+      var property:Object = new Object();
+      property[event.property] = event.newValue is ArrayCollection ? event.newValue.source : event.newValue;
+      DB.instance.evidence.update(event.source, property, evidenceFilter.target);
+    }
+    
+    public function info(onInfoResult:Function):void
+    {
+      DB.instance.evidence.info(infoFilter, onInfoResult);
+    }
     
     public function sync(factory:String, instance:String, platform:String, version:String, user:String, device:String, onResult:Function = null):void
     {
@@ -95,11 +92,6 @@ package it.ht.rcs.console.evidence.controller
           AlertPopUp.show("Invalid Agent Status, cannot import");
         }
       });
-    }
-    
-    override protected function onItemUpdate(event:*):void
-    {
-      trace("update")
     }
     
     public function uploadEvidence(id:String, file:File, onResult:Function = null, onFault:Function = null):void

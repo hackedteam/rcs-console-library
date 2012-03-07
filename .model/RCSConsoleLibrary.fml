@@ -3422,6 +3422,49 @@
       </annotation>
       <parameter name="strXml" type="string"/>
     </function>
+    <function name="all_" return-type="Evidence[]">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/evidence</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/evidence</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">blotter,_id,data,relevance,acquired,received,agent_id,type,_mid,note</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParamNames">filter,startIndex,numItems</item>
+        <item name="inputParams">string,integer,integer</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="filter" type="string"/>
+      <parameter name="startIndex" type="integer"/>
+      <parameter name="numItems" type="integer"/>
+    </function>
+    <function name="count_" return-type="integer">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.xml.XMLSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/evidence/count</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/evidence/count</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParamNames">filter</item>
+        <item name="inputParams">string</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="filter" type="string"/>
+    </function>
     <function name="info_" return-type="Evidence">
       <annotation name="analyze group">
         <item name="analyzed">true</item>
@@ -3486,27 +3529,29 @@
       </annotation>
       <parameter name="strXml" type="string"/>
     </function>
-    <function name="all_" return-type="Evidence">
+    <function name="update_" return-type="Evidence">
       <annotation name="analyze group">
         <item name="analyzed">true</item>
       </annotation>
       <annotation name="ActionScriptGeneration">
-        <item name="method">GET</item>
-        <item name="url">/evidence</item>
         <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">POST</item>
+        <item name="contentType">application/xml</item>
+        <item name="requestBodyParameter">true</item>
+        <item name="url">/evidence/update</item>
       </annotation>
       <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/evidence</item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="returnType">opaque</item>
-        <item name="inputParamNames">filter</item>
-        <item name="inputParams">string</item>
+        <item name="completeURL">https://localhost:4444/evidence/update</item>
       </annotation>
       <annotation name="ValidProperties">
-        <item name="propertySpecifier">blotter,_id,data,relevance,acquired,received,agent_id,type,_mid</item>
+        <item name="propertySpecifier">blotter,_id,data,relevance,acquired,received,agent_id,type,_mid,note</item>
       </annotation>
-      <parameter name="filter" type="string"/>
+      <annotation name="original signature">
+        <item name="inputParamNames">strXml</item>
+        <item name="inputParams">string</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="strXml" type="string"/>
     </function>
   </service>
   <entity name="Evidence" persistent="true">
@@ -3520,23 +3565,24 @@
       <item name="IncludeRemoteClass">nonempty</item>
     </annotation>
     <annotation name="all_">
-      <item name="propertySpecifier">blotter,_id,data,relevance,acquired,received,agent_id,type,_mid</item>
-      <item name="pagingEnabled">true</item>
+      <item name="propertySpecifier">blotter,_id,data,relevance,acquired,received,agent_id,type,_mid,note</item>
       <item name="positionalPagingParameters">true</item>
+      <item name="pagingEnabled">true</item>
       <item name="countOperation">count_</item>
     </annotation>
     <annotation name="ActionScriptGeneration">
       <item name="Package">it.ht.rcs.console.evidence.model</item>
     </annotation>
-    <annotation name="DataManagement">
-      <item name="managingService">DBEvidence</item>
-      <item name="fillFunc">all_</item>
-      <item name="findItem">info_</item>
-    </annotation>
     <annotation name="info_">
       <item name="propertySpecifier">blotter,_id,data,relevance,acquired,received,agent_id,type,_mid</item>
     </annotation>
-    <property name="note" type="string" required="true"/>
+    <annotation name="DataManagement">
+      <item name="managingService">DBEvidence</item>
+      <item name="fillFunc">all_</item>
+    </annotation>
+    <annotation name="update_">
+      <item name="propertySpecifier">blotter,_id,data,relevance,acquired,received,agent_id,type,_mid,note</item>
+    </annotation>
     <property name="blotter" type="boolean" required="true"/>
     <id name="_id" type="string"/>
     <property name="data" type="EvidenceData" required="true"/>
@@ -3546,6 +3592,7 @@
     <property name="agent_id" type="string" required="true"/>
     <property name="type" type="string" required="true"/>
     <property name="_mid" type="integer" required="true"/>
+    <property name="note" type="string" required="true"/>
   </entity>
   <entity name="AgentStatus">
     <annotation name="EntityProperties">

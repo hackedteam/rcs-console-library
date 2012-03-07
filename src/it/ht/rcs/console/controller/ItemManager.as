@@ -34,7 +34,7 @@ package it.ht.rcs.console.controller
       _items.removeAll();
     }
     
-    private function onItemsChange(e:CollectionEvent):void
+    protected function onItemsChange(e:CollectionEvent):void
     {
       switch (e.kind) {
         
