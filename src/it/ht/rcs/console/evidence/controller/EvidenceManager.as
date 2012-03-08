@@ -52,6 +52,8 @@ package it.ht.rcs.console.evidence.controller
     
     override protected function onItemUpdate(event:*):void
     {
+      if (event.property == 'data') return; // TODO: temporary fix. when applying filters, an update to "data" fires... ?
+      
       var property:Object = new Object();
       property[event.property] = event.newValue is ArrayCollection ? event.newValue.source : event.newValue;
       DB.instance.evidence.update(event.source, property, evidenceFilter.target);
