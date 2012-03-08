@@ -6,10 +6,15 @@
 package it.ht.rcs.console.monitor.model
 {
 import com.adobe.fiber.services.IFiberManagingService;
+import com.adobe.fiber.util.FiberUtils;
 import com.adobe.fiber.valueobjects.IValueObject;
+import flash.events.Event;
 import flash.events.EventDispatcher;
+import mx.binding.utils.ChangeWatcher;
 import mx.collections.ArrayCollection;
+import mx.events.CollectionEvent;
 import mx.events.PropertyChangeEvent;
+import mx.validators.ValidationResult;
 
 import flash.net.registerClassAlias;
 import flash.net.getClassByAlias;
@@ -50,13 +55,13 @@ public class _Super_LicenseAgents extends flash.events.EventDispatcher implement
     private var _internal_symbian : ArrayCollection;
     private var _internal_blackberry : ArrayCollection;
     private var _internal_osx : ArrayCollection;
+    private var _internal_total : Object;
     private var _internal_android : ArrayCollection;
     private var _internal_ios : ArrayCollection;
+    private var _internal_desktop : Object;
     private var _internal_windows : ArrayCollection;
     private var _internal_winmo : ArrayCollection;
     private var _internal_linux : ArrayCollection;
-    private var _internal_total : Object;
-    private var _internal_desktop : Object;
     private var _internal_mobile : Object;
 
     private static var emptyArray:Array = new Array();
@@ -74,6 +79,17 @@ public class _Super_LicenseAgents extends flash.events.EventDispatcher implement
         _model = new _LicenseAgentsEntityMetadata(this);
 
         // Bind to own data or source properties for cache invalidation triggering
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "symbian", model_internal::setterListenerSymbian));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "blackberry", model_internal::setterListenerBlackberry));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "osx", model_internal::setterListenerOsx));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "total", model_internal::setterListenerTotal));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "android", model_internal::setterListenerAndroid));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "ios", model_internal::setterListenerIos));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "desktop", model_internal::setterListenerDesktop));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "windows", model_internal::setterListenerWindows));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "winmo", model_internal::setterListenerWinmo));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "linux", model_internal::setterListenerLinux));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "mobile", model_internal::setterListenerMobile));
 
     }
 
@@ -100,6 +116,12 @@ public class _Super_LicenseAgents extends flash.events.EventDispatcher implement
     }
 
     [Bindable(event="propertyChange")]
+    public function get total() : Object
+    {
+        return _internal_total;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get android() : ArrayCollection
     {
         return _internal_android;
@@ -109,6 +131,12 @@ public class _Super_LicenseAgents extends flash.events.EventDispatcher implement
     public function get ios() : ArrayCollection
     {
         return _internal_ios;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get desktop() : Object
+    {
+        return _internal_desktop;
     }
 
     [Bindable(event="propertyChange")]
@@ -127,18 +155,6 @@ public class _Super_LicenseAgents extends flash.events.EventDispatcher implement
     public function get linux() : ArrayCollection
     {
         return _internal_linux;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get total() : Object
-    {
-        return _internal_total;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get desktop() : Object
-    {
-        return _internal_desktop;
     }
 
     [Bindable(event="propertyChange")]
@@ -230,6 +246,16 @@ public class _Super_LicenseAgents extends flash.events.EventDispatcher implement
         }
     }
 
+    public function set total(value:Object) : void
+    {
+        var oldValue:Object = _internal_total;
+        if (oldValue !== value)
+        {
+            _internal_total = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "total", oldValue, _internal_total));
+        }
+    }
+
     public function set android(value:*) : void
     {
         var oldValue:ArrayCollection = _internal_android;
@@ -277,6 +303,16 @@ public class _Super_LicenseAgents extends flash.events.EventDispatcher implement
                 throw new Error("value of ios must be a collection");
             }
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "ios", oldValue, _internal_ios));
+        }
+    }
+
+    public function set desktop(value:Object) : void
+    {
+        var oldValue:Object = _internal_desktop;
+        if (oldValue !== value)
+        {
+            _internal_desktop = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "desktop", oldValue, _internal_desktop));
         }
     }
 
@@ -355,26 +391,6 @@ public class _Super_LicenseAgents extends flash.events.EventDispatcher implement
         }
     }
 
-    public function set total(value:Object) : void
-    {
-        var oldValue:Object = _internal_total;
-        if (oldValue !== value)
-        {
-            _internal_total = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "total", oldValue, _internal_total));
-        }
-    }
-
-    public function set desktop(value:Object) : void
-    {
-        var oldValue:Object = _internal_desktop;
-        if (oldValue !== value)
-        {
-            _internal_desktop = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "desktop", oldValue, _internal_desktop));
-        }
-    }
-
     public function set mobile(value:Object) : void
     {
         var oldValue:Object = _internal_mobile;
@@ -397,6 +413,117 @@ public class _Super_LicenseAgents extends flash.events.EventDispatcher implement
      *  - the validity of the property (and the containing entity) if the given data property is required.
      */
 
+    model_internal function setterListenerSymbian(value:flash.events.Event):void
+    {
+        if (value is mx.events.PropertyChangeEvent)
+        {
+            if (mx.events.PropertyChangeEvent(value).newValue)
+            {
+                mx.events.PropertyChangeEvent(value).newValue.addEventListener(mx.events.CollectionEvent.COLLECTION_CHANGE, model_internal::setterListenerSymbian);
+            }
+        }
+        _model.invalidateDependentOnSymbian();
+    }
+
+    model_internal function setterListenerBlackberry(value:flash.events.Event):void
+    {
+        if (value is mx.events.PropertyChangeEvent)
+        {
+            if (mx.events.PropertyChangeEvent(value).newValue)
+            {
+                mx.events.PropertyChangeEvent(value).newValue.addEventListener(mx.events.CollectionEvent.COLLECTION_CHANGE, model_internal::setterListenerBlackberry);
+            }
+        }
+        _model.invalidateDependentOnBlackberry();
+    }
+
+    model_internal function setterListenerOsx(value:flash.events.Event):void
+    {
+        if (value is mx.events.PropertyChangeEvent)
+        {
+            if (mx.events.PropertyChangeEvent(value).newValue)
+            {
+                mx.events.PropertyChangeEvent(value).newValue.addEventListener(mx.events.CollectionEvent.COLLECTION_CHANGE, model_internal::setterListenerOsx);
+            }
+        }
+        _model.invalidateDependentOnOsx();
+    }
+
+    model_internal function setterListenerTotal(value:flash.events.Event):void
+    {
+        _model.invalidateDependentOnTotal();
+    }
+
+    model_internal function setterListenerAndroid(value:flash.events.Event):void
+    {
+        if (value is mx.events.PropertyChangeEvent)
+        {
+            if (mx.events.PropertyChangeEvent(value).newValue)
+            {
+                mx.events.PropertyChangeEvent(value).newValue.addEventListener(mx.events.CollectionEvent.COLLECTION_CHANGE, model_internal::setterListenerAndroid);
+            }
+        }
+        _model.invalidateDependentOnAndroid();
+    }
+
+    model_internal function setterListenerIos(value:flash.events.Event):void
+    {
+        if (value is mx.events.PropertyChangeEvent)
+        {
+            if (mx.events.PropertyChangeEvent(value).newValue)
+            {
+                mx.events.PropertyChangeEvent(value).newValue.addEventListener(mx.events.CollectionEvent.COLLECTION_CHANGE, model_internal::setterListenerIos);
+            }
+        }
+        _model.invalidateDependentOnIos();
+    }
+
+    model_internal function setterListenerDesktop(value:flash.events.Event):void
+    {
+        _model.invalidateDependentOnDesktop();
+    }
+
+    model_internal function setterListenerWindows(value:flash.events.Event):void
+    {
+        if (value is mx.events.PropertyChangeEvent)
+        {
+            if (mx.events.PropertyChangeEvent(value).newValue)
+            {
+                mx.events.PropertyChangeEvent(value).newValue.addEventListener(mx.events.CollectionEvent.COLLECTION_CHANGE, model_internal::setterListenerWindows);
+            }
+        }
+        _model.invalidateDependentOnWindows();
+    }
+
+    model_internal function setterListenerWinmo(value:flash.events.Event):void
+    {
+        if (value is mx.events.PropertyChangeEvent)
+        {
+            if (mx.events.PropertyChangeEvent(value).newValue)
+            {
+                mx.events.PropertyChangeEvent(value).newValue.addEventListener(mx.events.CollectionEvent.COLLECTION_CHANGE, model_internal::setterListenerWinmo);
+            }
+        }
+        _model.invalidateDependentOnWinmo();
+    }
+
+    model_internal function setterListenerLinux(value:flash.events.Event):void
+    {
+        if (value is mx.events.PropertyChangeEvent)
+        {
+            if (mx.events.PropertyChangeEvent(value).newValue)
+            {
+                mx.events.PropertyChangeEvent(value).newValue.addEventListener(mx.events.CollectionEvent.COLLECTION_CHANGE, model_internal::setterListenerLinux);
+            }
+        }
+        _model.invalidateDependentOnLinux();
+    }
+
+    model_internal function setterListenerMobile(value:flash.events.Event):void
+    {
+        _model.invalidateDependentOnMobile();
+    }
+
 
     /**
      * valid related derived properties
@@ -418,6 +545,61 @@ public class _Super_LicenseAgents extends flash.events.EventDispatcher implement
         var validationFailureMessages:Array = new Array();
 
         var propertyValidity:Boolean = true;
+        if (!_model.symbianIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_symbianValidationFailureMessages);
+        }
+        if (!_model.blackberryIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_blackberryValidationFailureMessages);
+        }
+        if (!_model.osxIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_osxValidationFailureMessages);
+        }
+        if (!_model.totalIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_totalValidationFailureMessages);
+        }
+        if (!_model.androidIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_androidValidationFailureMessages);
+        }
+        if (!_model.iosIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_iosValidationFailureMessages);
+        }
+        if (!_model.desktopIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_desktopValidationFailureMessages);
+        }
+        if (!_model.windowsIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_windowsValidationFailureMessages);
+        }
+        if (!_model.winmoIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_winmoValidationFailureMessages);
+        }
+        if (!_model.linuxIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_linuxValidationFailureMessages);
+        }
+        if (!_model.mobileIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_mobileValidationFailureMessages);
+        }
 
         model_internal::_cacheInitialized_isValid = true;
         model_internal::invalidConstraints_der = violatedConsts;
@@ -497,6 +679,303 @@ public class _Super_LicenseAgents extends flash.events.EventDispatcher implement
         }
     }
 
+    model_internal var _doValidationCacheOfSymbian : Array = null;
+    model_internal var _doValidationLastValOfSymbian : ArrayCollection;
+
+    model_internal function _doValidationForSymbian(valueIn:Object):Array
+    {
+        var value : ArrayCollection = valueIn as ArrayCollection;
+
+        if (model_internal::_doValidationCacheOfSymbian != null && model_internal::_doValidationLastValOfSymbian == value)
+           return model_internal::_doValidationCacheOfSymbian ;
+
+        _model.model_internal::_symbianIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isSymbianAvailable && _internal_symbian == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "symbian is required"));
+        }
+
+        model_internal::_doValidationCacheOfSymbian = validationFailures;
+        model_internal::_doValidationLastValOfSymbian = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfBlackberry : Array = null;
+    model_internal var _doValidationLastValOfBlackberry : ArrayCollection;
+
+    model_internal function _doValidationForBlackberry(valueIn:Object):Array
+    {
+        var value : ArrayCollection = valueIn as ArrayCollection;
+
+        if (model_internal::_doValidationCacheOfBlackberry != null && model_internal::_doValidationLastValOfBlackberry == value)
+           return model_internal::_doValidationCacheOfBlackberry ;
+
+        _model.model_internal::_blackberryIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isBlackberryAvailable && _internal_blackberry == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "blackberry is required"));
+        }
+
+        model_internal::_doValidationCacheOfBlackberry = validationFailures;
+        model_internal::_doValidationLastValOfBlackberry = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfOsx : Array = null;
+    model_internal var _doValidationLastValOfOsx : ArrayCollection;
+
+    model_internal function _doValidationForOsx(valueIn:Object):Array
+    {
+        var value : ArrayCollection = valueIn as ArrayCollection;
+
+        if (model_internal::_doValidationCacheOfOsx != null && model_internal::_doValidationLastValOfOsx == value)
+           return model_internal::_doValidationCacheOfOsx ;
+
+        _model.model_internal::_osxIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isOsxAvailable && _internal_osx == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "osx is required"));
+        }
+
+        model_internal::_doValidationCacheOfOsx = validationFailures;
+        model_internal::_doValidationLastValOfOsx = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfTotal : Array = null;
+    model_internal var _doValidationLastValOfTotal : Object;
+
+    model_internal function _doValidationForTotal(valueIn:Object):Array
+    {
+        var value : Object = valueIn as Object;
+
+        if (model_internal::_doValidationCacheOfTotal != null && model_internal::_doValidationLastValOfTotal == value)
+           return model_internal::_doValidationCacheOfTotal ;
+
+        _model.model_internal::_totalIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isTotalAvailable && _internal_total == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "total is required"));
+        }
+
+        model_internal::_doValidationCacheOfTotal = validationFailures;
+        model_internal::_doValidationLastValOfTotal = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfAndroid : Array = null;
+    model_internal var _doValidationLastValOfAndroid : ArrayCollection;
+
+    model_internal function _doValidationForAndroid(valueIn:Object):Array
+    {
+        var value : ArrayCollection = valueIn as ArrayCollection;
+
+        if (model_internal::_doValidationCacheOfAndroid != null && model_internal::_doValidationLastValOfAndroid == value)
+           return model_internal::_doValidationCacheOfAndroid ;
+
+        _model.model_internal::_androidIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isAndroidAvailable && _internal_android == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "android is required"));
+        }
+
+        model_internal::_doValidationCacheOfAndroid = validationFailures;
+        model_internal::_doValidationLastValOfAndroid = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfIos : Array = null;
+    model_internal var _doValidationLastValOfIos : ArrayCollection;
+
+    model_internal function _doValidationForIos(valueIn:Object):Array
+    {
+        var value : ArrayCollection = valueIn as ArrayCollection;
+
+        if (model_internal::_doValidationCacheOfIos != null && model_internal::_doValidationLastValOfIos == value)
+           return model_internal::_doValidationCacheOfIos ;
+
+        _model.model_internal::_iosIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isIosAvailable && _internal_ios == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "ios is required"));
+        }
+
+        model_internal::_doValidationCacheOfIos = validationFailures;
+        model_internal::_doValidationLastValOfIos = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfDesktop : Array = null;
+    model_internal var _doValidationLastValOfDesktop : Object;
+
+    model_internal function _doValidationForDesktop(valueIn:Object):Array
+    {
+        var value : Object = valueIn as Object;
+
+        if (model_internal::_doValidationCacheOfDesktop != null && model_internal::_doValidationLastValOfDesktop == value)
+           return model_internal::_doValidationCacheOfDesktop ;
+
+        _model.model_internal::_desktopIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isDesktopAvailable && _internal_desktop == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "desktop is required"));
+        }
+
+        model_internal::_doValidationCacheOfDesktop = validationFailures;
+        model_internal::_doValidationLastValOfDesktop = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfWindows : Array = null;
+    model_internal var _doValidationLastValOfWindows : ArrayCollection;
+
+    model_internal function _doValidationForWindows(valueIn:Object):Array
+    {
+        var value : ArrayCollection = valueIn as ArrayCollection;
+
+        if (model_internal::_doValidationCacheOfWindows != null && model_internal::_doValidationLastValOfWindows == value)
+           return model_internal::_doValidationCacheOfWindows ;
+
+        _model.model_internal::_windowsIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isWindowsAvailable && _internal_windows == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "windows is required"));
+        }
+
+        model_internal::_doValidationCacheOfWindows = validationFailures;
+        model_internal::_doValidationLastValOfWindows = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfWinmo : Array = null;
+    model_internal var _doValidationLastValOfWinmo : ArrayCollection;
+
+    model_internal function _doValidationForWinmo(valueIn:Object):Array
+    {
+        var value : ArrayCollection = valueIn as ArrayCollection;
+
+        if (model_internal::_doValidationCacheOfWinmo != null && model_internal::_doValidationLastValOfWinmo == value)
+           return model_internal::_doValidationCacheOfWinmo ;
+
+        _model.model_internal::_winmoIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isWinmoAvailable && _internal_winmo == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "winmo is required"));
+        }
+
+        model_internal::_doValidationCacheOfWinmo = validationFailures;
+        model_internal::_doValidationLastValOfWinmo = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfLinux : Array = null;
+    model_internal var _doValidationLastValOfLinux : ArrayCollection;
+
+    model_internal function _doValidationForLinux(valueIn:Object):Array
+    {
+        var value : ArrayCollection = valueIn as ArrayCollection;
+
+        if (model_internal::_doValidationCacheOfLinux != null && model_internal::_doValidationLastValOfLinux == value)
+           return model_internal::_doValidationCacheOfLinux ;
+
+        _model.model_internal::_linuxIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isLinuxAvailable && _internal_linux == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "linux is required"));
+        }
+
+        model_internal::_doValidationCacheOfLinux = validationFailures;
+        model_internal::_doValidationLastValOfLinux = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfMobile : Array = null;
+    model_internal var _doValidationLastValOfMobile : Object;
+
+    model_internal function _doValidationForMobile(valueIn:Object):Array
+    {
+        var value : Object = valueIn as Object;
+
+        if (model_internal::_doValidationCacheOfMobile != null && model_internal::_doValidationLastValOfMobile == value)
+           return model_internal::_doValidationCacheOfMobile ;
+
+        _model.model_internal::_mobileIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isMobileAvailable && _internal_mobile == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "mobile is required"));
+        }
+
+        model_internal::_doValidationCacheOfMobile = validationFailures;
+        model_internal::_doValidationLastValOfMobile = value;
+
+        return validationFailures;
+    }
+    
 
 }
 

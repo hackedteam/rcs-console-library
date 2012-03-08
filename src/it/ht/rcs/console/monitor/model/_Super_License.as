@@ -14,6 +14,7 @@ import it.ht.rcs.console.monitor.model.LicenseAgents;
 import it.ht.rcs.console.monitor.model.LicenseCollectors;
 import mx.binding.utils.ChangeWatcher;
 import mx.collections.ArrayCollection;
+import mx.events.CollectionEvent;
 import mx.events.PropertyChangeEvent;
 import mx.validators.ValidationResult;
 
@@ -34,8 +35,8 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
 
     model_internal static function initRemoteClassAliasAllRelated() : void
     {
-        it.ht.rcs.console.monitor.model.LicenseCollectors.initRemoteClassAliasSingleChild();
         it.ht.rcs.console.monitor.model.LicenseAgents.initRemoteClassAliasSingleChild();
+        it.ht.rcs.console.monitor.model.LicenseCollectors.initRemoteClassAliasSingleChild();
     }
 
     model_internal var _dminternal_model : _LicenseEntityMetadata;
@@ -55,17 +56,20 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
     /**
      * properties
      */
-    private var _internal_collectors : it.ht.rcs.console.monitor.model.LicenseCollectors;
     private var _internal_users : Object;
-    private var _internal_shards : Object;
-    private var _internal_nia : Object;
-    private var _internal_forwarders : Boolean;
+    private var _internal_exploits : Boolean;
+    private var _internal_maintenance : int;
     private var _internal_agents : it.ht.rcs.console.monitor.model.LicenseAgents;
     private var _internal_alerting : Boolean;
+    private var _internal_nia : ArrayCollection;
     private var _internal_correlation : Boolean;
     private var _internal_type : String;
+    private var _internal_expiry : int;
+    private var _internal_collectors : it.ht.rcs.console.monitor.model.LicenseCollectors;
+    private var _internal_shards : int;
+    private var _internal_forwarders : Boolean;
     private var _internal_serial : String;
-    private var _internal_rmi : Boolean;
+    private var _internal_rmi : ArrayCollection;
 
     private static var emptyArray:Array = new Array();
 
@@ -82,7 +86,13 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
         _model = new _LicenseEntityMetadata(this);
 
         // Bind to own data or source properties for cache invalidation triggering
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "shards", model_internal::setterListenerShards));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "users", model_internal::setterListenerUsers));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "agents", model_internal::setterListenerAgents));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "nia", model_internal::setterListenerNia));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "type", model_internal::setterListenerType));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "collectors", model_internal::setterListenerCollectors));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "serial", model_internal::setterListenerSerial));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "rmi", model_internal::setterListenerRmi));
 
     }
 
@@ -91,33 +101,21 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
      */
 
     [Bindable(event="propertyChange")]
-    public function get collectors() : it.ht.rcs.console.monitor.model.LicenseCollectors
-    {
-        return _internal_collectors;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get users() : Object
     {
         return _internal_users;
     }
 
     [Bindable(event="propertyChange")]
-    public function get shards() : Object
+    public function get exploits() : Boolean
     {
-        return _internal_shards;
+        return _internal_exploits;
     }
 
     [Bindable(event="propertyChange")]
-    public function get nia() : Object
+    public function get maintenance() : int
     {
-        return _internal_nia;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get forwarders() : Boolean
-    {
-        return _internal_forwarders;
+        return _internal_maintenance;
     }
 
     [Bindable(event="propertyChange")]
@@ -133,6 +131,12 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
     }
 
     [Bindable(event="propertyChange")]
+    public function get nia() : ArrayCollection
+    {
+        return _internal_nia;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get correlation() : Boolean
     {
         return _internal_correlation;
@@ -145,13 +149,37 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
     }
 
     [Bindable(event="propertyChange")]
+    public function get expiry() : int
+    {
+        return _internal_expiry;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get collectors() : it.ht.rcs.console.monitor.model.LicenseCollectors
+    {
+        return _internal_collectors;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get shards() : int
+    {
+        return _internal_shards;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get forwarders() : Boolean
+    {
+        return _internal_forwarders;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get serial() : String
     {
         return _internal_serial;
     }
 
     [Bindable(event="propertyChange")]
-    public function get rmi() : Boolean
+    public function get rmi() : ArrayCollection
     {
         return _internal_rmi;
     }
@@ -164,16 +192,6 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
      * data/source property setters
      */
 
-    public function set collectors(value:it.ht.rcs.console.monitor.model.LicenseCollectors) : void
-    {
-        var oldValue:it.ht.rcs.console.monitor.model.LicenseCollectors = _internal_collectors;
-        if (oldValue !== value)
-        {
-            _internal_collectors = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "collectors", oldValue, _internal_collectors));
-        }
-    }
-
     public function set users(value:Object) : void
     {
         var oldValue:Object = _internal_users;
@@ -184,33 +202,23 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
         }
     }
 
-    public function set shards(value:Object) : void
+    public function set exploits(value:Boolean) : void
     {
-        var oldValue:Object = _internal_shards;
+        var oldValue:Boolean = _internal_exploits;
         if (oldValue !== value)
         {
-            _internal_shards = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "shards", oldValue, _internal_shards));
+            _internal_exploits = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "exploits", oldValue, _internal_exploits));
         }
     }
 
-    public function set nia(value:Object) : void
+    public function set maintenance(value:int) : void
     {
-        var oldValue:Object = _internal_nia;
+        var oldValue:int = _internal_maintenance;
         if (oldValue !== value)
         {
-            _internal_nia = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "nia", oldValue, _internal_nia));
-        }
-    }
-
-    public function set forwarders(value:Boolean) : void
-    {
-        var oldValue:Boolean = _internal_forwarders;
-        if (oldValue !== value)
-        {
-            _internal_forwarders = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "forwarders", oldValue, _internal_forwarders));
+            _internal_maintenance = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "maintenance", oldValue, _internal_maintenance));
         }
     }
 
@@ -234,6 +242,31 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
         }
     }
 
+    public function set nia(value:*) : void
+    {
+        var oldValue:ArrayCollection = _internal_nia;
+        if (oldValue !== value)
+        {
+            if (value is ArrayCollection)
+            {
+                _internal_nia = value;
+            }
+            else if (value is Array)
+            {
+                _internal_nia = new ArrayCollection(value);
+            }
+            else if (value == null)
+            {
+                _internal_nia = null;
+            }
+            else
+            {
+                throw new Error("value of nia must be a collection");
+            }
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "nia", oldValue, _internal_nia));
+        }
+    }
+
     public function set correlation(value:Boolean) : void
     {
         var oldValue:Boolean = _internal_correlation;
@@ -254,6 +287,46 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
         }
     }
 
+    public function set expiry(value:int) : void
+    {
+        var oldValue:int = _internal_expiry;
+        if (oldValue !== value)
+        {
+            _internal_expiry = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "expiry", oldValue, _internal_expiry));
+        }
+    }
+
+    public function set collectors(value:it.ht.rcs.console.monitor.model.LicenseCollectors) : void
+    {
+        var oldValue:it.ht.rcs.console.monitor.model.LicenseCollectors = _internal_collectors;
+        if (oldValue !== value)
+        {
+            _internal_collectors = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "collectors", oldValue, _internal_collectors));
+        }
+    }
+
+    public function set shards(value:int) : void
+    {
+        var oldValue:int = _internal_shards;
+        if (oldValue !== value)
+        {
+            _internal_shards = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "shards", oldValue, _internal_shards));
+        }
+    }
+
+    public function set forwarders(value:Boolean) : void
+    {
+        var oldValue:Boolean = _internal_forwarders;
+        if (oldValue !== value)
+        {
+            _internal_forwarders = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "forwarders", oldValue, _internal_forwarders));
+        }
+    }
+
     public function set serial(value:String) : void
     {
         var oldValue:String = _internal_serial;
@@ -264,12 +337,27 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
         }
     }
 
-    public function set rmi(value:Boolean) : void
+    public function set rmi(value:*) : void
     {
-        var oldValue:Boolean = _internal_rmi;
+        var oldValue:ArrayCollection = _internal_rmi;
         if (oldValue !== value)
         {
-            _internal_rmi = value;
+            if (value is ArrayCollection)
+            {
+                _internal_rmi = value;
+            }
+            else if (value is Array)
+            {
+                _internal_rmi = new ArrayCollection(value);
+            }
+            else if (value == null)
+            {
+                _internal_rmi = null;
+            }
+            else
+            {
+                throw new Error("value of rmi must be a collection");
+            }
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "rmi", oldValue, _internal_rmi));
         }
     }
@@ -286,9 +374,53 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
      *  - the validity of the property (and the containing entity) if the given data property is required.
      */
 
-    model_internal function setterListenerShards(value:flash.events.Event):void
+    model_internal function setterListenerUsers(value:flash.events.Event):void
     {
-        _model.invalidateDependentOnShards();
+        _model.invalidateDependentOnUsers();
+    }
+
+    model_internal function setterListenerAgents(value:flash.events.Event):void
+    {
+        _model.invalidateDependentOnAgents();
+    }
+
+    model_internal function setterListenerNia(value:flash.events.Event):void
+    {
+        if (value is mx.events.PropertyChangeEvent)
+        {
+            if (mx.events.PropertyChangeEvent(value).newValue)
+            {
+                mx.events.PropertyChangeEvent(value).newValue.addEventListener(mx.events.CollectionEvent.COLLECTION_CHANGE, model_internal::setterListenerNia);
+            }
+        }
+        _model.invalidateDependentOnNia();
+    }
+
+    model_internal function setterListenerType(value:flash.events.Event):void
+    {
+        _model.invalidateDependentOnType();
+    }
+
+    model_internal function setterListenerCollectors(value:flash.events.Event):void
+    {
+        _model.invalidateDependentOnCollectors();
+    }
+
+    model_internal function setterListenerSerial(value:flash.events.Event):void
+    {
+        _model.invalidateDependentOnSerial();
+    }
+
+    model_internal function setterListenerRmi(value:flash.events.Event):void
+    {
+        if (value is mx.events.PropertyChangeEvent)
+        {
+            if (mx.events.PropertyChangeEvent(value).newValue)
+            {
+                mx.events.PropertyChangeEvent(value).newValue.addEventListener(mx.events.CollectionEvent.COLLECTION_CHANGE, model_internal::setterListenerRmi);
+            }
+        }
+        _model.invalidateDependentOnRmi();
     }
 
 
@@ -312,10 +444,40 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
         var validationFailureMessages:Array = new Array();
 
         var propertyValidity:Boolean = true;
-        if (!_model.shardsIsValid)
+        if (!_model.usersIsValid)
         {
             propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_shardsValidationFailureMessages);
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_usersValidationFailureMessages);
+        }
+        if (!_model.agentsIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_agentsValidationFailureMessages);
+        }
+        if (!_model.niaIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_niaValidationFailureMessages);
+        }
+        if (!_model.typeIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_typeValidationFailureMessages);
+        }
+        if (!_model.collectorsIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_collectorsValidationFailureMessages);
+        }
+        if (!_model.serialIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_serialValidationFailureMessages);
+        }
+        if (!_model.rmiIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_rmiValidationFailureMessages);
         }
 
         model_internal::_cacheInitialized_isValid = true;
@@ -396,29 +558,191 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
         }
     }
 
-    model_internal var _doValidationCacheOfShards : Array = null;
-    model_internal var _doValidationLastValOfShards : Object;
+    model_internal var _doValidationCacheOfUsers : Array = null;
+    model_internal var _doValidationLastValOfUsers : Object;
 
-    model_internal function _doValidationForShards(valueIn:Object):Array
+    model_internal function _doValidationForUsers(valueIn:Object):Array
     {
         var value : Object = valueIn as Object;
 
-        if (model_internal::_doValidationCacheOfShards != null && model_internal::_doValidationLastValOfShards == value)
-           return model_internal::_doValidationCacheOfShards ;
+        if (model_internal::_doValidationCacheOfUsers != null && model_internal::_doValidationLastValOfUsers == value)
+           return model_internal::_doValidationCacheOfUsers ;
 
-        _model.model_internal::_shardsIsValidCacheInitialized = true;
+        _model.model_internal::_usersIsValidCacheInitialized = true;
         var validationFailures:Array = new Array();
         var errorMessage:String;
         var failure:Boolean;
 
         var valRes:ValidationResult;
-        if (_model.isShardsAvailable && _internal_shards == null)
+        if (_model.isUsersAvailable && _internal_users == null)
         {
-            validationFailures.push(new ValidationResult(true, "", "", "shards is required"));
+            validationFailures.push(new ValidationResult(true, "", "", "users is required"));
         }
 
-        model_internal::_doValidationCacheOfShards = validationFailures;
-        model_internal::_doValidationLastValOfShards = value;
+        model_internal::_doValidationCacheOfUsers = validationFailures;
+        model_internal::_doValidationLastValOfUsers = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfAgents : Array = null;
+    model_internal var _doValidationLastValOfAgents : it.ht.rcs.console.monitor.model.LicenseAgents;
+
+    model_internal function _doValidationForAgents(valueIn:Object):Array
+    {
+        var value : it.ht.rcs.console.monitor.model.LicenseAgents = valueIn as it.ht.rcs.console.monitor.model.LicenseAgents;
+
+        if (model_internal::_doValidationCacheOfAgents != null && model_internal::_doValidationLastValOfAgents == value)
+           return model_internal::_doValidationCacheOfAgents ;
+
+        _model.model_internal::_agentsIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isAgentsAvailable && _internal_agents == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "agents is required"));
+        }
+
+        model_internal::_doValidationCacheOfAgents = validationFailures;
+        model_internal::_doValidationLastValOfAgents = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfNia : Array = null;
+    model_internal var _doValidationLastValOfNia : ArrayCollection;
+
+    model_internal function _doValidationForNia(valueIn:Object):Array
+    {
+        var value : ArrayCollection = valueIn as ArrayCollection;
+
+        if (model_internal::_doValidationCacheOfNia != null && model_internal::_doValidationLastValOfNia == value)
+           return model_internal::_doValidationCacheOfNia ;
+
+        _model.model_internal::_niaIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isNiaAvailable && _internal_nia == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "nia is required"));
+        }
+
+        model_internal::_doValidationCacheOfNia = validationFailures;
+        model_internal::_doValidationLastValOfNia = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfType : Array = null;
+    model_internal var _doValidationLastValOfType : String;
+
+    model_internal function _doValidationForType(valueIn:Object):Array
+    {
+        var value : String = valueIn as String;
+
+        if (model_internal::_doValidationCacheOfType != null && model_internal::_doValidationLastValOfType == value)
+           return model_internal::_doValidationCacheOfType ;
+
+        _model.model_internal::_typeIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isTypeAvailable && _internal_type == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "type is required"));
+        }
+
+        model_internal::_doValidationCacheOfType = validationFailures;
+        model_internal::_doValidationLastValOfType = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfCollectors : Array = null;
+    model_internal var _doValidationLastValOfCollectors : it.ht.rcs.console.monitor.model.LicenseCollectors;
+
+    model_internal function _doValidationForCollectors(valueIn:Object):Array
+    {
+        var value : it.ht.rcs.console.monitor.model.LicenseCollectors = valueIn as it.ht.rcs.console.monitor.model.LicenseCollectors;
+
+        if (model_internal::_doValidationCacheOfCollectors != null && model_internal::_doValidationLastValOfCollectors == value)
+           return model_internal::_doValidationCacheOfCollectors ;
+
+        _model.model_internal::_collectorsIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isCollectorsAvailable && _internal_collectors == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "collectors is required"));
+        }
+
+        model_internal::_doValidationCacheOfCollectors = validationFailures;
+        model_internal::_doValidationLastValOfCollectors = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfSerial : Array = null;
+    model_internal var _doValidationLastValOfSerial : String;
+
+    model_internal function _doValidationForSerial(valueIn:Object):Array
+    {
+        var value : String = valueIn as String;
+
+        if (model_internal::_doValidationCacheOfSerial != null && model_internal::_doValidationLastValOfSerial == value)
+           return model_internal::_doValidationCacheOfSerial ;
+
+        _model.model_internal::_serialIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isSerialAvailable && _internal_serial == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "serial is required"));
+        }
+
+        model_internal::_doValidationCacheOfSerial = validationFailures;
+        model_internal::_doValidationLastValOfSerial = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfRmi : Array = null;
+    model_internal var _doValidationLastValOfRmi : ArrayCollection;
+
+    model_internal function _doValidationForRmi(valueIn:Object):Array
+    {
+        var value : ArrayCollection = valueIn as ArrayCollection;
+
+        if (model_internal::_doValidationCacheOfRmi != null && model_internal::_doValidationLastValOfRmi == value)
+           return model_internal::_doValidationCacheOfRmi ;
+
+        _model.model_internal::_rmiIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isRmiAvailable && _internal_rmi == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "rmi is required"));
+        }
+
+        model_internal::_doValidationCacheOfRmi = validationFailures;
+        model_internal::_doValidationLastValOfRmi = value;
 
         return validationFailures;
     }

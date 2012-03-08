@@ -14,6 +14,8 @@ package it.ht.rcs.console.monitor.controller
     public var type:String = "reusable";
     public var serial:String = "off";
     public var users:CurrMaxObject = new CurrMaxObject("0", "0");
+    public var expiry:int;
+    public var maintenance:int;
     
     public var agent_total:CurrMaxObject = new CurrMaxObject("0", "0");
     public var agent_desktop:CurrMaxObject = new CurrMaxObject("0", "0");
@@ -45,7 +47,9 @@ package it.ht.rcs.console.monitor.controller
     public var forwarders:Boolean = false;
     
     public var nia:CurrMaxObject = new CurrMaxObject("0", "0");
+    public var nia_demo:Boolean = false;
     public var rmi:Boolean = false;
+    public var rmi_demo:Boolean = false;
     
     public var shards:CurrMaxObject = new CurrMaxObject("0", "0");
     
@@ -75,6 +79,8 @@ package it.ht.rcs.console.monitor.controller
         
       type = limits['type'];
       serial = limits['serial'].toString();
+      expiry = limits['expiry'];
+      maintenance = limits['maintenance'];
       
       users.max = (limits['users'] == null) ? 'U' : limits['users'].toString();
       
@@ -107,8 +113,10 @@ package it.ht.rcs.console.monitor.controller
       correlation = limits['correlation'];
       forwarders = limits['forwarders'];
       
-      nia.max = (limits['nia'] == null) ? 'U' : limits['nia'].toString();
-      rmi = limits['rmi'];
+      nia.max = (limits['nia'][0] == null) ? 'U' : limits['nia'][0].toString();
+      nia_demo = limits['nia'][1];
+      rmi = limits['rmi'][0];
+      rmi_demo = limits['rmi'][1];
       
       shards.max = (limits['shards'] == null) ? 'U' : limits['shards'].toString();
       dispatchDataLoadedEvent();
