@@ -22,7 +22,7 @@ internal class _LicenseCollectorsEntityMetadata extends com.adobe.fiber.valueobj
 
     model_internal static var allProperties:Array = new Array("collectors", "anonymizers");
     model_internal static var allAssociationProperties:Array = new Array();
-    model_internal static var allRequiredProperties:Array = new Array();
+    model_internal static var allRequiredProperties:Array = new Array("collectors", "anonymizers");
     model_internal static var allAlwaysAvailableProperties:Array = new Array("collectors", "anonymizers");
     model_internal static var guardedProperties:Array = new Array();
     model_internal static var dataProperties:Array = new Array("collectors", "anonymizers");
@@ -56,8 +56,8 @@ internal class _LicenseCollectorsEntityMetadata extends com.adobe.fiber.valueobj
 
         // Property type Map
         model_internal::propertyTypeMap = new Object();
-        model_internal::propertyTypeMap["collectors"] = "Object";
-        model_internal::propertyTypeMap["anonymizers"] = "Object";
+        model_internal::propertyTypeMap["collectors"] = "int";
+        model_internal::propertyTypeMap["anonymizers"] = "int";
 
         model_internal::_instance = value;
     }
