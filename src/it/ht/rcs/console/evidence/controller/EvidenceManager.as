@@ -9,6 +9,7 @@ package it.ht.rcs.console.evidence.controller
   
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.controller.ItemManager;
+  import it.ht.rcs.console.events.SessionEvent;
   import it.ht.rcs.console.evidence.model.Evidence;
   import it.ht.rcs.console.utils.AlertPopUp;
   
@@ -87,6 +88,13 @@ package it.ht.rcs.console.evidence.controller
       file.addEventListener(HTTPStatusEvent.HTTP_STATUS, onFault);
       file.addEventListener(IOErrorEvent.IO_ERROR, onFault);
       file.upload(new URLRequest(DB.hostAutocomplete(Console.currentSession.server) + "evidence/create/" + id), "content");
+    }
+    
+    override protected function onLogout(e:SessionEvent):void
+    {
+      super.onLogout(e);
+      evidenceFilter={};
+      _view = null;
     }
     
   }
