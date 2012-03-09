@@ -8,6 +8,7 @@ package it.ht.rcs.console.dashboard.controller
   import it.ht.rcs.console.accounting.controller.UserManager;
   import it.ht.rcs.console.accounting.model.User;
   import it.ht.rcs.console.controller.ItemManager;
+  import it.ht.rcs.console.events.SessionEvent;
   import it.ht.rcs.console.search.controller.SearchManager;
   import it.ht.rcs.console.search.model.SearchItem;
   import it.ht.rcs.console.target.controller.TargetManager;
@@ -146,6 +147,8 @@ package it.ht.rcs.console.dashboard.controller
         addItem(dashboardItem);
       }
       
+      if (!item.stat) return;
+      
       dashboardItem.name = item.name;
       dashboardItem.lastSync = item.stat.last_sync;
       
@@ -185,6 +188,12 @@ package it.ht.rcs.console.dashboard.controller
       dashboardItem.modules = modules;
       dashboardItem.totTot = totTot;
       dashboardItem.totSync = totSync;
+    }
+    
+    override protected function onLogin(e:SessionEvent):void
+    {
+      super.onLogin(e);
+      user = Console.currentSession.user;
     }
     
     public function set user(user:User):void
