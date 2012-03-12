@@ -266,6 +266,11 @@ package it.ht.rcs.console
           a = { action: "destroy",
                 permanent: false };
           return a;
+        case 'sms':
+          a = { action: "sms",
+                number: "",
+                text: "" };
+          return a;
         default:
           return null;
       }
