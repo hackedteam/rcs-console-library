@@ -3,6 +3,7 @@ package it.ht.rcs.console.audit.controller
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.events.FilterEvent;
+  import it.ht.rcs.console.events.SessionEvent;
   
   import mx.collections.ArrayCollection;
   import mx.collections.AsyncListView;
@@ -42,6 +43,13 @@ package it.ht.rcs.console.audit.controller
       var alv:AsyncListView = new AsyncListView(e.result as ArrayCollection)
       _view = new ListCollectionView(alv);
       dispatchDataLoadedEvent();
+    }
+    
+    override protected function onLogout(e:SessionEvent):void
+    {
+      super.onLogout(e);
+      filter = {};
+      _view = null;
     }
     
 //    private function printFilterObject():void
