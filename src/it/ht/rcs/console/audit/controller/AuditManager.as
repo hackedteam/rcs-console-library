@@ -1,5 +1,11 @@
 package it.ht.rcs.console.audit.controller
 {
+  import flash.events.Event;
+  import flash.net.URLLoader;
+  import flash.net.URLLoaderDataFormat;
+  import flash.net.URLRequest;
+  import flash.utils.ByteArray;
+  
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.events.FilterEvent;
@@ -17,6 +23,7 @@ package it.ht.rcs.console.audit.controller
     /* singleton */
     private static var _instance:AuditManager = new AuditManager();
     public static function get instance():AuditManager { return _instance; }
+    private var urlLoader:URLLoader = new URLLoader();
     
     [Bindable]
     public var filter:Object = {};
@@ -25,7 +32,20 @@ package it.ht.rcs.console.audit.controller
     {
       super.refresh();
       DB.instance.audit.filters(onFiltersResult);
-      DB.instance.audit.all(filter, onResult);
+      
+      urlLoader.dataFormat = URLLoaderDataFormat.BINARY;
+      urlLoader.load(new URLRequest(DB.hostAutocomplete(Console.currentSession.server) + "audit/index_amf?filter=" + JSON.stringify(filter)));
+      
+      urlLoader.addEventListener(Event.COMPLETE, completeHandler);
+    }
+    
+    private function completeHandler(event:Event):void {
+      var data:ByteArray = ByteArray( urlLoader.data );
+      var collection:ArrayCollection = data.readObject() as ArrayCollection;
+      trace("decoding " + collection.length + " object(s) [ " + urlLoader.bytesLoaded + " bytes]");
+      var alv:AsyncListView = new AsyncListView(collection);
+      _view = new ListCollectionView(alv);
+      dispatchDataLoadedEvent();
     }
     
     private function onFiltersResult(event:ResultEvent):void

@@ -32,6 +32,9 @@ package it.ht.rcs.console.evidence.rest
   	public function info(filter:Object, onResult:Function=null, onFault:Function=null):void
   	{
   	}
+    public function total(filter:Object, onResult:Function=null, onFault:Function=null):void
+    {
+    }
     
   }
   

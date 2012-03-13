@@ -5,12 +5,16 @@ package it.ht.rcs.console.evidence.controller
   import flash.events.IOErrorEvent;
   import flash.events.SecurityErrorEvent;
   import flash.filesystem.File;
+  import flash.net.URLLoader;
+  import flash.net.URLLoaderDataFormat;
   import flash.net.URLRequest;
+  import flash.utils.ByteArray;
   
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.events.SessionEvent;
   import it.ht.rcs.console.evidence.model.Evidence;
+  import it.ht.rcs.console.evidence.model.TypeCount;
   import it.ht.rcs.console.utils.AlertPopUp;
   
   import mx.collections.ArrayCollection;
@@ -34,14 +38,33 @@ package it.ht.rcs.console.evidence.controller
     [Bindable]
     public var infoFilter:Object = {};
     
+    private var urlLoader:URLLoader = new URLLoader();
+
+    [Bindable]
+    public var counts:ArrayCollection;
+    
     override public function refresh():void
     {
       super.refresh();
-      DB.instance.evidence.all(evidenceFilter, onResult);
+      
+      urlLoader.dataFormat = URLLoaderDataFormat.BINARY;
+      urlLoader.load(new URLRequest(DB.hostAutocomplete(Console.currentSession.server) + "evidence/index_amf?filter=" + JSON.stringify(evidenceFilter)));
+      
+      urlLoader.addEventListener(Event.COMPLETE, completeHandler);
     }
     
     [Bindable]
     public var _view:ListCollectionView;
+    
+    private function completeHandler(event:Event):void {
+      var data:ByteArray = ByteArray( urlLoader.data );
+      var collection:ArrayCollection = data.readObject() as ArrayCollection;
+      trace("decoding " + collection.length + " object(s) [ " + urlLoader.bytesLoaded + " bytes]");
+      var alv:AsyncListView = new AsyncListView(collection);
+      alv.list.addEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
+      _view = new ListCollectionView(alv);
+      dispatchDataLoadedEvent();
+    }
     
     private function onResult(e:ResultEvent):void
     {
@@ -49,6 +72,12 @@ package it.ht.rcs.console.evidence.controller
       alv.list.addEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
       _view = new ListCollectionView(alv);
       dispatchDataLoadedEvent();
+    }
+    
+    private function onCountResult(e:ResultEvent):void
+    {
+
+      counts=e.result as ArrayCollection;
     }
     
     override protected function onItemUpdate(event:*):void
@@ -73,7 +102,7 @@ package it.ht.rcs.console.evidence.controller
           // send the sync parameters
           DB.instance.evidence.sync_start({bid: event.result._id, user: user, device: device, sync_time: (new Date().time) / 1000}); 
           DB.instance.evidence.sync_stop({bid: event.result._id});
-
+        
           onResult(event);
         } else {
           AlertPopUp.show("Invalid Agent Status, cannot import");
