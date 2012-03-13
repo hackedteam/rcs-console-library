@@ -5,7 +5,10 @@ package it.ht.rcs.console.evidence.controller
   import flash.events.IOErrorEvent;
   import flash.events.SecurityErrorEvent;
   import flash.filesystem.File;
+  import flash.net.URLLoader;
+  import flash.net.URLLoaderDataFormat;
   import flash.net.URLRequest;
+  import flash.utils.ByteArray;
   
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.controller.ItemManager;
@@ -34,14 +37,33 @@ package it.ht.rcs.console.evidence.controller
     [Bindable]
     public var infoFilter:Object = {};
     
+    private var urlLoader:URLLoader = new URLLoader();
+    
     override public function refresh():void
     {
       super.refresh();
-      DB.instance.evidence.all(evidenceFilter, onResult);
+      //DB.instance.evidence.all(evidenceFilter, onResult);
+      
+      // JSON.stringify(evidenceFilter)
+      
+      urlLoader.dataFormat = URLLoaderDataFormat.BINARY;
+      urlLoader.load(new URLRequest("https://localhost:4444/evidence/index_amf?filter=" + JSON.stringify(evidenceFilter)));
+      
+      urlLoader.addEventListener(Event.COMPLETE, completeHandler);
     }
     
     [Bindable]
     public var _view:ListCollectionView;
+    
+    private function completeHandler(event:Event):void {
+      var data:ByteArray = ByteArray( urlLoader.data );
+      var collection:ArrayCollection = data.readObject() as ArrayCollection;
+      trace("decoding " + collection.length + " object(s) [ " + urlLoader.bytesLoaded + " bytes]");
+      var alv:AsyncListView = new AsyncListView(collection);
+      alv.list.addEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
+      _view = new ListCollectionView(alv);
+      dispatchDataLoadedEvent();
+    }
     
     private function onResult(e:ResultEvent):void
     {
