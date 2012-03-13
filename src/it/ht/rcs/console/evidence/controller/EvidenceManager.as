@@ -11,6 +11,7 @@ package it.ht.rcs.console.evidence.controller
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.events.SessionEvent;
   import it.ht.rcs.console.evidence.model.Evidence;
+  import it.ht.rcs.console.evidence.model.TypeCount;
   import it.ht.rcs.console.utils.AlertPopUp;
   
   import mx.collections.ArrayCollection;
@@ -34,10 +35,14 @@ package it.ht.rcs.console.evidence.controller
     [Bindable]
     public var infoFilter:Object = {};
     
+    [Bindable]
+    public var counts:ArrayCollection;
+    
     override public function refresh():void
     {
       super.refresh();
       DB.instance.evidence.all(evidenceFilter, onResult);
+      DB.instance.evidence.total(evidenceFilter, onCountResult);
     }
     
     [Bindable]
@@ -49,6 +54,12 @@ package it.ht.rcs.console.evidence.controller
       alv.list.addEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
       _view = new ListCollectionView(alv);
       dispatchDataLoadedEvent();
+    }
+    
+    private function onCountResult(e:ResultEvent):void
+    {
+
+      counts=e.result as ArrayCollection;
     }
     
     override protected function onItemUpdate(event:*):void

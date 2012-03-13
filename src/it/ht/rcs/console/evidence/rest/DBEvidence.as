@@ -45,6 +45,12 @@ package it.ht.rcs.console.evidence.rest
         var resp:CallResponder = DB.getCallResponder(onResult, onFault);
         resp.token = info_(JSON.stringify(filter));
     }
+    
+    public function total(filter:Object, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = total_(JSON.stringify(filter));
+    }
 
     public function agent_status(params:Object, onResult:Function=null, onFault:Function=null):void
     {
