@@ -254,6 +254,7 @@ public class _Super_Config extends flash.events.EventDispatcher implements com.a
     /**
      * derived property calculators
      */
+    
 
     /**
      * isValid calculator

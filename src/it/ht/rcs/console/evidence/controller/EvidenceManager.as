@@ -14,6 +14,7 @@ package it.ht.rcs.console.evidence.controller
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.events.SessionEvent;
   import it.ht.rcs.console.evidence.model.Evidence;
+  import it.ht.rcs.console.evidence.model.TypeCount;
   import it.ht.rcs.console.utils.AlertPopUp;
   
   import mx.collections.ArrayCollection;
@@ -38,16 +39,16 @@ package it.ht.rcs.console.evidence.controller
     public var infoFilter:Object = {};
     
     private var urlLoader:URLLoader = new URLLoader();
+
+    [Bindable]
+    public var counts:ArrayCollection;
     
     override public function refresh():void
     {
       super.refresh();
-      //DB.instance.evidence.all(evidenceFilter, onResult);
-      
-      // JSON.stringify(evidenceFilter)
       
       urlLoader.dataFormat = URLLoaderDataFormat.BINARY;
-      urlLoader.load(new URLRequest("https://localhost:4444/evidence/index_amf?filter=" + JSON.stringify(evidenceFilter)));
+      urlLoader.load(new URLRequest(DB.hostAutocomplete(Console.currentSession.server) + "evidence/index_amf?filter=" + JSON.stringify(evidenceFilter)));
       
       urlLoader.addEventListener(Event.COMPLETE, completeHandler);
     }
@@ -73,6 +74,12 @@ package it.ht.rcs.console.evidence.controller
       dispatchDataLoadedEvent();
     }
     
+    private function onCountResult(e:ResultEvent):void
+    {
+
+      counts=e.result as ArrayCollection;
+    }
+    
     override protected function onItemUpdate(event:*):void
     {
       if (event.property == 'data') return; // TODO: temporary fix. when applying filters, an update to "data" fires... ?
@@ -95,7 +102,7 @@ package it.ht.rcs.console.evidence.controller
           // send the sync parameters
           DB.instance.evidence.sync_start({bid: event.result._id, user: user, device: device, sync_time: (new Date().time) / 1000}); 
           DB.instance.evidence.sync_stop({bid: event.result._id});
-
+        
           onResult(event);
         } else {
           AlertPopUp.show("Invalid Agent Status, cannot import");

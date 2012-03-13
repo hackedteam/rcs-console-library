@@ -1,9 +1,9 @@
 /**
  * This is a generated class and is not intended for modification.  To customize behavior
- * of this value object you may modify the generated sub-class of this class - TaskGenerator.as.
+ * of this value object you may modify the generated sub-class of this class - TypeCount.as.
  */
 
-package it.ht.rcs.console.task.model
+package it.ht.rcs.console.evidence.model
 {
 import com.adobe.fiber.services.IFiberManagingService;
 import com.adobe.fiber.util.FiberUtils;
@@ -24,7 +24,7 @@ import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 use namespace model_internal;
 
 [ExcludeClass]
-public class _Super_TaskGenerator extends flash.events.EventDispatcher implements com.adobe.fiber.valueobjects.IValueObject
+public class _Super_TypeCount extends flash.events.EventDispatcher implements com.adobe.fiber.valueobjects.IValueObject
 {
     model_internal static function initRemoteClassAliasSingle(cz:Class) : void
     {
@@ -34,7 +34,7 @@ public class _Super_TaskGenerator extends flash.events.EventDispatcher implement
     {
     }
 
-    model_internal var _dminternal_model : _TaskGeneratorEntityMetadata;
+    model_internal var _dminternal_model : _TypeCountEntityMetadata;
     model_internal var _changedObjects:mx.collections.ArrayCollection = new ArrayCollection();
 
     public function getChangedObjects() : Array
@@ -51,11 +51,13 @@ public class _Super_TaskGenerator extends flash.events.EventDispatcher implement
     /**
      * properties
      */
-    private var _internal_description : String;
-    private var _internal_filter : Object;
+    private var _internal_count : Number = Number(0);
+    private var _internal_type : String;
 
     private static var emptyArray:Array = new Array();
 
+    // Change this value according to your application's floating-point precision
+    private static var epsilon:Number = 0.0001;
 
     /**
      * derived property cache initialization
@@ -64,13 +66,12 @@ public class _Super_TaskGenerator extends flash.events.EventDispatcher implement
 
     model_internal var _changeWatcherArray:Array = new Array();
 
-    public function _Super_TaskGenerator()
+    public function _Super_TypeCount()
     {
-        _model = new _TaskGeneratorEntityMetadata(this);
+        _model = new _TypeCountEntityMetadata(this);
 
         // Bind to own data or source properties for cache invalidation triggering
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "description", model_internal::setterListenerDescription));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "filter", model_internal::setterListenerFilter));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "type", model_internal::setterListenerType));
 
     }
 
@@ -79,15 +80,15 @@ public class _Super_TaskGenerator extends flash.events.EventDispatcher implement
      */
 
     [Bindable(event="propertyChange")]
-    public function get description() : String
+    public function get count() : Number
     {
-        return _internal_description;
+        return _internal_count;
     }
 
     [Bindable(event="propertyChange")]
-    public function get filter() : Object
+    public function get type() : String
     {
-        return _internal_filter;
+        return _internal_type;
     }
 
     public function clearAssociations() : void
@@ -98,23 +99,23 @@ public class _Super_TaskGenerator extends flash.events.EventDispatcher implement
      * data/source property setters
      */
 
-    public function set description(value:String) : void
+    public function set count(value:Number) : void
     {
-        var oldValue:String = _internal_description;
-        if (oldValue !== value)
+        var oldValue:Number = _internal_count;
+        if (isNaN(_internal_count) == true || Math.abs(oldValue - value) > epsilon)
         {
-            _internal_description = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "description", oldValue, _internal_description));
+            _internal_count = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "count", oldValue, _internal_count));
         }
     }
 
-    public function set filter(value:Object) : void
+    public function set type(value:String) : void
     {
-        var oldValue:Object = _internal_filter;
+        var oldValue:String = _internal_type;
         if (oldValue !== value)
         {
-            _internal_filter = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "filter", oldValue, _internal_filter));
+            _internal_type = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "type", oldValue, _internal_type));
         }
     }
 
@@ -130,14 +131,9 @@ public class _Super_TaskGenerator extends flash.events.EventDispatcher implement
      *  - the validity of the property (and the containing entity) if the given data property is required.
      */
 
-    model_internal function setterListenerDescription(value:flash.events.Event):void
+    model_internal function setterListenerType(value:flash.events.Event):void
     {
-        _model.invalidateDependentOnDescription();
-    }
-
-    model_internal function setterListenerFilter(value:flash.events.Event):void
-    {
-        _model.invalidateDependentOnFilter();
+        _model.invalidateDependentOnType();
     }
 
 
@@ -162,15 +158,10 @@ public class _Super_TaskGenerator extends flash.events.EventDispatcher implement
         var validationFailureMessages:Array = new Array();
 
         var propertyValidity:Boolean = true;
-        if (!_model.descriptionIsValid)
+        if (!_model.typeIsValid)
         {
             propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_descriptionValidationFailureMessages);
-        }
-        if (!_model.filterIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_filterValidationFailureMessages);
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_typeValidationFailureMessages);
         }
 
         model_internal::_cacheInitialized_isValid = true;
@@ -199,14 +190,14 @@ public class _Super_TaskGenerator extends flash.events.EventDispatcher implement
 
     [Transient]
     [Bindable(event="propertyChange")]
-    public function get _model() : _TaskGeneratorEntityMetadata
+    public function get _model() : _TypeCountEntityMetadata
     {
         return model_internal::_dminternal_model;
     }
 
-    public function set _model(value : _TaskGeneratorEntityMetadata) : void
+    public function set _model(value : _TypeCountEntityMetadata) : void
     {
-        var oldValue : _TaskGeneratorEntityMetadata = model_internal::_dminternal_model;
+        var oldValue : _TypeCountEntityMetadata = model_internal::_dminternal_model;
         if (oldValue !== value)
         {
             model_internal::_dminternal_model = value;
@@ -251,56 +242,29 @@ public class _Super_TaskGenerator extends flash.events.EventDispatcher implement
         }
     }
 
-    model_internal var _doValidationCacheOfDescription : Array = null;
-    model_internal var _doValidationLastValOfDescription : String;
+    model_internal var _doValidationCacheOfType : Array = null;
+    model_internal var _doValidationLastValOfType : String;
 
-    model_internal function _doValidationForDescription(valueIn:Object):Array
+    model_internal function _doValidationForType(valueIn:Object):Array
     {
         var value : String = valueIn as String;
 
-        if (model_internal::_doValidationCacheOfDescription != null && model_internal::_doValidationLastValOfDescription == value)
-           return model_internal::_doValidationCacheOfDescription ;
+        if (model_internal::_doValidationCacheOfType != null && model_internal::_doValidationLastValOfType == value)
+           return model_internal::_doValidationCacheOfType ;
 
-        _model.model_internal::_descriptionIsValidCacheInitialized = true;
+        _model.model_internal::_typeIsValidCacheInitialized = true;
         var validationFailures:Array = new Array();
         var errorMessage:String;
         var failure:Boolean;
 
         var valRes:ValidationResult;
-        if (_model.isDescriptionAvailable && _internal_description == null)
+        if (_model.isTypeAvailable && _internal_type == null)
         {
-            validationFailures.push(new ValidationResult(true, "", "", "description is required"));
+            validationFailures.push(new ValidationResult(true, "", "", "type is required"));
         }
 
-        model_internal::_doValidationCacheOfDescription = validationFailures;
-        model_internal::_doValidationLastValOfDescription = value;
-
-        return validationFailures;
-    }
-    
-    model_internal var _doValidationCacheOfFilter : Array = null;
-    model_internal var _doValidationLastValOfFilter : Object;
-
-    model_internal function _doValidationForFilter(valueIn:Object):Array
-    {
-        var value : Object = valueIn as Object;
-
-        if (model_internal::_doValidationCacheOfFilter != null && model_internal::_doValidationLastValOfFilter == value)
-           return model_internal::_doValidationCacheOfFilter ;
-
-        _model.model_internal::_filterIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.isFilterAvailable && _internal_filter == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "filter is required"));
-        }
-
-        model_internal::_doValidationCacheOfFilter = validationFailures;
-        model_internal::_doValidationLastValOfFilter = value;
+        model_internal::_doValidationCacheOfType = validationFailures;
+        model_internal::_doValidationLastValOfType = value;
 
         return validationFailures;
     }
