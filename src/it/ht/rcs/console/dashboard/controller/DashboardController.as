@@ -76,6 +76,8 @@ package it.ht.rcs.console.dashboard.controller
         addItem(dashboardItem);
       }
       
+      if (!item.stat) return; // TODO: Demo fix
+      
       dashboardItem.totSync = 0;
       dashboardItem.totTot = 0;
       dashboardItem.targets = updateTargetList(dashboardItem, item);
@@ -98,6 +100,8 @@ package it.ht.rcs.console.dashboard.controller
       for each (var target:Target in view) {
         if (target.path[0] == item._id) {
           SearchManager.instance.showItem(target._id, function(item:SearchItem):void {
+            
+            if (!item.stat) return; // TODO: Demo fix
             
             if (!dashboardItem.targetBaselines.hasOwnProperty(item._id))
               dashboardItem.targetBaselines[item._id] = item.stat;
@@ -147,7 +151,7 @@ package it.ht.rcs.console.dashboard.controller
         addItem(dashboardItem);
       }
       
-      if (!item.stat) return;
+      if (!item.stat) return; // TODO: Demo fix
       
       dashboardItem.name = item.name;
       dashboardItem.lastSync = item.stat.last_sync;
