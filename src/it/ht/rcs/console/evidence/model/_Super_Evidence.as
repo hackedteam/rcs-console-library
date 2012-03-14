@@ -54,13 +54,13 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
     /**
      * properties
      */
-    private var _internal_blotter : Boolean;
+    private var _internal_blo : Boolean;
     private var _internal__id : String;
     private var _internal_data : it.ht.rcs.console.evidence.model.EvidenceData;
-    private var _internal_relevance : int;
-    private var _internal_acquired : int;
-    private var _internal_received : int;
-    private var _internal_agent_id : String;
+    private var _internal_rel : int;
+    private var _internal_da : int;
+    private var _internal_dr : int;
+    private var _internal_aid : String;
     private var _internal_type : String;
     private var _internal__mid : int;
     private var _internal_note : String;
@@ -81,7 +81,7 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
 
         // Bind to own data or source properties for cache invalidation triggering
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "data", model_internal::setterListenerData));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "agent_id", model_internal::setterListenerAgent_id));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "aid", model_internal::setterListenerAid));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "type", model_internal::setterListenerType));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "note", model_internal::setterListenerNote));
 
@@ -92,9 +92,9 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
      */
 
     [Bindable(event="propertyChange")]
-    public function get blotter() : Boolean
+    public function get blo() : Boolean
     {
-        return _internal_blotter;
+        return _internal_blo;
     }
 
     [Bindable(event="propertyChange")]
@@ -110,27 +110,27 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
     }
 
     [Bindable(event="propertyChange")]
-    public function get relevance() : int
+    public function get rel() : int
     {
-        return _internal_relevance;
+        return _internal_rel;
     }
 
     [Bindable(event="propertyChange")]
-    public function get acquired() : int
+    public function get da() : int
     {
-        return _internal_acquired;
+        return _internal_da;
     }
 
     [Bindable(event="propertyChange")]
-    public function get received() : int
+    public function get dr() : int
     {
-        return _internal_received;
+        return _internal_dr;
     }
 
     [Bindable(event="propertyChange")]
-    public function get agent_id() : String
+    public function get aid() : String
     {
-        return _internal_agent_id;
+        return _internal_aid;
     }
 
     [Bindable(event="propertyChange")]
@@ -159,12 +159,12 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
      * data/source property setters
      */
 
-    public function set blotter(value:Boolean) : void
+    public function set blo(value:Boolean) : void
     {
-        var oldValue:Boolean = _internal_blotter;
+        var oldValue:Boolean = _internal_blo;
         if (oldValue !== value)
         {
-            _internal_blotter = value;
+            _internal_blo = value;
         }
     }
 
@@ -186,39 +186,39 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
         }
     }
 
-    public function set relevance(value:int) : void
+    public function set rel(value:int) : void
     {
-        var oldValue:int = _internal_relevance;
+        var oldValue:int = _internal_rel;
         if (oldValue !== value)
         {
-            _internal_relevance = value;
+            _internal_rel = value;
         }
     }
 
-    public function set acquired(value:int) : void
+    public function set da(value:int) : void
     {
-        var oldValue:int = _internal_acquired;
+        var oldValue:int = _internal_da;
         if (oldValue !== value)
         {
-            _internal_acquired = value;
+            _internal_da = value;
         }
     }
 
-    public function set received(value:int) : void
+    public function set dr(value:int) : void
     {
-        var oldValue:int = _internal_received;
+        var oldValue:int = _internal_dr;
         if (oldValue !== value)
         {
-            _internal_received = value;
+            _internal_dr = value;
         }
     }
 
-    public function set agent_id(value:String) : void
+    public function set aid(value:String) : void
     {
-        var oldValue:String = _internal_agent_id;
+        var oldValue:String = _internal_aid;
         if (oldValue !== value)
         {
-            _internal_agent_id = value;
+            _internal_aid = value;
         }
     }
 
@@ -266,9 +266,9 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
         _model.invalidateDependentOnData();
     }
 
-    model_internal function setterListenerAgent_id(value:flash.events.Event):void
+    model_internal function setterListenerAid(value:flash.events.Event):void
     {
-        _model.invalidateDependentOnAgent_id();
+        _model.invalidateDependentOnAid();
     }
 
     model_internal function setterListenerType(value:flash.events.Event):void
@@ -292,7 +292,6 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
     /**
      * derived property calculators
      */
-    
 
     /**
      * isValid calculator
@@ -308,10 +307,10 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
             propertyValidity = false;
             com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_dataValidationFailureMessages);
         }
-        if (!_model.agent_idIsValid)
+        if (!_model.aidIsValid)
         {
             propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_agent_idValidationFailureMessages);
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_aidValidationFailureMessages);
         }
         if (!_model.typeIsValid)
         {
@@ -429,29 +428,29 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
         return validationFailures;
     }
     
-    model_internal var _doValidationCacheOfAgent_id : Array = null;
-    model_internal var _doValidationLastValOfAgent_id : String;
+    model_internal var _doValidationCacheOfAid : Array = null;
+    model_internal var _doValidationLastValOfAid : String;
 
-    model_internal function _doValidationForAgent_id(valueIn:Object):Array
+    model_internal function _doValidationForAid(valueIn:Object):Array
     {
         var value : String = valueIn as String;
 
-        if (model_internal::_doValidationCacheOfAgent_id != null && model_internal::_doValidationLastValOfAgent_id == value)
-           return model_internal::_doValidationCacheOfAgent_id ;
+        if (model_internal::_doValidationCacheOfAid != null && model_internal::_doValidationLastValOfAid == value)
+           return model_internal::_doValidationCacheOfAid ;
 
-        _model.model_internal::_agent_idIsValidCacheInitialized = true;
+        _model.model_internal::_aidIsValidCacheInitialized = true;
         var validationFailures:Array = new Array();
         var errorMessage:String;
         var failure:Boolean;
 
         var valRes:ValidationResult;
-        if (_model.isAgent_idAvailable && _internal_agent_id == null)
+        if (_model.isAidAvailable && _internal_aid == null)
         {
-            validationFailures.push(new ValidationResult(true, "", "", "agent_id is required"));
+            validationFailures.push(new ValidationResult(true, "", "", "aid is required"));
         }
 
-        model_internal::_doValidationCacheOfAgent_id = validationFailures;
-        model_internal::_doValidationLastValOfAgent_id = value;
+        model_internal::_doValidationCacheOfAid = validationFailures;
+        model_internal::_doValidationLastValOfAid = value;
 
         return validationFailures;
     }

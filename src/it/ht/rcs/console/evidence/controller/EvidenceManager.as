@@ -67,7 +67,7 @@ package it.ht.rcs.console.evidence.controller
 		{
 			var data:ByteArray=ByteArray(urlLoader.data);
 			var collection:ArrayCollection=data.readObject() as ArrayCollection;
-			trace("decoding " + collection.length + " object(s) [ " + urlLoader.bytesLoaded + " bytes]");
+			//trace("decoding " + collection.length + " object(s) [ " + urlLoader.bytesLoaded + " bytes]");
 			var alv:AsyncListView=new AsyncListView(collection);
 			alv.list.addEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
 			_view=new ListCollectionView(alv);

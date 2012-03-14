@@ -386,7 +386,6 @@ public class _Super_Collector extends flash.events.EventDispatcher implements co
     /**
      * derived property calculators
      */
-    
 
     /**
      * isValid calculator
