@@ -11,7 +11,7 @@ package it.ht.rcs.console.network.rest
   
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.network.model.Injector;
-
+  
   import mx.rpc.CallResponder;
   
   public class DBInjector extends _Super_DBInjector implements IDBInjector
@@ -91,6 +91,12 @@ package it.ht.rcs.console.network.rest
     {
       super.preInitializeService();
       // Initialization customization goes here
+    }
+    
+    public function upgrade(id:String, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = upgrade_(JSON.stringify( { _id: id } ));
     }
     
   }

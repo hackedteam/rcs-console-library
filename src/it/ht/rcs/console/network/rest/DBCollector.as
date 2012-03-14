@@ -65,6 +65,12 @@ package it.ht.rcs.console.network.rest
       super.preInitializeService();
     }
     
+    public function upgrade(id:String, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = upgrade_(JSON.stringify({_id: id}));
+    }
+    
   }
 
 }

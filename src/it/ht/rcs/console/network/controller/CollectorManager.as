@@ -108,6 +108,16 @@ package it.ht.rcs.console.network.controller
       return super.getView(null, entryFilter);
     }
     
+    public function upgradeAnon(_id:String, callback:Function=null, errback:Function=null):void
+    {
+      DB.instance.collector.upgrade(_id, function(e:ResultEvent):void {
+        callback();
+      }, 
+      function(e:ResultEvent):void {
+        errback();
+      });
+    }
+    
   }
   
 }
