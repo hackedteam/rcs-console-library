@@ -59,6 +59,7 @@ public class _Super_Injector extends flash.events.EventDispatcher implements com
     private var _internal_desc : String;
     private var _internal__id : String;
     private var _internal_configured : Boolean;
+    private var _internal_upgradable : Boolean;
     private var _internal_address : String;
     private var _internal_name : String;
     private var _internal_created_at : String;
@@ -138,6 +139,12 @@ public class _Super_Injector extends flash.events.EventDispatcher implements com
     public function get configured() : Boolean
     {
         return _internal_configured;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get upgradable() : Boolean
+    {
+        return _internal_upgradable;
     }
 
     [Bindable(event="propertyChange")]
@@ -274,6 +281,16 @@ public class _Super_Injector extends flash.events.EventDispatcher implements com
         {
             _internal_configured = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "configured", oldValue, _internal_configured));
+        }
+    }
+
+    public function set upgradable(value:Boolean) : void
+    {
+        var oldValue:Boolean = _internal_upgradable;
+        if (oldValue !== value)
+        {
+            _internal_upgradable = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "upgradable", oldValue, _internal_upgradable));
         }
     }
 
