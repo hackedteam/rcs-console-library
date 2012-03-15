@@ -3,14 +3,21 @@ package it.ht.rcs.console
   import it.ht.rcs.console.agent.model.Agent;
   
   import mx.collections.ArrayCollection;
+  import mx.formatters.DateFormatter;
   
   public class DefaultConfigBuilder
   {
     
     private static var agent:Agent;
     
+    private static const formatter:DateFormatter = new DateFormatter();
+    private static var today:Date;
+    
     public static function getDefaultConfig(a:Agent):Object
     {
+      formatter.formatString = "YYYY-MM-DD 00:00:00";
+      today = new Date();
+      
       agent = a;
       
       var config:Object = {};
@@ -107,7 +114,7 @@ package it.ht.rcs.console
           capture: false,
           minsize: 1,
           maxsize: 500000,
-          date: "2010-01-01 00:00:00",
+          date: formatter.format(today),
           accept: [],
           deny:   [],
           _type: "desktop",
@@ -140,9 +147,9 @@ package it.ht.rcs.console
         
         {
           module: "messages",
-          mail: {enabled: false, filter: {history: true, datefrom: "2010-01-21 00:00:00", maxsize: 100000}},
-          sms:  {enabled: false, filter: {history: true, datefrom: "2010-01-21 00:00:00"}},
-          mms:  {enabled: false, filter: {history: true, datefrom: "2010-01-21 00:00:00"}},
+          mail: {enabled: false, filter: {history: true, datefrom: formatter.format(today), maxsize: 100000}},
+          sms:  {enabled: false, filter: {history: true, datefrom: formatter.format(today)}},
+          mms:  {enabled: false, filter: {history: true, datefrom: formatter.format(today)}},
           _type: "desktop,mobile",
           _platform: "windows,ios,blackberry,winmo,symbian,android"
         },
@@ -332,7 +339,7 @@ package it.ht.rcs.console
           
         case 'date':
           e = { event: "date",
-                datefrom: "2010-01-01 00:00:00" };
+                datefrom: formatter.format(new Date()) };
           break;
           
         case 'position':
