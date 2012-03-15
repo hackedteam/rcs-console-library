@@ -1,15 +1,8 @@
 package it.ht.rcs.console.audit.controller
 {
-  import flash.events.Event;
-  import flash.net.URLLoader;
-  import flash.net.URLLoaderDataFormat;
-  import flash.net.URLRequest;
-  import flash.utils.ByteArray;
-  
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.events.FilterEvent;
-  import it.ht.rcs.console.events.SessionEvent;
   
   import mx.collections.ArrayCollection;
   import mx.collections.AsyncListView;
@@ -23,7 +16,6 @@ package it.ht.rcs.console.audit.controller
     /* singleton */
     private static var _instance:AuditManager = new AuditManager();
     public static function get instance():AuditManager { return _instance; }
-    private var urlLoader:URLLoader = new URLLoader();
     
     [Bindable]
     public var filter:Object = {};
@@ -32,20 +24,7 @@ package it.ht.rcs.console.audit.controller
     {
       super.refresh();
       DB.instance.audit.filters(onFiltersResult);
-      
-      urlLoader.dataFormat = URLLoaderDataFormat.BINARY;
-      urlLoader.load(new URLRequest(DB.hostAutocomplete(Console.currentSession.server) + "audit/index_amf?filter=" + JSON.stringify(filter)));
-      
-      urlLoader.addEventListener(Event.COMPLETE, completeHandler);
-    }
-    
-    private function completeHandler(event:Event):void {
-      var data:ByteArray = ByteArray( urlLoader.data );
-      var collection:ArrayCollection = data.readObject() as ArrayCollection;
-      //trace("decoding " + collection.length + " object(s) [ " + urlLoader.bytesLoaded + " bytes]");
-      var alv:AsyncListView = new AsyncListView(collection);
-      _view = new ListCollectionView(alv);
-      dispatchDataLoadedEvent();
+      DB.instance.audit.all(filter, onResult);
     }
     
     private function onFiltersResult(event:ResultEvent):void
@@ -63,13 +42,6 @@ package it.ht.rcs.console.audit.controller
       var alv:AsyncListView = new AsyncListView(e.result as ArrayCollection)
       _view = new ListCollectionView(alv);
       dispatchDataLoadedEvent();
-    }
-    
-    override protected function onLogout(e:SessionEvent):void
-    {
-      super.onLogout(e);
-      filter = {};
-      _view = null;
     }
     
 //    private function printFilterObject():void
