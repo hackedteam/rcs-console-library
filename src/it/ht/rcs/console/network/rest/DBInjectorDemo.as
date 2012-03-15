@@ -86,6 +86,11 @@ package it.ht.rcs.console.network.rest
         onResult(event);
     }
     
+    public function upgrade(id:String, onResult:Function=null, onFault:Function=null):void
+    {
+
+    }
+    
   }
   
 }

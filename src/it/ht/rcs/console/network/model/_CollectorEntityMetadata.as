@@ -21,14 +21,14 @@ internal class _CollectorEntityMetadata extends com.adobe.fiber.valueobjects.Abs
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("port", "desc", "configured", "next", "type", "version", "prev", "updated_at", "poll", "_id", "address", "name", "internal_address", "created_at", "instance");
+    model_internal static var allProperties:Array = new Array("port", "desc", "configured", "upgradable", "next", "type", "version", "prev", "updated_at", "poll", "_id", "address", "name", "internal_address", "created_at", "instance");
     model_internal static var allAssociationProperties:Array = new Array();
     model_internal static var allRequiredProperties:Array = new Array();
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("port", "desc", "configured", "next", "type", "version", "prev", "updated_at", "poll", "_id", "address", "name", "internal_address", "created_at", "instance");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("port", "desc", "configured", "upgradable", "next", "type", "version", "prev", "updated_at", "poll", "_id", "address", "name", "internal_address", "created_at", "instance");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("port", "desc", "configured", "next", "type", "version", "prev", "updated_at", "poll", "_id", "address", "name", "internal_address", "created_at", "instance");
+    model_internal static var dataProperties:Array = new Array("port", "desc", "configured", "upgradable", "next", "type", "version", "prev", "updated_at", "poll", "_id", "address", "name", "internal_address", "created_at", "instance");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("port", "desc", "configured", "next", "type", "version", "prev", "updated_at", "poll", "_id", "address", "name", "internal_address", "created_at", "instance");
+    model_internal static var nonDerivedProperties:Array = new Array("port", "desc", "configured", "upgradable", "next", "type", "version", "prev", "updated_at", "poll", "_id", "address", "name", "internal_address", "created_at", "instance");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array("next", "prev");
     model_internal static var collectionBaseMap:Object;
@@ -51,6 +51,7 @@ internal class _CollectorEntityMetadata extends com.adobe.fiber.valueobjects.Abs
             model_internal::dependentsOnMap["port"] = new Array();
             model_internal::dependentsOnMap["desc"] = new Array();
             model_internal::dependentsOnMap["configured"] = new Array();
+            model_internal::dependentsOnMap["upgradable"] = new Array();
             model_internal::dependentsOnMap["next"] = new Array();
             model_internal::dependentsOnMap["type"] = new Array();
             model_internal::dependentsOnMap["version"] = new Array();
@@ -75,6 +76,7 @@ internal class _CollectorEntityMetadata extends com.adobe.fiber.valueobjects.Abs
         model_internal::propertyTypeMap["port"] = "int";
         model_internal::propertyTypeMap["desc"] = "String";
         model_internal::propertyTypeMap["configured"] = "Boolean";
+        model_internal::propertyTypeMap["upgradable"] = "Boolean";
         model_internal::propertyTypeMap["next"] = "ArrayCollection";
         model_internal::propertyTypeMap["type"] = "String";
         model_internal::propertyTypeMap["version"] = "int";
@@ -334,6 +336,12 @@ internal class _CollectorEntityMetadata extends com.adobe.fiber.valueobjects.Abs
     }
 
     [Bindable(event="propertyChange")]
+    public function get isUpgradableAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get isNextAvailable():Boolean
     {
         return true;
@@ -429,6 +437,12 @@ internal class _CollectorEntityMetadata extends com.adobe.fiber.valueobjects.Abs
 
     [Bindable(event="propertyChange")]   
     public function get configuredStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get upgradableStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }

@@ -68,6 +68,10 @@ package it.ht.rcs.console.network.rest
         onResult(new ResultEvent('collector.del_logs'));
     }
     
+    public function upgrade(id:String, onResult:Function=null, onFault:Function=null):void
+    {
+    }
+    
   }
   
 }

@@ -22,14 +22,14 @@ internal class _InjectorEntityMetadata extends com.adobe.fiber.valueobjects.Abst
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("rules", "version", "redirection_tag", "port", "updated_at", "poll", "desc", "_id", "configured", "address", "name", "created_at", "redirect");
+    model_internal static var allProperties:Array = new Array("rules", "version", "redirection_tag", "port", "updated_at", "poll", "desc", "_id", "configured", "upgradable", "address", "name", "created_at", "redirect");
     model_internal static var allAssociationProperties:Array = new Array();
     model_internal static var allRequiredProperties:Array = new Array();
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("rules", "version", "redirection_tag", "port", "updated_at", "poll", "desc", "_id", "configured", "address", "name", "created_at", "redirect");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("rules", "version", "redirection_tag", "port", "updated_at", "poll", "desc", "_id", "configured", "upgradable", "address", "name", "created_at", "redirect");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("rules", "version", "redirection_tag", "port", "updated_at", "poll", "desc", "_id", "configured", "address", "name", "created_at", "redirect");
+    model_internal static var dataProperties:Array = new Array("rules", "version", "redirection_tag", "port", "updated_at", "poll", "desc", "_id", "configured", "upgradable", "address", "name", "created_at", "redirect");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("rules", "version", "redirection_tag", "port", "updated_at", "poll", "desc", "_id", "configured", "address", "name", "created_at", "redirect");
+    model_internal static var nonDerivedProperties:Array = new Array("rules", "version", "redirection_tag", "port", "updated_at", "poll", "desc", "_id", "configured", "upgradable", "address", "name", "created_at", "redirect");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array("rules");
     model_internal static var collectionBaseMap:Object;
@@ -58,6 +58,7 @@ internal class _InjectorEntityMetadata extends com.adobe.fiber.valueobjects.Abst
             model_internal::dependentsOnMap["desc"] = new Array();
             model_internal::dependentsOnMap["_id"] = new Array();
             model_internal::dependentsOnMap["configured"] = new Array();
+            model_internal::dependentsOnMap["upgradable"] = new Array();
             model_internal::dependentsOnMap["address"] = new Array();
             model_internal::dependentsOnMap["name"] = new Array();
             model_internal::dependentsOnMap["created_at"] = new Array();
@@ -79,6 +80,7 @@ internal class _InjectorEntityMetadata extends com.adobe.fiber.valueobjects.Abst
         model_internal::propertyTypeMap["desc"] = "String";
         model_internal::propertyTypeMap["_id"] = "String";
         model_internal::propertyTypeMap["configured"] = "Boolean";
+        model_internal::propertyTypeMap["upgradable"] = "Boolean";
         model_internal::propertyTypeMap["address"] = "String";
         model_internal::propertyTypeMap["name"] = "String";
         model_internal::propertyTypeMap["created_at"] = "String";
@@ -366,6 +368,12 @@ internal class _InjectorEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     }
 
     [Bindable(event="propertyChange")]
+    public function get isUpgradableAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get isAddressAvailable():Boolean
     {
         return true;
@@ -449,6 +457,12 @@ internal class _InjectorEntityMetadata extends com.adobe.fiber.valueobjects.Abst
 
     [Bindable(event="propertyChange")]   
     public function get configuredStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get upgradableStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }

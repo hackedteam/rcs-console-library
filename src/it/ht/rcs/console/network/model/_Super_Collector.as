@@ -50,6 +50,7 @@ public class _Super_Collector extends flash.events.EventDispatcher implements co
     private var _internal_port : int;
     private var _internal_desc : String;
     private var _internal_configured : Boolean;
+    private var _internal_upgradable : Boolean;
     private var _internal_next : ArrayCollection;
     private var _internal_type : String;
     private var _internal_version : int;
@@ -101,6 +102,12 @@ public class _Super_Collector extends flash.events.EventDispatcher implements co
     public function get configured() : Boolean
     {
         return _internal_configured;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get upgradable() : Boolean
+    {
+        return _internal_upgradable;
     }
 
     [Bindable(event="propertyChange")]
@@ -210,6 +217,16 @@ public class _Super_Collector extends flash.events.EventDispatcher implements co
         {
             _internal_configured = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "configured", oldValue, _internal_configured));
+        }
+    }
+
+    public function set upgradable(value:Boolean) : void
+    {
+        var oldValue:Boolean = _internal_upgradable;
+        if (oldValue !== value)
+        {
+            _internal_upgradable = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "upgradable", oldValue, _internal_upgradable));
         }
     }
 
@@ -386,7 +403,6 @@ public class _Super_Collector extends flash.events.EventDispatcher implements co
     /**
      * derived property calculators
      */
-    
 
     /**
      * isValid calculator
