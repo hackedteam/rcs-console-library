@@ -76,7 +76,7 @@ package it.ht.rcs.console.monitor.rest
     {
       var counters:StatusCounters = new StatusCounters(
         {
-          error: 1,
+          error: 2,
           ok: 1,
           warn: 1
         });
