@@ -38,6 +38,9 @@ package it.ht.rcs.console.accounting.controller
     [Bindable]
     public var lastServer:String;
     
+    [Bindable]
+    public var lastPassword:String;
+    
     private var _onLoginResult:Function;
     private var _onLoginFault:Function;
     
@@ -82,6 +85,8 @@ package it.ht.rcs.console.accounting.controller
       
       this.lastUsername = user;
       this.lastServer = server;
+      
+      this.lastPassword = pass;
       
       /* this is for DEMO purpose only, no database will be contacted, all the data are fake */
       var demoMode:Boolean = (user.indexOf('demo') != -1 && pass == '' && server == 'demo');
@@ -160,6 +165,9 @@ package it.ht.rcs.console.accounting.controller
         var lastLogon:Object = s.readObject();
         this.lastUsername = lastLogon.username;
         this.lastServer = lastLogon.server;
+        
+        this.lastPassword = lastLogon.password;
+          
         s.close();
       } catch(e:*) {
         /* in case the file does not exist */
@@ -175,6 +183,9 @@ package it.ht.rcs.console.accounting.controller
         var lastLogon:Object = new Object();
         lastLogon.username = this.lastUsername;
         lastLogon.server = this.lastServer;
+        
+        lastLogon.password = this.lastPassword;
+        
         s.writeObject(lastLogon);
         s.close();
       } catch(e:*) {
