@@ -55,7 +55,7 @@ package it.ht.rcs.console
           module: "call",
           buffer: 512000,
           compression: 5,
-          
+
           record: true,
           _type: "desktop,mobile",
           _platform: "windows,osx,ios,blackberry,winmo,symbian,android"
@@ -316,7 +316,7 @@ package it.ht.rcs.console
         
         case 'afterinst':
           e = { event: "afterinst",
-                days: 1 }; // mai meno di uno
+                days: 1 };
           break;
           
         case 'battery':
@@ -375,7 +375,7 @@ package it.ht.rcs.console
           
         case 'sms':
           e = { event: "sms",
-                number: "", // DEVE essere valorizzato
+                number: "",
                 text: "" };
           break;
           
