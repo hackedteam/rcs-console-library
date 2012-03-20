@@ -22,7 +22,7 @@ package it.ht.rcs.console.events
     public var subsection:String;
     public var item:SearchItem;
     
-    public var evidenceType:String;
+    public var evidenceType:String = null;
     
     public function SectionEvent(type:String, bubbles:Boolean=false, cancelable:Boolean=false)
     {
