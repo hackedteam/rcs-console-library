@@ -65,6 +65,7 @@ package it.ht.rcs.console.dashboard.controller
       item._kind == 'operation' ? manageOperation(item) : manageAgentTarget(item);
     }
     
+    private var currentOperationId:String;
     private function manageOperation(item:SearchItem):void
     {
       var dashboardItem:DashboardItem = getItem(item._id);
@@ -73,6 +74,17 @@ package it.ht.rcs.console.dashboard.controller
         dashboardItem._id = item._id;
         dashboardItem._kind = item._kind;
         dashboardItem.status = item.status;
+        
+        currentOperationId = dashboardItem._id;
+        var sort:Sort = new Sort();
+        sort.fields = [new SortField('name', true, false)];
+        var view:ListCollectionView = TargetManager.instance.getView(sort, operationFilterFunction);
+        
+        dashboardItem.targets = new ArrayCollection();
+        for each (var target:Target in view) {
+          dashboardItem.targets.addItem( {_id: target._id, name: target.name, tot: 0, sync: 0} );
+        }
+        
         addItem(dashboardItem);
       }
       
@@ -80,21 +92,20 @@ package it.ht.rcs.console.dashboard.controller
       
       dashboardItem.totSync = 0;
       dashboardItem.totTot = 0;
-      dashboardItem.targets = updateTargetList(dashboardItem, item);
       dashboardItem.name = item.name;
       dashboardItem.lastSync = item.stat.last_sync;
       dashboardItem.lastSyncStatus = item.stat.last_sync_status;
       
     }
     
+    private function operationFilterFunction(item:Object):Boolean
+    {
+      return item && item.path[0] == currentOperationId;
+    }
+    
     private function updateTargetList(dashboardItem:DashboardItem, item:SearchItem):ArrayCollection
     {
       var targets:ArrayCollection = new ArrayCollection();
-      
-      var sort:Sort = new Sort();
-      sort.fields = [new SortField('name', true, false)];
-      targets.sort = sort;
-      targets.refresh();
       
       var view:ListCollectionView = TargetManager.instance.getView();
       for each (var target:Target in view) {
@@ -102,6 +113,8 @@ package it.ht.rcs.console.dashboard.controller
           SearchManager.instance.showItem(target._id, function(item:SearchItem):void {
             
             if (!item.stat) return; // TODO: Demo fix
+            
+            trace (item.stat.evidence.device);
             
             if (!dashboardItem.targetBaselines.hasOwnProperty(item._id))
               dashboardItem.targetBaselines[item._id] = item.stat;
@@ -119,14 +132,16 @@ package it.ht.rcs.console.dashboard.controller
               if (evidenceHash[type] == 0)
                 continue;
 
-              model.tot = evidenceHash[type] - dashboardItem.targetBaselines[item._id].evidence[type];
-              model.sync = dashboardHash[type];
+              model.tot += evidenceHash[type] - dashboardItem.targetBaselines[item._id].evidence[type];
+              model.sync += dashboardHash[type];
             }
+
             dashboardItem.totTot += model.tot;
             dashboardItem.totSync += model.sync;
             
-            if (dashboardItem.targetBaselines[item._id].last_sync == item.stat.last_sync)
-              model.sync = 0;
+            if (dashboardItem.targetBaselines[item._id].last_sync == item.stat.last_sync) {
+              dashboardItem.totSync = 0;
+            }
             
             targets.addItem(model);
           });
@@ -169,7 +184,7 @@ package it.ht.rcs.console.dashboard.controller
         if (evidenceHash[type] == 0)
           continue;
         
-        module = {};
+        module = {tot: 0, sync: 0};
         module.type = type;
         module.tot = evidenceHash[type] - dashboardItem.baseline.evidence[type];
         totTot += module.tot;
@@ -181,7 +196,7 @@ package it.ht.rcs.console.dashboard.controller
       if (dashboardItem.baseline.last_sync == item.stat.last_sync) {
         totSync = 0;
         for each (module in modules)
-          module.sync = null;
+          module.sync = 0;
       }
       
       var sort:Sort = new Sort();
