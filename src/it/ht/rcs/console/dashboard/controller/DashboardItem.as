@@ -6,8 +6,8 @@ package it.ht.rcs.console.dashboard.controller
 
   public class DashboardItem
   {
-    public var _id:String;
-    public var _kind:String;
+    [Bindable] public var _id:String;
+    [Bindable] public var _kind:String;
 
     [Bindable] public var name:String;
 

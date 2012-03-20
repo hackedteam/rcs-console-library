@@ -22,6 +22,8 @@ package it.ht.rcs.console.events
     public var subsection:String;
     public var item:SearchItem;
     
+    public var evidenceType:String;
+    
     public function SectionEvent(type:String, bubbles:Boolean=false, cancelable:Boolean=false)
     {
       super(type, bubbles, cancelable);
