@@ -15,7 +15,7 @@ package it.ht.rcs.console.build.controller
     
     /* singleton */
     private static var _instance:BuildManager = new BuildManager();
-    public static function get instance():BuildManager { return _instance; } 
+    public static function get instance():BuildManager { return _instance; }
     
     public function BuildManager()
     {

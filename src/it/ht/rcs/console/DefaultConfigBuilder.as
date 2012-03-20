@@ -261,8 +261,7 @@ package it.ht.rcs.console
                 stop: false,
                 
                 wifi: true,
-                cell: false,
-                apn: { name: "", user: "", pass: "" } };
+                cell: false }; // apn: { name: "", user: "", pass: "" }
           return a;
           
         case 'log':
