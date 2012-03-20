@@ -82,7 +82,10 @@ package it.ht.rcs.console.dashboard.controller
         
         dashboardItem.targets = new ArrayCollection();
         for each (var target:Target in view) {
-          dashboardItem.targets.addItem( {_id: target._id, name: target.name, tot: 0, sync: 0} );
+          var ti:TargetInfo = new TargetInfo();
+          ti._id = target._id;
+          ti.name = target.name;
+          dashboardItem.targets.addItem(ti);
         }
         
         addItem(dashboardItem);
@@ -90,11 +93,13 @@ package it.ht.rcs.console.dashboard.controller
       
       if (!item.stat) return; // TODO: Demo fix
       
-      dashboardItem.totSync = 0;
-      dashboardItem.totTot = 0;
       dashboardItem.name = item.name;
       dashboardItem.lastSync = item.stat.last_sync;
       dashboardItem.lastSyncStatus = item.stat.last_sync_status;
+      dashboardItem.totSync = 0;
+      dashboardItem.totTot = 0;
+      
+      updateTargetList(dashboardItem);
       
     }
     
@@ -103,52 +108,46 @@ package it.ht.rcs.console.dashboard.controller
       return item && item.path[0] == currentOperationId;
     }
     
-    private function updateTargetList(dashboardItem:DashboardItem, item:SearchItem):ArrayCollection
+    private function updateTargetList(dashboardItem:DashboardItem):void
     {
-      var targets:ArrayCollection = new ArrayCollection();
-      
-      var view:ListCollectionView = TargetManager.instance.getView();
-      for each (var target:Target in view) {
-        if (target.path[0] == item._id) {
-          SearchManager.instance.showItem(target._id, function(item:SearchItem):void {
-            
-            if (!item.stat) return; // TODO: Demo fix
-            
-            trace (item.stat.evidence.device);
-            
-            if (!dashboardItem.targetBaselines.hasOwnProperty(item._id))
-              dashboardItem.targetBaselines[item._id] = item.stat;
-            
-            var totTot:Number = 0;
-            var totSync:Number = 0;
-            
-            var evidenceHash:Object = ObjectUtils.toHash(item.stat.evidence);
-            var dashboardHash:Object = ObjectUtils.toHash(item.stat.dashboard);
-            
-            var model:Object = {};
-            model.name = item.name;
-            for (var type:String in evidenceHash)
-            {
-              if (evidenceHash[type] == 0)
-                continue;
+      for each (var t:TargetInfo in dashboardItem.targets.source) {
+        
+        SearchManager.instance.showItem(t._id, function(target:SearchItem):void {
+          
+          if (!target.stat) return; // TODO: Demo fix
+          
+          if (!dashboardItem.targetBaselines.hasOwnProperty(target._id))
+            dashboardItem.targetBaselines[target._id] = target.stat;
+          
+          var totTot:Number = 0;
+          var totSync:Number = 0;
+          
+          var evidenceHash:Object = ObjectUtils.toHash(target.stat.evidence);
+          var dashboardHash:Object = ObjectUtils.toHash(target.stat.dashboard);
 
-              model.tot += evidenceHash[type] - dashboardItem.targetBaselines[item._id].evidence[type];
-              model.sync += dashboardHash[type];
-            }
+          t.name = target.name;
+          t.tot = 0;
+          t.sync = 0;
+          for (var type:String in evidenceHash)
+          {
+            if (evidenceHash[type] == 0)
+              continue;
+    
+            t.tot += evidenceHash[type] - dashboardItem.targetBaselines[target._id].evidence[type];
+            t.sync += dashboardHash[type];
+          }
+          
+          dashboardItem.totTot += t.tot;
+          dashboardItem.totSync += t.sync;
+          
+          if (dashboardItem.targetBaselines[target._id].last_sync == target.stat.last_sync) {
+            dashboardItem.totSync = 0;
+            t.sync = 0;
+          }
 
-            dashboardItem.totTot += model.tot;
-            dashboardItem.totSync += model.sync;
-            
-            if (dashboardItem.targetBaselines[item._id].last_sync == item.stat.last_sync) {
-              dashboardItem.totSync = 0;
-            }
-            
-            targets.addItem(model);
-          });
-        }
+        });
+        
       }
-      
-      return targets;
     }
     
     private function manageAgentTarget(item:SearchItem):void
@@ -170,6 +169,7 @@ package it.ht.rcs.console.dashboard.controller
       
       dashboardItem.name = item.name;
       dashboardItem.lastSync = item.stat.last_sync;
+      dashboardItem.lastSyncStatus = item.stat.last_sync_status;
       
       var totTot:Number = 0;
       var totSync:Number = 0;
