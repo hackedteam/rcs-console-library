@@ -1,6 +1,7 @@
 package it.ht.rcs.console.build.controller
 {
   import it.ht.rcs.console.DB;
+  import it.ht.rcs.console.build.model.Exploit;
   import it.ht.rcs.console.controller.ItemManager;
   
   import mx.collections.ArrayCollection;
@@ -17,6 +18,8 @@ package it.ht.rcs.console.build.controller
     private static var _instance:BuildManager = new BuildManager();
     public static function get instance():BuildManager { return _instance; }
     
+    private var _formats:ArrayCollection = new ArrayCollection();
+    
     public function BuildManager()
     {
       super();
@@ -32,8 +35,16 @@ package it.ht.rcs.console.build.controller
     {
       var items:ArrayCollection = e.result as ArrayCollection;
       _items.removeAll();
+      _formats.removeAll();
+      _formats.addItem('*');
       items.source.forEach(function(element:*, index:int, arr:Array):void {
         addItem(element);
+        var exploit:Exploit = element as Exploit
+        exploit.format.source.forEach(function(f:*, i:int, a:Array):void {
+          // remove duplicates
+          if (_formats.source.indexOf(f) == -1)
+            _formats.addItem(f);
+        });
       });
       dispatchDataLoadedEvent();
     }
@@ -43,6 +54,11 @@ package it.ht.rcs.console.build.controller
       var sort:Sort = new Sort();
       sort.fields = [new SortField('name', true, false, false)];
       return super.getView(sort, filterFunction);
+    }
+    
+    public function getFormats():ArrayCollection
+    {
+      return _formats;
     }
     
   }
