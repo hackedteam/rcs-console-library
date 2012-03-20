@@ -41,7 +41,7 @@ package it.ht.rcs.console.build.controller
     public function getExploitView(sortCriteria:ISort=null, filterFunction:Function=null):ListCollectionView
     {
       var sort:Sort = new Sort();
-      sort.fields = [new SortField('id', true, true, false)];
+      sort.fields = [new SortField('name', true, false, false)];
       return super.getView(sort, filterFunction);
     }
     

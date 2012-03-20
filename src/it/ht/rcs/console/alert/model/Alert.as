@@ -13,12 +13,13 @@ package it.ht.rcs.console.alert.model
     {
       return {
         _id: '',
-        enabled: false,
+        enabled: true,
         suppression: 600,
         keywords: '',
         tag: 0,
         type: 'LOG',
-        action: 'EVIDENCE'
+        action: 'EVIDENCE',
+        evidence: '*'
       };
     }
     
