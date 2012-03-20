@@ -94,6 +94,7 @@ package it.ht.rcs.console.dashboard.controller
       if (!item.stat) return; // TODO: Demo fix
       
       dashboardItem.name = item.name;
+      dashboardItem.desc = item.desc;
       dashboardItem.lastSync = item.stat.last_sync;
       dashboardItem.lastSyncStatus = item.stat.last_sync_status;
       dashboardItem.totSync = 0;
@@ -168,6 +169,7 @@ package it.ht.rcs.console.dashboard.controller
       if (!item.stat) return; // TODO: Demo fix
       
       dashboardItem.name = item.name;
+      dashboardItem.desc = item.desc;
       dashboardItem.lastSync = item.stat.last_sync;
       dashboardItem.lastSyncStatus = item.stat.last_sync_status;
       

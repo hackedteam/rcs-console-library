@@ -10,6 +10,7 @@ package it.ht.rcs.console.dashboard.controller
     [Bindable] public var _kind:String;
 
     [Bindable] public var name:String;
+    [Bindable] public var desc:String;
 
     [Bindable] public var type:String;
     [Bindable] public var platform:String;
