@@ -190,7 +190,7 @@ package it.ht.rcs.console.dashboard.controller
       modules.refresh();
       
       dashboardItem.modules = modules;
-      dashboardItem.totTot = totTot;
+      dashboardItem.totTot  = totTot;
       dashboardItem.totSync = totSync;
     }
     
