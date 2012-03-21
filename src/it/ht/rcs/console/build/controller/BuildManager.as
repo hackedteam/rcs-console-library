@@ -18,7 +18,16 @@ package it.ht.rcs.console.build.controller
     private static var _instance:BuildManager = new BuildManager();
     public static function get instance():BuildManager { return _instance; }
     
-    private var _formats:ArrayCollection = new ArrayCollection();
+    //private var _formats:ArrayCollection = new ArrayCollection();
+    private var _formats:Object = {
+      windows: new ArrayCollection(),
+      osx: new ArrayCollection(),
+      android: new ArrayCollection(),
+      blackberry: new ArrayCollection(),
+      ios: new ArrayCollection(),
+      symbian: new ArrayCollection(),
+      winmo: new ArrayCollection()
+    };
     
     public function BuildManager()
     {
@@ -35,15 +44,19 @@ package it.ht.rcs.console.build.controller
     {
       var items:ArrayCollection = e.result as ArrayCollection;
       _items.removeAll();
-      _formats.removeAll();
-      _formats.addItem('*');
+      
+      for (var key:String in _formats) {
+        _formats[key].removeAll();
+        _formats[key].addItem('*');
+      }
+     
       items.source.forEach(function(element:*, index:int, arr:Array):void {
         addItem(element);
         var exploit:Exploit = element as Exploit
         exploit.format.source.forEach(function(f:*, i:int, a:Array):void {
           // remove duplicates
-          if (_formats.source.indexOf(f) == -1)
-            _formats.addItem(f);
+          if (_formats[exploit.platform].source.indexOf(f) == -1)
+            _formats[exploit.platform].addItem(f);
         });
       });
       dispatchDataLoadedEvent();
@@ -56,9 +69,9 @@ package it.ht.rcs.console.build.controller
       return super.getView(sort, filterFunction);
     }
     
-    public function getFormats():ArrayCollection
+    public function getFormats(platform:String):ArrayCollection
     {
-      return _formats;
+      return _formats[platform];
     }
     
   }
