@@ -22,13 +22,14 @@ package it.ht.rcs.console.agent.rest
     
     function del_config(agent:Agent, config_id: String, onResult:Function=null, onFault:Function=null):void;
     
-    function downloads(id:String, onResult:Function=null, onFault:Function=null):void;
     
-    function create_download(onResult:Function=null, onFault:Function=null):void;
+    function downloads(agent:Agent, onResult:Function=null, onFault:Function=null):void;
     
-    function uploads(onResult:Function=null, onFault:Function=null):void;
+    function create_download(agent:Agent, path:String, onResult:Function=null, onFault:Function=null):void;
     
-    function create_upload(onResult:Function=null, onFault:Function=null):void;
+    function uploads(agent:Agent, onResult:Function=null, onFault:Function=null):void;
+    
+    function create_upload(agent:Agent, filename:String, grid:String, onResult:Function=null, onFault:Function=null):void;
   }
   
 }

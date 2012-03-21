@@ -85,9 +85,25 @@ package it.ht.rcs.console.agent.controller
       DB.instance.agent.destroy(a._id, permanent);
     }
     
-    public function getDownloads(id:String, callback:Function):void
+    public function getDownloads(agent:Agent, callback:Function):void
     {
-      DB.instance.agent.downloads(id, callback);
+      DB.instance.agent.downloads(agent, callback);
+    }
+    
+    public function createDownload(agent:Agent, path:String, callback:Function=null):void
+    {
+      DB.instance.agent.create_download(agent, path, callback);
+    }
+    
+    
+    public function getUploads(agent:Agent, callback:Function):void
+    {
+      DB.instance.agent.uploads(agent, callback);
+    }
+    
+    public function createUpload(agent:Agent, filename:String, grid:String, callback:Function=null):void
+    {
+      DB.instance.agent.create_upload(agent, filename, grid, callback);
     }
     
   }

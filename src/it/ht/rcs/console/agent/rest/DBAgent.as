@@ -73,17 +73,29 @@ package it.ht.rcs.console.agent.rest
       resp.token = upgrade_(JSON.stringify({_id: agent._id}));
     }
     
-    public function downloads(id:String, onResult:Function=null, onFault:Function=null):void
+    public function downloads(agent:Agent, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = downloads_(id);
+      resp.token = downloads_(agent._id);
     }
     
-    public function create_download(onResult:Function=null, onFault:Function=null):void {}
+    public function create_download(agent:Agent, path:String, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = create_download_(JSON.stringify({ _id: agent._id, download: {path: path} }));
+    }
     
-    public function uploads(onResult:Function=null, onFault:Function=null):void {}
+    public function uploads(agent:Agent, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = uploads_(agent._id);
+    }
     
-    public function create_upload(onResult:Function=null, onFault:Function=null):void {}
+    public function create_upload(agent:Agent, filename:String, grid:String, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = create_upload_(JSON.stringify({ _id: agent._id, upload: {filename: filename, file: grid} }));
+    }
     
     /**
      * Override super.init() to provide any initialization customization if needed.
