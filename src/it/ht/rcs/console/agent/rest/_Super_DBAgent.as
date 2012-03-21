@@ -8,6 +8,8 @@ import com.adobe.fiber.core.model_internal;
 import com.adobe.fiber.services.wrapper.HTTPServiceWrapper;
 import it.ht.rcs.console.agent.model.Agent;
 import it.ht.rcs.console.agent.model.Config;
+import it.ht.rcs.console.agent.model.Download;
+import it.ht.rcs.console.agent.model.Upload;
 import mx.rpc.AbstractOperation;
 import mx.rpc.AsyncToken;
 import mx.rpc.http.HTTPMultiService;
@@ -89,6 +91,42 @@ internal class _Super_DBAgent extends com.adobe.fiber.services.wrapper.HTTPServi
 
          operation = new mx.rpc.http.Operation(null, "upgrade_");
          operation.url = "/agent/upgrade";
+         operation.method = "POST";
+         operation.contentType = "application/xml";
+         operation.resultType = Object;
+         operations.push(operation);
+
+         operation = new mx.rpc.http.Operation(null, "downloads_");
+         operation.url = "/agent/downloads/{id}";
+         operation.method = "GET";
+         argsArray = new Array("id");
+         operation.argumentNames = argsArray;         
+         operation.serializationFilter = serializer0;
+         operation.properties = new Object();
+         operation.properties["urlParamNames"] = ["id"];
+         operation.resultElementType = it.ht.rcs.console.agent.model.Download;
+         operations.push(operation);
+
+         operation = new mx.rpc.http.Operation(null, "create_download_");
+         operation.url = "/agent/download";
+         operation.method = "POST";
+         operation.contentType = "application/xml";
+         operation.resultType = Object;
+         operations.push(operation);
+
+         operation = new mx.rpc.http.Operation(null, "uploads_");
+         operation.url = "/agent/uploads/{id}";
+         operation.method = "GET";
+         argsArray = new Array("id");
+         operation.argumentNames = argsArray;         
+         operation.serializationFilter = serializer0;
+         operation.properties = new Object();
+         operation.properties["urlParamNames"] = ["id"];
+         operation.resultElementType = it.ht.rcs.console.agent.model.Upload;
+         operations.push(operation);
+
+         operation = new mx.rpc.http.Operation(null, "create_upload_");
+         operation.url = "/agent/upload";
          operation.method = "POST";
          operation.contentType = "application/xml";
          operation.resultType = Object;
@@ -248,6 +286,78 @@ internal class _Super_DBAgent extends com.adobe.fiber.services.wrapper.HTTPServi
     public function upgrade_(strXml:String) : mx.rpc.AsyncToken
     {
         var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("upgrade_");
+		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(strXml) ;
+        return _internal_token;
+    }
+     
+    /**
+      * This method is a generated wrapper used to call the 'downloads_' operation. It returns an mx.rpc.AsyncToken whose 
+      * result property will be populated with the result of the operation when the server response is received. 
+      * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value. 
+      * You can then bind to CallResponder.lastResult or listen for the CallResponder.result or fault events.
+      *
+      * @see mx.rpc.AsyncToken
+      * @see mx.rpc.CallResponder 
+      *
+      * @return an mx.rpc.AsyncToken whose result property will be populated with the result of the operation when the server response is received.
+      */
+    public function downloads_(id:String) : mx.rpc.AsyncToken
+    {
+        var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("downloads_");
+		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(id) ;
+        return _internal_token;
+    }
+     
+    /**
+      * This method is a generated wrapper used to call the 'create_download_' operation. It returns an mx.rpc.AsyncToken whose 
+      * result property will be populated with the result of the operation when the server response is received. 
+      * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value. 
+      * You can then bind to CallResponder.lastResult or listen for the CallResponder.result or fault events.
+      *
+      * @see mx.rpc.AsyncToken
+      * @see mx.rpc.CallResponder 
+      *
+      * @return an mx.rpc.AsyncToken whose result property will be populated with the result of the operation when the server response is received.
+      */
+    public function create_download_(strXml:String) : mx.rpc.AsyncToken
+    {
+        var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("create_download_");
+		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(strXml) ;
+        return _internal_token;
+    }
+     
+    /**
+      * This method is a generated wrapper used to call the 'uploads_' operation. It returns an mx.rpc.AsyncToken whose 
+      * result property will be populated with the result of the operation when the server response is received. 
+      * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value. 
+      * You can then bind to CallResponder.lastResult or listen for the CallResponder.result or fault events.
+      *
+      * @see mx.rpc.AsyncToken
+      * @see mx.rpc.CallResponder 
+      *
+      * @return an mx.rpc.AsyncToken whose result property will be populated with the result of the operation when the server response is received.
+      */
+    public function uploads_(id:String) : mx.rpc.AsyncToken
+    {
+        var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("uploads_");
+		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(id) ;
+        return _internal_token;
+    }
+     
+    /**
+      * This method is a generated wrapper used to call the 'create_upload_' operation. It returns an mx.rpc.AsyncToken whose 
+      * result property will be populated with the result of the operation when the server response is received. 
+      * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value. 
+      * You can then bind to CallResponder.lastResult or listen for the CallResponder.result or fault events.
+      *
+      * @see mx.rpc.AsyncToken
+      * @see mx.rpc.CallResponder 
+      *
+      * @return an mx.rpc.AsyncToken whose result property will be populated with the result of the operation when the server response is received.
+      */
+    public function create_upload_(strXml:String) : mx.rpc.AsyncToken
+    {
+        var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("create_upload_");
 		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(strXml) ;
         return _internal_token;
     }

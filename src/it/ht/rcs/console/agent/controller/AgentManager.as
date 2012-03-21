@@ -85,6 +85,11 @@ package it.ht.rcs.console.agent.controller
       DB.instance.agent.destroy(a._id, permanent);
     }
     
+    public function getDownloads(id:String, callback:Function):void
+    {
+      DB.instance.agent.downloads(id, callback);
+    }
+    
   }
   
 }

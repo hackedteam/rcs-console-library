@@ -73,6 +73,18 @@ package it.ht.rcs.console.agent.rest
       resp.token = upgrade_(JSON.stringify({_id: agent._id}));
     }
     
+    public function downloads(id:String, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = downloads_(id);
+    }
+    
+    public function create_download(onResult:Function=null, onFault:Function=null):void {}
+    
+    public function uploads(onResult:Function=null, onFault:Function=null):void {}
+    
+    public function create_upload(onResult:Function=null, onFault:Function=null):void {}
+    
     /**
      * Override super.init() to provide any initialization customization if needed.
      */

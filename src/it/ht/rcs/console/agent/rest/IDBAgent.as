@@ -21,6 +21,14 @@ package it.ht.rcs.console.agent.rest
     function add_config(agent:Agent, config: String, onResult:Function=null, onFault:Function=null):void;
     
     function del_config(agent:Agent, config_id: String, onResult:Function=null, onFault:Function=null):void;
+    
+    function downloads(id:String, onResult:Function=null, onFault:Function=null):void;
+    
+    function create_download(onResult:Function=null, onFault:Function=null):void;
+    
+    function uploads(onResult:Function=null, onFault:Function=null):void;
+    
+    function create_upload(onResult:Function=null, onFault:Function=null):void;
   }
   
 }

@@ -134,6 +134,14 @@ package it.ht.rcs.console.agent.rest
         onResult(new ResultEvent('agent.upgrade'));
     }
     
+    public function downloads(id:String, onResult:Function=null, onFault:Function=null):void {}
+    
+    public function create_download(onResult:Function=null, onFault:Function=null):void {}
+    
+    public function uploads(onResult:Function=null, onFault:Function=null):void {}
+    
+    public function create_upload(onResult:Function=null, onFault:Function=null):void {}
+    
   }
   
 }
