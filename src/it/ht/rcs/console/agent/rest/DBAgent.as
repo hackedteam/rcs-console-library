@@ -85,6 +85,12 @@ package it.ht.rcs.console.agent.rest
       resp.token = create_download_(JSON.stringify({ _id: agent._id, download: {path: path} }));
     }
     
+    public function destroy_download(agent:Agent, downloadId:String, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = destroy_download_(JSON.stringify({ _id: agent._id, download: downloadId }));
+    }
+    
     public function uploads(agent:Agent, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);

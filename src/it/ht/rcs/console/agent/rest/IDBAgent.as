@@ -27,6 +27,8 @@ package it.ht.rcs.console.agent.rest
     
     function create_download(agent:Agent, path:String, onResult:Function=null, onFault:Function=null):void;
     
+    function destroy_download(agent:Agent, downloadId:String, onResult:Function=null, onFault:Function=null):void;
+    
     function uploads(agent:Agent, onResult:Function=null, onFault:Function=null):void;
     
     function create_upload(agent:Agent, filename:String, grid:String, onResult:Function=null, onFault:Function=null):void;

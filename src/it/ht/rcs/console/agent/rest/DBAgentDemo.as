@@ -138,6 +138,8 @@ package it.ht.rcs.console.agent.rest
     
     public function create_download(agent:Agent, path:String, onResult:Function=null, onFault:Function=null):void {}
     
+    public function destroy_download(agent:Agent, downloadId:String, onResult:Function=null, onFault:Function=null):void {}
+    
     public function uploads(agent:Agent, onResult:Function=null, onFault:Function=null):void {}
     
     public function create_upload(agent:Agent, filename:String, grid:String, onResult:Function=null, onFault:Function=null):void {}
