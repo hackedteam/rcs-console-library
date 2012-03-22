@@ -19,6 +19,7 @@ package it.ht.rcs.console.evidence.controller
   import mx.collections.ListCollectionView;
   import mx.events.CollectionEvent;
   import mx.rpc.events.ResultEvent;
+  import mx.utils.ObjectUtil;
   
   public class EvidenceManager extends ItemManager
   {
@@ -30,7 +31,7 @@ package it.ht.rcs.console.evidence.controller
     public static function get instance():EvidenceManager { return _instance; } 
     
     [Bindable]
-    public var evidenceFilter:Object = {};
+    public var evidenceFilter:Object = { date: 'da' };
     
     [Bindable]
     public var infoFilter:Object = {};
@@ -41,6 +42,7 @@ package it.ht.rcs.console.evidence.controller
     override public function refresh():void
     {
       super.refresh();
+      trace(ObjectUtil.toString(evidenceFilter));
       DB.instance.evidence.all(evidenceFilter, onResult);
       DB.instance.evidence.total(evidenceFilter, onCountResult);
     }
@@ -104,7 +106,7 @@ package it.ht.rcs.console.evidence.controller
     override protected function onLogout(e:SessionEvent):void
     {
       super.onLogout(e);
-      evidenceFilter={};
+      evidenceFilter = { date: 'da' };
       _view = null;
     }
     

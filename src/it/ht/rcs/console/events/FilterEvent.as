@@ -7,6 +7,7 @@ package it.ht.rcs.console.events
     public static const RESET_FILTER:String = "resetFilter";
     public static const FILTER_CHANGED:String = "filterChanged";
     public static const FILTER_VALUES_CHANGED:String = "filterValuesChanged";
+    public static const REBUILD:String = "rebuildFilters";
 
     public var filterValues:Object;
     
