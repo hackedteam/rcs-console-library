@@ -127,7 +127,7 @@ package it.ht.rcs.console
           mobile: false,
           usb:    false,
           vm: 0,
-          agent: "",
+          factory: "",
           _type: "desktop",
           _platform: "windows"
         },

@@ -11,6 +11,7 @@ package it.ht.rcs.console.agent.controller
   import it.ht.rcs.console.target.model.Target;
   
   import mx.collections.ArrayCollection;
+  import mx.collections.ListCollectionView;
   import mx.rpc.events.ResultEvent;
   
   public class AgentManager extends ItemManager
@@ -106,6 +107,16 @@ package it.ht.rcs.console.agent.controller
       DB.instance.agent.create_upload(agent, filename, grid, callback);
     }
     
+    public function getMobileFactoriesForTarget(targetId:String):ListCollectionView
+    {
+      return getView(null, function(item:Object):Boolean { 
+        return (
+        item is Agent &&
+        item._kind == 'factory' &&
+        item.type == 'mobile' &&
+        item.path[1] == targetId); });
+    }
+
   }
   
 }
