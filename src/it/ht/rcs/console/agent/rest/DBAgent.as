@@ -79,10 +79,10 @@ package it.ht.rcs.console.agent.rest
       resp.token = downloads_(agent._id);
     }
     
-    public function create_download(agent:Agent, path:String, onResult:Function=null, onFault:Function=null):void
+    public function create_download(agentId:String, path:String, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = create_download_(JSON.stringify({ _id: agent._id, download: {path: path} }));
+      resp.token = create_download_(JSON.stringify({ _id: agentId, download: {path: path} }));
     }
     
     public function destroy_download(agent:Agent, downloadId:String, onResult:Function=null, onFault:Function=null):void

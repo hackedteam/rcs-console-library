@@ -91,9 +91,9 @@ package it.ht.rcs.console.agent.controller
       DB.instance.agent.downloads(agent, callback);
     }
     
-    public function createDownload(agent:Agent, path:String, callback:Function=null):void
+    public function createDownload(agentId:String, path:String, callback:Function=null):void
     {
-      DB.instance.agent.create_download(agent, path, callback);
+      DB.instance.agent.create_download(agentId, path, callback);
     }
     
     public function deleteDownload(agent:Agent, downloadId:String, callback:Function=null):void
