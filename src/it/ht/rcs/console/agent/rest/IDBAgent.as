@@ -32,6 +32,9 @@ package it.ht.rcs.console.agent.rest
     function uploads(agent:Agent, onResult:Function=null, onFault:Function=null):void;
     
     function create_upload(agent:Agent, filename:String, grid:String, onResult:Function=null, onFault:Function=null):void;
+    
+    
+    function filesystem(agentId:String, path:String, depth:int, onResult:Function=null, onFault:Function=null):void;
   }
   
 }

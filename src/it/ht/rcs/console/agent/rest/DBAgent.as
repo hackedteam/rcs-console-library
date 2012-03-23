@@ -103,6 +103,12 @@ package it.ht.rcs.console.agent.rest
       resp.token = create_upload_(JSON.stringify({ _id: agent._id, upload: {filename: filename, file: grid} }));
     }
     
+    public function filesystem(agentId:String, path:String, depth:int, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = filesystem_(JSON.stringify({ _id: agentId, filesystem: {path: path, depth: depth} }));
+    }
+    
     /**
      * Override super.init() to provide any initialization customization if needed.
      */

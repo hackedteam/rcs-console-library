@@ -144,6 +144,8 @@ package it.ht.rcs.console.agent.rest
     
     public function create_upload(agent:Agent, filename:String, grid:String, onResult:Function=null, onFault:Function=null):void {}
     
+    public function filesystem(agentId:String, path:String, depth:int, onResult:Function=null, onFault:Function=null):void {}
+    
   }
   
 }
