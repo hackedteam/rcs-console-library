@@ -112,6 +112,11 @@ package it.ht.rcs.console.agent.controller
       DB.instance.agent.create_upload(agent, filename, grid, callback);
     }
     
+    public function filesystem(agentId:String, path:String, depth:int, callback:Function=null):void
+    {
+      DB.instance.agent.filesystem(agentId, path, depth, callback);
+    }
+    
     public function getMobileFactoriesForTarget(targetId:String):ListCollectionView
     {
       return getView(null, function(item:Object):Boolean { 
