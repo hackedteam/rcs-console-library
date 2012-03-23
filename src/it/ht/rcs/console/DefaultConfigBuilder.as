@@ -13,6 +13,11 @@ package it.ht.rcs.console
     private static const formatter:DateFormatter = new DateFormatter();
     private static var today:Date;
     
+    public static function getDefaultConfigAsString(a:Agent):String
+    {
+      return JSON.stringify(getDefaultConfig(a));
+    }
+      
     public static function getDefaultConfig(a:Agent):Object
     {
       formatter.formatString = "YYYY-MM-DD 00:00:00";
