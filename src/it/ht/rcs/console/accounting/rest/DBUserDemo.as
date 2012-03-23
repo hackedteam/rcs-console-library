@@ -12,12 +12,13 @@ package it.ht.rcs.console.accounting.rest
       new User({ _id: '2',  name: 'alor',   group_ids: ['1', '2'], enabled: true,  privs: ['ADMIN', 'SYS', 'TECH', 'VIEW'], locale: 'en_US' }),
       new User({ _id: '3',  name: 'daniel', group_ids: ['1', '2'], enabled: true,  privs: ['ADMIN', 'SYS', 'TECH', 'VIEW'], locale: 'it_IT' }),
       new User({ _id: '4',  name: 'naga',   group_ids: ['2'],      enabled: true,  privs: ['VIEW'] }),
-      new User({ _id: '5',  name: 'que',    group_ids: ['2'],      enabled: false, privs: [] }),
+      new User({ _id: '5',  name: 'que',    group_ids: ['2'],      enabled: false, privs: ['ADMIN', 'SYS'] }),
       new User({ _id: '6',  name: 'zeno',   group_ids: ['2'],      enabled: true,  privs: ['TECH', 'VIEW'] }),
-      new User({ _id: '7',  name: 'rev',    group_ids: ['2'],      enabled: false, privs: [] }),
+      new User({ _id: '7',  name: 'conrad', group_ids: ['2'],      enabled: false, privs: ['VIEW'] }),
       new User({ _id: '8',  name: 'kiodo',  group_ids: ['2'],      enabled: false, privs: [] }),
-      new User({ _id: '9',  name: 'fabio',  group_ids: ['2'],      enabled: false, privs: [] }),
-      new User({ _id: '10', name: 'br1',    group_ids: ['3'],      enabled: false, privs: ['SYS'] })
+      new User({ _id: '9',  name: 'fabio',  group_ids: ['2'],      enabled: false, privs: ['TECH'] }),
+      new User({ _id: '10', name: 'eros',   group_ids: ['2'],      enabled: false, privs: ['VIEW'] }),
+      new User({ _id: '11', name: 'br1',    group_ids: ['3'],      enabled: false, privs: ['SYS'] })
     ]);
     
     public function all(onResult:Function=null, onFault:Function=null):void
