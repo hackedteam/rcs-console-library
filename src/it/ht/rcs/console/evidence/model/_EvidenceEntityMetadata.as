@@ -23,14 +23,14 @@ internal class _EvidenceEntityMetadata extends com.adobe.fiber.valueobjects.Abst
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("blo", "_id", "data", "rel", "da", "dr", "aid", "type", "_mid", "note");
+    model_internal static var allProperties:Array = new Array("_mid", "da", "_id", "data", "rel", "aid", "type", "note", "dr", "blo");
     model_internal static var allAssociationProperties:Array = new Array();
-    model_internal static var allRequiredProperties:Array = new Array("blo", "_id", "data", "rel", "da", "dr", "aid", "type", "_mid", "note");
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("blo", "_id", "data", "rel", "da", "dr", "aid", "type", "_mid", "note");
+    model_internal static var allRequiredProperties:Array = new Array("_mid", "da", "_id", "data", "rel", "aid", "type", "note", "dr", "blo");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("_mid", "da", "_id", "data", "rel", "aid", "type", "note", "dr", "blo");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("blo", "_id", "data", "rel", "da", "dr", "aid", "type", "_mid", "note");
+    model_internal static var dataProperties:Array = new Array("_mid", "da", "_id", "data", "rel", "aid", "type", "note", "dr", "blo");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("blo", "_id", "data", "rel", "da", "dr", "aid", "type", "_mid", "note");
+    model_internal static var nonDerivedProperties:Array = new Array("_mid", "da", "_id", "data", "rel", "aid", "type", "note", "dr", "blo");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array();
     model_internal static var collectionBaseMap:Object;
@@ -70,16 +70,16 @@ internal class _EvidenceEntityMetadata extends com.adobe.fiber.valueobjects.Abst
         {
             // dependents map
             model_internal::dependentsOnMap = new Object();
-            model_internal::dependentsOnMap["blo"] = new Array();
+            model_internal::dependentsOnMap["_mid"] = new Array();
+            model_internal::dependentsOnMap["da"] = new Array();
             model_internal::dependentsOnMap["_id"] = new Array();
             model_internal::dependentsOnMap["data"] = new Array();
             model_internal::dependentsOnMap["rel"] = new Array();
-            model_internal::dependentsOnMap["da"] = new Array();
-            model_internal::dependentsOnMap["dr"] = new Array();
             model_internal::dependentsOnMap["aid"] = new Array();
             model_internal::dependentsOnMap["type"] = new Array();
-            model_internal::dependentsOnMap["_mid"] = new Array();
             model_internal::dependentsOnMap["note"] = new Array();
+            model_internal::dependentsOnMap["dr"] = new Array();
+            model_internal::dependentsOnMap["blo"] = new Array();
 
             // collection base map
             model_internal::collectionBaseMap = new Object();
@@ -87,16 +87,16 @@ internal class _EvidenceEntityMetadata extends com.adobe.fiber.valueobjects.Abst
 
         // Property type Map
         model_internal::propertyTypeMap = new Object();
-        model_internal::propertyTypeMap["blo"] = "Boolean";
+        model_internal::propertyTypeMap["_mid"] = "int";
+        model_internal::propertyTypeMap["da"] = "int";
         model_internal::propertyTypeMap["_id"] = "String";
         model_internal::propertyTypeMap["data"] = "it.ht.rcs.console.evidence.model.EvidenceData";
         model_internal::propertyTypeMap["rel"] = "int";
-        model_internal::propertyTypeMap["da"] = "int";
-        model_internal::propertyTypeMap["dr"] = "int";
         model_internal::propertyTypeMap["aid"] = "String";
         model_internal::propertyTypeMap["type"] = "String";
-        model_internal::propertyTypeMap["_mid"] = "int";
         model_internal::propertyTypeMap["note"] = "String";
+        model_internal::propertyTypeMap["dr"] = "int";
+        model_internal::propertyTypeMap["blo"] = "Boolean";
 
         model_internal::_instance = value;
         model_internal::_dataValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForData);
@@ -347,7 +347,13 @@ internal class _EvidenceEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     }
 
     [Bindable(event="propertyChange")]
-    public function get isBloAvailable():Boolean
+    public function get is_midAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isDaAvailable():Boolean
     {
         return true;
     }
@@ -371,18 +377,6 @@ internal class _EvidenceEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     }
 
     [Bindable(event="propertyChange")]
-    public function get isDaAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get isDrAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get isAidAvailable():Boolean
     {
         return true;
@@ -395,13 +389,19 @@ internal class _EvidenceEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     }
 
     [Bindable(event="propertyChange")]
-    public function get is_midAvailable():Boolean
+    public function get isNoteAvailable():Boolean
     {
         return true;
     }
 
     [Bindable(event="propertyChange")]
-    public function get isNoteAvailable():Boolean
+    public function get isDrAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isBloAvailable():Boolean
     {
         return true;
     }
@@ -449,7 +449,13 @@ internal class _EvidenceEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     }
 
     [Bindable(event="propertyChange")]   
-    public function get bloStyle():com.adobe.fiber.styles.Style
+    public function get _midStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get daStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
@@ -562,18 +568,6 @@ internal class _EvidenceEntityMetadata extends com.adobe.fiber.valueobjects.Abst
 
     [Bindable(event="propertyChange")]   
     public function get relStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get daStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get drStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
@@ -779,12 +773,6 @@ internal class _EvidenceEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     }
 
     [Bindable(event="propertyChange")]   
-    public function get _midStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
     public function get noteStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
@@ -882,6 +870,18 @@ internal class _EvidenceEntityMetadata extends com.adobe.fiber.valueobjects.Abst
                 model_internal::_instance.model_internal::isValid_der = model_internal::_instance.model_internal::calculateIsValid();
             }
         }
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get drStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get bloStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
     }
 
 

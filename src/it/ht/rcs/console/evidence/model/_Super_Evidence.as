@@ -54,16 +54,16 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
     /**
      * properties
      */
-    private var _internal_blo : Boolean;
+    private var _internal__mid : int;
+    private var _internal_da : int;
     private var _internal__id : String;
     private var _internal_data : it.ht.rcs.console.evidence.model.EvidenceData;
     private var _internal_rel : int;
-    private var _internal_da : int;
-    private var _internal_dr : int;
     private var _internal_aid : String;
     private var _internal_type : String;
-    private var _internal__mid : int;
     private var _internal_note : String;
+    private var _internal_dr : int;
+    private var _internal_blo : Boolean;
 
     private static var emptyArray:Array = new Array();
 
@@ -92,9 +92,15 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
      */
 
     [Bindable(event="propertyChange")]
-    public function get blo() : Boolean
+    public function get _mid() : int
     {
-        return _internal_blo;
+        return _internal__mid;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get da() : int
+    {
+        return _internal_da;
     }
 
     [Bindable(event="propertyChange")]
@@ -116,18 +122,6 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
     }
 
     [Bindable(event="propertyChange")]
-    public function get da() : int
-    {
-        return _internal_da;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get dr() : int
-    {
-        return _internal_dr;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get aid() : String
     {
         return _internal_aid;
@@ -140,15 +134,21 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
     }
 
     [Bindable(event="propertyChange")]
-    public function get _mid() : int
-    {
-        return _internal__mid;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get note() : String
     {
         return _internal_note;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get dr() : int
+    {
+        return _internal_dr;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get blo() : Boolean
+    {
+        return _internal_blo;
     }
 
     public function clearAssociations() : void
@@ -159,12 +159,21 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
      * data/source property setters
      */
 
-    public function set blo(value:Boolean) : void
+    public function set _mid(value:int) : void
     {
-        var oldValue:Boolean = _internal_blo;
+        var oldValue:int = _internal__mid;
         if (oldValue !== value)
         {
-            _internal_blo = value;
+            _internal__mid = value;
+        }
+    }
+
+    public function set da(value:int) : void
+    {
+        var oldValue:int = _internal_da;
+        if (oldValue !== value)
+        {
+            _internal_da = value;
         }
     }
 
@@ -195,24 +204,6 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
         }
     }
 
-    public function set da(value:int) : void
-    {
-        var oldValue:int = _internal_da;
-        if (oldValue !== value)
-        {
-            _internal_da = value;
-        }
-    }
-
-    public function set dr(value:int) : void
-    {
-        var oldValue:int = _internal_dr;
-        if (oldValue !== value)
-        {
-            _internal_dr = value;
-        }
-    }
-
     public function set aid(value:String) : void
     {
         var oldValue:String = _internal_aid;
@@ -231,21 +222,30 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
         }
     }
 
-    public function set _mid(value:int) : void
-    {
-        var oldValue:int = _internal__mid;
-        if (oldValue !== value)
-        {
-            _internal__mid = value;
-        }
-    }
-
     public function set note(value:String) : void
     {
         var oldValue:String = _internal_note;
         if (oldValue !== value)
         {
             _internal_note = value;
+        }
+    }
+
+    public function set dr(value:int) : void
+    {
+        var oldValue:int = _internal_dr;
+        if (oldValue !== value)
+        {
+            _internal_dr = value;
+        }
+    }
+
+    public function set blo(value:Boolean) : void
+    {
+        var oldValue:Boolean = _internal_blo;
+        if (oldValue !== value)
+        {
+            _internal_blo = value;
         }
     }
 

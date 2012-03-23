@@ -6,9 +6,11 @@ package it.ht.rcs.console.evidence.model
 {
 import com.adobe.fiber.styles.IStyle;
 import com.adobe.fiber.styles.Style;
+import com.adobe.fiber.styles.StyleValidator;
 import com.adobe.fiber.valueobjects.AbstractEntityMetadata;
 import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 import com.adobe.fiber.valueobjects.IPropertyIterator;
+import mx.events.ValidationResultEvent;
 import com.adobe.fiber.core.model_internal;
 import com.adobe.fiber.valueobjects.IModelType;
 import mx.events.PropertyChangeEvent;
@@ -20,14 +22,14 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "path", "spool", "access", "attr", "size", "from", "rcpt", "subject", "url", "browser", "title", "keywords", "latitude", "longitude");
+    model_internal static var allProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "rcpt", "subject", "url", "browser", "title", "keywords", "latitude", "longitude", "path", "attr", "size");
     model_internal static var allAssociationProperties:Array = new Array();
-    model_internal static var allRequiredProperties:Array = new Array();
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "path", "spool", "access", "attr", "size", "from", "rcpt", "subject", "url", "browser", "title", "keywords", "latitude", "longitude");
+    model_internal static var allRequiredProperties:Array = new Array("path", "attr", "size");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "rcpt", "subject", "url", "browser", "title", "keywords", "latitude", "longitude", "path", "attr", "size");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "path", "spool", "access", "attr", "size", "from", "rcpt", "subject", "url", "browser", "title", "keywords", "latitude", "longitude");
+    model_internal static var dataProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "rcpt", "subject", "url", "browser", "title", "keywords", "latitude", "longitude", "path", "attr", "size");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "path", "spool", "access", "attr", "size", "from", "rcpt", "subject", "url", "browser", "title", "keywords", "latitude", "longitude");
+    model_internal static var nonDerivedProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "rcpt", "subject", "url", "browser", "title", "keywords", "latitude", "longitude", "path", "attr", "size");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array();
     model_internal static var collectionBaseMap:Object;
@@ -36,6 +38,11 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
     model_internal static var dependedOnServices:Array = new Array();
     model_internal static var propertyTypeMap:Object;
 
+    
+    model_internal var _pathIsValid:Boolean;
+    model_internal var _pathValidator:com.adobe.fiber.styles.StyleValidator;
+    model_internal var _pathIsValidCacheInitialized:Boolean = false;
+    model_internal var _pathValidationFailureMessages:Array;
 
     model_internal var _instance:_Super_EvidenceData;
     model_internal static var _nullStyle:com.adobe.fiber.styles.Style = new com.adobe.fiber.styles.Style();
@@ -73,11 +80,8 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
             model_internal::dependentsOnMap["status"] = new Array();
             model_internal::dependentsOnMap["topic"] = new Array();
             model_internal::dependentsOnMap["users"] = new Array();
-            model_internal::dependentsOnMap["path"] = new Array();
             model_internal::dependentsOnMap["spool"] = new Array();
             model_internal::dependentsOnMap["access"] = new Array();
-            model_internal::dependentsOnMap["attr"] = new Array();
-            model_internal::dependentsOnMap["size"] = new Array();
             model_internal::dependentsOnMap["from"] = new Array();
             model_internal::dependentsOnMap["rcpt"] = new Array();
             model_internal::dependentsOnMap["subject"] = new Array();
@@ -87,6 +91,9 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
             model_internal::dependentsOnMap["keywords"] = new Array();
             model_internal::dependentsOnMap["latitude"] = new Array();
             model_internal::dependentsOnMap["longitude"] = new Array();
+            model_internal::dependentsOnMap["path"] = new Array();
+            model_internal::dependentsOnMap["attr"] = new Array();
+            model_internal::dependentsOnMap["size"] = new Array();
 
             // collection base map
             model_internal::collectionBaseMap = new Object();
@@ -120,11 +127,8 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
         model_internal::propertyTypeMap["status"] = "int";
         model_internal::propertyTypeMap["topic"] = "String";
         model_internal::propertyTypeMap["users"] = "String";
-        model_internal::propertyTypeMap["path"] = "String";
         model_internal::propertyTypeMap["spool"] = "String";
         model_internal::propertyTypeMap["access"] = "int";
-        model_internal::propertyTypeMap["attr"] = "int";
-        model_internal::propertyTypeMap["size"] = "int";
         model_internal::propertyTypeMap["from"] = "String";
         model_internal::propertyTypeMap["rcpt"] = "String";
         model_internal::propertyTypeMap["subject"] = "String";
@@ -134,8 +138,16 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
         model_internal::propertyTypeMap["keywords"] = "String";
         model_internal::propertyTypeMap["latitude"] = "Number";
         model_internal::propertyTypeMap["longitude"] = "Number";
+        model_internal::propertyTypeMap["path"] = "String";
+        model_internal::propertyTypeMap["attr"] = "int";
+        model_internal::propertyTypeMap["size"] = "int";
 
         model_internal::_instance = value;
+        model_internal::_pathValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForPath);
+        model_internal::_pathValidator.required = true;
+        model_internal::_pathValidator.requiredFieldError = "path is required";
+        //model_internal::_pathValidator.source = model_internal::_instance;
+        //model_internal::_pathValidator.property = "path";
     }
 
     override public function getEntityName():String
@@ -519,12 +531,6 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
     }
 
     [Bindable(event="propertyChange")]
-    public function get isPathAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get isSpoolAvailable():Boolean
     {
         return true;
@@ -532,18 +538,6 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
 
     [Bindable(event="propertyChange")]
     public function get isAccessAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get isAttrAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get isSizeAvailable():Boolean
     {
         return true;
     }
@@ -602,10 +596,36 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
         return true;
     }
 
+    [Bindable(event="propertyChange")]
+    public function get isPathAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isAttrAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isSizeAvailable():Boolean
+    {
+        return true;
+    }
+
 
     /**
      * derived property recalculation
      */
+    public function invalidateDependentOnPath():void
+    {
+        if (model_internal::_pathIsValidCacheInitialized )
+        {
+            model_internal::_instance.model_internal::_doValidationCacheOfPath = null;
+            model_internal::calculatePathIsValid();
+        }
+    }
 
     model_internal function fireChangeEvent(propertyName:String, oldValue:Object, newValue:Object):void
     {
@@ -769,12 +789,6 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
     }
 
     [Bindable(event="propertyChange")]   
-    public function get pathStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
     public function get spoolStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
@@ -782,18 +796,6 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
 
     [Bindable(event="propertyChange")]   
     public function get accessStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get attrStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get sizeStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
@@ -852,6 +854,118 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
         return model_internal::_nullStyle;
     }
 
+    [Bindable(event="propertyChange")]   
+    public function get pathStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    public function get pathValidator() : StyleValidator
+    {
+        return model_internal::_pathValidator;
+    }
+
+    model_internal function set _pathIsValid_der(value:Boolean):void 
+    {
+        var oldValue:Boolean = model_internal::_pathIsValid;         
+        if (oldValue !== value)
+        {
+            model_internal::_pathIsValid = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "pathIsValid", oldValue, value));
+        }                             
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get pathIsValid():Boolean
+    {
+        if (!model_internal::_pathIsValidCacheInitialized)
+        {
+            model_internal::calculatePathIsValid();
+        }
+
+        return model_internal::_pathIsValid;
+    }
+
+    model_internal function calculatePathIsValid():void
+    {
+        var valRes:ValidationResultEvent = model_internal::_pathValidator.validate(model_internal::_instance.path)
+        model_internal::_pathIsValid_der = (valRes.results == null);
+        model_internal::_pathIsValidCacheInitialized = true;
+        if (valRes.results == null)
+             model_internal::pathValidationFailureMessages_der = emptyArray;
+        else
+        {
+            var _valFailures:Array = new Array();
+            for (var a:int = 0 ; a<valRes.results.length ; a++)
+            {
+                _valFailures.push(valRes.results[a].errorMessage);
+            }
+            model_internal::pathValidationFailureMessages_der = _valFailures;
+        }
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get pathValidationFailureMessages():Array
+    {
+        if (model_internal::_pathValidationFailureMessages == null)
+            model_internal::calculatePathIsValid();
+
+        return _pathValidationFailureMessages;
+    }
+
+    model_internal function set pathValidationFailureMessages_der(value:Array) : void
+    {
+        var oldValue:Array = model_internal::_pathValidationFailureMessages;
+
+        var needUpdate : Boolean = false;
+        if (oldValue == null)
+            needUpdate = true;
+    
+        // avoid firing the event when old and new value are different empty arrays
+        if (!needUpdate && (oldValue !== value && (oldValue.length > 0 || value.length > 0)))
+        {
+            if (oldValue.length == value.length)
+            {
+                for (var a:int=0; a < oldValue.length; a++)
+                {
+                    if (oldValue[a] !== value[a])
+                    {
+                        needUpdate = true;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                needUpdate = true;
+            }
+        }
+
+        if (needUpdate)
+        {
+            model_internal::_pathValidationFailureMessages = value;   
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "pathValidationFailureMessages", oldValue, value));
+            // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
+            // the entire entity.
+            if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
+            {
+                model_internal::_instance.model_internal::isValid_der = model_internal::_instance.model_internal::calculateIsValid();
+            }
+        }
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get attrStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get sizeStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
 
      /**
      * 
@@ -877,6 +991,10 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
      {
          switch(propertyName)
          {
+            case("path"):
+            {
+                return pathValidationFailureMessages;
+            }
             default:
             {
                 return emptyArray;

@@ -34,7 +34,7 @@ package it.ht.rcs.console.evidence.controller
     public var evidenceFilter:Object = { date: 'da' };
     
     [Bindable]
-    public var infoFilter:Object = {};
+    public var infoFilter:Object = { date: 'da' };
     
     [Bindable]
     public var counts:ArrayCollection;
@@ -103,10 +103,16 @@ package it.ht.rcs.console.evidence.controller
       file.upload(new URLRequest(DB.hostAutocomplete(Console.currentSession.server) + "evidence/create/" + id), "content");
     }
     
+    public function filesystem(targetId:String, agentId:String, onResult:Function = null):void
+    {
+      DB.instance.evidence.filesystem(targetId, agentId, onResult);
+    }
+    
     override protected function onLogout(e:SessionEvent):void
     {
       super.onLogout(e);
       evidenceFilter = { date: 'da' };
+      infoFilter = { date: 'da' };
       _view = null;
     }
     
