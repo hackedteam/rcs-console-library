@@ -94,6 +94,10 @@ package it.ht.rcs.console
     /* expose if we are in demo mode */
     [Bindable]
     public var demo:Boolean;
+    [Bindable]
+    public var connected_host:String;
+    [Bindable]
+    public var connected_port:int;
     
     /* singleton */
     private static var _instance:DB = new DB();
@@ -114,6 +118,9 @@ package it.ht.rcs.console
     {
       /* auto completion of the host entered by the user */
       host = hostAutocomplete(host);
+      
+      /* remmember the connected_host and port */
+      parseHostPort(host);
       
       session   = new DBSession(host);
       
@@ -163,21 +170,28 @@ package it.ht.rcs.console
       forwarder = new DBForwarderDemo();
     }
     
-    public static function hostAutocomplete(host:String):String
+    private function parseHostPort(fqdn:String):void
+    {
+      var splitted:Array = fqdn.split(':');
+      connected_host = splitted[1].replace(/\/\//, '');
+      connected_port = parseInt(splitted[2].replace(/\//, ''));
+    }
+    
+    public static function hostAutocomplete(full_address:String):String
     {
       /* if the user doesn't declare the protocol, go with https by default */ 
-      if (host.search('http') == -1)
-        host = 'https://' + host;
+      if (full_address.search('http') == -1)
+        full_address = 'https://' + full_address;
       
       /* if the user doesn't declare a specific port, go with default */ 
-      if (host.lastIndexOf(':') == host.indexOf(':'))
-        host = host + ':443/';
+      if (full_address.lastIndexOf(':') == full_address.indexOf(':'))
+        full_address = full_address + ':443/';
       
       /* always be sure the url ends with '/' */
-      if (host.lastIndexOf('/') != host.length -1)
-        host = host + '/';
+      if (full_address.lastIndexOf('/') != full_address.length -1)
+        full_address = full_address + '/';
       
-      return host;
+      return full_address;
     }
     
     public static function getCallResponder(onResult:Function, onFault:Function):CallResponder
