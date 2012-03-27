@@ -13,7 +13,7 @@ package it.ht.rcs.console.network.model
         action_param: '',
         action_param_name: '',
         disable_sync: false,
-        enabled: false,
+        enabled: true,
         ident: '',
         ident_param: '',
         probability: 100,
