@@ -17,6 +17,7 @@ package it.ht.rcs.console.accounting.controller
   import mx.collections.Sort;
   import mx.collections.SortField;
   import mx.core.FlexGlobals;
+  import mx.managers.CursorManager;
   import mx.rpc.events.FaultEvent;
   import mx.rpc.events.ResultEvent;
   
@@ -137,6 +138,9 @@ package it.ht.rcs.console.accounting.controller
       } else {
         forceLogout(exitApplicationAfterLogout);
       }
+      
+      /* remove the busy cursor */
+      CursorManager.removeBusyCursor();
     }
     
     public function forceLogout(exitApplicationAfterLogout:Boolean=false):void
