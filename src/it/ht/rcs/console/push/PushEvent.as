@@ -7,6 +7,8 @@ package it.ht.rcs.console.push
     public static const UNKNOWN:String = "unknown";
 		public static const MONITOR:String = "monitor";
     public static const ALERT:String = "alert";
+    public static const OPERATION:String = "operation";
+    public static const TARGET:String = "target";
     public static const AGENT:String = "agent";
 		
 		public var data:*;

@@ -1,14 +1,19 @@
 package it.ht.rcs.console.alert.controller
 {
+  import flash.events.Event;
   import flash.events.TimerEvent;
   import flash.utils.Timer;
   
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.alert.model.Alert;
   import it.ht.rcs.console.controller.ItemManager;
+  import it.ht.rcs.console.events.RefreshEvent;
   import it.ht.rcs.console.events.SessionEvent;
+  import it.ht.rcs.console.push.PushController;
+  import it.ht.rcs.console.push.PushEvent;
   
   import mx.collections.ArrayCollection;
+  import mx.core.FlexGlobals;
   import mx.events.PropertyChangeEvent;
   import mx.rpc.events.ResultEvent;
   
@@ -20,8 +25,21 @@ package it.ht.rcs.console.alert.controller
     private static var _instance:AlertManager = new AlertManager();
     public static function get instance():AlertManager { return _instance; }
     
-    /* for the auto refresh every 15 seconds */
-    private var autoRefresh:Timer = new Timer(15000);
+    public function startAutorefresh():void
+    {
+      PushController.instance.addEventListener(PushEvent.ALERT, onAutorefresh);
+      refresh();
+    }
+    
+    public function stopAutorefresh():void
+    {
+      PushController.instance.removeEventListener(PushEvent.ALERT, onAutorefresh);
+    }
+    
+    public function onAutorefresh(e:*):void
+    {
+      refresh();
+    }
     
     override public function refresh():void
     {
@@ -40,7 +58,6 @@ package it.ht.rcs.console.alert.controller
     override protected function onItemRemove(o:*):void
     { 
       DB.instance.alert.destroy(o);
-      // update baloon?
     }
     
     override protected function onItemUpdate(event:*):void
@@ -69,21 +86,25 @@ package it.ht.rcs.console.alert.controller
     
     public function startCounters():void
     {
-
-      autoRefresh.addEventListener(TimerEvent.TIMER, onRefreshCounter);
-      autoRefresh.start();
+      FlexGlobals.topLevelApplication.addEventListener(RefreshEvent.REFRESH, onAlertEvent);
+      PushController.instance.addEventListener(PushEvent.ALERT, onAlertEvent);
       
       /* the first refresh */
-      onRefreshCounter(null);
+      onAlertEvent(null);
     }
     
     public function stopCounters():void
     {
-      autoRefresh.removeEventListener(TimerEvent.TIMER, onRefreshCounter);
-      autoRefresh.stop();
+      FlexGlobals.topLevelApplication.removeEventListener(RefreshEvent.REFRESH, onAlertEvent);
+      PushController.instance.removeEventListener(PushEvent.ALERT, onAlertEvent);
     }
     
-    private function onRefreshCounter(e:TimerEvent):void
+    public function refreshCounters():void
+    {
+      onAlertEvent(null);
+    }
+    
+    private function onAlertEvent(e:Event):void
     {
       DB.instance.alert.counters(onAlertCounters);
     }

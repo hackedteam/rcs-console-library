@@ -6,11 +6,13 @@ package it.ht.rcs.console.monitor.controller
 	
 	import it.ht.rcs.console.DB;
 	import it.ht.rcs.console.controller.ItemManager;
+	import it.ht.rcs.console.events.RefreshEvent;
 	import it.ht.rcs.console.events.SessionEvent;
 	import it.ht.rcs.console.monitor.model.Status;
 	import it.ht.rcs.console.push.PushController;
 	import it.ht.rcs.console.push.PushEvent;
 	
+	import mx.core.FlexGlobals;
 	import mx.events.PropertyChangeEvent;
 	import mx.rpc.events.ResultEvent;
 
@@ -22,7 +24,6 @@ package it.ht.rcs.console.monitor.controller
     private static var _instance:MonitorManager = new MonitorManager();
     public static function get instance():MonitorManager { return _instance; }
     
-    /* for the auto refresh every 15 seconds */
     private var autoRefresh:Timer = new Timer(30000);
 
     public function startAutorefresh():void
@@ -86,6 +87,7 @@ package it.ht.rcs.console.monitor.controller
     
     public function startCounters():void
     {
+      FlexGlobals.topLevelApplication.addEventListener(RefreshEvent.REFRESH, onMonitorEvent);
       PushController.instance.addEventListener(PushEvent.MONITOR, onMonitorEvent);
       
       /* the first refresh */
@@ -94,6 +96,7 @@ package it.ht.rcs.console.monitor.controller
 
     public function stopCounters():void
     {
+      FlexGlobals.topLevelApplication.removeEventListener(RefreshEvent.REFRESH, onMonitorEvent);
       PushController.instance.removeEventListener(PushEvent.MONITOR, onMonitorEvent);
     }
     

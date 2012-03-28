@@ -122,6 +122,14 @@ package it.ht.rcs.console.push
           trace('PushManager: dispatching ALERT event');
           event = new PushEvent(PushEvent.ALERT);   
           break;
+        case 'operation':
+          trace('PushManager: dispatching OPERATION event');
+          event = new PushEvent(PushEvent.OPERATION);
+          break;
+        case 'target':
+          trace('PushManager: dispatching TARGET event');
+          event = new PushEvent(PushEvent.TARGET);
+          break;
         case 'agent':
           trace('PushManager: dispatching AGENT event');
           event = new PushEvent(PushEvent.AGENT);
