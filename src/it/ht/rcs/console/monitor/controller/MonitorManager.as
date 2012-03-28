@@ -8,6 +8,8 @@ package it.ht.rcs.console.monitor.controller
 	import it.ht.rcs.console.controller.ItemManager;
 	import it.ht.rcs.console.events.SessionEvent;
 	import it.ht.rcs.console.monitor.model.Status;
+	import it.ht.rcs.console.push.PushController;
+	import it.ht.rcs.console.push.PushEvent;
 	
 	import mx.events.PropertyChangeEvent;
 	import mx.rpc.events.ResultEvent;
@@ -21,13 +23,32 @@ package it.ht.rcs.console.monitor.controller
     public static function get instance():MonitorManager { return _instance; }
     
     /* for the auto refresh every 15 seconds */
-    private var autoRefresh:Timer = new Timer(15000);
+    private var autoRefresh:Timer = new Timer(30000);
+
+    public function startAutorefresh():void
+    {
+      PushController.instance.addEventListener(PushEvent.MONITOR, onAutorefresh);
+      autoRefresh.addEventListener(TimerEvent.TIMER, onAutorefresh);
+      autoRefresh.start();
+      refresh();
+    }
+
+    public function stopAutorefresh():void
+    {
+      PushController.instance.removeEventListener(PushEvent.MONITOR, onAutorefresh);
+      autoRefresh.removeEventListener(TimerEvent.TIMER, onAutorefresh);
+      autoRefresh.stop();
+    }
+    
+    public function onAutorefresh(e:*):void
+    {
+      refresh();
+    }
     
     override public function refresh():void
     {
       super.refresh();
       DB.instance.monitor.all(onResult);
-      DB.instance.monitor.counters(onMonitorCounters);
     }
     
     private function onResult(e:ResultEvent):void
@@ -41,7 +62,7 @@ package it.ht.rcs.console.monitor.controller
     override protected function onItemRemove(o:*):void 
     {
       // refresh the counters after deletion
-      DB.instance.monitor.destroy(o._id, onAutoRefresh);
+      DB.instance.monitor.destroy(o._id, onMonitorEvent);
     }
     
     override protected function onLogout(e:SessionEvent):void
@@ -65,34 +86,23 @@ package it.ht.rcs.console.monitor.controller
     
     public function startCounters():void
     {
-      autoRefresh.addEventListener(TimerEvent.TIMER, onAutoRefresh);
-      autoRefresh.start();
+      PushController.instance.addEventListener(PushEvent.MONITOR, onMonitorEvent);
       
       /* the first refresh */
-      onAutoRefresh(null);
+      onMonitorEvent(null);
     }
 
     public function stopCounters():void
     {
-      autoRefresh.removeEventListener(TimerEvent.TIMER, onAutoRefresh);
-      autoRefresh.stop();
-    }
-
-    public function refreshCounters():void
-    {
-      onAutoRefresh(null);
+      PushController.instance.removeEventListener(PushEvent.MONITOR, onMonitorEvent);
     }
     
-    public var refreshView:Boolean = false;
-    private function onAutoRefresh(e:Event):void
+    private function onMonitorEvent(e:Event):void
     {
-      DB.instance.monitor.counters(onMonitorCounters);
-      
-      if (refreshView)
-        refresh();
+      DB.instance.monitor.counters(onMonitorCountersResult);
     }
     
-    private function onMonitorCounters(e:ResultEvent):void
+    private function onMonitorCountersResult(e:ResultEvent):void
     {
       var error:int = e.result.error as int;
       var warn:int = e.result.warn as int;

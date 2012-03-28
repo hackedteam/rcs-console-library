@@ -116,16 +116,20 @@ package it.ht.rcs.console.push
       switch (message['type']) {
         case 'monitor':
           trace('PushManager: dispatching MONITOR event');
-          event = new PushEvent(PushEvent.MONITOR);   
+          event = new PushEvent(PushEvent.MONITOR);
+          break;
         case 'alert':
           trace('PushManager: dispatching ALERT event');
           event = new PushEvent(PushEvent.ALERT);   
+          break;
         case 'agent':
           trace('PushManager: dispatching AGENT event');
           event = new PushEvent(PushEvent.AGENT);
+          break;
         default:
           trace('PushManager: UNKNOWN event');
           event = new PushEvent(PushEvent.UNKNOWN);            
+          break;
       }
       
       dispatchEvent(event);
