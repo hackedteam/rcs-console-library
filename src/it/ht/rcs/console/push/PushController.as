@@ -1,5 +1,6 @@
 package it.ht.rcs.console.push
 {
+  import flash.events.Event;
   import flash.events.EventDispatcher;
   import flash.events.IEventDispatcher;
   
@@ -80,6 +81,9 @@ package it.ht.rcs.console.push
         case 'ping':
           onPing();
           break;
+        default:
+          handleEvent(message);
+          break;
       }
     }
     
@@ -104,5 +108,28 @@ package it.ht.rcs.console.push
       trace('sent message: ' + encoded);
       socket.send(encoded);     
     }
+    
+    private function handleEvent(message:Object):void
+    {
+      var event:PushEvent; 
+      
+      switch (message['type']) {
+        case 'monitor':
+          trace('PushManager: dispatching MONITOR event');
+          event = new PushEvent(PushEvent.MONITOR);   
+        case 'alert':
+          trace('PushManager: dispatching ALERT event');
+          event = new PushEvent(PushEvent.ALERT);   
+        case 'agent':
+          trace('PushManager: dispatching AGENT event');
+          event = new PushEvent(PushEvent.AGENT);
+        default:
+          trace('PushManager: UNKNOWN event');
+          event = new PushEvent(PushEvent.UNKNOWN);            
+      }
+      
+      dispatchEvent(event);
+    }
+    
   }
 }
