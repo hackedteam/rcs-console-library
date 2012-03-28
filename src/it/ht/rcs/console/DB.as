@@ -103,7 +103,7 @@ package it.ht.rcs.console
     private static var _instance:DB = new DB();
     public static function get instance():DB { return _instance; } 
     
-    private static var notifier:IFaultNotifier;
+    public static var notifier:IFaultNotifier;
     public static var i18n:II18N;
     
     public function connect(host:String, notifier:IFaultNotifier, i18n:II18N, enable_demo:Boolean=false):void

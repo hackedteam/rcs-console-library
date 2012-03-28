@@ -38,11 +38,15 @@ package it.ht.rcs.console.push
     public function fatal(message:String):void
     {
       trace("webSocketFatal: " + message);
+      var fe:EMWebSocketEvent = new EMWebSocketEvent(EMWebSocketEvent.IO_ERROR);
+      dispatchEvent(fe);
     }
     
     public function error(message:String):void
     {
       trace("webSocketError: " + message);
+      var fe:EMWebSocketEvent = new EMWebSocketEvent(EMWebSocketEvent.IO_ERROR);
+      dispatchEvent(fe);
     }
     
     public function send(msg:Object, event:String = null,callback:Function = null):void{
