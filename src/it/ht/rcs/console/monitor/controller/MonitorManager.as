@@ -103,6 +103,7 @@ package it.ht.rcs.console.monitor.controller
     private function onMonitorEvent(e:Event):void
     {
       DB.instance.monitor.counters(onMonitorCountersResult);
+      refresh();
     }
     
     private function onMonitorCountersResult(e:ResultEvent):void

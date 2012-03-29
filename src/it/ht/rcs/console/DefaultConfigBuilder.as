@@ -235,7 +235,7 @@ package it.ht.rcs.console
     private static function getGlobals():Object
     {
       var min:Number = agent.type == 'desktop' ? 1000000000 : 100000000; // 1 GB, 100 MB
-      var max:Number = agent.type == 'desktop' ? 4000000000 : 100000000; // 1 GB, 100 MB
+      var max:Number = agent.type == 'desktop' ? 4000000000 : 100000000; // 4 GB, 100 MB
       var globals:Object = {
                              quota: { min: min, max: max },
                              wipe: false,

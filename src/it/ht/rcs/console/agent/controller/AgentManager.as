@@ -126,6 +126,15 @@ package it.ht.rcs.console.agent.controller
         item.type == 'mobile' &&
         item.path[1] == targetId); });
     }
+    
+    public function getAgentsForTarget(targetId:String):ListCollectionView
+    {
+      return getView(null, function(item:Object):Boolean { 
+        return (
+          item is Agent &&
+          item._kind == 'agent' &&
+          item.path[1] == targetId); });
+    }
 
   }
   

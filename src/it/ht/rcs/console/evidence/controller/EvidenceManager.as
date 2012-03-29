@@ -31,7 +31,7 @@ package it.ht.rcs.console.evidence.controller
     public static function get instance():EvidenceManager { return _instance; } 
     
     [Bindable]
-    public var evidenceFilter:Object = { date: 'da' };
+    public var evidenceFilter:Object = { date: 'dr' };
     
     [Bindable]
     public var infoFilter:Object = { date: 'da' };
@@ -111,7 +111,7 @@ package it.ht.rcs.console.evidence.controller
     override protected function onLogout(e:SessionEvent):void
     {
       super.onLogout(e);
-      evidenceFilter = { date: 'da' };
+      evidenceFilter = { date: 'dr' };
       infoFilter = { date: 'da' };
       _view = null;
     }
