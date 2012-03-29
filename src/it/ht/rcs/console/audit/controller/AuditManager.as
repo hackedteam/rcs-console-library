@@ -9,6 +9,7 @@ package it.ht.rcs.console.audit.controller
   import mx.collections.ListCollectionView;
   import mx.core.FlexGlobals;
   import mx.rpc.events.ResultEvent;
+  import mx.utils.ObjectUtil;
   
   public class AuditManager extends ItemManager
   {
