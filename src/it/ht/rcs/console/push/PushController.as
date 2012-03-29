@@ -62,6 +62,9 @@ package it.ht.rcs.console.push
 
     protected function onClose(event:EMWebSocketEvent):void {
       trace("connection closed");
+      var f:Fault = new Fault("error", event.data);
+      var e:FaultEvent = new FaultEvent("ws", false, false, f);
+      DB.notifier.fault(e);
     }
     
     protected function onLogout(e:SessionEvent):void
