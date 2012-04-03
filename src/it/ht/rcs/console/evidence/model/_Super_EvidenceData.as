@@ -10,6 +10,7 @@ import com.adobe.fiber.util.FiberUtils;
 import com.adobe.fiber.valueobjects.IValueObject;
 import flash.events.Event;
 import flash.events.EventDispatcher;
+import it.ht.rcs.console.evidence.model.EvidenceDataAddress;
 import mx.binding.utils.ChangeWatcher;
 import mx.collections.ArrayCollection;
 import mx.events.PropertyChangeEvent;
@@ -32,6 +33,7 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
 
     model_internal static function initRemoteClassAliasAllRelated() : void
     {
+        it.ht.rcs.console.evidence.model.EvidenceDataAddress.initRemoteClassAliasSingleChild();
     }
 
     model_internal var _dminternal_model : _EvidenceDataEntityMetadata;
@@ -88,7 +90,7 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     private var _internal_keywords : String;
     private var _internal_latitude : Number;
     private var _internal_longitude : Number;
-    private var _internal_address : String;
+    private var _internal_address : it.ht.rcs.console.evidence.model.EvidenceDataAddress;
     private var _internal_path : String;
     private var _internal_attr : int;
     private var _internal_size : Number;
@@ -341,7 +343,7 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     }
 
     [Bindable(event="propertyChange")]
-    public function get address() : String
+    public function get address() : it.ht.rcs.console.evidence.model.EvidenceDataAddress
     {
         return _internal_address;
     }
@@ -742,9 +744,9 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
         }
     }
 
-    public function set address(value:String) : void
+    public function set address(value:it.ht.rcs.console.evidence.model.EvidenceDataAddress) : void
     {
-        var oldValue:String = _internal_address;
+        var oldValue:it.ht.rcs.console.evidence.model.EvidenceDataAddress = _internal_address;
         if (oldValue !== value)
         {
             _internal_address = value;

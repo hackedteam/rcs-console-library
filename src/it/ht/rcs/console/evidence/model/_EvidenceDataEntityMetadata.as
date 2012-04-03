@@ -10,6 +10,7 @@ import com.adobe.fiber.styles.StyleValidator;
 import com.adobe.fiber.valueobjects.AbstractEntityMetadata;
 import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 import com.adobe.fiber.valueobjects.IPropertyIterator;
+import it.ht.rcs.console.evidence.model.EvidenceDataAddress;
 import mx.events.ValidationResultEvent;
 import com.adobe.fiber.core.model_internal;
 import com.adobe.fiber.valueobjects.IModelType;
@@ -139,7 +140,7 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
         model_internal::propertyTypeMap["keywords"] = "String";
         model_internal::propertyTypeMap["latitude"] = "Number";
         model_internal::propertyTypeMap["longitude"] = "Number";
-        model_internal::propertyTypeMap["address"] = "String";
+        model_internal::propertyTypeMap["address"] = "it.ht.rcs.console.evidence.model.EvidenceDataAddress";
         model_internal::propertyTypeMap["path"] = "String";
         model_internal::propertyTypeMap["attr"] = "int";
         model_internal::propertyTypeMap["size"] = "Number";
