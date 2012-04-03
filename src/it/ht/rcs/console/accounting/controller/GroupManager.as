@@ -120,8 +120,17 @@ package it.ht.rcs.console.accounting.controller
     public function setalertGroup(g:Group):void
     {
       DB.instance.group.alert(g);
-      if (g != null) 
+      if (g != null) { 
         g.alert = true;
+      } else {
+        var idx:int;
+        /* clear all the alerts */
+        for (idx = 0; idx < _items.length; idx++) {
+          var elem:* = _items.getItemAt(idx);
+          elem.alert = false;
+        }
+      }
+        
     }
     
   }
