@@ -31,7 +31,7 @@ package it.ht.rcs.console.accounting.model
     {
       return {
         _id: '',
-        enabled: false,
+        enabled: true,
         name: DB.i18n.get('NEW_USER'),
         pass: '',
         desc: '',
