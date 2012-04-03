@@ -140,7 +140,7 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
         model_internal::propertyTypeMap["longitude"] = "Number";
         model_internal::propertyTypeMap["path"] = "String";
         model_internal::propertyTypeMap["attr"] = "int";
-        model_internal::propertyTypeMap["size"] = "int";
+        model_internal::propertyTypeMap["size"] = "Number";
 
         model_internal::_instance = value;
         model_internal::_pathValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForPath);
