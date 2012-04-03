@@ -22,14 +22,14 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "rcpt", "subject", "url", "browser", "title", "keywords", "latitude", "longitude", "path", "attr", "size");
+    model_internal static var allProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "rcpt", "subject", "url", "browser", "title", "keywords", "latitude", "longitude", "address", "path", "attr", "size");
     model_internal static var allAssociationProperties:Array = new Array();
     model_internal static var allRequiredProperties:Array = new Array("path", "attr", "size");
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "rcpt", "subject", "url", "browser", "title", "keywords", "latitude", "longitude", "path", "attr", "size");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "rcpt", "subject", "url", "browser", "title", "keywords", "latitude", "longitude", "address", "path", "attr", "size");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "rcpt", "subject", "url", "browser", "title", "keywords", "latitude", "longitude", "path", "attr", "size");
+    model_internal static var dataProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "rcpt", "subject", "url", "browser", "title", "keywords", "latitude", "longitude", "address", "path", "attr", "size");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "rcpt", "subject", "url", "browser", "title", "keywords", "latitude", "longitude", "path", "attr", "size");
+    model_internal static var nonDerivedProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "rcpt", "subject", "url", "browser", "title", "keywords", "latitude", "longitude", "address", "path", "attr", "size");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array();
     model_internal static var collectionBaseMap:Object;
@@ -91,6 +91,7 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
             model_internal::dependentsOnMap["keywords"] = new Array();
             model_internal::dependentsOnMap["latitude"] = new Array();
             model_internal::dependentsOnMap["longitude"] = new Array();
+            model_internal::dependentsOnMap["address"] = new Array();
             model_internal::dependentsOnMap["path"] = new Array();
             model_internal::dependentsOnMap["attr"] = new Array();
             model_internal::dependentsOnMap["size"] = new Array();
@@ -124,7 +125,7 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
         model_internal::propertyTypeMap["end"] = "int";
         model_internal::propertyTypeMap["peer"] = "String";
         model_internal::propertyTypeMap["duration"] = "int";
-        model_internal::propertyTypeMap["status"] = "int";
+        model_internal::propertyTypeMap["status"] = "String";
         model_internal::propertyTypeMap["topic"] = "String";
         model_internal::propertyTypeMap["users"] = "String";
         model_internal::propertyTypeMap["spool"] = "String";
@@ -138,6 +139,7 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
         model_internal::propertyTypeMap["keywords"] = "String";
         model_internal::propertyTypeMap["latitude"] = "Number";
         model_internal::propertyTypeMap["longitude"] = "Number";
+        model_internal::propertyTypeMap["address"] = "String";
         model_internal::propertyTypeMap["path"] = "String";
         model_internal::propertyTypeMap["attr"] = "int";
         model_internal::propertyTypeMap["size"] = "Number";
@@ -597,6 +599,12 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
     }
 
     [Bindable(event="propertyChange")]
+    public function get isAddressAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get isPathAvailable():Boolean
     {
         return true;
@@ -850,6 +858,12 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
 
     [Bindable(event="propertyChange")]   
     public function get longitudeStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get addressStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }

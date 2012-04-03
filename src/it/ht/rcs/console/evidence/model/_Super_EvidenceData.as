@@ -74,7 +74,7 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     private var _internal_end : int;
     private var _internal_peer : String;
     private var _internal_duration : int;
-    private var _internal_status : int;
+    private var _internal_status : String;
     private var _internal_topic : String;
     private var _internal_users : String;
     private var _internal_spool : String;
@@ -88,6 +88,7 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     private var _internal_keywords : String;
     private var _internal_latitude : Number;
     private var _internal_longitude : Number;
+    private var _internal_address : String;
     private var _internal_path : String;
     private var _internal_attr : int;
     private var _internal_size : Number;
@@ -256,7 +257,7 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     }
 
     [Bindable(event="propertyChange")]
-    public function get status() : int
+    public function get status() : String
     {
         return _internal_status;
     }
@@ -337,6 +338,12 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     public function get longitude() : Number
     {
         return _internal_longitude;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get address() : String
+    {
+        return _internal_address;
     }
 
     [Bindable(event="propertyChange")]
@@ -595,9 +602,9 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
         }
     }
 
-    public function set status(value:int) : void
+    public function set status(value:String) : void
     {
-        var oldValue:int = _internal_status;
+        var oldValue:String = _internal_status;
         if (oldValue !== value)
         {
             _internal_status = value;
@@ -732,6 +739,16 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
         {
             _internal_longitude = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "longitude", oldValue, _internal_longitude));
+        }
+    }
+
+    public function set address(value:String) : void
+    {
+        var oldValue:String = _internal_address;
+        if (oldValue !== value)
+        {
+            _internal_address = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "address", oldValue, _internal_address));
         }
     }
 
