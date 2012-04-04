@@ -1,8 +1,6 @@
 package it.ht.rcs.console.alert.controller
 {
   import flash.events.Event;
-  import flash.events.TimerEvent;
-  import flash.utils.Timer;
   
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.alert.model.Alert;

