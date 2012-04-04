@@ -90,6 +90,7 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     private var _internal_keywords : String;
     private var _internal_latitude : Number;
     private var _internal_longitude : Number;
+    private var _internal_accuracy : int;
     private var _internal_address : it.ht.rcs.console.evidence.model.EvidenceDataAddress;
     private var _internal_path : String;
     private var _internal_attr : int;
@@ -340,6 +341,12 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     public function get longitude() : Number
     {
         return _internal_longitude;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get accuracy() : int
+    {
+        return _internal_accuracy;
     }
 
     [Bindable(event="propertyChange")]
@@ -741,6 +748,16 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
         {
             _internal_longitude = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "longitude", oldValue, _internal_longitude));
+        }
+    }
+
+    public function set accuracy(value:int) : void
+    {
+        var oldValue:int = _internal_accuracy;
+        if (oldValue !== value)
+        {
+            _internal_accuracy = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "accuracy", oldValue, _internal_accuracy));
         }
     }
 
