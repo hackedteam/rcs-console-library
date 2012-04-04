@@ -29,6 +29,8 @@ package it.ht.rcs.console
     
     public static function capitalize(str:String):String
     {
+      if (!str || str.length == 0) return '';
+      
       var firstChar:String = str.substr(0, 1); 
       var restOfString:String = str.substr(1, str.length); 
       
