@@ -128,18 +128,22 @@ package it.ht.rcs.console.push
         case 'operation':
           trace('PushManager: dispatching OPERATION event');
           event = new PushEvent(PushEvent.OPERATION);
+          event.data = message;
           break;
         case 'target':
           trace('PushManager: dispatching TARGET event');
           event = new PushEvent(PushEvent.TARGET);
+          event.data = message;
           break;
         case 'agent':
           trace('PushManager: dispatching AGENT event');
           event = new PushEvent(PushEvent.AGENT);
+          event.data = message;
           break;
         default:
           trace('PushManager: UNKNOWN event');
-          event = new PushEvent(PushEvent.UNKNOWN);            
+          event = new PushEvent(PushEvent.UNKNOWN);
+          event.data = message;
           break;
       }
       
