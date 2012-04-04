@@ -3,6 +3,7 @@ package it.ht.rcs.console.target.controller
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.ObjectUtils;
   import it.ht.rcs.console.controller.ItemManager;
+  import it.ht.rcs.console.dashboard.controller.DashboardController;
   import it.ht.rcs.console.operation.model.Operation;
   import it.ht.rcs.console.search.controller.SearchManager;
   import it.ht.rcs.console.target.model.Target;
@@ -38,6 +39,7 @@ package it.ht.rcs.console.target.controller
     override protected function onItemRemove(item:*):void
     {
       DB.instance.target.destroy(item._id);
+      DashboardController.instance.removeItem(DashboardController.instance.getItem(item._id));
     }
     
     override protected function onItemUpdate(event:*):void

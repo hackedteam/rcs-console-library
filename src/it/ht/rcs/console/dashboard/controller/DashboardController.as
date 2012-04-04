@@ -54,7 +54,8 @@ package it.ht.rcs.console.dashboard.controller
       super.refresh();
       for each (var id:String in _dashboard_ids.source) {
         SearchManager.instance.showItem(id, function (item:SearchItem):void {
-          manageItem(item);
+          if (item != null)
+            manageItem(item);
         });
       }
       dispatchDataLoadedEvent();

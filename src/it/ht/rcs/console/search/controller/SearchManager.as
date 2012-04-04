@@ -33,6 +33,10 @@ package it.ht.rcs.console.search.controller
     {
       DB.instance.search.show(id, function(e:ResultEvent):void {
         var item:SearchItem = e.result as SearchItem;
+        if (item == null && callback != null) {
+          callback(null);
+          return;
+        }
         if (getItem(item._id) == null)
           addItem(item);
         if (callback != null)
