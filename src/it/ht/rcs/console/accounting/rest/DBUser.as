@@ -68,6 +68,12 @@ public class DBUser extends _Super_DBUser implements IDBUser
       resp.token = add_recent_(JSON.stringify({_id: user._id, item_id: id}));
     }
     
-}
+    public function message(user:User, text:String):void
+    {
+      var resp:CallResponder = DB.getCallResponder(null, null);
+      resp.token = message_(JSON.stringify({_id: user._id, text: text}));      
+    }
+    
+  }
 
 }

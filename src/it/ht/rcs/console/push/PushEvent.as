@@ -10,7 +10,8 @@ package it.ht.rcs.console.push
     public static const OPERATION:String = "operation";
     public static const TARGET:String = "target";
     public static const AGENT:String = "agent";
-		
+    public static const MESSAGE:String = "message";
+    
 		public var data:*;
 		
 		public function PushEvent(type:String, bubbles:Boolean=true, cancelable:Boolean=false)

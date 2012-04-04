@@ -6,6 +6,7 @@ package it.ht.rcs.console.push
   
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.events.SessionEvent;
+  import it.ht.rcs.console.utils.AlertPopUp;
   
   import mx.core.FlexGlobals;
   import mx.rpc.Fault;
@@ -139,6 +140,16 @@ package it.ht.rcs.console.push
           trace('PushManager: dispatching AGENT event');
           event = new PushEvent(PushEvent.AGENT);
           event.data = message;
+          break;
+        case 'message':
+          trace('PushManager: MESSAGE event');
+          event = new PushEvent(PushEvent.AGENT);
+          event.data = message;
+          var from:String = "Message From: ";
+          if (message['from'])
+            from += message ['from'];
+          // display the message
+          AlertPopUp.show(message['text'], from);
           break;
         default:
           trace('PushManager: UNKNOWN event');
