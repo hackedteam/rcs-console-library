@@ -44,7 +44,7 @@ package it.ht.rcs.console.monitor.controller
     
     public var alerting:Boolean = false;
     public var correlation:Boolean = false;
-    public var forwarders:Boolean = false;
+    public var connectors:Boolean = false;
     
     public var nia:CurrMaxObject = new CurrMaxObject("0", "0");
     public var nia_demo:Boolean = false;
@@ -111,7 +111,7 @@ package it.ht.rcs.console.monitor.controller
       
       alerting = limits['alerting'];
       correlation = limits['correlation'];
-      forwarders = limits['forwarders'];
+      connectors = limits['connectors'];
       
       nia.max = (limits['nia'][0] == null) ? 'U' : limits['nia'][0].toString();
       nia_demo = limits['nia'][1];

@@ -1,9 +1,9 @@
 /**
  * This is a generated class and is not intended for modification.  To customize behavior
- * of this value object you may modify the generated sub-class of this class - Forwarder.as.
+ * of this value object you may modify the generated sub-class of this class - Connector.as.
  */
 
-package it.ht.rcs.console.forwarder.model
+package it.ht.rcs.console.connector.model
 {
 import com.adobe.fiber.services.IFiberManagingService;
 import com.adobe.fiber.util.FiberUtils;
@@ -25,7 +25,7 @@ import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 use namespace model_internal;
 
 [ExcludeClass]
-public class _Super_Forwarder extends flash.events.EventDispatcher implements com.adobe.fiber.valueobjects.IValueObject
+public class _Super_Connector extends flash.events.EventDispatcher implements com.adobe.fiber.valueobjects.IValueObject
 {
     model_internal static function initRemoteClassAliasSingle(cz:Class) : void
     {
@@ -35,7 +35,7 @@ public class _Super_Forwarder extends flash.events.EventDispatcher implements co
     {
     }
 
-    model_internal var _dminternal_model : _ForwarderEntityMetadata;
+    model_internal var _dminternal_model : _ConnectorEntityMetadata;
     model_internal var _changedObjects:mx.collections.ArrayCollection = new ArrayCollection();
 
     public function getChangedObjects() : Array
@@ -73,9 +73,9 @@ public class _Super_Forwarder extends flash.events.EventDispatcher implements co
 
     model_internal var _changeWatcherArray:Array = new Array();
 
-    public function _Super_Forwarder()
+    public function _Super_Connector()
     {
-        _model = new _ForwarderEntityMetadata(this);
+        _model = new _ConnectorEntityMetadata(this);
 
         // Bind to own data or source properties for cache invalidation triggering
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "updated_at", model_internal::setterListenerUpdated_at));
@@ -412,14 +412,14 @@ public class _Super_Forwarder extends flash.events.EventDispatcher implements co
 
     [Transient]
     [Bindable(event="propertyChange")]
-    public function get _model() : _ForwarderEntityMetadata
+    public function get _model() : _ConnectorEntityMetadata
     {
         return model_internal::_dminternal_model;
     }
 
-    public function set _model(value : _ForwarderEntityMetadata) : void
+    public function set _model(value : _ConnectorEntityMetadata) : void
     {
-        var oldValue : _ForwarderEntityMetadata = model_internal::_dminternal_model;
+        var oldValue : _ConnectorEntityMetadata = model_internal::_dminternal_model;
         if (oldValue !== value)
         {
             model_internal::_dminternal_model = value;

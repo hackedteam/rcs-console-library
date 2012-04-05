@@ -2,7 +2,7 @@
 /**
  * This is a generated class and is not intended for modification.  
  */
-package it.ht.rcs.console.forwarder.model
+package it.ht.rcs.console.connector.model
 {
 import com.adobe.fiber.styles.IStyle;
 import com.adobe.fiber.styles.Style;
@@ -19,7 +19,7 @@ import mx.events.PropertyChangeEvent;
 use namespace model_internal;
 
 [ExcludeClass]
-internal class _ForwarderEntityMetadata extends com.adobe.fiber.valueobjects.AbstractEntityMetadata
+internal class _ConnectorEntityMetadata extends com.adobe.fiber.valueobjects.AbstractEntityMetadata
 {
     private static var emptyArray:Array = new Array();
 
@@ -34,7 +34,7 @@ internal class _ForwarderEntityMetadata extends com.adobe.fiber.valueobjects.Abs
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array("path");
     model_internal static var collectionBaseMap:Object;
-    model_internal static var entityName:String = "Forwarder";
+    model_internal static var entityName:String = "Connector";
     model_internal static var dependentsOnMap:Object;
     model_internal static var dependedOnServices:Array = new Array();
     model_internal static var propertyTypeMap:Object;
@@ -75,10 +75,10 @@ internal class _ForwarderEntityMetadata extends com.adobe.fiber.valueobjects.Abs
     model_internal var _typeIsValidCacheInitialized:Boolean = false;
     model_internal var _typeValidationFailureMessages:Array;
 
-    model_internal var _instance:_Super_Forwarder;
+    model_internal var _instance:_Super_Connector;
     model_internal static var _nullStyle:com.adobe.fiber.styles.Style = new com.adobe.fiber.styles.Style();
 
-    public function _ForwarderEntityMetadata(value : _Super_Forwarder)
+    public function _ConnectorEntityMetadata(value : _Super_Connector)
     {
         // initialize property maps
         if (model_internal::dependentsOnMap == null)
@@ -200,7 +200,7 @@ internal class _ForwarderEntityMetadata extends com.adobe.fiber.valueobjects.Abs
     override public function getDependants(propertyName:String):Array
     {
        if (model_internal::nonDerivedProperties.indexOf(propertyName) == -1)
-            throw new Error(propertyName + " is not a data property of entity Forwarder");
+            throw new Error(propertyName + " is not a data property of entity Connector");
             
        return model_internal::dependentsOnMap[propertyName] as Array;  
     }
@@ -218,7 +218,7 @@ internal class _ForwarderEntityMetadata extends com.adobe.fiber.valueobjects.Abs
     override public function getCollectionBase(propertyName:String):String
     {
         if (model_internal::collectionProperties.indexOf(propertyName) == -1)
-            throw new Error(propertyName + " is not a collection property of entity Forwarder");
+            throw new Error(propertyName + " is not a collection property of entity Connector");
 
         return model_internal::collectionBaseMap[propertyName];
     }
@@ -226,7 +226,7 @@ internal class _ForwarderEntityMetadata extends com.adobe.fiber.valueobjects.Abs
     override public function getPropertyType(propertyName:String):String
     {
         if (model_internal::allProperties.indexOf(propertyName) == -1)
-            throw new Error(propertyName + " is not a property of Forwarder");
+            throw new Error(propertyName + " is not a property of Connector");
 
         return model_internal::propertyTypeMap[propertyName];
     }
@@ -240,7 +240,7 @@ internal class _ForwarderEntityMetadata extends com.adobe.fiber.valueobjects.Abs
     {
         if (model_internal::allProperties.indexOf(propertyName) == -1)
         {
-            throw new Error(propertyName + " does not exist for entity Forwarder");
+            throw new Error(propertyName + " does not exist for entity Connector");
         }
 
         return model_internal::_instance[propertyName];
@@ -250,7 +250,7 @@ internal class _ForwarderEntityMetadata extends com.adobe.fiber.valueobjects.Abs
     {
         if (model_internal::nonDerivedProperties.indexOf(propertyName) == -1)
         {
-            throw new Error(propertyName + " is not a modifiable property of entity Forwarder");
+            throw new Error(propertyName + " is not a modifiable property of entity Connector");
         }
 
         model_internal::_instance[propertyName] = value;
@@ -282,7 +282,7 @@ internal class _ForwarderEntityMetadata extends com.adobe.fiber.valueobjects.Abs
     {
         if (model_internal::allProperties.indexOf(propertyName) == -1)
         {
-            throw new Error(propertyName + " does not exist for entity Forwarder");
+            throw new Error(propertyName + " does not exist for entity Connector");
         }
 
         if (model_internal::allAlwaysAvailableProperties.indexOf(propertyName) != -1)

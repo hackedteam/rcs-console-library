@@ -1,18 +1,18 @@
 /**
- * This is a generated sub-class of _DBForwarder.as and is intended for behavior
+ * This is a generated sub-class of _DBConnector.as and is intended for behavior
  * customization.  This class is only generated when there is no file already present
  * at its target location.  Thus custom behavior that you add here will survive regeneration
  * of the super-class. 
  **/
  
-package it.ht.rcs.console.forwarder.rest
+package it.ht.rcs.console.connector.rest
 {
   import it.ht.rcs.console.DB;
-  import it.ht.rcs.console.forwarder.model.Forwarder;
+  import it.ht.rcs.console.connector.model.Connector;
   
   import mx.rpc.CallResponder;
 
-public class DBForwarder extends _Super_DBForwarder implements IDBForwarder
+public class DBConnector extends _Super_DBConnector implements IDBConnector
 {
     /**
      * Override super.init() to provide any initialization customization if needed.
@@ -23,7 +23,7 @@ public class DBForwarder extends _Super_DBForwarder implements IDBForwarder
         // Initialization customization goes here
     }
         
-    public function DBForwarder(host:String)
+    public function DBConnector(host:String)
     { 
       super();
       _serviceControl.baseURL = host;
@@ -41,13 +41,13 @@ public class DBForwarder extends _Super_DBForwarder implements IDBForwarder
       resp.token = create_(JSON.stringify(params));
     }
     
-    public function destroy(f:Forwarder, onResult:Function=null, onFault:Function=null):void
+    public function destroy(f:Connector, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
       resp.token = destroy_(JSON.stringify({_id: f._id}));
     }
     
-    public function update(f:Forwarder, property:Object, onResult:Function=null, onFault:Function=null):void
+    public function update(f:Connector, property:Object, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
       property['_id'] = f._id;

@@ -1,24 +1,24 @@
-package it.ht.rcs.console.forwarder.controller
+package it.ht.rcs.console.connector.controller
 {
   import it.ht.rcs.console.DB;
+  import it.ht.rcs.console.connector.model.Connector;
   import it.ht.rcs.console.controller.ItemManager;
-  import it.ht.rcs.console.forwarder.model.Forwarder;
   
   import mx.collections.ArrayCollection;
   import mx.rpc.events.ResultEvent;
   
-  public class ForwarderManager extends ItemManager
+  public class ConnectorManager extends ItemManager
   {
     
-    public function ForwarderManager() { super(Forwarder); }
+    public function ConnectorManager() { super(Connector); }
     
-    private static var _instance:ForwarderManager = new ForwarderManager();
-    public static function get instance():ForwarderManager { return _instance; }
+    private static var _instance:ConnectorManager = new ConnectorManager();
+    public static function get instance():ConnectorManager { return _instance; }
     
     override public function refresh():void
     {
       super.refresh();
-      DB.instance.forwarder.all(onResult);
+      DB.instance.connector.all(onResult);
     }
     
     private function onResult(e:ResultEvent):void
@@ -31,20 +31,20 @@ package it.ht.rcs.console.forwarder.controller
     
     override protected function onItemRemove(o:*):void
     { 
-      DB.instance.forwarder.destroy(o);
+      DB.instance.connector.destroy(o);
     }
     
     override protected function onItemUpdate(event:*):void
     {
       var property:Object = new Object();
       property[event.property] = event.newValue is ArrayCollection ? event.newValue.source : event.newValue;
-      DB.instance.forwarder.update(event.source, property);
+      DB.instance.connector.update(event.source, property);
     }
     
-    public function addForwarder(f:Object, callback:Function):void
+    public function addConnector(f:Object, callback:Function):void
     {     
-      DB.instance.forwarder.create(f, function (e:ResultEvent):void {
-        var fo:Forwarder = e.result as Forwarder;
+      DB.instance.connector.create(f, function (e:ResultEvent):void {
+        var fo:Connector = e.result as Connector;
         addItem(fo);
         callback(fo);
       });
