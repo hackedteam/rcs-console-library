@@ -67,7 +67,7 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
     private var _internal_expiry : int;
     private var _internal_collectors : it.ht.rcs.console.monitor.model.LicenseCollectors;
     private var _internal_shards : int;
-    private var _internal_forwarders : Boolean;
+    private var _internal_connectors : Boolean;
     private var _internal_serial : String;
     private var _internal_rmi : ArrayCollection;
 
@@ -167,9 +167,9 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
     }
 
     [Bindable(event="propertyChange")]
-    public function get forwarders() : Boolean
+    public function get connectors() : Boolean
     {
-        return _internal_forwarders;
+        return _internal_connectors;
     }
 
     [Bindable(event="propertyChange")]
@@ -317,13 +317,13 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
         }
     }
 
-    public function set forwarders(value:Boolean) : void
+    public function set connectors(value:Boolean) : void
     {
-        var oldValue:Boolean = _internal_forwarders;
+        var oldValue:Boolean = _internal_connectors;
         if (oldValue !== value)
         {
-            _internal_forwarders = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "forwarders", oldValue, _internal_forwarders));
+            _internal_connectors = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "connectors", oldValue, _internal_connectors));
         }
     }
 

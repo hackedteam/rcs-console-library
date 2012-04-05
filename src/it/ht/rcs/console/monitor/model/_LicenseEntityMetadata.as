@@ -25,14 +25,14 @@ internal class _LicenseEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("users", "exploits", "maintenance", "agents", "alerting", "nia", "correlation", "type", "expiry", "collectors", "shards", "forwarders", "serial", "rmi");
+    model_internal static var allProperties:Array = new Array("users", "exploits", "maintenance", "agents", "alerting", "nia", "correlation", "type", "expiry", "collectors", "shards", "connectors", "serial", "rmi");
     model_internal static var allAssociationProperties:Array = new Array();
-    model_internal static var allRequiredProperties:Array = new Array("users", "exploits", "maintenance", "agents", "alerting", "nia", "correlation", "type", "expiry", "collectors", "shards", "forwarders", "serial", "rmi");
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("users", "exploits", "maintenance", "agents", "alerting", "nia", "correlation", "type", "expiry", "collectors", "shards", "forwarders", "serial", "rmi");
+    model_internal static var allRequiredProperties:Array = new Array("users", "exploits", "maintenance", "agents", "alerting", "nia", "correlation", "type", "expiry", "collectors", "shards", "connectors", "serial", "rmi");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("users", "exploits", "maintenance", "agents", "alerting", "nia", "correlation", "type", "expiry", "collectors", "shards", "connectors", "serial", "rmi");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("users", "exploits", "maintenance", "agents", "alerting", "nia", "correlation", "type", "expiry", "collectors", "shards", "forwarders", "serial", "rmi");
+    model_internal static var dataProperties:Array = new Array("users", "exploits", "maintenance", "agents", "alerting", "nia", "correlation", "type", "expiry", "collectors", "shards", "connectors", "serial", "rmi");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("users", "exploits", "maintenance", "agents", "alerting", "nia", "correlation", "type", "expiry", "collectors", "shards", "forwarders", "serial", "rmi");
+    model_internal static var nonDerivedProperties:Array = new Array("users", "exploits", "maintenance", "agents", "alerting", "nia", "correlation", "type", "expiry", "collectors", "shards", "connectors", "serial", "rmi");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array("nia", "rmi");
     model_internal static var collectionBaseMap:Object;
@@ -98,7 +98,7 @@ internal class _LicenseEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
             model_internal::dependentsOnMap["expiry"] = new Array();
             model_internal::dependentsOnMap["collectors"] = new Array();
             model_internal::dependentsOnMap["shards"] = new Array();
-            model_internal::dependentsOnMap["forwarders"] = new Array();
+            model_internal::dependentsOnMap["connectors"] = new Array();
             model_internal::dependentsOnMap["serial"] = new Array();
             model_internal::dependentsOnMap["rmi"] = new Array();
 
@@ -121,7 +121,7 @@ internal class _LicenseEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
         model_internal::propertyTypeMap["expiry"] = "int";
         model_internal::propertyTypeMap["collectors"] = "it.ht.rcs.console.monitor.model.LicenseCollectors";
         model_internal::propertyTypeMap["shards"] = "int";
-        model_internal::propertyTypeMap["forwarders"] = "Boolean";
+        model_internal::propertyTypeMap["connectors"] = "Boolean";
         model_internal::propertyTypeMap["serial"] = "String";
         model_internal::propertyTypeMap["rmi"] = "ArrayCollection";
 
@@ -454,7 +454,7 @@ internal class _LicenseEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     }
 
     [Bindable(event="propertyChange")]
-    public function get isForwardersAvailable():Boolean
+    public function get isConnectorsAvailable():Boolean
     {
         return true;
     }
@@ -1074,7 +1074,7 @@ internal class _LicenseEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     }
 
     [Bindable(event="propertyChange")]   
-    public function get forwardersStyle():com.adobe.fiber.styles.Style
+    public function get connectorsStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }

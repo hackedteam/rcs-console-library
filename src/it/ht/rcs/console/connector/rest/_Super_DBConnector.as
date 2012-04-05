@@ -1,12 +1,12 @@
 /**
  * This is a generated class and is not intended for modification.  To customize behavior
- * of this service wrapper you may modify the generated sub-class of this class - DBForwarder.as.
+ * of this service wrapper you may modify the generated sub-class of this class - DBConnector.as.
  */
-package it.ht.rcs.console.forwarder.rest
+package it.ht.rcs.console.connector.rest
 {
 import com.adobe.fiber.core.model_internal;
 import com.adobe.fiber.services.wrapper.HTTPServiceWrapper;
-import it.ht.rcs.console.forwarder.model.Forwarder;
+import it.ht.rcs.console.connector.model.Connector;
 import mx.rpc.AbstractOperation;
 import mx.rpc.AsyncToken;
 import mx.rpc.http.HTTPMultiService;
@@ -16,13 +16,13 @@ import com.adobe.serializers.json.JSONSerializationFilter;
 import com.adobe.serializers.xml.XMLSerializationFilter;
 
 [ExcludeClass]
-internal class _Super_DBForwarder extends com.adobe.fiber.services.wrapper.HTTPServiceWrapper
+internal class _Super_DBConnector extends com.adobe.fiber.services.wrapper.HTTPServiceWrapper
 {
     private static var serializer0:JSONSerializationFilter = new JSONSerializationFilter();
     private static var serializer1:XMLSerializationFilter = new XMLSerializationFilter();
 
     // Constructor
-    public function _Super_DBForwarder()
+    public function _Super_DBConnector()
     {
         // initialize service control
         _serviceControl = new mx.rpc.http.HTTPMultiService("https://localhost:4444");
@@ -31,33 +31,33 @@ internal class _Super_DBForwarder extends com.adobe.fiber.services.wrapper.HTTPS
          var argsArray:Array;
 
          operation = new mx.rpc.http.Operation(null, "all_");
-         operation.url = "/forwarder";
+         operation.url = "/connector";
          operation.method = "GET";
          operation.serializationFilter = serializer0;
-         operation.resultElementType = it.ht.rcs.console.forwarder.model.Forwarder;
+         operation.resultElementType = it.ht.rcs.console.connector.model.Connector;
          operations.push(operation);
 
          operation = new mx.rpc.http.Operation(null, "create_");
-         operation.url = "/forwarder";
+         operation.url = "/connector";
          operation.method = "POST";
          operation.serializationFilter = serializer0;
          operation.contentType = "application/xml";
-         operation.resultType = it.ht.rcs.console.forwarder.model.Forwarder;
+         operation.resultType = it.ht.rcs.console.connector.model.Connector;
          operations.push(operation);
 
          operation = new mx.rpc.http.Operation(null, "destroy_");
-         operation.url = "/forwarder/destroy";
+         operation.url = "/connector/destroy";
          operation.method = "POST";
          operation.serializationFilter = serializer1;
          operation.contentType = "application/xml";
          operations.push(operation);
 
          operation = new mx.rpc.http.Operation(null, "update_");
-         operation.url = "/forwarder/update";
+         operation.url = "/connector/update";
          operation.method = "POST";
          operation.serializationFilter = serializer1;
          operation.contentType = "application/xml";
-         operation.resultType = it.ht.rcs.console.forwarder.model.Forwarder;
+         operation.resultType = it.ht.rcs.console.connector.model.Connector;
          operations.push(operation);
 
          _serviceControl.operationList = operations;  

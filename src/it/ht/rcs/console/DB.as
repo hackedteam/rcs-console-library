@@ -24,12 +24,12 @@ package it.ht.rcs.console
   import it.ht.rcs.console.build.rest.DBBuild;
   import it.ht.rcs.console.build.rest.DBBuildDemo;
   import it.ht.rcs.console.build.rest.IDBBuild;
+  import it.ht.rcs.console.connector.rest.DBConnector;
+  import it.ht.rcs.console.connector.rest.DBConnectorDemo;
+  import it.ht.rcs.console.connector.rest.IDBConnector;
   import it.ht.rcs.console.evidence.rest.DBEvidence;
   import it.ht.rcs.console.evidence.rest.DBEvidenceDemo;
   import it.ht.rcs.console.evidence.rest.IDBEvidence;
-  import it.ht.rcs.console.forwarder.rest.DBForwarder;
-  import it.ht.rcs.console.forwarder.rest.DBForwarderDemo;
-  import it.ht.rcs.console.forwarder.rest.IDBForwarder;
   import it.ht.rcs.console.monitor.rest.DBLicense;
   import it.ht.rcs.console.monitor.rest.DBLicenseDemo;
   import it.ht.rcs.console.monitor.rest.DBMonitor;
@@ -89,7 +89,7 @@ package it.ht.rcs.console
     public var backup:IDBBackup;
     public var evidence:IDBEvidence;
     public var build:IDBBuild;
-    public var forwarder:IDBForwarder;
+    public var connector:IDBConnector;
     
     /* expose if we are in demo mode */
     [Bindable]
@@ -142,7 +142,7 @@ package it.ht.rcs.console
       backup    = new DBBackup(host);
       evidence  = new DBEvidence(host);
       build     = new DBBuild(host);
-      forwarder = new DBForwarder(host);
+      connector = new DBConnector(host);
     }
     
     private function initDemo():void
@@ -167,7 +167,7 @@ package it.ht.rcs.console
       backup    = new DBBackupDemo();
       evidence  = new DBEvidenceDemo();
       build     = new DBBuildDemo();
-      forwarder = new DBForwarderDemo();
+      connector = new DBConnectorDemo();
     }
     
     private function parseHostPort(fqdn:String):void

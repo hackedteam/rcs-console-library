@@ -1,5 +1,5 @@
 /**
- * This is a generated sub-class of _Forwarder.as and is intended for behavior
+ * This is a generated sub-class of _Connector.as and is intended for behavior
  * customization.  This class is only generated when there is no file already present
  * at its target location.  Thus custom behavior that you add here will survive regeneration
  * of the super-class. 
@@ -10,40 +10,39 @@
  * corresponding entity 
  **/ 
  
-package it.ht.rcs.console.forwarder.model
+package it.ht.rcs.console.connector.model
 {
 
 import com.adobe.fiber.core.model_internal;
 
-public class Forwarder extends _Super_Forwarder
+public class Connector extends _Super_Connector
 {
+  public static function defaultConnector():Object
+  {
+    return {
+      _id: '',
+      enabled: false,
+      type: 'JSON',
+      keep: true,
+      raw: false,
+      dest: ''
+    };
+  }
   
-    public static function defaultForwarder():Object
-    {
-      return {
-        _id: '',
-        enabled: false,
-        type: 'JSON',
-        keep: true,
-        raw: false,
-        dest: ''
-      };
+  public function Connector(data:Object=null)
+  {
+    if (data) {
+      _id = data._id;
+      enabled = data.enabled;
+      name = data.name;
+      keep = data.keep;
+      raw = data.raw;
+      path = data.path;
+      type = data.type;
+      dest = data.dest;
     }
+  }
   
-    public function Forwarder(data:Object=null)
-    {
-      if (data) {
-        _id = data._id;
-        enabled = data.enabled;
-        name = data.name;
-        keep = data.keep;
-        raw = data.raw;
-        path = data.path;
-        type = data.type;
-        dest = data.dest;
-      }
-    }
-
     /** 
      * DO NOT MODIFY THIS STATIC INITIALIZER - IT IS NECESSARY
      * FOR PROPERLY SETTING UP THE REMOTE CLASS ALIAS FOR THIS CLASS
@@ -57,17 +56,17 @@ public class Forwarder extends _Super_Forwarder
      */     
     public static function _initRemoteClassAlias() : void
     {
-        _Super_Forwarder.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.forwarder.model.Forwarder);
-        _Super_Forwarder.model_internal::initRemoteClassAliasAllRelated();
+        _Super_Connector.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.connector.model.Connector);
+        _Super_Connector.model_internal::initRemoteClassAliasAllRelated();
     }
      
     model_internal static function initRemoteClassAliasSingleChild() : void
     {
-        _Super_Forwarder.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.forwarder.model.Forwarder);
+        _Super_Connector.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.connector.model.Connector);
     }
     
     {
-        _Super_Forwarder.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.forwarder.model.Forwarder);
+        _Super_Connector.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.connector.model.Connector);
     }
     /** 
      * END OF DO NOT MODIFY SECTION
