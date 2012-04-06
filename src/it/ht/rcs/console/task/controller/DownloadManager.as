@@ -14,6 +14,8 @@ package it.ht.rcs.console.task.controller
   public class DownloadManager extends ItemManager
   {
 
+    public function DownloadManager() { super(DownloadTask); }
+    
     private static var _instance:DownloadManager = new DownloadManager();
     public static function get instance():DownloadManager { return _instance; }
     
@@ -67,6 +69,7 @@ package it.ht.rcs.console.task.controller
       for (var i:int = 0; i < _items.length; i++) {
         var t:DownloadTask = _items.getItemAt(i) as DownloadTask;
         t.cleanup();
+        _items.removeItem(t);
       }
       active = false;
       running = false;
@@ -126,7 +129,6 @@ package it.ht.rcs.console.task.controller
     override protected function onItemRemove(t:*):void
     {
       t.cleanup();
-      removeTask(t);
       t.destroy();
     }
     
