@@ -9,6 +9,7 @@ package it.ht.rcs.console.target.controller
   import it.ht.rcs.console.target.model.Target;
   
   import mx.collections.ArrayCollection;
+  import mx.rpc.events.FaultEvent;
   import mx.rpc.events.ResultEvent;
   
   public class TargetManager extends ItemManager
@@ -56,6 +57,23 @@ package it.ht.rcs.console.target.controller
         addItem(target);
         SearchManager.instance.showItem(target._id);
         callback(target);
+      });
+    }
+    
+    // Se l'elemento non e' presente, ma la show me lo ritorna, lo aggiungo. In ogni caso, aggiorno il search manager.
+    public function show(_id:String, onResult:Function=null):void
+    {
+      DB.instance.target.show(_id, function(re:ResultEvent):void {
+        var t:Target = getItem(_id);
+        if (t == null)
+          addItem(re.result);
+        
+        SearchManager.instance.showItem(_id);
+        
+        if (onResult != null)
+          onResult(re);
+      }, function(fe:FaultEvent):void {
+        SearchManager.instance.showItem(_id);
       });
     }
     

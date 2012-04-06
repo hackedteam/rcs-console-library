@@ -13,6 +13,7 @@ package it.ht.rcs.console.agent.controller
   
   import mx.collections.ArrayCollection;
   import mx.collections.ListCollectionView;
+  import mx.rpc.events.FaultEvent;
   import mx.rpc.events.ResultEvent;
   
   public class AgentManager extends ItemManager
@@ -65,9 +66,21 @@ package it.ht.rcs.console.agent.controller
       });
     }
     
-    public function show(_id:String, callback:Function):void
+    // Se l'elemento non e' presente, ma la show me lo ritorna, lo aggiungo. In ogni caso, aggiorno il search manager.
+    public function show(_id:String, onResult:Function=null):void
     {
-      DB.instance.agent.show(_id, callback);
+      DB.instance.agent.show(_id, function(re:ResultEvent):void {
+        var a:Agent = getItem(_id);
+        if (a == null)
+          addItem(re.result);
+        
+        SearchManager.instance.showItem(_id); // 4f7db0452afb659f3f00500e
+        
+        if (onResult != null)
+          onResult(re);
+      }, function(fe:FaultEvent):void {
+        SearchManager.instance.showItem(_id);
+      });
     }
     
     public function upgrade(a:Agent):void
@@ -75,16 +88,13 @@ package it.ht.rcs.console.agent.controller
       a.upgradable = true;
       DB.instance.agent.upgrade(a); 
     }
-
-    override protected function onItemRemove(item:*):void
-    {
-      DashboardController.instance.removeItem(DashboardController.instance.getItem(item._id));
-    }
     
     public function delAgent(a:Object, permanent:Boolean=false):void
     {
       removeItem(a);
-      DB.instance.agent.destroy(a._id, permanent); // we use this method to use the permament flag
+      DB.instance.agent.destroy(a._id, permanent, function(re:ResultEvent):void { // we use this method to use the permament flag
+        DashboardController.instance.removeItem(DashboardController.instance.getItem(a._id));
+      });
     }
     
     public function getDownloads(agent:Agent, callback:Function):void

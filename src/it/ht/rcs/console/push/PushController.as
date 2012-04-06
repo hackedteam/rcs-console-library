@@ -108,9 +108,9 @@ package it.ht.rcs.console.push
     
     public function send(message:Object):void
     {
-      var encoded:String = JSON.stringify(message); 
+      var encoded:String = JSON.stringify(message);
       trace('sent message: ' + encoded);
-      socket.send(encoded);     
+      socket.send(encoded);
     }
     
     private function handleEvent(message:Object):void

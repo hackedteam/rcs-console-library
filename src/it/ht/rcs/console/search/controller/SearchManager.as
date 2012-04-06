@@ -4,6 +4,7 @@ package it.ht.rcs.console.search.controller
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.search.model.SearchItem;
   
+  import mx.rpc.events.FaultEvent;
   import mx.rpc.events.ResultEvent;
 
   public class SearchManager extends ItemManager
@@ -31,16 +32,19 @@ package it.ht.rcs.console.search.controller
     
     public function showItem(id:String, callback:Function=null):void
     {
-      DB.instance.search.show(id, function(e:ResultEvent):void {
-        var item:SearchItem = e.result as SearchItem;
-        if (item == null && callback != null) {
-          callback(null);
-          return;
-        }
-        if (getItem(item._id) == null)
-          addItem(item);
+      DB.instance.search.show(id, function(re:ResultEvent):void {
+        var item:SearchItem = re.result as SearchItem;
+        var current:SearchItem = getItem(item._id);
+        if (current != null)
+          removeItem(current);
+        
+        addItem(item);
         if (callback != null)
           callback(item);
+      }, function(fe:FaultEvent):void {
+        var current:SearchItem = getItem(id);
+        if (current != null)
+          removeItem(current);
       });
     }
     

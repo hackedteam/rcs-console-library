@@ -60,7 +60,6 @@ package it.ht.rcs.console.evidence.controller
     
     private function onCountResult(e:ResultEvent):void
     {
-
       counts=e.result as ArrayCollection;
     }
     
