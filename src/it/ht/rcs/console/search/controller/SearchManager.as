@@ -30,6 +30,8 @@ package it.ht.rcs.console.search.controller
       dispatchDataLoadedEvent();
     }
     
+    // logic: when showing, if the item is present, replace it, if not, just add it.
+    // if show returns an error the item is gone, delete it from list
     public function showItem(id:String, callback:Function=null):void
     {
       DB.instance.search.show(id, function(re:ResultEvent):void {
@@ -37,7 +39,6 @@ package it.ht.rcs.console.search.controller
         var current:SearchItem = getItem(item._id);
         if (current != null)
           removeItem(current);
-        
         addItem(item);
         if (callback != null)
           callback(item);
