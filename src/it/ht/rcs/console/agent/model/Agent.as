@@ -26,11 +26,6 @@ package it.ht.rcs.console.agent.model
     
     public function Agent(data:Object=null)
     {
-      fillData(data);
-    }
-    
-    public function fillData(data:Object=null):void
-    {
       if (data) {
         _id = data._id;
         _kind = data._kind;

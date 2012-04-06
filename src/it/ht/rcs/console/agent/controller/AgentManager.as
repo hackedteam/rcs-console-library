@@ -73,9 +73,8 @@ package it.ht.rcs.console.agent.controller
         var a:Agent = getItem(_id);
         if (a == null)
           addItem(re.result);
-        //else a.fillData(re.result);
         
-        SearchManager.instance.showItem(_id); // 4f7db0452afb659f3f00500e
+        SearchManager.instance.showItem(_id);
         
         if (onResult != null)
           onResult(re);
