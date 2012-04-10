@@ -109,6 +109,12 @@ package it.ht.rcs.console.agent.rest
       resp.token = filesystem_(JSON.stringify({ _id: agentId, filesystem: {path: path, depth: depth} }));
     }
     
+    public function move(agentId:String, targetId:String, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = move_(JSON.stringify({ _id: agentId, target: targetId}));
+    }
+    
     /**
      * Override super.init() to provide any initialization customization if needed.
      */

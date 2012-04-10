@@ -47,6 +47,12 @@ package it.ht.rcs.console.target.rest
       resp.token = update_(JSON.stringify(property));
     }
     
+    public function move(targetId:String, operationId:String, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = move_(JSON.stringify({_id: targetId, operation: operationId}));
+    }
+    
     /**
      * Override super.init() to provide any initialization customization if needed.
      */

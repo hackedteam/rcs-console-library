@@ -155,6 +155,8 @@ package it.ht.rcs.console.agent.rest
     
     public function filesystem(agentId:String, path:String, depth:int, onResult:Function=null, onFault:Function=null):void {}
     
+    public function move(agentId:String, targetId:String, onResult:Function=null, onFault:Function=null):void {}
+    
   }
   
 }

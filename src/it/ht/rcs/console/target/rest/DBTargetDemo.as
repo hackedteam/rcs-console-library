@@ -60,6 +60,8 @@ package it.ht.rcs.console.target.rest
         onResult(new ResultEvent('target.destroy'));
     }
     
+    public function move(targetId:String, operationId:String, onResult:Function=null, onFault:Function=null):void {}
+    
   }
   
 }

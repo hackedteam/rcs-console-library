@@ -14,6 +14,8 @@ package it.ht.rcs.console.target.rest
     function update(target:Target, property:Object, onResult:Function=null, onFault:Function=null):void;
     
     function destroy(id:String, onResult:Function=null, onFault:Function=null):void;
+    
+    function move(targetId:String, operationId:String, onResult:Function=null, onFault:Function=null):void;
   }
   
 }

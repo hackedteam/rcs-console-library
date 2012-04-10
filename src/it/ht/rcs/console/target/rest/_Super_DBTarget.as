@@ -71,6 +71,13 @@ internal class _Super_DBTarget extends com.adobe.fiber.services.wrapper.HTTPServ
          operation.contentType = "application/xml";
          operations.push(operation);
 
+         operation = new mx.rpc.http.Operation(null, "move_");
+         operation.url = "/target/move";
+         operation.method = "POST";
+         operation.serializationFilter = serializer1;
+         operation.contentType = "application/xml";
+         operations.push(operation);
+
          _serviceControl.operationList = operations;  
 
 
@@ -171,6 +178,24 @@ internal class _Super_DBTarget extends com.adobe.fiber.services.wrapper.HTTPServ
     public function destroy_(strXml:String) : mx.rpc.AsyncToken
     {
         var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("destroy_");
+		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(strXml) ;
+        return _internal_token;
+    }
+     
+    /**
+      * This method is a generated wrapper used to call the 'move_' operation. It returns an mx.rpc.AsyncToken whose 
+      * result property will be populated with the result of the operation when the server response is received. 
+      * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value. 
+      * You can then bind to CallResponder.lastResult or listen for the CallResponder.result or fault events.
+      *
+      * @see mx.rpc.AsyncToken
+      * @see mx.rpc.CallResponder 
+      *
+      * @return an mx.rpc.AsyncToken whose result property will be populated with the result of the operation when the server response is received.
+      */
+    public function move_(strXml:String) : mx.rpc.AsyncToken
+    {
+        var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("move_");
 		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(strXml) ;
         return _internal_token;
     }
