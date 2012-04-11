@@ -43,8 +43,8 @@ package it.ht.rcs.console.evidence.controller
     {
       super.refresh();
       trace(ObjectUtil.toString(evidenceFilter));
-      DB.instance.evidence.all(evidenceFilter, onResult);
       DB.instance.evidence.total(evidenceFilter, onCountResult);
+      DB.instance.evidence.all(evidenceFilter, onResult);
     }
     
     [Bindable]
