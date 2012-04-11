@@ -11,6 +11,8 @@ import com.adobe.fiber.valueobjects.IValueObject;
 import flash.events.Event;
 import flash.events.EventDispatcher;
 import it.ht.rcs.console.evidence.model.EvidenceDataAddress;
+import it.ht.rcs.console.evidence.model.EvidenceDataCell;
+import it.ht.rcs.console.evidence.model.EvidenceDataWifi;
 import mx.binding.utils.ChangeWatcher;
 import mx.collections.ArrayCollection;
 import mx.events.PropertyChangeEvent;
@@ -34,6 +36,8 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     model_internal static function initRemoteClassAliasAllRelated() : void
     {
         it.ht.rcs.console.evidence.model.EvidenceDataAddress.initRemoteClassAliasSingleChild();
+        it.ht.rcs.console.evidence.model.EvidenceDataCell.initRemoteClassAliasSingleChild();
+        it.ht.rcs.console.evidence.model.EvidenceDataWifi.initRemoteClassAliasSingleChild();
     }
 
     model_internal var _dminternal_model : _EvidenceDataEntityMetadata;
@@ -92,6 +96,9 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     private var _internal_longitude : Number;
     private var _internal_accuracy : int;
     private var _internal_address : it.ht.rcs.console.evidence.model.EvidenceDataAddress;
+    private var _internal_cell : it.ht.rcs.console.evidence.model.EvidenceDataCell;
+    private var _internal_wifi : ArrayCollection;
+    model_internal var _internal_wifi_leaf:it.ht.rcs.console.evidence.model.EvidenceDataWifi;
     private var _internal_path : String;
     private var _internal_attr : int;
     private var _internal_size : Number;
@@ -353,6 +360,18 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     public function get address() : it.ht.rcs.console.evidence.model.EvidenceDataAddress
     {
         return _internal_address;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get cell() : it.ht.rcs.console.evidence.model.EvidenceDataCell
+    {
+        return _internal_cell;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get wifi() : ArrayCollection
+    {
+        return _internal_wifi;
     }
 
     [Bindable(event="propertyChange")]
@@ -768,6 +787,41 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
         {
             _internal_address = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "address", oldValue, _internal_address));
+        }
+    }
+
+    public function set cell(value:it.ht.rcs.console.evidence.model.EvidenceDataCell) : void
+    {
+        var oldValue:it.ht.rcs.console.evidence.model.EvidenceDataCell = _internal_cell;
+        if (oldValue !== value)
+        {
+            _internal_cell = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "cell", oldValue, _internal_cell));
+        }
+    }
+
+    public function set wifi(value:*) : void
+    {
+        var oldValue:ArrayCollection = _internal_wifi;
+        if (oldValue !== value)
+        {
+            if (value is ArrayCollection)
+            {
+                _internal_wifi = value;
+            }
+            else if (value is Array)
+            {
+                _internal_wifi = new ArrayCollection(value);
+            }
+            else if (value == null)
+            {
+                _internal_wifi = null;
+            }
+            else
+            {
+                throw new Error("value of wifi must be a collection");
+            }
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "wifi", oldValue, _internal_wifi));
         }
     }
 
