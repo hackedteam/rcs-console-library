@@ -36,6 +36,8 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
     {
         it.ht.rcs.console.evidence.model.EvidenceData.initRemoteClassAliasSingleChild();
         it.ht.rcs.console.evidence.model.EvidenceDataAddress.initRemoteClassAliasSingleChild();
+        it.ht.rcs.console.evidence.model.EvidenceDataCell.initRemoteClassAliasSingleChild();
+        it.ht.rcs.console.evidence.model.EvidenceDataWifi.initRemoteClassAliasSingleChild();
     }
 
     model_internal var _dminternal_model : _EvidenceEntityMetadata;
