@@ -39,6 +39,9 @@ package it.ht.rcs.console.evidence.controller
     [Bindable]
     public var counts:ArrayCollection;
     
+    [Bindable]
+    public var total:Number;
+    
     override public function refresh():void
     {
       super.refresh();
@@ -60,7 +63,12 @@ package it.ht.rcs.console.evidence.controller
     
     private function onCountResult(e:ResultEvent):void
     {
-      counts=e.result as ArrayCollection;
+      counts = e.result as ArrayCollection;
+      for each (var typeCount:TypeCount in counts)
+        if (typeCount.type == "total") {
+          total = typeCount.count;
+          break;
+        }
     }
     
     override protected function onItemUpdate(event:*):void
