@@ -97,9 +97,9 @@ package it.ht.rcs.console.accounting.controller
       });
     }
     
-    public function send_message(user:User, text:String):void
+    public function send_message(id:String, text:String):void
     {
-      DB.instance.user.message(user, text);
+      DB.instance.user.message(id, text);
     }
     
   }

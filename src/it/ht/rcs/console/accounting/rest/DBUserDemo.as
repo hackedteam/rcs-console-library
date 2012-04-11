@@ -68,7 +68,7 @@ package it.ht.rcs.console.accounting.rest
         onResult(new ResultEvent('user.add_recent', false, true, user));
     }
     
-    public function message(user:User, text:String):void
+    public function message(id:String, text:String):void
     {
       /* do nothing */
     }
