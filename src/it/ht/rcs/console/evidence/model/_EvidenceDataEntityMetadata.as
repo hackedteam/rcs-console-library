@@ -26,14 +26,14 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "rcpt", "subject", "url", "browser", "title", "keywords", "latitude", "longitude", "accuracy", "address", "cell", "wifi", "path", "attr", "size");
+    model_internal static var allProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "rcpt", "subject", "url", "title", "keywords", "latitude", "longitude", "accuracy", "address", "cell", "wifi", "path", "attr", "size");
     model_internal static var allAssociationProperties:Array = new Array();
     model_internal static var allRequiredProperties:Array = new Array("path", "attr", "size");
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "rcpt", "subject", "url", "browser", "title", "keywords", "latitude", "longitude", "accuracy", "address", "cell", "wifi", "path", "attr", "size");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "rcpt", "subject", "url", "title", "keywords", "latitude", "longitude", "accuracy", "address", "cell", "wifi", "path", "attr", "size");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "rcpt", "subject", "url", "browser", "title", "keywords", "latitude", "longitude", "accuracy", "address", "cell", "wifi", "path", "attr", "size");
+    model_internal static var dataProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "rcpt", "subject", "url", "title", "keywords", "latitude", "longitude", "accuracy", "address", "cell", "wifi", "path", "attr", "size");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "rcpt", "subject", "url", "browser", "title", "keywords", "latitude", "longitude", "accuracy", "address", "cell", "wifi", "path", "attr", "size");
+    model_internal static var nonDerivedProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "rcpt", "subject", "url", "title", "keywords", "latitude", "longitude", "accuracy", "address", "cell", "wifi", "path", "attr", "size");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array("wifi");
     model_internal static var collectionBaseMap:Object;
@@ -90,7 +90,6 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
             model_internal::dependentsOnMap["rcpt"] = new Array();
             model_internal::dependentsOnMap["subject"] = new Array();
             model_internal::dependentsOnMap["url"] = new Array();
-            model_internal::dependentsOnMap["browser"] = new Array();
             model_internal::dependentsOnMap["title"] = new Array();
             model_internal::dependentsOnMap["keywords"] = new Array();
             model_internal::dependentsOnMap["latitude"] = new Array();
@@ -142,7 +141,6 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
         model_internal::propertyTypeMap["rcpt"] = "String";
         model_internal::propertyTypeMap["subject"] = "String";
         model_internal::propertyTypeMap["url"] = "String";
-        model_internal::propertyTypeMap["browser"] = "String";
         model_internal::propertyTypeMap["title"] = "String";
         model_internal::propertyTypeMap["keywords"] = "String";
         model_internal::propertyTypeMap["latitude"] = "Number";
@@ -580,12 +578,6 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
     }
 
     [Bindable(event="propertyChange")]
-    public function get isBrowserAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get isTitleAvailable():Boolean
     {
         return true;
@@ -857,12 +849,6 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
 
     [Bindable(event="propertyChange")]   
     public function get urlStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get browserStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }

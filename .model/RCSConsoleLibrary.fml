@@ -4047,7 +4047,6 @@
     <property name="rcpt" type="string"/>
     <property name="subject" type="string"/>
     <property name="url" type="string"/>
-    <property name="browser" type="string"/>
     <property name="title" type="string"/>
     <property name="keywords" type="string"/>
     <property name="latitude" type="double"/>
