@@ -91,6 +91,7 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     private var _internal_url : String;
     private var _internal_title : String;
     private var _internal_keywords : String;
+    private var _internal_ip : String;
     private var _internal_latitude : Number;
     private var _internal_longitude : Number;
     private var _internal_accuracy : int;
@@ -329,6 +330,12 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     public function get keywords() : String
     {
         return _internal_keywords;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get ip() : String
+    {
+        return _internal_ip;
     }
 
     [Bindable(event="propertyChange")]
@@ -730,6 +737,16 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
         {
             _internal_keywords = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "keywords", oldValue, _internal_keywords));
+        }
+    }
+
+    public function set ip(value:String) : void
+    {
+        var oldValue:String = _internal_ip;
+        if (oldValue !== value)
+        {
+            _internal_ip = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "ip", oldValue, _internal_ip));
         }
     }
 

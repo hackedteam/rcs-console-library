@@ -4049,6 +4049,7 @@
     <property name="url" type="string"/>
     <property name="title" type="string"/>
     <property name="keywords" type="string"/>
+    <property name="ip" type="string"/>
     <property name="latitude" type="double"/>
     <property name="longitude" type="double"/>
     <property name="accuracy" type="integer"/>
