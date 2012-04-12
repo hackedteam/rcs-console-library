@@ -4059,6 +4059,7 @@
     <property name="path" type="string" required="true"/>
     <property name="attr" type="integer" required="true"/>
     <property name="size" type="double" required="true"/>
+    <property name="attach" type="integer"/>
   </entity>
   <entity name="TypeCount">
     <annotation name="EntityProperties">
