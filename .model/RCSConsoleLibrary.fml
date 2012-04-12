@@ -3925,7 +3925,7 @@
   </entity>
   <entity name="EvidenceDataCell">
     <annotation name="EntityProperties">
-      <item name="EntityOriginalName">Data</item>
+      <item name="EntityOriginalName">EvidenceDataCell</item>
     </annotation>
     <annotation name="service Group">
       <item name="service">DBEvidence</item>
@@ -3946,7 +3946,7 @@
   </entity>
   <entity name="EvidenceDataWifi">
     <annotation name="EntityProperties">
-      <item name="EntityOriginalName">Data</item>
+      <item name="EntityOriginalName">EvidenceDataWifi</item>
     </annotation>
     <annotation name="service Group">
       <item name="service">DBEvidence</item>
@@ -3983,7 +3983,7 @@
   </entity>
   <entity name="EvidenceDataAddress">
     <annotation name="EntityProperties">
-      <item name="EntityOriginalName">Data</item>
+      <item name="EntityOriginalName">EvidenceDataAddress</item>
     </annotation>
     <annotation name="service Group">
       <item name="service">DBEvidence</item>
@@ -4004,7 +4004,7 @@
   </entity>
   <entity name="EvidenceData">
     <annotation name="EntityProperties">
-      <item name="EntityOriginalName">Data</item>
+      <item name="EntityOriginalName">EvidenceData</item>
     </annotation>
     <annotation name="service Group">
       <item name="service">DBEvidence</item>
@@ -4056,9 +4056,9 @@
     <property name="address" type="EvidenceDataAddress"/>
     <property name="cell" type="EvidenceDataCell"/>
     <property name="wifi" type="EvidenceDataWifi[]"/>
-    <property name="path" type="string" required="true"/>
-    <property name="attr" type="integer" required="true"/>
-    <property name="size" type="double" required="true"/>
+    <property name="path" type="string"/>
+    <property name="attr" type="integer"/>
+    <property name="size" type="double"/>
   </entity>
   <entity name="TypeCount">
     <annotation name="EntityProperties">
