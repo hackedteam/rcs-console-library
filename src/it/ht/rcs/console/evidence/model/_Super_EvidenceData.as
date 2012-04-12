@@ -6,17 +6,13 @@
 package it.ht.rcs.console.evidence.model
 {
 import com.adobe.fiber.services.IFiberManagingService;
-import com.adobe.fiber.util.FiberUtils;
 import com.adobe.fiber.valueobjects.IValueObject;
-import flash.events.Event;
 import flash.events.EventDispatcher;
 import it.ht.rcs.console.evidence.model.EvidenceDataAddress;
 import it.ht.rcs.console.evidence.model.EvidenceDataCell;
 import it.ht.rcs.console.evidence.model.EvidenceDataWifi;
-import mx.binding.utils.ChangeWatcher;
 import mx.collections.ArrayCollection;
 import mx.events.PropertyChangeEvent;
-import mx.validators.ValidationResult;
 
 import flash.net.registerClassAlias;
 import flash.net.getClassByAlias;
@@ -120,7 +116,6 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
         _model = new _EvidenceDataEntityMetadata(this);
 
         // Bind to own data or source properties for cache invalidation triggering
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "path", model_internal::setterListenerPath));
 
     }
 
@@ -867,11 +862,6 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
      *  - the validity of the property (and the containing entity) if the given data property is required.
      */
 
-    model_internal function setterListenerPath(value:flash.events.Event):void
-    {
-        _model.invalidateDependentOnPath();
-    }
-
 
     /**
      * valid related derived properties
@@ -893,11 +883,6 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
         var validationFailureMessages:Array = new Array();
 
         var propertyValidity:Boolean = true;
-        if (!_model.pathIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_pathValidationFailureMessages);
-        }
 
         model_internal::_cacheInitialized_isValid = true;
         model_internal::invalidConstraints_der = violatedConsts;
@@ -977,33 +962,6 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
         }
     }
 
-    model_internal var _doValidationCacheOfPath : Array = null;
-    model_internal var _doValidationLastValOfPath : String;
-
-    model_internal function _doValidationForPath(valueIn:Object):Array
-    {
-        var value : String = valueIn as String;
-
-        if (model_internal::_doValidationCacheOfPath != null && model_internal::_doValidationLastValOfPath == value)
-           return model_internal::_doValidationCacheOfPath ;
-
-        _model.model_internal::_pathIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.isPathAvailable && _internal_path == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "path is required"));
-        }
-
-        model_internal::_doValidationCacheOfPath = validationFailures;
-        model_internal::_doValidationLastValOfPath = value;
-
-        return validationFailures;
-    }
-    
 
 }
 
