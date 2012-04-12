@@ -61,6 +61,7 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     private var _internal_user : String;
     private var _internal_pass : String;
     private var _internal_content : String;
+    private var _internal_body : String;
     private var _internal_resolution : String;
     private var _internal__grid : String;
     private var _internal_y : int;
@@ -98,6 +99,7 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     private var _internal_path : String;
     private var _internal_attr : int;
     private var _internal_size : Number;
+    private var _internal_attach : int;
 
     private static var emptyArray:Array = new Array();
 
@@ -169,6 +171,12 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     public function get content() : String
     {
         return _internal_content;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get body() : String
+    {
+        return _internal_body;
     }
 
     [Bindable(event="propertyChange")]
@@ -387,6 +395,12 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
         return _internal_size;
     }
 
+    [Bindable(event="propertyChange")]
+    public function get attach() : int
+    {
+        return _internal_attach;
+    }
+
     public function clearAssociations() : void
     {
     }
@@ -472,6 +486,16 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
         {
             _internal_content = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "content", oldValue, _internal_content));
+        }
+    }
+
+    public function set body(value:String) : void
+    {
+        var oldValue:String = _internal_body;
+        if (oldValue !== value)
+        {
+            _internal_body = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "body", oldValue, _internal_body));
         }
     }
 
@@ -847,6 +871,16 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
         {
             _internal_size = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "size", oldValue, _internal_size));
+        }
+    }
+
+    public function set attach(value:int) : void
+    {
+        var oldValue:int = _internal_attach;
+        if (oldValue !== value)
+        {
+            _internal_attach = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "attach", oldValue, _internal_attach));
         }
     }
 

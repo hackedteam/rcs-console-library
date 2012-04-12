@@ -4023,6 +4023,7 @@
     <property name="user" type="string"/>
     <property name="pass" type="string"/>
     <property name="content" type="string"/>
+    <property name="body" type="string"/>
     <property name="resolution" type="string"/>
     <property name="_grid" type="string"/>
     <property name="y" type="integer"/>
@@ -4059,7 +4060,7 @@
     <property name="path" type="string"/>
     <property name="attr" type="integer"/>
     <property name="size" type="double"/>
-	<property name="attach" type="integer"/>
+    <property name="attach" type="integer"/>
   </entity>
   <entity name="TypeCount">
     <annotation name="EntityProperties">
