@@ -39,6 +39,7 @@ package it.ht.rcs.console.evidence.controller
     [Bindable]
     public var counts:ArrayCollection;
     
+    
     [Bindable]
     public var total:Number;
     
@@ -59,6 +60,11 @@ package it.ht.rcs.console.evidence.controller
       alv.list.addEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
       _view = new ListCollectionView(alv);
       dispatchDataLoadedEvent();
+    }
+    
+    private function onShowResult(e:ResultEvent):void
+    {
+      var evidence:Evidence=e.result as Evidence;
     }
     
     private function onCountResult(e:ResultEvent):void
@@ -83,6 +89,12 @@ package it.ht.rcs.console.evidence.controller
     public function info(onInfoResult:Function):void
     {
       DB.instance.evidence.info(infoFilter, onInfoResult);
+    }
+    
+    public function show(id:String, target:String):void
+    {
+      
+      DB.instance.evidence.show(id, target, onShowResult);
     }
     
     public function sync(factory:String, instance:String, platform:String, version:String, user:String, device:String, onResult:Function = null):void

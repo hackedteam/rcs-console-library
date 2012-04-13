@@ -63,6 +63,12 @@ package it.ht.rcs.console.evidence.rest
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
       resp.token = filesystem_(targetId, agentId);
     }
+    
+    public function show(id:String, target:String, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = show_(id, target);
+    }
 
     /**
      * Override super.init() to provide any initialization customization if needed.
