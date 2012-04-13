@@ -534,7 +534,6 @@ public class _Super_Agent extends flash.events.EventDispatcher implements com.ad
     /**
      * derived property calculators
      */
-    
 
     /**
      * isValid calculator

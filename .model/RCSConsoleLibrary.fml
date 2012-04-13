@@ -3884,7 +3884,7 @@
         <item name="analyzed">true</item>
       </annotation>
       <annotation name="ActionScriptGeneration">
-        <item name="SerializationFilter">com.adobe.serializers.xml.XMLSerializationFilter</item>
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
         <item name="method">GET</item>
         <item name="url">/evidence/{id}</item>
       </annotation>
@@ -3911,7 +3911,7 @@
       <item name="EntityOriginalName">Evidence</item>
     </annotation>
     <annotation name="service Group">
-      <item name="service">DBEvidence</item>
+      <item name="service">DBEvidence,DBEvidenceDummy</item>
     </annotation>
     <annotation name="ServerProperties">
       <item name="IncludeRemoteClass">nonempty</item>
