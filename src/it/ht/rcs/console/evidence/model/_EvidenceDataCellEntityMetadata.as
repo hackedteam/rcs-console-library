@@ -20,14 +20,14 @@ internal class _EvidenceDataCellEntityMetadata extends com.adobe.fiber.valueobje
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("mcc", "mnc", "lac", "cid", "db", "adv", "age");
+    model_internal static var allProperties:Array = new Array("mcc", "mnc", "lac", "cid", "sid", "nid", "bid", "db", "adv", "age");
     model_internal static var allAssociationProperties:Array = new Array();
     model_internal static var allRequiredProperties:Array = new Array();
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("mcc", "mnc", "lac", "cid", "db", "adv", "age");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("mcc", "mnc", "lac", "cid", "sid", "nid", "bid", "db", "adv", "age");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("mcc", "mnc", "lac", "cid", "db", "adv", "age");
+    model_internal static var dataProperties:Array = new Array("mcc", "mnc", "lac", "cid", "sid", "nid", "bid", "db", "adv", "age");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("mcc", "mnc", "lac", "cid", "db", "adv", "age");
+    model_internal static var nonDerivedProperties:Array = new Array("mcc", "mnc", "lac", "cid", "sid", "nid", "bid", "db", "adv", "age");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array();
     model_internal static var collectionBaseMap:Object;
@@ -51,6 +51,9 @@ internal class _EvidenceDataCellEntityMetadata extends com.adobe.fiber.valueobje
             model_internal::dependentsOnMap["mnc"] = new Array();
             model_internal::dependentsOnMap["lac"] = new Array();
             model_internal::dependentsOnMap["cid"] = new Array();
+            model_internal::dependentsOnMap["sid"] = new Array();
+            model_internal::dependentsOnMap["nid"] = new Array();
+            model_internal::dependentsOnMap["bid"] = new Array();
             model_internal::dependentsOnMap["db"] = new Array();
             model_internal::dependentsOnMap["adv"] = new Array();
             model_internal::dependentsOnMap["age"] = new Array();
@@ -65,6 +68,9 @@ internal class _EvidenceDataCellEntityMetadata extends com.adobe.fiber.valueobje
         model_internal::propertyTypeMap["mnc"] = "int";
         model_internal::propertyTypeMap["lac"] = "int";
         model_internal::propertyTypeMap["cid"] = "int";
+        model_internal::propertyTypeMap["sid"] = "int";
+        model_internal::propertyTypeMap["nid"] = "int";
+        model_internal::propertyTypeMap["bid"] = "int";
         model_internal::propertyTypeMap["db"] = "int";
         model_internal::propertyTypeMap["adv"] = "int";
         model_internal::propertyTypeMap["age"] = "int";
@@ -321,6 +327,24 @@ internal class _EvidenceDataCellEntityMetadata extends com.adobe.fiber.valueobje
     }
 
     [Bindable(event="propertyChange")]
+    public function get isSidAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isNidAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isBidAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get isDbAvailable():Boolean
     {
         return true;
@@ -368,6 +392,24 @@ internal class _EvidenceDataCellEntityMetadata extends com.adobe.fiber.valueobje
 
     [Bindable(event="propertyChange")]   
     public function get cidStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get sidStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get nidStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get bidStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }

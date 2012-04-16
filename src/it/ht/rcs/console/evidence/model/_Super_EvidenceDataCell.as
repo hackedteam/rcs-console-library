@@ -51,6 +51,9 @@ public class _Super_EvidenceDataCell extends flash.events.EventDispatcher implem
     private var _internal_mnc : int;
     private var _internal_lac : int;
     private var _internal_cid : int;
+    private var _internal_sid : int;
+    private var _internal_nid : int;
+    private var _internal_bid : int;
     private var _internal_db : int;
     private var _internal_adv : int;
     private var _internal_age : int;
@@ -99,6 +102,24 @@ public class _Super_EvidenceDataCell extends flash.events.EventDispatcher implem
     public function get cid() : int
     {
         return _internal_cid;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get sid() : int
+    {
+        return _internal_sid;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get nid() : int
+    {
+        return _internal_nid;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get bid() : int
+    {
+        return _internal_bid;
     }
 
     [Bindable(event="propertyChange")]
@@ -164,6 +185,36 @@ public class _Super_EvidenceDataCell extends flash.events.EventDispatcher implem
         {
             _internal_cid = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "cid", oldValue, _internal_cid));
+        }
+    }
+
+    public function set sid(value:int) : void
+    {
+        var oldValue:int = _internal_sid;
+        if (oldValue !== value)
+        {
+            _internal_sid = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "sid", oldValue, _internal_sid));
+        }
+    }
+
+    public function set nid(value:int) : void
+    {
+        var oldValue:int = _internal_nid;
+        if (oldValue !== value)
+        {
+            _internal_nid = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "nid", oldValue, _internal_nid));
+        }
+    }
+
+    public function set bid(value:int) : void
+    {
+        var oldValue:int = _internal_bid;
+        if (oldValue !== value)
+        {
+            _internal_bid = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "bid", oldValue, _internal_bid));
         }
     }
 

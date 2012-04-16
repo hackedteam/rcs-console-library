@@ -3969,6 +3969,9 @@
     <property name="mnc" type="integer"/>
     <property name="lac" type="integer"/>
     <property name="cid" type="integer"/>
+    <property name="sid" type="integer"/>
+    <property name="nid" type="integer"/>
+    <property name="bid" type="integer"/>
     <property name="db" type="integer"/>
     <property name="adv" type="integer"/>
     <property name="age" type="integer"/>
