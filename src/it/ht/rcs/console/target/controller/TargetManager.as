@@ -5,6 +5,8 @@ package it.ht.rcs.console.target.controller
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.dashboard.controller.DashboardController;
   import it.ht.rcs.console.operation.model.Operation;
+  import it.ht.rcs.console.push.PushController;
+  import it.ht.rcs.console.push.PushEvent;
   import it.ht.rcs.console.search.controller.SearchManager;
   import it.ht.rcs.console.target.model.Target;
   
@@ -18,6 +20,7 @@ package it.ht.rcs.console.target.controller
     public function TargetManager()
     {
       super(Target);
+      PushController.instance.addEventListener(PushEvent.TARGET, onTargetPush);
     }
     
     private static var _instance:TargetManager = new TargetManager();
@@ -35,6 +38,11 @@ package it.ht.rcs.console.target.controller
       for each (var item:* in e.result.source)
         addItem(item);
       dispatchDataLoadedEvent();
+    }
+    
+    private function onTargetPush(e:PushEvent):void
+    {
+      TargetManager.instance.show(e.data.id as String);
     }
     
     override protected function onItemRemove(item:*):void
@@ -59,7 +67,7 @@ package it.ht.rcs.console.target.controller
         callback(target);
       });
     }
-    
+
     // Se l'elemento non e' presente, ma la show me lo ritorna, lo aggiungo. In ogni caso, aggiorno il search manager.
     public function show(_id:String, onResult:Function=null):void
     {

@@ -65,6 +65,7 @@ public class _Super_SearchItem extends flash.events.EventDispatcher implements c
     private var _internal_name : String;
     private var _internal_path : ArrayCollection;
     private var _internal_type : String;
+    private var _internal_ident : String;
     private var _internal_instance : String;
     private var _internal_stat : it.ht.rcs.console.search.model.Stat;
     private var _internal_version : int;
@@ -159,6 +160,12 @@ public class _Super_SearchItem extends flash.events.EventDispatcher implements c
     public function get type() : String
     {
         return _internal_type;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get ident() : String
+    {
+        return _internal_ident;
     }
 
     [Bindable(event="propertyChange")]
@@ -314,6 +321,16 @@ public class _Super_SearchItem extends flash.events.EventDispatcher implements c
         {
             _internal_type = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "type", oldValue, _internal_type));
+        }
+    }
+
+    public function set ident(value:String) : void
+    {
+        var oldValue:String = _internal_ident;
+        if (oldValue !== value)
+        {
+            _internal_ident = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "ident", oldValue, _internal_ident));
         }
     }
 

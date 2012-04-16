@@ -5,6 +5,8 @@ package it.ht.rcs.console.operation.controller
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.dashboard.controller.DashboardController;
   import it.ht.rcs.console.operation.model.Operation;
+  import it.ht.rcs.console.push.PushController;
+  import it.ht.rcs.console.push.PushEvent;
   import it.ht.rcs.console.search.controller.SearchManager;
   
   import mx.collections.ArrayCollection;
@@ -14,7 +16,10 @@ package it.ht.rcs.console.operation.controller
   public class OperationManager extends ItemManager
   {
     
-    public function OperationManager() { super(Operation); }
+    public function OperationManager() {
+      super(Operation);
+      PushController.instance.addEventListener(PushEvent.OPERATION, onOperationPush);
+    }
     
     private static var _instance:OperationManager = new OperationManager();
     public static function get instance():OperationManager { return _instance; }
@@ -31,6 +36,11 @@ package it.ht.rcs.console.operation.controller
       for each (var item:* in e.result.source)
         addItem(item);
       dispatchDataLoadedEvent();
+    }
+    
+    private function onOperationPush(e:PushEvent):void
+    {
+      show(e.data.id as String);
     }
     
     override protected function onItemRemove(item:*):void

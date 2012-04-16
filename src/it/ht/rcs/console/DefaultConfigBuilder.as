@@ -1,6 +1,7 @@
 package it.ht.rcs.console
 {
   import it.ht.rcs.console.agent.model.Agent;
+  import it.ht.rcs.console.utils.Size;
   
   import mx.collections.ArrayCollection;
   import mx.formatters.DateFormatter;
@@ -236,8 +237,8 @@ package it.ht.rcs.console
     
     private static function getGlobals():Object
     {
-      var min:Number = agent.type == 'desktop' ? 1000000000 : 100000000; // 1 GB, 100 MB
-      var max:Number = agent.type == 'desktop' ? 4000000000 : 100000000; // 4 GB, 100 MB
+      var min:Number = agent.type == 'desktop' ? 1000 * Size.MIB : 100 * Size.MIB; // 1 GB, 100 MB
+      var max:Number = agent.type == 'desktop' ? 4000 * Size.MIB : 100 * Size.MIB; // 4 GB, 100 MB
       var globals:Object = {
                              quota: { min: min, max: max },
                              wipe: false,

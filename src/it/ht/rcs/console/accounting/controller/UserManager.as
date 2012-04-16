@@ -78,6 +78,14 @@ package it.ht.rcs.console.accounting.controller
       });
     }
     
+    public function show(id:String, onResult:Function=null):void
+    {
+      DB.instance.user.show(id, function(e:ResultEvent):void {
+        if (onResult != null)
+          onResult(e.result as User);
+      });
+    }
+    
     public function changePassword(user:User, password:String):void
     {
       DB.instance.user.update(user, {pass: password}, function (e:ResultEvent):void {

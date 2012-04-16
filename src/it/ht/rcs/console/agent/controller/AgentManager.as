@@ -8,6 +8,8 @@ package it.ht.rcs.console.agent.controller
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.dashboard.controller.DashboardController;
   import it.ht.rcs.console.operation.model.Operation;
+  import it.ht.rcs.console.push.PushController;
+  import it.ht.rcs.console.push.PushEvent;
   import it.ht.rcs.console.search.controller.SearchManager;
   import it.ht.rcs.console.target.model.Target;
   
@@ -19,7 +21,10 @@ package it.ht.rcs.console.agent.controller
   public class AgentManager extends ItemManager
   {
     
-    public function AgentManager() { super(Agent); }
+    public function AgentManager() {
+      super(Agent);
+      PushController.instance.addEventListener(PushEvent.AGENT, onAgentPush);
+    }
     
     private static var _instance:AgentManager = new AgentManager();
     public static function get instance():AgentManager { return _instance; }
@@ -36,6 +41,11 @@ package it.ht.rcs.console.agent.controller
       for each (var item:* in e.result.source)
         addItem(item);
       dispatchDataLoadedEvent();
+    }
+    
+    private function onAgentPush(e:PushEvent):void
+    {
+      show(e.data.id as String);
     }
     
     override protected function onItemUpdate(event:*):void
