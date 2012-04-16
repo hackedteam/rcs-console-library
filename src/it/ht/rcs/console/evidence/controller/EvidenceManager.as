@@ -91,10 +91,9 @@ package it.ht.rcs.console.evidence.controller
       DB.instance.evidence.info(infoFilter, onInfoResult);
     }
     
-    public function show(id:String, target:String):void
+    public function show(id:String, target:String, resultCallback:Function, faultCallback:Function):void
     {
-      
-      DB.instance.evidence.show(id, target, onShowResult);
+      DB.instance.evidence.show(id, target, resultCallback, faultCallback);
     }
     
     public function sync(factory:String, instance:String, platform:String, version:String, user:String, device:String, onResult:Function = null):void
