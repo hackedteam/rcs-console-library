@@ -37,7 +37,7 @@ package it.ht.rcs.console
       return config;
     }
     
-    private static function getModules():Array
+    public static function getModules(skipFilter:Boolean=false):Array
     {
       
       var modules:Array = [
@@ -215,6 +215,8 @@ package it.ht.rcs.console
           _platform: "windows,osx,ios,blackberry,winmo"
         }
       ];
+      
+      if (skipFilter) return modules;
       
       var ac:ArrayCollection = new ArrayCollection(modules);
       ac.filterFunction = moduleFilterFunction;
@@ -409,6 +411,36 @@ package it.ht.rcs.console
       e.enabled = true;
       
       return e;
+    }
+    
+    public static function cleanPlatformConfig(platform:String, config:Object):void
+    {
+      var modules:Array = DefaultConfigBuilder.getModules(true);
+      
+      for (var i:int = 0; i < config.modules.length; i++) {
+        var module:Object = config.modules[i];
+        if (!moduleIsSupported(platform, module.module, modules)) {
+          config.modules.splice(config.modules.indexOf(module), 1);
+          deleteModuleReferences(config, module.module);
+          i--;
+        }
+      }
+    }
+    
+    private static function moduleIsSupported(platform:String, moduleName:String, modules:Array):Boolean
+    {
+      for each (var module:Object in modules)
+        if (module.module == moduleName)
+          return module._platform.indexOf(platform) != -1;
+      return false;
+    }
+    
+    private static function deleteModuleReferences(config:Object, moduleName:String):void
+    {
+      for each (var action:Object in config.actions)
+        for each (var subaction:Object in action.subactions)
+          if (subaction.action == 'module' && subaction.module == moduleName)
+            action.subactions.splice(action.subactions.indexOf(subaction), 1);
     }
     
   }
