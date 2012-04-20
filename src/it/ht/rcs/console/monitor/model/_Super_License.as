@@ -58,6 +58,7 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
      */
     private var _internal_users : Object;
     private var _internal_exploits : Boolean;
+    private var _internal_deletion : Boolean;
     private var _internal_maintenance : int;
     private var _internal_agents : it.ht.rcs.console.monitor.model.LicenseAgents;
     private var _internal_alerting : Boolean;
@@ -110,6 +111,12 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
     public function get exploits() : Boolean
     {
         return _internal_exploits;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get deletion() : Boolean
+    {
+        return _internal_deletion;
     }
 
     [Bindable(event="propertyChange")]
@@ -209,6 +216,16 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
         {
             _internal_exploits = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "exploits", oldValue, _internal_exploits));
+        }
+    }
+
+    public function set deletion(value:Boolean) : void
+    {
+        var oldValue:Boolean = _internal_deletion;
+        if (oldValue !== value)
+        {
+            _internal_deletion = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "deletion", oldValue, _internal_deletion));
         }
     }
 

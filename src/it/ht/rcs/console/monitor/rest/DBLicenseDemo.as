@@ -36,6 +36,8 @@ package it.ht.rcs.console.monitor.rest
             }),
           correlation: false,
           connectors: true,
+          exploits: true,
+          deletion: true,
           nia: [5, true],
           rmi: [false, true],
           serial: 1234567890,

@@ -53,6 +53,9 @@ package it.ht.rcs.console.monitor.controller
     
     public var shards:CurrMaxObject = new CurrMaxObject("0", "0");
     
+    public var exploits:Boolean = false;
+    public var deletion:Boolean = false;
+    
     public var limits:License;
     
     /* singleton */
@@ -119,6 +122,10 @@ package it.ht.rcs.console.monitor.controller
       rmi_demo = limits['rmi'][1];
       
       shards.max = (limits['shards'] == null) ? 'U' : limits['shards'].toString();
+      
+      exploits = limits['exploits'];
+      deletion = limits['deletion'];
+      
       dispatchDataLoadedEvent();
     }
 
