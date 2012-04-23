@@ -2,6 +2,8 @@ package it.ht.rcs.console.target.controller
 {
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.ObjectUtils;
+  import it.ht.rcs.console.agent.controller.AgentManager;
+  import it.ht.rcs.console.agent.model.Agent;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.dashboard.controller.DashboardController;
   import it.ht.rcs.console.operation.model.Operation;
@@ -11,6 +13,7 @@ package it.ht.rcs.console.target.controller
   import it.ht.rcs.console.target.model.Target;
   
   import mx.collections.ArrayCollection;
+  import mx.collections.ListCollectionView;
   import mx.rpc.events.FaultEvent;
   import mx.rpc.events.ResultEvent;
   
@@ -82,6 +85,28 @@ package it.ht.rcs.console.target.controller
           onResult(re);
       }, function(fe:FaultEvent):void {
         SearchManager.instance.showItem(_id);
+      });
+    }
+    
+    public function closeTarget(id:String):void
+    {
+      var target:Target = getItem(id);
+      
+      if (target == null) return;
+      
+      var items:Array = [target];
+      
+      var agents:ListCollectionView = AgentManager.instance.getView(null,
+        function(item:Object):Boolean {
+          return (
+            item is Agent &&
+            item.status == 'open' &&
+            item.path[1] == id); });
+      
+      items = items.concat(agents.toArray());
+      
+      items.forEach(function(item:*, index:int, array:Array):void {
+        item.status = 'closed';
       });
     }
     
