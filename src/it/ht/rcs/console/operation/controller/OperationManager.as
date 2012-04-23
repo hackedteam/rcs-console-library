@@ -2,16 +2,22 @@ package it.ht.rcs.console.operation.controller
 {
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.ObjectUtils;
+  import it.ht.rcs.console.agent.controller.AgentManager;
+  import it.ht.rcs.console.agent.model.Agent;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.dashboard.controller.DashboardController;
   import it.ht.rcs.console.operation.model.Operation;
   import it.ht.rcs.console.push.PushController;
   import it.ht.rcs.console.push.PushEvent;
   import it.ht.rcs.console.search.controller.SearchManager;
+  import it.ht.rcs.console.target.controller.TargetManager;
+  import it.ht.rcs.console.target.model.Target;
   
   import mx.collections.ArrayCollection;
+  import mx.collections.ListCollectionView;
   import mx.rpc.events.FaultEvent;
   import mx.rpc.events.ResultEvent;
+  import mx.utils.ArrayUtil;
   
   public class OperationManager extends ItemManager
   {
@@ -80,6 +86,37 @@ package it.ht.rcs.console.operation.controller
           onResult(re);
       }, function(fe:FaultEvent):void {
         SearchManager.instance.showItem(_id);
+      });
+    }
+    
+    public function closeOperation(id:String):void
+    {
+      var operation:Operation = getItem(id);
+      
+      if (operation == null) return;
+      
+      var items:Array = [operation];
+      
+      var targets:ListCollectionView = TargetManager.instance.getView(null,
+        function(item:Object):Boolean {
+          return (
+            item is Target &&
+            item.status == 'open' &&
+            item.path[0] == id); });
+      
+      items = items.concat(targets.toArray());
+      
+      var agents:ListCollectionView = AgentManager.instance.getView(null,
+        function(item:Object):Boolean {
+          return (
+            item is Agent &&
+            item.status == 'open' &&
+            item.path[0] == id); });
+      
+      items = items.concat(agents.toArray());
+      
+      items.forEach(function(item:*, index:int, array:Array):void {
+        item.status = 'closed';
       });
     }
     
