@@ -55,7 +55,7 @@ package it.ht.rcs.console.agent.rest
       params['_id'] = agent._id;
       params['config'] = config;
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = add_config_(JSON.stringify(params)); 
+      resp.token = add_config_(JSON.stringify(params));
     }
     
     public function del_config(agent:Agent, config_id: String, onResult:Function=null, onFault:Function=null):void
@@ -64,7 +64,17 @@ package it.ht.rcs.console.agent.rest
       params['_id'] = agent._id;
       params['config_id'] = config_id;
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = del_config_(JSON.stringify(params)); 
+      resp.token = del_config_(JSON.stringify(params));
+    }
+    
+    public function update_config(agent:Agent, config_id: String, desc:String, onResult:Function=null, onFault:Function=null):void
+    {
+      var params:Object = {};
+      params['_id'] = agent._id;
+      params['config_id'] = config_id;
+      params['desc'] = desc;
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = update_config_(JSON.stringify(params));
     }
     
     public function upgrade(agent:Agent, onResult:Function=null, onFault:Function=null):void

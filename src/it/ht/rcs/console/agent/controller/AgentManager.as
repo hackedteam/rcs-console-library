@@ -156,6 +156,15 @@ package it.ht.rcs.console.agent.controller
           item._kind == 'agent' &&
           item.path[1] == targetId); });
     }
+    
+    public function updateConfig(agent:Agent, config:Config, desc:String, callback:Function=null):void
+    {
+      config.desc = desc;
+      DB.instance.agent.update_config(agent, config._id, desc, function(e:ResultEvent):void {
+        if (callback != null)
+          callback(e);
+      });
+    }
 
   }
   

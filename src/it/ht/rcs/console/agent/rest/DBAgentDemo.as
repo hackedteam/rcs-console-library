@@ -137,6 +137,12 @@ package it.ht.rcs.console.agent.rest
         onResult(new ResultEvent('agent.del_config'));
     }
     
+    public function update_config(agent:Agent, config_id: String, desc:String, onResult:Function=null, onFault:Function=null):void
+    {
+      if (onResult != null)
+        onResult(new ResultEvent('agent.update_config'));
+    }
+    
     public function upgrade(agent:Agent, onResult:Function=null, onFault:Function=null):void
     {
       if (onResult != null)

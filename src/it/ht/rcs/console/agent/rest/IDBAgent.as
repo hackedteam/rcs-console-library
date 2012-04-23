@@ -23,6 +23,8 @@ package it.ht.rcs.console.agent.rest
     
     function del_config(agent:Agent, config_id: String, onResult:Function=null, onFault:Function=null):void;
     
+    function update_config(agent:Agent, config_id: String, desc:String, onResult:Function=null, onFault:Function=null):void;
+    
     
     function downloads(agent:Agent, onResult:Function=null, onFault:Function=null):void;
     
