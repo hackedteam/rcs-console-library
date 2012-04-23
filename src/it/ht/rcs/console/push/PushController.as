@@ -3,6 +3,8 @@ package it.ht.rcs.console.push
   import flash.events.Event;
   import flash.events.EventDispatcher;
   import flash.events.IEventDispatcher;
+  import flash.events.TimerEvent;
+  import flash.utils.Timer;
   
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.events.SessionEvent;
@@ -17,6 +19,15 @@ package it.ht.rcs.console.push
     [Bindable]
     protected var socket:EMWebSocket;
     
+    private var retryTimer:Timer;
+    
+    public static const CONNECTED:String    = 'connected';
+    public static const CONNECTING:String   = 'connecting';
+    public static const DISCONNECTED:String = 'disconnected';
+    
+    [Bindable]
+    public var status:String = DISCONNECTED;
+    
     /* singleton */
     private static var _instance:PushController = new PushController();
     public static function get instance():PushController { return _instance; }
@@ -25,60 +36,66 @@ package it.ht.rcs.console.push
     public function PushController(target:IEventDispatcher=null)
     {
       super(target);
+      
+      FlexGlobals.topLevelApplication.addEventListener(SessionEvent.LOGOUT, onLogout);
+      
+      retryTimer = new Timer(2000);
+      retryTimer.addEventListener(TimerEvent.TIMER, onRetry);
+    }
+    
+    private var lastHost:String;
+    private var lastPort:int;
+    private function onRetry(te:TimerEvent):void
+    {
+      connect(lastHost, lastPort);
     }
     
     public function connect(host:String, port:int):void
     {
+      lastHost = host;
+      lastPort = port;
+      
       socket = new EMWebSocket("wss://" + host + ":" + port.toString() + "/");
       socket.addEventListener(EMWebSocketEvent.CONNECT, onConnect);
-      socket.addEventListener(EMWebSocketEvent.CLOSE, onClose);
       socket.addEventListener(EMWebSocketEvent.MESSAGE, onMessage);
-      socket.addEventListener(EMWebSocketEvent.IO_ERROR, onError);
-      socket.addEventListener(EMWebSocketEvent.CONNECT_ERROR, onErrorConnect);
-      socket.addEventListener(EMWebSocketEvent.SECURITY_ERROR, onError);
-      
-      FlexGlobals.topLevelApplication.addEventListener(SessionEvent.LOGOUT, onLogout);
-    }
-      
-    protected function onConnect(event:EMWebSocketEvent):void {
-      // on connection we send our cookie to link the websocket to the currentSession in the db
-      socket.send(JSON.stringify({type: 'auth', cookie: Console.currentSession.cookie}));
+
+      socket.addEventListener(EMWebSocketEvent.CLOSE, onClose);
+//      socket.addEventListener(EMWebSocketEvent.IO_ERROR, onError);
+//      socket.addEventListener(EMWebSocketEvent.CONNECT_ERROR, onError);
+//      socket.addEventListener(EMWebSocketEvent.SECURITY_ERROR, onError);
     }
     
-    protected function onErrorConnect(event:EMWebSocketEvent):void {
-      trace("Cannot connect");
-      
-      var f:Fault = new Fault("connect", event.data);
-      var e:FaultEvent = new FaultEvent("ws", false, false, f);
-      DB.notifier.fault(e);
+    protected function onConnect(event:EMWebSocketEvent):void {
+      // on connection we send our cookie to link the websocket to the currentSession in the db
+      socket.send(JSON.stringify({ type: 'auth', cookie: Console.currentSession.cookie }));
     }
     
     protected function onError(event:EMWebSocketEvent):void {
-      trace("something went wrong");
-      
-      var f:Fault = new Fault("error", event.data);
-      var e:FaultEvent = new FaultEvent("ws", false, false, f);
-      DB.notifier.fault(e);
+      trace("ws: something went wrong");
     }
 
     protected function onClose(event:EMWebSocketEvent):void {
-      trace("connection closed");
-      var f:Fault = new Fault("error", event.data);
-      var e:FaultEvent = new FaultEvent("ws", false, false, f);
-      DB.notifier.fault(e);
+      trace("ws: connection closed");
+      status = CONNECTING;
+      retryTimer.start();
     }
     
     protected function onLogout(e:SessionEvent):void
     {
-      socket.close();  
+      status = DISCONNECTED;
+      
+      retryTimer.stop();
+      
+      if (socket)
+        socket.close();  
     }
        
     protected function onMessage(event:EMWebSocketEvent):void{
-      trace('we got message: ' + event.data);
+      trace('ws: got message: ' + event.data);
       
       var message:Object = JSON.parse(event.data);
       
-      switch (message['type']) {
+      switch (message.type) {
         case 'auth':
           onAuth(message);
           break;
@@ -93,12 +110,13 @@ package it.ht.rcs.console.push
     
     protected function onAuth(message:Object):void
     {
+      status = CONNECTED;
+      
+      retryTimer.stop();
+      
       /* invalid auth */
-      if (message['result'] != 'granted') {
-        var f:Fault = new Fault("auth", "invalid auth");
-        var e:FaultEvent = new FaultEvent("ws", false, false, f);
-        DB.notifier.fault(e);
-      }          
+      if (message.result != 'granted')
+        backToLogin("auth", "invalid auth");
     }
     
     protected function onPing():void
@@ -109,8 +127,15 @@ package it.ht.rcs.console.push
     public function send(message:Object):void
     {
       var encoded:String = JSON.stringify(message);
-      trace('sent message: ' + encoded);
+      trace('ws: sent message: ' + encoded);
       socket.send(encoded);
+    }
+    
+    private function backToLogin(code:String, string:String):void
+    {
+      var f:Fault = new Fault(code, string);
+      var e:FaultEvent = new FaultEvent("ws", false, false, f);
+      DB.notifier.fault(e);
     }
     
     private function handleEvent(message:Object):void
@@ -155,9 +180,7 @@ package it.ht.rcs.console.push
           event = new PushEvent(PushEvent.LOGOUT);
           // display the message
           AlertPopUp.show(message['text'], 'Logout');
-          var f:Fault = new Fault("error", message['text']);
-          var e:FaultEvent = new FaultEvent("ws", false, false, f);
-          DB.notifier.fault(e);
+          backToLogin('error', message.text);
           break
         default:
           trace('PushManager: UNKNOWN event');
