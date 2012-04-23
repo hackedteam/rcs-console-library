@@ -143,7 +143,7 @@ package it.ht.rcs.console.push
           break;
         case 'message':
           trace('PushManager: MESSAGE event');
-          event = new PushEvent(PushEvent.AGENT);
+          event = new PushEvent(PushEvent.MESSAGE);
           event.data = message;
           var from:String = "Message From: ";
           if (message['from'])
@@ -151,6 +151,14 @@ package it.ht.rcs.console.push
           // display the message
           AlertPopUp.show(message['text'], from);
           break;
+        case 'logout':
+          event = new PushEvent(PushEvent.LOGOUT);
+          // display the message
+          AlertPopUp.show(message['text'], 'Logout');
+          var f:Fault = new Fault("error", message['text']);
+          var e:FaultEvent = new FaultEvent("ws", false, false, f);
+          DB.notifier.fault(e);
+          break
         default:
           trace('PushManager: UNKNOWN event');
           event = new PushEvent(PushEvent.UNKNOWN);
