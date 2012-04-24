@@ -417,12 +417,18 @@ package it.ht.rcs.console
     {
       var modules:Array = DefaultConfigBuilder.getModules(true);
       
-      for (var i:int = 0; i < config.modules.length; i++) {
-        var module:Object = config.modules[i];
+//      for (var i:int = 0; i < config.modules.length; i++) {
+//        var module:Object = config.modules[i];
+//        if (!moduleIsSupported(platform, module.module, modules)) {
+//          config.modules.splice(config.modules.indexOf(module), 1);
+//          deleteModuleReferences(config, module.module);
+//          i--;
+//        }
+//      }
+      for each (var module:Object in modules) {
         if (!moduleIsSupported(platform, module.module, modules)) {
-          config.modules.splice(config.modules.indexOf(module), 1);
+          //config.modules.splice(config.modules.indexOf(module), 1);
           deleteModuleReferences(config, module.module);
-          i--;
         }
       }
     }
@@ -437,10 +443,22 @@ package it.ht.rcs.console
     
     private static function deleteModuleReferences(config:Object, moduleName:String):void
     {
+      for (var i:int = 0; i < config.modules.length; i++) {
+        var module:Object = config.modules[i];
+        if (module.module == moduleName) {
+          config.modules.splice(config.modules.indexOf(module), 1);
+          i--;
+        }
+      }
+      
       for each (var action:Object in config.actions)
-        for each (var subaction:Object in action.subactions)
-          if (subaction.action == 'module' && subaction.module == moduleName)
+        for (i = 0; i < action.subactions.length; i++) {
+          var subaction:Object = action.subactions[i];
+          if (subaction.action == 'module' && subaction.module == moduleName) {
             action.subactions.splice(action.subactions.indexOf(subaction), 1);
+            i--;
+          }
+        }
     }
     
   }

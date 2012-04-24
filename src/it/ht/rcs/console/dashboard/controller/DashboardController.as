@@ -18,6 +18,7 @@ package it.ht.rcs.console.dashboard.controller
   import mx.collections.ListCollectionView;
   import mx.collections.Sort;
   import mx.collections.SortField;
+  import mx.rpc.events.FaultEvent;
   
   public class DashboardController extends ItemManager
   {
@@ -56,7 +57,7 @@ package it.ht.rcs.console.dashboard.controller
         SearchManager.instance.showItem(id, function (item:SearchItem):void {
           if (item != null)
             manageItem(item);
-        });
+        }, function(fe:FaultEvent):void {}); // Do nothing when disconnected.
       }
       dispatchDataLoadedEvent();
     }
@@ -147,7 +148,7 @@ package it.ht.rcs.console.dashboard.controller
             t.sync = 0;
           }
 
-        });
+        }, function(fe:FaultEvent):void {}); // Do nothing when disconnected.
         
       }
     }
@@ -235,7 +236,7 @@ package it.ht.rcs.console.dashboard.controller
       SearchManager.instance.showItem(id, function (item:SearchItem):void {
         UserManager.instance.add_recent(_user, item);
         manageItem(item);
-      });
+      }, function(fe:FaultEvent):void {}); // Do nothing when disconnected.
     }
     
     override protected function onItemRemove(item:*):void

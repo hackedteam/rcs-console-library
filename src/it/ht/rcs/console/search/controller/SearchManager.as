@@ -32,21 +32,24 @@ package it.ht.rcs.console.search.controller
     
     // logic: when showing, if the item is present, replace it, if not, just add it.
     // if show returns an error the item is gone, delete it from list
-    public function showItem(id:String, callback:Function=null):void
+    public function showItem(id:String, onResult:Function=null, onFault:Function=null):void
     {
+      var faultHandler:Function = onFault != null ? onFault : 
+      function(fe:FaultEvent):void {
+        var current:SearchItem = getItem(id);
+        if (current != null)
+          removeItem(current);
+      };
+      
       DB.instance.search.show(id, function(re:ResultEvent):void {
         var item:SearchItem = re.result as SearchItem;
         var current:SearchItem = getItem(item._id);
         if (current != null)
           removeItem(current);
         addItem(item);
-        if (callback != null)
-          callback(item);
-      }, function(fe:FaultEvent):void {
-        var current:SearchItem = getItem(id);
-        if (current != null)
-          removeItem(current);
-      });
+        if (onResult != null)
+          onResult(item);
+      }, faultHandler);
     }
     
   }
