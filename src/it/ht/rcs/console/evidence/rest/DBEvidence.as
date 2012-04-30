@@ -3,6 +3,7 @@ package it.ht.rcs.console.evidence.rest
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.evidence.model.Evidence;
   
+  import mx.collections.ArrayCollection;
   import mx.rpc.CallResponder;
 
   public class DBEvidence extends _Super_DBEvidence implements IDBEvidence
@@ -26,6 +27,15 @@ package it.ht.rcs.console.evidence.rest
       property['_id'] = evidence._id;
       property['target'] = target;
       resp.token = update_(JSON.stringify(property));
+    }
+    
+    public function destroy(evidence:Evidence, target:String, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      var params:Object=new Object()
+      params['_id'] = evidence._id;
+      params['target'] = target;
+      resp.token = destroy_(JSON.stringify(params));
     }
 
     public function sync_start(params:Object, onResult:Function=null, onFault:Function=null):void

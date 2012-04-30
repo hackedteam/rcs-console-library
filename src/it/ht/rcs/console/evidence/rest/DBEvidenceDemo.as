@@ -2,6 +2,7 @@ package it.ht.rcs.console.evidence.rest
 {
   import it.ht.rcs.console.evidence.model.Evidence;
   
+  import mx.collections.ArrayCollection;
   import mx.rpc.events.ResultEvent;
 
   public class DBEvidenceDemo implements IDBEvidence
@@ -14,6 +15,10 @@ package it.ht.rcs.console.evidence.rest
     }
     
     public function update(evidence:Evidence, property:Object, target:String, onResult:Function=null, onFault:Function=null):void
+    {
+    }
+    
+    public function destroy(evidence:Evidence, target:String, onResult:Function=null, onFault:Function=null):void
     {
     }
     

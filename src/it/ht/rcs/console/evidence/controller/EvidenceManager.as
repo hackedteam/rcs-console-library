@@ -86,11 +86,21 @@ package it.ht.rcs.console.evidence.controller
       DB.instance.evidence.update(event.source, property, evidenceFilter.target);
     }
     
+   override protected function onItemRemove(item:*):void
+    {
+      DB.instance.evidence.destroy(item, evidenceFilter.target);
+    }
+   
+   override public function removeItem(item:Object):void
+   {
+     _view.list.removeItemAt(_view.getItemIndex(item))
+   }
+    
     public function info(onInfoResult:Function):void
     {
       DB.instance.evidence.info(infoFilter, onInfoResult);
     }
-    
+
     public function show(id:String, target:String, resultCallback:Function, faultCallback:Function):void
     {
       DB.instance.evidence.show(id, target, resultCallback, faultCallback);
