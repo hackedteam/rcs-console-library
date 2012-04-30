@@ -55,6 +55,7 @@ package it.ht.rcs.console.monitor.controller
     
     public var exploits:Boolean = false;
     public var deletion:Boolean = false;
+    public var archive:Boolean = false;
     
     public var limits:License;
     
@@ -125,6 +126,7 @@ package it.ht.rcs.console.monitor.controller
       
       exploits = limits['exploits'];
       deletion = limits['deletion'];
+      archive = limits['archive'];
       
       dispatchDataLoadedEvent();
     }
