@@ -56,12 +56,6 @@ package it.ht.rcs.console.evidence.rest
         resp.token = info_(JSON.stringify(filter));
     }
     
-    public function commands(filter:Object, onResult:Function=null, onFault:Function=null):void
-    {
-      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = info_(JSON.stringify(filter));
-    }
-    
     public function total(filter:Object, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);

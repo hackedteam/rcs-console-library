@@ -34,9 +34,6 @@ package it.ht.rcs.console.evidence.controller
     public var evidenceFilter:Object = { date: 'dr' };
     
     [Bindable]
-    public var commandsFilter:Object = { date: 'da' };
-    
-    [Bindable]
     public var infoFilter:Object = { date: 'da' };
     
     [Bindable]
@@ -102,11 +99,6 @@ package it.ht.rcs.console.evidence.controller
     public function info(onInfoResult:Function):void
     {
       DB.instance.evidence.info(infoFilter, onInfoResult);
-    }
-    
-    public function commands(onCommandsResult:Function):void
-    {
-      DB.instance.evidence.commands(commandsFilter, onCommandsResult);
     }
 
     public function show(id:String, target:String, resultCallback:Function, faultCallback:Function):void
