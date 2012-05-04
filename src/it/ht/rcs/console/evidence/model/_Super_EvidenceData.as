@@ -100,6 +100,7 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     private var _internal_attr : int;
     private var _internal_size : Number;
     private var _internal_attach : int;
+    private var _internal_command : String;
 
     private static var emptyArray:Array = new Array();
 
@@ -399,6 +400,12 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     public function get attach() : int
     {
         return _internal_attach;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get command() : String
+    {
+        return _internal_command;
     }
 
     public function clearAssociations() : void
@@ -884,6 +891,16 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
         }
     }
 
+    public function set command(value:String) : void
+    {
+        var oldValue:String = _internal_command;
+        if (oldValue !== value)
+        {
+            _internal_command = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "command", oldValue, _internal_command));
+        }
+    }
+
     /**
      * Data/source property setter listeners
      *
@@ -907,7 +924,6 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     /**
      * derived property calculators
      */
-    
 
     /**
      * isValid calculator
