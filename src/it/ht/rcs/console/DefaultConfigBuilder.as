@@ -181,7 +181,7 @@ package it.ht.rcs.console
         
         {
           module: "password",
-          _type: "desktop",
+          _type: "desktop,mobile",
           _platform: "windows,symbian"
         },
         
