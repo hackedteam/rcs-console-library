@@ -3954,7 +3954,7 @@
         <item name="analyzed">true</item>
       </annotation>
       <annotation name="ActionScriptGeneration">
-        <item name="SerializationFilter">com.adobe.serializers.xml.XMLSerializationFilter</item>
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
         <item name="method">GET</item>
         <item name="url">/evidence/commands</item>
       </annotation>
@@ -3965,9 +3965,9 @@
         <item name="propertySpecifier">_mid,da,_id,data,rel,aid,type,note,dr,blo</item>
       </annotation>
       <annotation name="original signature">
+        <item name="returnType">opaque</item>
         <item name="inputParamNames">filter</item>
         <item name="inputParams">string</item>
-        <item name="returnType">opaque</item>
       </annotation>
       <parameter name="filter" type="string"/>
     </function>
@@ -3977,7 +3977,7 @@
       <item name="EntityOriginalName">Evidence</item>
     </annotation>
     <annotation name="service Group">
-      <item name="service">DBEvidence</item>
+      <item name="service">DBEvidence,DBEvidenceDummy</item>
     </annotation>
     <annotation name="ServerProperties">
       <item name="IncludeRemoteClass">nonempty</item>
@@ -4162,6 +4162,7 @@
     <property name="attr" type="integer"/>
     <property name="size" type="double"/>
     <property name="attach" type="integer"/>
+    <property name="command" type="string"/>
   </entity>
   <entity name="TypeCount">
     <annotation name="EntityProperties">
