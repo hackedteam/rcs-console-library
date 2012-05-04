@@ -68,6 +68,21 @@ package it.ht.rcs.console.agent.rest
       new Agent({ _id: "f8", _kind: "factory", name: "Dmitry's mobile conf",        type: "mobile",  desc: "Eveything ok, watch out for battery levels!", status: "closed", path: ["o3", "t5"], ident: "RCS_0000000008", counter: 1, configs: [new Config({config: DefaultConfigBuilder.getDefaultConfigAsString(new Agent({type: 'desktop'}))})] })
     ]);
     
+    public static function getTarget(aid:String):String
+    {
+      var target:String;
+      for(var i :int=0;i<agents.length;i++)
+      {
+        var agent:Agent=agents.getItemAt(i) as Agent;
+        if(agent._id==aid)
+        {
+          target=String(agent.path.getItemAt(1));
+          break;
+        }
+      }
+      return target;
+    }
+    
     public function all(onResult:Function=null, onFault:Function=null):void
     {
       if (onResult != null)

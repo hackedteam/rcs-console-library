@@ -3943,11 +3943,33 @@
         <item name="completeURL">https://localhost:4444/evidence/destroy</item>
       </annotation>
       <annotation name="original signature">
+        <item name="returnType">opaque</item>
         <item name="inputParamNames">strXml</item>
+        <item name="inputParams">string</item>
+      </annotation>
+      <parameter name="strXml" type="string"/>
+    </function>
+    <function name="commands_" return-type="Evidence[]">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.xml.XMLSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/evidence/commands</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/evidence/commands</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">_mid,da,_id,data,rel,aid,type,note,dr,blo</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParamNames">filter</item>
         <item name="inputParams">string</item>
         <item name="returnType">opaque</item>
       </annotation>
-      <parameter name="strXml" type="string"/>
+      <parameter name="filter" type="string"/>
     </function>
   </service>
   <entity name="Evidence" persistent="true">
@@ -3955,7 +3977,7 @@
       <item name="EntityOriginalName">Evidence</item>
     </annotation>
     <annotation name="service Group">
-      <item name="service">DBEvidence,DBEvidenceDummy</item>
+      <item name="service">DBEvidence</item>
     </annotation>
     <annotation name="ServerProperties">
       <item name="IncludeRemoteClass">nonempty</item>
@@ -3983,6 +4005,9 @@
       <item name="propertySpecifier">da,_id,data,rel,aid,type,note,dr,blo</item>
     </annotation>
     <annotation name="show_">
+      <item name="propertySpecifier">_mid,da,_id,data,rel,aid,type,note,dr,blo</item>
+    </annotation>
+    <annotation name="commands_">
       <item name="propertySpecifier">_mid,da,_id,data,rel,aid,type,note,dr,blo</item>
     </annotation>
     <property name="_mid" type="integer" required="true"/>
