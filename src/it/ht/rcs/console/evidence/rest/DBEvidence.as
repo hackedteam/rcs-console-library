@@ -94,6 +94,7 @@ package it.ht.rcs.console.evidence.rest
       super.preInitializeService();
       // Initialization customization goes here
     }
+    
 
   }
 
