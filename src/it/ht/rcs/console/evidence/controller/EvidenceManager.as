@@ -145,7 +145,7 @@ package it.ht.rcs.console.evidence.controller
       DB.instance.evidence.filesystem(targetId, agentId, onResult);
     }
     
-    override protected function onLogout(e:SessionEvent):void
+    override protected function onLogout(e:SessionEvent):void 
     {
       super.onLogout(e);
       evidenceFilter = { date: 'dr' };
