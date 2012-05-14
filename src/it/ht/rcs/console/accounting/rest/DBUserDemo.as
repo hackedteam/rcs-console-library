@@ -1,6 +1,7 @@
 package it.ht.rcs.console.accounting.rest
 {
   import it.ht.rcs.console.accounting.model.User;
+  import it.ht.rcs.console.accounting.rest.DBSessionDemo
   
   import mx.collections.ArrayCollection;
   import mx.rpc.events.ResultEvent;
@@ -17,9 +18,11 @@ package it.ht.rcs.console.accounting.rest
       new User({ _id: '7',  name: 'conrad', group_ids: ['2'],      enabled: false, privs: ['VIEW'] }),
       new User({ _id: '8',  name: 'kiodo',  group_ids: ['2'],      enabled: false, privs: [] }),
       new User({ _id: '9',  name: 'fabio',  group_ids: ['2'],      enabled: false, privs: ['TECH'] }),
-      new User({ _id: '10', name: 'eros',   group_ids: ['2'],      enabled: false, privs: ['VIEW'] }),
+      new User({ _id: '10', name: 'eros',   group_ids: ['2'],      enabled: false, privs: ['ADMIN', 'SYS', 'TECH', 'VIEW'] }),
       new User({ _id: '11', name: 'br1',    group_ids: ['3'],      enabled: false, privs: ['SYS'] })
     ]);
+    
+   
     
     public function all(onResult:Function=null, onFault:Function=null):void
     {
@@ -47,7 +50,8 @@ package it.ht.rcs.console.accounting.rest
     
     public function show(id:String, onResult:Function=null, onFault:Function=null):void
     {
-      /* do nothing */
+     /* if (onResult != null)
+        onResult(new ResultEvent('user.show',false,true,DBSessionDemo.demo_user));*/
     }
     
     public function update(user:User, property:Object, onResult:Function=null, onFault:Function=null):void

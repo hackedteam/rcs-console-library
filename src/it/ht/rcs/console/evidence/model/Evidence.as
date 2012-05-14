@@ -4,6 +4,39 @@ package it.ht.rcs.console.evidence.model
   
   public class Evidence extends _Super_Evidence
   {
+    public static function defaultEvidence():Object
+    {
+      return {
+        
+        _id: '',
+        aid:'',
+        blo:false,
+        da:0,
+        data:{},
+        dr:0,
+        _mid:0,
+        note:'',
+        rel:0,
+        type:'' //default type??
+        
+      };
+    }
+    
+    public function Evidence(data:Object=null)
+    {
+      if (data) {
+        this._id = data._id;
+        this.aid =data.aid;
+        this.blo =data.blo;     
+        this.da=data.da;
+        this.dr =data.dr;
+        this._mid=data._mid;
+        this.note =data.note;
+        this.rel =data.rel;   
+        this.type=data.type;
+        this.data =data.data;
+      }
+    }
     /**
      * DO NOT MODIFY THIS STATIC INITIALIZER - IT IS NECESSARY
      * FOR PROPERLY SETTING UP THE REMOTE CLASS ALIAS FOR THIS CLASS

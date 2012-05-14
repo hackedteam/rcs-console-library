@@ -30,15 +30,18 @@ package it.ht.rcs.console.evidence.controller
     private static var _instance:EvidenceManager = new EvidenceManager();
     public static function get instance():EvidenceManager { return _instance; } 
     
+    
     [Bindable]
     public var evidenceFilter:Object = { date: 'dr' };
+    
+    [Bindable]
+    public var commandsFilter:Object = { date: 'da' };
     
     [Bindable]
     public var infoFilter:Object = { date: 'da' };
     
     [Bindable]
     public var counts:ArrayCollection;
-    
     
     [Bindable]
     public var total:Number;
@@ -86,11 +89,26 @@ package it.ht.rcs.console.evidence.controller
       DB.instance.evidence.update(event.source, property, evidenceFilter.target);
     }
     
+   override protected function onItemRemove(item:*):void
+    {
+      DB.instance.evidence.destroy(item, evidenceFilter.target);
+    }
+   
+   override public function removeItem(item:Object):void
+   {
+     _view.list.removeItemAt(_view.getItemIndex(item))
+   }
+    
     public function info(onInfoResult:Function):void
     {
       DB.instance.evidence.info(infoFilter, onInfoResult);
     }
     
+    public function commands(onCommandsResult:Function):void
+    {
+      DB.instance.evidence.commands(commandsFilter, onCommandsResult);
+    }
+
     public function show(id:String, target:String, resultCallback:Function, faultCallback:Function):void
     {
       DB.instance.evidence.show(id, target, resultCallback, faultCallback);
@@ -112,8 +130,9 @@ package it.ht.rcs.console.evidence.controller
       });
     }
     
+    
     public function uploadEvidence(id:String, file:File, onResult:Function = null, onFault:Function = null):void
-    {      
+    {  
       file.addEventListener(Event.COMPLETE, onResult);
       file.addEventListener(SecurityErrorEvent.SECURITY_ERROR, onFault);
       file.addEventListener(HTTPStatusEvent.HTTP_STATUS, onFault);
@@ -126,7 +145,7 @@ package it.ht.rcs.console.evidence.controller
       DB.instance.evidence.filesystem(targetId, agentId, onResult);
     }
     
-    override protected function onLogout(e:SessionEvent):void
+    override protected function onLogout(e:SessionEvent):void 
     {
       super.onLogout(e);
       evidenceFilter = { date: 'dr' };
