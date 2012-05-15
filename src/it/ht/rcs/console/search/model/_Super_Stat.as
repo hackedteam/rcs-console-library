@@ -58,12 +58,12 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
     private var _internal_source : String;
     private var _internal__id : String;
     private var _internal_last_sync_status : int;
-    private var _internal_grid_size : int;
+    private var _internal_grid_size : Number;
     private var _internal_evidence : it.ht.rcs.console.search.model.StatEvidence;
     private var _internal_device : String;
     private var _internal_dashboard : it.ht.rcs.console.search.model.StatEvidence;
     private var _internal_user : String;
-    private var _internal_size : int;
+    private var _internal_size : Number;
 
     private static var emptyArray:Array = new Array();
 
@@ -126,7 +126,7 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
     }
 
     [Bindable(event="propertyChange")]
-    public function get grid_size() : int
+    public function get grid_size() : Number
     {
         return _internal_grid_size;
     }
@@ -156,7 +156,7 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
     }
 
     [Bindable(event="propertyChange")]
-    public function get size() : int
+    public function get size() : Number
     {
         return _internal_size;
     }
@@ -234,10 +234,10 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
         }
     }
 
-    public function set grid_size(value:int) : void
+    public function set grid_size(value:Number) : void
     {
-        var oldValue:int = _internal_grid_size;
-        if (oldValue !== value)
+        var oldValue:Number = _internal_grid_size;
+        if (isNaN(_internal_grid_size) == true || Math.abs(oldValue - value) > epsilon)
         {
             _internal_grid_size = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "grid_size", oldValue, _internal_grid_size));
@@ -284,10 +284,10 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
         }
     }
 
-    public function set size(value:int) : void
+    public function set size(value:Number) : void
     {
-        var oldValue:int = _internal_size;
-        if (oldValue !== value)
+        var oldValue:Number = _internal_size;
+        if (isNaN(_internal_size) == true || Math.abs(oldValue - value) > epsilon)
         {
             _internal_size = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "size", oldValue, _internal_size));
@@ -347,7 +347,6 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
     /**
      * derived property calculators
      */
-    
 
     /**
      * isValid calculator
