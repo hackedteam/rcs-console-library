@@ -105,12 +105,12 @@ internal class _StatEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
         model_internal::propertyTypeMap["source"] = "String";
         model_internal::propertyTypeMap["_id"] = "String";
         model_internal::propertyTypeMap["last_sync_status"] = "int";
-        model_internal::propertyTypeMap["grid_size"] = "int";
+        model_internal::propertyTypeMap["grid_size"] = "Number";
         model_internal::propertyTypeMap["evidence"] = "it.ht.rcs.console.search.model.StatEvidence";
         model_internal::propertyTypeMap["device"] = "String";
         model_internal::propertyTypeMap["dashboard"] = "it.ht.rcs.console.search.model.StatEvidence";
         model_internal::propertyTypeMap["user"] = "String";
-        model_internal::propertyTypeMap["size"] = "int";
+        model_internal::propertyTypeMap["size"] = "Number";
 
         model_internal::_instance = value;
         model_internal::_sourceValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForSource);

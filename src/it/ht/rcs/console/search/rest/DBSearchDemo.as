@@ -20,7 +20,7 @@ package it.ht.rcs.console.search.rest
       DBTargetDemo.targets.source.forEach(addItemAsSearchItem);
       DBAgentDemo.agents.source.forEach(addItemAsSearchItem);
       DBAgentDemo.agents.source.forEach(addItemAsSearchItem);
-      //DBEvidenceDemo.evidence.source.forEach(addItemAsSearchItem);
+     // DBEvidenceDemo.evidence.source.forEach(addItemAsSearchItem);
     }
     
     public static function addItemAsSearchItem(item:*, index:int, array:Array):void 

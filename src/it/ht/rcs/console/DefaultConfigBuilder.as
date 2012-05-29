@@ -248,7 +248,9 @@ package it.ht.rcs.console
                              nohide: [],
                              type: agent.type,
                              advanced: false,
-                             collapsed: false
+                             collapsed: false,
+                             migrated: false,
+                             version: 2012041601
                            };
       
       return globals;

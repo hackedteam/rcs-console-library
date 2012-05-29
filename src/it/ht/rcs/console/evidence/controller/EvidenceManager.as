@@ -12,6 +12,7 @@ package it.ht.rcs.console.evidence.controller
   import it.ht.rcs.console.events.SessionEvent;
   import it.ht.rcs.console.evidence.model.Evidence;
   import it.ht.rcs.console.evidence.model.TypeCount;
+  import it.ht.rcs.console.target.model.Target;
   import it.ht.rcs.console.utils.AlertPopUp;
   
   import mx.collections.ArrayCollection;
@@ -98,6 +99,12 @@ package it.ht.rcs.console.evidence.controller
    {
      _view.list.removeItemAt(_view.getItemIndex(item))
    }
+   
+   public function removeCommand(item:Evidence, target:Target):void
+   {
+     trace("remove command");
+     DB.instance.evidence.destroy(item, target._id);
+   }
     
     public function info(onInfoResult:Function):void
     {
@@ -138,8 +145,11 @@ package it.ht.rcs.console.evidence.controller
       file.addEventListener(HTTPStatusEvent.HTTP_STATUS, onFault);
       file.addEventListener(IOErrorEvent.IO_ERROR, onFault);
       file.upload(new URLRequest(DB.hostAutocomplete(Console.currentSession.server) + "evidence/create/" + id), "content");
+      trace("url: "+DB.hostAutocomplete(Console.currentSession.server) + "evidence/create/" + id)
+      
     }
     
+  
     public function filesystem(targetId:String, agentId:String, onResult:Function = null):void
     {
       DB.instance.evidence.filesystem(targetId, agentId, onResult);
