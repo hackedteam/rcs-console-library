@@ -104,7 +104,7 @@ package it.ht.rcs.console.controller
       lcv.filterFunction = filterFunction;
       
       lcv.refresh();
-      
+  
       return lcv;
     }
     
