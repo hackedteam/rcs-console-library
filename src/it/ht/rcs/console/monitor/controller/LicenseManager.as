@@ -1,5 +1,14 @@
 package it.ht.rcs.console.monitor.controller
 {
+  import flash.events.DataEvent;
+  import flash.events.ErrorEvent;
+  import flash.events.Event;
+  import flash.events.IOErrorEvent;
+  import flash.events.ProgressEvent;
+  import flash.events.SecurityErrorEvent;
+  import flash.net.FileReference;
+  import flash.net.URLRequest;
+  
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.controller.Manager;
   import it.ht.rcs.console.monitor.model.CurrMaxObject;
@@ -159,6 +168,16 @@ package it.ht.rcs.console.monitor.controller
       return limits['agents'][platform][0]; 
     }
     
+    public function updateLicense(license:FileReference, successCallback:Function, failCallback:Function, progressCallback:Function=null):void
+    {
+      license.addEventListener(ProgressEvent.PROGRESS, progressCallback)
+      license.addEventListener(IOErrorEvent.IO_ERROR, failCallback);
+      license.addEventListener(SecurityErrorEvent.SECURITY_ERROR, failCallback)
+      license.addEventListener(DataEvent.UPLOAD_COMPLETE_DATA, successCallback)
+      license.upload(new URLRequest(DB.hostAutocomplete(Console.currentSession.server) + "license"), "content");
+      
+    }
+
   }
   
 }
