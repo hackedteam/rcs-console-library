@@ -3,6 +3,8 @@ package it.ht.rcs.console.build.rest
   import it.ht.rcs.console.build.model.Exploit;
   import it.ht.rcs.console.build.model.ExploitParam;
   
+  import it.ht.rcs.console.build.model.SymbianConf;
+  
   import mx.collections.ArrayCollection;
   import mx.rpc.events.ResultEvent;
 
@@ -23,6 +25,11 @@ package it.ht.rcs.console.build.rest
       var event:ResultEvent = new ResultEvent("exploit.index", false, true, items);
       if (onResult != null) 
         onResult(event);
+    }
+    
+    public function symbian_conf(conf:Object, onResult:Function=null, onFault:Function=null):void
+    {
+      
     }
     
   }
