@@ -138,6 +138,11 @@ package it.ht.rcs.console.agent.controller
       DB.instance.agent.filesystem(agentId, path, depth, callback);
     }
     
+    public function purge(agentId:String, time:Number, size:Number, onResult:Function=null, onFault:Function=null):void
+    {
+      DB.instance.agent.purge(agentId,time,size, onResult, onFault)
+    }
+    
     public function getMobileFactoriesForTarget(targetId:String):ListCollectionView
     {
       return getView(null, function(item:Object):Boolean { 
