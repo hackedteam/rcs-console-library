@@ -108,6 +108,12 @@ package it.ht.rcs.console.evidence.controller
      trace("remove command");
      DB.instance.evidence.destroy(item, target._id);
    }
+   
+   public function removeIp(item:Evidence, target:Target):void
+   {
+     trace("remove command");
+     DB.instance.evidence.destroy(item, target._id);
+   }
     
     public function info(onInfoResult:Function):void
     {
