@@ -163,6 +163,22 @@ package it.ht.rcs.console.evidence.controller
       
     }
     
+    public function getChatFlow(program:String, peer:String):ArrayCollection
+    {
+      var chatFlow:ArrayCollection=new ArrayCollection();
+      
+      for(var i:int=0;i<_view.length;i++)
+      {
+        if(_view.getItemAt(i).type=="chat")
+        {
+          var chatEntry:Evidence=_view.getItemAt(i) as Evidence;
+          if(chatEntry.data.program==program && chatEntry.data.peer==peer)
+            chatFlow.addItem(chatEntry);
+        }
+      }
+      return chatFlow;
+    }
+    
   
     public function filesystem(targetId:String, agentId:String, onResult:Function = null):void
     {
