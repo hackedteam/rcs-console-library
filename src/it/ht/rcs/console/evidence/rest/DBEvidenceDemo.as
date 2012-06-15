@@ -147,6 +147,12 @@ package it.ht.rcs.console.evidence.rest
 
 		public function commands(filter:Object, onResult:Function=null, onFault:Function=null):void
 		{
+      var commands:ArrayCollection=new ArrayCollection();
+      
+      //populate commands
+      
+      if (onResult != null)
+        onResult(new ResultEvent('evidence.commands', false, true, commands));
 		}
     
     public function ips(filter:Object, onResult:Function=null, onFault:Function=null):void

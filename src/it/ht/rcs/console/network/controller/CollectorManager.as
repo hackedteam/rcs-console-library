@@ -105,7 +105,9 @@ package it.ht.rcs.console.network.controller
     
     public function getEntryPointsView(sortCriteria:ISort=null, filterFunction:Function=null):ListCollectionView
     {
+      
       return super.getView(null, entryFilter);
+      
     }
     
     public function upgradeAnon(_id:String, callback:Function=null, errback:Function=null):void

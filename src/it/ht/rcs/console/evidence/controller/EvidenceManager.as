@@ -169,7 +169,7 @@ package it.ht.rcs.console.evidence.controller
       
       for(var i:int=0;i<_view.length;i++)
       {
-        if(_view.getItemAt(i).type=="chat")
+        if(_view.getItemAt(i) && _view.getItemAt(i).type=="chat")
         {
           var chatEntry:Evidence=_view.getItemAt(i) as Evidence;
           if(chatEntry.data.program==program && chatEntry.data.peer==peer)
