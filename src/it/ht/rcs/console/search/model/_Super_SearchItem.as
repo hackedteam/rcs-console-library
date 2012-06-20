@@ -444,7 +444,6 @@ public class _Super_SearchItem extends flash.events.EventDispatcher implements c
     /**
      * derived property calculators
      */
-    
 
     /**
      * isValid calculator

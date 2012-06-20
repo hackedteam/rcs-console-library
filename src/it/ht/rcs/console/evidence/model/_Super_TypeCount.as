@@ -147,7 +147,6 @@ public class _Super_TypeCount extends flash.events.EventDispatcher implements co
     /**
      * derived property calculators
      */
-    
 
     /**
      * isValid calculator
