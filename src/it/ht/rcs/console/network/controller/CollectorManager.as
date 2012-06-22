@@ -131,6 +131,16 @@ package it.ht.rcs.console.network.controller
         });
     }
     
+    public function public_destroy(_id:String, callback:Function=null, errback:Function=null):void
+    {
+      DB.instance.collector.public_destroy(_id, function(e:ResultEvent):void {
+        callback(e);
+      }, 
+        function(e:FaultEvent):void {
+          errback(e);
+        });
+    }
+    
   }
   
 }
