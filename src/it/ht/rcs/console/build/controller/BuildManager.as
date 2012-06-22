@@ -72,9 +72,14 @@ package it.ht.rcs.console.build.controller
       return super.getView(sort, filterFunction);
     }
     
+    public function getVersion(onResult:Function=null, onFault:Function=null):void
+    {
+      DB.instance.build.exploit_version(onResult,onFault);
+    }
+    
     public function getSymbianConf(conf:Object=null,onResult:Function=null, onFault:Function=null):void
     {
-      DB.instance.build.symbian_conf(conf,onResult,onFault)
+      DB.instance.build.symbian_conf(conf,onResult,onFault);
     }
     
     public function getFormats(platform:String):ArrayCollection
