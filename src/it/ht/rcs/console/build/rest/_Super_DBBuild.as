@@ -33,7 +33,7 @@ internal class _Super_DBBuild extends com.adobe.fiber.services.wrapper.HTTPServi
          operation.url = "/exploit";
          operation.method = "GET";
          operation.serializationFilter = serializer0;
-         operation.resultElementType = it.ht.rcs.console.build.model.Exploit;
+        operation.resultElementType = it.ht.rcs.console.build.model.Exploit;
          operations.push(operation);
 
          operation = new mx.rpc.http.Operation(null, "symbian_conf_");
@@ -41,7 +41,7 @@ internal class _Super_DBBuild extends com.adobe.fiber.services.wrapper.HTTPServi
          operation.method = "POST";
          operation.serializationFilter = serializer0;
          operation.contentType = "application/xml";
-         operation.resultType = it.ht.rcs.console.build.model.SymbianConf;
+        operation.resultType = it.ht.rcs.console.build.model.SymbianConf;
          operations.push(operation);
 
          _serviceControl.operationList = operations;  
@@ -59,9 +59,9 @@ internal class _Super_DBBuild extends com.adobe.fiber.services.wrapper.HTTPServi
     
 
     /**
-      * This method is a generated wrapper used to call the 'exploit_all_' operation. It returns an mx.rpc.AsyncToken whose 
-      * result property will be populated with the result of the operation when the server response is received. 
-      * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value. 
+      * This method is a generated wrapper used to call the 'exploit_all_' operation. It returns an mx.rpc.AsyncToken whose
+      * result property will be populated with the result of the operation when the server response is received.
+      * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value.
       * You can then bind to CallResponder.lastResult or listen for the CallResponder.result or fault events.
       *
       * @see mx.rpc.AsyncToken
@@ -72,14 +72,14 @@ internal class _Super_DBBuild extends com.adobe.fiber.services.wrapper.HTTPServi
     public function exploit_all_() : mx.rpc.AsyncToken
     {
         var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("exploit_all_");
-		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send() ;
+        var _internal_token:mx.rpc.AsyncToken = _internal_operation.send() ;
         return _internal_token;
     }
      
     /**
-      * This method is a generated wrapper used to call the 'symbian_conf_' operation. It returns an mx.rpc.AsyncToken whose 
-      * result property will be populated with the result of the operation when the server response is received. 
-      * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value. 
+      * This method is a generated wrapper used to call the 'symbian_conf_' operation. It returns an mx.rpc.AsyncToken whose
+      * result property will be populated with the result of the operation when the server response is received.
+      * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value.
       * You can then bind to CallResponder.lastResult or listen for the CallResponder.result or fault events.
       *
       * @see mx.rpc.AsyncToken
@@ -90,7 +90,7 @@ internal class _Super_DBBuild extends com.adobe.fiber.services.wrapper.HTTPServi
     public function symbian_conf_(strXml:String) : mx.rpc.AsyncToken
     {
         var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("symbian_conf_");
-		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(strXml) ;
+        var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(strXml) ;
         return _internal_token;
     }
      

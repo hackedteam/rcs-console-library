@@ -20,6 +20,8 @@ package it.ht.rcs.console.network.rest
     
     function del_logs(id:String, onResult:Function=null, onFault:Function=null):void;
     
+    function get_public(onResult:Function=null, onFault:Function=null):void;
+    
   }
   
 }

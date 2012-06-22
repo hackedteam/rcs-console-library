@@ -9,6 +9,7 @@ package it.ht.rcs.console.network.controller
   import mx.collections.ArrayCollection;
   import mx.collections.ISort;
   import mx.collections.ListCollectionView;
+  import mx.rpc.events.FaultEvent;
   import mx.rpc.events.ResultEvent;
   
   public class CollectorManager extends ItemManager
@@ -118,6 +119,16 @@ package it.ht.rcs.console.network.controller
       function(e:ResultEvent):void {
         errback();
       });
+    }
+    
+    public function get_public(callback:Function=null, errback:Function=null):void
+    {
+      DB.instance.collector.get_public(function(e:ResultEvent):void {
+        callback(e);
+      }, 
+        function(e:FaultEvent):void {
+          errback(e);
+        });
     }
     
   }

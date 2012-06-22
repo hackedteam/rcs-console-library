@@ -1,9 +1,9 @@
 /**
  * This is a generated class and is not intended for modification.  To customize behavior
- * of this value object you may modify the generated sub-class of this class - Connector.as.
+ * of this value object you may modify the generated sub-class of this class - PublicDocument.as.
  */
 
-package it.ht.rcs.console.connector.model
+package it.ht.rcs.console.network.model
 {
 import com.adobe.fiber.services.IFiberManagingService;
 import com.adobe.fiber.util.FiberUtils;
@@ -25,7 +25,7 @@ import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 use namespace model_internal;
 
 [ExcludeClass]
-public class _Super_Connector extends flash.events.EventDispatcher implements com.adobe.fiber.valueobjects.IValueObject
+public class _Super_PublicDocument extends flash.events.EventDispatcher implements com.adobe.fiber.valueobjects.IValueObject
 {
     model_internal static function initRemoteClassAliasSingle(cz:Class) : void
     {
@@ -35,7 +35,7 @@ public class _Super_Connector extends flash.events.EventDispatcher implements co
     {
     }
 
-    model_internal var _dminternal_model : _ConnectorEntityMetadata;
+    model_internal var _dminternal_model : _PublicDocumentEntityMetadata;
     model_internal var _changedObjects:mx.collections.ArrayCollection = new ArrayCollection();
 
     public function getChangedObjects() : Array
@@ -52,16 +52,13 @@ public class _Super_Connector extends flash.events.EventDispatcher implements co
     /**
      * properties
      */
-    private var _internal_raw : Boolean;
-    private var _internal_enabled : Boolean;
+    private var _internal_time : int;
     private var _internal_updated_at : String;
-    private var _internal_dest : String;
     private var _internal__id : String;
     private var _internal_name : String;
-    private var _internal_path : ArrayCollection;
     private var _internal_created_at : String;
-    private var _internal_type : String;
-    private var _internal_keep : Boolean;
+    private var _internal_factory : ArrayCollection;
+    private var _internal_user : String;
 
     private static var emptyArray:Array = new Array();
 
@@ -73,18 +70,17 @@ public class _Super_Connector extends flash.events.EventDispatcher implements co
 
     model_internal var _changeWatcherArray:Array = new Array();
 
-    public function _Super_Connector()
+    public function _Super_PublicDocument()
     {
-        _model = new _ConnectorEntityMetadata(this);
+        _model = new _PublicDocumentEntityMetadata(this);
 
         // Bind to own data or source properties for cache invalidation triggering
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "updated_at", model_internal::setterListenerUpdated_at));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "dest", model_internal::setterListenerDest));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "_id", model_internal::setterListener_id));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "name", model_internal::setterListenerName));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "path", model_internal::setterListenerPath));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "created_at", model_internal::setterListenerCreated_at));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "type", model_internal::setterListenerType));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "factory", model_internal::setterListenerFactory));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "user", model_internal::setterListenerUser));
 
     }
 
@@ -93,27 +89,15 @@ public class _Super_Connector extends flash.events.EventDispatcher implements co
      */
 
     [Bindable(event="propertyChange")]
-    public function get raw() : Boolean
+    public function get time() : int
     {
-        return _internal_raw;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get enabled() : Boolean
-    {
-        return _internal_enabled;
+        return _internal_time;
     }
 
     [Bindable(event="propertyChange")]
     public function get updated_at() : String
     {
         return _internal_updated_at;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get dest() : String
-    {
-        return _internal_dest;
     }
 
     [Bindable(event="propertyChange")]
@@ -129,27 +113,21 @@ public class _Super_Connector extends flash.events.EventDispatcher implements co
     }
 
     [Bindable(event="propertyChange")]
-    public function get path() : ArrayCollection
-    {
-        return _internal_path;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get created_at() : String
     {
         return _internal_created_at;
     }
 
     [Bindable(event="propertyChange")]
-    public function get type() : String
+    public function get factory() : ArrayCollection
     {
-        return _internal_type;
+        return _internal_factory;
     }
 
     [Bindable(event="propertyChange")]
-    public function get keep() : Boolean
+    public function get user() : String
     {
-        return _internal_keep;
+        return _internal_user;
     }
 
     public function clearAssociations() : void
@@ -160,23 +138,13 @@ public class _Super_Connector extends flash.events.EventDispatcher implements co
      * data/source property setters
      */
 
-    public function set raw(value:Boolean) : void
+    public function set time(value:int) : void
     {
-        var oldValue:Boolean = _internal_raw;
+        var oldValue:int = _internal_time;
         if (oldValue !== value)
         {
-            _internal_raw = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "raw", oldValue, _internal_raw));
-        }
-    }
-
-    public function set enabled(value:Boolean) : void
-    {
-        var oldValue:Boolean = _internal_enabled;
-        if (oldValue !== value)
-        {
-            _internal_enabled = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "enabled", oldValue, _internal_enabled));
+            _internal_time = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "time", oldValue, _internal_time));
         }
     }
 
@@ -187,16 +155,6 @@ public class _Super_Connector extends flash.events.EventDispatcher implements co
         {
             _internal_updated_at = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "updated_at", oldValue, _internal_updated_at));
-        }
-    }
-
-    public function set dest(value:String) : void
-    {
-        var oldValue:String = _internal_dest;
-        if (oldValue !== value)
-        {
-            _internal_dest = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "dest", oldValue, _internal_dest));
         }
     }
 
@@ -220,31 +178,6 @@ public class _Super_Connector extends flash.events.EventDispatcher implements co
         }
     }
 
-    public function set path(value:*) : void
-    {
-        var oldValue:ArrayCollection = _internal_path;
-        if (oldValue !== value)
-        {
-            if (value is ArrayCollection)
-            {
-                _internal_path = value;
-            }
-            else if (value is Array)
-            {
-                _internal_path = new ArrayCollection(value);
-            }
-            else if (value == null)
-            {
-                _internal_path = null;
-            }
-            else
-            {
-                throw new Error("value of path must be a collection");
-            }
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "path", oldValue, _internal_path));
-        }
-    }
-
     public function set created_at(value:String) : void
     {
         var oldValue:String = _internal_created_at;
@@ -255,23 +188,38 @@ public class _Super_Connector extends flash.events.EventDispatcher implements co
         }
     }
 
-    public function set type(value:String) : void
+    public function set factory(value:*) : void
     {
-        var oldValue:String = _internal_type;
+        var oldValue:ArrayCollection = _internal_factory;
         if (oldValue !== value)
         {
-            _internal_type = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "type", oldValue, _internal_type));
+            if (value is ArrayCollection)
+            {
+                _internal_factory = value;
+            }
+            else if (value is Array)
+            {
+                _internal_factory = new ArrayCollection(value);
+            }
+            else if (value == null)
+            {
+                _internal_factory = null;
+            }
+            else
+            {
+                throw new Error("value of factory must be a collection");
+            }
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "factory", oldValue, _internal_factory));
         }
     }
 
-    public function set keep(value:Boolean) : void
+    public function set user(value:String) : void
     {
-        var oldValue:Boolean = _internal_keep;
+        var oldValue:String = _internal_user;
         if (oldValue !== value)
         {
-            _internal_keep = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "keep", oldValue, _internal_keep));
+            _internal_user = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "user", oldValue, _internal_user));
         }
     }
 
@@ -292,11 +240,6 @@ public class _Super_Connector extends flash.events.EventDispatcher implements co
         _model.invalidateDependentOnUpdated_at();
     }
 
-    model_internal function setterListenerDest(value:flash.events.Event):void
-    {
-        _model.invalidateDependentOnDest();
-    }
-
     model_internal function setterListener_id(value:flash.events.Event):void
     {
         _model.invalidateDependentOn_id();
@@ -307,26 +250,26 @@ public class _Super_Connector extends flash.events.EventDispatcher implements co
         _model.invalidateDependentOnName();
     }
 
-    model_internal function setterListenerPath(value:flash.events.Event):void
-    {
-        if (value is mx.events.PropertyChangeEvent)
-        {
-            if (mx.events.PropertyChangeEvent(value).newValue)
-            {
-                mx.events.PropertyChangeEvent(value).newValue.addEventListener(mx.events.CollectionEvent.COLLECTION_CHANGE, model_internal::setterListenerPath);
-            }
-        }
-        _model.invalidateDependentOnPath();
-    }
-
     model_internal function setterListenerCreated_at(value:flash.events.Event):void
     {
         _model.invalidateDependentOnCreated_at();
     }
 
-    model_internal function setterListenerType(value:flash.events.Event):void
+    model_internal function setterListenerFactory(value:flash.events.Event):void
     {
-        _model.invalidateDependentOnType();
+        if (value is mx.events.PropertyChangeEvent)
+        {
+            if (mx.events.PropertyChangeEvent(value).newValue)
+            {
+                mx.events.PropertyChangeEvent(value).newValue.addEventListener(mx.events.CollectionEvent.COLLECTION_CHANGE, model_internal::setterListenerFactory);
+            }
+        }
+        _model.invalidateDependentOnFactory();
+    }
+
+    model_internal function setterListenerUser(value:flash.events.Event):void
+    {
+        _model.invalidateDependentOnUser();
     }
 
 
@@ -356,11 +299,6 @@ public class _Super_Connector extends flash.events.EventDispatcher implements co
             propertyValidity = false;
             com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_updated_atValidationFailureMessages);
         }
-        if (!_model.destIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_destValidationFailureMessages);
-        }
         if (!_model._idIsValid)
         {
             propertyValidity = false;
@@ -371,20 +309,20 @@ public class _Super_Connector extends flash.events.EventDispatcher implements co
             propertyValidity = false;
             com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_nameValidationFailureMessages);
         }
-        if (!_model.pathIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_pathValidationFailureMessages);
-        }
         if (!_model.created_atIsValid)
         {
             propertyValidity = false;
             com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_created_atValidationFailureMessages);
         }
-        if (!_model.typeIsValid)
+        if (!_model.factoryIsValid)
         {
             propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_typeValidationFailureMessages);
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_factoryValidationFailureMessages);
+        }
+        if (!_model.userIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_userValidationFailureMessages);
         }
 
         model_internal::_cacheInitialized_isValid = true;
@@ -413,14 +351,14 @@ public class _Super_Connector extends flash.events.EventDispatcher implements co
 
     [Transient]
     [Bindable(event="propertyChange")]
-    public function get _model() : _ConnectorEntityMetadata
+    public function get _model() : _PublicDocumentEntityMetadata
     {
         return model_internal::_dminternal_model;
     }
 
-    public function set _model(value : _ConnectorEntityMetadata) : void
+    public function set _model(value : _PublicDocumentEntityMetadata) : void
     {
-        var oldValue : _ConnectorEntityMetadata = model_internal::_dminternal_model;
+        var oldValue : _PublicDocumentEntityMetadata = model_internal::_dminternal_model;
         if (oldValue !== value)
         {
             model_internal::_dminternal_model = value;
@@ -492,33 +430,6 @@ public class _Super_Connector extends flash.events.EventDispatcher implements co
         return validationFailures;
     }
     
-    model_internal var _doValidationCacheOfDest : Array = null;
-    model_internal var _doValidationLastValOfDest : String;
-
-    model_internal function _doValidationForDest(valueIn:Object):Array
-    {
-        var value : String = valueIn as String;
-
-        if (model_internal::_doValidationCacheOfDest != null && model_internal::_doValidationLastValOfDest == value)
-           return model_internal::_doValidationCacheOfDest ;
-
-        _model.model_internal::_destIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.isDestAvailable && _internal_dest == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "dest is required"));
-        }
-
-        model_internal::_doValidationCacheOfDest = validationFailures;
-        model_internal::_doValidationLastValOfDest = value;
-
-        return validationFailures;
-    }
-    
     model_internal var _doValidationCacheOf_id : Array = null;
     model_internal var _doValidationLastValOf_id : String;
 
@@ -573,33 +484,6 @@ public class _Super_Connector extends flash.events.EventDispatcher implements co
         return validationFailures;
     }
     
-    model_internal var _doValidationCacheOfPath : Array = null;
-    model_internal var _doValidationLastValOfPath : ArrayCollection;
-
-    model_internal function _doValidationForPath(valueIn:Object):Array
-    {
-        var value : ArrayCollection = valueIn as ArrayCollection;
-
-        if (model_internal::_doValidationCacheOfPath != null && model_internal::_doValidationLastValOfPath == value)
-           return model_internal::_doValidationCacheOfPath ;
-
-        _model.model_internal::_pathIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.isPathAvailable && _internal_path == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "path is required"));
-        }
-
-        model_internal::_doValidationCacheOfPath = validationFailures;
-        model_internal::_doValidationLastValOfPath = value;
-
-        return validationFailures;
-    }
-    
     model_internal var _doValidationCacheOfCreated_at : Array = null;
     model_internal var _doValidationLastValOfCreated_at : String;
 
@@ -627,29 +511,56 @@ public class _Super_Connector extends flash.events.EventDispatcher implements co
         return validationFailures;
     }
     
-    model_internal var _doValidationCacheOfType : Array = null;
-    model_internal var _doValidationLastValOfType : String;
+    model_internal var _doValidationCacheOfFactory : Array = null;
+    model_internal var _doValidationLastValOfFactory : ArrayCollection;
 
-    model_internal function _doValidationForType(valueIn:Object):Array
+    model_internal function _doValidationForFactory(valueIn:Object):Array
     {
-        var value : String = valueIn as String;
+        var value : ArrayCollection = valueIn as ArrayCollection;
 
-        if (model_internal::_doValidationCacheOfType != null && model_internal::_doValidationLastValOfType == value)
-           return model_internal::_doValidationCacheOfType ;
+        if (model_internal::_doValidationCacheOfFactory != null && model_internal::_doValidationLastValOfFactory == value)
+           return model_internal::_doValidationCacheOfFactory ;
 
-        _model.model_internal::_typeIsValidCacheInitialized = true;
+        _model.model_internal::_factoryIsValidCacheInitialized = true;
         var validationFailures:Array = new Array();
         var errorMessage:String;
         var failure:Boolean;
 
         var valRes:ValidationResult;
-        if (_model.isTypeAvailable && _internal_type == null)
+        if (_model.isFactoryAvailable && _internal_factory == null)
         {
-            validationFailures.push(new ValidationResult(true, "", "", "type is required"));
+            validationFailures.push(new ValidationResult(true, "", "", "factory is required"));
         }
 
-        model_internal::_doValidationCacheOfType = validationFailures;
-        model_internal::_doValidationLastValOfType = value;
+        model_internal::_doValidationCacheOfFactory = validationFailures;
+        model_internal::_doValidationLastValOfFactory = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfUser : Array = null;
+    model_internal var _doValidationLastValOfUser : String;
+
+    model_internal function _doValidationForUser(valueIn:Object):Array
+    {
+        var value : String = valueIn as String;
+
+        if (model_internal::_doValidationCacheOfUser != null && model_internal::_doValidationLastValOfUser == value)
+           return model_internal::_doValidationCacheOfUser ;
+
+        _model.model_internal::_userIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isUserAvailable && _internal_user == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "user is required"));
+        }
+
+        model_internal::_doValidationCacheOfUser = validationFailures;
+        model_internal::_doValidationLastValOfUser = value;
 
         return validationFailures;
     }

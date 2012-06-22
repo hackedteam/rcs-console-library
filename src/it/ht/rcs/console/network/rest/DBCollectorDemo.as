@@ -72,6 +72,11 @@ package it.ht.rcs.console.network.rest
     {
     }
     
+    public function get_public(onResult:Function=null, onFault:Function=null):void
+    {
+      
+    }
+    
   }
   
 }
