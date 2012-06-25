@@ -4265,6 +4265,26 @@
         <item name="returnType">opaque</item>
       </annotation>
     </function>
+    <function name="public_destroy_" return-type="opaque">
+      <annotation name="analyze group">
+        <item name="analyzed">false</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="method">POST</item>
+        <item name="contentType">application/xml</item>
+        <item name="requestBodyParameter">true</item>
+        <item name="url">/public/destroy</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/public/destroy</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParamNames">strXml</item>
+        <item name="inputParams">string</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="strXml" type="string"/>
+    </function>
   </service>
   <entity name="NetworkLog">
     <annotation name="EntityProperties">
