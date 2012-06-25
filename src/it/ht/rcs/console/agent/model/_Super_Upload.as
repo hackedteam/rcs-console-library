@@ -233,7 +233,6 @@ public class _Super_Upload extends flash.events.EventDispatcher implements com.a
     /**
      * derived property calculators
      */
-    
 
     /**
      * isValid calculator
