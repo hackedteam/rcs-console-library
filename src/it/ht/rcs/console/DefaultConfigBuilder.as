@@ -106,7 +106,7 @@ package it.ht.rcs.console
           position:    true,
           synchronize: false,
           _type: "desktop,mobile",
-          _platform: "windows,osx,ios,blackberry,winmo,android"
+          _platform: "windows,osx,ios,blackberry,winmo,android,symbian"
         },
         
         {
