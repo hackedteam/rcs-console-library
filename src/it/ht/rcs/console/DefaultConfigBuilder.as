@@ -431,6 +431,7 @@ package it.ht.rcs.console
         if (!moduleIsSupported(platform, module.module, modules)) {
           //config.modules.splice(config.modules.indexOf(module), 1);
           deleteModuleReferences(config, module.module);
+         
         }
       }
     }
