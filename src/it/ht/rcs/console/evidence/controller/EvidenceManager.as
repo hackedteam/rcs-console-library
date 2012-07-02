@@ -39,6 +39,9 @@ package it.ht.rcs.console.evidence.controller
     public var commandsFilter:Object = { date: 'da' };
     
     [Bindable]
+    public var ipsFilter:Object = { date: 'da' };
+    
+    [Bindable]
     public var infoFilter:Object = { date: 'da' };
     
     [Bindable]
@@ -105,6 +108,12 @@ package it.ht.rcs.console.evidence.controller
      trace("remove command");
      DB.instance.evidence.destroy(item, target._id);
    }
+   
+   public function removeIp(item:Evidence, target:Target):void
+   {
+     trace("remove command");
+     DB.instance.evidence.destroy(item, target._id);
+   }
     
     public function info(onInfoResult:Function):void
     {
@@ -114,6 +123,11 @@ package it.ht.rcs.console.evidence.controller
     public function commands(onCommandsResult:Function):void
     {
       DB.instance.evidence.commands(commandsFilter, onCommandsResult);
+    }
+    
+    public function ips(onIpsResult:Function):void
+    {
+      DB.instance.evidence.ips(ipsFilter, onIpsResult);
     }
 
     public function show(id:String, target:String, resultCallback:Function, faultCallback:Function):void
@@ -147,6 +161,22 @@ package it.ht.rcs.console.evidence.controller
       file.upload(new URLRequest(DB.hostAutocomplete(Console.currentSession.server) + "evidence/create/" + id), "content");
       trace("url: "+DB.hostAutocomplete(Console.currentSession.server) + "evidence/create/" + id)
       
+    }
+    
+    public function getChatFlow(program:String, peer:String):ArrayCollection
+    {
+      var chatFlow:ArrayCollection=new ArrayCollection();
+      
+      for(var i:int=0;i<_view.length;i++)
+      {
+        if(_view.getItemAt(i) && _view.getItemAt(i).type=="chat")
+        {
+          var chatEntry:Evidence=_view.getItemAt(i) as Evidence;
+          if(chatEntry.data.program==program && chatEntry.data.peer==peer)
+            chatFlow.addItem(chatEntry);
+        }
+      }
+      return chatFlow;
     }
     
   

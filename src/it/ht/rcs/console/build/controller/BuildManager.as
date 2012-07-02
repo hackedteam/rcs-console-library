@@ -2,6 +2,7 @@ package it.ht.rcs.console.build.controller
 {
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.build.model.Exploit;
+  import it.ht.rcs.console.build.model.SymbianConf;
   import it.ht.rcs.console.controller.ItemManager;
   
   import mx.collections.ArrayCollection;
@@ -28,6 +29,8 @@ package it.ht.rcs.console.build.controller
       symbian: new ArrayCollection(),
       winmo: new ArrayCollection()
     };
+    [Bindable]
+    public var symbianConf:SymbianConf;
     
     public function BuildManager()
     {
@@ -67,6 +70,16 @@ package it.ht.rcs.console.build.controller
       var sort:Sort = new Sort();
       sort.fields = [new SortField('name', true, false, false)];
       return super.getView(sort, filterFunction);
+    }
+    
+    public function getVersion(onResult:Function=null, onFault:Function=null):void
+    {
+      DB.instance.build.exploit_version(onResult,onFault);
+    }
+    
+    public function getSymbianConf(conf:Object=null,onResult:Function=null, onFault:Function=null):void
+    {
+      DB.instance.build.symbian_conf(conf,onResult,onFault);
     }
     
     public function getFormats(platform:String):ArrayCollection

@@ -106,7 +106,7 @@ package it.ht.rcs.console
           position:    true,
           synchronize: false,
           _type: "desktop,mobile",
-          _platform: "windows,osx,ios,blackberry,winmo,android"
+          _platform: "windows,osx,ios,blackberry,winmo,android,symbian"
         },
         
         {
@@ -431,6 +431,7 @@ package it.ht.rcs.console
         if (!moduleIsSupported(platform, module.module, modules)) {
           //config.modules.splice(config.modules.indexOf(module), 1);
           deleteModuleReferences(config, module.module);
+         
         }
       }
     }

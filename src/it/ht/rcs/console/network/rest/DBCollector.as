@@ -20,6 +20,18 @@ package it.ht.rcs.console.network.rest
       resp.token = all_();
     }
     
+    public function get_public(onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = public_();
+    }
+    
+    public function public_destroy(id:String, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = public_destroy_(JSON.stringify({_id: id}));
+    }
+    
     public function show(id:String, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);

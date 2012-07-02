@@ -9,6 +9,7 @@ package it.ht.rcs.console.network.controller
   import mx.collections.ArrayCollection;
   import mx.collections.ISort;
   import mx.collections.ListCollectionView;
+  import mx.rpc.events.FaultEvent;
   import mx.rpc.events.ResultEvent;
   
   public class CollectorManager extends ItemManager
@@ -105,7 +106,9 @@ package it.ht.rcs.console.network.controller
     
     public function getEntryPointsView(sortCriteria:ISort=null, filterFunction:Function=null):ListCollectionView
     {
+      
       return super.getView(null, entryFilter);
+      
     }
     
     public function upgradeAnon(_id:String, callback:Function=null, errback:Function=null):void
@@ -116,6 +119,26 @@ package it.ht.rcs.console.network.controller
       function(e:ResultEvent):void {
         errback();
       });
+    }
+    
+    public function get_public(callback:Function=null, errback:Function=null):void
+    {
+      DB.instance.collector.get_public(function(e:ResultEvent):void {
+        callback(e);
+      }, 
+        function(e:FaultEvent):void {
+          errback(e);
+        });
+    }
+    
+    public function public_destroy(_id:String, callback:Function=null, errback:Function=null):void
+    {
+      DB.instance.collector.public_destroy(_id, function(e:ResultEvent):void {
+        callback(e);
+      }, 
+        function(e:FaultEvent):void {
+          errback(e);
+        });
     }
     
   }

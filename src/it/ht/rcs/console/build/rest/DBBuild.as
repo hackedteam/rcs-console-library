@@ -8,6 +8,7 @@
 package it.ht.rcs.console.build.rest
 {
   import it.ht.rcs.console.DB;
+  import it.ht.rcs.console.build.model.SymbianConf;
   
   import mx.rpc.CallResponder;
 
@@ -33,7 +34,18 @@ public class DBBuild extends _Super_DBBuild implements IDBBuild
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
       resp.token = exploit_all_();
     }
+
+    public function exploit_version(onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = exploit_version_();
+    }
     
+    public function symbian_conf(conf:Object, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = symbian_conf_(JSON.stringify(conf));
+    }
 }
 
 }

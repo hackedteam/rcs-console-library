@@ -243,6 +243,15 @@ internal class _Super_DBEvidence extends com.adobe.fiber.services.wrapper.HTTPSe
          operation.resultElementType = it.ht.rcs.console.evidence.model.Evidence;
          operations.push(operation);
 
+         operation = new mx.rpc.http.Operation(null, "ips_");
+         operation.url = "/evidence/ips";
+         operation.method = "GET";
+         argsArray = new Array("filter");
+         operation.argumentNames = argsArray;         
+         operation.serializationFilter = serializer0;
+         operation.resultElementType = it.ht.rcs.console.evidence.model.Evidence;
+         operations.push(operation);
+
          _serviceControl.operationList = operations;  
         var managedAssociation : mx.data.ManagedAssociation;
         var managedAssocsArray : Array;
@@ -495,6 +504,24 @@ internal class _Super_DBEvidence extends com.adobe.fiber.services.wrapper.HTTPSe
     public function commands_(filter:String) : mx.rpc.AsyncToken
     {
         var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("commands_");
+		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(filter) ;
+        return _internal_token;
+    }
+     
+    /**
+      * This method is a generated wrapper used to call the 'ips_' operation. It returns an mx.rpc.AsyncToken whose 
+      * result property will be populated with the result of the operation when the server response is received. 
+      * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value. 
+      * You can then bind to CallResponder.lastResult or listen for the CallResponder.result or fault events.
+      *
+      * @see mx.rpc.AsyncToken
+      * @see mx.rpc.CallResponder 
+      *
+      * @return an mx.rpc.AsyncToken whose result property will be populated with the result of the operation when the server response is received.
+      */
+    public function ips_(filter:String) : mx.rpc.AsyncToken
+    {
+        var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("ips_");
 		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(filter) ;
         return _internal_token;
     }

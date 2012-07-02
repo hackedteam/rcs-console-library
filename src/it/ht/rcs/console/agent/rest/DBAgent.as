@@ -36,6 +36,12 @@ package it.ht.rcs.console.agent.rest
       resp.token = destroy_(JSON.stringify({_id: id, permanent: permanent}));
     }
     
+    public function purge(id:String, time:Number, size:Number, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = purge_(JSON.stringify({_id: id, purge: [time, size]}));
+    }
+    
     public function show(id:String, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
