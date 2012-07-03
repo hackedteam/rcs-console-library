@@ -55,12 +55,12 @@ package it.ht.rcs.console.agent.controller
       DB.instance.agent.update(event.source, property);
     }
     
-    public function addConfig(agent:Agent, config:String, callback:Function=null):void
+    public function addConfig(agent:Agent, config:String, callback:Function=null, faultCallback:Function=null):void
     {
       DB.instance.agent.add_config(agent, config, function(e:ResultEvent):void {
         if (callback != null)
           callback(e.result);
-      });
+      },function (e:FaultEvent):void{faultCallback(e)});
     }
     
     public function addFactory(f:Agent, o:Operation, t:Target, callback:Function):void
