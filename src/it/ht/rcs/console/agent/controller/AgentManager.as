@@ -121,6 +121,10 @@ package it.ht.rcs.console.agent.controller
     {
       DB.instance.agent.destroy_download(agent, downloadId, callback);
     }
+    public function deleteUpload(agent:Agent, uploadId:String, callback:Function=null):void
+    {
+      DB.instance.agent.destroy_upload(agent, uploadId, callback);
+    }
     
     
     public function getUploads(agent:Agent, callback:Function):void
