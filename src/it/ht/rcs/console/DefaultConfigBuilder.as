@@ -428,10 +428,25 @@ package it.ht.rcs.console
 //        }
 //      }
       for each (var module:Object in modules) {
+       // trace("module: "+module.module+"> is supported? "+moduleIsSupported(platform, module.module, modules))
         if (!moduleIsSupported(platform, module.module, modules)) {
           //config.modules.splice(config.modules.indexOf(module), 1);
           deleteModuleReferences(config, module.module);
          
+        }
+      }
+    }
+    
+    public static function addMissingModules(platform:String, config:Object):void
+    {
+      config.modules=[]
+      var modules:Array = DefaultConfigBuilder.getModules(true);
+      for each (var module:Object in modules) {
+        
+        if (moduleIsSupported(platform, module.module, modules)) {
+         //do something
+          
+          config.modules.push(module)
         }
       }
     }
