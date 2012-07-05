@@ -3,6 +3,7 @@ package it.ht.rcs.console.build.rest
   import it.ht.rcs.console.build.model.Exploit;
   import it.ht.rcs.console.build.model.ExploitParam;
   import it.ht.rcs.console.build.model.SymbianConf;
+  import it.ht.rcs.console.build.model.Template;
   
   import mx.collections.ArrayCollection;
   import mx.rpc.events.ResultEvent;
@@ -36,6 +37,20 @@ package it.ht.rcs.console.build.rest
     public function symbian_conf(conf:Object, onResult:Function=null, onFault:Function=null):void
     {
       
+    }
+    
+    public function create_template(template:Template, onResult:Function=null, onFault:Function=null):void
+    {
+      
+    }
+    public function get_templates(onResult:Function=null, onFault:Function=null):void
+    {
+    
+    }
+    
+    public function destroy_template(template:Template, onResult:Function=null, onFault:Function=null):void
+    {
+    
     }
     
   }

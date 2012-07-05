@@ -3,6 +3,7 @@ package it.ht.rcs.console.build.controller
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.build.model.Exploit;
   import it.ht.rcs.console.build.model.SymbianConf;
+  import it.ht.rcs.console.build.model.Template;
   import it.ht.rcs.console.controller.ItemManager;
   
   import mx.collections.ArrayCollection;
@@ -80,6 +81,21 @@ package it.ht.rcs.console.build.controller
     public function getSymbianConf(conf:Object=null,onResult:Function=null, onFault:Function=null):void
     {
       DB.instance.build.symbian_conf(conf,onResult,onFault);
+    }
+    
+    public function addTemplate(template:Template=null,onResult:Function=null, onFault:Function=null):void
+    {
+      DB.instance.build.create_template(template,onResult,onFault);
+    }
+    
+    public function getTemplates(onResult:Function=null, onFault:Function=null):void
+    {
+      DB.instance.build.get_templates(onResult,onFault);
+    }
+    
+    public function destroyTemplate(template:Template, onResult:Function=null, onFault:Function=null):void
+    {
+      DB.instance.build.destroy_template(template, onResult, onFault);
     }
     
     public function getFormats(platform:String):ArrayCollection
