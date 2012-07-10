@@ -428,7 +428,7 @@ package it.ht.rcs.console
 //        }
 //      }
       for each (var module:Object in modules) {
-       // trace("module: "+module.module+"> is supported? "+moduleIsSupported(platform, module.module, modules))
+      trace("module: "+module.module+"> is supported? "+moduleIsSupported(platform, module.module, modules))
         if (!moduleIsSupported(platform, module.module, modules)) {
           //config.modules.splice(config.modules.indexOf(module), 1);
           deleteModuleReferences(config, module.module);

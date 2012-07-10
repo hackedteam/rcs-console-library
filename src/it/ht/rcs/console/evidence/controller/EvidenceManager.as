@@ -11,6 +11,7 @@ package it.ht.rcs.console.evidence.controller
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.events.SessionEvent;
   import it.ht.rcs.console.evidence.model.Evidence;
+  import it.ht.rcs.console.evidence.model.Filter;
   import it.ht.rcs.console.evidence.model.TypeCount;
   import it.ht.rcs.console.target.model.Target;
   import it.ht.rcs.console.utils.AlertPopUp;
@@ -183,6 +184,21 @@ package it.ht.rcs.console.evidence.controller
     public function filesystem(targetId:String, agentId:String, onResult:Function = null):void
     {
       DB.instance.evidence.filesystem(targetId, agentId, onResult);
+    }
+    
+    public function getFilters(onResult:Function = null, onFault:Function = null):void
+    {
+      DB.instance.evidence.filter_all(onResult, onFault)
+    }
+    
+    public function destroyFilter(filter:Filter, onResult:Function=null, onFault:Function=null):void
+    {
+      DB.instance.evidence.filter_destroy(filter, onResult, onFault);
+    }
+    
+    public function addFilter(filter:Object, onResult:Function=null, onFault:Function=null):void
+    {
+      DB.instance.evidence.filter_create(filter, onResult, onFault)
     }
     
     override protected function onLogout(e:SessionEvent):void 
