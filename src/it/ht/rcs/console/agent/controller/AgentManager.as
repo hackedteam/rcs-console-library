@@ -57,6 +57,7 @@ package it.ht.rcs.console.agent.controller
     
     public function addConfig(agent:Agent, config:String, callback:Function=null, faultCallback:Function=null):void
     {
+      var obj:Object=JSON.parse(config)
       DB.instance.agent.add_config(agent, config, function(e:ResultEvent):void {
         if (callback != null)
           callback(e.result);
