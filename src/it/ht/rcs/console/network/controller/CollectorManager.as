@@ -109,7 +109,7 @@ package it.ht.rcs.console.network.controller
       
       return super.getView(null, entryFilter);
       
-    }
+    } 
     
     public function upgradeAnon(_id:String, callback:Function=null, errback:Function=null):void
     {
