@@ -64,6 +64,7 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
     private var _internal_dashboard : it.ht.rcs.console.search.model.StatEvidence;
     private var _internal_user : String;
     private var _internal_size : Number;
+    private var _internal_ghost : Boolean;
 
     private static var emptyArray:Array = new Array();
 
@@ -159,6 +160,12 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
     public function get size() : Number
     {
         return _internal_size;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get ghost() : Boolean
+    {
+        return _internal_ghost;
     }
 
     public function clearAssociations() : void
@@ -291,6 +298,16 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
         {
             _internal_size = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "size", oldValue, _internal_size));
+        }
+    }
+
+    public function set ghost(value:Boolean) : void
+    {
+        var oldValue:Boolean = _internal_ghost;
+        if (oldValue !== value)
+        {
+            _internal_ghost = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "ghost", oldValue, _internal_ghost));
         }
     }
 

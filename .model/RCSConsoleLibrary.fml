@@ -2148,141 +2148,6 @@
     <property name="ident_param" type="string"/>
     <property name="probability" type="integer"/>
   </entity>
-  <service name="DBAudit">
-    <annotation name="ActionScriptGeneration">
-      <item name="ServiceType">HTTPMultiService</item>
-      <item name="Package">it.ht.rcs.console.audit.rest</item>
-      <item name="rootURL">https://localhost:4444</item>
-    </annotation>
-    <annotation name="ServiceTypeGroup">
-      <item name="ServiceBackendType">HTTPService</item>
-    </annotation>
-    <annotation name="ServiceConfig">
-      <item name="DEFAULT_ENTITY_PACKAGE">it.ht.rcs.console.audit.model</item>
-      <item name="LINKED_FILE"></item>
-    </annotation>
-    <function name="all_" return-type="Audit[]">
-      <annotation name="analyze group">
-        <item name="analyzed">true</item>
-      </annotation>
-      <annotation name="ActionScriptGeneration">
-        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
-        <item name="method">GET</item>
-        <item name="url">/audit</item>
-      </annotation>
-      <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/audit</item>
-      </annotation>
-      <annotation name="ValidProperties">
-        <item name="propertySpecifier">agent_name,operation_name,time,desc,_id,target_name,action,actor,group_name,user_name</item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="inputParamNames">filter,startIndex,numItems</item>
-        <item name="inputParams">string,integer,integer</item>
-        <item name="returnType">opaque</item>
-      </annotation>
-      <parameter name="filter" type="string"/>
-      <parameter name="startIndex" type="integer"/>
-      <parameter name="numItems" type="integer"/>
-    </function>
-    <function name="count_" return-type="integer">
-      <annotation name="analyze group">
-        <item name="analyzed">true</item>
-      </annotation>
-      <annotation name="ActionScriptGeneration">
-        <item name="SerializationFilter">com.adobe.serializers.xml.XMLSerializationFilter</item>
-        <item name="method">GET</item>
-        <item name="url">/audit/count</item>
-      </annotation>
-      <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/audit/count</item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="inputParamNames">filter</item>
-        <item name="inputParams">string</item>
-        <item name="returnType">opaque</item>
-      </annotation>
-      <parameter name="filter" type="string"/>
-    </function>
-    <function name="filters_" return-type="AuditFilter">
-      <annotation name="analyze group">
-        <item name="analyzed">true</item>
-      </annotation>
-      <annotation name="ActionScriptGeneration">
-        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
-        <item name="method">GET</item>
-        <item name="url">/audit/filters</item>
-      </annotation>
-      <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/audit/filters</item>
-      </annotation>
-      <annotation name="ValidProperties">
-        <item name="propertySpecifier">operation_name,_id,target_name,action,actor,group_name,user_name,agent_name</item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="returnType">opaque</item>
-      </annotation>
-    </function>
-  </service>
-  <entity name="AuditFilter">
-    <annotation name="EntityProperties">
-      <item name="EntityOriginalName">AuditFilter</item>
-    </annotation>
-    <annotation name="service Group">
-      <item name="service">DBAudit</item>
-    </annotation>
-    <annotation name="ServerProperties">
-      <item name="IncludeRemoteClass">nonempty</item>
-    </annotation>
-    <annotation name="filters_">
-      <item name="propertySpecifier">operation_name,_id,target_name,action,actor,group_name,user_name,agent_name</item>
-    </annotation>
-    <annotation name="ActionScriptGeneration">
-      <item name="Package">it.ht.rcs.console.audit.model</item>
-    </annotation>
-    <property name="operation_name" type="string[]" required="true"/>
-    <property name="_id" type="string" required="true"/>
-    <property name="target_name" type="string[]" required="true"/>
-    <property name="action" type="string[]" required="true"/>
-    <property name="actor" type="string[]" required="true"/>
-    <property name="group_name" type="string[]" required="true"/>
-    <property name="user_name" type="string[]" required="true"/>
-    <property name="agent_name" type="string[]" required="true"/>
-  </entity>
-  <entity name="Audit" persistent="true">
-    <annotation name="EntityProperties">
-      <item name="EntityOriginalName">Audit</item>
-    </annotation>
-    <annotation name="service Group">
-      <item name="service">DBAudit</item>
-    </annotation>
-    <annotation name="ServerProperties">
-      <item name="IncludeRemoteClass">nonempty</item>
-    </annotation>
-    <annotation name="all_">
-      <item name="propertySpecifier">agent_name,operation_name,time,desc,_id,target_name,action,actor,group_name,user_name</item>
-      <item name="pagingEnabled">true</item>
-      <item name="positionalPagingParameters">true</item>
-      <item name="countOperation">count_</item>
-    </annotation>
-    <annotation name="ActionScriptGeneration">
-      <item name="Package">it.ht.rcs.console.audit.model</item>
-    </annotation>
-    <annotation name="DataManagement">
-      <item name="managingService">DBAudit</item>
-      <item name="fillFunc">all_</item>
-    </annotation>
-    <property name="agent_name" type="string" required="true"/>
-    <property name="operation_name" type="string" required="true"/>
-    <property name="time" type="integer" required="true"/>
-    <property name="desc" type="string" required="true"/>
-    <id name="_id" type="string"/>
-    <property name="target_name" type="string" required="true"/>
-    <property name="action" type="string" required="true"/>
-    <property name="actor" type="string" required="true"/>
-    <property name="group_name" type="string" required="true"/>
-    <property name="user_name" type="string" required="true"/>
-  </entity>
   <service name="DBUser">
     <annotation name="ActionScriptGeneration">
       <item name="ServiceType">HTTPMultiService</item>
@@ -3747,6 +3612,7 @@
     <property name="dashboard" type="StatEvidence" required="true"/>
     <property name="user" type="string" required="true"/>
     <property name="size" type="double" required="true"/>
+    <property name="ghost" type="boolean" required="true"/>
   </entity>
   <entity name="Config">
     <annotation name="EntityProperties">
@@ -4372,5 +4238,140 @@
     <property name="internal_address" type="string"/>
     <property name="created_at" type="string"/>
     <property name="instance" type="string"/>
+  </entity>
+  <service name="DBAudit">
+    <annotation name="ActionScriptGeneration">
+      <item name="ServiceType">HTTPMultiService</item>
+      <item name="Package">it.ht.rcs.console.audit.rest</item>
+      <item name="rootURL">https://localhost:4444</item>
+    </annotation>
+    <annotation name="ServiceTypeGroup">
+      <item name="ServiceBackendType">HTTPService</item>
+    </annotation>
+    <annotation name="ServiceConfig">
+      <item name="DEFAULT_ENTITY_PACKAGE">it.ht.rcs.console.audit.model</item>
+      <item name="LINKED_FILE"></item>
+    </annotation>
+    <function name="all_" return-type="Audit[]">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/audit</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/audit</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">agent_name,operation_name,time,desc,_id,target_name,action,actor,group_name,user_name</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParamNames">filter,startIndex,numItems</item>
+        <item name="inputParams">string,integer,integer</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="filter" type="string"/>
+      <parameter name="startIndex" type="integer"/>
+      <parameter name="numItems" type="integer"/>
+    </function>
+    <function name="count_" return-type="integer">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.xml.XMLSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/audit/count</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/audit/count</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParamNames">filter</item>
+        <item name="inputParams">string</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="filter" type="string"/>
+    </function>
+    <function name="filters_" return-type="AuditFilter">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/audit/filters</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/audit/filters</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">operation_name,_id,target_name,action,actor,group_name,user_name,agent_name</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+      </annotation>
+    </function>
+  </service>
+  <entity name="AuditFilter">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">AuditFilter</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBAudit</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="filters_">
+      <item name="propertySpecifier">operation_name,_id,target_name,action,actor,group_name,user_name,agent_name</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.audit.model</item>
+    </annotation>
+    <property name="operation_name" type="string[]" required="true"/>
+    <property name="_id" type="string" required="true"/>
+    <property name="target_name" type="string[]" required="true"/>
+    <property name="action" type="string[]" required="true"/>
+    <property name="actor" type="string[]" required="true"/>
+    <property name="group_name" type="string[]" required="true"/>
+    <property name="user_name" type="string[]" required="true"/>
+    <property name="agent_name" type="string[]" required="true"/>
+  </entity>
+  <entity name="Audit" persistent="true">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Audit</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBAudit</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="all_">
+      <item name="propertySpecifier">agent_name,operation_name,time,desc,_id,target_name,action,actor,group_name,user_name</item>
+      <item name="pagingEnabled">true</item>
+      <item name="positionalPagingParameters">true</item>
+      <item name="countOperation">count_</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.audit.model</item>
+    </annotation>
+    <annotation name="DataManagement">
+      <item name="managingService">DBAudit</item>
+      <item name="fillFunc">all_</item>
+    </annotation>
+    <property name="agent_name" type="string" required="true"/>
+    <property name="operation_name" type="string" required="true"/>
+    <property name="time" type="integer" required="true"/>
+    <property name="desc" type="string" required="true"/>
+    <id name="_id" type="string"/>
+    <property name="target_name" type="string" required="true"/>
+    <property name="action" type="string" required="true"/>
+    <property name="actor" type="string" required="true"/>
+    <property name="group_name" type="string" required="true"/>
+    <property name="user_name" type="string" required="true"/>
   </entity>
 </model>
