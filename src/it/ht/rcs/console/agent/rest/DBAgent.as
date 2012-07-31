@@ -131,6 +131,12 @@ package it.ht.rcs.console.agent.rest
       resp.token = move_(JSON.stringify({ _id: agentId, target: targetId}));
     }
     
+    public function activate_ghost(agent:Agent, sync:Array, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = activate_ghost_(JSON.stringify({ _id: agent._id, sync: sync}));
+    }
+    
     /**
      * Override super.init() to provide any initialization customization if needed.
      */
