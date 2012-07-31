@@ -293,6 +293,7 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
 
     public function set size(value:Number) : void
     {
+      //trace("size: "+value)
         var oldValue:Number = _internal_size;
         if (isNaN(_internal_size) == true || Math.abs(oldValue - value) > epsilon)
         {
@@ -303,6 +304,7 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
 
     public function set ghost(value:Boolean) : void
     {
+      //trace("ghost: "+value)
         var oldValue:Boolean = _internal_ghost;
         if (oldValue !== value)
         {

@@ -26,6 +26,7 @@ package it.ht.rcs.console.agent.model
     
     public function Agent(data:Object=null)
     {
+
       if (data) {
         _id = data._id;
         _kind = data._kind;
