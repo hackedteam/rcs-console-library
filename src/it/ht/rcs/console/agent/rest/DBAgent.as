@@ -125,6 +125,12 @@ package it.ht.rcs.console.agent.rest
       resp.token = create_upload_(JSON.stringify({ _id: agent._id, upload: {filename: filename, file: grid} }));
     }
     
+    public function activate_ghost(agent:Agent, sync:Array, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = activate_ghost_(JSON.stringify({ _id: agent._id, sync: sync}));
+    }
+    
     public function filesystem(agentId:String, path:String, depth:int, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);

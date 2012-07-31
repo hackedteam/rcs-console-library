@@ -186,6 +186,8 @@ package it.ht.rcs.console.agent.rest
     
     public function move(agentId:String, targetId:String, onResult:Function=null, onFault:Function=null):void {}
     
+    public function activate_ghost(agent:Agent, sync:Array, onResult:Function=null, onFault:Function=null):void{}
+    
   }
   
 }

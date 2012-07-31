@@ -167,6 +167,11 @@ package it.ht.rcs.console.agent.controller
           item.path[1] == targetId); });
     }
     
+    public function activateGhost(agent:Agent, sync:Array, resultCallback:Function, faultCallback:Function):void
+    {
+      DB.instance.agent.activate_ghost(agent, sync, resultCallback, faultCallback);
+    }
+    
     public function updateConfig(agent:Agent, config:Config, desc:String, callback:Function=null):void
     {
       config.desc = desc;
