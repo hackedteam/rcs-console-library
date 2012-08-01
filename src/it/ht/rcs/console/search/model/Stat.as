@@ -8,6 +8,7 @@ package it.ht.rcs.console.search.model
     public function Stat(data:Object=null) 
     {
       if (data) {
+        
         last_sync = data.last_sync;
         last_sync_status = data.last_sync_status;
         last_child = data.last_child;
@@ -49,6 +50,8 @@ package it.ht.rcs.console.search.model
     /**
      * END OF DO NOT MODIFY SECTION
      **/
+    
+    
   }
 
 }
