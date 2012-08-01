@@ -24,14 +24,14 @@ internal class _StatEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("last_child", "last_sync", "source", "_id", "last_sync_status", "grid_size", "evidence", "device", "dashboard", "user", "size");
+    model_internal static var allProperties:Array = new Array("last_child", "last_sync", "source", "_id", "last_sync_status", "grid_size", "evidence", "device", "dashboard", "user", "size", "ghost");
     model_internal static var allAssociationProperties:Array = new Array();
-    model_internal static var allRequiredProperties:Array = new Array("last_sync", "source", "_id", "last_sync_status", "grid_size", "evidence", "device", "dashboard", "user", "size");
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("last_child", "last_sync", "source", "_id", "last_sync_status", "grid_size", "evidence", "device", "dashboard", "user", "size");
+    model_internal static var allRequiredProperties:Array = new Array("last_sync", "source", "_id", "last_sync_status", "grid_size", "evidence", "device", "dashboard", "user", "size", "ghost");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("last_child", "last_sync", "source", "_id", "last_sync_status", "grid_size", "evidence", "device", "dashboard", "user", "size", "ghost");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("last_child", "last_sync", "source", "_id", "last_sync_status", "grid_size", "evidence", "device", "dashboard", "user", "size");
+    model_internal static var dataProperties:Array = new Array("last_child", "last_sync", "source", "_id", "last_sync_status", "grid_size", "evidence", "device", "dashboard", "user", "size", "ghost");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("last_child", "last_sync", "source", "_id", "last_sync_status", "grid_size", "evidence", "device", "dashboard", "user", "size");
+    model_internal static var nonDerivedProperties:Array = new Array("last_child", "last_sync", "source", "_id", "last_sync_status", "grid_size", "evidence", "device", "dashboard", "user", "size", "ghost");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array("last_child");
     model_internal static var collectionBaseMap:Object;
@@ -92,6 +92,7 @@ internal class _StatEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
             model_internal::dependentsOnMap["dashboard"] = new Array();
             model_internal::dependentsOnMap["user"] = new Array();
             model_internal::dependentsOnMap["size"] = new Array();
+            model_internal::dependentsOnMap["ghost"] = new Array();
 
             // collection base map
             model_internal::collectionBaseMap = new Object();
@@ -111,6 +112,7 @@ internal class _StatEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
         model_internal::propertyTypeMap["dashboard"] = "it.ht.rcs.console.search.model.StatEvidence";
         model_internal::propertyTypeMap["user"] = "String";
         model_internal::propertyTypeMap["size"] = "Number";
+        model_internal::propertyTypeMap["ghost"] = "Boolean";
 
         model_internal::_instance = value;
         model_internal::_sourceValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForSource);
@@ -431,6 +433,12 @@ internal class _StatEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
 
     [Bindable(event="propertyChange")]
     public function get isSizeAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isGhostAvailable():Boolean
     {
         return true;
     }
@@ -1119,6 +1127,12 @@ internal class _StatEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
 
     [Bindable(event="propertyChange")]   
     public function get sizeStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get ghostStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }

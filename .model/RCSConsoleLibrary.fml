@@ -4398,15 +4398,16 @@
       </annotation>
       <parameter name="strXml" type="string"/>
     </function>
-    <function name="activate_ghost_" return-type="opaque">
+    <function name="activate_ghost_" return-type="void">
       <annotation name="analyze group">
-        <item name="analyzed">false</item>
+        <item name="analyzed">true</item>
       </annotation>
       <annotation name="ActionScriptGeneration">
         <item name="method">POST</item>
         <item name="contentType">application/xml</item>
         <item name="requestBodyParameter">true</item>
         <item name="url">/agent/activate_ghost</item>
+        <item name="SerializationFilter">com.adobe.serializers.xml.XMLSerializationFilter</item>
       </annotation>
       <annotation name="url group">
         <item name="completeURL">https://localhost:4444/agent/activate_ghost</item>
@@ -4443,6 +4444,7 @@
     <property name="dashboard" type="StatEvidence" required="true"/>
     <property name="user" type="string" required="true"/>
     <property name="size" type="double" required="true"/>
+    <property name="ghost" type="boolean" required="true"/>
   </entity>
   <entity name="Config">
     <annotation name="EntityProperties">

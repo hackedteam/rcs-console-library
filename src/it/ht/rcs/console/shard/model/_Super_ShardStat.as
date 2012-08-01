@@ -317,7 +317,6 @@ public class _Super_ShardStat extends flash.events.EventDispatcher implements co
     /**
      * derived property calculators
      */
-    
 
     /**
      * isValid calculator
