@@ -104,6 +104,27 @@ package it.ht.rcs.console.network.controller
       return false;
     }
     
+    private function connectedFilter(item:Object):Boolean
+    {
+      if (item['address'] == null || item['address'] == '')
+        return false;
+      
+      if (item['type'] == 'local')
+        return true;
+      
+      if (item['type'] == 'remote' && (item['next'][0] != null || item['prev'][0] != null))
+        return true;
+      
+      return false;
+    }
+    
+    public function getConnected(sortCriteria:ISort=null, filterFunction:Function=null):ListCollectionView
+    {
+      
+      return super.getView(null, connectedFilter);
+      
+    }
+    
     public function getEntryPointsView(sortCriteria:ISort=null, filterFunction:Function=null):ListCollectionView
     {
       
