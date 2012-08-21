@@ -57,6 +57,7 @@ public class BackupJob extends _Super_BackupJob
       return {
         _id: '',
         enabled: false,
+        incremental: false,
         what: 'metadata',
         when: new BackupJobTime({week: [0], month: [], time: '00:00'}),
         name: name

@@ -21,14 +21,14 @@ internal class _BackupJobEntityMetadata extends com.adobe.fiber.valueobjects.Abs
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("enabled", "lastrun", "updated_at", "_id", "what", "status", "when", "name", "created_at");
+    model_internal static var allProperties:Array = new Array("enabled", "incremental", "lastrun", "updated_at", "_id", "what", "status", "when", "name", "created_at");
     model_internal static var allAssociationProperties:Array = new Array();
     model_internal static var allRequiredProperties:Array = new Array();
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("enabled", "lastrun", "updated_at", "_id", "what", "status", "when", "name", "created_at");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("enabled", "incremental", "lastrun", "updated_at", "_id", "what", "status", "when", "name", "created_at");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("enabled", "lastrun", "updated_at", "_id", "what", "status", "when", "name", "created_at");
+    model_internal static var dataProperties:Array = new Array("enabled", "incremental", "lastrun", "updated_at", "_id", "what", "status", "when", "name", "created_at");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("enabled", "lastrun", "updated_at", "_id", "what", "status", "when", "name", "created_at");
+    model_internal static var nonDerivedProperties:Array = new Array("enabled", "incremental", "lastrun", "updated_at", "_id", "what", "status", "when", "name", "created_at");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array();
     model_internal static var collectionBaseMap:Object;
@@ -49,6 +49,7 @@ internal class _BackupJobEntityMetadata extends com.adobe.fiber.valueobjects.Abs
             // dependents map
             model_internal::dependentsOnMap = new Object();
             model_internal::dependentsOnMap["enabled"] = new Array();
+            model_internal::dependentsOnMap["incremental"] = new Array();
             model_internal::dependentsOnMap["lastrun"] = new Array();
             model_internal::dependentsOnMap["updated_at"] = new Array();
             model_internal::dependentsOnMap["_id"] = new Array();
@@ -65,6 +66,7 @@ internal class _BackupJobEntityMetadata extends com.adobe.fiber.valueobjects.Abs
         // Property type Map
         model_internal::propertyTypeMap = new Object();
         model_internal::propertyTypeMap["enabled"] = "Boolean";
+        model_internal::propertyTypeMap["incremental"] = "Boolean";
         model_internal::propertyTypeMap["lastrun"] = "String";
         model_internal::propertyTypeMap["updated_at"] = "String";
         model_internal::propertyTypeMap["_id"] = "String";
@@ -308,6 +310,12 @@ internal class _BackupJobEntityMetadata extends com.adobe.fiber.valueobjects.Abs
     }
 
     [Bindable(event="propertyChange")]
+    public function get isIncrementalAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get isLastrunAvailable():Boolean
     {
         return true;
@@ -367,6 +375,12 @@ internal class _BackupJobEntityMetadata extends com.adobe.fiber.valueobjects.Abs
 
     [Bindable(event="propertyChange")]   
     public function get enabledStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get incrementalStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }

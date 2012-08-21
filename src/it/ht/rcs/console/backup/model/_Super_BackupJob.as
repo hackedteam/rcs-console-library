@@ -50,6 +50,7 @@ public class _Super_BackupJob extends flash.events.EventDispatcher implements co
      * properties
      */
     private var _internal_enabled : Boolean;
+    private var _internal_incremental : Boolean;
     private var _internal_lastrun : String;
     private var _internal_updated_at : String;
     private var _internal__id : String;
@@ -85,6 +86,12 @@ public class _Super_BackupJob extends flash.events.EventDispatcher implements co
     public function get enabled() : Boolean
     {
         return _internal_enabled;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get incremental() : Boolean
+    {
+        return _internal_incremental;
     }
 
     [Bindable(event="propertyChange")]
@@ -150,6 +157,16 @@ public class _Super_BackupJob extends flash.events.EventDispatcher implements co
         {
             _internal_enabled = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "enabled", oldValue, _internal_enabled));
+        }
+    }
+
+    public function set incremental(value:Boolean) : void
+    {
+        var oldValue:Boolean = _internal_incremental;
+        if (oldValue !== value)
+        {
+            _internal_incremental = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "incremental", oldValue, _internal_incremental));
         }
     }
 
