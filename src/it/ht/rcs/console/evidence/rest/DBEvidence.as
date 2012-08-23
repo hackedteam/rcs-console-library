@@ -39,6 +39,12 @@ package it.ht.rcs.console.evidence.rest
       resp.token = destroy_(JSON.stringify(params));
     }
 
+    public function destroy_all(params: Object, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = destroy_all_(JSON.stringify(params));
+    }
+
     public function sync_start(params:Object, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);

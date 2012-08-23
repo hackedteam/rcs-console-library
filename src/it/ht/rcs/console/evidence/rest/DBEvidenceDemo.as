@@ -130,6 +130,10 @@ package it.ht.rcs.console.evidence.rest
 		{
 		}
 
+    public function destroy_all(params: Object, onResult:Function=null, onFault:Function=null):void
+    {
+    }
+    
 		public function agent_status(params:Object, onResult:Function=null, onFault:Function=null):void
 		{
 		}
