@@ -19,8 +19,7 @@ package it.ht.rcs.console.search.model
         dashboard = data.dashboard;
         size = data.size;
         grid_size = data.grid_size;
-        ghost=data.ghost;
-
+        ghost = data.ghost;
       }
     }
     

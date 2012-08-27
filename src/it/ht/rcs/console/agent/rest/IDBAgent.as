@@ -30,6 +30,8 @@ package it.ht.rcs.console.agent.rest
     
     function destroy_download(agent:Agent, downloadId:String, onResult:Function=null, onFault:Function=null):void;
     
+    function destroy_upload(agent:Agent, uploadId:String, onResult:Function=null, onFault:Function=null):void;
+    
     function uploads(agent:Agent, onResult:Function=null, onFault:Function=null):void;
     
     function create_upload(agent:Agent, filename:String, grid:String, onResult:Function=null, onFault:Function=null):void;
@@ -41,7 +43,7 @@ package it.ht.rcs.console.agent.rest
     function purge(agentId:String, time:Number, size:Number, onResult:Function=null, onFault:Function=null):void
       
     function activate_ghost(agent:Agent, sync:Array, onResult:Function=null, onFault:Function=null):void
-  
+
   }
   
 }

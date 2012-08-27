@@ -5,6 +5,7 @@ package it.ht.rcs.console.evidence.rest
 	import it.ht.rcs.console.evidence.model.EvidenceData;
 	import it.ht.rcs.console.evidence.model.TypeCount;
 	import it.ht.rcs.console.target.rest.DBTargetDemo;
+  import it.ht.rcs.console.evidence.model.Filter;
 	
 	import mx.collections.ArrayCollection;
 	import mx.rpc.events.ResultEvent;
@@ -129,6 +130,10 @@ package it.ht.rcs.console.evidence.rest
 		{
 		}
 
+    public function destroy_all(params: Object, onResult:Function=null, onFault:Function=null):void
+    {
+    }
+    
 		public function agent_status(params:Object, onResult:Function=null, onFault:Function=null):void
 		{
 		}
@@ -287,6 +292,18 @@ package it.ht.rcs.console.evidence.rest
 		public function show(id:String, target:String, onResult:Function=null, onFault:Function=null):void
 		{
 		}
+    
+    public function filter_all(onResult:Function=null, onFault:Function=null):void
+    {
+    }
+    
+    public function filter_destroy(filter:Filter, onResult:Function=null, onFault:Function=null):void
+    {
+    }
+    
+    public function filter_create(filter:Object, onResult:Function=null, onFault:Function=null):void
+    {
+    }
 
 	}
 

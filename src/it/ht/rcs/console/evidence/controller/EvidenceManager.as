@@ -11,6 +11,7 @@ package it.ht.rcs.console.evidence.controller
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.events.SessionEvent;
   import it.ht.rcs.console.evidence.model.Evidence;
+  import it.ht.rcs.console.evidence.model.Filter;
   import it.ht.rcs.console.evidence.model.TypeCount;
   import it.ht.rcs.console.target.model.Target;
   import it.ht.rcs.console.utils.AlertPopUp;
@@ -93,27 +94,32 @@ package it.ht.rcs.console.evidence.controller
       DB.instance.evidence.update(event.source, property, evidenceFilter.target);
     }
     
-   override protected function onItemRemove(item:*):void
+    override protected function onItemRemove(item:*):void
     {
-      DB.instance.evidence.destroy(item, evidenceFilter.target);
+       DB.instance.evidence.destroy(item, evidenceFilter.target);
     }
-   
-   override public function removeItem(item:Object):void
-   {
-     _view.list.removeItemAt(_view.getItemIndex(item))
-   }
-   
-   public function removeCommand(item:Evidence, target:Target):void
-   {
-     trace("remove command");
-     DB.instance.evidence.destroy(item, target._id);
-   }
-   
-   public function removeIp(item:Evidence, target:Target):void
-   {
-     trace("remove command");
-     DB.instance.evidence.destroy(item, target._id);
-   }
+     
+    override public function removeItem(item:Object):void
+    {
+      _view.list.removeItemAt(_view.getItemIndex(item))
+    }
+    
+    public function destroy_all(params:Object):void
+    {
+      DB.instance.evidence.destroy_all(params);
+    }
+    
+    public function removeCommand(item:Evidence, target:Target):void
+    {
+      trace("remove command");
+      DB.instance.evidence.destroy(item, target._id);
+    }
+     
+    public function removeIp(item:Evidence, target:Target):void
+    {
+      trace("remove command");
+      DB.instance.evidence.destroy(item, target._id);
+    }
     
     public function info(onInfoResult:Function):void
     {
@@ -183,6 +189,21 @@ package it.ht.rcs.console.evidence.controller
     public function filesystem(targetId:String, agentId:String, onResult:Function = null):void
     {
       DB.instance.evidence.filesystem(targetId, agentId, onResult);
+    }
+    
+    public function getFilters(onResult:Function = null, onFault:Function = null):void
+    {
+      DB.instance.evidence.filter_all(onResult, onFault)
+    }
+    
+    public function destroyFilter(filter:Filter, onResult:Function=null, onFault:Function=null):void
+    {
+      DB.instance.evidence.filter_destroy(filter, onResult, onFault);
+    }
+    
+    public function addFilter(filter:Object, onResult:Function=null, onFault:Function=null):void
+    {
+      DB.instance.evidence.filter_create(filter, onResult, onFault)
     }
     
     override protected function onLogout(e:SessionEvent):void 

@@ -55,12 +55,13 @@ package it.ht.rcs.console.agent.controller
       DB.instance.agent.update(event.source, property);
     }
     
-    public function addConfig(agent:Agent, config:String, callback:Function=null):void
+    public function addConfig(agent:Agent, config:String, callback:Function=null, faultCallback:Function=null):void
     {
+      var obj:Object=JSON.parse(config)
       DB.instance.agent.add_config(agent, config, function(e:ResultEvent):void {
         if (callback != null)
           callback(e.result);
-      });
+      },function (e:FaultEvent):void{faultCallback(e)});
     }
     
     public function addFactory(f:Agent, o:Operation, t:Target, callback:Function):void
@@ -121,6 +122,10 @@ package it.ht.rcs.console.agent.controller
     {
       DB.instance.agent.destroy_download(agent, downloadId, callback);
     }
+    public function deleteUpload(agent:Agent, uploadId:String, callback:Function=null):void
+    {
+      DB.instance.agent.destroy_upload(agent, uploadId, callback);
+    }
     
     
     public function getUploads(agent:Agent, callback:Function):void
@@ -166,7 +171,6 @@ package it.ht.rcs.console.agent.controller
     {
       DB.instance.agent.activate_ghost(agent, sync, resultCallback, faultCallback);
     }
-
     
     public function updateConfig(agent:Agent, config:Config, desc:String, callback:Function=null):void
     {

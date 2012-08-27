@@ -11,6 +11,7 @@ package it.ht.rcs.console.push
   import it.ht.rcs.console.utils.AlertPopUp;
   
   import mx.core.FlexGlobals;
+  import mx.formatters.DateFormatter;
   import mx.rpc.Fault;
   import mx.rpc.events.FaultEvent;
   
@@ -117,6 +118,19 @@ package it.ht.rcs.console.push
       /* invalid auth */
       if (message.result != 'granted')
         backToLogin("auth", "invalid auth");
+      
+      var now:Date = new Date();
+      var epoch:Number = Math.round(now.time/1000);
+
+      trace("server time: " + message.time + " time is: " + epoch.toString());
+      /* check if we are desync with the server */
+      if (Math.abs(epoch - parseInt(message.time)) > 60) {
+        var server_now:Date = new Date(parseInt(message.time) * 1000);
+        var clockFormatter:DateFormatter = new DateFormatter();
+        clockFormatter.formatString = "YYYY-MM-DD JJ:NN:SS";
+
+        AlertPopUp.show("Your current time is: " + clockFormatter.format(now) + "\nbut server time is: " + clockFormatter.format(server_now) + "\n\nPlease synchronize the clock", "Clock desync detected");
+      }
     }
     
     protected function onPing():void

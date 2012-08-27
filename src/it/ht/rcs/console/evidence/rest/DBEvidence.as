@@ -2,6 +2,7 @@ package it.ht.rcs.console.evidence.rest
 {
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.evidence.model.Evidence;
+  import it.ht.rcs.console.evidence.model.Filter;
   
   import mx.collections.ArrayCollection;
   import mx.rpc.CallResponder;
@@ -36,6 +37,12 @@ package it.ht.rcs.console.evidence.rest
       params['_id'] = evidence._id;
       params['target'] = target;
       resp.token = destroy_(JSON.stringify(params));
+    }
+
+    public function destroy_all(params: Object, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = destroy_all_(JSON.stringify(params));
     }
 
     public function sync_start(params:Object, onResult:Function=null, onFault:Function=null):void
@@ -90,6 +97,24 @@ package it.ht.rcs.console.evidence.rest
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
       resp.token = show_(id, target);
+    }
+    
+    public function filter_all(onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = filter_all_();
+    }
+    
+    public function filter_destroy(filter:Filter, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = filter_destroy_(JSON.stringify({_id: filter._id}));
+    }
+    
+    public function filter_create(filter:Object, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = filter_create_(JSON.stringify(filter));
     }
 
     /**

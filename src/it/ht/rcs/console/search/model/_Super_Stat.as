@@ -303,7 +303,6 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
 
     public function set ghost(value:Boolean) : void
     {
-     
         var oldValue:Boolean = _internal_ghost;
         if (oldValue !== value)
         {
@@ -365,7 +364,6 @@ public class _Super_Stat extends flash.events.EventDispatcher implements com.ado
     /**
      * derived property calculators
      */
-    
 
     /**
      * isValid calculator

@@ -9,6 +9,7 @@ package it.ht.rcs.console.build.rest
 {
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.build.model.SymbianConf;
+  import it.ht.rcs.console.build.model.Template;
   
   import mx.rpc.CallResponder;
 
@@ -46,6 +47,24 @@ public class DBBuild extends _Super_DBBuild implements IDBBuild
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
       resp.token = symbian_conf_(JSON.stringify(conf));
     }
+    public function create_template(template:Template, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = template_create_(JSON.stringify({desc:template.desc, config:template.config}));
+    }
+    
+    public function get_templates(onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = template_all_();
+    }
+    
+    public function destroy_template(template:Template, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = template_destroy_(JSON.stringify({_id: template._id}))
+    }
+    
 }
 
 }

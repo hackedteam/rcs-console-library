@@ -1,6 +1,7 @@
 package it.ht.rcs.console.evidence.rest
 {
   import it.ht.rcs.console.evidence.model.Evidence;
+  import it.ht.rcs.console.evidence.model.Filter;
   
 
   public interface IDBEvidence
@@ -16,6 +17,10 @@ package it.ht.rcs.console.evidence.rest
     function total(params: Object, onResult:Function = null, onFault:Function = null):void;
     function filesystem(targetId:String, agentId:String, onResult:Function = null, onFault:Function = null):void;
     function show(id:String, target:String, onResult:Function = null, onFault:Function = null):void;
-    function destroy(evidence:Evidence, target:String, onResult:Function=null, onFault:Function=null):void
+    function destroy(evidence:Evidence, target:String, onResult:Function=null, onFault:Function=null):void;
+    function destroy_all(params: Object, onResult:Function=null, onFault:Function=null):void;
+    function filter_all(onResult:Function=null, onFault:Function=null):void;
+    function filter_create(filter:Object, onResult:Function=null, onFault:Function=null):void
+    function filter_destroy(filter:Filter, onResult:Function=null, onFault:Function=null):void;
   }
 }
