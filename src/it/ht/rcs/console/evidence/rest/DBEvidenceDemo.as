@@ -3,9 +3,9 @@ package it.ht.rcs.console.evidence.rest
 	import it.ht.rcs.console.agent.rest.DBAgentDemo;
 	import it.ht.rcs.console.evidence.model.Evidence;
 	import it.ht.rcs.console.evidence.model.EvidenceData;
+	import it.ht.rcs.console.evidence.model.Filter;
 	import it.ht.rcs.console.evidence.model.TypeCount;
 	import it.ht.rcs.console.target.rest.DBTargetDemo;
-  import it.ht.rcs.console.evidence.model.Filter;
 	
 	import mx.collections.ArrayCollection;
 	import mx.rpc.events.ResultEvent;
@@ -285,7 +285,7 @@ package it.ht.rcs.console.evidence.rest
         onResult(new ResultEvent('evidence.total', false, true, result));
 		}
 
-		public function filesystem(targetId:String, agentId:String, onResult:Function=null, onFault:Function=null):void
+		public function filesystem(targetId:String, agentId:String, filter:String, onResult:Function=null, onFault:Function=null):void
 		{
 		}
 

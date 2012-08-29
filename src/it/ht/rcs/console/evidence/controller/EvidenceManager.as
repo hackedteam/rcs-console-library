@@ -55,6 +55,7 @@ package it.ht.rcs.console.evidence.controller
     {
       super.refresh();
       trace(ObjectUtil.toString(evidenceFilter));
+     
       DB.instance.evidence.total(evidenceFilter, onCountResult);
       DB.instance.evidence.all(evidenceFilter, onResult);
     }
@@ -128,11 +129,13 @@ package it.ht.rcs.console.evidence.controller
     
     public function commands(onCommandsResult:Function):void
     {
+      trace(ObjectUtil.toString(commandsFilter));
       DB.instance.evidence.commands(commandsFilter, onCommandsResult);
     }
     
     public function ips(onIpsResult:Function):void
     {
+      trace(ObjectUtil.toString(ipsFilter));
       DB.instance.evidence.ips(ipsFilter, onIpsResult);
     }
 
@@ -186,9 +189,9 @@ package it.ht.rcs.console.evidence.controller
     }
     
   
-    public function filesystem(targetId:String, agentId:String, onResult:Function = null):void
+    public function filesystem(targetId:String, agentId:String, filter:String, onResult:Function = null):void
     {
-      DB.instance.evidence.filesystem(targetId, agentId, onResult);
+      DB.instance.evidence.filesystem(targetId, agentId, filter, onResult);
     }
     
     public function getFilters(onResult:Function = null, onFault:Function = null):void
@@ -211,6 +214,8 @@ package it.ht.rcs.console.evidence.controller
       super.onLogout(e);
       evidenceFilter = { date: 'dr' };
       infoFilter = { date: 'da' };
+      ipsFilter = { date: 'da' };
+      commandsFilter = { date: 'da' };
       _view = null;
     }
     

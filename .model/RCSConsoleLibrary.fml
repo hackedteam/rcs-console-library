@@ -4193,11 +4193,12 @@
       </annotation>
       <annotation name="original signature">
         <item name="returnType">opaque</item>
-        <item name="inputParamNames">target,agent</item>
-        <item name="inputParams">string,string</item>
+        <item name="inputParamNames">target,agent,filter</item>
+        <item name="inputParams">string,string,string</item>
       </annotation>
       <parameter name="target" type="string"/>
       <parameter name="agent" type="string"/>
+      <parameter name="filter" type="string"/>
     </function>
     <function name="show_" return-type="Evidence">
       <annotation name="analyze group">
@@ -4369,9 +4370,9 @@
         <item name="completeURL">https://localhost:4444/evidence/destroy_all</item>
       </annotation>
       <annotation name="original signature">
+        <item name="returnType">opaque</item>
         <item name="inputParamNames">strXml</item>
         <item name="inputParams">string</item>
-        <item name="returnType">opaque</item>
       </annotation>
       <parameter name="strXml" type="string"/>
     </function>
