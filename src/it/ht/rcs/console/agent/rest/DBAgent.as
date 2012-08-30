@@ -95,6 +95,12 @@ package it.ht.rcs.console.agent.rest
       resp.token = downloads_(agent._id);
     }
     
+    public function filesystems(agent:Agent, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = filesystems_(agent._id);
+    }
+    
     public function create_download(agentId:String, path:String, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
@@ -105,6 +111,12 @@ package it.ht.rcs.console.agent.rest
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
       resp.token = destroy_download_(JSON.stringify({ _id: agent._id, download: downloadId }));
+    }
+    
+    public function destroy_filesystem(agent:Agent, filesystemId:String, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = destroy_filesystem_(JSON.stringify({ _id: agent._id, filesystem: filesystemId }));
     }
     
     public function destroy_upload(agent:Agent, uploadId:String, onResult:Function=null, onFault:Function=null):void

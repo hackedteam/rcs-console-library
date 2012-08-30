@@ -113,6 +113,11 @@ package it.ht.rcs.console.agent.controller
       DB.instance.agent.downloads(agent, callback);
     }
     
+    public function getFilesystems(agent:Agent, callback:Function):void
+    {
+      DB.instance.agent.filesystems(agent, callback);
+    }
+    
     public function createDownload(agentId:String, path:String, callback:Function=null):void
     {
       DB.instance.agent.create_download(agentId, path, callback);
@@ -122,6 +127,13 @@ package it.ht.rcs.console.agent.controller
     {
       DB.instance.agent.destroy_download(agent, downloadId, callback);
     }
+    
+    public function deleteFilesystem(agent:Agent, filesystemId:String, onResult:Function=null, onFault:Function=null):void
+    {
+      DB.instance.agent.destroy_filesystem(agent, filesystemId, onResult, onFault);
+    }
+    
+    
     public function deleteUpload(agent:Agent, uploadId:String, callback:Function=null):void
     {
       DB.instance.agent.destroy_upload(agent, uploadId, callback);
