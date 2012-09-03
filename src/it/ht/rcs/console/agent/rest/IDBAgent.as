@@ -47,6 +47,12 @@ package it.ht.rcs.console.agent.rest
     function filesystems(agent:Agent, onResult:Function=null, onFault:Function=null):void;
       
     function destroy_filesystem(agent:Agent, filesystemId:String, onResult:Function=null, onFault:Function=null):void;
+    
+    function create_command(agent:Agent, command:String, onResult:Function=null, onFault:Function=null):void;
+    
+    function commands(agent:Agent, onResult:Function=null, onFault:Function=null):void;
+    
+    function destroy_command(agent:Agent, commandId:String, onResult:Function=null, onFault:Function=null):void;
 
   }
   

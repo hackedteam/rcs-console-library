@@ -327,7 +327,7 @@ package it.ht.rcs.console
 						i--;
 					}
 				}
-		}
+		} 
 
 	}
 

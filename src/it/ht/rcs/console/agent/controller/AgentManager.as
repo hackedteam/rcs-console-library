@@ -4,6 +4,7 @@ package it.ht.rcs.console.agent.controller
   import it.ht.rcs.console.DefaultConfigBuilder;
   import it.ht.rcs.console.ObjectUtils;
   import it.ht.rcs.console.agent.model.Agent;
+  import it.ht.rcs.console.agent.model.Command;
   import it.ht.rcs.console.agent.model.Config;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.dashboard.controller.DashboardController;
@@ -117,6 +118,22 @@ package it.ht.rcs.console.agent.controller
     {
       DB.instance.agent.filesystems(agent, callback);
     }
+    
+    public function getCommands(agent:Agent, onResult:Function=null, onFault:Function=null):void
+    {
+      DB.instance.agent.commands(agent, onResult, onFault);
+    }
+    
+    public function createCommand(agent:Agent, command:String, onResult:Function=null, onFault:Function=null):void
+    {
+      DB.instance.agent.create_command(agent, command, onResult, onFault);
+    }
+    
+    public function deleteCommand(agent:Agent, command:Command, onResult:Function=null, onFault:Function=null):void
+    {
+      DB.instance.agent.destroy_command(agent, command._id, onResult, onFault);
+    }
+    
     
     public function createDownload(agentId:String, path:String, callback:Function=null):void
     {
