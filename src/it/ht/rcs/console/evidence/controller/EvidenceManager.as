@@ -191,6 +191,7 @@ package it.ht.rcs.console.evidence.controller
   
     public function filesystem(targetId:String, agentId:String, filter:String, onResult:Function = null):void
     {
+      filter=filter.replace("//","/")
       DB.instance.evidence.filesystem(targetId, agentId, filter, onResult);
     }
     
