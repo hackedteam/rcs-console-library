@@ -57,9 +57,11 @@ package it.ht.rcs.console.dashboard.controller
         SearchManager.instance.showItem(id, function (item:SearchItem):void {
           if (item != null)
             manageItem(item);
+          trace("Refresh > "+item.name)
         }, function(fe:FaultEvent):void {}); // Do nothing when disconnected.
       }
       dispatchDataLoadedEvent();
+      
     }
     
     private function manageItem(item:SearchItem):void
@@ -70,6 +72,7 @@ package it.ht.rcs.console.dashboard.controller
     private var currentOperationId:String;
     private function manageOperation(item:SearchItem):void
     {
+      trace("Manage Operation > "+item.name)
       var dashboardItem:DashboardItem = getItem(item._id);
       if (dashboardItem == null) {
         dashboardItem = new DashboardItem();
@@ -87,6 +90,7 @@ package it.ht.rcs.console.dashboard.controller
           var ti:TargetInfo = new TargetInfo();
           ti._id = target._id;
           ti.name = target.name;
+          trace("> "+target.name)
           dashboardItem.targets.addItem(ti);
         }
         
@@ -113,6 +117,7 @@ package it.ht.rcs.console.dashboard.controller
     
     private function updateTargetList(dashboardItem:DashboardItem):void
     {
+      trace("update target list")
       for each (var t:TargetInfo in dashboardItem.targets.source) {
         
         SearchManager.instance.showItem(t._id, function(target:SearchItem):void {
