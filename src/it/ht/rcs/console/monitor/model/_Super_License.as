@@ -72,6 +72,7 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
     private var _internal_connectors : Boolean;
     private var _internal_serial : String;
     private var _internal_rmi : ArrayCollection;
+    private var _internal_scout : Boolean;
 
     private static var emptyArray:Array = new Array();
 
@@ -196,6 +197,12 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
     public function get rmi() : ArrayCollection
     {
         return _internal_rmi;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get scout() : Boolean
+    {
+        return _internal_scout;
     }
 
     public function clearAssociations() : void
@@ -396,6 +403,16 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
         }
     }
 
+    public function set scout(value:Boolean) : void
+    {
+        var oldValue:Boolean = _internal_scout;
+        if (oldValue !== value)
+        {
+            _internal_scout = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "scout", oldValue, _internal_scout));
+        }
+    }
+
     /**
      * Data/source property setter listeners
      *
@@ -468,7 +485,6 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
     /**
      * derived property calculators
      */
-    
 
     /**
      * isValid calculator

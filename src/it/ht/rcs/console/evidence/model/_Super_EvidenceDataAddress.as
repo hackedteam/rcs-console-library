@@ -220,7 +220,6 @@ public class _Super_EvidenceDataAddress extends flash.events.EventDispatcher imp
     /**
      * derived property calculators
      */
-    
 
     /**
      * isValid calculator

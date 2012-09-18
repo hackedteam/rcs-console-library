@@ -273,7 +273,6 @@ public class _Super_BackupJob extends flash.events.EventDispatcher implements co
     /**
      * derived property calculators
      */
-    
 
     /**
      * isValid calculator
