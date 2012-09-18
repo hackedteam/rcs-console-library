@@ -25,14 +25,14 @@ internal class _AgentEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("group_ids", "demo", "_kind", "platform", "desc", "status", "uninstalled", "type", "deleted", "stat", "version", "configs", "updated_at", "_id", "ident", "name", "path", "upgradable", "instance", "counter");
+    model_internal static var allProperties:Array = new Array("group_ids", "demo", "scout", "_kind", "platform", "desc", "status", "uninstalled", "type", "deleted", "stat", "version", "configs", "updated_at", "_id", "ident", "name", "path", "upgradable", "instance", "counter");
     model_internal static var allAssociationProperties:Array = new Array();
-    model_internal static var allRequiredProperties:Array = new Array("demo", "platform", "uninstalled", "type", "deleted", "version", "configs", "updated_at", "instance");
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("group_ids", "demo", "_kind", "platform", "desc", "status", "uninstalled", "type", "deleted", "stat", "version", "configs", "updated_at", "_id", "ident", "name", "path", "upgradable", "instance", "counter");
+    model_internal static var allRequiredProperties:Array = new Array("demo", "scout", "platform", "uninstalled", "type", "deleted", "version", "configs", "updated_at", "instance");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("group_ids", "demo", "scout", "_kind", "platform", "desc", "status", "uninstalled", "type", "deleted", "stat", "version", "configs", "updated_at", "_id", "ident", "name", "path", "upgradable", "instance", "counter");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("group_ids", "demo", "_kind", "platform", "desc", "status", "uninstalled", "type", "deleted", "stat", "version", "configs", "updated_at", "_id", "ident", "name", "path", "upgradable", "instance", "counter");
+    model_internal static var dataProperties:Array = new Array("group_ids", "demo", "scout", "_kind", "platform", "desc", "status", "uninstalled", "type", "deleted", "stat", "version", "configs", "updated_at", "_id", "ident", "name", "path", "upgradable", "instance", "counter");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("group_ids", "demo", "_kind", "platform", "desc", "status", "uninstalled", "type", "deleted", "stat", "version", "configs", "updated_at", "_id", "ident", "name", "path", "upgradable", "instance", "counter");
+    model_internal static var nonDerivedProperties:Array = new Array("group_ids", "demo", "scout", "_kind", "platform", "desc", "status", "uninstalled", "type", "deleted", "stat", "version", "configs", "updated_at", "_id", "ident", "name", "path", "upgradable", "instance", "counter");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array("group_ids", "configs", "path");
     model_internal static var collectionBaseMap:Object;
@@ -79,6 +79,7 @@ internal class _AgentEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
             model_internal::dependentsOnMap = new Object();
             model_internal::dependentsOnMap["group_ids"] = new Array();
             model_internal::dependentsOnMap["demo"] = new Array();
+            model_internal::dependentsOnMap["scout"] = new Array();
             model_internal::dependentsOnMap["_kind"] = new Array();
             model_internal::dependentsOnMap["platform"] = new Array();
             model_internal::dependentsOnMap["desc"] = new Array();
@@ -109,6 +110,7 @@ internal class _AgentEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
         model_internal::propertyTypeMap = new Object();
         model_internal::propertyTypeMap["group_ids"] = "ArrayCollection";
         model_internal::propertyTypeMap["demo"] = "Boolean";
+        model_internal::propertyTypeMap["scout"] = "Boolean";
         model_internal::propertyTypeMap["_kind"] = "String";
         model_internal::propertyTypeMap["platform"] = "String";
         model_internal::propertyTypeMap["desc"] = "String";
@@ -393,6 +395,12 @@ internal class _AgentEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
     }
 
     [Bindable(event="propertyChange")]
+    public function get isScoutAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get is_kindAvailable():Boolean
     {
         return true;
@@ -558,6 +566,12 @@ internal class _AgentEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
 
     [Bindable(event="propertyChange")]   
     public function get demoStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get scoutStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
