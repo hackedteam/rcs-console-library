@@ -5,6 +5,7 @@ package it.ht.rcs.console.network.controller
   import it.ht.rcs.console.network.model.Injector;
   
   import mx.collections.ArrayCollection;
+  import mx.rpc.events.FaultEvent;
   import mx.rpc.events.ResultEvent;
   
   public class InjectorManager extends ItemManager
@@ -50,11 +51,13 @@ package it.ht.rcs.console.network.controller
       });
     }
     
-    public function getLogs(_id:String, callback:Function):void
+    public function getLogs(_id:String, resultCallback:Function, faultCallback:Function=null):void
     {
       DB.instance.injector.logs(_id, function(e:ResultEvent):void {
-        callback(e.result);
-      });
+        resultCallback(e.result);
+      },function(e:FaultEvent):void {
+        faultCallback(e.fault);
+      })
     }
     
     public function clearLogs(_id:String, callback:Function):void
