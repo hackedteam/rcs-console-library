@@ -97,7 +97,13 @@ package it.ht.rcs.console.evidence.controller
     
     override protected function onItemRemove(item:*):void
     {
-       DB.instance.evidence.destroy(item, evidenceFilter.target);
+       DB.instance.evidence.destroy(item, evidenceFilter.target,onItemRemoved);
+    }
+    
+    private function onItemRemoved(e:ResultEvent):void
+    {
+      DB.instance.evidence.total(evidenceFilter, onCountResult);
+    //DB.instance.evidence.all(evidenceFilter, onResult);
     }
      
     override public function removeItem(item:Object):void
