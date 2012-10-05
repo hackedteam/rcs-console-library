@@ -79,6 +79,7 @@ package it.ht.rcs.console.dashboard.controller
         dashboardItem._id = item._id;
         dashboardItem._kind = item._kind;
         dashboardItem.status = item.status;
+        dashboardItem.scout=item.scout;
         
         currentOperationId = dashboardItem._id;
         var sort:Sort = new Sort();
@@ -170,6 +171,7 @@ package it.ht.rcs.console.dashboard.controller
         dashboardItem.platform = item.platform;
         dashboardItem.demo = item.demo;
         dashboardItem.baseline = item.stat;
+        dashboardItem.scout=item.scout;
         addItem(dashboardItem);
       }
       
