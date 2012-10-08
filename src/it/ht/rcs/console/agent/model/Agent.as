@@ -20,7 +20,8 @@ package it.ht.rcs.console.agent.model
         upgradable: true,
         stat: null,
         configs: [],
-        instance: ''
+        instance: '',
+        scout:true
       };
     }
     
@@ -40,6 +41,7 @@ package it.ht.rcs.console.agent.model
         instance = data.instance;
         type = data.type;
         platform = data.platform;
+        scout=data.scout;
       }
     }
     
