@@ -53,6 +53,8 @@ package it.ht.rcs.console.agent.rest
     function commands(agent:Agent, onResult:Function=null, onFault:Function=null):void;
     
     function destroy_command(agent:Agent, commandId:String, onResult:Function=null, onFault:Function=null):void;
+    
+    function destroy_factory(id:String, permanent:Boolean=false, onResult:Function=null, onFault:Function=null):void;
 
   }
   

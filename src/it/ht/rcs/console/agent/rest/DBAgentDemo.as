@@ -197,6 +197,8 @@ package it.ht.rcs.console.agent.rest
     
     public function destroy_command(agent:Agent, commandId:String, onResult:Function=null, onFault:Function=null):void{}
     
+    public function destroy_factory(id:String, permanent:Boolean=false, onResult:Function=null, onFault:Function=null):void{};
+    
   }
   
 }

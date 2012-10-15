@@ -151,6 +151,7 @@ public class _Super_Shard extends flash.events.EventDispatcher implements com.ad
     /**
      * derived property calculators
      */
+    
 
     /**
      * isValid calculator

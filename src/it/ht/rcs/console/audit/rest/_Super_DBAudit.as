@@ -146,7 +146,7 @@ internal class _Super_DBAudit extends com.adobe.fiber.services.wrapper.HTTPServi
          argsArray = new Array("filter","startIndex","numItems");
          operation.argumentNames = argsArray;         
          operation.serializationFilter = serializer0;
-         operation.resultElementType = it.ht.rcs.console.audit.model.Audit;
+        operation.resultElementType = it.ht.rcs.console.audit.model.Audit;
          operations.push(operation);
 
          operation = new mx.rpc.http.Operation(null, "count_");
@@ -155,14 +155,14 @@ internal class _Super_DBAudit extends com.adobe.fiber.services.wrapper.HTTPServi
          argsArray = new Array("filter");
          operation.argumentNames = argsArray;         
          operation.serializationFilter = serializer1;
-         operation.resultType = int;
+        operation.resultType = int;
          operations.push(operation);
 
          operation = new mx.rpc.http.Operation(null, "filters_");
          operation.url = "/audit/filters";
          operation.method = "GET";
          operation.serializationFilter = serializer0;
-         operation.resultType = it.ht.rcs.console.audit.model.AuditFilter;
+        operation.resultType = it.ht.rcs.console.audit.model.AuditFilter;
          operations.push(operation);
 
          _serviceControl.operationList = operations;  
@@ -206,9 +206,9 @@ internal class _Super_DBAudit extends com.adobe.fiber.services.wrapper.HTTPServi
     
 
     /**
-      * This method is a generated wrapper used to call the 'all_' operation. It returns an mx.rpc.AsyncToken whose 
-      * result property will be populated with the result of the operation when the server response is received. 
-      * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value. 
+      * This method is a generated wrapper used to call the 'all_' operation. It returns an mx.rpc.AsyncToken whose
+      * result property will be populated with the result of the operation when the server response is received.
+      * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value.
       * You can then bind to CallResponder.lastResult or listen for the CallResponder.result or fault events.
       *
       * @see mx.rpc.AsyncToken
@@ -219,14 +219,14 @@ internal class _Super_DBAudit extends com.adobe.fiber.services.wrapper.HTTPServi
     public function all_(filter:String) : mx.rpc.AsyncToken
     {
         var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("all_");
-		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(filter) ;
+        var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(filter) ;
         return _internal_token;
     }
      
     /**
-      * This method is a generated wrapper used to call the 'count_' operation. It returns an mx.rpc.AsyncToken whose 
-      * result property will be populated with the result of the operation when the server response is received. 
-      * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value. 
+      * This method is a generated wrapper used to call the 'count_' operation. It returns an mx.rpc.AsyncToken whose
+      * result property will be populated with the result of the operation when the server response is received.
+      * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value.
       * You can then bind to CallResponder.lastResult or listen for the CallResponder.result or fault events.
       *
       * @see mx.rpc.AsyncToken
@@ -237,14 +237,14 @@ internal class _Super_DBAudit extends com.adobe.fiber.services.wrapper.HTTPServi
     public function count_(filter:String) : mx.rpc.AsyncToken
     {
         var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("count_");
-		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(filter) ;
+        var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(filter) ;
         return _internal_token;
     }
      
     /**
-      * This method is a generated wrapper used to call the 'filters_' operation. It returns an mx.rpc.AsyncToken whose 
-      * result property will be populated with the result of the operation when the server response is received. 
-      * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value. 
+      * This method is a generated wrapper used to call the 'filters_' operation. It returns an mx.rpc.AsyncToken whose
+      * result property will be populated with the result of the operation when the server response is received.
+      * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value.
       * You can then bind to CallResponder.lastResult or listen for the CallResponder.result or fault events.
       *
       * @see mx.rpc.AsyncToken
@@ -255,7 +255,7 @@ internal class _Super_DBAudit extends com.adobe.fiber.services.wrapper.HTTPServi
     public function filters_() : mx.rpc.AsyncToken
     {
         var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("filters_");
-		var _internal_token:mx.rpc.AsyncToken = _internal_operation.send() ;
+        var _internal_token:mx.rpc.AsyncToken = _internal_operation.send() ;
         return _internal_token;
     }
      

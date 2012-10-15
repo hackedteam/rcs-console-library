@@ -109,6 +109,14 @@ package it.ht.rcs.console.agent.controller
       });
     }
     
+    public function delFactory(f:Object, permanent:Boolean=false):void
+    {
+      removeItem(f);
+      DB.instance.agent.destroy_factory(f._id, permanent, function(re:ResultEvent):void { // we use this method to use the permament flag
+        DashboardController.instance.removeItem(DashboardController.instance.getItem(f._id));
+      });
+    }
+    
     public function getDownloads(agent:Agent, callback:Function):void
     {
       DB.instance.agent.downloads(agent, callback);

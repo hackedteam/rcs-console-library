@@ -4504,9 +4504,9 @@
         <item name="completeURL">https://localhost:4444/agent/exec</item>
       </annotation>
       <annotation name="original signature">
+        <item name="returnType">opaque</item>
         <item name="inputParamNames">strXml</item>
         <item name="inputParams">string</item>
-        <item name="returnType">opaque</item>
       </annotation>
       <parameter name="strXml" type="string"/>
     </function>
@@ -4525,13 +4525,13 @@
       <annotation name="ValidProperties">
         <item name="propertySpecifier">_id,command</item>
       </annotation>
-      <annotation name="Properties">
-        <item name="urlParamNames">id</item>
-      </annotation>
       <annotation name="original signature">
+        <item name="returnType">opaque</item>
         <item name="inputParamNames">id</item>
         <item name="inputParams">string</item>
-        <item name="returnType">opaque</item>
+      </annotation>
+      <annotation name="Properties">
+        <item name="urlParamNames">id</item>
       </annotation>
       <parameter name="id" type="string"/>
     </function>
@@ -4548,6 +4548,27 @@
       </annotation>
       <annotation name="url group">
         <item name="completeURL">https://localhost:4444/agent/exec_destroy</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+        <item name="inputParamNames">strXml</item>
+        <item name="inputParams">string</item>
+      </annotation>
+      <parameter name="strXml" type="string"/>
+    </function>
+    <function name="destroy_factory_" return-type="void">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.xml.XMLSerializationFilter</item>
+        <item name="method">POST</item>
+        <item name="contentType">application/xml</item>
+        <item name="requestBodyParameter">true</item>
+        <item name="url">/factory/destroy</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/factory/destroy</item>
       </annotation>
       <annotation name="original signature">
         <item name="inputParamNames">strXml</item>
