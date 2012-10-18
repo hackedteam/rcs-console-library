@@ -44,6 +44,56 @@ package it.ht.rcs.console.evidence.rest
       new Evidence({_id: 'e14', aid: 'a9', blo: false, da: 1309354166, dr: 1309354166, _mid: 0, note: '', rel: 0, type: 'clipboard', data: new EvidenceData({program: 'Word', window: 'New Document', content: 'The quick brown fox'})})
 			])
       
+    public static var command:ArrayCollection=new ArrayCollection([
+      
+      // John Doe (SwordFish) a1 desktop, a2 mobile
+      new Evidence({_id: 'c01', aid: 'a1', blo: false, da: 1336135607, dr: 1336135607, _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({command: 'cmd.exe /c dir c:\\', content: 'Il volume nell\'unita C non ha etichetta. \nNumero di serie del volume: 207B-b349\nDirectory di c:\\ \n17/06/2008 12.25 0 AUTOEXEC.BAT\n17/06/2008/ 12.25 0 CONFIG.SYS\n26/11/2010 16.56 Documents and Settings'})}),
+      new Evidence({_id: 'c02', aid: 'a2', blo: true, da: 1309354166, dr: 1309354166, _mid: 0, note: '', rel: 0, type: '',  data: new EvidenceData({command: 'cmd.exe /c dir c:\\', content: 'Il volume nell\'unita C non ha etichetta. \nNumero di serie del volume: 207B-b349\nDirectory di c:\\ \n17/06/2008 12.25 0 AUTOEXEC.BAT\n17/06/2008/ 12.25 0 CONFIG.SYS\n26/11/2010 16.56 Documents and Settings'})}),
+      new Evidence({_id: 'c03', aid: 'a2', blo: false, da: 1309354166, dr: 1309354166, _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({command: 'cmd.exe /c dir c:\\', content: 'Il volume nell\'unita C non ha etichetta. \nNumero di serie del volume: 207B-b349\nDirectory di c:\\ \n17/06/2008 12.25 0 AUTOEXEC.BAT\n17/06/2008/ 12.25 0 CONFIG.SYS\n26/11/2010 16.56 Documents and Settings'})}),
+      // Alejandro Reade (Swordfish), a3 desktop
+      new Evidence({_id: 'c04', aid: 'a3', blo: false, da: 1336135607, dr: 1336135607, _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({command: 'cmd.exe /c dir c:\\', content: 'Il volume nell\'unita C non ha etichetta. \nNumero di serie del volume: 207B-b349\nDirectory di c:\\ \n17/06/2008 12.25 0 AUTOEXEC.BAT\n17/06/2008/ 12.25 0 CONFIG.SYS\n26/11/2010 16.56 Documents and Settings'})}),
+      new Evidence({_id: 'c05', aid: 'a3', blo: false, da: 1309354166, dr: 1309354166, _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({command: 'cmd.exe /c dir c:\\', content: 'Il volume nell\'unita C non ha etichetta. \nNumero di serie del volume: 207B-b349\nDirectory di c:\\ \n17/06/2008 12.25 0 AUTOEXEC.BAT\n17/06/2008/ 12.25 0 CONFIG.SYS\n26/11/2010 16.56 Documents and Settings'})}),
+      // Joey Fargo (SwordFish), a4 desktop,a5 desktop, a6 mobile
+      new Evidence({_id: 'c06', aid: 'a4', blo: false, da: 1309354166, dr: 1309354166, _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({command: 'cmd.exe /c dir c:\\', content: 'Il volume nell\'unita C non ha etichetta. \nNumero di serie del volume: 207B-b349\nDirectory di c:\\ \n17/06/2008 12.25 0 AUTOEXEC.BAT\n17/06/2008/ 12.25 0 CONFIG.SYS\n26/11/2010 16.56 Documents and Settings'})}),
+      new Evidence({_id: 'c07', aid: 'a5', blo: false, da: 1309354166, dr: 1309354166, _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({command: 'cmd.exe /c dir c:\\', content: 'Il volume nell\'unita C non ha etichetta. \nNumero di serie del volume: 207B-b349\nDirectory di c:\\ \n17/06/2008 12.25 0 AUTOEXEC.BAT\n17/06/2008/ 12.25 0 CONFIG.SYS\n26/11/2010 16.56 Documents and Settings'})}),
+      new Evidence({_id: 'c08', aid: 'a6', blo: false, da: 1309354166, dr: 1309354166, _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({command: 'cmd.exe /c dir c:\\', content: 'Il volume nell\'unita C non ha etichetta. \nNumero di serie del volume: 207B-b349\nDirectory di c:\\ \n17/06/2008 12.25 0 AUTOEXEC.BAT\n17/06/2008/ 12.25 0 CONFIG.SYS\n26/11/2010 16.56 Documents and Settings'})}),
+      
+      // Guido (Blackjack), a7 desktop ,a8 mobile
+      new Evidence({_id: 'c09', aid: 'a7', blo: false, da: 1309354166, dr: 1309354166, _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({command: 'cmd.exe /c dir c:\\', content: 'Il volume nell\'unita C non ha etichetta. \nNumero di serie del volume: 207B-b349\nDirectory di c:\\ \n17/06/2008 12.25 0 AUTOEXEC.BAT\n17/06/2008/ 12.25 0 CONFIG.SYS\n26/11/2010 16.56 Documents and Settings'})}),
+      new Evidence({_id: 'c10', aid: 'a8', blo: false, da: 1309354166, dr: 1309354166, _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({command: 'cmd.exe /c dir c:\\', content: 'Il volume nell\'unita C non ha etichetta. \nNumero di serie del volume: 207B-b349\nDirectory di c:\\ \n17/06/2008 12.25 0 AUTOEXEC.BAT\n17/06/2008/ 12.25 0 CONFIG.SYS\n26/11/2010 16.56 Documents and Settings'})}),
+      new Evidence({_id: 'c11', aid: 'a8', blo: false, da: 1309354166, dr: 1309354166, _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({command: 'cmd.exe /c dir c:\\', content: 'Il volume nell\'unita C non ha etichetta. \nNumero di serie del volume: 207B-b349\nDirectory di c:\\ \n17/06/2008 12.25 0 AUTOEXEC.BAT\n17/06/2008/ 12.25 0 CONFIG.SYS\n26/11/2010 16.56 Documents and Settings'})}),
+      
+      // Dmitry Vitaly (All In), a9 mobile
+      new Evidence({_id: 'c12', aid: 'a9', blo: false, da: 1309354166, dr: 1309354166, _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({command: 'cmd.exe /c dir c:\\', content: 'Il volume nell\'unita C non ha etichetta. \nNumero di serie del volume: 207B-b349\nDirectory di c:\\ \n17/06/2008 12.25 0 AUTOEXEC.BAT\n17/06/2008/ 12.25 0 CONFIG.SYS\n26/11/2010 16.56 Documents and Settings'})}),
+      new Evidence({_id: 'c13', aid: 'a9', blo: false, da: 1309354166, dr: 1309354166, _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({command: 'cmd.exe /c dir c:\\', content: 'Il volume nell\'unita C non ha etichetta. \nNumero di serie del volume: 207B-b349\nDirectory di c:\\ \n17/06/2008 12.25 0 AUTOEXEC.BAT\n17/06/2008/ 12.25 0 CONFIG.SYS\n26/11/2010 16.56 Documents and Settings'})}),
+      new Evidence({_id: 'c14', aid: 'a9', blo: false, da: 1309354166, dr: 1309354166, _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({command: 'cmd.exe /c dir c:\\', content: 'Il volume nell\'unita C non ha etichetta. \nNumero di serie del volume: 207B-b349\nDirectory di c:\\ \n17/06/2008 12.25 0 AUTOEXEC.BAT\n17/06/2008/ 12.25 0 CONFIG.SYS\n26/11/2010 16.56 Documents and Settings'})})
+    ])
+      
+    public static var ip:ArrayCollection=new ArrayCollection([
+      
+      // John Doe (SwordFish) a1 desktop, a2 mobile
+      new Evidence({_id: 'c01', aid: 'a1', blo: false, da: 1336135607, dr: 1336135607, _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({content: '172.20.20.170'})}),
+      new Evidence({_id: 'c02', aid: 'a2', blo: true, da: 1309354166, dr: 1309354166, _mid: 0, note: '', rel: 0, type: '',  data: new EvidenceData({content: '172.20.20.170'})}),
+      new Evidence({_id: 'c03', aid: 'a2', blo: false, da: 1309354166, dr: 1309354166, _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({content: '172.20.20.170'})}),
+      // Alejandro Reade (Swordfish), a3 desktop
+      new Evidence({_id: 'c04', aid: 'a3', blo: false, da: 1336135607, dr: 1336135607, _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({content: '172.20.20.170'})}),
+      new Evidence({_id: 'c05', aid: 'a3', blo: false, da: 1309354166, dr: 1309354166, _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({content: '172.20.20.170'})}),
+      // Joey Fargo (SwordFish), a4 desktop,a5 desktop, a6 mobile
+      new Evidence({_id: 'c06', aid: 'a4', blo: false, da: 1309354166, dr: 1309354166, _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({content: '172.20.20.193'})}),
+      new Evidence({_id: 'c07', aid: 'a5', blo: false, da: 1309354166, dr: 1309354166, _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({content: '172.20.20.193'})}),
+      new Evidence({_id: 'c08', aid: 'a6', blo: false, da: 1309354166, dr: 1309354166, _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({content: '172.20.20.193'})}),
+      
+      // Guido (Blackjack), a7 desktop ,a8 mobile
+      new Evidence({_id: 'c09', aid: 'a7', blo: false, da: 1309354166, dr: 1309354166, _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({content: '172.20.20.193'})}),
+      new Evidence({_id: 'c10', aid: 'a8', blo: false, da: 1309354166, dr: 1309354166, _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({content: '172.20.20.193'})}),
+      new Evidence({_id: 'c11', aid: 'a8', blo: false, da: 1309354166, dr: 1309354166, _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({content: '172.20.20.193'})}),
+      
+      // Dmitry Vitaly (All In), a9 mobile
+      new Evidence({_id: 'c12', aid: 'a9', blo: false, da: 1309354166, dr: 1309354166, _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({content: '172.20.20.193'})}),
+      new Evidence({_id: 'c13', aid: 'a9', blo: false, da: 1309354166, dr: 1309354166, _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({content: '172.20.20.193'})}),
+      new Evidence({_id: 'c14', aid: 'a9', blo: false, da: 1309354166, dr: 1309354166, _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({content: '172.20.20.193'})})
+    ])
+      
 		public function all(filter:Object, onResult:Function=null, onFault:Function=null):void
 		{
 			//trace(ObjectUtil.toString(filter));
@@ -72,6 +122,42 @@ package it.ht.rcs.console.evidence.rest
 			return result;
       
 		}
+    
+    private function filterCommands(item:Object):Boolean
+    {
+      var result:Boolean=true;
+      
+      for(var criteria:* in filter)
+      {
+        if(criteria=="target" && !(DBAgentDemo.getTarget(item.aid)==filter.target)) {result=false; break;}
+        if(criteria=="agent" && !(item.aid == filter.agent)) {result=false; break;}
+        if(criteria=="type" && !isInArray(item.type, filter.type)) {result=false; break;}
+        if(criteria=="blo" && !(item.blo==filter.blo[0])) {result=false; break;}
+        if(criteria=="rel" && !isInArray(item.rel, filter.rel)) {result=false; break};
+        if(criteria=="aid" && !isInArray(item.aid, filter.aid)) {result=false; break;}
+        if(criteria=="date" && !isInDateRange(item, filter)) {result=false; break;}
+      }
+      return result;
+      
+    }
+    
+    private function filterIps(item:Object):Boolean
+    {
+      var result:Boolean=true;
+      
+      for(var criteria:* in filter)
+      {
+        if(criteria=="target" && !(DBAgentDemo.getTarget(item.aid)==filter.target)) {result=false; break;}
+        if(criteria=="agent" && !(item.aid == filter.agent)) {result=false; break;}
+        if(criteria=="type" && !isInArray(item.type, filter.type)) {result=false; break;}
+        if(criteria=="blo" && !(item.blo==filter.blo[0])) {result=false; break;}
+        if(criteria=="rel" && !isInArray(item.rel, filter.rel)) {result=false; break};
+        if(criteria=="aid" && !isInArray(item.aid, filter.aid)) {result=false; break;}
+        if(criteria=="date" && !isInDateRange(item, filter)) {result=false; break;}
+      }
+      return result;
+      
+    }
     
     private function isInArray(value:*, arr:Array):Boolean
     {
@@ -152,16 +238,22 @@ package it.ht.rcs.console.evidence.rest
 
 		public function commands(filter:Object, onResult:Function=null, onFault:Function=null):void
 		{
-      var commands:ArrayCollection=new ArrayCollection();
-      
-      //populate commands
-      
+     
+      this.filter=filter;
+      command.filterFunction=filterCommands;
+      command.refresh()
       if (onResult != null)
-        onResult(new ResultEvent('evidence.commands', false, true, commands));
+        onResult(new ResultEvent('evidence.commands', false, true, command));
+
 		}
     
     public function ips(filter:Object, onResult:Function=null, onFault:Function=null):void
     {
+      this.filter=filter;
+      ip.filterFunction=filterIps;
+      ip.refresh()
+      if (onResult != null)
+        onResult(new ResultEvent('evidence.ips', false, true, ip));
     }
 
 		public function total(filter:Object, onResult:Function=null, onFault:Function=null):void
