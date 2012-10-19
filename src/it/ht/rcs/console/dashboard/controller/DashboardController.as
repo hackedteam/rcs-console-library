@@ -91,7 +91,7 @@ package it.ht.rcs.console.dashboard.controller
           var ti:TargetInfo = new TargetInfo();
           ti._id = target._id;
           ti.name = target.name;
-          trace("> "+target.name)
+         
           dashboardItem.targets.addItem(ti);
         }
         
@@ -99,7 +99,7 @@ package it.ht.rcs.console.dashboard.controller
       }
       
       if (!item.stat) return; // TODO: Demo fix
-      
+      //trace(dashboardItem.name)
       dashboardItem.name = item.name;
       dashboardItem.desc = item.desc;
       dashboardItem.lastSync = item.stat.last_sync;
@@ -118,9 +118,9 @@ package it.ht.rcs.console.dashboard.controller
     
     private function updateTargetList(dashboardItem:DashboardItem):void
     {
-      trace("update target list")
+    
       for each (var t:TargetInfo in dashboardItem.targets.source) {
-        
+      
         SearchManager.instance.showItem(t._id, function(target:SearchItem):void {
           
           if (!target.stat) return; // TODO: Demo fix
@@ -134,7 +134,7 @@ package it.ht.rcs.console.dashboard.controller
           var evidenceHash:Object = ObjectUtils.toHash(target.stat.evidence);
           var dashboardHash:Object = ObjectUtils.toHash(target.stat.dashboard);
 
-          t.name = target.name;
+          //t.name = target.name;
           t.tot = 0;
           t.sync = 0;
           for (var type:String in evidenceHash)

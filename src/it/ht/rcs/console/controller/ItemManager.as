@@ -84,8 +84,13 @@ package it.ht.rcs.console.controller
     public function getItem(_id:String):*
     {
       for each (var o:* in _items.source)
+      {
         if (o._id == _id)
+        {
           return o;
+        break;
+        }
+      }
       return null;
     }
     
