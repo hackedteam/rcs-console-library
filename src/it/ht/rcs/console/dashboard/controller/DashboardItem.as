@@ -18,6 +18,8 @@ package it.ht.rcs.console.dashboard.controller
     [Bindable] public var status:String;
     [Bindable] public var demo:Boolean;
     
+    [Bindable] public var scout:Boolean;
+    
     [Bindable] public var modules:ArrayCollection;
     [Bindable] public var targets:ArrayCollection;
     

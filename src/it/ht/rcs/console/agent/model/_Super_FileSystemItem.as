@@ -1,9 +1,9 @@
 /**
  * This is a generated class and is not intended for modification.  To customize behavior
- * of this value object you may modify the generated sub-class of this class - Template.as.
+ * of this value object you may modify the generated sub-class of this class - FileSystemItem.as.
  */
 
-package it.ht.rcs.console.build.model
+package it.ht.rcs.console.agent.model
 {
 import com.adobe.fiber.services.IFiberManagingService;
 import com.adobe.fiber.util.FiberUtils;
@@ -24,7 +24,7 @@ import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 use namespace model_internal;
 
 [ExcludeClass]
-public class _Super_Template extends flash.events.EventDispatcher implements com.adobe.fiber.valueobjects.IValueObject
+public class _Super_FileSystemItem extends flash.events.EventDispatcher implements com.adobe.fiber.valueobjects.IValueObject
 {
     model_internal static function initRemoteClassAliasSingle(cz:Class) : void
     {
@@ -34,7 +34,7 @@ public class _Super_Template extends flash.events.EventDispatcher implements com
     {
     }
 
-    model_internal var _dminternal_model : _TemplateEntityMetadata;
+    model_internal var _dminternal_model : _FileSystemItemEntityMetadata;
     model_internal var _changedObjects:mx.collections.ArrayCollection = new ArrayCollection();
 
     public function getChangedObjects() : Array
@@ -51,10 +51,9 @@ public class _Super_Template extends flash.events.EventDispatcher implements com
     /**
      * properties
      */
-    private var _internal_desc : String;
     private var _internal__id : String;
-    private var _internal_config : String;
-    private var _internal_user : String;
+    private var _internal_path : String;
+    private var _internal_depth : int;
 
     private static var emptyArray:Array = new Array();
 
@@ -66,15 +65,13 @@ public class _Super_Template extends flash.events.EventDispatcher implements com
 
     model_internal var _changeWatcherArray:Array = new Array();
 
-    public function _Super_Template()
+    public function _Super_FileSystemItem()
     {
-        _model = new _TemplateEntityMetadata(this);
+        _model = new _FileSystemItemEntityMetadata(this);
 
         // Bind to own data or source properties for cache invalidation triggering
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "desc", model_internal::setterListenerDesc));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "_id", model_internal::setterListener_id));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "config", model_internal::setterListenerConfig));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "user", model_internal::setterListenerUser));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "path", model_internal::setterListenerPath));
 
     }
 
@@ -83,27 +80,21 @@ public class _Super_Template extends flash.events.EventDispatcher implements com
      */
 
     [Bindable(event="propertyChange")]
-    public function get desc() : String
-    {
-        return _internal_desc;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get _id() : String
     {
         return _internal__id;
     }
 
     [Bindable(event="propertyChange")]
-    public function get config() : String
+    public function get path() : String
     {
-        return _internal_config;
+        return _internal_path;
     }
 
     [Bindable(event="propertyChange")]
-    public function get user() : String
+    public function get depth() : int
     {
-        return _internal_user;
+        return _internal_depth;
     }
 
     public function clearAssociations() : void
@@ -113,16 +104,6 @@ public class _Super_Template extends flash.events.EventDispatcher implements com
     /**
      * data/source property setters
      */
-
-    public function set desc(value:String) : void
-    {
-        var oldValue:String = _internal_desc;
-        if (oldValue !== value)
-        {
-            _internal_desc = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "desc", oldValue, _internal_desc));
-        }
-    }
 
     public function set _id(value:String) : void
     {
@@ -134,23 +115,23 @@ public class _Super_Template extends flash.events.EventDispatcher implements com
         }
     }
 
-    public function set config(value:String) : void
+    public function set path(value:String) : void
     {
-        var oldValue:String = _internal_config;
+        var oldValue:String = _internal_path;
         if (oldValue !== value)
         {
-            _internal_config = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "config", oldValue, _internal_config));
+            _internal_path = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "path", oldValue, _internal_path));
         }
     }
 
-    public function set user(value:String) : void
+    public function set depth(value:int) : void
     {
-        var oldValue:String = _internal_user;
+        var oldValue:int = _internal_depth;
         if (oldValue !== value)
         {
-            _internal_user = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "user", oldValue, _internal_user));
+            _internal_depth = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "depth", oldValue, _internal_depth));
         }
     }
 
@@ -166,24 +147,14 @@ public class _Super_Template extends flash.events.EventDispatcher implements com
      *  - the validity of the property (and the containing entity) if the given data property is required.
      */
 
-    model_internal function setterListenerDesc(value:flash.events.Event):void
-    {
-        _model.invalidateDependentOnDesc();
-    }
-
     model_internal function setterListener_id(value:flash.events.Event):void
     {
         _model.invalidateDependentOn_id();
     }
 
-    model_internal function setterListenerConfig(value:flash.events.Event):void
+    model_internal function setterListenerPath(value:flash.events.Event):void
     {
-        _model.invalidateDependentOnConfig();
-    }
-
-    model_internal function setterListenerUser(value:flash.events.Event):void
-    {
-        _model.invalidateDependentOnUser();
+        _model.invalidateDependentOnPath();
     }
 
 
@@ -208,25 +179,15 @@ public class _Super_Template extends flash.events.EventDispatcher implements com
         var validationFailureMessages:Array = new Array();
 
         var propertyValidity:Boolean = true;
-        if (!_model.descIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_descValidationFailureMessages);
-        }
         if (!_model._idIsValid)
         {
             propertyValidity = false;
             com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::__idValidationFailureMessages);
         }
-        if (!_model.configIsValid)
+        if (!_model.pathIsValid)
         {
             propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_configValidationFailureMessages);
-        }
-        if (!_model.userIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_userValidationFailureMessages);
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_pathValidationFailureMessages);
         }
 
         model_internal::_cacheInitialized_isValid = true;
@@ -255,14 +216,14 @@ public class _Super_Template extends flash.events.EventDispatcher implements com
 
     [Transient]
     [Bindable(event="propertyChange")]
-    public function get _model() : _TemplateEntityMetadata
+    public function get _model() : _FileSystemItemEntityMetadata
     {
         return model_internal::_dminternal_model;
     }
 
-    public function set _model(value : _TemplateEntityMetadata) : void
+    public function set _model(value : _FileSystemItemEntityMetadata) : void
     {
-        var oldValue : _TemplateEntityMetadata = model_internal::_dminternal_model;
+        var oldValue : _FileSystemItemEntityMetadata = model_internal::_dminternal_model;
         if (oldValue !== value)
         {
             model_internal::_dminternal_model = value;
@@ -307,33 +268,6 @@ public class _Super_Template extends flash.events.EventDispatcher implements com
         }
     }
 
-    model_internal var _doValidationCacheOfDesc : Array = null;
-    model_internal var _doValidationLastValOfDesc : String;
-
-    model_internal function _doValidationForDesc(valueIn:Object):Array
-    {
-        var value : String = valueIn as String;
-
-        if (model_internal::_doValidationCacheOfDesc != null && model_internal::_doValidationLastValOfDesc == value)
-           return model_internal::_doValidationCacheOfDesc ;
-
-        _model.model_internal::_descIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.isDescAvailable && _internal_desc == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "desc is required"));
-        }
-
-        model_internal::_doValidationCacheOfDesc = validationFailures;
-        model_internal::_doValidationLastValOfDesc = value;
-
-        return validationFailures;
-    }
-    
     model_internal var _doValidationCacheOf_id : Array = null;
     model_internal var _doValidationLastValOf_id : String;
 
@@ -361,56 +295,29 @@ public class _Super_Template extends flash.events.EventDispatcher implements com
         return validationFailures;
     }
     
-    model_internal var _doValidationCacheOfConfig : Array = null;
-    model_internal var _doValidationLastValOfConfig : String;
+    model_internal var _doValidationCacheOfPath : Array = null;
+    model_internal var _doValidationLastValOfPath : String;
 
-    model_internal function _doValidationForConfig(valueIn:Object):Array
+    model_internal function _doValidationForPath(valueIn:Object):Array
     {
         var value : String = valueIn as String;
 
-        if (model_internal::_doValidationCacheOfConfig != null && model_internal::_doValidationLastValOfConfig == value)
-           return model_internal::_doValidationCacheOfConfig ;
+        if (model_internal::_doValidationCacheOfPath != null && model_internal::_doValidationLastValOfPath == value)
+           return model_internal::_doValidationCacheOfPath ;
 
-        _model.model_internal::_configIsValidCacheInitialized = true;
+        _model.model_internal::_pathIsValidCacheInitialized = true;
         var validationFailures:Array = new Array();
         var errorMessage:String;
         var failure:Boolean;
 
         var valRes:ValidationResult;
-        if (_model.isConfigAvailable && _internal_config == null)
+        if (_model.isPathAvailable && _internal_path == null)
         {
-            validationFailures.push(new ValidationResult(true, "", "", "config is required"));
+            validationFailures.push(new ValidationResult(true, "", "", "path is required"));
         }
 
-        model_internal::_doValidationCacheOfConfig = validationFailures;
-        model_internal::_doValidationLastValOfConfig = value;
-
-        return validationFailures;
-    }
-    
-    model_internal var _doValidationCacheOfUser : Array = null;
-    model_internal var _doValidationLastValOfUser : String;
-
-    model_internal function _doValidationForUser(valueIn:Object):Array
-    {
-        var value : String = valueIn as String;
-
-        if (model_internal::_doValidationCacheOfUser != null && model_internal::_doValidationLastValOfUser == value)
-           return model_internal::_doValidationCacheOfUser ;
-
-        _model.model_internal::_userIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.isUserAvailable && _internal_user == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "user is required"));
-        }
-
-        model_internal::_doValidationCacheOfUser = validationFailures;
-        model_internal::_doValidationLastValOfUser = value;
+        model_internal::_doValidationCacheOfPath = validationFailures;
+        model_internal::_doValidationLastValOfPath = value;
 
         return validationFailures;
     }

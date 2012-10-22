@@ -57,6 +57,7 @@ public class _Super_SearchItem extends flash.events.EventDispatcher implements c
      */
     private var _internal_group_ids : ArrayCollection;
     private var _internal_demo : Boolean;
+    private var _internal_scout : Boolean;
     private var _internal_platform : String;
     private var _internal__kind : String;
     private var _internal_desc : String;
@@ -112,6 +113,12 @@ public class _Super_SearchItem extends flash.events.EventDispatcher implements c
     public function get demo() : Boolean
     {
         return _internal_demo;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get scout() : Boolean
+    {
+        return _internal_scout;
     }
 
     [Bindable(event="propertyChange")]
@@ -226,6 +233,16 @@ public class _Super_SearchItem extends flash.events.EventDispatcher implements c
         {
             _internal_demo = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "demo", oldValue, _internal_demo));
+        }
+    }
+
+    public function set scout(value:Boolean) : void
+    {
+        var oldValue:Boolean = _internal_scout;
+        if (oldValue !== value)
+        {
+            _internal_scout = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "scout", oldValue, _internal_scout));
         }
     }
 
@@ -444,6 +461,7 @@ public class _Super_SearchItem extends flash.events.EventDispatcher implements c
     /**
      * derived property calculators
      */
+    
 
     /**
      * isValid calculator

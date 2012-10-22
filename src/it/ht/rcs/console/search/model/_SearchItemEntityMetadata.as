@@ -24,14 +24,14 @@ internal class _SearchItemEntityMetadata extends com.adobe.fiber.valueobjects.Ab
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("group_ids", "demo", "platform", "_kind", "desc", "_id", "status", "name", "path", "type", "ident", "instance", "stat", "version");
+    model_internal static var allProperties:Array = new Array("group_ids", "demo", "scout", "platform", "_kind", "desc", "_id", "status", "name", "path", "type", "ident", "instance", "stat", "version");
     model_internal static var allAssociationProperties:Array = new Array();
-    model_internal static var allRequiredProperties:Array = new Array("demo", "platform", "_kind", "desc", "_id", "status", "name", "path", "type", "instance", "stat", "version");
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("group_ids", "demo", "platform", "_kind", "desc", "_id", "status", "name", "path", "type", "ident", "instance", "stat", "version");
+    model_internal static var allRequiredProperties:Array = new Array("demo", "scout", "platform", "_kind", "desc", "_id", "status", "name", "path", "type", "instance", "stat", "version");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("group_ids", "demo", "scout", "platform", "_kind", "desc", "_id", "status", "name", "path", "type", "ident", "instance", "stat", "version");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("group_ids", "demo", "platform", "_kind", "desc", "_id", "status", "name", "path", "type", "ident", "instance", "stat", "version");
+    model_internal static var dataProperties:Array = new Array("group_ids", "demo", "scout", "platform", "_kind", "desc", "_id", "status", "name", "path", "type", "ident", "instance", "stat", "version");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("group_ids", "demo", "platform", "_kind", "desc", "_id", "status", "name", "path", "type", "ident", "instance", "stat", "version");
+    model_internal static var nonDerivedProperties:Array = new Array("group_ids", "demo", "scout", "platform", "_kind", "desc", "_id", "status", "name", "path", "type", "ident", "instance", "stat", "version");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array("group_ids", "path");
     model_internal static var collectionBaseMap:Object;
@@ -103,6 +103,7 @@ internal class _SearchItemEntityMetadata extends com.adobe.fiber.valueobjects.Ab
             model_internal::dependentsOnMap = new Object();
             model_internal::dependentsOnMap["group_ids"] = new Array();
             model_internal::dependentsOnMap["demo"] = new Array();
+            model_internal::dependentsOnMap["scout"] = new Array();
             model_internal::dependentsOnMap["platform"] = new Array();
             model_internal::dependentsOnMap["_kind"] = new Array();
             model_internal::dependentsOnMap["desc"] = new Array();
@@ -126,6 +127,7 @@ internal class _SearchItemEntityMetadata extends com.adobe.fiber.valueobjects.Ab
         model_internal::propertyTypeMap = new Object();
         model_internal::propertyTypeMap["group_ids"] = "ArrayCollection";
         model_internal::propertyTypeMap["demo"] = "Boolean";
+        model_internal::propertyTypeMap["scout"] = "Boolean";
         model_internal::propertyTypeMap["platform"] = "String";
         model_internal::propertyTypeMap["_kind"] = "String";
         model_internal::propertyTypeMap["desc"] = "String";
@@ -429,6 +431,12 @@ internal class _SearchItemEntityMetadata extends com.adobe.fiber.valueobjects.Ab
     }
 
     [Bindable(event="propertyChange")]
+    public function get isScoutAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get isPlatformAvailable():Boolean
     {
         return true;
@@ -598,6 +606,12 @@ internal class _SearchItemEntityMetadata extends com.adobe.fiber.valueobjects.Ab
 
     [Bindable(event="propertyChange")]   
     public function get demoStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get scoutStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }

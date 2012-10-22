@@ -51,10 +51,15 @@ package it.ht.rcs.console.operation.controller
     
     override protected function onItemRemove(item:*):void
     {
-      DB.instance.operation.destroy(item._id);
+      DB.instance.operation.destroy(item._id, onItemDestroyed);
       DashboardController.instance.removeItem(DashboardController.instance.getItem(item._id));
     }
-    
+    private function onItemDestroyed(e:ResultEvent):void
+    {
+      TargetManager.instance.refresh();
+      AgentManager.instance.refresh();
+    }
+      
     override protected function onItemUpdate(event:*):void
     {
       var property:Object = new Object();

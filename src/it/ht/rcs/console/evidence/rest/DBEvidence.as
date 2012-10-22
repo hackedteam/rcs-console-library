@@ -33,7 +33,7 @@ package it.ht.rcs.console.evidence.rest
     public function destroy(evidence:Evidence, target:String, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      var params:Object=new Object()
+      var params:Object=new Object();
       params['_id'] = evidence._id;
       params['target'] = target;
       resp.token = destroy_(JSON.stringify(params));
@@ -87,10 +87,10 @@ package it.ht.rcs.console.evidence.rest
       resp.token = agent_status_(JSON.stringify(params));
     }
     
-    public function filesystem(targetId:String, agentId:String, onResult:Function = null, onFault:Function = null):void
+    public function filesystem(targetId:String, agentId:String, filter:String, onResult:Function = null, onFault:Function = null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = filesystem_(targetId, agentId);
+      resp.token = filesystem_(targetId, agentId, filter);
     }
     
     public function show(id:String, target:String, onResult:Function=null, onFault:Function=null):void

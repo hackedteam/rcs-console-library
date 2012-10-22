@@ -35,6 +35,7 @@ package it.ht.rcs.console.search.controller
     
     public function showItem(id:String, onResult:Function=null, onFault:Function=null):void
     {
+      //default fault handler
       var faultHandler:Function = onFault != null ? onFault : 
       function(fe:FaultEvent):void {
         var current:SearchItem = getItem(id);

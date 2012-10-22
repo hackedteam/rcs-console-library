@@ -15,7 +15,7 @@ package it.ht.rcs.console.evidence.rest
     function sync_start(params: Object, onResult:Function = null, onFault:Function = null):void;
     function sync_stop(params: Object, onResult:Function = null, onFault:Function = null):void;
     function total(params: Object, onResult:Function = null, onFault:Function = null):void;
-    function filesystem(targetId:String, agentId:String, onResult:Function = null, onFault:Function = null):void;
+    function filesystem(targetId:String, agentId:String, filter:String, onResult:Function = null, onFault:Function = null):void;
     function show(id:String, target:String, onResult:Function = null, onFault:Function = null):void;
     function destroy(evidence:Evidence, target:String, onResult:Function=null, onFault:Function=null):void;
     function destroy_all(params: Object, onResult:Function=null, onFault:Function=null):void;

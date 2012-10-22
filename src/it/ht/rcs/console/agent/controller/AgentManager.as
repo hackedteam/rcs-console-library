@@ -4,6 +4,7 @@ package it.ht.rcs.console.agent.controller
   import it.ht.rcs.console.DefaultConfigBuilder;
   import it.ht.rcs.console.ObjectUtils;
   import it.ht.rcs.console.agent.model.Agent;
+  import it.ht.rcs.console.agent.model.Command;
   import it.ht.rcs.console.agent.model.Config;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.dashboard.controller.DashboardController;
@@ -108,10 +109,39 @@ package it.ht.rcs.console.agent.controller
       });
     }
     
+    public function delFactory(f:Object, permanent:Boolean=false):void
+    {
+      removeItem(f);
+      DB.instance.agent.destroy_factory(f._id, permanent, function(re:ResultEvent):void { // we use this method to use the permament flag
+        DashboardController.instance.removeItem(DashboardController.instance.getItem(f._id));
+      });
+    }
+    
     public function getDownloads(agent:Agent, callback:Function):void
     {
       DB.instance.agent.downloads(agent, callback);
     }
+    
+    public function getFilesystems(agent:Agent, callback:Function):void
+    {
+      DB.instance.agent.filesystems(agent, callback);
+    }
+    
+    public function getCommands(agent:Agent, onResult:Function=null, onFault:Function=null):void
+    {
+      DB.instance.agent.commands(agent, onResult, onFault);
+    }
+    
+    public function createCommand(agent:Agent, command:String, onResult:Function=null, onFault:Function=null):void
+    {
+      DB.instance.agent.create_command(agent, command, onResult, onFault);
+    }
+    
+    public function deleteCommand(agent:Agent, command:Command, onResult:Function=null, onFault:Function=null):void
+    {
+      DB.instance.agent.destroy_command(agent, command._id, onResult, onFault);
+    }
+    
     
     public function createDownload(agentId:String, path:String, callback:Function=null):void
     {
@@ -122,6 +152,13 @@ package it.ht.rcs.console.agent.controller
     {
       DB.instance.agent.destroy_download(agent, downloadId, callback);
     }
+    
+    public function deleteFilesystem(agent:Agent, filesystemId:String, onResult:Function=null, onFault:Function=null):void
+    {
+      DB.instance.agent.destroy_filesystem(agent, filesystemId, onResult, onFault);
+    }
+    
+    
     public function deleteUpload(agent:Agent, uploadId:String, callback:Function=null):void
     {
       DB.instance.agent.destroy_upload(agent, uploadId, callback);

@@ -19,6 +19,7 @@ package it.ht.rcs.console.evidence.model
         this.attr=data.attr;
         this.begin=data.begin;
         this.body=data.body;
+        this.command=data.command;
         this.cell=new EvidenceDataCell();
         this.contact=data.contact;
         this.content=data.content;

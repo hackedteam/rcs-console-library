@@ -57,9 +57,11 @@ package it.ht.rcs.console.dashboard.controller
         SearchManager.instance.showItem(id, function (item:SearchItem):void {
           if (item != null)
             manageItem(item);
+          trace("Refresh > "+item.name)
         }, function(fe:FaultEvent):void {}); // Do nothing when disconnected.
       }
       dispatchDataLoadedEvent();
+      
     }
     
     private function manageItem(item:SearchItem):void
@@ -70,12 +72,14 @@ package it.ht.rcs.console.dashboard.controller
     private var currentOperationId:String;
     private function manageOperation(item:SearchItem):void
     {
+      trace("Manage Operation > "+item.name)
       var dashboardItem:DashboardItem = getItem(item._id);
       if (dashboardItem == null) {
         dashboardItem = new DashboardItem();
         dashboardItem._id = item._id;
         dashboardItem._kind = item._kind;
         dashboardItem.status = item.status;
+        dashboardItem.scout=item.scout;
         
         currentOperationId = dashboardItem._id;
         var sort:Sort = new Sort();
@@ -87,6 +91,7 @@ package it.ht.rcs.console.dashboard.controller
           var ti:TargetInfo = new TargetInfo();
           ti._id = target._id;
           ti.name = target.name;
+         
           dashboardItem.targets.addItem(ti);
         }
         
@@ -94,7 +99,7 @@ package it.ht.rcs.console.dashboard.controller
       }
       
       if (!item.stat) return; // TODO: Demo fix
-      
+      //trace(dashboardItem.name)
       dashboardItem.name = item.name;
       dashboardItem.desc = item.desc;
       dashboardItem.lastSync = item.stat.last_sync;
@@ -113,8 +118,9 @@ package it.ht.rcs.console.dashboard.controller
     
     private function updateTargetList(dashboardItem:DashboardItem):void
     {
+    
       for each (var t:TargetInfo in dashboardItem.targets.source) {
-        
+      
         SearchManager.instance.showItem(t._id, function(target:SearchItem):void {
           
           if (!target.stat) return; // TODO: Demo fix
@@ -128,7 +134,7 @@ package it.ht.rcs.console.dashboard.controller
           var evidenceHash:Object = ObjectUtils.toHash(target.stat.evidence);
           var dashboardHash:Object = ObjectUtils.toHash(target.stat.dashboard);
 
-          t.name = target.name;
+          //t.name = target.name;
           t.tot = 0;
           t.sync = 0;
           for (var type:String in evidenceHash)
@@ -165,6 +171,7 @@ package it.ht.rcs.console.dashboard.controller
         dashboardItem.platform = item.platform;
         dashboardItem.demo = item.demo;
         dashboardItem.baseline = item.stat;
+        dashboardItem.scout=item.scout;
         addItem(dashboardItem);
       }
       
