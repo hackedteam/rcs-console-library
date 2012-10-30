@@ -258,7 +258,7 @@ package it.ht.rcs.console
 			{
 				//trace("module: " + module.module + "> is supported? " + moduleIsSupported(platform, module.module, modules))
 
-				if (!moduleIsSupported(platform, module.module, modules))
+				if (!moduleIsSupportedByAgent(platform, module.module, modules))
 				{
 					//config.modules.splice(config.modules.indexOf(module), 1);
 					deleteModuleReferences(config, module.module);
@@ -267,7 +267,7 @@ package it.ht.rcs.console
 			}
 		}
 
-		public static function addMissingModules(platform:String, config:Object):void
+		public static function addAgentMissingModules(platform:String, config:Object):void
 		{
 
 			var allModules:Array=DefaultConfigBuilder.getModules(true);
@@ -275,7 +275,7 @@ package it.ht.rcs.console
 			for (var k:int=0; k < allModules.length; k++)
 			{
         
-				if (moduleIsSupported(platform, allModules[k].module, allModules))
+				if (moduleIsSupportedByAgent(platform, allModules[k].module, allModules))
 				{
 					supportedModules.push(allModules[k])
 				}
@@ -294,14 +294,50 @@ package it.ht.rcs.console
 			config.modules=supportedModules
 
 		}
+    
+    public static function addFactoryMissingModules(type:String, config:Object):void
+    {
+      
+      var allModules:Array=DefaultConfigBuilder.getModules(true);
+      var supportedModules:Array=new Array();
+      for (var k:int=0; k < allModules.length; k++)
+      {
+        
+        if (moduleIsSupportedByFactory(type, allModules[k].module, allModules))
+        {
+          supportedModules.push(allModules[k])
+        }
+      }
+      
+      for (var i:int=0; i < supportedModules.length; i++)
+      {
+        for (var j:int=0; j < config.modules.length; j++)
+        {
+          if (config.modules[j].module == supportedModules[i].module)
+          {
+            supportedModules[i]=config.modules[j]
+          }
+        }
+      }
+      config.modules=supportedModules
+      
+    }
 
-		private static function moduleIsSupported(platform:String, moduleName:String, modules:Array):Boolean
+		private static function moduleIsSupportedByAgent(platform:String, moduleName:String, modules:Array):Boolean
 		{
 			for each (var module:Object in modules)
 				if (module.module == moduleName)
 					return module._platform.indexOf(platform) != -1;
 			return false;
 		}
+    
+    private static function moduleIsSupportedByFactory(type:String, moduleName:String, modules:Array):Boolean
+    {
+      for each (var module:Object in modules)
+      if (module.module == moduleName)
+        return module._type.indexOf(type) != -1;
+      return false;
+    }
 
 		private static function deleteModuleReferences(config:Object, moduleName:String):void
 		{
