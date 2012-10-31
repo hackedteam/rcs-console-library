@@ -47,6 +47,7 @@ package it.ht.rcs.console.agent.controller
     private function onAgentPush(e:PushEvent):void
     {
       show(e.data.id as String);
+      refresh();
     }
     
     override protected function onItemUpdate(event:*):void
