@@ -109,9 +109,9 @@ package it.ht.rcs.console.accounting.model
     {
       return privs.getItemIndex('SYS_BACKUP') != -1;
     }
-    public function is_sys_injector():Boolean
+    public function is_sys_injectors():Boolean
     {
-      return privs.getItemIndex('SYS_INJECTOR') != -1;
+      return privs.getItemIndex('SYS_INJECTORS') != -1;
     }
     public function is_sys_connectors():Boolean
     {
