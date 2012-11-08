@@ -13,6 +13,7 @@ package it.ht.rcs.console.network.model
         action_param: '',
         action_param_name: '',
         disable_sync: false,
+        scout:false,
         enabled: true,
         ident: '',
         ident_param: '',
@@ -36,6 +37,7 @@ package it.ht.rcs.console.network.model
         probability = data.probability;
         resource = data.resource;
         target_id = data.target_id;
+        scout = data.scout;
       }
     }
     
