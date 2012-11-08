@@ -23,6 +23,7 @@ package it.ht.rcs.console.evidence.model
         this.cell=new EvidenceDataCell();
         this.contact=data.contact;
         this.content=data.content;
+        this.tr=data.tr;
         this.desc=data.desc;
         this.duration=data.duration;
         this.end=data.end;

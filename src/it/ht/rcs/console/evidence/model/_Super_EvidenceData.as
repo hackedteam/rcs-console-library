@@ -61,6 +61,7 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     private var _internal_user : String;
     private var _internal_pass : String;
     private var _internal_content : String;
+    private var _internal_tr : String;
     private var _internal_body : String;
     private var _internal_resolution : String;
     private var _internal__grid : String;
@@ -172,6 +173,12 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     public function get content() : String
     {
         return _internal_content;
+    }
+    
+    [Bindable(event="propertyChange")]
+    public function get tr() : String
+    {
+      return _internal_tr;
     }
 
     [Bindable(event="propertyChange")]
@@ -494,6 +501,16 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
             _internal_content = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "content", oldValue, _internal_content));
         }
+    }
+    
+    public function set tr(value:String) : void
+    {
+      var oldValue:String = _internal_tr;
+      if (oldValue !== value)
+      {
+        _internal_tr = value;
+        this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "tr", oldValue, _internal_tr));
+      }
     }
 
     public function set body(value:String) : void
