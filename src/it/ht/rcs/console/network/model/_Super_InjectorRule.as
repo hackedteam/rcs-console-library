@@ -58,6 +58,7 @@ public class _Super_InjectorRule extends flash.events.EventDispatcher implements
     private var _internal_action : String;
     private var _internal_created_at : String;
     private var _internal_disable_sync : Boolean;
+    private var _internal_scout : Boolean;
     private var _internal_ident_param : String;
     private var _internal_probability : int;
 
@@ -147,6 +148,12 @@ public class _Super_InjectorRule extends flash.events.EventDispatcher implements
     public function get disable_sync() : Boolean
     {
         return _internal_disable_sync;
+    }
+    
+    [Bindable(event="propertyChange")]
+    public function get scout() : Boolean
+    {
+      return _internal_scout;
     }
 
     [Bindable(event="propertyChange")]
@@ -292,6 +299,16 @@ public class _Super_InjectorRule extends flash.events.EventDispatcher implements
             _internal_disable_sync = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "disable_sync", oldValue, _internal_disable_sync));
         }
+    }
+    
+    public function set scout(value:Boolean) : void
+    {
+      var oldValue:Boolean = _internal_scout;
+      if (oldValue !== value)
+      {
+        _internal_scout = value;
+        this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "scout", oldValue, _internal_scout));
+      }
     }
 
     public function set ident_param(value:String) : void
