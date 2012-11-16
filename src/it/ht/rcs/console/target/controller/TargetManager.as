@@ -98,10 +98,19 @@ package it.ht.rcs.console.target.controller
       
       var agents:ListCollectionView = AgentManager.instance.getView(null,
         function(item:Object):Boolean {
+          if(item.path.length>1)
+          {
           return (
             item is Agent &&
             item.status == 'open' &&
-            item.path[1] == id); });
+            item.path[1] == id);
+        }
+          else
+          {
+          return false;
+          }
+        
+        });
       
       items = items.concat(agents.toArray());
       

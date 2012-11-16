@@ -26,7 +26,11 @@ package it.ht.rcs.console.agent.rest
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
       params['operation'] = operation._id;
-      params['target'] = target._id;
+      if(target!=null)
+      {
+        params['target'] = target._id;
+      }
+    
       resp.token = create_(JSON.stringify(params)); 
     }
     
