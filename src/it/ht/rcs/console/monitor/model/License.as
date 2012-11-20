@@ -31,6 +31,9 @@ public class License extends _Super_License
       type = data.type;
       users = data.users;
       shards = data.shards;
+      scout=data.scout;
+      ocr=data.ocr;
+      translate=data.translate;
     }
   }
   
