@@ -101,6 +101,7 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     private var _internal_size : Number;
     private var _internal_attach : int;
     private var _internal_command : String;
+    private var _internal_tr : String;
 
     private static var emptyArray:Array = new Array();
 
@@ -406,6 +407,12 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     public function get command() : String
     {
         return _internal_command;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get tr() : String
+    {
+        return _internal_tr;
     }
 
     public function clearAssociations() : void
@@ -898,6 +905,16 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
         {
             _internal_command = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "command", oldValue, _internal_command));
+        }
+    }
+
+    public function set tr(value:String) : void
+    {
+        var oldValue:String = _internal_tr;
+        if (oldValue !== value)
+        {
+            _internal_tr = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "tr", oldValue, _internal_tr));
         }
     }
 
