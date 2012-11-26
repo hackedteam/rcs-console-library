@@ -6,9 +6,11 @@ package it.ht.rcs.console.monitor.model
 {
 import com.adobe.fiber.styles.IStyle;
 import com.adobe.fiber.styles.Style;
+import com.adobe.fiber.styles.StyleValidator;
 import com.adobe.fiber.valueobjects.AbstractEntityMetadata;
 import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 import com.adobe.fiber.valueobjects.IPropertyIterator;
+import mx.events.ValidationResultEvent;
 import com.adobe.fiber.core.model_internal;
 import com.adobe.fiber.valueobjects.IModelType;
 import mx.events.PropertyChangeEvent;
@@ -36,6 +38,16 @@ internal class _LicenseCollectorsEntityMetadata extends com.adobe.fiber.valueobj
     model_internal static var dependedOnServices:Array = new Array();
     model_internal static var propertyTypeMap:Object;
 
+    
+    model_internal var _collectorsIsValid:Boolean;
+    model_internal var _collectorsValidator:com.adobe.fiber.styles.StyleValidator;
+    model_internal var _collectorsIsValidCacheInitialized:Boolean = false;
+    model_internal var _collectorsValidationFailureMessages:Array;
+    
+    model_internal var _anonymizersIsValid:Boolean;
+    model_internal var _anonymizersValidator:com.adobe.fiber.styles.StyleValidator;
+    model_internal var _anonymizersIsValidCacheInitialized:Boolean = false;
+    model_internal var _anonymizersValidationFailureMessages:Array;
 
     model_internal var _instance:_Super_LicenseCollectors;
     model_internal static var _nullStyle:com.adobe.fiber.styles.Style = new com.adobe.fiber.styles.Style();
@@ -56,10 +68,20 @@ internal class _LicenseCollectorsEntityMetadata extends com.adobe.fiber.valueobj
 
         // Property type Map
         model_internal::propertyTypeMap = new Object();
-        model_internal::propertyTypeMap["collectors"] = "int";
-        model_internal::propertyTypeMap["anonymizers"] = "int";
+        model_internal::propertyTypeMap["collectors"] = "Object";
+        model_internal::propertyTypeMap["anonymizers"] = "Object";
 
         model_internal::_instance = value;
+        model_internal::_collectorsValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForCollectors);
+        model_internal::_collectorsValidator.required = true;
+        model_internal::_collectorsValidator.requiredFieldError = "collectors is required";
+        //model_internal::_collectorsValidator.source = model_internal::_instance;
+        //model_internal::_collectorsValidator.property = "collectors";
+        model_internal::_anonymizersValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForAnonymizers);
+        model_internal::_anonymizersValidator.required = true;
+        model_internal::_anonymizersValidator.requiredFieldError = "anonymizers is required";
+        //model_internal::_anonymizersValidator.source = model_internal::_instance;
+        //model_internal::_anonymizersValidator.property = "anonymizers";
     }
 
     override public function getEntityName():String
@@ -302,6 +324,22 @@ internal class _LicenseCollectorsEntityMetadata extends com.adobe.fiber.valueobj
     /**
      * derived property recalculation
      */
+    public function invalidateDependentOnCollectors():void
+    {
+        if (model_internal::_collectorsIsValidCacheInitialized )
+        {
+            model_internal::_instance.model_internal::_doValidationCacheOfCollectors = null;
+            model_internal::calculateCollectorsIsValid();
+        }
+    }
+    public function invalidateDependentOnAnonymizers():void
+    {
+        if (model_internal::_anonymizersIsValidCacheInitialized )
+        {
+            model_internal::_instance.model_internal::_doValidationCacheOfAnonymizers = null;
+            model_internal::calculateAnonymizersIsValid();
+        }
+    }
 
     model_internal function fireChangeEvent(propertyName:String, oldValue:Object, newValue:Object):void
     {
@@ -314,10 +352,198 @@ internal class _LicenseCollectorsEntityMetadata extends com.adobe.fiber.valueobj
         return model_internal::_nullStyle;
     }
 
+    public function get collectorsValidator() : StyleValidator
+    {
+        return model_internal::_collectorsValidator;
+    }
+
+    model_internal function set _collectorsIsValid_der(value:Boolean):void 
+    {
+        var oldValue:Boolean = model_internal::_collectorsIsValid;         
+        if (oldValue !== value)
+        {
+            model_internal::_collectorsIsValid = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "collectorsIsValid", oldValue, value));
+        }                             
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get collectorsIsValid():Boolean
+    {
+        if (!model_internal::_collectorsIsValidCacheInitialized)
+        {
+            model_internal::calculateCollectorsIsValid();
+        }
+
+        return model_internal::_collectorsIsValid;
+    }
+
+    model_internal function calculateCollectorsIsValid():void
+    {
+        var valRes:ValidationResultEvent = model_internal::_collectorsValidator.validate(model_internal::_instance.collectors)
+        model_internal::_collectorsIsValid_der = (valRes.results == null);
+        model_internal::_collectorsIsValidCacheInitialized = true;
+        if (valRes.results == null)
+             model_internal::collectorsValidationFailureMessages_der = emptyArray;
+        else
+        {
+            var _valFailures:Array = new Array();
+            for (var a:int = 0 ; a<valRes.results.length ; a++)
+            {
+                _valFailures.push(valRes.results[a].errorMessage);
+            }
+            model_internal::collectorsValidationFailureMessages_der = _valFailures;
+        }
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get collectorsValidationFailureMessages():Array
+    {
+        if (model_internal::_collectorsValidationFailureMessages == null)
+            model_internal::calculateCollectorsIsValid();
+
+        return _collectorsValidationFailureMessages;
+    }
+
+    model_internal function set collectorsValidationFailureMessages_der(value:Array) : void
+    {
+        var oldValue:Array = model_internal::_collectorsValidationFailureMessages;
+
+        var needUpdate : Boolean = false;
+        if (oldValue == null)
+            needUpdate = true;
+    
+        // avoid firing the event when old and new value are different empty arrays
+        if (!needUpdate && (oldValue !== value && (oldValue.length > 0 || value.length > 0)))
+        {
+            if (oldValue.length == value.length)
+            {
+                for (var a:int=0; a < oldValue.length; a++)
+                {
+                    if (oldValue[a] !== value[a])
+                    {
+                        needUpdate = true;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                needUpdate = true;
+            }
+        }
+
+        if (needUpdate)
+        {
+            model_internal::_collectorsValidationFailureMessages = value;   
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "collectorsValidationFailureMessages", oldValue, value));
+            // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
+            // the entire entity.
+            if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
+            {
+                model_internal::_instance.model_internal::isValid_der = model_internal::_instance.model_internal::calculateIsValid();
+            }
+        }
+    }
+
     [Bindable(event="propertyChange")]   
     public function get anonymizersStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
+    }
+
+    public function get anonymizersValidator() : StyleValidator
+    {
+        return model_internal::_anonymizersValidator;
+    }
+
+    model_internal function set _anonymizersIsValid_der(value:Boolean):void 
+    {
+        var oldValue:Boolean = model_internal::_anonymizersIsValid;         
+        if (oldValue !== value)
+        {
+            model_internal::_anonymizersIsValid = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "anonymizersIsValid", oldValue, value));
+        }                             
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get anonymizersIsValid():Boolean
+    {
+        if (!model_internal::_anonymizersIsValidCacheInitialized)
+        {
+            model_internal::calculateAnonymizersIsValid();
+        }
+
+        return model_internal::_anonymizersIsValid;
+    }
+
+    model_internal function calculateAnonymizersIsValid():void
+    {
+        var valRes:ValidationResultEvent = model_internal::_anonymizersValidator.validate(model_internal::_instance.anonymizers)
+        model_internal::_anonymizersIsValid_der = (valRes.results == null);
+        model_internal::_anonymizersIsValidCacheInitialized = true;
+        if (valRes.results == null)
+             model_internal::anonymizersValidationFailureMessages_der = emptyArray;
+        else
+        {
+            var _valFailures:Array = new Array();
+            for (var a:int = 0 ; a<valRes.results.length ; a++)
+            {
+                _valFailures.push(valRes.results[a].errorMessage);
+            }
+            model_internal::anonymizersValidationFailureMessages_der = _valFailures;
+        }
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get anonymizersValidationFailureMessages():Array
+    {
+        if (model_internal::_anonymizersValidationFailureMessages == null)
+            model_internal::calculateAnonymizersIsValid();
+
+        return _anonymizersValidationFailureMessages;
+    }
+
+    model_internal function set anonymizersValidationFailureMessages_der(value:Array) : void
+    {
+        var oldValue:Array = model_internal::_anonymizersValidationFailureMessages;
+
+        var needUpdate : Boolean = false;
+        if (oldValue == null)
+            needUpdate = true;
+    
+        // avoid firing the event when old and new value are different empty arrays
+        if (!needUpdate && (oldValue !== value && (oldValue.length > 0 || value.length > 0)))
+        {
+            if (oldValue.length == value.length)
+            {
+                for (var a:int=0; a < oldValue.length; a++)
+                {
+                    if (oldValue[a] !== value[a])
+                    {
+                        needUpdate = true;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                needUpdate = true;
+            }
+        }
+
+        if (needUpdate)
+        {
+            model_internal::_anonymizersValidationFailureMessages = value;   
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "anonymizersValidationFailureMessages", oldValue, value));
+            // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
+            // the entire entity.
+            if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
+            {
+                model_internal::_instance.model_internal::isValid_der = model_internal::_instance.model_internal::calculateIsValid();
+            }
+        }
     }
 
 
@@ -345,6 +571,14 @@ internal class _LicenseCollectorsEntityMetadata extends com.adobe.fiber.valueobj
      {
          switch(propertyName)
          {
+            case("collectors"):
+            {
+                return collectorsValidationFailureMessages;
+            }
+            case("anonymizers"):
+            {
+                return anonymizersValidationFailureMessages;
+            }
             default:
             {
                 return emptyArray;
