@@ -204,8 +204,6 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
     {
         return _internal_scout;
     }
-<<<<<<< HEAD
-=======
 
     [Bindable(event="propertyChange")]
     public function get ocr() : Boolean
@@ -218,7 +216,6 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
     {
         return _internal_translate;
     }
->>>>>>> cedeb65... Changes in data address according to new Google APIs
 
     public function clearAssociations() : void
     {
@@ -427,8 +424,6 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "scout", oldValue, _internal_scout));
         }
     }
-<<<<<<< HEAD
-=======
 
     public function set ocr(value:Boolean) : void
     {
@@ -449,7 +444,6 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "translate", oldValue, _internal_translate));
         }
     }
->>>>>>> cedeb65... Changes in data address according to new Google APIs
 
     /**
      * Data/source property setter listeners
