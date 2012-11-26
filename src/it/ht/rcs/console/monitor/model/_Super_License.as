@@ -73,6 +73,8 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
     private var _internal_serial : String;
     private var _internal_rmi : ArrayCollection;
     private var _internal_scout : Boolean;
+    private var _internal_ocr : Boolean;
+    private var _internal_translate : Boolean;
 
     private static var emptyArray:Array = new Array();
 
@@ -517,7 +519,6 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
     /**
      * derived property calculators
      */
-    
 
     /**
      * isValid calculator
