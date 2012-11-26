@@ -1230,7 +1230,7 @@
       <item name="Package">it.ht.rcs.console.monitor.model</item>
     </annotation>
     <annotation name="limit_">
-      <item name="propertySpecifier">users,archive,deletion,scout,exploits,maintenance,agents,alerting,nia,correlation,type,expiry,collectors,shards,connectors,serial,rmi,scout,ocr,translate</item>
+      <item name="propertySpecifier">users,archive,deletion,scout,exploits,maintenance,agents,alerting,nia,correlation,type,expiry,collectors,shards,connectors,serial,rmi,scout,ocr,translate,modify</item>
     </annotation>
     <property name="users" type="opaque" required="true"/>
     <property name="exploits" type="boolean" required="true"/>
@@ -1251,6 +1251,7 @@
     <property name="scout" type="boolean" required="true"/>
     <property name="ocr" type="boolean" required="true"/>
     <property name="translate" type="boolean" required="true"/>
+	<property name="modify" type="boolean" required="true"/>
   </entity>
   <entity name="LicenseCount">
     <annotation name="EntityProperties">
