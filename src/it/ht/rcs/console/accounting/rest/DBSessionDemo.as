@@ -10,7 +10,10 @@ package it.ht.rcs.console.accounting.rest
   {
     
     public static var demo_user:User         = new User({ _id: '1', name: 'demo', contact: 'demo@hackingteam.it',
-                                                          privs: ['ADMIN', 'SYS', 'TECH', 'VIEW'], locale: 'en_US', group_ids: ['1'],
+                                                          privs: ['ADMIN','ADMIN_USERS','ADMIN_OPERATIONS','ADMIN_TARGETS','ADMIN_AUDIT','ADMIN_LICENSE','ADMIN_PROFILES',
+                                                                  'SYS','SYS_FRONTEND','SYS_BACKEND','SYS_BACKUP','SIS_INJECTORS','SYS_CONNECTORS', 
+                                                                  'TECH', 'TECH_FACTORIES','TECH_BUILD','TECH_CONFIG','TECH_EXEC','TECH_UPLOAD','TECH_IMPORT','TECH_NI_RULES', 
+                                                                  'VIEW', 'VIEW_ALERTS',''], locale: 'en_US', group_ids: ['1'],
                                                           dashboard_ids: ['o1', 't1', 'a1'], recent_ids: ['o1', 't1', 'a6', 't3', 'f6'],
                                                           timezone: 0, enabled: true});
     
