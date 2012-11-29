@@ -1161,161 +1161,6 @@
     <property name="host" type="string" required="true"/>
     <property name="_id" type="string" required="true"/>
   </entity>
-  <service name="DBLicense">
-    <annotation name="ActionScriptGeneration">
-      <item name="ServiceType">HTTPMultiService</item>
-      <item name="Package">it.ht.rcs.console.monitor.rest</item>
-      <item name="rootURL">https://localhost:4444</item>
-    </annotation>
-    <annotation name="ServiceTypeGroup">
-      <item name="ServiceBackendType">HTTPService</item>
-    </annotation>
-    <annotation name="ServiceConfig">
-      <item name="DEFAULT_ENTITY_PACKAGE">it.ht.rcs.console.monitor.model</item>
-      <item name="LINKED_FILE"></item>
-    </annotation>
-    <function name="count_" return-type="LicenseCount">
-      <annotation name="analyze group">
-        <item name="analyzed">true</item>
-      </annotation>
-      <annotation name="ActionScriptGeneration">
-        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
-        <item name="method">GET</item>
-        <item name="url">/license/count</item>
-      </annotation>
-      <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/license/count</item>
-      </annotation>
-      <annotation name="ValidProperties">
-        <item name="propertySpecifier">collectors,users,shards,nia,agents</item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="returnType">opaque</item>
-      </annotation>
-    </function>
-    <function name="limit_" return-type="License">
-      <annotation name="analyze group">
-        <item name="analyzed">true</item>
-      </annotation>
-      <annotation name="ActionScriptGeneration">
-        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
-        <item name="method">GET</item>
-        <item name="url">/license/limit</item>
-      </annotation>
-      <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/license/limit</item>
-      </annotation>
-      <annotation name="ValidProperties">
-        <item name="propertySpecifier">users,archive,deletion,scout,exploits,maintenance,agents,alerting,nia,correlation,type,expiry,collectors,shards,connectors,serial,rmi</item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="returnType">opaque</item>
-      </annotation>
-    </function>
-  </service>
-  <entity name="License">
-    <annotation name="EntityProperties">
-      <item name="EntityOriginalName">License</item>
-    </annotation>
-    <annotation name="service Group">
-      <item name="service">DBLicense</item>
-    </annotation>
-    <annotation name="ServerProperties">
-      <item name="IncludeRemoteClass">nonempty</item>
-    </annotation>
-    <annotation name="limit">
-      <item name="propertySpecifier">collectors,users,nia,agents,alerting,correlation,type,serial,rmi</item>
-    </annotation>
-    <annotation name="ActionScriptGeneration">
-      <item name="Package">it.ht.rcs.console.monitor.model</item>
-    </annotation>
-    <annotation name="limit_">
-      <item name="propertySpecifier">users,archive,deletion,scout,exploits,maintenance,agents,alerting,nia,correlation,type,expiry,collectors,shards,connectors,serial,rmi</item>
-    </annotation>
-    <property name="users" type="opaque" required="true"/>
-    <property name="exploits" type="boolean" required="true"/>
-    <property name="deletion" type="boolean" required="true"/>
-    <property name="archive" type="boolean" required="true"/>
-    <property name="maintenance" type="integer" required="true"/>
-    <property name="agents" type="LicenseAgents" required="true"/>
-    <property name="alerting" type="boolean" required="true"/>
-    <property name="nia" type="opaque[]" required="true"/>
-    <property name="correlation" type="boolean" required="true"/>
-    <property name="type" type="string" required="true"/>
-    <property name="expiry" type="integer" required="true"/>
-    <property name="collectors" type="LicenseCollectors" required="true"/>
-    <property name="shards" type="integer" required="true"/>
-    <property name="connectors" type="boolean" required="true"/>
-    <property name="serial" type="string" required="true"/>
-    <property name="rmi" type="boolean[]" required="true"/>
-    <property name="scout" type="boolean" required="true"/>
-  </entity>
-  <entity name="LicenseCount">
-    <annotation name="EntityProperties">
-      <item name="EntityOriginalName">LicenseCount</item>
-    </annotation>
-    <annotation name="service Group">
-      <item name="service">DBLicense</item>
-    </annotation>
-    <annotation name="ServerProperties">
-      <item name="IncludeRemoteClass">nonempty</item>
-    </annotation>
-    <annotation name="count">
-      <item name="propertySpecifier">collectors,users,nia,agents</item>
-    </annotation>
-    <annotation name="ActionScriptGeneration">
-      <item name="Package">it.ht.rcs.console.monitor.model</item>
-    </annotation>
-    <annotation name="count_">
-      <item name="propertySpecifier">collectors,users,shards,nia,agents</item>
-    </annotation>
-    <property name="collectors" type="LicenseCollectors"/>
-    <property name="users" type="integer"/>
-    <property name="shards" type="integer" required="true"/>
-    <property name="nia" type="integer"/>
-    <property name="agents" type="LicenseAgents"/>
-  </entity>
-  <entity name="LicenseCollectors">
-    <annotation name="EntityProperties">
-      <item name="EntityOriginalName">Collectors</item>
-    </annotation>
-    <annotation name="service Group">
-      <item name="service">DBLicense</item>
-    </annotation>
-    <annotation name="ServerProperties">
-      <item name="IncludeRemoteClass">nonempty</item>
-    </annotation>
-    <annotation name="ActionScriptGeneration">
-      <item name="Package">it.ht.rcs.console.monitor.model</item>
-    </annotation>
-    <property name="collectors" type="integer" required="true"/>
-    <property name="anonymizers" type="integer" required="true"/>
-  </entity>
-  <entity name="LicenseAgents">
-    <annotation name="EntityProperties">
-      <item name="EntityOriginalName">Agents</item>
-    </annotation>
-    <annotation name="service Group">
-      <item name="service">DBLicense</item>
-    </annotation>
-    <annotation name="ServerProperties">
-      <item name="IncludeRemoteClass">nonempty</item>
-    </annotation>
-    <annotation name="ActionScriptGeneration">
-      <item name="Package">it.ht.rcs.console.monitor.model</item>
-    </annotation>
-    <property name="symbian" type="boolean[]" required="true"/>
-    <property name="blackberry" type="boolean[]" required="true"/>
-    <property name="osx" type="boolean[]" required="true"/>
-    <property name="total" type="opaque" required="true"/>
-    <property name="android" type="boolean[]" required="true"/>
-    <property name="ios" type="boolean[]" required="true"/>
-    <property name="desktop" type="opaque" required="true"/>
-    <property name="windows" type="boolean[]" required="true"/>
-    <property name="winmo" type="boolean[]" required="true"/>
-    <property name="linux" type="boolean[]" required="true"/>
-    <property name="mobile" type="opaque" required="true"/>
-  </entity>
   <service name="DBInjector">
     <annotation name="ActionScriptGeneration">
       <item name="ServiceType">HTTPMultiService</item>
@@ -1635,7 +1480,7 @@
       <item name="propertySpecifier">action_param,enabled,action_param_name,resource,target_id,updated_at,_id,ident,action,created_at,disable_sync,ident_param,probability</item>
     </annotation>
     <annotation name="update_rule_">
-      <item name="propertySpecifier">enabled,action_param,updated_at,ident,_id,target_id,resource,action,ident_param,disable_sync,created_at,probability</item>
+      <item name="propertySpecifier">enabled,action_param,updated_at,ident,_id,target_id,resource,action,ident_param,disable_sync,created_at,probability,scout</item>
     </annotation>
     <property name="action_param" type="string"/>
     <property name="enabled" type="boolean"/>
@@ -1650,6 +1495,7 @@
     <property name="disable_sync" type="boolean"/>
     <property name="ident_param" type="string"/>
     <property name="probability" type="integer"/>
+    <property name="scout" type="boolean"/>
   </entity>
   <service name="DBUser">
     <annotation name="ActionScriptGeneration">
@@ -3303,6 +3149,7 @@
     <property name="street" type="string"/>
     <property name="street_number" type="string"/>
     <property name="postal_code" type="string"/>
+    <property name="text" type="string"/>
   </entity>
   <entity name="EvidenceData">
     <annotation name="EntityProperties">
@@ -3364,6 +3211,7 @@
     <property name="size" type="double"/>
     <property name="attach" type="integer"/>
     <property name="command" type="string"/>
+    <property name="tr" type="string"/>
   </entity>
   <entity name="TypeCount">
     <annotation name="EntityProperties">
@@ -4789,5 +4637,162 @@
     <property name="device" type="integer"/>
     <property name="keylog" type="integer"/>
     <property name="clipboard" type="integer"/>
+  </entity>
+  <service name="DBLicense">
+    <annotation name="ActionScriptGeneration">
+      <item name="ServiceType">HTTPMultiService</item>
+      <item name="Package">it.ht.rcs.console.monitor.rest</item>
+      <item name="rootURL">https://localhost:4444</item>
+    </annotation>
+    <annotation name="ServiceTypeGroup">
+      <item name="ServiceBackendType">HTTPService</item>
+    </annotation>
+    <annotation name="ServiceConfig">
+      <item name="DEFAULT_ENTITY_PACKAGE">it.ht.rcs.console.monitor.model</item>
+      <item name="LINKED_FILE"></item>
+    </annotation>
+    <function name="count_" return-type="LicenseCount">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/license/count</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/license/count</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">collectors,users,shards,nia,agents</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+      </annotation>
+    </function>
+    <function name="limit_" return-type="License">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/license/limit</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/license/limit</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">users,archive,deletion,scout,exploits,maintenance,agents,alerting,nia,correlation,type,expiry,collectors,shards,connectors,serial,rmi</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+      </annotation>
+    </function>
+  </service>
+  <entity name="License">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">License</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBLicense</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="limit">
+      <item name="propertySpecifier">collectors,users,nia,agents,alerting,correlation,type,serial,rmi</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.monitor.model</item>
+    </annotation>
+    <annotation name="limit_">
+      <item name="propertySpecifier">users,archive,deletion,scout,exploits,maintenance,agents,alerting,nia,correlation,type,expiry,collectors,shards,connectors,serial,rmi,scout,ocr,translate</item>
+    </annotation>
+    <property name="users" type="opaque" required="true"/>
+    <property name="exploits" type="boolean" required="true"/>
+    <property name="deletion" type="boolean" required="true"/>
+    <property name="archive" type="boolean" required="true"/>
+    <property name="maintenance" type="integer" required="true"/>
+    <property name="agents" type="LicenseAgents" required="true"/>
+    <property name="alerting" type="boolean" required="true"/>
+    <property name="nia" type="opaque[]" required="true"/>
+    <property name="correlation" type="boolean" required="true"/>
+    <property name="type" type="string" required="true"/>
+    <property name="expiry" type="integer" required="true"/>
+    <property name="collectors" type="LicenseCollectors" required="true"/>
+    <property name="shards" type="integer" required="true"/>
+    <property name="connectors" type="boolean" required="true"/>
+    <property name="serial" type="string" required="true"/>
+    <property name="rmi" type="boolean[]" required="true"/>
+    <property name="scout" type="boolean" required="true"/>
+    <property name="ocr" type="boolean" required="true"/>
+    <property name="translate" type="boolean" required="true"/>
+  </entity>
+  <entity name="LicenseCount">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">LicenseCount</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBLicense</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="count">
+      <item name="propertySpecifier">collectors,users,nia,agents</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.monitor.model</item>
+    </annotation>
+    <annotation name="count_">
+      <item name="propertySpecifier">collectors,users,shards,nia,agents</item>
+    </annotation>
+    <property name="collectors" type="LicenseCollectors"/>
+    <property name="users" type="integer"/>
+    <property name="shards" type="integer" required="true"/>
+    <property name="nia" type="integer"/>
+    <property name="agents" type="LicenseAgents"/>
+  </entity>
+  <entity name="LicenseCollectors">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Collectors</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBLicense</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.monitor.model</item>
+    </annotation>
+    <property name="collectors" type="integer" required="true"/>
+    <property name="anonymizers" type="integer" required="true"/>
+  </entity>
+  <entity name="LicenseAgents">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Agents</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBLicense</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.monitor.model</item>
+    </annotation>
+    <property name="symbian" type="boolean[]" required="true"/>
+    <property name="blackberry" type="boolean[]" required="true"/>
+    <property name="osx" type="boolean[]" required="true"/>
+    <property name="total" type="opaque" required="true"/>
+    <property name="android" type="boolean[]" required="true"/>
+    <property name="ios" type="boolean[]" required="true"/>
+    <property name="desktop" type="opaque" required="true"/>
+    <property name="windows" type="boolean[]" required="true"/>
+    <property name="winmo" type="boolean[]" required="true"/>
+    <property name="linux" type="boolean[]" required="true"/>
+    <property name="mobile" type="opaque" required="true"/>
   </entity>
 </model>

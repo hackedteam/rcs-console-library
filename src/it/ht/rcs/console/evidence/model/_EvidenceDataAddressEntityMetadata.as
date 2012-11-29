@@ -20,14 +20,14 @@ internal class _EvidenceDataAddressEntityMetadata extends com.adobe.fiber.valueo
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("country", "country_code", "region", "city", "street", "street_number", "postal_code");
+    model_internal static var allProperties:Array = new Array("country", "country_code", "region", "city", "street", "street_number", "postal_code", "text");
     model_internal static var allAssociationProperties:Array = new Array();
     model_internal static var allRequiredProperties:Array = new Array();
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("country", "country_code", "region", "city", "street", "street_number", "postal_code");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("country", "country_code", "region", "city", "street", "street_number", "postal_code", "text");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("country", "country_code", "region", "city", "street", "street_number", "postal_code");
+    model_internal static var dataProperties:Array = new Array("country", "country_code", "region", "city", "street", "street_number", "postal_code", "text");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("country", "country_code", "region", "city", "street", "street_number", "postal_code");
+    model_internal static var nonDerivedProperties:Array = new Array("country", "country_code", "region", "city", "street", "street_number", "postal_code", "text");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array();
     model_internal static var collectionBaseMap:Object;
@@ -54,6 +54,7 @@ internal class _EvidenceDataAddressEntityMetadata extends com.adobe.fiber.valueo
             model_internal::dependentsOnMap["street"] = new Array();
             model_internal::dependentsOnMap["street_number"] = new Array();
             model_internal::dependentsOnMap["postal_code"] = new Array();
+            model_internal::dependentsOnMap["text"] = new Array();
 
             // collection base map
             model_internal::collectionBaseMap = new Object();
@@ -68,6 +69,7 @@ internal class _EvidenceDataAddressEntityMetadata extends com.adobe.fiber.valueo
         model_internal::propertyTypeMap["street"] = "String";
         model_internal::propertyTypeMap["street_number"] = "String";
         model_internal::propertyTypeMap["postal_code"] = "String";
+        model_internal::propertyTypeMap["text"] = "String";
 
         model_internal::_instance = value;
     }
@@ -338,6 +340,12 @@ internal class _EvidenceDataAddressEntityMetadata extends com.adobe.fiber.valueo
         return true;
     }
 
+    [Bindable(event="propertyChange")]
+    public function get isTextAvailable():Boolean
+    {
+        return true;
+    }
+
 
     /**
      * derived property recalculation
@@ -386,6 +394,12 @@ internal class _EvidenceDataAddressEntityMetadata extends com.adobe.fiber.valueo
 
     [Bindable(event="propertyChange")]   
     public function get postal_codeStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get textStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }

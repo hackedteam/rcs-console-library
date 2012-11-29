@@ -54,6 +54,7 @@ public class _Super_EvidenceDataAddress extends flash.events.EventDispatcher imp
     private var _internal_street : String;
     private var _internal_street_number : String;
     private var _internal_postal_code : String;
+    private var _internal_text : String;
 
     private static var emptyArray:Array = new Array();
 
@@ -117,6 +118,12 @@ public class _Super_EvidenceDataAddress extends flash.events.EventDispatcher imp
     public function get postal_code() : String
     {
         return _internal_postal_code;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get text() : String
+    {
+        return _internal_text;
     }
 
     public function clearAssociations() : void
@@ -197,6 +204,16 @@ public class _Super_EvidenceDataAddress extends flash.events.EventDispatcher imp
         }
     }
 
+    public function set text(value:String) : void
+    {
+        var oldValue:String = _internal_text;
+        if (oldValue !== value)
+        {
+            _internal_text = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "text", oldValue, _internal_text));
+        }
+    }
+
     /**
      * Data/source property setter listeners
      *
@@ -220,7 +237,6 @@ public class _Super_EvidenceDataAddress extends flash.events.EventDispatcher imp
     /**
      * derived property calculators
      */
-    
 
     /**
      * isValid calculator
