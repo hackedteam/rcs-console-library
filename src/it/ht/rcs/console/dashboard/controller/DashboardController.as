@@ -145,7 +145,7 @@ package it.ht.rcs.console.dashboard.controller
             t.tot += evidenceHash[type] - dashboardItem.targetBaselines[target._id].evidence[type];
             t.sync += dashboardHash[type];
           }
-          
+          dashboardItem.scout=t.scout;//????
           dashboardItem.totTot += t.tot;
           dashboardItem.totSync += t.sync;
           
@@ -179,6 +179,7 @@ package it.ht.rcs.console.dashboard.controller
       
       dashboardItem.name = item.name;
       dashboardItem.desc = item.desc;
+      dashboardItem.scout=item.scout;
       dashboardItem.lastSync = item.stat.last_sync;
       dashboardItem.lastSyncStatus = item.stat.last_sync_status;
       
