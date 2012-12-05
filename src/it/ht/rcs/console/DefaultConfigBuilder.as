@@ -52,7 +52,7 @@ package it.ht.rcs.console
 
 				{module: "camera", quality: "med", _type: "desktop,mobile", _platform: "windows,osx,ios,winmo,symbian,linux"},
 
-				{module: "chat", _type: "desktop,mobile", _platform: "windows,osx,blackberry,linux,ios"},
+				{module: "chat", _type: "desktop,mobile", _platform: "windows,osx,blackberry,linux,ios,android"},
 
 				{module: "clipboard", _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,android,linux"},
 
