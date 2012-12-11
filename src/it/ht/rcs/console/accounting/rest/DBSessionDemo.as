@@ -13,7 +13,7 @@ package it.ht.rcs.console.accounting.rest
                                                           privs: ['ADMIN','ADMIN_USERS','ADMIN_OPERATIONS','ADMIN_TARGETS','ADMIN_AUDIT','ADMIN_LICENSE','ADMIN_PROFILES',
                                                                   'SYS','SYS_FRONTEND','SYS_BACKEND','SYS_BACKUP','SIS_INJECTORS','SYS_CONNECTORS', 
                                                                   'TECH', 'TECH_FACTORIES','TECH_BUILD','TECH_CONFIG','TECH_EXEC','TECH_UPLOAD','TECH_IMPORT','TECH_NI_RULES', 
-                                                                  'VIEW', 'VIEW_ALERTS',''], locale: 'en_US', group_ids: ['1'],
+                                                                  'VIEW', 'VIEW_ALERTS','VIEW_FILESYSTEM', 'VIEW_EDIT', 'VIEW_DELETE','VIEW_EXPORT','VIEW_PROFILES' ], locale: 'en_US', group_ids: ['1'],
                                                           dashboard_ids: ['o1', 't1', 'a1'], recent_ids: ['o1', 't1', 'a6', 't3', 'f6'],
                                                           timezone: 0, enabled: true});
     
@@ -65,7 +65,9 @@ package it.ht.rcs.console.accounting.rest
     public function all(onResult:Function=null, onFault:Function=null):void
     {
       var sessions:ArrayCollection = new ArrayCollection([
-        new Session({ user: new User({ _id: '1', name: 'demo' }),   address: 'demo',        time: (new Date().time - 10000) / 1000, level: ['ADMIN', 'SYS', 'TECH', 'VIEW'] }),
+        new Session({ user: new User({ _id: '1', name: 'demo' }),   address: 'demo',        time: (new Date().time - 10000) / 1000, level: ['ADMIN','ADMIN_USERS','ADMIN_OPERATIONS','ADMIN_TARGETS','ADMIN_AUDIT','ADMIN_LICENSE','ADMIN_PROFILES', 'SYS', 'SYS_FRONTEND', 'SYS_BACKEND', 'SYS_BACKUP', 'SIS_INJECTORS', 'SYS_CONNECTORS', 
+          'TECH', 'TECH_FACTORIES','TECH_BUILD','TECH_CONFIG','TECH_EXEC','TECH_UPLOAD','TECH_IMPORT','TECH_NI_RULES', 
+          'VIEW', 'VIEW_ALERTS','VIEW_FILESYSTEM', 'VIEW_EDIT', 'VIEW_DELETE','VIEW_EXPORT','VIEW_PROFILES' ] }),
         new Session({ user: new User({ _id: '2', name: 'alor' }),   address: '1.1.2.3',     time: (new Date().time - 20000) / 1000, level: ['VIEW'] }),
         new Session({ user: new User({ _id: '4', name: 'naga' }),   address: '10.11.12.13', time: (new Date().time - 2000)  / 1000, level: ['ADMIN'] })
       ]);

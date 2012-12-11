@@ -14,13 +14,19 @@ package it.ht.rcs.console.evidence.model
         this.access=data.access;
         this.accuracy=data.accuracy;
         this.action=data.action;
-        this.address=new EvidenceDataAddress()
+        if(data.address)
+        {
+          this.address=new EvidenceDataAddress(data.address)
+        }
         this.attach=data.attach;
         this.attr=data.attr;
         this.begin=data.begin;
         this.body=data.body;
         this.command=data.command;
-        this.cell=new EvidenceDataCell();
+        if(data.cell)
+        {
+          this.cell=new EvidenceDataCell();
+        }
         this.contact=data.contact;
         this.content=data.content;
         this.tr=data.tr;
@@ -53,7 +59,10 @@ package it.ht.rcs.console.evidence.model
         this.url=data.url;
         this.user=data.user;
         this.users=data.users;
-        this.wifi=new ArrayCollection();
+        if(data.wifi)
+        {
+          this.wifi=new ArrayCollection(data.wifi);
+        }
         this.window=data.window;
         this.x=data.x;
         this.y=data.y;
