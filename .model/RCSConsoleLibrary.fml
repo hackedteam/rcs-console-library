@@ -4796,4 +4796,89 @@
     <property name="linux" type="boolean[]" required="true"/>
     <property name="mobile" type="opaque" required="true"/>
   </entity>
+  <service name="DBEntity">
+    <annotation name="ActionScriptGeneration">
+      <item name="ServiceType">HTTPMultiService</item>
+      <item name="Package">it.ht.rcs.console.entities.rest</item>
+      <item name="rootURL">http://localhost:4444</item>
+    </annotation>
+    <annotation name="ServiceTypeGroup">
+      <item name="ServiceBackendType">HTTPService</item>
+    </annotation>
+    <annotation name="ServiceConfig">
+      <item name="DEFAULT_ENTITY_PACKAGE">it.ht.rcs.console.entities.model</item>
+      <item name="LINKED_FILE"></item>
+    </annotation>
+    <function name="all_" return-type="Entity">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/entity</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">http://localhost:4444/entity</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">photos,updated_at,level,desc,_id,name,path,created_at,type</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+      </annotation>
+    </function>
+  </service>
+  <entity name="NoName1">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">NoName1</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBEntity</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="all_">
+      <item name="propertySpecifier">photos,updated_at,level,desc,_id,name,path,created_at,type</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.entities.model</item>
+    </annotation>
+    <property name="photos" type="opaque[]" required="true"/>
+    <property name="updated_at" type="string" required="true"/>
+    <property name="level" type="string" required="true"/>
+    <property name="desc" type="string" required="true"/>
+    <property name="_id" type="string" required="true"/>
+    <property name="name" type="string" required="true"/>
+    <property name="path" type="string[]" required="true"/>
+    <property name="created_at" type="string" required="true"/>
+    <property name="type" type="string" required="true"/>
+  </entity>
+  <entity name="Entity">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Entity</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBEntity</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="all_">
+      <item name="propertySpecifier">photos,updated_at,level,desc,_id,name,path,created_at,type</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.entities.model</item>
+    </annotation>
+    <property name="photos" type="opaque" required="true"/>
+    <property name="updated_at" type="string" required="true"/>
+    <property name="level" type="string" required="true"/>
+    <property name="desc" type="string" required="true"/>
+    <property name="_id" type="string" required="true"/>
+    <property name="name" type="string" required="true"/>
+    <property name="path" type="string[]" required="true"/>
+    <property name="created_at" type="string" required="true"/>
+    <property name="type" type="string" required="true"/>
+  </entity>
 </model>
