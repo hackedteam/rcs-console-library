@@ -23,8 +23,8 @@ package it.ht.rcs.console.entities.rest
         onResult(new ResultEvent('target.all', false, true, entities));
     }
     
-
     
+   
   }
   
 }
