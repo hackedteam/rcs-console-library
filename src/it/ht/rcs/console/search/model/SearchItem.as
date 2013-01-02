@@ -16,6 +16,9 @@ package it.ht.rcs.console.search.model
         name = data.name;
         status = data.status;
         path = data.path;
+       
+        if (data.hasOwnProperty('platform'))
+          platform = data.platform;
         if (data.hasOwnProperty('stat'))
           stat = data.stat;
         else
