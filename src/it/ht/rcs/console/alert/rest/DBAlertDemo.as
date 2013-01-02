@@ -60,7 +60,7 @@ package it.ht.rcs.console.alert.rest
     
     public function counters(onResult:Function=null, onFault:Function=null):void
     {
-      var event:ResultEvent = new ResultEvent('alert.counters', false, true, 3);
+      var event:ResultEvent = new ResultEvent('alert.counters', false, true, 1);
       if (onResult != null)
         onResult(event);
     }
