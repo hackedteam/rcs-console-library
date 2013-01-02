@@ -20,7 +20,7 @@ package it.ht.rcs.console.agent.rest
       // AGENTS
       
       // John Doe (SwordFish)
-      new Agent({ _id: "a1", _kind: "agent", name: "Laptop (1)",      desc:"John's Laptop",               status: "open",   path :["o1", "t1"], type: "desktop", platform: "windows",     version: 10, ident:"RCS_0000000001", counter: 1, upgradable: false, stat: new Stat({ _id: "s1", last_sync: 1307515166, evidence: null, grid_size: 0, size: 0 }),
+      new Agent({ _id: "a1", _kind: "agent", name: "Laptop (1)",      desc:"Jimmy's Laptop",               status: "open",   path :["o1", "t1"], type: "desktop", platform: "windows",     version: 10, ident:"RCS_0000000001", counter: 1, upgradable: false, stat: new Stat({ _id: "s1", last_sync: 1307515166, evidence: null, grid_size: 0, size: 0 }),
         configs: [new Config({config: DefaultConfigBuilder.getDefaultConfigAsString(new Agent({type: 'desktop'}))})] }),
       new Agent({ _id: "a2", _kind: "agent", name: "Mobile (1)",      desc:"John's Android Mobile",       status: "open",   path :["o1", "t1"], type: "mobile",  platform: "android", version: 10, ident:"RCS_0000000002", counter: 1, upgradable: false, stat: new Stat({ _id: "s2", last_sync: 1307524166, evidence: null, grid_size: 0, size: 0 }),
         configs: [new Config({config: DefaultConfigBuilder.getDefaultConfigAsString(new Agent({type: 'mobile'}))})] }),
