@@ -14,7 +14,7 @@ package it.ht.rcs.console.update.rest
     
     public function all(onResult:Function=null, onFault:Function=null):void
     {
-      var event:ResultEvent = new ResultEvent("update.index", false, true, new UpdateVersions({console: "-1", db: "-1"}));
+      var event:ResultEvent = new ResultEvent("update.index", false, true, new UpdateVersions({console: "-1", db: "8.3.0"}));
       if (onResult != null) 
         onResult(event);
     }
@@ -22,13 +22,14 @@ package it.ht.rcs.console.update.rest
     public function core_all(onResult:Function=null, onFault:Function=null):void
     {
       var event:ResultEvent = new ResultEvent("core.index", false, true, new ArrayCollection([
-          new Core({name: 'windows', version: '2012010101'}),
-          new Core({name: 'osx', version: '2012010101'}),
-          new Core({name: 'android', version: '2012010101'}),
-          new Core({name: 'blackberry', version: '2012010101'}),
-          new Core({name: 'ios', version: '2012010101'}),
-          new Core({name: 'symbian', version: '2012010101'}),
-          new Core({name: 'winmo', version: '2012010101'})
+          new Core({name: 'windows', version: '2013010101'}),
+          new Core({name: 'osx', version: '2013010101'}),
+          new Core({name: 'android', version: '2013010101'}),
+          new Core({name: 'blackberry', version: '2013010101'}),
+          new Core({name: 'ios', version: '2013010101'}),
+          new Core({name: 'linux', version: '2013010101'}),
+          new Core({name: 'symbian', version: '2013010101'}),
+          new Core({name: 'winmo', version: '2013010101'})
         ]));
       if (onResult != null) 
         onResult(event);
