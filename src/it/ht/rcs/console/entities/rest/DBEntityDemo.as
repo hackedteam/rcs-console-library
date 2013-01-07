@@ -40,6 +40,10 @@ package it.ht.rcs.console.entities.rest
      
     }
    
+    public function add_photo_from_grid(entityId:String, gridId:String, targetId:String, onResult:Function=null, onFault:Function=null):void
+    {
+    
+    }
   }
   
 }

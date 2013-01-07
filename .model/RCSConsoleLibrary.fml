@@ -4969,6 +4969,27 @@
       </annotation>
       <parameter name="strXml" type="string"/>
     </function>
+    <function name="add_photo_from_grid_" return-type="void">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.xml.XMLSerializationFilter</item>
+        <item name="method">POST</item>
+        <item name="contentType">application/xml</item>
+        <item name="requestBodyParameter">true</item>
+        <item name="url">/entity/add_photo_from_grid</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">http://localhost:4444/entity/add_photo_from_grid</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParamNames">strXml</item>
+        <item name="inputParams">string</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="strXml" type="string"/>
+    </function>
   </service>
   <entity name="Entity">
     <annotation name="EntityProperties">

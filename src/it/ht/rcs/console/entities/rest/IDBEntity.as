@@ -22,6 +22,8 @@ package it.ht.rcs.console.entities.rest
     function delete_photo(entityId:String, photoId:String, onResult:Function=null, onFault:Function=null):void
     
     function show(id:String, onResult:Function=null, onFault:Function=null):void
+      
+    function add_photo_from_grid(entityId:String, gridId:String, targetId:String, onResult:Function=null, onFault:Function=null):void
    
    
   }

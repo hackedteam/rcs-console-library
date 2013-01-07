@@ -42,6 +42,13 @@ package it.ht.rcs.console.entities.rest
       resp.token = delete_photo_(JSON.stringify(params));
     }
     
+    public function add_photo_from_grid(entityId:String, gridId:String, targetId:String, onResult:Function=null, onFault:Function=null):void
+    {
+      var params:Object={_id:entityId, _grid:gridId, target_id:targetId}
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = add_photo_from_grid_(JSON.stringify(params));
+    }
+    
     public function add_photo(fileReference:FileReference, id:String, onResult:Function = null, onFault:Function = null):void
     {
       var url:String= _serviceControl.baseURL+ "entity/add_photo"

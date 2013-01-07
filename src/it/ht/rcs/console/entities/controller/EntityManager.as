@@ -58,10 +58,9 @@ package  it.ht.rcs.console.entities.controller
       
     }
     
-    public function addPhotoFromGrid():void
+    public function addPhotoFromGrid(entityId:String, gridId:String, targetId:String, onResult:Function, onFault:Function=null):void
     {
-      
-      
+      DB.instance.entity.add_photo_from_grid(entityId, gridId, targetId, onResult, onFault)
     }
     
     public function deletePhoto(entityId:String, photoId:String, onResult:Function, onFault:Function=null):void
@@ -69,6 +68,22 @@ package  it.ht.rcs.console.entities.controller
       DB.instance.entity.delete_photo(entityId, photoId, onResult, onFault)
       
     }
+    
+    public function getEntityByTarget(targetId:String):Entity
+    { 
+      var lcv:ListCollectionView=getView()
+     for (var i:int=0;i<lcv.length;i++)
+     {
+     var entity:Entity=lcv.getItemAt(i) as Entity
+       if(entity.path.getItemAt(entity.path.length-1)==targetId)
+       {
+         return entity;
+       }
+     }
+      
+        return null
+    }
+    
     
     private function onResult(e:ResultEvent):void
     {
