@@ -1,5 +1,7 @@
 package it.ht.rcs.console.entities.rest
 {
+  import flash.net.FileReference;
+  
   import it.ht.rcs.console.operation.model.Operation;
   import it.ht.rcs.console.search.model.Stat;
   import it.ht.rcs.console.search.model.StatEvidence;
@@ -23,7 +25,20 @@ package it.ht.rcs.console.entities.rest
         onResult(new ResultEvent('target.all', false, true, entities));
     }
     
+    public function add_photo(fileReference:FileReference, id:String, onResult:Function = null, onFault:Function = null):void
+    {
+      
+    }
     
+    public function delete_photo(entityId:String, photoId:String, onResult:Function = null, onFault:Function = null):void
+    {
+      
+    }
+    
+    public function show(id:String, onResult:Function=null, onFault:Function=null):void
+    {
+     
+    }
    
   }
   
