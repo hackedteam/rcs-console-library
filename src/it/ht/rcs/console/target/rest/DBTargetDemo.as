@@ -14,9 +14,9 @@ package it.ht.rcs.console.target.rest
     
     public static var targets:ArrayCollection = new ArrayCollection([
       // Nashville
-      new Target({ _id: 't1', _kind: 'target', name: 'Jimmy Page',        desc: 'Head of the terrorist cell', status: 'open',   path: ['o1'], stat: new Stat({ last_sync: 1309354166, evidence: new StatEvidence({screenshot: 10, file: 100}), dashboard: new StatEvidence({screenshot: 5}), grid_size: 0, size: 0 }) }),
+      new Target({ _id: 't1', _kind: 'target', name: 'Jimmy Page',      desc: 'Head of the terrorist cell', status: 'open',   path: ['o1'], stat: new Stat({ last_sync: 1309354166, evidence: new StatEvidence({screenshot: 10, file: 1, position:4, call:1}), dashboard: new StatEvidence({screenshot: 4, position:2, call:1}), grid_size: 0, size: 0 }) }),
       new Target({ _id: 't2', _kind: 'target', name: 'Alejandro Reade', desc: 'The tough guy',              status: 'open',   path: ['o1'], stat: new Stat({ last_sync: 1308354166, evidence: null, grid_size: 0, size: 0 }) }),
-      new Target({ _id: 't3', _kind: 'target', name: 'Joey Fargo',      desc: 'Smart, computer savvy',      status: 'open',   path: ['o1'], stat: new Stat({ last_sync: 1307354166, evidence: null, grid_size: 0, size: 0 }) }),
+      new Target({ _id: 't3', _kind: 'target', name: 'Joey Fargo',      desc: 'Smart, computer savvy',      status: 'open',   path: ['o1'], stat: new Stat({ last_sync: 1307354166, evidence: new StatEvidence({addressbook: 1, device: 2, calendar:1, message:2}), dashboard: new StatEvidence({message: 2, device:2, calendar:1}), grid_size: 0, size: 0 }) }),
       
       // Blackjack
       new Target({ _id: 't4', _kind: 'target', name: 'Guido',           desc: 'The bomber',                 status: 'open',   path: ['o2'], stat: new Stat({ last_sync: 1309965166, evidence: null, grid_size: 0, size: 0 }) }),

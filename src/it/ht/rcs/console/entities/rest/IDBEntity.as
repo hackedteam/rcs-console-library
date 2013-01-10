@@ -1,9 +1,9 @@
 package it.ht.rcs.console.entities.rest
 {
+ import flash.net.FileReference;
+ 
  import it.ht.rcs.console.entities.model.Entity;
  import it.ht.rcs.console.operation.model.Operation;
- 
- import flash.net.FileReference;
 
   public interface IDBEntity
   {
@@ -25,7 +25,12 @@ package it.ht.rcs.console.entities.rest
       
     function add_photo_from_grid(entityId:String, gridId:String, targetId:String, onResult:Function=null, onFault:Function=null):void
    
-   
+    function update(entity:Entity, property:Object, onResult:Function=null, onFault:Function=null):void
+      
+    function add_handle(entityId:String, handleName:String, handleType:String, onResult:Function=null, onFault:Function=null):void
+      
+    function del_handle(entityId:String, handleId:String, onResult:Function=null, onFault:Function=null):void
+    
   }
   
 }

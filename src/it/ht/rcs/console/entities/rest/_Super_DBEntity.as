@@ -42,7 +42,7 @@ internal class _Super_DBEntity extends com.adobe.fiber.services.wrapper.HTTPServ
          operation.method = "GET";
          argsArray = new Array("id");
          operation.argumentNames = argsArray;         
-         operation.serializationFilter = serializer1;
+         operation.serializationFilter = serializer0;
          operation.properties = new Object();
          operation.properties["urlParamNames"] = ["id"];
         operation.resultType = it.ht.rcs.console.entities.model.Entity;
@@ -80,6 +80,20 @@ internal class _Super_DBEntity extends com.adobe.fiber.services.wrapper.HTTPServ
 
          operation = new mx.rpc.http.Operation(null, "add_photo_from_grid_");
          operation.url = "/entity/add_photo_from_grid";
+         operation.method = "POST";
+         operation.serializationFilter = serializer1;
+         operation.contentType = "application/xml";
+         operations.push(operation);
+
+         operation = new mx.rpc.http.Operation(null, "add_handle_");
+         operation.url = "/entity/add_handle";
+         operation.method = "POST";
+         operation.serializationFilter = serializer1;
+         operation.contentType = "application/xml";
+         operations.push(operation);
+
+         operation = new mx.rpc.http.Operation(null, "del_handle_");
+         operation.url = "/entity/del_handle";
          operation.method = "POST";
          operation.serializationFilter = serializer1;
          operation.contentType = "application/xml";
@@ -221,6 +235,42 @@ internal class _Super_DBEntity extends com.adobe.fiber.services.wrapper.HTTPServ
     public function add_photo_from_grid_(strXml:String) : mx.rpc.AsyncToken
     {
         var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("add_photo_from_grid_");
+        var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(strXml) ;
+        return _internal_token;
+    }
+     
+    /**
+      * This method is a generated wrapper used to call the 'add_handle_' operation. It returns an mx.rpc.AsyncToken whose
+      * result property will be populated with the result of the operation when the server response is received.
+      * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value.
+      * You can then bind to CallResponder.lastResult or listen for the CallResponder.result or fault events.
+      *
+      * @see mx.rpc.AsyncToken
+      * @see mx.rpc.CallResponder 
+      *
+      * @return an mx.rpc.AsyncToken whose result property will be populated with the result of the operation when the server response is received.
+      */
+    public function add_handle_(strXml:String) : mx.rpc.AsyncToken
+    {
+        var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("add_handle_");
+        var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(strXml) ;
+        return _internal_token;
+    }
+     
+    /**
+      * This method is a generated wrapper used to call the 'del_handle_' operation. It returns an mx.rpc.AsyncToken whose
+      * result property will be populated with the result of the operation when the server response is received.
+      * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value.
+      * You can then bind to CallResponder.lastResult or listen for the CallResponder.result or fault events.
+      *
+      * @see mx.rpc.AsyncToken
+      * @see mx.rpc.CallResponder 
+      *
+      * @return an mx.rpc.AsyncToken whose result property will be populated with the result of the operation when the server response is received.
+      */
+    public function del_handle_(strXml:String) : mx.rpc.AsyncToken
+    {
+        var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("del_handle_");
         var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(strXml) ;
         return _internal_token;
     }

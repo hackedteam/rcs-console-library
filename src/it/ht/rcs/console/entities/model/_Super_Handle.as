@@ -1,6 +1,6 @@
 /**
  * This is a generated class and is not intended for modification.  To customize behavior
- * of this value object you may modify the generated sub-class of this class - Entity.as.
+ * of this value object you may modify the generated sub-class of this class - Handle.as.
  */
 
 package it.ht.rcs.console.entities.model
@@ -10,11 +10,8 @@ import com.adobe.fiber.util.FiberUtils;
 import com.adobe.fiber.valueobjects.IValueObject;
 import flash.events.Event;
 import flash.events.EventDispatcher;
-import it.ht.rcs.console.entities.model.Analyzed;
-import it.ht.rcs.console.entities.model.Handle;
 import mx.binding.utils.ChangeWatcher;
 import mx.collections.ArrayCollection;
-import mx.events.CollectionEvent;
 import mx.events.PropertyChangeEvent;
 import mx.validators.ValidationResult;
 
@@ -27,7 +24,7 @@ import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 use namespace model_internal;
 
 [ExcludeClass]
-public class _Super_Entity extends flash.events.EventDispatcher implements com.adobe.fiber.valueobjects.IValueObject
+public class _Super_Handle extends flash.events.EventDispatcher implements com.adobe.fiber.valueobjects.IValueObject
 {
     model_internal static function initRemoteClassAliasSingle(cz:Class) : void
     {
@@ -35,11 +32,9 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
 
     model_internal static function initRemoteClassAliasAllRelated() : void
     {
-        it.ht.rcs.console.entities.model.Analyzed.initRemoteClassAliasSingleChild();
-        it.ht.rcs.console.entities.model.Handle.initRemoteClassAliasSingleChild();
     }
 
-    model_internal var _dminternal_model : _EntityEntityMetadata;
+    model_internal var _dminternal_model : _HandleEntityMetadata;
     model_internal var _changedObjects:mx.collections.ArrayCollection = new ArrayCollection();
 
     public function getChangedObjects() : Array
@@ -56,18 +51,12 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
     /**
      * properties
      */
-    private var _internal_photos : ArrayCollection;
     private var _internal_updated_at : String;
     private var _internal_level : String;
-    private var _internal_desc : String;
     private var _internal__id : String;
     private var _internal_name : String;
-    private var _internal_analyzed : it.ht.rcs.console.entities.model.Analyzed;
-    private var _internal_path : ArrayCollection;
     private var _internal_created_at : String;
     private var _internal_type : String;
-    private var _internal_handles : ArrayCollection;
-    model_internal var _internal_handles_leaf:it.ht.rcs.console.entities.model.Handle;
 
     private static var emptyArray:Array = new Array();
 
@@ -79,34 +68,23 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
 
     model_internal var _changeWatcherArray:Array = new Array();
 
-    public function _Super_Entity()
+    public function _Super_Handle()
     {
-        _model = new _EntityEntityMetadata(this);
+        _model = new _HandleEntityMetadata(this);
 
         // Bind to own data or source properties for cache invalidation triggering
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "photos", model_internal::setterListenerPhotos));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "updated_at", model_internal::setterListenerUpdated_at));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "level", model_internal::setterListenerLevel));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "desc", model_internal::setterListenerDesc));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "_id", model_internal::setterListener_id));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "name", model_internal::setterListenerName));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "analyzed", model_internal::setterListenerAnalyzed));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "path", model_internal::setterListenerPath));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "created_at", model_internal::setterListenerCreated_at));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "type", model_internal::setterListenerType));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "handles", model_internal::setterListenerHandles));
 
     }
 
     /**
      * data/source property getters
      */
-
-    [Bindable(event="propertyChange")]
-    public function get photos() : ArrayCollection
-    {
-        return _internal_photos;
-    }
 
     [Bindable(event="propertyChange")]
     public function get updated_at() : String
@@ -118,12 +96,6 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
     public function get level() : String
     {
         return _internal_level;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get desc() : String
-    {
-        return _internal_desc;
     }
 
     [Bindable(event="propertyChange")]
@@ -139,18 +111,6 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
     }
 
     [Bindable(event="propertyChange")]
-    public function get analyzed() : it.ht.rcs.console.entities.model.Analyzed
-    {
-        return _internal_analyzed;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get path() : ArrayCollection
-    {
-        return _internal_path;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get created_at() : String
     {
         return _internal_created_at;
@@ -162,12 +122,6 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
         return _internal_type;
     }
 
-    [Bindable(event="propertyChange")]
-    public function get handles() : ArrayCollection
-    {
-        return _internal_handles;
-    }
-
     public function clearAssociations() : void
     {
     }
@@ -175,31 +129,6 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
     /**
      * data/source property setters
      */
-
-    public function set photos(value:*) : void
-    {
-        var oldValue:ArrayCollection = _internal_photos;
-        if (oldValue !== value)
-        {
-            if (value is ArrayCollection)
-            {
-                _internal_photos = value;
-            }
-            else if (value is Array)
-            {
-                _internal_photos = new ArrayCollection(value);
-            }
-            else if (value == null)
-            {
-                _internal_photos = null;
-            }
-            else
-            {
-                throw new Error("value of photos must be a collection");
-            }
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "photos", oldValue, _internal_photos));
-        }
-    }
 
     public function set updated_at(value:String) : void
     {
@@ -218,16 +147,6 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
         {
             _internal_level = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "level", oldValue, _internal_level));
-        }
-    }
-
-    public function set desc(value:String) : void
-    {
-        var oldValue:String = _internal_desc;
-        if (oldValue !== value)
-        {
-            _internal_desc = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "desc", oldValue, _internal_desc));
         }
     }
 
@@ -251,41 +170,6 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
         }
     }
 
-    public function set analyzed(value:it.ht.rcs.console.entities.model.Analyzed) : void
-    {
-        var oldValue:it.ht.rcs.console.entities.model.Analyzed = _internal_analyzed;
-        if (oldValue !== value)
-        {
-            _internal_analyzed = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "analyzed", oldValue, _internal_analyzed));
-        }
-    }
-
-    public function set path(value:*) : void
-    {
-        var oldValue:ArrayCollection = _internal_path;
-        if (oldValue !== value)
-        {
-            if (value is ArrayCollection)
-            {
-                _internal_path = value;
-            }
-            else if (value is Array)
-            {
-                _internal_path = new ArrayCollection(value);
-            }
-            else if (value == null)
-            {
-                _internal_path = null;
-            }
-            else
-            {
-                throw new Error("value of path must be a collection");
-            }
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "path", oldValue, _internal_path));
-        }
-    }
-
     public function set created_at(value:String) : void
     {
         var oldValue:String = _internal_created_at;
@@ -306,31 +190,6 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
         }
     }
 
-    public function set handles(value:*) : void
-    {
-        var oldValue:ArrayCollection = _internal_handles;
-        if (oldValue !== value)
-        {
-            if (value is ArrayCollection)
-            {
-                _internal_handles = value;
-            }
-            else if (value is Array)
-            {
-                _internal_handles = new ArrayCollection(value);
-            }
-            else if (value == null)
-            {
-                _internal_handles = null;
-            }
-            else
-            {
-                throw new Error("value of handles must be a collection");
-            }
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "handles", oldValue, _internal_handles));
-        }
-    }
-
     /**
      * Data/source property setter listeners
      *
@@ -343,18 +202,6 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
      *  - the validity of the property (and the containing entity) if the given data property is required.
      */
 
-    model_internal function setterListenerPhotos(value:flash.events.Event):void
-    {
-        if (value is mx.events.PropertyChangeEvent)
-        {
-            if (mx.events.PropertyChangeEvent(value).newValue)
-            {
-                mx.events.PropertyChangeEvent(value).newValue.addEventListener(mx.events.CollectionEvent.COLLECTION_CHANGE, model_internal::setterListenerPhotos);
-            }
-        }
-        _model.invalidateDependentOnPhotos();
-    }
-
     model_internal function setterListenerUpdated_at(value:flash.events.Event):void
     {
         _model.invalidateDependentOnUpdated_at();
@@ -363,11 +210,6 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
     model_internal function setterListenerLevel(value:flash.events.Event):void
     {
         _model.invalidateDependentOnLevel();
-    }
-
-    model_internal function setterListenerDesc(value:flash.events.Event):void
-    {
-        _model.invalidateDependentOnDesc();
     }
 
     model_internal function setterListener_id(value:flash.events.Event):void
@@ -380,23 +222,6 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
         _model.invalidateDependentOnName();
     }
 
-    model_internal function setterListenerAnalyzed(value:flash.events.Event):void
-    {
-        _model.invalidateDependentOnAnalyzed();
-    }
-
-    model_internal function setterListenerPath(value:flash.events.Event):void
-    {
-        if (value is mx.events.PropertyChangeEvent)
-        {
-            if (mx.events.PropertyChangeEvent(value).newValue)
-            {
-                mx.events.PropertyChangeEvent(value).newValue.addEventListener(mx.events.CollectionEvent.COLLECTION_CHANGE, model_internal::setterListenerPath);
-            }
-        }
-        _model.invalidateDependentOnPath();
-    }
-
     model_internal function setterListenerCreated_at(value:flash.events.Event):void
     {
         _model.invalidateDependentOnCreated_at();
@@ -405,18 +230,6 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
     model_internal function setterListenerType(value:flash.events.Event):void
     {
         _model.invalidateDependentOnType();
-    }
-
-    model_internal function setterListenerHandles(value:flash.events.Event):void
-    {
-        if (value is mx.events.PropertyChangeEvent)
-        {
-            if (mx.events.PropertyChangeEvent(value).newValue)
-            {
-                mx.events.PropertyChangeEvent(value).newValue.addEventListener(mx.events.CollectionEvent.COLLECTION_CHANGE, model_internal::setterListenerHandles);
-            }
-        }
-        _model.invalidateDependentOnHandles();
     }
 
 
@@ -441,11 +254,6 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
         var validationFailureMessages:Array = new Array();
 
         var propertyValidity:Boolean = true;
-        if (!_model.photosIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_photosValidationFailureMessages);
-        }
         if (!_model.updated_atIsValid)
         {
             propertyValidity = false;
@@ -455,11 +263,6 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
         {
             propertyValidity = false;
             com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_levelValidationFailureMessages);
-        }
-        if (!_model.descIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_descValidationFailureMessages);
         }
         if (!_model._idIsValid)
         {
@@ -471,16 +274,6 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
             propertyValidity = false;
             com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_nameValidationFailureMessages);
         }
-        if (!_model.analyzedIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_analyzedValidationFailureMessages);
-        }
-        if (!_model.pathIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_pathValidationFailureMessages);
-        }
         if (!_model.created_atIsValid)
         {
             propertyValidity = false;
@@ -490,11 +283,6 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
         {
             propertyValidity = false;
             com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_typeValidationFailureMessages);
-        }
-        if (!_model.handlesIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_handlesValidationFailureMessages);
         }
 
         model_internal::_cacheInitialized_isValid = true;
@@ -523,14 +311,14 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
 
     [Transient]
     [Bindable(event="propertyChange")]
-    public function get _model() : _EntityEntityMetadata
+    public function get _model() : _HandleEntityMetadata
     {
         return model_internal::_dminternal_model;
     }
 
-    public function set _model(value : _EntityEntityMetadata) : void
+    public function set _model(value : _HandleEntityMetadata) : void
     {
-        var oldValue : _EntityEntityMetadata = model_internal::_dminternal_model;
+        var oldValue : _HandleEntityMetadata = model_internal::_dminternal_model;
         if (oldValue !== value)
         {
             model_internal::_dminternal_model = value;
@@ -575,33 +363,6 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
         }
     }
 
-    model_internal var _doValidationCacheOfPhotos : Array = null;
-    model_internal var _doValidationLastValOfPhotos : ArrayCollection;
-
-    model_internal function _doValidationForPhotos(valueIn:Object):Array
-    {
-        var value : ArrayCollection = valueIn as ArrayCollection;
-
-        if (model_internal::_doValidationCacheOfPhotos != null && model_internal::_doValidationLastValOfPhotos == value)
-           return model_internal::_doValidationCacheOfPhotos ;
-
-        _model.model_internal::_photosIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.isPhotosAvailable && _internal_photos == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "photos is required"));
-        }
-
-        model_internal::_doValidationCacheOfPhotos = validationFailures;
-        model_internal::_doValidationLastValOfPhotos = value;
-
-        return validationFailures;
-    }
-    
     model_internal var _doValidationCacheOfUpdated_at : Array = null;
     model_internal var _doValidationLastValOfUpdated_at : String;
 
@@ -652,33 +413,6 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
 
         model_internal::_doValidationCacheOfLevel = validationFailures;
         model_internal::_doValidationLastValOfLevel = value;
-
-        return validationFailures;
-    }
-    
-    model_internal var _doValidationCacheOfDesc : Array = null;
-    model_internal var _doValidationLastValOfDesc : String;
-
-    model_internal function _doValidationForDesc(valueIn:Object):Array
-    {
-        var value : String = valueIn as String;
-
-        if (model_internal::_doValidationCacheOfDesc != null && model_internal::_doValidationLastValOfDesc == value)
-           return model_internal::_doValidationCacheOfDesc ;
-
-        _model.model_internal::_descIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.isDescAvailable && _internal_desc == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "desc is required"));
-        }
-
-        model_internal::_doValidationCacheOfDesc = validationFailures;
-        model_internal::_doValidationLastValOfDesc = value;
 
         return validationFailures;
     }
@@ -737,60 +471,6 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
         return validationFailures;
     }
     
-    model_internal var _doValidationCacheOfAnalyzed : Array = null;
-    model_internal var _doValidationLastValOfAnalyzed : it.ht.rcs.console.entities.model.Analyzed;
-
-    model_internal function _doValidationForAnalyzed(valueIn:Object):Array
-    {
-        var value : it.ht.rcs.console.entities.model.Analyzed = valueIn as it.ht.rcs.console.entities.model.Analyzed;
-
-        if (model_internal::_doValidationCacheOfAnalyzed != null && model_internal::_doValidationLastValOfAnalyzed == value)
-           return model_internal::_doValidationCacheOfAnalyzed ;
-
-        _model.model_internal::_analyzedIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.isAnalyzedAvailable && _internal_analyzed == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "analyzed is required"));
-        }
-
-        model_internal::_doValidationCacheOfAnalyzed = validationFailures;
-        model_internal::_doValidationLastValOfAnalyzed = value;
-
-        return validationFailures;
-    }
-    
-    model_internal var _doValidationCacheOfPath : Array = null;
-    model_internal var _doValidationLastValOfPath : ArrayCollection;
-
-    model_internal function _doValidationForPath(valueIn:Object):Array
-    {
-        var value : ArrayCollection = valueIn as ArrayCollection;
-
-        if (model_internal::_doValidationCacheOfPath != null && model_internal::_doValidationLastValOfPath == value)
-           return model_internal::_doValidationCacheOfPath ;
-
-        _model.model_internal::_pathIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.isPathAvailable && _internal_path == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "path is required"));
-        }
-
-        model_internal::_doValidationCacheOfPath = validationFailures;
-        model_internal::_doValidationLastValOfPath = value;
-
-        return validationFailures;
-    }
-    
     model_internal var _doValidationCacheOfCreated_at : Array = null;
     model_internal var _doValidationLastValOfCreated_at : String;
 
@@ -841,33 +521,6 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
 
         model_internal::_doValidationCacheOfType = validationFailures;
         model_internal::_doValidationLastValOfType = value;
-
-        return validationFailures;
-    }
-    
-    model_internal var _doValidationCacheOfHandles : Array = null;
-    model_internal var _doValidationLastValOfHandles : ArrayCollection;
-
-    model_internal function _doValidationForHandles(valueIn:Object):Array
-    {
-        var value : ArrayCollection = valueIn as ArrayCollection;
-
-        if (model_internal::_doValidationCacheOfHandles != null && model_internal::_doValidationLastValOfHandles == value)
-           return model_internal::_doValidationCacheOfHandles ;
-
-        _model.model_internal::_handlesIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.isHandlesAvailable && _internal_handles == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "handles is required"));
-        }
-
-        model_internal::_doValidationCacheOfHandles = validationFailures;
-        model_internal::_doValidationLastValOfHandles = value;
 
         return validationFailures;
     }

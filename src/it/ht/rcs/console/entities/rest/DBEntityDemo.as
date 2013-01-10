@@ -11,6 +11,8 @@ package it.ht.rcs.console.entities.rest
   import mx.collections.ArrayCollection;
   import mx.rpc.events.ResultEvent;
   
+  import it.ht.rcs.console.entities.model.Entity;
+  
   public class DBEntityDemo implements IDBEntity
   {
     
@@ -41,6 +43,21 @@ package it.ht.rcs.console.entities.rest
     }
    
     public function add_photo_from_grid(entityId:String, gridId:String, targetId:String, onResult:Function=null, onFault:Function=null):void
+    {
+    
+    }
+    
+    public function update(entity:Entity, property:Object, onResult:Function=null, onFault:Function=null):void
+    {
+     
+    }
+    
+    public function add_handle(entityId:String, handleName:String, handleType:String, onResult:Function=null, onFault:Function=null):void
+    {
+      
+    }
+      
+    public function del_handle(entityId:String, handleId:String, onResult:Function=null, onFault:Function=null):void
     {
     
     }

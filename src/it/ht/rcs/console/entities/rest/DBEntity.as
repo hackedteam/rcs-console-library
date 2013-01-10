@@ -11,6 +11,7 @@ package it.ht.rcs.console.entities.rest
   import flash.net.URLVariables;
   
   import it.ht.rcs.console.DB;
+  import it.ht.rcs.console.entities.model.Entity;
   import it.ht.rcs.console.entities.rest.IDBEntity;
   
   import mx.rpc.CallResponder;
@@ -47,6 +48,27 @@ package it.ht.rcs.console.entities.rest
       var params:Object={_id:entityId, _grid:gridId, target_id:targetId}
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
       resp.token = add_photo_from_grid_(JSON.stringify(params));
+    }
+    
+    public function add_handle(entityId:String, handleName:String, handleType:String, onResult:Function=null, onFault:Function=null):void
+    {
+      var params:Object={_id:entityId, name:handleName, type:handleType};
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = add_handle_(JSON.stringify(params));
+    }
+    
+    public function del_handle(entityId:String, handleId:String, onResult:Function=null, onFault:Function=null):void
+    {
+      var params:Object={_id:entityId, handle_id:handleId}
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = del_handle_(JSON.stringify(params));
+    }
+    
+    public function update(entity:Entity, property:Object, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      property['_id'] = entity._id;
+      resp.token = update_(JSON.stringify(property));
     }
     
     public function add_photo(fileReference:FileReference, id:String, onResult:Function = null, onFault:Function = null):void
