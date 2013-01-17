@@ -59,6 +59,7 @@ package it.ht.rcs.console.evidence.model
         this.url=data.url;
         this.user=data.user;
         this.users=data.users;
+        this.incoming=data.incoming;
         if(data.wifi)
         {
           this.wifi=new ArrayCollection(data.wifi);

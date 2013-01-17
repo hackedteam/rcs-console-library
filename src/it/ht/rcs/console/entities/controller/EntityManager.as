@@ -87,6 +87,12 @@ package it.ht.rcs.console.entities.controller
       
     }
     
+    public function mostContacted(entityId:String, from:String, to:String, num:String, onResult:Function, onFault:Function=null):void
+    {
+      DB.instance.entity.most_contacted(entityId, from, to, num, onResult, onFault)
+      
+    }
+    
 
 		public function getEntityByTarget(targetId:String):Entity
 		{

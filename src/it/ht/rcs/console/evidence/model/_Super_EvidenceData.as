@@ -69,6 +69,7 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     private var _internal_name : String;
     private var _internal_contact : String;
     private var _internal_info : String;
+    private var _internal_incoming : Boolean;
     private var _internal_action : String;
     private var _internal_desc : String;
     private var _internal_event : String;
@@ -161,6 +162,12 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     public function get user() : String
     {
         return _internal_user;
+    }
+    
+    [Bindable(event="propertyChange")]
+    public function get incoming() : Boolean
+    {
+      return _internal_incoming;
     }
 
     [Bindable(event="propertyChange")]
@@ -451,6 +458,16 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
             _internal_program = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "program", oldValue, _internal_program));
         }
+    }
+    
+    public function set incoming(value:Boolean) : void
+    {
+      var oldValue:Boolean = _internal_incoming;
+      if (oldValue !== value)
+      {
+        _internal_incoming = value;
+        this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "incoming", oldValue, _internal_incoming));
+      }
     }
 
     public function set process(value:String) : void

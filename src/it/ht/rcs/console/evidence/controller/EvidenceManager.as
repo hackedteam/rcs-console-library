@@ -178,7 +178,7 @@ package it.ht.rcs.console.evidence.controller
       
     }
     
-    public function getChatFlow(program:String, peer:String):ArrayCollection
+    public function getChatFlow(program:String, to:String, from:String):ArrayCollection
     {
       var chatFlow:ArrayCollection=new ArrayCollection();
       
@@ -187,8 +187,17 @@ package it.ht.rcs.console.evidence.controller
         if(_view.getItemAt(i) && _view.getItemAt(i).type=="chat")
         {
           var chatEntry:Evidence=_view.getItemAt(i) as Evidence;
-          if(chatEntry.data.program==program && chatEntry.data.peer==peer)
-            chatFlow.addItem(chatEntry);
+          if(chatEntry.data.rcpt!=null && chatEntry.data.rcpt!="")
+          {
+            if(chatEntry.data.program==program && ((chatEntry.data.rcpt==to && chatEntry.data.from==from) || (chatEntry.data.rcpt==from && chatEntry.data.from==to)))
+              chatFlow.addItem(chatEntry);
+          }
+          else
+          {
+            if(chatEntry.data.program==program && chatEntry.data.peer==to)
+              chatFlow.addItem(chatEntry);
+          }
+         
         }
       }
       return chatFlow;
