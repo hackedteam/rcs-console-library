@@ -55,6 +55,7 @@ public class _Super_Handle extends flash.events.EventDispatcher implements com.a
     private var _internal_level : String;
     private var _internal__id : String;
     private var _internal_name : String;
+    private var _internal_handle : String;
     private var _internal_created_at : String;
     private var _internal_type : String;
 
@@ -77,6 +78,7 @@ public class _Super_Handle extends flash.events.EventDispatcher implements com.a
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "level", model_internal::setterListenerLevel));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "_id", model_internal::setterListener_id));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "name", model_internal::setterListenerName));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "handle", model_internal::setterListenerName));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "created_at", model_internal::setterListenerCreated_at));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "type", model_internal::setterListenerType));
 
@@ -108,6 +110,12 @@ public class _Super_Handle extends flash.events.EventDispatcher implements com.a
     public function get name() : String
     {
         return _internal_name;
+    }
+    
+    [Bindable(event="propertyChange")]
+    public function get handle() : String
+    {
+      return _internal_handle;
     }
 
     [Bindable(event="propertyChange")]
@@ -168,6 +176,16 @@ public class _Super_Handle extends flash.events.EventDispatcher implements com.a
             _internal_name = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "name", oldValue, _internal_name));
         }
+    }
+    
+    public function set handle(value:String) : void
+    {
+      var oldValue:String = _internal_handle;
+      if (oldValue !== value)
+      {
+        _internal_handle = value;
+        this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "handle", oldValue, _internal_handle));
+      }
     }
 
     public function set created_at(value:String) : void
