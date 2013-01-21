@@ -35,7 +35,8 @@ package it.ht.rcs.console.evidence.model
         this.end=data.end;
         this.event=data.event;
         this.from=data.from;
-        this.info=data.info;
+        this.from=data.from;
+        this.from_display=data.from_display;
         this.ip=data.ip;
         this.keywords=data.keywords;
         this.latitude=data.latitude;
@@ -47,6 +48,7 @@ package it.ht.rcs.console.evidence.model
         this.process=data.process;
         this.program=data.program;
         this.rcpt=data.rcpt;
+        this.rcpt_display=data.rcpt_display;
         this.resolution=data.resolution;
         this.service=data.service;
         this.size=data.size;
