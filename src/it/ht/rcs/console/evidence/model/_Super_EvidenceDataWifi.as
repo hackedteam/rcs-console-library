@@ -48,7 +48,7 @@ public class _Super_EvidenceDataWifi extends flash.events.EventDispatcher implem
      * properties
      */
     private var _internal_mac : String;
-    private var _internal_ssid : String;
+    private var _internal_bssid : String;
     private var _internal_sig : int;
 
     private static var emptyArray:Array = new Array();
@@ -80,9 +80,9 @@ public class _Super_EvidenceDataWifi extends flash.events.EventDispatcher implem
     }
 
     [Bindable(event="propertyChange")]
-    public function get ssid() : String
+    public function get bssid() : String
     {
-        return _internal_ssid;
+        return _internal_bssid;
     }
 
     [Bindable(event="propertyChange")]
@@ -109,13 +109,13 @@ public class _Super_EvidenceDataWifi extends flash.events.EventDispatcher implem
         }
     }
 
-    public function set ssid(value:String) : void
+    public function set bssid(value:String) : void
     {
-        var oldValue:String = _internal_ssid;
+        var oldValue:String = _internal_bssid;
         if (oldValue !== value)
         {
-            _internal_ssid = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "ssid", oldValue, _internal_ssid));
+            _internal_bssid = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "bssid", oldValue, _internal_bssid));
         }
     }
 

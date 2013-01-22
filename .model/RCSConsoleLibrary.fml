@@ -5021,7 +5021,7 @@
         <item name="completeURL">http://localhost:4444/entity/most_contacted</item>
       </annotation>
       <annotation name="ValidProperties">
-        <item name="propertySpecifier">peer,percent,count,type,size</item>
+        <item name="propertySpecifier">peer,percent,count,type,peer_name,size</item>
       </annotation>
       <annotation name="original signature">
         <item name="returnType">opaque</item>
@@ -5045,6 +5045,7 @@
       <item name="Package">it.ht.rcs.console.entities.model</item>
     </annotation>
     <property name="updated_at" type="string" required="true"/>
+    <property name="handle" type="string" required="true"/>
     <property name="level" type="string" required="true"/>
     <property name="_id" type="string" required="true"/>
     <property name="name" type="string" required="true"/>
@@ -5056,13 +5057,13 @@
       <item name="EntityOriginalName">Contact</item>
     </annotation>
     <annotation name="service Group">
-      <item name="service">DBEntityDummy,DBEntity</item>
+      <item name="service">DBEntity</item>
     </annotation>
     <annotation name="ServerProperties">
       <item name="IncludeRemoteClass">nonempty</item>
     </annotation>
     <annotation name="most_contacted_">
-      <item name="propertySpecifier">peer,percent,count,type,size</item>
+      <item name="propertySpecifier">peer,percent,count,type,peer_name,size</item>
     </annotation>
     <annotation name="ActionScriptGeneration">
       <item name="Package">it.ht.rcs.console.entities.model</item>
@@ -5071,8 +5072,10 @@
     <property name="percent" type="double" required="true" default="0"/>
     <property name="count" type="double" required="true" default="0"/>
     <property name="type" type="string" required="true"/>
+    <property name="peer_name" type="string" required="true"/>
     <property name="size" type="double" required="true" default="0"/>
   </entity>
+  
   <entity name="Analyzed">
     <annotation name="EntityProperties">
       <item name="EntityOriginalName">Analyzed</item>
@@ -5124,6 +5127,27 @@
     <property name="path" type="string[]" required="true"/>
     <property name="created_at" type="string" required="true"/>
     <property name="type" type="string" required="true"/>
-    <property name="handles" type="Handle[]" required="true"/>
+    <property name="handles" type="Handles[]" required="true"/>
+  </entity>
+  <entity name="Handles">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Handles</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBEntity</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.entities.model</item>
+    </annotation>
+    <property name="updated_at" type="string" required="true"/>
+    <property name="handle" type="string" required="true"/>
+    <property name="level" type="string" required="true"/>
+    <property name="_id" type="string" required="true"/>
+    <property name="name" type="string" required="true"/>
+    <property name="created_at" type="string" required="true"/>
+    <property name="type" type="string" required="true"/>
   </entity>
 </model>

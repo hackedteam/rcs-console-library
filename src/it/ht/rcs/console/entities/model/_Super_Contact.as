@@ -55,6 +55,7 @@ public class _Super_Contact extends flash.events.EventDispatcher implements com.
     private var _internal_percent : Number = Number(0);
     private var _internal_count : Number = Number(0);
     private var _internal_type : String;
+    private var _internal_peer_name : String;
     private var _internal_size : Number = Number(0);
 
     private static var emptyArray:Array = new Array();
@@ -76,6 +77,7 @@ public class _Super_Contact extends flash.events.EventDispatcher implements com.
         // Bind to own data or source properties for cache invalidation triggering
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "peer", model_internal::setterListenerPeer));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "type", model_internal::setterListenerType));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "peer_name", model_internal::setterListenerPeer_name));
 
     }
 
@@ -105,6 +107,12 @@ public class _Super_Contact extends flash.events.EventDispatcher implements com.
     public function get type() : String
     {
         return _internal_type;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get peer_name() : String
+    {
+        return _internal_peer_name;
     }
 
     [Bindable(event="propertyChange")]
@@ -161,6 +169,16 @@ public class _Super_Contact extends flash.events.EventDispatcher implements com.
         }
     }
 
+    public function set peer_name(value:String) : void
+    {
+        var oldValue:String = _internal_peer_name;
+        if (oldValue !== value)
+        {
+            _internal_peer_name = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "peer_name", oldValue, _internal_peer_name));
+        }
+    }
+
     public function set size(value:Number) : void
     {
         var oldValue:Number = _internal_size;
@@ -191,6 +209,11 @@ public class _Super_Contact extends flash.events.EventDispatcher implements com.
     model_internal function setterListenerType(value:flash.events.Event):void
     {
         _model.invalidateDependentOnType();
+    }
+
+    model_internal function setterListenerPeer_name(value:flash.events.Event):void
+    {
+        _model.invalidateDependentOnPeer_name();
     }
 
 
@@ -224,6 +247,11 @@ public class _Super_Contact extends flash.events.EventDispatcher implements com.
         {
             propertyValidity = false;
             com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_typeValidationFailureMessages);
+        }
+        if (!_model.peer_nameIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_peer_nameValidationFailureMessages);
         }
 
         model_internal::_cacheInitialized_isValid = true;
@@ -354,6 +382,33 @@ public class _Super_Contact extends flash.events.EventDispatcher implements com.
 
         model_internal::_doValidationCacheOfType = validationFailures;
         model_internal::_doValidationLastValOfType = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfPeer_name : Array = null;
+    model_internal var _doValidationLastValOfPeer_name : String;
+
+    model_internal function _doValidationForPeer_name(valueIn:Object):Array
+    {
+        var value : String = valueIn as String;
+
+        if (model_internal::_doValidationCacheOfPeer_name != null && model_internal::_doValidationLastValOfPeer_name == value)
+           return model_internal::_doValidationCacheOfPeer_name ;
+
+        _model.model_internal::_peer_nameIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isPeer_nameAvailable && _internal_peer_name == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "peer_name is required"));
+        }
+
+        model_internal::_doValidationCacheOfPeer_name = validationFailures;
+        model_internal::_doValidationLastValOfPeer_name = value;
 
         return validationFailures;
     }

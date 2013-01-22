@@ -22,14 +22,14 @@ internal class _ContactEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("peer", "percent", "count", "type", "size");
+    model_internal static var allProperties:Array = new Array("peer", "percent", "count", "type", "peer_name", "size");
     model_internal static var allAssociationProperties:Array = new Array();
-    model_internal static var allRequiredProperties:Array = new Array("peer", "percent", "count", "type", "size");
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("peer", "percent", "count", "type", "size");
+    model_internal static var allRequiredProperties:Array = new Array("peer", "percent", "count", "type", "peer_name", "size");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("peer", "percent", "count", "type", "peer_name", "size");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("peer", "percent", "count", "type", "size");
+    model_internal static var dataProperties:Array = new Array("peer", "percent", "count", "type", "peer_name", "size");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("peer", "percent", "count", "type", "size");
+    model_internal static var nonDerivedProperties:Array = new Array("peer", "percent", "count", "type", "peer_name", "size");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array();
     model_internal static var collectionBaseMap:Object;
@@ -48,6 +48,11 @@ internal class _ContactEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     model_internal var _typeValidator:com.adobe.fiber.styles.StyleValidator;
     model_internal var _typeIsValidCacheInitialized:Boolean = false;
     model_internal var _typeValidationFailureMessages:Array;
+    
+    model_internal var _peer_nameIsValid:Boolean;
+    model_internal var _peer_nameValidator:com.adobe.fiber.styles.StyleValidator;
+    model_internal var _peer_nameIsValidCacheInitialized:Boolean = false;
+    model_internal var _peer_nameValidationFailureMessages:Array;
 
     model_internal var _instance:_Super_Contact;
     model_internal static var _nullStyle:com.adobe.fiber.styles.Style = new com.adobe.fiber.styles.Style();
@@ -63,6 +68,7 @@ internal class _ContactEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
             model_internal::dependentsOnMap["percent"] = new Array();
             model_internal::dependentsOnMap["count"] = new Array();
             model_internal::dependentsOnMap["type"] = new Array();
+            model_internal::dependentsOnMap["peer_name"] = new Array();
             model_internal::dependentsOnMap["size"] = new Array();
 
             // collection base map
@@ -75,6 +81,7 @@ internal class _ContactEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
         model_internal::propertyTypeMap["percent"] = "Number";
         model_internal::propertyTypeMap["count"] = "Number";
         model_internal::propertyTypeMap["type"] = "String";
+        model_internal::propertyTypeMap["peer_name"] = "String";
         model_internal::propertyTypeMap["size"] = "Number";
 
         model_internal::_instance = value;
@@ -88,6 +95,11 @@ internal class _ContactEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
         model_internal::_typeValidator.requiredFieldError = "type is required";
         //model_internal::_typeValidator.source = model_internal::_instance;
         //model_internal::_typeValidator.property = "type";
+        model_internal::_peer_nameValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForPeer_name);
+        model_internal::_peer_nameValidator.required = true;
+        model_internal::_peer_nameValidator.requiredFieldError = "peer_name is required";
+        //model_internal::_peer_nameValidator.source = model_internal::_instance;
+        //model_internal::_peer_nameValidator.property = "peer_name";
     }
 
     override public function getEntityName():String
@@ -339,6 +351,12 @@ internal class _ContactEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     }
 
     [Bindable(event="propertyChange")]
+    public function get isPeer_nameAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get isSizeAvailable():Boolean
     {
         return true;
@@ -362,6 +380,14 @@ internal class _ContactEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
         {
             model_internal::_instance.model_internal::_doValidationCacheOfType = null;
             model_internal::calculateTypeIsValid();
+        }
+    }
+    public function invalidateDependentOnPeer_name():void
+    {
+        if (model_internal::_peer_nameIsValidCacheInitialized )
+        {
+            model_internal::_instance.model_internal::_doValidationCacheOfPeer_name = null;
+            model_internal::calculatePeer_nameIsValid();
         }
     }
 
@@ -583,6 +609,106 @@ internal class _ContactEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     }
 
     [Bindable(event="propertyChange")]   
+    public function get peer_nameStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    public function get peer_nameValidator() : StyleValidator
+    {
+        return model_internal::_peer_nameValidator;
+    }
+
+    model_internal function set _peer_nameIsValid_der(value:Boolean):void 
+    {
+        var oldValue:Boolean = model_internal::_peer_nameIsValid;         
+        if (oldValue !== value)
+        {
+            model_internal::_peer_nameIsValid = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "peer_nameIsValid", oldValue, value));
+        }                             
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get peer_nameIsValid():Boolean
+    {
+        if (!model_internal::_peer_nameIsValidCacheInitialized)
+        {
+            model_internal::calculatePeer_nameIsValid();
+        }
+
+        return model_internal::_peer_nameIsValid;
+    }
+
+    model_internal function calculatePeer_nameIsValid():void
+    {
+        var valRes:ValidationResultEvent = model_internal::_peer_nameValidator.validate(model_internal::_instance.peer_name)
+        model_internal::_peer_nameIsValid_der = (valRes.results == null);
+        model_internal::_peer_nameIsValidCacheInitialized = true;
+        if (valRes.results == null)
+             model_internal::peer_nameValidationFailureMessages_der = emptyArray;
+        else
+        {
+            var _valFailures:Array = new Array();
+            for (var a:int = 0 ; a<valRes.results.length ; a++)
+            {
+                _valFailures.push(valRes.results[a].errorMessage);
+            }
+            model_internal::peer_nameValidationFailureMessages_der = _valFailures;
+        }
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get peer_nameValidationFailureMessages():Array
+    {
+        if (model_internal::_peer_nameValidationFailureMessages == null)
+            model_internal::calculatePeer_nameIsValid();
+
+        return _peer_nameValidationFailureMessages;
+    }
+
+    model_internal function set peer_nameValidationFailureMessages_der(value:Array) : void
+    {
+        var oldValue:Array = model_internal::_peer_nameValidationFailureMessages;
+
+        var needUpdate : Boolean = false;
+        if (oldValue == null)
+            needUpdate = true;
+    
+        // avoid firing the event when old and new value are different empty arrays
+        if (!needUpdate && (oldValue !== value && (oldValue.length > 0 || value.length > 0)))
+        {
+            if (oldValue.length == value.length)
+            {
+                for (var a:int=0; a < oldValue.length; a++)
+                {
+                    if (oldValue[a] !== value[a])
+                    {
+                        needUpdate = true;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                needUpdate = true;
+            }
+        }
+
+        if (needUpdate)
+        {
+            model_internal::_peer_nameValidationFailureMessages = value;   
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "peer_nameValidationFailureMessages", oldValue, value));
+            // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
+            // the entire entity.
+            if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
+            {
+                model_internal::_instance.model_internal::isValid_der = model_internal::_instance.model_internal::calculateIsValid();
+            }
+        }
+    }
+
+    [Bindable(event="propertyChange")]   
     public function get sizeStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
@@ -620,6 +746,10 @@ internal class _ContactEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
             case("type"):
             {
                 return typeValidationFailureMessages;
+            }
+            case("peer_name"):
+            {
+                return peer_nameValidationFailureMessages;
             }
             default:
             {

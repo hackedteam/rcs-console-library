@@ -52,10 +52,10 @@ public class _Super_Handle extends flash.events.EventDispatcher implements com.a
      * properties
      */
     private var _internal_updated_at : String;
+    private var _internal_handle : String;
     private var _internal_level : String;
     private var _internal__id : String;
     private var _internal_name : String;
-    private var _internal_handle : String;
     private var _internal_created_at : String;
     private var _internal_type : String;
 
@@ -75,10 +75,10 @@ public class _Super_Handle extends flash.events.EventDispatcher implements com.a
 
         // Bind to own data or source properties for cache invalidation triggering
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "updated_at", model_internal::setterListenerUpdated_at));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "handle", model_internal::setterListenerHandle));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "level", model_internal::setterListenerLevel));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "_id", model_internal::setterListener_id));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "name", model_internal::setterListenerName));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "handle", model_internal::setterListenerName));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "created_at", model_internal::setterListenerCreated_at));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "type", model_internal::setterListenerType));
 
@@ -92,6 +92,12 @@ public class _Super_Handle extends flash.events.EventDispatcher implements com.a
     public function get updated_at() : String
     {
         return _internal_updated_at;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get handle() : String
+    {
+        return _internal_handle;
     }
 
     [Bindable(event="propertyChange")]
@@ -110,12 +116,6 @@ public class _Super_Handle extends flash.events.EventDispatcher implements com.a
     public function get name() : String
     {
         return _internal_name;
-    }
-    
-    [Bindable(event="propertyChange")]
-    public function get handle() : String
-    {
-      return _internal_handle;
     }
 
     [Bindable(event="propertyChange")]
@@ -148,6 +148,16 @@ public class _Super_Handle extends flash.events.EventDispatcher implements com.a
         }
     }
 
+    public function set handle(value:String) : void
+    {
+        var oldValue:String = _internal_handle;
+        if (oldValue !== value)
+        {
+            _internal_handle = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "handle", oldValue, _internal_handle));
+        }
+    }
+
     public function set level(value:String) : void
     {
         var oldValue:String = _internal_level;
@@ -176,16 +186,6 @@ public class _Super_Handle extends flash.events.EventDispatcher implements com.a
             _internal_name = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "name", oldValue, _internal_name));
         }
-    }
-    
-    public function set handle(value:String) : void
-    {
-      var oldValue:String = _internal_handle;
-      if (oldValue !== value)
-      {
-        _internal_handle = value;
-        this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "handle", oldValue, _internal_handle));
-      }
     }
 
     public function set created_at(value:String) : void
@@ -223,6 +223,11 @@ public class _Super_Handle extends flash.events.EventDispatcher implements com.a
     model_internal function setterListenerUpdated_at(value:flash.events.Event):void
     {
         _model.invalidateDependentOnUpdated_at();
+    }
+
+    model_internal function setterListenerHandle(value:flash.events.Event):void
+    {
+        _model.invalidateDependentOnHandle();
     }
 
     model_internal function setterListenerLevel(value:flash.events.Event):void
@@ -276,6 +281,11 @@ public class _Super_Handle extends flash.events.EventDispatcher implements com.a
         {
             propertyValidity = false;
             com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_updated_atValidationFailureMessages);
+        }
+        if (!_model.handleIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_handleValidationFailureMessages);
         }
         if (!_model.levelIsValid)
         {
@@ -404,6 +414,33 @@ public class _Super_Handle extends flash.events.EventDispatcher implements com.a
 
         model_internal::_doValidationCacheOfUpdated_at = validationFailures;
         model_internal::_doValidationLastValOfUpdated_at = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfHandle : Array = null;
+    model_internal var _doValidationLastValOfHandle : String;
+
+    model_internal function _doValidationForHandle(valueIn:Object):Array
+    {
+        var value : String = valueIn as String;
+
+        if (model_internal::_doValidationCacheOfHandle != null && model_internal::_doValidationLastValOfHandle == value)
+           return model_internal::_doValidationCacheOfHandle ;
+
+        _model.model_internal::_handleIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isHandleAvailable && _internal_handle == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "handle is required"));
+        }
+
+        model_internal::_doValidationCacheOfHandle = validationFailures;
+        model_internal::_doValidationLastValOfHandle = value;
 
         return validationFailures;
     }

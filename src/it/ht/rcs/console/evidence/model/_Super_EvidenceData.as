@@ -777,7 +777,7 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     
     public function set rcpt_display(value:String) : void
     {
-      var oldValue:String = _internal_rcpt_display
+      var oldValue:String = _internal_rcpt_display;
       if (oldValue !== value)
       {
         _internal_rcpt_display = value;

@@ -108,7 +108,7 @@ package it.ht.rcs.console.entities.controller
 
 			return null
 		}
-
+    
 		override protected function onItemUpdate(event:*):void
 		{
 			var property:Object=new Object();

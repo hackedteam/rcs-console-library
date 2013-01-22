@@ -22,14 +22,14 @@ internal class _HandleEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("updated_at", "level", "_id", "name", "created_at", "type");
+    model_internal static var allProperties:Array = new Array("updated_at", "handle", "level", "_id", "name", "created_at", "type");
     model_internal static var allAssociationProperties:Array = new Array();
-    model_internal static var allRequiredProperties:Array = new Array("updated_at", "level", "_id", "name", "created_at", "type");
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("updated_at", "level", "_id", "name", "created_at", "type");
+    model_internal static var allRequiredProperties:Array = new Array("updated_at", "handle", "level", "_id", "name", "created_at", "type");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("updated_at", "handle", "level", "_id", "name", "created_at", "type");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("updated_at", "level", "_id", "name", "created_at", "type");
+    model_internal static var dataProperties:Array = new Array("updated_at", "handle", "level", "_id", "name", "created_at", "type");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("updated_at", "level", "_id", "name", "created_at", "type");
+    model_internal static var nonDerivedProperties:Array = new Array("updated_at", "handle", "level", "_id", "name", "created_at", "type");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array();
     model_internal static var collectionBaseMap:Object;
@@ -43,6 +43,11 @@ internal class _HandleEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
     model_internal var _updated_atValidator:com.adobe.fiber.styles.StyleValidator;
     model_internal var _updated_atIsValidCacheInitialized:Boolean = false;
     model_internal var _updated_atValidationFailureMessages:Array;
+    
+    model_internal var _handleIsValid:Boolean;
+    model_internal var _handleValidator:com.adobe.fiber.styles.StyleValidator;
+    model_internal var _handleIsValidCacheInitialized:Boolean = false;
+    model_internal var _handleValidationFailureMessages:Array;
     
     model_internal var _levelIsValid:Boolean;
     model_internal var _levelValidator:com.adobe.fiber.styles.StyleValidator;
@@ -80,6 +85,7 @@ internal class _HandleEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
             // dependents map
             model_internal::dependentsOnMap = new Object();
             model_internal::dependentsOnMap["updated_at"] = new Array();
+            model_internal::dependentsOnMap["handle"] = new Array();
             model_internal::dependentsOnMap["level"] = new Array();
             model_internal::dependentsOnMap["_id"] = new Array();
             model_internal::dependentsOnMap["name"] = new Array();
@@ -93,6 +99,7 @@ internal class _HandleEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
         // Property type Map
         model_internal::propertyTypeMap = new Object();
         model_internal::propertyTypeMap["updated_at"] = "String";
+        model_internal::propertyTypeMap["handle"] = "String";
         model_internal::propertyTypeMap["level"] = "String";
         model_internal::propertyTypeMap["_id"] = "String";
         model_internal::propertyTypeMap["name"] = "String";
@@ -105,6 +112,11 @@ internal class _HandleEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
         model_internal::_updated_atValidator.requiredFieldError = "updated_at is required";
         //model_internal::_updated_atValidator.source = model_internal::_instance;
         //model_internal::_updated_atValidator.property = "updated_at";
+        model_internal::_handleValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForHandle);
+        model_internal::_handleValidator.required = true;
+        model_internal::_handleValidator.requiredFieldError = "handle is required";
+        //model_internal::_handleValidator.source = model_internal::_instance;
+        //model_internal::_handleValidator.property = "handle";
         model_internal::_levelValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForLevel);
         model_internal::_levelValidator.required = true;
         model_internal::_levelValidator.requiredFieldError = "level is required";
@@ -363,6 +375,12 @@ internal class _HandleEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
     }
 
     [Bindable(event="propertyChange")]
+    public function get isHandleAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get isLevelAvailable():Boolean
     {
         return true;
@@ -402,6 +420,14 @@ internal class _HandleEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
         {
             model_internal::_instance.model_internal::_doValidationCacheOfUpdated_at = null;
             model_internal::calculateUpdated_atIsValid();
+        }
+    }
+    public function invalidateDependentOnHandle():void
+    {
+        if (model_internal::_handleIsValidCacheInitialized )
+        {
+            model_internal::_instance.model_internal::_doValidationCacheOfHandle = null;
+            model_internal::calculateHandleIsValid();
         }
     }
     public function invalidateDependentOnLevel():void
@@ -541,6 +567,106 @@ internal class _HandleEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
         {
             model_internal::_updated_atValidationFailureMessages = value;   
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "updated_atValidationFailureMessages", oldValue, value));
+            // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
+            // the entire entity.
+            if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
+            {
+                model_internal::_instance.model_internal::isValid_der = model_internal::_instance.model_internal::calculateIsValid();
+            }
+        }
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get handleStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    public function get handleValidator() : StyleValidator
+    {
+        return model_internal::_handleValidator;
+    }
+
+    model_internal function set _handleIsValid_der(value:Boolean):void 
+    {
+        var oldValue:Boolean = model_internal::_handleIsValid;         
+        if (oldValue !== value)
+        {
+            model_internal::_handleIsValid = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "handleIsValid", oldValue, value));
+        }                             
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get handleIsValid():Boolean
+    {
+        if (!model_internal::_handleIsValidCacheInitialized)
+        {
+            model_internal::calculateHandleIsValid();
+        }
+
+        return model_internal::_handleIsValid;
+    }
+
+    model_internal function calculateHandleIsValid():void
+    {
+        var valRes:ValidationResultEvent = model_internal::_handleValidator.validate(model_internal::_instance.handle)
+        model_internal::_handleIsValid_der = (valRes.results == null);
+        model_internal::_handleIsValidCacheInitialized = true;
+        if (valRes.results == null)
+             model_internal::handleValidationFailureMessages_der = emptyArray;
+        else
+        {
+            var _valFailures:Array = new Array();
+            for (var a:int = 0 ; a<valRes.results.length ; a++)
+            {
+                _valFailures.push(valRes.results[a].errorMessage);
+            }
+            model_internal::handleValidationFailureMessages_der = _valFailures;
+        }
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get handleValidationFailureMessages():Array
+    {
+        if (model_internal::_handleValidationFailureMessages == null)
+            model_internal::calculateHandleIsValid();
+
+        return _handleValidationFailureMessages;
+    }
+
+    model_internal function set handleValidationFailureMessages_der(value:Array) : void
+    {
+        var oldValue:Array = model_internal::_handleValidationFailureMessages;
+
+        var needUpdate : Boolean = false;
+        if (oldValue == null)
+            needUpdate = true;
+    
+        // avoid firing the event when old and new value are different empty arrays
+        if (!needUpdate && (oldValue !== value && (oldValue.length > 0 || value.length > 0)))
+        {
+            if (oldValue.length == value.length)
+            {
+                for (var a:int=0; a < oldValue.length; a++)
+                {
+                    if (oldValue[a] !== value[a])
+                    {
+                        needUpdate = true;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                needUpdate = true;
+            }
+        }
+
+        if (needUpdate)
+        {
+            model_internal::_handleValidationFailureMessages = value;   
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "handleValidationFailureMessages", oldValue, value));
             // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
             // the entire entity.
             if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
@@ -1078,6 +1204,10 @@ internal class _HandleEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
             case("updated_at"):
             {
                 return updated_atValidationFailureMessages;
+            }
+            case("handle"):
+            {
+                return handleValidationFailureMessages;
             }
             case("level"):
             {
