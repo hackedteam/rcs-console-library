@@ -89,7 +89,7 @@ internal class _Super_DBEntity extends com.adobe.fiber.services.wrapper.HTTPServ
          operation = new mx.rpc.http.Operation(null, "add_handle_");
          operation.url = "/entity/add_handle";
          operation.method = "POST";
-         operation.serializationFilter = serializer1;
+         operation.serializationFilter = serializer0;
          operation.contentType = "application/xml";
          operations.push(operation);
 

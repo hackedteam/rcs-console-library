@@ -119,7 +119,7 @@ package it.ht.rcs.console.accounting.controller
       if (e.statusCode == 403) {
         _onLoginFault('Incorrect Username or Password...');
         return;
-      }
+      } 
       
       _onLoginFault('Cannot connect to server');
     }
@@ -167,7 +167,7 @@ package it.ht.rcs.console.accounting.controller
         s.open(f, FileMode.READ);
         var lastLogon:Object = s.readObject();
         this.lastUsername = lastLogon.username;
-        this.lastServer = lastLogon.server;
+        this.lastServer = lastLogon.server; 
         
         //this.lastPassword = lastLogon.password;
           

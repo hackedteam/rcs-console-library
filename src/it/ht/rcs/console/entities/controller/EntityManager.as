@@ -25,7 +25,6 @@ package it.ht.rcs.console.entities.controller
 		public function EntityManager()
 		{
 			super(Entity);
-
 		}
 
 		private static var _instance:EntityManager=new EntityManager();

@@ -4796,6 +4796,27 @@
     <property name="linux" type="boolean[]" required="true"/>
     <property name="mobile" type="opaque" required="true"/>
   </entity>
+  <entity name="Handle">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Handles</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBEntity</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.entities.model</item>
+    </annotation>
+    <property name="updated_at" type="string" required="true"/>
+    <property name="handle" type="string" required="true"/>
+    <property name="level" type="string" required="true"/>
+    <property name="_id" type="string" required="true"/>
+    <property name="name" type="string" required="true"/>
+    <property name="created_at" type="string" required="true"/>
+    <property name="type" type="string" required="true"/>
+  </entity>
   <service name="DBEntity">
     <annotation name="ActionScriptGeneration">
       <item name="ServiceType">HTTPMultiService</item>
@@ -4841,7 +4862,7 @@
         <item name="completeURL">http://localhost:4444/entity/{id}</item>
       </annotation>
       <annotation name="ValidProperties">
-        <item name="propertySpecifier">photos,updated_at,level,desc,_id,name,analyzed,path,created_at,type,handles</item>
+        <item name="propertySpecifier">position,desc,type,photos,level,updated_at,_id,position_attr,analyzed,name,path,created_at,handles</item>
       </annotation>
       <annotation name="original signature">
         <item name="returnType">opaque</item>
@@ -4969,7 +4990,7 @@
         <item name="analyzed">true</item>
       </annotation>
       <annotation name="ActionScriptGeneration">
-        <item name="SerializationFilter">com.adobe.serializers.xml.XMLSerializationFilter</item>
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
         <item name="method">POST</item>
         <item name="contentType">application/xml</item>
         <item name="requestBodyParameter">true</item>
@@ -4982,6 +5003,9 @@
         <item name="returnType">opaque</item>
         <item name="inputParamNames">strXml</item>
         <item name="inputParams">string</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">time,accuracy</item>
       </annotation>
       <parameter name="strXml" type="string"/>
     </function>
@@ -5031,9 +5055,9 @@
       <parameter name="strXml" type="string"/>
     </function>
   </service>
-  <entity name="Handle">
+  <entity name="Position_attr">
     <annotation name="EntityProperties">
-      <item name="EntityOriginalName">Handles</item>
+      <item name="EntityOriginalName">Position_attr</item>
     </annotation>
     <annotation name="service Group">
       <item name="service">DBEntity</item>
@@ -5041,16 +5065,14 @@
     <annotation name="ServerProperties">
       <item name="IncludeRemoteClass">nonempty</item>
     </annotation>
+    <annotation name="add_handle_">
+      <item name="propertySpecifier">time,accuracy</item>
+    </annotation>
     <annotation name="ActionScriptGeneration">
       <item name="Package">it.ht.rcs.console.entities.model</item>
     </annotation>
-    <property name="updated_at" type="string" required="true"/>
-    <property name="handle" type="string" required="true"/>
-    <property name="level" type="string" required="true"/>
-    <property name="_id" type="string" required="true"/>
-    <property name="name" type="string" required="true"/>
-    <property name="created_at" type="string" required="true"/>
-    <property name="type" type="string" required="true"/>
+    <property name="time" type="long" required="true" default="0"/>
+    <property name="accuracy" type="string" required="true"/>
   </entity>
   <entity name="Contact">
     <annotation name="EntityProperties">
@@ -5075,7 +5097,6 @@
     <property name="peer_name" type="string" required="true"/>
     <property name="size" type="double" required="true" default="0"/>
   </entity>
-  
   <entity name="Analyzed">
     <annotation name="EntityProperties">
       <item name="EntityOriginalName">Analyzed</item>
@@ -5091,6 +5112,25 @@
     </annotation>
     <property name="handles_last" type="opaque" required="true"/>
     <property name="handles" type="boolean" required="true"/>
+  </entity>
+  <entity name="Position">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Position</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBEntity</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="add_handle_">
+      <item name="propertySpecifier">longitude,latitude</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.entities.model</item>
+    </annotation>
+    <property name="longitude" type="string" required="true"/>
+    <property name="latitude" type="string" required="true"/>
   </entity>
   <entity name="Entity">
     <annotation name="EntityProperties">
@@ -5112,21 +5152,23 @@
       <item name="propertySpecifier">photos,updated_at,level,desc,_id,name,path,created_at,type</item>
     </annotation>
     <annotation name="show_">
-      <item name="propertySpecifier">photos,updated_at,level,desc,_id,name,analyzed,path,created_at,type,handles</item>
+      <item name="propertySpecifier">position,desc,type,photos,level,updated_at,_id,position_attr,analyzed,name,path,created_at,handles</item>
     </annotation>
     <annotation name="update_">
       <item name="propertySpecifier">photos,updated_at,level,desc,_id,name,path,created_at,type</item>
     </annotation>
-    <property name="photos" type="string[]" required="true"/>
-    <property name="updated_at" type="string" required="true"/>
-    <property name="level" type="string" required="true"/>
+    <property name="position" type="Position" required="true"/>
     <property name="desc" type="string" required="true"/>
+    <property name="type" type="string" required="true"/>
+    <property name="photos" type="string[]" required="true"/>
+    <property name="level" type="string" required="true"/>
+    <property name="updated_at" type="string" required="true"/>
     <property name="_id" type="string" required="true"/>
-    <property name="name" type="string" required="true"/>
+    <property name="position_attr" type="Position_attr" required="true"/>
     <property name="analyzed" type="Analyzed" required="true"/>
+    <property name="name" type="string" required="true"/>
     <property name="path" type="string[]" required="true"/>
     <property name="created_at" type="string" required="true"/>
-    <property name="type" type="string" required="true"/>
     <property name="handles" type="Handles[]" required="true"/>
   </entity>
   <entity name="Handles">

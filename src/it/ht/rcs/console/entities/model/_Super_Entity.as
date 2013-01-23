@@ -12,6 +12,8 @@ import flash.events.Event;
 import flash.events.EventDispatcher;
 import it.ht.rcs.console.entities.model.Analyzed;
 import it.ht.rcs.console.entities.model.Handles;
+import it.ht.rcs.console.entities.model.Position;
+import it.ht.rcs.console.entities.model.Position_attr;
 import mx.binding.utils.ChangeWatcher;
 import mx.collections.ArrayCollection;
 import mx.events.CollectionEvent;
@@ -35,6 +37,8 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
 
     model_internal static function initRemoteClassAliasAllRelated() : void
     {
+        it.ht.rcs.console.entities.model.Position.initRemoteClassAliasSingleChild();
+        it.ht.rcs.console.entities.model.Position_attr.initRemoteClassAliasSingleChild();
         it.ht.rcs.console.entities.model.Analyzed.initRemoteClassAliasSingleChild();
         it.ht.rcs.console.entities.model.Handles.initRemoteClassAliasSingleChild();
     }
@@ -56,16 +60,18 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
     /**
      * properties
      */
-    private var _internal_photos : ArrayCollection;
-    private var _internal_updated_at : String;
-    private var _internal_level : String;
+    private var _internal_position : it.ht.rcs.console.entities.model.Position;
     private var _internal_desc : String;
+    private var _internal_type : String;
+    private var _internal_photos : ArrayCollection;
+    private var _internal_level : String;
+    private var _internal_updated_at : String;
     private var _internal__id : String;
-    private var _internal_name : String;
+    private var _internal_position_attr : it.ht.rcs.console.entities.model.Position_attr;
     private var _internal_analyzed : it.ht.rcs.console.entities.model.Analyzed;
+    private var _internal_name : String;
     private var _internal_path : ArrayCollection;
     private var _internal_created_at : String;
-    private var _internal_type : String;
     private var _internal_handles : ArrayCollection;
     model_internal var _internal_handles_leaf:it.ht.rcs.console.entities.model.Handles;
 
@@ -84,16 +90,18 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
         _model = new _EntityEntityMetadata(this);
 
         // Bind to own data or source properties for cache invalidation triggering
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "photos", model_internal::setterListenerPhotos));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "updated_at", model_internal::setterListenerUpdated_at));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "level", model_internal::setterListenerLevel));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "position", model_internal::setterListenerPosition));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "desc", model_internal::setterListenerDesc));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "type", model_internal::setterListenerType));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "photos", model_internal::setterListenerPhotos));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "level", model_internal::setterListenerLevel));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "updated_at", model_internal::setterListenerUpdated_at));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "_id", model_internal::setterListener_id));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "name", model_internal::setterListenerName));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "position_attr", model_internal::setterListenerPosition_attr));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "analyzed", model_internal::setterListenerAnalyzed));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "name", model_internal::setterListenerName));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "path", model_internal::setterListenerPath));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "created_at", model_internal::setterListenerCreated_at));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "type", model_internal::setterListenerType));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "handles", model_internal::setterListenerHandles));
 
     }
@@ -103,21 +111,9 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
      */
 
     [Bindable(event="propertyChange")]
-    public function get photos() : ArrayCollection
+    public function get position() : it.ht.rcs.console.entities.model.Position
     {
-        return _internal_photos;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get updated_at() : String
-    {
-        return _internal_updated_at;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get level() : String
-    {
-        return _internal_level;
+        return _internal_position;
     }
 
     [Bindable(event="propertyChange")]
@@ -127,21 +123,51 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
     }
 
     [Bindable(event="propertyChange")]
+    public function get type() : String
+    {
+        return _internal_type;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get photos() : ArrayCollection
+    {
+        return _internal_photos;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get level() : String
+    {
+        return _internal_level;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get updated_at() : String
+    {
+        return _internal_updated_at;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get _id() : String
     {
         return _internal__id;
     }
 
     [Bindable(event="propertyChange")]
-    public function get name() : String
+    public function get position_attr() : it.ht.rcs.console.entities.model.Position_attr
     {
-        return _internal_name;
+        return _internal_position_attr;
     }
 
     [Bindable(event="propertyChange")]
     public function get analyzed() : it.ht.rcs.console.entities.model.Analyzed
     {
         return _internal_analyzed;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get name() : String
+    {
+        return _internal_name;
     }
 
     [Bindable(event="propertyChange")]
@@ -157,12 +183,6 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
     }
 
     [Bindable(event="propertyChange")]
-    public function get type() : String
-    {
-        return _internal_type;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get handles() : ArrayCollection
     {
         return _internal_handles;
@@ -175,6 +195,36 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
     /**
      * data/source property setters
      */
+
+    public function set position(value:it.ht.rcs.console.entities.model.Position) : void
+    {
+        var oldValue:it.ht.rcs.console.entities.model.Position = _internal_position;
+        if (oldValue !== value)
+        {
+            _internal_position = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "position", oldValue, _internal_position));
+        }
+    }
+
+    public function set desc(value:String) : void
+    {
+        var oldValue:String = _internal_desc;
+        if (oldValue !== value)
+        {
+            _internal_desc = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "desc", oldValue, _internal_desc));
+        }
+    }
+
+    public function set type(value:String) : void
+    {
+        var oldValue:String = _internal_type;
+        if (oldValue !== value)
+        {
+            _internal_type = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "type", oldValue, _internal_type));
+        }
+    }
 
     public function set photos(value:*) : void
     {
@@ -201,16 +251,6 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
         }
     }
 
-    public function set updated_at(value:String) : void
-    {
-        var oldValue:String = _internal_updated_at;
-        if (oldValue !== value)
-        {
-            _internal_updated_at = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "updated_at", oldValue, _internal_updated_at));
-        }
-    }
-
     public function set level(value:String) : void
     {
         var oldValue:String = _internal_level;
@@ -221,13 +261,13 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
         }
     }
 
-    public function set desc(value:String) : void
+    public function set updated_at(value:String) : void
     {
-        var oldValue:String = _internal_desc;
+        var oldValue:String = _internal_updated_at;
         if (oldValue !== value)
         {
-            _internal_desc = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "desc", oldValue, _internal_desc));
+            _internal_updated_at = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "updated_at", oldValue, _internal_updated_at));
         }
     }
 
@@ -241,13 +281,13 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
         }
     }
 
-    public function set name(value:String) : void
+    public function set position_attr(value:it.ht.rcs.console.entities.model.Position_attr) : void
     {
-        var oldValue:String = _internal_name;
+        var oldValue:it.ht.rcs.console.entities.model.Position_attr = _internal_position_attr;
         if (oldValue !== value)
         {
-            _internal_name = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "name", oldValue, _internal_name));
+            _internal_position_attr = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "position_attr", oldValue, _internal_position_attr));
         }
     }
 
@@ -258,6 +298,16 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
         {
             _internal_analyzed = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "analyzed", oldValue, _internal_analyzed));
+        }
+    }
+
+    public function set name(value:String) : void
+    {
+        var oldValue:String = _internal_name;
+        if (oldValue !== value)
+        {
+            _internal_name = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "name", oldValue, _internal_name));
         }
     }
 
@@ -293,16 +343,6 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
         {
             _internal_created_at = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "created_at", oldValue, _internal_created_at));
-        }
-    }
-
-    public function set type(value:String) : void
-    {
-        var oldValue:String = _internal_type;
-        if (oldValue !== value)
-        {
-            _internal_type = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "type", oldValue, _internal_type));
         }
     }
 
@@ -343,6 +383,21 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
      *  - the validity of the property (and the containing entity) if the given data property is required.
      */
 
+    model_internal function setterListenerPosition(value:flash.events.Event):void
+    {
+        _model.invalidateDependentOnPosition();
+    }
+
+    model_internal function setterListenerDesc(value:flash.events.Event):void
+    {
+        _model.invalidateDependentOnDesc();
+    }
+
+    model_internal function setterListenerType(value:flash.events.Event):void
+    {
+        _model.invalidateDependentOnType();
+    }
+
     model_internal function setterListenerPhotos(value:flash.events.Event):void
     {
         if (value is mx.events.PropertyChangeEvent)
@@ -355,19 +410,14 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
         _model.invalidateDependentOnPhotos();
     }
 
-    model_internal function setterListenerUpdated_at(value:flash.events.Event):void
-    {
-        _model.invalidateDependentOnUpdated_at();
-    }
-
     model_internal function setterListenerLevel(value:flash.events.Event):void
     {
         _model.invalidateDependentOnLevel();
     }
 
-    model_internal function setterListenerDesc(value:flash.events.Event):void
+    model_internal function setterListenerUpdated_at(value:flash.events.Event):void
     {
-        _model.invalidateDependentOnDesc();
+        _model.invalidateDependentOnUpdated_at();
     }
 
     model_internal function setterListener_id(value:flash.events.Event):void
@@ -375,14 +425,19 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
         _model.invalidateDependentOn_id();
     }
 
-    model_internal function setterListenerName(value:flash.events.Event):void
+    model_internal function setterListenerPosition_attr(value:flash.events.Event):void
     {
-        _model.invalidateDependentOnName();
+        _model.invalidateDependentOnPosition_attr();
     }
 
     model_internal function setterListenerAnalyzed(value:flash.events.Event):void
     {
         _model.invalidateDependentOnAnalyzed();
+    }
+
+    model_internal function setterListenerName(value:flash.events.Event):void
+    {
+        _model.invalidateDependentOnName();
     }
 
     model_internal function setterListenerPath(value:flash.events.Event):void
@@ -400,11 +455,6 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
     model_internal function setterListenerCreated_at(value:flash.events.Event):void
     {
         _model.invalidateDependentOnCreated_at();
-    }
-
-    model_internal function setterListenerType(value:flash.events.Event):void
-    {
-        _model.invalidateDependentOnType();
     }
 
     model_internal function setterListenerHandles(value:flash.events.Event):void
@@ -441,40 +491,55 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
         var validationFailureMessages:Array = new Array();
 
         var propertyValidity:Boolean = true;
-        if (!_model.photosIsValid)
+        if (!_model.positionIsValid)
         {
             propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_photosValidationFailureMessages);
-        }
-        if (!_model.updated_atIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_updated_atValidationFailureMessages);
-        }
-        if (!_model.levelIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_levelValidationFailureMessages);
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_positionValidationFailureMessages);
         }
         if (!_model.descIsValid)
         {
             propertyValidity = false;
             com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_descValidationFailureMessages);
         }
+        if (!_model.typeIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_typeValidationFailureMessages);
+        }
+        if (!_model.photosIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_photosValidationFailureMessages);
+        }
+        if (!_model.levelIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_levelValidationFailureMessages);
+        }
+        if (!_model.updated_atIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_updated_atValidationFailureMessages);
+        }
         if (!_model._idIsValid)
         {
             propertyValidity = false;
             com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::__idValidationFailureMessages);
         }
-        if (!_model.nameIsValid)
+        if (!_model.position_attrIsValid)
         {
             propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_nameValidationFailureMessages);
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_position_attrValidationFailureMessages);
         }
         if (!_model.analyzedIsValid)
         {
             propertyValidity = false;
             com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_analyzedValidationFailureMessages);
+        }
+        if (!_model.nameIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_nameValidationFailureMessages);
         }
         if (!_model.pathIsValid)
         {
@@ -485,11 +550,6 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
         {
             propertyValidity = false;
             com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_created_atValidationFailureMessages);
-        }
-        if (!_model.typeIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_typeValidationFailureMessages);
         }
         if (!_model.handlesIsValid)
         {
@@ -575,83 +635,29 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
         }
     }
 
-    model_internal var _doValidationCacheOfPhotos : Array = null;
-    model_internal var _doValidationLastValOfPhotos : ArrayCollection;
+    model_internal var _doValidationCacheOfPosition : Array = null;
+    model_internal var _doValidationLastValOfPosition : it.ht.rcs.console.entities.model.Position;
 
-    model_internal function _doValidationForPhotos(valueIn:Object):Array
+    model_internal function _doValidationForPosition(valueIn:Object):Array
     {
-        var value : ArrayCollection = valueIn as ArrayCollection;
+        var value : it.ht.rcs.console.entities.model.Position = valueIn as it.ht.rcs.console.entities.model.Position;
 
-        if (model_internal::_doValidationCacheOfPhotos != null && model_internal::_doValidationLastValOfPhotos == value)
-           return model_internal::_doValidationCacheOfPhotos ;
+        if (model_internal::_doValidationCacheOfPosition != null && model_internal::_doValidationLastValOfPosition == value)
+           return model_internal::_doValidationCacheOfPosition ;
 
-        _model.model_internal::_photosIsValidCacheInitialized = true;
+        _model.model_internal::_positionIsValidCacheInitialized = true;
         var validationFailures:Array = new Array();
         var errorMessage:String;
         var failure:Boolean;
 
         var valRes:ValidationResult;
-        if (_model.isPhotosAvailable && _internal_photos == null)
+        if (_model.isPositionAvailable && _internal_position == null)
         {
-            validationFailures.push(new ValidationResult(true, "", "", "photos is required"));
+            validationFailures.push(new ValidationResult(true, "", "", "position is required"));
         }
 
-        model_internal::_doValidationCacheOfPhotos = validationFailures;
-        model_internal::_doValidationLastValOfPhotos = value;
-
-        return validationFailures;
-    }
-    
-    model_internal var _doValidationCacheOfUpdated_at : Array = null;
-    model_internal var _doValidationLastValOfUpdated_at : String;
-
-    model_internal function _doValidationForUpdated_at(valueIn:Object):Array
-    {
-        var value : String = valueIn as String;
-
-        if (model_internal::_doValidationCacheOfUpdated_at != null && model_internal::_doValidationLastValOfUpdated_at == value)
-           return model_internal::_doValidationCacheOfUpdated_at ;
-
-        _model.model_internal::_updated_atIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.isUpdated_atAvailable && _internal_updated_at == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "updated_at is required"));
-        }
-
-        model_internal::_doValidationCacheOfUpdated_at = validationFailures;
-        model_internal::_doValidationLastValOfUpdated_at = value;
-
-        return validationFailures;
-    }
-    
-    model_internal var _doValidationCacheOfLevel : Array = null;
-    model_internal var _doValidationLastValOfLevel : String;
-
-    model_internal function _doValidationForLevel(valueIn:Object):Array
-    {
-        var value : String = valueIn as String;
-
-        if (model_internal::_doValidationCacheOfLevel != null && model_internal::_doValidationLastValOfLevel == value)
-           return model_internal::_doValidationCacheOfLevel ;
-
-        _model.model_internal::_levelIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.isLevelAvailable && _internal_level == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "level is required"));
-        }
-
-        model_internal::_doValidationCacheOfLevel = validationFailures;
-        model_internal::_doValidationLastValOfLevel = value;
+        model_internal::_doValidationCacheOfPosition = validationFailures;
+        model_internal::_doValidationLastValOfPosition = value;
 
         return validationFailures;
     }
@@ -683,6 +689,114 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
         return validationFailures;
     }
     
+    model_internal var _doValidationCacheOfType : Array = null;
+    model_internal var _doValidationLastValOfType : String;
+
+    model_internal function _doValidationForType(valueIn:Object):Array
+    {
+        var value : String = valueIn as String;
+
+        if (model_internal::_doValidationCacheOfType != null && model_internal::_doValidationLastValOfType == value)
+           return model_internal::_doValidationCacheOfType ;
+
+        _model.model_internal::_typeIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isTypeAvailable && _internal_type == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "type is required"));
+        }
+
+        model_internal::_doValidationCacheOfType = validationFailures;
+        model_internal::_doValidationLastValOfType = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfPhotos : Array = null;
+    model_internal var _doValidationLastValOfPhotos : ArrayCollection;
+
+    model_internal function _doValidationForPhotos(valueIn:Object):Array
+    {
+        var value : ArrayCollection = valueIn as ArrayCollection;
+
+        if (model_internal::_doValidationCacheOfPhotos != null && model_internal::_doValidationLastValOfPhotos == value)
+           return model_internal::_doValidationCacheOfPhotos ;
+
+        _model.model_internal::_photosIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isPhotosAvailable && _internal_photos == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "photos is required"));
+        }
+
+        model_internal::_doValidationCacheOfPhotos = validationFailures;
+        model_internal::_doValidationLastValOfPhotos = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfLevel : Array = null;
+    model_internal var _doValidationLastValOfLevel : String;
+
+    model_internal function _doValidationForLevel(valueIn:Object):Array
+    {
+        var value : String = valueIn as String;
+
+        if (model_internal::_doValidationCacheOfLevel != null && model_internal::_doValidationLastValOfLevel == value)
+           return model_internal::_doValidationCacheOfLevel ;
+
+        _model.model_internal::_levelIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isLevelAvailable && _internal_level == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "level is required"));
+        }
+
+        model_internal::_doValidationCacheOfLevel = validationFailures;
+        model_internal::_doValidationLastValOfLevel = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfUpdated_at : Array = null;
+    model_internal var _doValidationLastValOfUpdated_at : String;
+
+    model_internal function _doValidationForUpdated_at(valueIn:Object):Array
+    {
+        var value : String = valueIn as String;
+
+        if (model_internal::_doValidationCacheOfUpdated_at != null && model_internal::_doValidationLastValOfUpdated_at == value)
+           return model_internal::_doValidationCacheOfUpdated_at ;
+
+        _model.model_internal::_updated_atIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isUpdated_atAvailable && _internal_updated_at == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "updated_at is required"));
+        }
+
+        model_internal::_doValidationCacheOfUpdated_at = validationFailures;
+        model_internal::_doValidationLastValOfUpdated_at = value;
+
+        return validationFailures;
+    }
+    
     model_internal var _doValidationCacheOf_id : Array = null;
     model_internal var _doValidationLastValOf_id : String;
 
@@ -710,29 +824,29 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
         return validationFailures;
     }
     
-    model_internal var _doValidationCacheOfName : Array = null;
-    model_internal var _doValidationLastValOfName : String;
+    model_internal var _doValidationCacheOfPosition_attr : Array = null;
+    model_internal var _doValidationLastValOfPosition_attr : it.ht.rcs.console.entities.model.Position_attr;
 
-    model_internal function _doValidationForName(valueIn:Object):Array
+    model_internal function _doValidationForPosition_attr(valueIn:Object):Array
     {
-        var value : String = valueIn as String;
+        var value : it.ht.rcs.console.entities.model.Position_attr = valueIn as it.ht.rcs.console.entities.model.Position_attr;
 
-        if (model_internal::_doValidationCacheOfName != null && model_internal::_doValidationLastValOfName == value)
-           return model_internal::_doValidationCacheOfName ;
+        if (model_internal::_doValidationCacheOfPosition_attr != null && model_internal::_doValidationLastValOfPosition_attr == value)
+           return model_internal::_doValidationCacheOfPosition_attr ;
 
-        _model.model_internal::_nameIsValidCacheInitialized = true;
+        _model.model_internal::_position_attrIsValidCacheInitialized = true;
         var validationFailures:Array = new Array();
         var errorMessage:String;
         var failure:Boolean;
 
         var valRes:ValidationResult;
-        if (_model.isNameAvailable && _internal_name == null)
+        if (_model.isPosition_attrAvailable && _internal_position_attr == null)
         {
-            validationFailures.push(new ValidationResult(true, "", "", "name is required"));
+            validationFailures.push(new ValidationResult(true, "", "", "position_attr is required"));
         }
 
-        model_internal::_doValidationCacheOfName = validationFailures;
-        model_internal::_doValidationLastValOfName = value;
+        model_internal::_doValidationCacheOfPosition_attr = validationFailures;
+        model_internal::_doValidationLastValOfPosition_attr = value;
 
         return validationFailures;
     }
@@ -760,6 +874,33 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
 
         model_internal::_doValidationCacheOfAnalyzed = validationFailures;
         model_internal::_doValidationLastValOfAnalyzed = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfName : Array = null;
+    model_internal var _doValidationLastValOfName : String;
+
+    model_internal function _doValidationForName(valueIn:Object):Array
+    {
+        var value : String = valueIn as String;
+
+        if (model_internal::_doValidationCacheOfName != null && model_internal::_doValidationLastValOfName == value)
+           return model_internal::_doValidationCacheOfName ;
+
+        _model.model_internal::_nameIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isNameAvailable && _internal_name == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "name is required"));
+        }
+
+        model_internal::_doValidationCacheOfName = validationFailures;
+        model_internal::_doValidationLastValOfName = value;
 
         return validationFailures;
     }
@@ -814,33 +955,6 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
 
         model_internal::_doValidationCacheOfCreated_at = validationFailures;
         model_internal::_doValidationLastValOfCreated_at = value;
-
-        return validationFailures;
-    }
-    
-    model_internal var _doValidationCacheOfType : Array = null;
-    model_internal var _doValidationLastValOfType : String;
-
-    model_internal function _doValidationForType(valueIn:Object):Array
-    {
-        var value : String = valueIn as String;
-
-        if (model_internal::_doValidationCacheOfType != null && model_internal::_doValidationLastValOfType == value)
-           return model_internal::_doValidationCacheOfType ;
-
-        _model.model_internal::_typeIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.isTypeAvailable && _internal_type == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "type is required"));
-        }
-
-        model_internal::_doValidationCacheOfType = validationFailures;
-        model_internal::_doValidationLastValOfType = value;
 
         return validationFailures;
     }
