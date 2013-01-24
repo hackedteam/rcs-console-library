@@ -178,7 +178,7 @@ package it.ht.rcs.console.evidence.controller
       
     }
     
-    public function getChatFlow(program:String, to:String, from:String):ArrayCollection
+   /* public function getChatFlow(program:String, to:String, from:String):ArrayCollection
     {
       var chatFlow:ArrayCollection=new ArrayCollection();
       
@@ -198,6 +198,56 @@ package it.ht.rcs.console.evidence.controller
               chatFlow.addItem(chatEntry);
           }
          
+        }
+      }
+      return chatFlow;
+    }*/
+    
+    private function haveSameElements(a:Array, b:Array):Boolean
+    {  
+      if(a.length!=b.length)
+        return false;
+      for(var i:int=0;i<a.length;i++)
+      {
+        if(b.indexOf(a[i])==-1)
+          return false;
+      }
+      return true;
+      
+    }
+    
+    public function getChatFlow(program:String, to:String, from:String):ArrayCollection
+    {
+      var chatFlow:ArrayCollection=new ArrayCollection();
+      //Array with all chat partecipants
+      
+      if(!to) to="";
+      if(!from) from="";
+      
+      var participants:Array=to.split(",");
+      participants.push(from);
+      
+      for(var i:int=0;i<_view.length;i++)
+      {
+        if(_view.getItemAt(i) && _view.getItemAt(i).type=="chat")
+        {
+          var chatEntry:Evidence=_view.getItemAt(i) as Evidence;
+          
+          if(chatEntry.data.rcpt!=null && chatEntry.data.rcpt!="")
+          {
+            var currentParticipants:Array=chatEntry.data.rcpt.split(",");
+            currentParticipants.push(chatEntry.data.from);
+            
+            
+            if(chatEntry.data.program==program && haveSameElements(participants, currentParticipants))
+              chatFlow.addItem(chatEntry);
+          }
+          else
+          {
+            if(chatEntry.data.program==program && chatEntry.data.peer==to)
+              chatFlow.addItem(chatEntry);
+          }
+          
         }
       }
       return chatFlow;
