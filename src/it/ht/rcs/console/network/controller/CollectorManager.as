@@ -64,7 +64,27 @@ package it.ht.rcs.console.network.controller
     {
       var property:Object = new Object();
       property[event.property] = event.newValue is ArrayCollection ? event.newValue.source : event.newValue;
-      DB.instance.collector.update(event.source, property);
+      //DB.instance.collector.update(event.source, property);
+    }
+    
+    public function update(collector:Collector):void
+    {
+      var property:Object=new Object;
+      property['_id']=collector._id;
+      property['address']=collector.address;
+      property['internal_address']=collector.internal_address;
+      property['desc']=collector.desc;
+      property['poll']=collector.poll;
+      property['name']=collector.name;
+      property['type']=collector.type;
+      property['version']=collector.version;
+      property['port']=collector.port;
+      if(collector.prev)
+      property['prev']=collector.prev.source;
+      if(collector.next)
+      property['next'] = collector.next.source;
+      
+      DB.instance.collector.update(collector, property);
     }
     
     public function addCollector(c:Object, callback:Function):void
