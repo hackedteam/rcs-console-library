@@ -67,7 +67,7 @@ package it.ht.rcs.console.network.controller
       //DB.instance.collector.update(event.source, property);
     }
     
-    public function update(collector:Collector):void
+    public function update(collector:Collector, callback:Function=null):void
     {
       var property:Object=new Object;
       property['_id']=collector._id;
@@ -84,7 +84,7 @@ package it.ht.rcs.console.network.controller
       if(collector.next)
       property['next'] = collector.next.source;
       
-      DB.instance.collector.update(collector, property);
+      DB.instance.collector.update(collector, property, callback);
     }
     
     public function addCollector(c:Object, callback:Function):void
