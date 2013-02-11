@@ -88,10 +88,6 @@ package it.ht.rcs.console.accounting.model
     {
       return privs.getItemIndex('ADMIN_LICENSE') != -1;
     }
-    public function is_admin_profiles():Boolean
-    {
-      return privs.getItemIndex('ADMIN_PROFILES') != -1;
-    }
     
     //SYS
     public function is_sys():Boolean
