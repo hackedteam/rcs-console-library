@@ -28,6 +28,23 @@ public class Entity extends _Super_Entity
      * for this value object as well as all of the value objects corresponding
      * to entities associated to this value object's entity.  
      */     
+  
+  public function Entity(data:Object = null)
+  {
+    if (data) {
+      this._id=data._id;
+      this.desc=data.desc;
+      this.level=data.level;
+      this.name=data.name;
+      this.path=data.path;
+      this.handles=data.handles;
+      this.photos=data.photos;
+      this.position=data.position;
+      this.position_attr=data.position_attr;
+      this.type=data.type;
+    }
+  }
+  
     public static function _initRemoteClassAlias() : void
     {
         _Super_Entity.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.entities.model.Entity);

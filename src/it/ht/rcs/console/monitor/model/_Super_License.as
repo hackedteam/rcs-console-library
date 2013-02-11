@@ -74,7 +74,7 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
     private var _internal_rmi : ArrayCollection;
     private var _internal_scout : Boolean;
     private var _internal_ocr : Boolean;
-    private var _internal_translate : Boolean;
+    private var _internal_translation : Boolean;
     private var _internal_modify : Boolean;
 
     private static var emptyArray:Array = new Array();
@@ -216,9 +216,9 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
     }
 
     [Bindable(event="propertyChange")]
-    public function get translate() : Boolean
+    public function get translation() : Boolean
     {
-        return _internal_translate;
+        return _internal_translation;
     }
 
     [Bindable(event="propertyChange")]
@@ -445,13 +445,13 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
         }
     }
 
-    public function set translate(value:Boolean) : void
+    public function set translation(value:Boolean) : void
     {
-        var oldValue:Boolean = _internal_translate;
+        var oldValue:Boolean = _internal_translation;
         if (oldValue !== value)
         {
-            _internal_translate = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "translate", oldValue, _internal_translate));
+            _internal_translation = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "translation", oldValue, _internal_translation));
         }
     }
 

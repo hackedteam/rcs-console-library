@@ -5,6 +5,7 @@ package it.ht.rcs.console.search.rest
   import it.ht.rcs.console.search.model.SearchItem;
   import it.ht.rcs.console.target.rest.DBTargetDemo;
   import it.ht.rcs.console.evidence.rest.DBEvidenceDemo;
+  import it.ht.rcs.console.entities.rest.DBEntityDemo;
   
   import mx.collections.ArrayCollection;
   import mx.rpc.events.ResultEvent;
@@ -20,6 +21,7 @@ package it.ht.rcs.console.search.rest
       DBTargetDemo.targets.source.forEach(addItemAsSearchItem);
       DBAgentDemo.agents.source.forEach(addItemAsSearchItem);
       DBAgentDemo.agents.source.forEach(addItemAsSearchItem);
+      DBEntityDemo.entities.source.forEach(addItemAsSearchItem)
      // DBEvidenceDemo.evidence.source.forEach(addItemAsSearchItem);
     }
     

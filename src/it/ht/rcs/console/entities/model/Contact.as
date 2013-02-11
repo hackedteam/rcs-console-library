@@ -27,7 +27,21 @@ public class Contact extends _Super_Contact
      * Calling this static function will initialize RemoteClass aliases
      * for this value object as well as all of the value objects corresponding
      * to entities associated to this value object's entity.  
-     */     
+     */
+  
+    public function Contact(data:Object=null)
+    {
+      if(data)
+      {
+        this.peer =data.peer
+        this.percent=data.percent;
+        this.count=data.count;
+        this.type=data.type;
+        this.peer_name=data.peer_name;
+        this.size=data.size;
+      }
+    }
+    
     public static function _initRemoteClassAlias() : void
     {
         _Super_Contact.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.entities.model.Contact);

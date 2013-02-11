@@ -272,7 +272,12 @@ package it.ht.rcs.console.evidence.controller
     
     public function addFilter(filter:Object, onResult:Function=null, onFault:Function=null):void
     {
-      DB.instance.evidence.filter_create(filter, onResult, onFault)
+      DB.instance.evidence.filter_create(filter, onResult, onFault);
+    }
+    
+    public function translate(id:String, target:String, onResult:Function, onFault:Function):void
+    {
+      DB.instance.evidence.translate(id, target, onResult, onFault)
     }
     
     override protected function onLogout(e:SessionEvent):void 

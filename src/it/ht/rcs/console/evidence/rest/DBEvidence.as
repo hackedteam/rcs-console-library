@@ -116,6 +116,12 @@ package it.ht.rcs.console.evidence.rest
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
       resp.token = filter_create_(JSON.stringify(filter));
     }
+    
+    public function translate(id:String, target:String, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = translate_(id, target);
+    }
 
     /**
      * Override super.init() to provide any initialization customization if needed.

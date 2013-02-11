@@ -2,6 +2,9 @@ package it.ht.rcs.console.entities.rest
 {
   import flash.net.FileReference;
   
+  import it.ht.rcs.console.entities.model.Contact;
+  import it.ht.rcs.console.entities.model.Entity;
+  import it.ht.rcs.console.entities.model.Handle;
   import it.ht.rcs.console.operation.model.Operation;
   import it.ht.rcs.console.search.model.Stat;
   import it.ht.rcs.console.search.model.StatEvidence;
@@ -11,14 +14,12 @@ package it.ht.rcs.console.entities.rest
   import mx.collections.ArrayCollection;
   import mx.rpc.events.ResultEvent;
   
-  import it.ht.rcs.console.entities.model.Entity;
-  
   public class DBEntityDemo implements IDBEntity
   {
     
     public static var entities:ArrayCollection = new ArrayCollection([
       // Swordfish
-     
+      new Entity({ _id: 'e1', type: 'target', name: 'Jimmy Page',      desc: 'Head of the terrorist cell',    path: ['o1','t1'],    name:'Jimmy Page',    level:'auto', photos:[],      handles:[]})
     ]);
     
     public function all(onResult:Function=null, onFault:Function=null):void
@@ -39,7 +40,14 @@ package it.ht.rcs.console.entities.rest
     
     public function show(id:String, onResult:Function=null, onFault:Function=null):void
     {
-     
+      var handles:ArrayCollection=new ArrayCollection()
+      handles.addItem(new Handle({name:'Jimmy Page', handle:'jimmy.page',type:'facebook'}));
+      handles.addItem(new Handle({name:'Jimmy Page', handle:'jimmy.page@gmail.com',type:'gmail'}));
+      handles.addItem(new Handle({name:'Jimmy Page', handle:'jimmypage',type:'skype'}));
+      var result:Entity=new Entity({ _id: 'e1', type: 'target', name: 'Jimmy Page',      desc: 'Head of the terrorist cell',    path: ['o1','t1'],    name:'Jimmy Page',    level:'auto', photos:[],      handles:handles});
+      
+      if (onResult != null)
+        onResult(new ResultEvent('entity.show', false, true, result));
     }
    
     public function add_photo_from_grid(entityId:String, gridId:String, targetId:String, onResult:Function=null, onFault:Function=null):void
@@ -64,7 +72,24 @@ package it.ht.rcs.console.entities.rest
     
     public function most_contacted(entityId:String, from:String, to:String, num:String, onResult:Function=null, onFault:Function=null):void
     {
-    
+      var result:ArrayCollection=new ArrayCollection();
+      var contacts:Array=new Array();
+      contacts.push(new Contact({peer:"johndoe",   type:"facebook",    count:15.0,   size:208.0,   percent:75,   peer_name:"John Doe"}));
+      contacts.push(new Contact({peer:"j.fargo",   type:"facebook",    count:5.0,   size:208.0,   percent:25,   peer_name:"Joey Fargo"}));
+      result.addItem(contacts);
+      contacts=new Array();
+      contacts.push(new Contact({peer:"003214567",   type:"whatsapp",    count:13,   size:208.0,   percent:50,   peer_name:"Alejandro Reade"}));
+      contacts.push(new Contact({peer:"547685469",   type:"whatsapp",    count:13,   size:208.0,   percent:50,   peer_name:"Joey Fargo"}));
+      result.addItem(contacts)
+      contacts=new Array();
+      contacts.push(new Contact({peer:"john.doe",   type:"skype",    count:30,   size:208.0,   percent:60,   peer_name:"John Doe"}));
+      contacts.push(new Contact({peer:"alejandroreade",   type:"skype",    count:12,   size:208.0,   percent:24,   peer_name:"Alejandro Reade"}));
+      contacts.push(new Contact({peer:"joeyfargo",   type:"skype",    count:8,   size:208.0,   percent:16,   peer_name:"Joey Fargo"}));
+      result.addItem(contacts)
+      
+      
+      if (onResult != null)
+        onResult(new ResultEvent('entity.most_contacted', false, true, result));
     }
   }
   

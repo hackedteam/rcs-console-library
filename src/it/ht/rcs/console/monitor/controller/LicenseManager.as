@@ -67,7 +67,7 @@ package it.ht.rcs.console.monitor.controller
     public var archive:Boolean = false;
     public var scout:Boolean = true;
     public var ocr:Boolean = true;
-    public var translate:Boolean = true;
+    public var translation:Boolean = true;
     public var modify:Boolean = true;
     
     public var limits:License;
@@ -143,7 +143,7 @@ package it.ht.rcs.console.monitor.controller
       
       scout = limits['scout'];
       ocr=limits['ocr'];
-      translate=limits['translate'];
+      translation=limits['translation'];
       modify =limits["modify"]
       //modify =false;
       

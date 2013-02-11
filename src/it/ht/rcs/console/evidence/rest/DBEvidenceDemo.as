@@ -563,6 +563,10 @@ package it.ht.rcs.console.evidence.rest
     public function filter_create(filter:Object, onResult:Function=null, onFault:Function=null):void
     {
     }
+    
+    public function translate(id:String, target:String, onResult:Function=null, onFault:Function=null):void
+    {
+    }
 
 	}
 

@@ -33,6 +33,16 @@ public class Handle extends _Super_Handle
         _Super_Handle.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.entities.model.Handle);
         _Super_Handle.model_internal::initRemoteClassAliasAllRelated();
     }
+    
+    public function Handle(data:Object=null)
+    {
+      if(data)
+      {
+        this.handle=data.handle;
+        this.name=data.name;
+        this.type=data.type;
+      }
+    }
      
     model_internal static function initRemoteClassAliasSingleChild() : void
     {
