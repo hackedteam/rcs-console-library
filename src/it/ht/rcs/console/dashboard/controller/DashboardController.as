@@ -226,6 +226,7 @@ package it.ht.rcs.console.dashboard.controller
     override protected function onLogin(e:SessionEvent):void
     {
       super.onLogin(e);
+      if(Console.currentSession)
       user = Console.currentSession.user;
     }
     

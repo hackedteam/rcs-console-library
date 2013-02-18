@@ -2323,19 +2323,19 @@
       <item name="IncludeRemoteClass">nonempty</item>
     </annotation>
     <annotation name="all_">
-      <item name="propertySpecifier">port,desc,upgradable,configured,next,type,version,prev,updated_at,poll,_id,address,name,created_at,instance</item>
+      <item name="propertySpecifier">port,desc,upgradable,configured,next,type,version,prev,updated_at,poll,_id,address,name,created_at,instance,good</item>
     </annotation>
     <annotation name="ActionScriptGeneration">
       <item name="Package">it.ht.rcs.console.network.model</item>
     </annotation>
     <annotation name="show_">
-      <item name="propertySpecifier">port,desc,upgradable,configured,next,type,version,prev,updated_at,poll,_id,address,name,internal_address,created_at,instance</item>
+      <item name="propertySpecifier">port,desc,upgradable,configured,next,type,version,prev,updated_at,poll,_id,address,name,internal_address,created_at,instance,good</item>
     </annotation>
     <annotation name="create_">
-      <item name="propertySpecifier">port,updated_at,poll,_id,upgradable,configured,name,created_at,type</item>
+      <item name="propertySpecifier">port,updated_at,poll,_id,upgradable,configured,name,created_at,type,good</item>
     </annotation>
     <annotation name="update_">
-      <item name="propertySpecifier">port,updated_at,poll,desc,_id,upgradable,configured,address,name,created_at,type</item>
+      <item name="propertySpecifier">port,updated_at,poll,desc,_id,upgradable,configured,address,name,created_at,type,good</item>
     </annotation>
     <property name="port" type="integer"/>
     <property name="desc" type="string"/>
@@ -2353,6 +2353,7 @@
     <property name="internal_address" type="string"/>
     <property name="created_at" type="string"/>
     <property name="instance" type="string"/>
+    <property name="good" type="boolean"/>
   </entity>
   <service name="DBBuild">
     <annotation name="ActionScriptGeneration">

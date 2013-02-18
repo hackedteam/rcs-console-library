@@ -11,6 +11,7 @@ package it.ht.rcs.console.network.model
     {
       return {
         _id: '',
+        good:true,
         address: '',
         internal_address: '',
         desc: '',
@@ -38,6 +39,7 @@ package it.ht.rcs.console.network.model
         version = data.version;
         next = data.next;
         prev = data.prev;
+        good = data.good;
       }
     }
     
