@@ -13,7 +13,7 @@ package it.ht.rcs.console.events
     public static const OPERATIONS:String  = "Operations";
     public static const DASHBOARD:String   = "Dashboard";
     public static const ALERTING:String    = "Alerting";
-    public static const CORRELATION:String = "Correlation";
+    public static const INTELLIGENCE:String = "Intelligence";
     public static const SYSTEM:String      = "System";
     public static const AUDIT:String       = "Audit";
     public static const MONITOR:String     = "Monitor";
