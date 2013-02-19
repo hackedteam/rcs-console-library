@@ -123,6 +123,41 @@ package it.ht.rcs.console.network.controller
       
       return false;
     }
+    /*
+    Return Collectors marked as good
+    */
+    private function goodFilter(item:Object):Boolean
+    {
+     /* if (item['address'] == null || item['address'] == '')
+        return false;
+      
+      if (item['type'] == 'local' && item['next'][0] == null && item['good'])
+        return true;
+      
+      if (item['type'] == 'remote' && item['next'][0] == null && item['prev'][0] != null && item['good'])
+        return true;
+      
+      return false;*/
+      
+      return item['good']
+    }
+    /*
+    Return Collectors marked as non-good
+    */
+    private function nonGoodFilter(item:Object):Boolean
+    {
+     /* if (item['address'] == null || item['address'] == '')
+        return false;
+      
+      if (item['type'] == 'local' && item['next'][0] == null && !item['good'])
+        return true;
+      
+      if (item['type'] == 'remote' && item['next'][0] == null && item['prev'][0] != null && !item['good'])
+        return true;
+      
+      return false;*/
+      return !item['good']
+    }
     
     private function connectedFilter(item:Object):Boolean
     {
@@ -149,6 +184,20 @@ package it.ht.rcs.console.network.controller
     {
       
       return super.getView(null, entryFilter);
+      
+    }
+    
+    public function getGoodEntryPoints(sortCriteria:ISort=null, filterFunction:Function=null):ListCollectionView
+    {
+      
+      return super.getView(null, goodFilter);
+      
+    }
+    
+    public function getNonGoodEntryPoints(sortCriteria:ISort=null, filterFunction:Function=null):ListCollectionView
+    {
+      
+      return super.getView(null, nonGoodFilter);
       
     } 
     
