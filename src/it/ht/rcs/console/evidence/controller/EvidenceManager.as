@@ -233,19 +233,27 @@ package it.ht.rcs.console.evidence.controller
         {
           var chatEntry:Evidence=_view.getItemAt(i) as Evidence;
           
-          if(chatEntry.data.rcpt!=null && chatEntry.data.rcpt!="")
+          if(program.toLocaleLowerCase()=="twitter" && chatEntry.data.program.toLowerCase()=="twitter")
           {
-            var currentParticipants:Array=chatEntry.data.rcpt.split(",");
-            currentParticipants.push(chatEntry.data.from);
-            
-            
-            if(chatEntry.data.program==program && haveSameElements(participants, currentParticipants))
-              chatFlow.addItem(chatEntry);
+            chatFlow.addItem(chatEntry);
           }
           else
           {
-            if(chatEntry.data.program==program && chatEntry.data.peer==to)
-              chatFlow.addItem(chatEntry);
+            if(chatEntry.data.rcpt!=null && chatEntry.data.rcpt!="")
+            {
+              var currentParticipants:Array=chatEntry.data.rcpt.split(",");
+              currentParticipants.push(chatEntry.data.from);
+              
+              
+              if(chatEntry.data.program==program && haveSameElements(participants, currentParticipants))
+                chatFlow.addItem(chatEntry);
+            }
+            else
+            {
+              if(chatEntry.data.program==program && chatEntry.data.peer==to)
+                chatFlow.addItem(chatEntry);
+            }
+          
           }
           
         }
