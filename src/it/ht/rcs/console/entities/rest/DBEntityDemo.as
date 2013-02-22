@@ -5,6 +5,8 @@ package it.ht.rcs.console.entities.rest
   import it.ht.rcs.console.entities.model.Contact;
   import it.ht.rcs.console.entities.model.Entity;
   import it.ht.rcs.console.entities.model.Handle;
+  import it.ht.rcs.console.entities.model.Position;
+  import it.ht.rcs.console.entities.model.Position_attr;
   import it.ht.rcs.console.operation.model.Operation;
   import it.ht.rcs.console.search.model.Stat;
   import it.ht.rcs.console.search.model.StatEvidence;
@@ -19,8 +21,17 @@ package it.ht.rcs.console.entities.rest
     
     public static var entities:ArrayCollection = new ArrayCollection([
       // Swordfish
+     
       new Entity({ _id: 'e1', type: 'target', name: 'Jimmy Page',      desc: 'Head of the terrorist cell',    path: ['o1','t1'],    name:'Jimmy Page',    level:'auto', photos:[],      handles:[]})
     ]);
+    
+    
+    private static function convertToUnix(value:Date):Number
+    {
+      
+      return Math.round(value.getTime()/1000)
+    }
+    
     
     public function all(onResult:Function=null, onFault:Function=null):void
     {
@@ -46,6 +57,14 @@ package it.ht.rcs.console.entities.rest
       handles.addItem(new Handle({name:'Jimmy Page', handle:'jimmypage',type:'skype'}));
       var result:Entity=new Entity({ _id: 'e1', type: 'target', name: 'Jimmy Page',      desc: 'Head of the terrorist cell',    path: ['o1','t1'],    name:'Jimmy Page',    level:'auto', photos:[],      handles:handles});
       
+      var position:Position=new Position;
+      position.latitude="34.034453"
+      position.longitude="-118.259583"
+      var position_attr:Position_attr=new Position_attr()
+      position_attr.accuracy="200";
+      position_attr.time=convertToUnix(new Date(2012,11,03,14,57,00))
+      result.position=position;
+      result.position_attr=position_attr;
       if (onResult != null)
         onResult(new ResultEvent('entity.show', false, true, result));
     }
