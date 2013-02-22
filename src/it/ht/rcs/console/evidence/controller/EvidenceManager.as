@@ -218,32 +218,45 @@ package it.ht.rcs.console.evidence.controller
     
     public function getChatFlow(program:String, to:String, from:String):ArrayCollection
     {
+      var i:int;
+      var chatEntry:Evidence;
       var chatFlow:ArrayCollection=new ArrayCollection();
+      
       //Array with all chat partecipants
       
+      if(program.toLowerCase()=="twitter")
+      {
+        //chatFlow.addItem(chatEntry);
+        for(i=0;i<_view.length;i++)
+        {
+          if(_view.getItemAt(i) && _view.getItemAt(i).type=="chat")
+          {
+            chatEntry=_view.getItemAt(i) as Evidence;
+            if(chatEntry.data.program.toLowerCase()=="twitter")
+            {
+              chatFlow.addItem(chatEntry);
+            }
+          }
+        }
+        return chatFlow;
+      }
+
       if(!to) to="";
       if(!from) from="";
-      
+
       var participants:Array=to.split(",");
       participants.push(from);
       
-      for(var i:int=0;i<_view.length;i++)
+      for(i=0;i<_view.length;i++)
       {
         if(_view.getItemAt(i) && _view.getItemAt(i).type=="chat")
         {
-          var chatEntry:Evidence=_view.getItemAt(i) as Evidence;
-          
-          if(program.toLocaleLowerCase()=="twitter" && chatEntry.data.program.toLowerCase()=="twitter")
-          {
-            chatFlow.addItem(chatEntry);
-          }
-          else
-          {
+          chatEntry=_view.getItemAt(i) as Evidence;
+
             if(chatEntry.data.rcpt!=null && chatEntry.data.rcpt!="")
             {
               var currentParticipants:Array=chatEntry.data.rcpt.split(",");
               currentParticipants.push(chatEntry.data.from);
-              
               
               if(chatEntry.data.program==program && haveSameElements(participants, currentParticipants))
                 chatFlow.addItem(chatEntry);
@@ -253,9 +266,6 @@ package it.ht.rcs.console.evidence.controller
               if(chatEntry.data.program==program && chatEntry.data.peer==to)
                 chatFlow.addItem(chatEntry);
             }
-          
-          }
-          
         }
       }
       return chatFlow;
