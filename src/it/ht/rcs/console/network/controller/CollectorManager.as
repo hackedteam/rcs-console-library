@@ -159,6 +159,20 @@ package it.ht.rcs.console.network.controller
       return !item['good']
     }
     
+    public function isValidEntryPoint(item:Object):Boolean
+    {
+      if (item['address'] == null || item['address'] == '')
+      return false;
+      
+      if (item['type'] == 'local' && item['next'][0] == null )
+      return true;
+      
+      if (item['type'] == 'remote' && item['next'][0] == null && item['prev'][0] != null )
+      return true;
+      
+      return false;
+    }
+    
     private function connectedFilter(item:Object):Boolean
     {
       if (item['address'] == null || item['address'] == '')
