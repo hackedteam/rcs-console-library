@@ -27,7 +27,7 @@ package it.ht.rcs.console.entities.rest
    
     function update(entity:Entity, property:Object, onResult:Function=null, onFault:Function=null):void
       
-    function add_handle(entityId:String, handleName:String, handleType:String, onResult:Function=null, onFault:Function=null):void
+    function add_handle(entityId:String, handle:String, handleName:String, handleType:String, onResult:Function=null, onFault:Function=null):void
       
     function del_handle(entityId:String, handleId:String, onResult:Function=null, onFault:Function=null):void
       

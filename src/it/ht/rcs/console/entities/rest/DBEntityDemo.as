@@ -79,7 +79,7 @@ package it.ht.rcs.console.entities.rest
      
     }
     
-    public function add_handle(entityId:String, handleName:String, handleType:String, onResult:Function=null, onFault:Function=null):void
+    public function add_handle(entityId:String, handle:String, handleName:String, handleType:String, onResult:Function=null, onFault:Function=null):void
     {
       
     }

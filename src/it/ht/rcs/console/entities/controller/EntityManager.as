@@ -74,9 +74,9 @@ package it.ht.rcs.console.entities.controller
 
 		}
     
-    public function addHandle(entityId:String, handleName:String, handleType:String, onResult:Function=null, onFault:Function=null):void
+    public function addHandle(entityId:String, handle:String, handleName:String, handleType:String, onResult:Function=null, onFault:Function=null):void
     {
-      DB.instance.entity.add_handle(entityId, handleName, handleType , onResult, onFault)
+      DB.instance.entity.add_handle(entityId, handle, handleName, handleType , onResult, onFault)
       
     }
     

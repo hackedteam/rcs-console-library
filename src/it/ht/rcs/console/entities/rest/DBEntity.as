@@ -50,9 +50,9 @@ package it.ht.rcs.console.entities.rest
       resp.token = add_photo_from_grid_(JSON.stringify(params));
     }
     
-    public function add_handle(entityId:String, handleName:String, handleType:String, onResult:Function=null, onFault:Function=null):void
+    public function add_handle(entityId:String, handle:String, handleName:String, handleType:String, onResult:Function=null, onFault:Function=null):void
     {
-      var params:Object={_id:entityId, name:handleName, type:handleType};
+      var params:Object={_id:entityId, name:handleName, type:handleType, handle:handle};
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
       resp.token = add_handle_(JSON.stringify(params));
     }
