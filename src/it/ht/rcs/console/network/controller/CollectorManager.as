@@ -201,14 +201,14 @@ package it.ht.rcs.console.network.controller
       
     }
     
-    public function getGoodEntryPoints(sortCriteria:ISort=null, filterFunction:Function=null):ListCollectionView
+    public function getGoodEntryPoints(sortCriteria:ISort=null, filterFunction:Function=null):ListCollectionView //collectors (not really entry points)
     {
       
       return super.getView(null, goodFilter);
       
     }
     
-    public function getNonGoodEntryPoints(sortCriteria:ISort=null, filterFunction:Function=null):ListCollectionView
+    public function getNonGoodEntryPoints(sortCriteria:ISort=null, filterFunction:Function=null):ListCollectionView  //collectors (not really entry points)
     {
       
       return super.getView(null, nonGoodFilter);
