@@ -79,6 +79,7 @@ public class _Super_Agent extends flash.events.EventDispatcher implements com.ad
     private var _internal_upgradable : Boolean;
     private var _internal_instance : String;
     private var _internal_counter : int;
+    private var _internal_good : Boolean;
 
     private static var emptyArray:Array = new Array();
 
@@ -231,6 +232,12 @@ public class _Super_Agent extends flash.events.EventDispatcher implements com.ad
     public function get counter() : int
     {
         return _internal_counter;
+    }
+    
+    [Bindable(event="propertyChange")]
+    public function get good() : Boolean
+    {
+      return _internal_good;
     }
 
     public function clearAssociations() : void
@@ -494,6 +501,16 @@ public class _Super_Agent extends flash.events.EventDispatcher implements com.ad
             _internal_counter = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "counter", oldValue, _internal_counter));
         }
+    }
+    
+    public function set good(value:Boolean) : void
+    {
+      var oldValue:Boolean = _internal_good;
+      if (oldValue !== value)
+      {
+        _internal_good = value;
+        this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "upgradable", oldValue, _internal_good));
+      }
     }
 
     /**
