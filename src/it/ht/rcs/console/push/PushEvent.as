@@ -9,6 +9,7 @@ package it.ht.rcs.console.push
     public static const ALERT:String = "alert";
     public static const OPERATION:String = "operation";
     public static const TARGET:String = "target";
+    public static const ENTITY:String = "entity";
     public static const AGENT:String = "agent";
     public static const MESSAGE:String = "message";
     public static const LOGOUT:String = "logout";

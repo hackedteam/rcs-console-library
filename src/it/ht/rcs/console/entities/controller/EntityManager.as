@@ -25,6 +25,7 @@ package it.ht.rcs.console.entities.controller
 		public function EntityManager()
 		{
 			super(Entity);
+      PushController.instance.addEventListener(PushEvent.ENTITY, onEntityPush);
 		}
 
 		private static var _instance:EntityManager=new EntityManager();
@@ -91,7 +92,10 @@ package it.ht.rcs.console.entities.controller
       DB.instance.entity.most_contacted(entityId, from, to, num, onResult, onFault)
       
     }
-    
+    private function onEntityPush(e:PushEvent):void
+    {
+      EntityManager.instance.show(e.data.id as String);
+    }
 
 		public function getEntityByTarget(targetId:String):Entity
 		{
