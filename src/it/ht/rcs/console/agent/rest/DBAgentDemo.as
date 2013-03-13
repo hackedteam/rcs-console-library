@@ -107,7 +107,11 @@ package it.ht.rcs.console.agent.rest
       params._id = new Date().time.toString();
       
       var agent:Agent = new Agent(params);
-      agent.path = [operation._id, target._id];
+      if(operation && target)
+        agent.path = [operation._id, target._id];
+      else
+        agent.path = [operation._id];
+      agent.scout=false;
       agents.addItem(agent);
       DBSearchDemo.addItemAsSearchItem(agent, 0, null);
       
