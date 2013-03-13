@@ -1,11 +1,15 @@
 package it.ht.rcs.console.target.controller
 {
+  import flash.events.TimerEvent;
+  import flash.utils.Timer;
+  
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.ObjectUtils;
   import it.ht.rcs.console.agent.controller.AgentManager;
   import it.ht.rcs.console.agent.model.Agent;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.dashboard.controller.DashboardController;
+  import it.ht.rcs.console.entities.controller.EntityManager;
   import it.ht.rcs.console.operation.model.Operation;
   import it.ht.rcs.console.push.PushController;
   import it.ht.rcs.console.push.PushEvent;
@@ -16,6 +20,8 @@ package it.ht.rcs.console.target.controller
   import mx.collections.ListCollectionView;
   import mx.rpc.events.FaultEvent;
   import mx.rpc.events.ResultEvent;
+  
+  import org.osmf.events.TimeEvent;
   
   public class TargetManager extends ItemManager
   {
@@ -52,6 +58,10 @@ package it.ht.rcs.console.target.controller
     {
       DB.instance.target.destroy(item._id);
       DashboardController.instance.removeItem(DashboardController.instance.getItem(item._id));
+      //EntityManager.instance.refresh();
+      var t:Timer=new Timer(500,1);
+      t.start()
+      t.addEventListener(TimerEvent.TIMER, refreshEntities)
     }
     
     override protected function onItemUpdate(event:*):void
@@ -67,8 +77,23 @@ package it.ht.rcs.console.target.controller
         var target:Target = e.result as Target;
         addItem(target);
         SearchManager.instance.showItem(target._id);
+        
+        //EntityManager.instance.refresh();
+        
+        /* 
+        var t:Timer=new Timer(2000,1);
+        t.addEventListener(TimerEvent.TIMER, refreshEntities)
+        t.start()
+        */
+        
         callback(target);
       });
+    }
+    
+    private function refreshEntities(e:TimerEvent):void
+    {
+      EntityManager.instance.refresh();
+      e.target.stop();
     }
 
     // Se l'elemento non e' presente, ma la show me lo ritorna, lo aggiungo. In ogni caso, aggiorno il search manager.

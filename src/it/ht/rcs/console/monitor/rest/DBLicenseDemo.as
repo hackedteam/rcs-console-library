@@ -44,7 +44,7 @@ package it.ht.rcs.console.monitor.rest
           type: 'reusable',
           users: 15,
           shards: 1,
-          translate:true
+          translation:true
         });
       var event:ResultEvent = new ResultEvent("license.limit", false, true, limits);
       if (onResult != null) 
