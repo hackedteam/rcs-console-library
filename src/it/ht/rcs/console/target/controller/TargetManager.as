@@ -80,11 +80,11 @@ package it.ht.rcs.console.target.controller
         
         //EntityManager.instance.refresh();
         
-        /* 
-        var t:Timer=new Timer(2000,1);
+         
+       /* var t:Timer=new Timer(5000,1);
         t.addEventListener(TimerEvent.TIMER, refreshEntities)
-        t.start()
-        */
+        t.start()*/
+       
         
         callback(target);
       });
