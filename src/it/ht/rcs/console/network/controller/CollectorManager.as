@@ -128,7 +128,7 @@ package it.ht.rcs.console.network.controller
     */
     private function goodFilter(item:Object):Boolean
     {
-     /* if (item['address'] == null || item['address'] == '')
+      if (item['address'] == null || item['address'] == '')
         return false;
       
       if (item['type'] == 'local' && item['next'][0] == null && item['good'])
@@ -137,16 +137,16 @@ package it.ht.rcs.console.network.controller
       if (item['type'] == 'remote' && item['next'][0] == null && item['prev'][0] != null && item['good'])
         return true;
       
-      return false;*/
+      return false;
       
-      return item['good']
+      //return item['good']
     }
     /*
     Return Collectors marked as non-good
     */
     private function nonGoodFilter(item:Object):Boolean
     {
-     /* if (item['address'] == null || item['address'] == '')
+      if (item['address'] == null || item['address'] == '')
         return false;
       
       if (item['type'] == 'local' && item['next'][0] == null && !item['good'])
@@ -155,8 +155,8 @@ package it.ht.rcs.console.network.controller
       if (item['type'] == 'remote' && item['next'][0] == null && item['prev'][0] != null && !item['good'])
         return true;
       
-      return false;*/
-      return !item['good']
+      return false;
+      //return !item['good']
     }
     
     public function isValidEntryPoint(item:Object):Boolean
