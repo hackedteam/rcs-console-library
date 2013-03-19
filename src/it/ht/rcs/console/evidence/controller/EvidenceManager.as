@@ -152,7 +152,7 @@ package it.ht.rcs.console.evidence.controller
     
     public function sync(factory:String, instance:String, platform:String, version:String, user:String, device:String, onResult:Function = null):void
     {
-      DB.instance.evidence.agent_status({ident: factory, instance: instance, subtype: platform}, function (event:ResultEvent):void {
+      DB.instance.evidence.agent_status({ident: factory, instance: instance, platform: platform}, function (event:ResultEvent):void {
                 
         if (event.result.status == 'OPEN' && event.result.deleted == false) {
           // send the sync parameters
@@ -178,7 +178,7 @@ package it.ht.rcs.console.evidence.controller
       
     }
     
-    public function getChatFlow(program:String, peer:String):ArrayCollection
+   /* public function getChatFlow(program:String, to:String, from:String):ArrayCollection
     {
       var chatFlow:ArrayCollection=new ArrayCollection();
       
@@ -187,8 +187,85 @@ package it.ht.rcs.console.evidence.controller
         if(_view.getItemAt(i) && _view.getItemAt(i).type=="chat")
         {
           var chatEntry:Evidence=_view.getItemAt(i) as Evidence;
-          if(chatEntry.data.program==program && chatEntry.data.peer==peer)
-            chatFlow.addItem(chatEntry);
+          if(chatEntry.data.rcpt!=null && chatEntry.data.rcpt!="")
+          {
+            if(chatEntry.data.program==program && ((chatEntry.data.rcpt==to && chatEntry.data.from==from) || (chatEntry.data.rcpt==from && chatEntry.data.from==to)))
+              chatFlow.addItem(chatEntry);
+          }
+          else
+          {
+            if(chatEntry.data.program==program && chatEntry.data.peer==to)
+              chatFlow.addItem(chatEntry);
+          }
+         
+        }
+      }
+      return chatFlow;
+    }*/
+    
+    private function haveSameElements(a:Array, b:Array):Boolean
+    {  
+      if(a.length!=b.length)
+        return false;
+      for(var i:int=0;i<a.length;i++)
+      {
+        if(b.indexOf(a[i])==-1)
+          return false;
+      }
+      return true;
+      
+    }
+    
+    public function getChatFlow(program:String, to:String, from:String):ArrayCollection
+    {
+      var i:int;
+      var chatEntry:Evidence;
+      var chatFlow:ArrayCollection=new ArrayCollection();
+      
+      //Array with all chat partecipants
+      
+      if(program.toLowerCase()=="twitter")
+      {
+        //chatFlow.addItem(chatEntry);
+        for(i=0;i<_view.length;i++)
+        {
+          if(_view.getItemAt(i) && _view.getItemAt(i).type=="chat")
+          {
+            chatEntry=_view.getItemAt(i) as Evidence;
+            if(chatEntry.data.program.toLowerCase()=="twitter")
+            {
+              chatFlow.addItem(chatEntry);
+            }
+          }
+        }
+        return chatFlow;
+      }
+
+      if(!to) to="";
+      if(!from) from="";
+
+      var participants:Array=to.split(",");
+      participants.push(from);
+      
+      for(i=0;i<_view.length;i++)
+      {
+        if(_view.getItemAt(i) && _view.getItemAt(i).type=="chat")
+        {
+          chatEntry=_view.getItemAt(i) as Evidence;
+
+            if(chatEntry.data.rcpt!=null && chatEntry.data.rcpt!="")
+            {
+              var currentParticipants:Array=chatEntry.data.rcpt.split(",");
+              currentParticipants.push(chatEntry.data.from);
+              
+              if(chatEntry.data.program==program && haveSameElements(participants, currentParticipants))
+                chatFlow.addItem(chatEntry);
+            }
+            else
+            {
+              if(chatEntry.data.program==program && chatEntry.data.peer==to)
+                chatFlow.addItem(chatEntry);
+            }
         }
       }
       return chatFlow;
@@ -213,7 +290,12 @@ package it.ht.rcs.console.evidence.controller
     
     public function addFilter(filter:Object, onResult:Function=null, onFault:Function=null):void
     {
-      DB.instance.evidence.filter_create(filter, onResult, onFault)
+      DB.instance.evidence.filter_create(filter, onResult, onFault);
+    }
+    
+    public function translate(id:String, target:String, onResult:Function, onFault:Function):void
+    {
+      DB.instance.evidence.translate(id, target, onResult, onFault)
     }
     
     override protected function onLogout(e:SessionEvent):void 

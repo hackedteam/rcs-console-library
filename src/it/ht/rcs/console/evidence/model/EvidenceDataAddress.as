@@ -17,6 +17,20 @@ import com.adobe.fiber.core.model_internal;
 
 public class EvidenceDataAddress extends _Super_EvidenceDataAddress
 {
+  public function EvidenceDataAddress(data:Object=null)
+  {
+    if (data)
+    {
+      this.text=data.text;
+      this.city=data.city;
+      this.country=data.country;
+      this.country_code=data.country_code;
+      this.postal_code=data.postal_code;
+      this.region=data.region;
+      this.street=data.street;
+      this.street_number=data.street_number;
+    }
+  }
     /** 
      * DO NOT MODIFY THIS STATIC INITIALIZER - IT IS NECESSARY
      * FOR PROPERLY SETTING UP THE REMOTE CLASS ALIAS FOR THIS CLASS

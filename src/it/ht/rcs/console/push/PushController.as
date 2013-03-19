@@ -175,6 +175,11 @@ package it.ht.rcs.console.push
           event = new PushEvent(PushEvent.TARGET);
           event.data = message;
           break;
+        case 'entity':
+          trace('PushManager: dispatching ENTITY event');
+          event = new PushEvent(PushEvent.ENTITY);
+          event.data = message;
+          break;
         case 'agent':
           trace('PushManager: dispatching AGENT event');
           event = new PushEvent(PushEvent.AGENT);

@@ -50,8 +50,8 @@ package it.ht.rcs.console.accounting.rest
     
     public function show(id:String, onResult:Function=null, onFault:Function=null):void
     {
-     /* if (onResult != null)
-        onResult(new ResultEvent('user.show',false,true,DBSessionDemo.demo_user));*/
+     if (onResult != null)
+        onResult(new ResultEvent('user.show',false,true,DBSessionDemo.demo_user));
     }
     
     public function update(user:User, property:Object, onResult:Function=null, onFault:Function=null):void

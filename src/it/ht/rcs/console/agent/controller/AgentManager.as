@@ -196,6 +196,16 @@ package it.ht.rcs.console.agent.controller
         item.path[1] == targetId); });
     }
     
+    public function getFactoriesForOperation(operationId:String):ListCollectionView
+    {
+      return getView(null, function(item:Object):Boolean { 
+        return (
+          item is Agent &&
+          item._kind == 'factory' &&
+          item.path.length==1 &&
+          item.path[0] == operationId); });
+    }
+    
     public function getAgentsForTarget(targetId:String):ListCollectionView
     {
       return getView(null, function(item:Object):Boolean { 

@@ -20,19 +20,19 @@ package it.ht.rcs.console.agent.rest
       // AGENTS
       
       // John Doe (SwordFish)
-      new Agent({ _id: "a1", _kind: "agent", name: "Laptop (1)",      desc:"John's Laptop",               status: "open",   path :["o1", "t1"], type: "desktop", platform: "osx",     version: 10, ident:"RCS_0000000001", counter: 1, upgradable: false, stat: new Stat({ _id: "s1", last_sync: 1307515166, evidence: null, grid_size: 0, size: 0 }),
+      new Agent({ _id: "a1", _kind: "agent", name: "Laptop (1)",      desc:"Jimmy's Laptop",               status: "open",   path :["o1", "t1"], type: "desktop", platform: "windows",     version: 10, ident:"RCS_0000000001", counter: 1, upgradable: false, stat: new Stat({ _id: "s1", last_sync: 1307515166, evidence: null, grid_size: 0, size: 0 }),
         configs: [new Config({config: DefaultConfigBuilder.getDefaultConfigAsString(new Agent({type: 'desktop'}))})] }),
       new Agent({ _id: "a2", _kind: "agent", name: "Mobile (1)",      desc:"John's Android Mobile",       status: "open",   path :["o1", "t1"], type: "mobile",  platform: "android", version: 10, ident:"RCS_0000000002", counter: 1, upgradable: false, stat: new Stat({ _id: "s2", last_sync: 1307524166, evidence: null, grid_size: 0, size: 0 }),
         configs: [new Config({config: DefaultConfigBuilder.getDefaultConfigAsString(new Agent({type: 'mobile'}))})] }),
       // Alejandro Reade (Swordfish)
-      new Agent({ _id: "a3", _kind: "agent", name: "Desktop (1)",     desc:"Alejandro's Windows Desktop", status: "open",   path :["o1", "t2"], type: "desktop", platform: "windows", version: 10, ident:"RCS_0000000003", counter: 1, upgradable: false, stat: new Stat({ _id: "s3", last_sync: 1307614166, evidence: null, grid_size: 0, size: 0 }),
+      new Agent({ _id: "a3", _kind: "agent", name: "Desktop (1)",     desc:"Alejandro's Windows Desktop", status: "open",   path :["o1", "t2"], type: "desktop", platform: "osx", version: 10, ident:"RCS_0000000003", counter: 1, upgradable: false, stat: new Stat({ _id: "s3", last_sync: 1307614166, evidence: null, grid_size: 0, size: 0 }),
         configs: [new Config({config: DefaultConfigBuilder.getDefaultConfigAsString(new Agent({type: 'desktop'}))})] }),
       // Joey Fargo (SwordFish)
       new Agent({ _id: "a4", _kind: "agent", name: "Joey mac (1)",    desc:"Joey's Mac",                  status: "open",   path :["o1", "t3"], type: "desktop", platform: "osx",        version: 10, ident:"RCS_0000000004", counter: 1, upgradable: false, stat: new Stat({ _id: "s4", last_sync: 1308514166, evidence: null, grid_size: 0, size: 0 }),
         configs: [new Config({config: DefaultConfigBuilder.getDefaultConfigAsString(new Agent({type: 'desktop'}))})] }),
       new Agent({ _id: "a5", _kind: "agent", name: "Joey pc (1)",     desc:"Joey's PC",                   status: "open",   path :["o1", "t3"], type: "desktop", platform: "windows",    scout:true, version: 10, ident:"RCS_0000000004", counter: 2, upgradable: false, stat: new Stat({ _id: "s5", last_sync: 1307512166, evidence: null, grid_size: 0, size: 0 }),
         configs: [new Config({config: DefaultConfigBuilder.getDefaultConfigAsString(new Agent({type: 'desktop'}))})] }),
-      new Agent({ _id: "a6", _kind: "agent", name: "Joey cell (1)",   desc:"Joey's Mobile",               status: "open",   path :["o1", "t3"], type: "mobile",  platform: "blackberry", version: 10, ident:"RCS_0000000005", counter: 3, upgradable: false, stat: new Stat({ _id: "s6", last_sync: 1307514166, evidence: null, grid_size: 0, size: 0 }),
+      new Agent({ _id: "a6", _kind: "agent", name: "Joey cell (1)",   desc:"Joey's Mobile",               status: "open",   path :["o1", "t3"], type: "mobile",  platform: "android", version: 10, ident:"RCS_0000000005", counter: 3, upgradable: false, stat: new Stat({ _id: "s6", last_sync: 1307514166, evidence: null, grid_size: 0, size: 0 }),
         configs: [new Config({config: DefaultConfigBuilder.getDefaultConfigAsString(new Agent({type: 'mobile'}))})] }),
       
      
@@ -107,7 +107,11 @@ package it.ht.rcs.console.agent.rest
       params._id = new Date().time.toString();
       
       var agent:Agent = new Agent(params);
-      agent.path = [operation._id, target._id];
+      if(operation && target)
+        agent.path = [operation._id, target._id];
+      else
+        agent.path = [operation._id];
+      agent.scout=false;
       agents.addItem(agent);
       DBSearchDemo.addItemAsSearchItem(agent, 0, null);
       

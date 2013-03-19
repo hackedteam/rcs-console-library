@@ -20,6 +20,8 @@ package it.ht.rcs.console.dashboard.controller
   import mx.collections.SortField;
   import mx.rpc.events.FaultEvent;
   
+  import it.ht.rcs.console.DB;
+  
   public class DashboardController extends ItemManager
   {
     public function DashboardController() { super(DashboardItem); }
@@ -205,7 +207,7 @@ package it.ht.rcs.console.dashboard.controller
         modules.addItem(module);
       }
       
-      if (dashboardItem.baseline.last_sync == item.stat.last_sync) {
+      if (dashboardItem.baseline.last_sync == item.stat.last_sync && !DB.instance.demo) {
         totSync = 0;
         for each (module in modules)
           module.sync = 0;
@@ -224,6 +226,7 @@ package it.ht.rcs.console.dashboard.controller
     override protected function onLogin(e:SessionEvent):void
     {
       super.onLogin(e);
+      if(Console.currentSession)
       user = Console.currentSession.user;
     }
     

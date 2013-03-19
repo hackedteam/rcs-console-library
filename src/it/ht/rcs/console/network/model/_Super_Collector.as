@@ -63,6 +63,7 @@ public class _Super_Collector extends flash.events.EventDispatcher implements co
     private var _internal_internal_address : String;
     private var _internal_created_at : String;
     private var _internal_instance : String;
+    private var _internal_good : Boolean;
 
     private static var emptyArray:Array = new Array();
 
@@ -180,6 +181,12 @@ public class _Super_Collector extends flash.events.EventDispatcher implements co
     public function get instance() : String
     {
         return _internal_instance;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get good() : Boolean
+    {
+        return _internal_good;
     }
 
     public function clearAssociations() : void
@@ -377,6 +384,16 @@ public class _Super_Collector extends flash.events.EventDispatcher implements co
         {
             _internal_instance = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "instance", oldValue, _internal_instance));
+        }
+    }
+
+    public function set good(value:Boolean) : void
+    {
+        var oldValue:Boolean = _internal_good;
+        if (oldValue !== value)
+        {
+            _internal_good = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "good", oldValue, _internal_good));
         }
     }
 

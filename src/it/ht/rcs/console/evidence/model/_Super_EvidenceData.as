@@ -83,7 +83,10 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     private var _internal_spool : String;
     private var _internal_access : int;
     private var _internal_from : String;
+    private var _internal_incoming : Boolean;
+    private var _internal_from_display : String;
     private var _internal_rcpt : String;
+    private var _internal_rcpt_display : String;
     private var _internal_subject : String;
     private var _internal_url : String;
     private var _internal_title : String;
@@ -308,9 +311,27 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     }
 
     [Bindable(event="propertyChange")]
+    public function get incoming() : Boolean
+    {
+        return _internal_incoming;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get from_display() : String
+    {
+        return _internal_from_display;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get rcpt() : String
     {
         return _internal_rcpt;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get rcpt_display() : String
+    {
+        return _internal_rcpt_display;
     }
 
     [Bindable(event="propertyChange")]
@@ -723,6 +744,26 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
         }
     }
 
+    public function set incoming(value:Boolean) : void
+    {
+        var oldValue:Boolean = _internal_incoming;
+        if (oldValue !== value)
+        {
+            _internal_incoming = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "incoming", oldValue, _internal_incoming));
+        }
+    }
+
+    public function set from_display(value:String) : void
+    {
+        var oldValue:String = _internal_from_display;
+        if (oldValue !== value)
+        {
+            _internal_from_display = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "from_display", oldValue, _internal_from_display));
+        }
+    }
+
     public function set rcpt(value:String) : void
     {
         var oldValue:String = _internal_rcpt;
@@ -730,6 +771,16 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
         {
             _internal_rcpt = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "rcpt", oldValue, _internal_rcpt));
+        }
+    }
+
+    public function set rcpt_display(value:String) : void
+    {
+        var oldValue:String = _internal_rcpt_display;
+        if (oldValue !== value)
+        {
+            _internal_rcpt_display = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "rcpt_display", oldValue, _internal_rcpt_display));
         }
     }
 

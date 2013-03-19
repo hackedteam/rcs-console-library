@@ -64,7 +64,27 @@ package it.ht.rcs.console.network.controller
     {
       var property:Object = new Object();
       property[event.property] = event.newValue is ArrayCollection ? event.newValue.source : event.newValue;
-      DB.instance.collector.update(event.source, property);
+      //DB.instance.collector.update(event.source, property);
+    }
+    
+    public function update(collector:Collector, callback:Function=null):void
+    {
+      var property:Object=new Object;
+      property['_id']=collector._id;
+      property['address']=collector.address;
+      property['internal_address']=collector.internal_address;
+      property['desc']=collector.desc;
+      property['poll']=collector.poll;
+      property['name']=collector.name;
+      property['type']=collector.type;
+      property['version']=collector.version;
+      property['port']=collector.port;
+      if(collector.prev)
+      property['prev']=collector.prev.source;
+      if(collector.next)
+      property['next'] = collector.next.source;
+      
+      DB.instance.collector.update(collector, property, callback);
     }
     
     public function addCollector(c:Object, callback:Function):void
@@ -103,6 +123,55 @@ package it.ht.rcs.console.network.controller
       
       return false;
     }
+    /*
+    Return Collectors marked as good
+    */
+    private function goodFilter(item:Object):Boolean
+    {
+      if (item['address'] == null || item['address'] == '')
+        return false;
+      
+      if (item['type'] == 'local' && item['next'][0] == null && item['good'])
+        return true;
+      
+      if (item['type'] == 'remote' && item['next'][0] == null && item['prev'][0] != null && item['good'])
+        return true;
+      
+      return false;
+      
+      //return item['good']
+    }
+    /*
+    Return Collectors marked as non-good
+    */
+    private function nonGoodFilter(item:Object):Boolean
+    {
+      if (item['address'] == null || item['address'] == '')
+        return false;
+      
+      if (item['type'] == 'local' && item['next'][0] == null && !item['good'])
+        return true;
+      
+      if (item['type'] == 'remote' && item['next'][0] == null && item['prev'][0] != null && !item['good'])
+        return true;
+      
+      return false;
+      //return !item['good']
+    }
+    
+    public function isValidEntryPoint(item:Object):Boolean
+    {
+      if (item['address'] == null || item['address'] == '')
+      return false;
+      
+      if (item['type'] == 'local' && item['next'][0] == null )
+      return true;
+      
+      if (item['type'] == 'remote' && item['next'][0] == null && item['prev'][0] != null )
+      return true;
+      
+      return false;
+    }
     
     private function connectedFilter(item:Object):Boolean
     {
@@ -129,6 +198,20 @@ package it.ht.rcs.console.network.controller
     {
       
       return super.getView(null, entryFilter);
+      
+    }
+    
+    public function getGoodEntryPoints(sortCriteria:ISort=null, filterFunction:Function=null):ListCollectionView //collectors (not really entry points)
+    {
+      
+      return super.getView(null, goodFilter);
+      
+    }
+    
+    public function getNonGoodEntryPoints(sortCriteria:ISort=null, filterFunction:Function=null):ListCollectionView  //collectors (not really entry points)
+    {
+      
+      return super.getView(null, nonGoodFilter);
       
     } 
     

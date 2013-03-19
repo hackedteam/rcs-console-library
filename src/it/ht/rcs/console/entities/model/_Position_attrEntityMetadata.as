@@ -2,7 +2,7 @@
 /**
  * This is a generated class and is not intended for modification.  
  */
-package it.ht.rcs.console.agent.model
+package it.ht.rcs.console.entities.model
 {
 import com.adobe.fiber.styles.IStyle;
 import com.adobe.fiber.styles.Style;
@@ -18,49 +18,44 @@ import mx.events.PropertyChangeEvent;
 use namespace model_internal;
 
 [ExcludeClass]
-internal class _NoName1EntityMetadata extends com.adobe.fiber.valueobjects.AbstractEntityMetadata
+internal class _Position_attrEntityMetadata extends com.adobe.fiber.valueobjects.AbstractEntityMetadata
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("_id", "command");
+    model_internal static var allProperties:Array = new Array("time", "accuracy");
     model_internal static var allAssociationProperties:Array = new Array();
-    model_internal static var allRequiredProperties:Array = new Array("_id", "command");
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("_id", "command");
+    model_internal static var allRequiredProperties:Array = new Array("time", "accuracy");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("time", "accuracy");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("_id", "command");
+    model_internal static var dataProperties:Array = new Array("time", "accuracy");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("_id", "command");
+    model_internal static var nonDerivedProperties:Array = new Array("time", "accuracy");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array();
     model_internal static var collectionBaseMap:Object;
-    model_internal static var entityName:String = "NoName1";
+    model_internal static var entityName:String = "Position_attr";
     model_internal static var dependentsOnMap:Object;
     model_internal static var dependedOnServices:Array = new Array();
     model_internal static var propertyTypeMap:Object;
 
     
-    model_internal var __idIsValid:Boolean;
-    model_internal var __idValidator:com.adobe.fiber.styles.StyleValidator;
-    model_internal var __idIsValidCacheInitialized:Boolean = false;
-    model_internal var __idValidationFailureMessages:Array;
-    
-    model_internal var _commandIsValid:Boolean;
-    model_internal var _commandValidator:com.adobe.fiber.styles.StyleValidator;
-    model_internal var _commandIsValidCacheInitialized:Boolean = false;
-    model_internal var _commandValidationFailureMessages:Array;
+    model_internal var _accuracyIsValid:Boolean;
+    model_internal var _accuracyValidator:com.adobe.fiber.styles.StyleValidator;
+    model_internal var _accuracyIsValidCacheInitialized:Boolean = false;
+    model_internal var _accuracyValidationFailureMessages:Array;
 
-    model_internal var _instance:_Super_NoName1;
+    model_internal var _instance:_Super_Position_attr;
     model_internal static var _nullStyle:com.adobe.fiber.styles.Style = new com.adobe.fiber.styles.Style();
 
-    public function _NoName1EntityMetadata(value : _Super_NoName1)
+    public function _Position_attrEntityMetadata(value : _Super_Position_attr)
     {
         // initialize property maps
         if (model_internal::dependentsOnMap == null)
         {
             // dependents map
             model_internal::dependentsOnMap = new Object();
-            model_internal::dependentsOnMap["_id"] = new Array();
-            model_internal::dependentsOnMap["command"] = new Array();
+            model_internal::dependentsOnMap["time"] = new Array();
+            model_internal::dependentsOnMap["accuracy"] = new Array();
 
             // collection base map
             model_internal::collectionBaseMap = new Object();
@@ -68,20 +63,15 @@ internal class _NoName1EntityMetadata extends com.adobe.fiber.valueobjects.Abstr
 
         // Property type Map
         model_internal::propertyTypeMap = new Object();
-        model_internal::propertyTypeMap["_id"] = "String";
-        model_internal::propertyTypeMap["command"] = "String";
+        model_internal::propertyTypeMap["time"] = "Number";
+        model_internal::propertyTypeMap["accuracy"] = "String";
 
         model_internal::_instance = value;
-        model_internal::__idValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationFor_id);
-        model_internal::__idValidator.required = true;
-        model_internal::__idValidator.requiredFieldError = "_id is required";
-        //model_internal::__idValidator.source = model_internal::_instance;
-        //model_internal::__idValidator.property = "_id";
-        model_internal::_commandValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForCommand);
-        model_internal::_commandValidator.required = true;
-        model_internal::_commandValidator.requiredFieldError = "command is required";
-        //model_internal::_commandValidator.source = model_internal::_instance;
-        //model_internal::_commandValidator.property = "command";
+        model_internal::_accuracyValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForAccuracy);
+        model_internal::_accuracyValidator.required = true;
+        model_internal::_accuracyValidator.requiredFieldError = "accuracy is required";
+        //model_internal::_accuracyValidator.source = model_internal::_instance;
+        //model_internal::_accuracyValidator.property = "accuracy";
     }
 
     override public function getEntityName():String
@@ -132,7 +122,7 @@ internal class _NoName1EntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     override public function getDependants(propertyName:String):Array
     {
        if (model_internal::nonDerivedProperties.indexOf(propertyName) == -1)
-            throw new Error(propertyName + " is not a data property of entity NoName1");
+            throw new Error(propertyName + " is not a data property of entity Position_attr");
             
        return model_internal::dependentsOnMap[propertyName] as Array;  
     }
@@ -150,7 +140,7 @@ internal class _NoName1EntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     override public function getCollectionBase(propertyName:String):String
     {
         if (model_internal::collectionProperties.indexOf(propertyName) == -1)
-            throw new Error(propertyName + " is not a collection property of entity NoName1");
+            throw new Error(propertyName + " is not a collection property of entity Position_attr");
 
         return model_internal::collectionBaseMap[propertyName];
     }
@@ -158,7 +148,7 @@ internal class _NoName1EntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     override public function getPropertyType(propertyName:String):String
     {
         if (model_internal::allProperties.indexOf(propertyName) == -1)
-            throw new Error(propertyName + " is not a property of NoName1");
+            throw new Error(propertyName + " is not a property of Position_attr");
 
         return model_internal::propertyTypeMap[propertyName];
     }
@@ -172,7 +162,7 @@ internal class _NoName1EntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     {
         if (model_internal::allProperties.indexOf(propertyName) == -1)
         {
-            throw new Error(propertyName + " does not exist for entity NoName1");
+            throw new Error(propertyName + " does not exist for entity Position_attr");
         }
 
         return model_internal::_instance[propertyName];
@@ -182,7 +172,7 @@ internal class _NoName1EntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     {
         if (model_internal::nonDerivedProperties.indexOf(propertyName) == -1)
         {
-            throw new Error(propertyName + " is not a modifiable property of entity NoName1");
+            throw new Error(propertyName + " is not a modifiable property of entity Position_attr");
         }
 
         model_internal::_instance[propertyName] = value;
@@ -214,7 +204,7 @@ internal class _NoName1EntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     {
         if (model_internal::allProperties.indexOf(propertyName) == -1)
         {
-            throw new Error(propertyName + " does not exist for entity NoName1");
+            throw new Error(propertyName + " does not exist for entity Position_attr");
         }
 
         if (model_internal::allAlwaysAvailableProperties.indexOf(propertyName) != -1)
@@ -309,13 +299,13 @@ internal class _NoName1EntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     }
 
     [Bindable(event="propertyChange")]
-    public function get is_idAvailable():Boolean
+    public function get isTimeAvailable():Boolean
     {
         return true;
     }
 
     [Bindable(event="propertyChange")]
-    public function get isCommandAvailable():Boolean
+    public function get isAccuracyAvailable():Boolean
     {
         return true;
     }
@@ -324,20 +314,12 @@ internal class _NoName1EntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     /**
      * derived property recalculation
      */
-    public function invalidateDependentOn_id():void
+    public function invalidateDependentOnAccuracy():void
     {
-        if (model_internal::__idIsValidCacheInitialized )
+        if (model_internal::_accuracyIsValidCacheInitialized )
         {
-            model_internal::_instance.model_internal::_doValidationCacheOf_id = null;
-            model_internal::calculate_idIsValid();
-        }
-    }
-    public function invalidateDependentOnCommand():void
-    {
-        if (model_internal::_commandIsValidCacheInitialized )
-        {
-            model_internal::_instance.model_internal::_doValidationCacheOfCommand = null;
-            model_internal::calculateCommandIsValid();
+            model_internal::_instance.model_internal::_doValidationCacheOfAccuracy = null;
+            model_internal::calculateAccuracyIsValid();
         }
     }
 
@@ -347,144 +329,50 @@ internal class _NoName1EntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     }
 
     [Bindable(event="propertyChange")]   
-    public function get _idStyle():com.adobe.fiber.styles.Style
+    public function get timeStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
-    }
-
-    public function get _idValidator() : StyleValidator
-    {
-        return model_internal::__idValidator;
-    }
-
-    model_internal function set __idIsValid_der(value:Boolean):void 
-    {
-        var oldValue:Boolean = model_internal::__idIsValid;         
-        if (oldValue !== value)
-        {
-            model_internal::__idIsValid = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "_idIsValid", oldValue, value));
-        }                             
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get _idIsValid():Boolean
-    {
-        if (!model_internal::__idIsValidCacheInitialized)
-        {
-            model_internal::calculate_idIsValid();
-        }
-
-        return model_internal::__idIsValid;
-    }
-
-    model_internal function calculate_idIsValid():void
-    {
-        var valRes:ValidationResultEvent = model_internal::__idValidator.validate(model_internal::_instance._id)
-        model_internal::__idIsValid_der = (valRes.results == null);
-        model_internal::__idIsValidCacheInitialized = true;
-        if (valRes.results == null)
-             model_internal::_idValidationFailureMessages_der = emptyArray;
-        else
-        {
-            var _valFailures:Array = new Array();
-            for (var a:int = 0 ; a<valRes.results.length ; a++)
-            {
-                _valFailures.push(valRes.results[a].errorMessage);
-            }
-            model_internal::_idValidationFailureMessages_der = _valFailures;
-        }
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get _idValidationFailureMessages():Array
-    {
-        if (model_internal::__idValidationFailureMessages == null)
-            model_internal::calculate_idIsValid();
-
-        return __idValidationFailureMessages;
-    }
-
-    model_internal function set _idValidationFailureMessages_der(value:Array) : void
-    {
-        var oldValue:Array = model_internal::__idValidationFailureMessages;
-
-        var needUpdate : Boolean = false;
-        if (oldValue == null)
-            needUpdate = true;
-    
-        // avoid firing the event when old and new value are different empty arrays
-        if (!needUpdate && (oldValue !== value && (oldValue.length > 0 || value.length > 0)))
-        {
-            if (oldValue.length == value.length)
-            {
-                for (var a:int=0; a < oldValue.length; a++)
-                {
-                    if (oldValue[a] !== value[a])
-                    {
-                        needUpdate = true;
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                needUpdate = true;
-            }
-        }
-
-        if (needUpdate)
-        {
-            model_internal::__idValidationFailureMessages = value;   
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "_idValidationFailureMessages", oldValue, value));
-            // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
-            // the entire entity.
-            if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
-            {
-                model_internal::_instance.model_internal::isValid_der = model_internal::_instance.model_internal::calculateIsValid();
-            }
-        }
     }
 
     [Bindable(event="propertyChange")]   
-    public function get commandStyle():com.adobe.fiber.styles.Style
+    public function get accuracyStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
 
-    public function get commandValidator() : StyleValidator
+    public function get accuracyValidator() : StyleValidator
     {
-        return model_internal::_commandValidator;
+        return model_internal::_accuracyValidator;
     }
 
-    model_internal function set _commandIsValid_der(value:Boolean):void 
+    model_internal function set _accuracyIsValid_der(value:Boolean):void 
     {
-        var oldValue:Boolean = model_internal::_commandIsValid;         
+        var oldValue:Boolean = model_internal::_accuracyIsValid;         
         if (oldValue !== value)
         {
-            model_internal::_commandIsValid = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "commandIsValid", oldValue, value));
+            model_internal::_accuracyIsValid = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "accuracyIsValid", oldValue, value));
         }                             
     }
 
     [Bindable(event="propertyChange")]
-    public function get commandIsValid():Boolean
+    public function get accuracyIsValid():Boolean
     {
-        if (!model_internal::_commandIsValidCacheInitialized)
+        if (!model_internal::_accuracyIsValidCacheInitialized)
         {
-            model_internal::calculateCommandIsValid();
+            model_internal::calculateAccuracyIsValid();
         }
 
-        return model_internal::_commandIsValid;
+        return model_internal::_accuracyIsValid;
     }
 
-    model_internal function calculateCommandIsValid():void
+    model_internal function calculateAccuracyIsValid():void
     {
-        var valRes:ValidationResultEvent = model_internal::_commandValidator.validate(model_internal::_instance.command)
-        model_internal::_commandIsValid_der = (valRes.results == null);
-        model_internal::_commandIsValidCacheInitialized = true;
+        var valRes:ValidationResultEvent = model_internal::_accuracyValidator.validate(model_internal::_instance.accuracy)
+        model_internal::_accuracyIsValid_der = (valRes.results == null);
+        model_internal::_accuracyIsValidCacheInitialized = true;
         if (valRes.results == null)
-             model_internal::commandValidationFailureMessages_der = emptyArray;
+             model_internal::accuracyValidationFailureMessages_der = emptyArray;
         else
         {
             var _valFailures:Array = new Array();
@@ -492,22 +380,22 @@ internal class _NoName1EntityMetadata extends com.adobe.fiber.valueobjects.Abstr
             {
                 _valFailures.push(valRes.results[a].errorMessage);
             }
-            model_internal::commandValidationFailureMessages_der = _valFailures;
+            model_internal::accuracyValidationFailureMessages_der = _valFailures;
         }
     }
 
     [Bindable(event="propertyChange")]
-    public function get commandValidationFailureMessages():Array
+    public function get accuracyValidationFailureMessages():Array
     {
-        if (model_internal::_commandValidationFailureMessages == null)
-            model_internal::calculateCommandIsValid();
+        if (model_internal::_accuracyValidationFailureMessages == null)
+            model_internal::calculateAccuracyIsValid();
 
-        return _commandValidationFailureMessages;
+        return _accuracyValidationFailureMessages;
     }
 
-    model_internal function set commandValidationFailureMessages_der(value:Array) : void
+    model_internal function set accuracyValidationFailureMessages_der(value:Array) : void
     {
-        var oldValue:Array = model_internal::_commandValidationFailureMessages;
+        var oldValue:Array = model_internal::_accuracyValidationFailureMessages;
 
         var needUpdate : Boolean = false;
         if (oldValue == null)
@@ -535,8 +423,8 @@ internal class _NoName1EntityMetadata extends com.adobe.fiber.valueobjects.Abstr
 
         if (needUpdate)
         {
-            model_internal::_commandValidationFailureMessages = value;   
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "commandValidationFailureMessages", oldValue, value));
+            model_internal::_accuracyValidationFailureMessages = value;   
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "accuracyValidationFailureMessages", oldValue, value));
             // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
             // the entire entity.
             if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
@@ -571,13 +459,9 @@ internal class _NoName1EntityMetadata extends com.adobe.fiber.valueobjects.Abstr
      {
          switch(propertyName)
          {
-            case("_id"):
+            case("accuracy"):
             {
-                return _idValidationFailureMessages;
-            }
-            case("command"):
-            {
-                return commandValidationFailureMessages;
+                return accuracyValidationFailureMessages;
             }
             default:
             {

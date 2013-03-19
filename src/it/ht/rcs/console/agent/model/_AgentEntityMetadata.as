@@ -25,14 +25,14 @@ internal class _AgentEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("group_ids", "demo", "scout", "_kind", "platform", "desc", "status", "uninstalled", "type", "deleted", "stat", "version", "configs", "updated_at", "_id", "ident", "name", "path", "upgradable", "instance", "counter");
+    model_internal static var allProperties:Array = new Array("group_ids", "demo", "scout", "_kind", "platform", "desc", "status", "uninstalled", "type", "deleted", "stat", "version", "configs", "updated_at", "_id", "ident", "name", "path", "upgradable", "instance", "counter", "good");
     model_internal static var allAssociationProperties:Array = new Array();
     model_internal static var allRequiredProperties:Array = new Array("demo", "scout", "platform", "uninstalled", "type", "deleted", "version", "configs", "updated_at", "instance");
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("group_ids", "demo", "scout", "_kind", "platform", "desc", "status", "uninstalled", "type", "deleted", "stat", "version", "configs", "updated_at", "_id", "ident", "name", "path", "upgradable", "instance", "counter");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("group_ids", "demo", "scout", "_kind", "platform", "desc", "status", "uninstalled", "type", "deleted", "stat", "version", "configs", "updated_at", "_id", "ident", "name", "path", "upgradable", "instance", "counter", "good");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("group_ids", "demo", "scout", "_kind", "platform", "desc", "status", "uninstalled", "type", "deleted", "stat", "version", "configs", "updated_at", "_id", "ident", "name", "path", "upgradable", "instance", "counter");
+    model_internal static var dataProperties:Array = new Array("group_ids", "demo", "scout", "_kind", "platform", "desc", "status", "uninstalled", "type", "deleted", "stat", "version", "configs", "updated_at", "_id", "ident", "name", "path", "upgradable", "instance", "counter", "good");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("group_ids", "demo", "scout", "_kind", "platform", "desc", "status", "uninstalled", "type", "deleted", "stat", "version", "configs", "updated_at", "_id", "ident", "name", "path", "upgradable", "instance", "counter");
+    model_internal static var nonDerivedProperties:Array = new Array("group_ids", "demo", "scout", "_kind", "platform", "desc", "status", "uninstalled", "type", "deleted", "stat", "version", "configs", "updated_at", "_id", "ident", "name", "path", "upgradable", "instance", "counter", "good");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array("group_ids", "configs", "path");
     model_internal static var collectionBaseMap:Object;
@@ -98,6 +98,7 @@ internal class _AgentEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
             model_internal::dependentsOnMap["upgradable"] = new Array();
             model_internal::dependentsOnMap["instance"] = new Array();
             model_internal::dependentsOnMap["counter"] = new Array();
+            model_internal::dependentsOnMap["good"] = new Array();
 
             // collection base map
             model_internal::collectionBaseMap = new Object();
@@ -129,6 +130,7 @@ internal class _AgentEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
         model_internal::propertyTypeMap["upgradable"] = "Boolean";
         model_internal::propertyTypeMap["instance"] = "String";
         model_internal::propertyTypeMap["counter"] = "int";
+        model_internal::propertyTypeMap["good"] = "Boolean";
 
         model_internal::_instance = value;
         model_internal::_platformValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForPlatform);
@@ -504,6 +506,12 @@ internal class _AgentEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
 
     [Bindable(event="propertyChange")]
     public function get isCounterAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isGoodAvailable():Boolean
     {
         return true;
     }
@@ -1150,6 +1158,12 @@ internal class _AgentEntityMetadata extends com.adobe.fiber.valueobjects.Abstrac
 
     [Bindable(event="propertyChange")]   
     public function get counterStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get goodStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }

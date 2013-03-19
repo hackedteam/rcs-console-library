@@ -14,21 +14,29 @@ package it.ht.rcs.console.evidence.model
         this.access=data.access;
         this.accuracy=data.accuracy;
         this.action=data.action;
-        this.address=new EvidenceDataAddress()
+        if(data.address)
+        {
+          this.address=new EvidenceDataAddress(data.address)
+        }
         this.attach=data.attach;
         this.attr=data.attr;
         this.begin=data.begin;
         this.body=data.body;
         this.command=data.command;
-        this.cell=new EvidenceDataCell();
+        if(data.cell)
+        {
+          this.cell=new EvidenceDataCell();
+        }
         this.contact=data.contact;
         this.content=data.content;
+        this.tr=data.tr;
         this.desc=data.desc;
         this.duration=data.duration;
         this.end=data.end;
         this.event=data.event;
         this.from=data.from;
-        this.info=data.info;
+        this.from=data.from;
+        this.from_display=data.from_display;
         this.ip=data.ip;
         this.keywords=data.keywords;
         this.latitude=data.latitude;
@@ -40,6 +48,7 @@ package it.ht.rcs.console.evidence.model
         this.process=data.process;
         this.program=data.program;
         this.rcpt=data.rcpt;
+        this.rcpt_display=data.rcpt_display;
         this.resolution=data.resolution;
         this.service=data.service;
         this.size=data.size;
@@ -52,7 +61,11 @@ package it.ht.rcs.console.evidence.model
         this.url=data.url;
         this.user=data.user;
         this.users=data.users;
-        this.wifi=new ArrayCollection();
+        this.incoming=data.incoming;
+        if(data.wifi)
+        {
+          this.wifi=new ArrayCollection(data.wifi);
+        }
         this.window=data.window;
         this.x=data.x;
         this.y=data.y;

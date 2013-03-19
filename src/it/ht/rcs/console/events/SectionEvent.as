@@ -13,7 +13,7 @@ package it.ht.rcs.console.events
     public static const OPERATIONS:String  = "Operations";
     public static const DASHBOARD:String   = "Dashboard";
     public static const ALERTING:String    = "Alerting";
-    public static const CORRELATION:String = "Correlation";
+    public static const INTELLIGENCE:String = "Intelligence";
     public static const SYSTEM:String      = "System";
     public static const AUDIT:String       = "Audit";
     public static const MONITOR:String     = "Monitor";
@@ -24,6 +24,9 @@ package it.ht.rcs.console.events
     
     public var evidenceTypes:Array = null;
     public var evidenceIds:Array = null;
+    public var info:String = null;
+    public var from:Number;
+    public var to:Number;
     
     public function SectionEvent(type:String, bubbles:Boolean=false, cancelable:Boolean=false)
     {

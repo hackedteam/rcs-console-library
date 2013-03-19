@@ -68,13 +68,14 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
     private var _internal_type : String;
     private var _internal_expiry : int;
     private var _internal_collectors : it.ht.rcs.console.monitor.model.LicenseCollectors;
-    private var _internal_shards : int;
+    private var _internal_shards : Object;
     private var _internal_connectors : Boolean;
     private var _internal_serial : String;
     private var _internal_rmi : ArrayCollection;
     private var _internal_scout : Boolean;
     private var _internal_ocr : Boolean;
-    private var _internal_translate : Boolean;
+    private var _internal_translation : Boolean;
+    private var _internal_modify : Boolean;
 
     private static var emptyArray:Array = new Array();
 
@@ -96,6 +97,7 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "nia", model_internal::setterListenerNia));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "type", model_internal::setterListenerType));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "collectors", model_internal::setterListenerCollectors));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "shards", model_internal::setterListenerShards));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "serial", model_internal::setterListenerSerial));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "rmi", model_internal::setterListenerRmi));
 
@@ -178,7 +180,7 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
     }
 
     [Bindable(event="propertyChange")]
-    public function get shards() : int
+    public function get shards() : Object
     {
         return _internal_shards;
     }
@@ -214,9 +216,15 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
     }
 
     [Bindable(event="propertyChange")]
-    public function get translate() : Boolean
+    public function get translation() : Boolean
     {
-        return _internal_translate;
+        return _internal_translation;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get modify() : Boolean
+    {
+        return _internal_modify;
     }
 
     public function clearAssociations() : void
@@ -362,9 +370,9 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
         }
     }
 
-    public function set shards(value:int) : void
+    public function set shards(value:Object) : void
     {
-        var oldValue:int = _internal_shards;
+        var oldValue:Object = _internal_shards;
         if (oldValue !== value)
         {
             _internal_shards = value;
@@ -437,13 +445,23 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
         }
     }
 
-    public function set translate(value:Boolean) : void
+    public function set translation(value:Boolean) : void
     {
-        var oldValue:Boolean = _internal_translate;
+        var oldValue:Boolean = _internal_translation;
         if (oldValue !== value)
         {
-            _internal_translate = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "translate", oldValue, _internal_translate));
+            _internal_translation = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "translation", oldValue, _internal_translation));
+        }
+    }
+
+    public function set modify(value:Boolean) : void
+    {
+        var oldValue:Boolean = _internal_modify;
+        if (oldValue !== value)
+        {
+            _internal_modify = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "modify", oldValue, _internal_modify));
         }
     }
 
@@ -489,6 +507,11 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
     model_internal function setterListenerCollectors(value:flash.events.Event):void
     {
         _model.invalidateDependentOnCollectors();
+    }
+
+    model_internal function setterListenerShards(value:flash.events.Event):void
+    {
+        _model.invalidateDependentOnShards();
     }
 
     model_internal function setterListenerSerial(value:flash.events.Event):void
@@ -553,6 +576,11 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
         {
             propertyValidity = false;
             com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_collectorsValidationFailureMessages);
+        }
+        if (!_model.shardsIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_shardsValidationFailureMessages);
         }
         if (!_model.serialIsValid)
         {
@@ -774,6 +802,33 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
 
         model_internal::_doValidationCacheOfCollectors = validationFailures;
         model_internal::_doValidationLastValOfCollectors = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfShards : Array = null;
+    model_internal var _doValidationLastValOfShards : Object;
+
+    model_internal function _doValidationForShards(valueIn:Object):Array
+    {
+        var value : Object = valueIn as Object;
+
+        if (model_internal::_doValidationCacheOfShards != null && model_internal::_doValidationLastValOfShards == value)
+           return model_internal::_doValidationCacheOfShards ;
+
+        _model.model_internal::_shardsIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isShardsAvailable && _internal_shards == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "shards is required"));
+        }
+
+        model_internal::_doValidationCacheOfShards = validationFailures;
+        model_internal::_doValidationLastValOfShards = value;
 
         return validationFailures;
     }

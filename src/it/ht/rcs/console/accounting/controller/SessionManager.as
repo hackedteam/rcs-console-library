@@ -4,6 +4,7 @@ package it.ht.rcs.console.accounting.controller
   import flash.filesystem.FileMode;
   import flash.filesystem.FileStream;
   
+  import it.ht.rcs.console.*;
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.IFaultNotifier;
   import it.ht.rcs.console.II18N;
@@ -80,7 +81,7 @@ package it.ht.rcs.console.accounting.controller
     
     /* CURRENT SESSION MANAGEMENT */
     
-    public function login(user:String, pass:String, server:String, notifier:IFaultNotifier, i18n:II18N, onResult:Function, onFault:Function):void
+    public function login(user:String, pass:String, server:String, version:String, notifier:IFaultNotifier, i18n:II18N, onResult:Function, onFault:Function):void
     {
       trace('SessionManager.login');
       
@@ -97,7 +98,8 @@ package it.ht.rcs.console.accounting.controller
       _onLoginResult = onResult;
       _onLoginFault = onFault;
       
-      DB.instance.session.login({ user: user, pass: pass }, onLoginResult, onLoginFault);
+
+      DB.instance.session.login({ user: user, pass: pass, version:version }, onLoginResult, onLoginFault);
     }
     
     private function onLoginResult(e:ResultEvent):void
@@ -116,10 +118,11 @@ package it.ht.rcs.console.accounting.controller
     private function onLoginFault(e:FaultEvent):void
     {
       /* HTTP 403 is 'not authorized' */
+     
       if (e.statusCode == 403) {
         _onLoginFault('Incorrect Username or Password...');
         return;
-      }
+      } 
       
       _onLoginFault('Cannot connect to server');
     }
@@ -167,7 +170,7 @@ package it.ht.rcs.console.accounting.controller
         s.open(f, FileMode.READ);
         var lastLogon:Object = s.readObject();
         this.lastUsername = lastLogon.username;
-        this.lastServer = lastLogon.server;
+        this.lastServer = lastLogon.server; 
         
         //this.lastPassword = lastLogon.password;
           

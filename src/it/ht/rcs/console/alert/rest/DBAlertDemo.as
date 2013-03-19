@@ -10,17 +10,19 @@ package it.ht.rcs.console.alert.rest
   {
     
     private var alerts:ArrayCollection = new ArrayCollection([
-      new Alert({ _id: '1', enabled: false, suppression: 600, type: 'LOG',  action: 'EVIDENCE', evidence: 'print',  keywords: 'secret', tag: 1, path: ['o1', 't1', 'a1'] }),
+      /*new Alert({ _id: '1', enabled: false, suppression: 600, type: 'LOG',  action: 'EVIDENCE', evidence: 'print',  keywords: 'secret', tag: 1, path: ['o1', 't1', 'a1'] }),
       new Alert({ _id: '2', enabled: false, suppression: 600, type: 'LOG',  action: 'EVIDENCE', evidence: 'keylog', keywords: 'RCS',    tag: 4, path: ['o1', 't1'] }),
       new Alert({ _id: '3', enabled: true,  suppression: 600, type: 'MAIL', action: 'SYNC',                         keywords: '',               path: ['o1'] }),
       new Alert({ _id: '4', enabled: true,  suppression: 600, type: 'MAIL', action: 'INSTANCE',                     keywords: '',               path: ['o1', 't1', 'a1'] }),
       
       new Alert({ _id: '5', enabled: true,  suppression: 600, type: 'MAIL', action: 'EVIDENCE', evidence: '*',      keywords: 'HT',     tag: 2, path: [], 
-        logs: [new AlertLog({ time: new Date().time / 1000, path: ['o1', 't1', 'a1'], evidence: [2132468] })] }),
+        logs: [new AlertLog({ time: new Date().time / 1000, path: ['o1', 't1', 'a1'], evidence: [2132468] })] }),*/
       
-      new Alert({ _id: '6', enabled: true,  suppression: 600, type: 'LOG',  action: 'EVIDENCE', evidence: '*',      keywords: 'bomb',   tag: 3, path: ['o1', 't1'], 
-        logs: [new AlertLog({ time: new Date().time / 1000, path: ['o1', 't1', 'a1'], evidence: [654324] }),
-               new AlertLog({ time: new Date().time / 1000, path: ['o1', 't1', 'a1'], evidence: [367670123] })] })
+      new Alert({ _id: '1', enabled: true,  suppression: 600, type: 'LOG',  action: 'EVIDENCE', evidence: '*',      keywords: 'Nashville',   tag: 4, path: ['o1', 't1'], 
+        logs: [new AlertLog({ time: new Date().time / 1000, path: ['o1', 't1', 'a1'], evidence: ['e24'] })
+               ] })
+      
+      //ultimo elenco rosso (1 nashville parola chiave linkare a tweet )
     ]);
     
     public function all(onResult:Function=null, onFault:Function=null):void
@@ -58,7 +60,7 @@ package it.ht.rcs.console.alert.rest
     
     public function counters(onResult:Function=null, onFault:Function=null):void
     {
-      var event:ResultEvent = new ResultEvent('alert.counters', false, true, 3);
+      var event:ResultEvent = new ResultEvent('alert.counters', false, true, 1);
       if (onResult != null)
         onResult(event);
     }

@@ -34,7 +34,7 @@ package it.ht.rcs.console.monitor.rest
               collectors: null,
               anonymizers: 5
             }),
-          correlation: false,
+          correlation: true,
           connectors: true,
           exploits: true,
           deletion: true,
@@ -43,7 +43,8 @@ package it.ht.rcs.console.monitor.rest
           serial: 1234567890,
           type: 'reusable',
           users: 15,
-          shards: 1
+          shards: 1,
+          translation:true
         });
       var event:ResultEvent = new ResultEvent("license.limit", false, true, limits);
       if (onResult != null) 

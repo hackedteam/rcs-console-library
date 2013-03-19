@@ -2,6 +2,7 @@ package it.ht.rcs.console.search.model
 {
   import com.adobe.fiber.core.model_internal;
   
+  import it.ht.rcs.console.entities.model.Entity;
   import it.ht.rcs.console.search.model.Stat;
   
   public class SearchItem extends _Super_SearchItem
@@ -11,11 +12,29 @@ package it.ht.rcs.console.search.model
     {
       if (data) {
         _id = data._id;
-        _kind = data._kind;
+        if(data is Entity)
+        {
+          _kind="entity";
+        }
+        else
+        {
+          _kind = data._kind;
+        }
         desc = data.desc;
         name = data.name;
-        status = data.status;
+        if(data is Entity)
+        {
+          status = null;
+        }
+        else
+        {
+          status = data.status;
+        }
+        
         path = data.path;
+       
+        if (data.hasOwnProperty('platform'))
+          platform = data.platform;
         if (data.hasOwnProperty('stat'))
           stat = data.stat;
         else

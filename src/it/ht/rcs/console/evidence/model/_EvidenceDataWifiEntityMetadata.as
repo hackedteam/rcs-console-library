@@ -20,14 +20,14 @@ internal class _EvidenceDataWifiEntityMetadata extends com.adobe.fiber.valueobje
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("mac", "bssid", "sig");
+    model_internal static var allProperties:Array = new Array("mac", "ssid", "sig");
     model_internal static var allAssociationProperties:Array = new Array();
     model_internal static var allRequiredProperties:Array = new Array();
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("mac", "bssid", "sig");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("mac", "ssid", "sig");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("mac", "bssid", "sig");
+    model_internal static var dataProperties:Array = new Array("mac", "ssid", "sig");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("mac", "bssid", "sig");
+    model_internal static var nonDerivedProperties:Array = new Array("mac", "ssid", "sig");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array();
     model_internal static var collectionBaseMap:Object;
@@ -48,7 +48,7 @@ internal class _EvidenceDataWifiEntityMetadata extends com.adobe.fiber.valueobje
             // dependents map
             model_internal::dependentsOnMap = new Object();
             model_internal::dependentsOnMap["mac"] = new Array();
-            model_internal::dependentsOnMap["bssid"] = new Array();
+            model_internal::dependentsOnMap["ssid"] = new Array();
             model_internal::dependentsOnMap["sig"] = new Array();
 
             // collection base map
@@ -58,7 +58,7 @@ internal class _EvidenceDataWifiEntityMetadata extends com.adobe.fiber.valueobje
         // Property type Map
         model_internal::propertyTypeMap = new Object();
         model_internal::propertyTypeMap["mac"] = "String";
-        model_internal::propertyTypeMap["bssid"] = "String";
+        model_internal::propertyTypeMap["ssid"] = "String";
         model_internal::propertyTypeMap["sig"] = "int";
 
         model_internal::_instance = value;
@@ -295,7 +295,7 @@ internal class _EvidenceDataWifiEntityMetadata extends com.adobe.fiber.valueobje
     }
 
     [Bindable(event="propertyChange")]
-    public function get isBssidAvailable():Boolean
+    public function get isSsidAvailable():Boolean
     {
         return true;
     }
@@ -323,7 +323,7 @@ internal class _EvidenceDataWifiEntityMetadata extends com.adobe.fiber.valueobje
     }
 
     [Bindable(event="propertyChange")]   
-    public function get bssidStyle():com.adobe.fiber.styles.Style
+    public function get ssidStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
