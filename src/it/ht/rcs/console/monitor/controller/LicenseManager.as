@@ -146,8 +146,8 @@ package it.ht.rcs.console.monitor.controller
       ocr=limits['ocr'];
       translation=limits['translation'];
       modify =limits["modify"]
-      //intelligence =limits["intelligence"]
-      intelligence =true;
+      intelligence =limits["intelligence"]
+      //intelligence =true;
       //modify =false;
       
       dispatchDataLoadedEvent();
