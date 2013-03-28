@@ -13,6 +13,7 @@ package it.ht.rcs.console.entities.rest
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.entities.model.Entity;
   import it.ht.rcs.console.entities.rest.IDBEntity;
+  import it.ht.rcs.console.operation.model.Operation;
   
   import mx.rpc.CallResponder;
 
@@ -76,6 +77,19 @@ package it.ht.rcs.console.entities.rest
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
       property['_id'] = entity._id;
       resp.token = update_(JSON.stringify(property));
+    }
+    
+    public function create(params:Object, operation:Operation, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      params['operation'] = operation._id;
+      resp.token = create_(JSON.stringify(params));
+    }
+    
+    public function destroy(id:String, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = destroy_(JSON.stringify({_id: id}));
     }
     
     public function add_photo(fileReference:FileReference, id:String, onResult:Function = null, onFault:Function = null):void

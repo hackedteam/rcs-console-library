@@ -59,9 +59,7 @@ package it.ht.rcs.console.target.controller
       DB.instance.target.destroy(item._id);
       DashboardController.instance.removeItem(DashboardController.instance.getItem(item._id));
       //EntityManager.instance.refresh();
-      var t:Timer=new Timer(500,1);
-      t.start()
-      t.addEventListener(TimerEvent.TIMER, refreshEntities)
+     
     }
     
     override protected function onItemUpdate(event:*):void

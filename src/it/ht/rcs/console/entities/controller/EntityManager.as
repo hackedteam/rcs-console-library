@@ -13,6 +13,7 @@ package it.ht.rcs.console.entities.controller
 	import it.ht.rcs.console.push.PushController;
 	import it.ht.rcs.console.push.PushEvent;
 	import it.ht.rcs.console.search.controller.SearchManager;
+  import it.ht.rcs.console.ObjectUtils;
 	
 	import mx.collections.ArrayCollection;
 	import mx.collections.ListCollectionView;
@@ -112,12 +113,29 @@ package it.ht.rcs.console.entities.controller
 			return null
 		}
     
+    public function addEntity(entity:Entity, o:Operation, callback:Function):void
+    {
+      DB.instance.entity.create(ObjectUtils.toHash(entity), o, function(e:ResultEvent):void {
+        var entity:Entity = e.result as Entity;
+        addItem(entity);
+        refresh()
+        //SearchManager.instance.showItem(entity._id);
+        callback(entity);
+      });
+    }
+    
 		override protected function onItemUpdate(event:*):void
 		{
 			var property:Object=new Object();
 			property[event.property]=event.newValue is ArrayCollection ? event.newValue.source : event.newValue;
 			DB.instance.entity.update(event.source, property);
 		}
+    
+    override protected function onItemRemove(item:*):void
+    {
+      DB.instance.entity.destroy(item._id);
+      
+    }
 
 		private function onResult(e:ResultEvent):void
 		{

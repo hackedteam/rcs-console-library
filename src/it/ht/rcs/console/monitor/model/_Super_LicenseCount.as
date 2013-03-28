@@ -190,6 +190,7 @@ public class _Super_LicenseCount extends flash.events.EventDispatcher implements
     /**
      * derived property calculators
      */
+    
 
     /**
      * isValid calculator

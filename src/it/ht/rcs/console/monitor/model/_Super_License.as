@@ -76,6 +76,7 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
     private var _internal_ocr : Boolean;
     private var _internal_translation : Boolean;
     private var _internal_modify : Boolean;
+    private var _internal_intelligence : Boolean;
 
     private static var emptyArray:Array = new Array();
 
@@ -225,6 +226,12 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
     public function get modify() : Boolean
     {
         return _internal_modify;
+    }
+    
+    [Bindable(event="propertyChange")]
+    public function get intelligence() : Boolean
+    {
+      return _internal_intelligence;
     }
 
     public function clearAssociations() : void
@@ -464,6 +471,16 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "modify", oldValue, _internal_modify));
         }
     }
+    
+    public function set intelligence(value:Boolean) : void
+    {
+      var oldValue:Boolean = _internal_intelligence;
+      if (oldValue !== value)
+      {
+        _internal_modify = value;
+        this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "intelligence", oldValue, _internal_intelligence));
+      }
+    }
 
     /**
      * Data/source property setter listeners
@@ -542,6 +559,7 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
     /**
      * derived property calculators
      */
+    
 
     /**
      * isValid calculator

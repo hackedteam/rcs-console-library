@@ -66,9 +66,10 @@ package it.ht.rcs.console.monitor.controller
     public var deletion:Boolean = false;
     public var archive:Boolean = false;
     public var scout:Boolean = true;
-    public var ocr:Boolean = true;
-    public var translation:Boolean = true;
+    public var ocr:Boolean = false;
+    public var translation:Boolean = false;
     public var modify:Boolean = true;
+    public var intelligence:Boolean = false;
     
     public var limits:License;
     
@@ -145,6 +146,8 @@ package it.ht.rcs.console.monitor.controller
       ocr=limits['ocr'];
       translation=limits['translation'];
       modify =limits["modify"]
+      //intelligence =limits["intelligence"]
+      intelligence =true;
       //modify =false;
       
       dispatchDataLoadedEvent();
