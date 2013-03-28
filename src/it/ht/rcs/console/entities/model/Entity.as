@@ -15,6 +15,8 @@ package it.ht.rcs.console.entities.model
 
 import com.adobe.fiber.core.model_internal;
 
+import it.ht.rcs.console.DB;
+
 public class Entity extends _Super_Entity
 {
     /** 
@@ -43,6 +45,19 @@ public class Entity extends _Super_Entity
       this.position_attr=data.position_attr;
       this.type=data.type;
     }
+  }
+  
+  public static function defaultEntity():Object
+  {
+    return { //person, position
+      _id: '',
+      name: DB.i18n.get('NEW_ENTITY'),
+      desc:'',
+      level:'manual',
+      path:[],
+      photos:[]
+      
+    };
   }
   
     public static function _initRemoteClassAlias() : void

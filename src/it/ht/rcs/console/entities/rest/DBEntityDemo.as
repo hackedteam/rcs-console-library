@@ -49,6 +49,12 @@ package it.ht.rcs.console.entities.rest
       
     }
     
+    public function destroy(id:String, onResult:Function=null, onFault:Function=null):void
+    {
+    
+    }
+    
+    
     public function show(id:String, onResult:Function=null, onFault:Function=null):void
     {
       var handles:ArrayCollection=new ArrayCollection()
@@ -109,6 +115,11 @@ package it.ht.rcs.console.entities.rest
       
       if (onResult != null)
         onResult(new ResultEvent('entity.most_contacted', false, true, result));
+    }
+    
+    public function create(params:Object, operation:Operation, onResult:Function=null, onFault:Function=null):void
+    {
+    
     }
   }
   

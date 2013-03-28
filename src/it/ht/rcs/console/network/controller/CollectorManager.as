@@ -126,7 +126,20 @@ package it.ht.rcs.console.network.controller
     /*
     Return Collectors marked as good
     */
-    private function goodFilter(item:Object):Boolean
+    private function goodAnonFilter(item:Object):Boolean
+    {
+      if (item['address'] == null || item['address'] == '')
+        return false;
+      
+      if (item['type'] == 'remote' &&  item['prev'][0] != null && item['good'])
+        return true;
+      
+      return false;
+      
+      
+    }
+    
+    private function goodCollectorFilter(item:Object):Boolean
     {
       if (item['address'] == null || item['address'] == '')
         return false;
@@ -134,17 +147,26 @@ package it.ht.rcs.console.network.controller
       if (item['type'] == 'local' && item['next'][0] == null && item['good'])
         return true;
       
-      if (item['type'] == 'remote' && item['next'][0] == null && item['prev'][0] != null && item['good'])
+      return false;
+     
+    }
+      
+    /*
+    Return Collectors marked as non-good
+    */
+    private function nonGoodAnonFilter(item:Object):Boolean
+    {
+      if (item['address'] == null || item['address'] == '')
+        return false;
+      
+      if (item['type'] == 'remote' && item['prev'][0] != null && !item['good'])
         return true;
       
       return false;
       
-      //return item['good']
     }
-    /*
-    Return Collectors marked as non-good
-    */
-    private function nonGoodFilter(item:Object):Boolean
+    
+    private function nonGoodCollectorFilter(item:Object):Boolean
     {
       if (item['address'] == null || item['address'] == '')
         return false;
@@ -152,11 +174,8 @@ package it.ht.rcs.console.network.controller
       if (item['type'] == 'local' && item['next'][0] == null && !item['good'])
         return true;
       
-      if (item['type'] == 'remote' && item['next'][0] == null && item['prev'][0] != null && !item['good'])
-        return true;
-      
       return false;
-      //return !item['good']
+     
     }
     
     public function isValidEntryPoint(item:Object):Boolean
@@ -201,17 +220,31 @@ package it.ht.rcs.console.network.controller
       
     }
     
-    public function getGoodEntryPoints(sortCriteria:ISort=null, filterFunction:Function=null):ListCollectionView //collectors (not really entry points)
+    public function getGoodAnon(sortCriteria:ISort=null, filterFunction:Function=null):ListCollectionView //collectors (not really entry points)
     {
       
-      return super.getView(null, goodFilter);
+      return super.getView(null, goodAnonFilter);
       
     }
     
-    public function getNonGoodEntryPoints(sortCriteria:ISort=null, filterFunction:Function=null):ListCollectionView  //collectors (not really entry points)
+    public function getNonGoodAnon(sortCriteria:ISort=null, filterFunction:Function=null):ListCollectionView  //collectors (not really entry points)
     {
       
-      return super.getView(null, nonGoodFilter);
+      return super.getView(null, nonGoodAnonFilter);
+      
+    } 
+    
+    public function getGoodCollectors(sortCriteria:ISort=null, filterFunction:Function=null):ListCollectionView //collectors (not really entry points)
+    {
+      
+      return super.getView(null, goodCollectorFilter);
+      
+    }
+    
+    public function getNonGoodCollectors(sortCriteria:ISort=null, filterFunction:Function=null):ListCollectionView  //collectors (not really entry points)
+    {
+      
+      return super.getView(null, nonGoodCollectorFilter);
       
     } 
     
@@ -234,6 +267,7 @@ package it.ht.rcs.console.network.controller
           errback(e);
         });
     }
+    
     
     public function public_destroy(_id:String, callback:Function=null, errback:Function=null):void
     {

@@ -35,6 +35,7 @@ public class License extends _Super_License
       ocr=data.ocr;
       translation=data.translation;
       modify = data.modify;
+      intelligence =data.intelligence;
     }
   }
   

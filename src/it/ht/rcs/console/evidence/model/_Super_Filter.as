@@ -220,6 +220,7 @@ public class _Super_Filter extends flash.events.EventDispatcher implements com.a
     /**
      * derived property calculators
      */
+    
 
     /**
      * isValid calculator
