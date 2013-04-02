@@ -13,7 +13,6 @@ package it.ht.rcs.console.entities.controller
 	import it.ht.rcs.console.push.PushController;
 	import it.ht.rcs.console.push.PushEvent;
 	import it.ht.rcs.console.search.controller.SearchManager;
-  import it.ht.rcs.console.ObjectUtils;
 	
 	import mx.collections.ArrayCollection;
 	import mx.collections.ListCollectionView;
@@ -115,7 +114,11 @@ package it.ht.rcs.console.entities.controller
     
     public function addEntity(entity:Entity, o:Operation, callback:Function):void
     {
-      DB.instance.entity.create(ObjectUtils.toHash(entity), o, function(e:ResultEvent):void {
+      var entityToHash:Object = ObjectUtils.toHash(entity)
+      entityToHash.position= ObjectUtils.toHash(entity.position)
+      entityToHash.position_attr= ObjectUtils.toHash(entity.position_attr)
+      DB.instance.entity.create(entityToHash, o, function(e:ResultEvent):void {
+      
         var entity:Entity = e.result as Entity;
         addItem(entity);
         refresh()
