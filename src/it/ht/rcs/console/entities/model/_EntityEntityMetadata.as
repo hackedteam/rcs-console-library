@@ -11,6 +11,7 @@ import com.adobe.fiber.valueobjects.AbstractEntityMetadata;
 import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 import com.adobe.fiber.valueobjects.IPropertyIterator;
 import it.ht.rcs.console.entities.model.Handle;
+import it.ht.rcs.console.entities.model.Link;
 import it.ht.rcs.console.entities.model.Position;
 import it.ht.rcs.console.entities.model.Position_attr;
 import mx.collections.ArrayCollection;
@@ -26,14 +27,14 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("position", "desc", "links", "type", "user_ids", "photos", "updated_at", "level", "_id", "position_attr", "analyzed", "name", "path", "created_at", "handles");
+    model_internal static var allProperties:Array = new Array("position", "desc", "links", "type", "user_ids", "photos", "level", "updated_at", "_id", "position_attr", "analyzed", "name", "path", "created_at", "handles");
     model_internal static var allAssociationProperties:Array = new Array();
-    model_internal static var allRequiredProperties:Array = new Array("position", "desc", "links", "type", "user_ids", "photos", "updated_at", "level", "_id", "position_attr", "analyzed", "name", "path", "created_at", "handles");
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("position", "desc", "links", "type", "user_ids", "photos", "updated_at", "level", "_id", "position_attr", "analyzed", "name", "path", "created_at", "handles");
+    model_internal static var allRequiredProperties:Array = new Array("position", "desc", "links", "type", "user_ids", "photos", "level", "updated_at", "_id", "position_attr", "analyzed", "name", "path", "created_at", "handles");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("position", "desc", "links", "type", "user_ids", "photos", "level", "updated_at", "_id", "position_attr", "analyzed", "name", "path", "created_at", "handles");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("position", "desc", "links", "type", "user_ids", "photos", "updated_at", "level", "_id", "position_attr", "analyzed", "name", "path", "created_at", "handles");
+    model_internal static var dataProperties:Array = new Array("position", "desc", "links", "type", "user_ids", "photos", "level", "updated_at", "_id", "position_attr", "analyzed", "name", "path", "created_at", "handles");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("position", "desc", "links", "type", "user_ids", "photos", "updated_at", "level", "_id", "position_attr", "analyzed", "name", "path", "created_at", "handles");
+    model_internal static var nonDerivedProperties:Array = new Array("position", "desc", "links", "type", "user_ids", "photos", "level", "updated_at", "_id", "position_attr", "analyzed", "name", "path", "created_at", "handles");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array("links", "user_ids", "photos", "path", "handles");
     model_internal static var collectionBaseMap:Object;
@@ -73,15 +74,15 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
     model_internal var _photosIsValidCacheInitialized:Boolean = false;
     model_internal var _photosValidationFailureMessages:Array;
     
-    model_internal var _updated_atIsValid:Boolean;
-    model_internal var _updated_atValidator:com.adobe.fiber.styles.StyleValidator;
-    model_internal var _updated_atIsValidCacheInitialized:Boolean = false;
-    model_internal var _updated_atValidationFailureMessages:Array;
-    
     model_internal var _levelIsValid:Boolean;
     model_internal var _levelValidator:com.adobe.fiber.styles.StyleValidator;
     model_internal var _levelIsValidCacheInitialized:Boolean = false;
     model_internal var _levelValidationFailureMessages:Array;
+    
+    model_internal var _updated_atIsValid:Boolean;
+    model_internal var _updated_atValidator:com.adobe.fiber.styles.StyleValidator;
+    model_internal var _updated_atIsValidCacheInitialized:Boolean = false;
+    model_internal var _updated_atValidationFailureMessages:Array;
     
     model_internal var __idIsValid:Boolean;
     model_internal var __idValidator:com.adobe.fiber.styles.StyleValidator;
@@ -134,8 +135,8 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
             model_internal::dependentsOnMap["type"] = new Array();
             model_internal::dependentsOnMap["user_ids"] = new Array();
             model_internal::dependentsOnMap["photos"] = new Array();
-            model_internal::dependentsOnMap["updated_at"] = new Array();
             model_internal::dependentsOnMap["level"] = new Array();
+            model_internal::dependentsOnMap["updated_at"] = new Array();
             model_internal::dependentsOnMap["_id"] = new Array();
             model_internal::dependentsOnMap["position_attr"] = new Array();
             model_internal::dependentsOnMap["analyzed"] = new Array();
@@ -146,7 +147,7 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
 
             // collection base map
             model_internal::collectionBaseMap = new Object();
-            model_internal::collectionBaseMap["links"] = "Object";
+            model_internal::collectionBaseMap["links"] = "it.ht.rcs.console.entities.model.Link";
             model_internal::collectionBaseMap["user_ids"] = "String";
             model_internal::collectionBaseMap["photos"] = "Object";
             model_internal::collectionBaseMap["path"] = "String";
@@ -161,8 +162,8 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
         model_internal::propertyTypeMap["type"] = "String";
         model_internal::propertyTypeMap["user_ids"] = "ArrayCollection";
         model_internal::propertyTypeMap["photos"] = "ArrayCollection";
-        model_internal::propertyTypeMap["updated_at"] = "String";
         model_internal::propertyTypeMap["level"] = "String";
+        model_internal::propertyTypeMap["updated_at"] = "String";
         model_internal::propertyTypeMap["_id"] = "String";
         model_internal::propertyTypeMap["position_attr"] = "it.ht.rcs.console.entities.model.Position_attr";
         model_internal::propertyTypeMap["analyzed"] = "Object";
@@ -202,16 +203,16 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
         model_internal::_photosValidator.requiredFieldError = "photos is required";
         //model_internal::_photosValidator.source = model_internal::_instance;
         //model_internal::_photosValidator.property = "photos";
-        model_internal::_updated_atValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForUpdated_at);
-        model_internal::_updated_atValidator.required = true;
-        model_internal::_updated_atValidator.requiredFieldError = "updated_at is required";
-        //model_internal::_updated_atValidator.source = model_internal::_instance;
-        //model_internal::_updated_atValidator.property = "updated_at";
         model_internal::_levelValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForLevel);
         model_internal::_levelValidator.required = true;
         model_internal::_levelValidator.requiredFieldError = "level is required";
         //model_internal::_levelValidator.source = model_internal::_instance;
         //model_internal::_levelValidator.property = "level";
+        model_internal::_updated_atValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForUpdated_at);
+        model_internal::_updated_atValidator.required = true;
+        model_internal::_updated_atValidator.requiredFieldError = "updated_at is required";
+        //model_internal::_updated_atValidator.source = model_internal::_instance;
+        //model_internal::_updated_atValidator.property = "updated_at";
         model_internal::__idValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationFor_id);
         model_internal::__idValidator.required = true;
         model_internal::__idValidator.requiredFieldError = "_id is required";
@@ -510,13 +511,13 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
     }
 
     [Bindable(event="propertyChange")]
-    public function get isUpdated_atAvailable():Boolean
+    public function get isLevelAvailable():Boolean
     {
         return true;
     }
 
     [Bindable(event="propertyChange")]
-    public function get isLevelAvailable():Boolean
+    public function get isUpdated_atAvailable():Boolean
     {
         return true;
     }
@@ -615,20 +616,20 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
             model_internal::calculatePhotosIsValid();
         }
     }
-    public function invalidateDependentOnUpdated_at():void
-    {
-        if (model_internal::_updated_atIsValidCacheInitialized )
-        {
-            model_internal::_instance.model_internal::_doValidationCacheOfUpdated_at = null;
-            model_internal::calculateUpdated_atIsValid();
-        }
-    }
     public function invalidateDependentOnLevel():void
     {
         if (model_internal::_levelIsValidCacheInitialized )
         {
             model_internal::_instance.model_internal::_doValidationCacheOfLevel = null;
             model_internal::calculateLevelIsValid();
+        }
+    }
+    public function invalidateDependentOnUpdated_at():void
+    {
+        if (model_internal::_updated_atIsValidCacheInitialized )
+        {
+            model_internal::_instance.model_internal::_doValidationCacheOfUpdated_at = null;
+            model_internal::calculateUpdated_atIsValid();
         }
     }
     public function invalidateDependentOn_id():void
@@ -1294,106 +1295,6 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
     }
 
     [Bindable(event="propertyChange")]   
-    public function get updated_atStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    public function get updated_atValidator() : StyleValidator
-    {
-        return model_internal::_updated_atValidator;
-    }
-
-    model_internal function set _updated_atIsValid_der(value:Boolean):void 
-    {
-        var oldValue:Boolean = model_internal::_updated_atIsValid;         
-        if (oldValue !== value)
-        {
-            model_internal::_updated_atIsValid = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "updated_atIsValid", oldValue, value));
-        }                             
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get updated_atIsValid():Boolean
-    {
-        if (!model_internal::_updated_atIsValidCacheInitialized)
-        {
-            model_internal::calculateUpdated_atIsValid();
-        }
-
-        return model_internal::_updated_atIsValid;
-    }
-
-    model_internal function calculateUpdated_atIsValid():void
-    {
-        var valRes:ValidationResultEvent = model_internal::_updated_atValidator.validate(model_internal::_instance.updated_at)
-        model_internal::_updated_atIsValid_der = (valRes.results == null);
-        model_internal::_updated_atIsValidCacheInitialized = true;
-        if (valRes.results == null)
-             model_internal::updated_atValidationFailureMessages_der = emptyArray;
-        else
-        {
-            var _valFailures:Array = new Array();
-            for (var a:int = 0 ; a<valRes.results.length ; a++)
-            {
-                _valFailures.push(valRes.results[a].errorMessage);
-            }
-            model_internal::updated_atValidationFailureMessages_der = _valFailures;
-        }
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get updated_atValidationFailureMessages():Array
-    {
-        if (model_internal::_updated_atValidationFailureMessages == null)
-            model_internal::calculateUpdated_atIsValid();
-
-        return _updated_atValidationFailureMessages;
-    }
-
-    model_internal function set updated_atValidationFailureMessages_der(value:Array) : void
-    {
-        var oldValue:Array = model_internal::_updated_atValidationFailureMessages;
-
-        var needUpdate : Boolean = false;
-        if (oldValue == null)
-            needUpdate = true;
-    
-        // avoid firing the event when old and new value are different empty arrays
-        if (!needUpdate && (oldValue !== value && (oldValue.length > 0 || value.length > 0)))
-        {
-            if (oldValue.length == value.length)
-            {
-                for (var a:int=0; a < oldValue.length; a++)
-                {
-                    if (oldValue[a] !== value[a])
-                    {
-                        needUpdate = true;
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                needUpdate = true;
-            }
-        }
-
-        if (needUpdate)
-        {
-            model_internal::_updated_atValidationFailureMessages = value;   
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "updated_atValidationFailureMessages", oldValue, value));
-            // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
-            // the entire entity.
-            if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
-            {
-                model_internal::_instance.model_internal::isValid_der = model_internal::_instance.model_internal::calculateIsValid();
-            }
-        }
-    }
-
-    [Bindable(event="propertyChange")]   
     public function get levelStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
@@ -1484,6 +1385,106 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
         {
             model_internal::_levelValidationFailureMessages = value;   
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "levelValidationFailureMessages", oldValue, value));
+            // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
+            // the entire entity.
+            if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
+            {
+                model_internal::_instance.model_internal::isValid_der = model_internal::_instance.model_internal::calculateIsValid();
+            }
+        }
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get updated_atStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    public function get updated_atValidator() : StyleValidator
+    {
+        return model_internal::_updated_atValidator;
+    }
+
+    model_internal function set _updated_atIsValid_der(value:Boolean):void 
+    {
+        var oldValue:Boolean = model_internal::_updated_atIsValid;         
+        if (oldValue !== value)
+        {
+            model_internal::_updated_atIsValid = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "updated_atIsValid", oldValue, value));
+        }                             
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get updated_atIsValid():Boolean
+    {
+        if (!model_internal::_updated_atIsValidCacheInitialized)
+        {
+            model_internal::calculateUpdated_atIsValid();
+        }
+
+        return model_internal::_updated_atIsValid;
+    }
+
+    model_internal function calculateUpdated_atIsValid():void
+    {
+        var valRes:ValidationResultEvent = model_internal::_updated_atValidator.validate(model_internal::_instance.updated_at)
+        model_internal::_updated_atIsValid_der = (valRes.results == null);
+        model_internal::_updated_atIsValidCacheInitialized = true;
+        if (valRes.results == null)
+             model_internal::updated_atValidationFailureMessages_der = emptyArray;
+        else
+        {
+            var _valFailures:Array = new Array();
+            for (var a:int = 0 ; a<valRes.results.length ; a++)
+            {
+                _valFailures.push(valRes.results[a].errorMessage);
+            }
+            model_internal::updated_atValidationFailureMessages_der = _valFailures;
+        }
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get updated_atValidationFailureMessages():Array
+    {
+        if (model_internal::_updated_atValidationFailureMessages == null)
+            model_internal::calculateUpdated_atIsValid();
+
+        return _updated_atValidationFailureMessages;
+    }
+
+    model_internal function set updated_atValidationFailureMessages_der(value:Array) : void
+    {
+        var oldValue:Array = model_internal::_updated_atValidationFailureMessages;
+
+        var needUpdate : Boolean = false;
+        if (oldValue == null)
+            needUpdate = true;
+    
+        // avoid firing the event when old and new value are different empty arrays
+        if (!needUpdate && (oldValue !== value && (oldValue.length > 0 || value.length > 0)))
+        {
+            if (oldValue.length == value.length)
+            {
+                for (var a:int=0; a < oldValue.length; a++)
+                {
+                    if (oldValue[a] !== value[a])
+                    {
+                        needUpdate = true;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                needUpdate = true;
+            }
+        }
+
+        if (needUpdate)
+        {
+            model_internal::_updated_atValidationFailureMessages = value;   
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "updated_atValidationFailureMessages", oldValue, value));
             // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
             // the entire entity.
             if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
@@ -2242,13 +2243,13 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
             {
                 return photosValidationFailureMessages;
             }
-            case("updated_at"):
-            {
-                return updated_atValidationFailureMessages;
-            }
             case("level"):
             {
                 return levelValidationFailureMessages;
+            }
+            case("updated_at"):
+            {
+                return updated_atValidationFailureMessages;
             }
             case("_id"):
             {

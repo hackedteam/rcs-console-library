@@ -4831,6 +4831,43 @@
     <property name="keylog" type="integer"/>
     <property name="clipboard" type="integer"/>
   </entity>
+  <entity name="Analyzed">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Analyzed</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBEntity</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.entities.model</item>
+    </annotation>
+    <property name="handles_last" type="opaque" required="true"/>
+    <property name="handles" type="boolean" required="true"/>
+  </entity>
+  <entity name="Handles">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Handles</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBEntity</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.entities.model</item>
+    </annotation>
+    <property name="updated_at" type="string" required="true"/>
+    <property name="handle" type="string" required="true"/>
+    <property name="level" type="string" required="true"/>
+    <property name="_id" type="string" required="true"/>
+    <property name="name" type="string" required="true"/>
+    <property name="created_at" type="string" required="true"/>
+    <property name="type" type="string" required="true"/>
+  </entity>
   <service name="DBEntity">
     <annotation name="ActionScriptGeneration">
       <item name="ServiceType">HTTPMultiService</item>
@@ -4857,7 +4894,7 @@
         <item name="completeURL">http://localhost:4444/entity</item>
       </annotation>
       <annotation name="ValidProperties">
-        <item name="propertySpecifier">photos,updated_at,level,desc,_id,name,path,created_at,type</item>
+        <item name="propertySpecifier">position,desc,links,type,user_ids,photos,level,updated_at,_id,position_attr,analyzed,name,path,created_at,handles</item>
       </annotation>
       <annotation name="original signature">
         <item name="returnType">opaque</item>
@@ -5109,6 +5146,32 @@
     <property name="time" type="long" required="true" default="0"/>
     <property name="accuracy" type="string" required="true"/>
   </entity>
+  <entity name="Link">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Link</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBEntity</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="links">
+      <item name="propertySpecifier">info,first_seen,level,le,_id,versus,rel,type,last_seen</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.entities.model</item>
+    </annotation>
+    <property name="info" type="opaque[]" required="true"/>
+    <property name="first_seen" type="integer" required="true"/>
+    <property name="level" type="string" required="true"/>
+    <property name="le" type="string" required="true"/>
+    <property name="_id" type="string" required="true"/>
+    <property name="versus" type="string" required="true"/>
+    <property name="rel" type="integer" required="true"/>
+    <property name="type" type="string" required="true"/>
+    <property name="last_seen" type="integer" required="true"/>
+  </entity>
   <entity name="Contact">
     <annotation name="EntityProperties">
       <item name="EntityOriginalName">Contact</item>
@@ -5131,22 +5194,6 @@
     <property name="type" type="string" required="true"/>
     <property name="peer_name" type="string" required="true"/>
     <property name="size" type="double" required="true" default="0"/>
-  </entity>
-  <entity name="Analyzed">
-    <annotation name="EntityProperties">
-      <item name="EntityOriginalName">Analyzed</item>
-    </annotation>
-    <annotation name="service Group">
-      <item name="service">DBEntity</item>
-    </annotation>
-    <annotation name="ServerProperties">
-      <item name="IncludeRemoteClass">nonempty</item>
-    </annotation>
-    <annotation name="ActionScriptGeneration">
-      <item name="Package">it.ht.rcs.console.entities.model</item>
-    </annotation>
-    <property name="handles_last" type="opaque" required="true"/>
-    <property name="handles" type="boolean" required="true"/>
   </entity>
   <entity name="Position">
     <annotation name="EntityProperties">
@@ -5178,7 +5225,7 @@
       <item name="IncludeRemoteClass">nonempty</item>
     </annotation>
     <annotation name="all_">
-      <item name="propertySpecifier">photos,updated_at,level,desc,_id,name,path,created_at,type</item>
+      <item name="propertySpecifier">position,desc,links,type,user_ids,photos,level,updated_at,_id,position_attr,analyzed,name,path,created_at,handles</item>
     </annotation>
     <annotation name="ActionScriptGeneration">
       <item name="Package">it.ht.rcs.console.entities.model</item>
@@ -5194,12 +5241,12 @@
     </annotation>
     <property name="position" type="Position" required="true"/>
     <property name="desc" type="string" required="true"/>
-    <property name="links" type="opaque[]" required="true"/>
+    <property name="links" type="Link[]" required="true"/>
     <property name="type" type="string" required="true"/>
     <property name="user_ids" type="string[]" required="true"/>
     <property name="photos" type="opaque[]" required="true"/>
-    <property name="updated_at" type="string" required="true"/>
     <property name="level" type="string" required="true"/>
+    <property name="updated_at" type="string" required="true"/>
     <property name="_id" type="string" required="true"/>
     <property name="position_attr" type="Position_attr" required="true"/>
     <property name="analyzed" type="opaque" required="true"/>
@@ -5207,26 +5254,5 @@
     <property name="path" type="string[]" required="true"/>
     <property name="created_at" type="string" required="true"/>
     <property name="handles" type="Handle[]" required="true"/>
-  </entity>
-  <entity name="Handles">
-    <annotation name="EntityProperties">
-      <item name="EntityOriginalName">Handles</item>
-    </annotation>
-    <annotation name="service Group">
-      <item name="service">DBEntity</item>
-    </annotation>
-    <annotation name="ServerProperties">
-      <item name="IncludeRemoteClass">nonempty</item>
-    </annotation>
-    <annotation name="ActionScriptGeneration">
-      <item name="Package">it.ht.rcs.console.entities.model</item>
-    </annotation>
-    <property name="updated_at" type="string" required="true"/>
-    <property name="handle" type="string" required="true"/>
-    <property name="level" type="string" required="true"/>
-    <property name="_id" type="string" required="true"/>
-    <property name="name" type="string" required="true"/>
-    <property name="created_at" type="string" required="true"/>
-    <property name="type" type="string" required="true"/>
   </entity>
 </model>

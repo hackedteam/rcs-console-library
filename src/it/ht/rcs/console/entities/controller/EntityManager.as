@@ -61,7 +61,6 @@ package it.ht.rcs.console.entities.controller
 		public function addPhoto(fileReference:FileReference, id:String, onResult:Function=null, onFault:Function=null):void
 		{
 			DB.instance.entity.add_photo(fileReference, id, onResult, onFault)
-
 		}
 
 		public function addPhotoFromGrid(entityId:String, gridId:String, targetId:String, onResult:Function, onFault:Function=null):void
