@@ -21,16 +21,16 @@ internal class _AlertLogEntityMetadata extends com.adobe.fiber.valueobjects.Abst
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("time", "_id", "evidence", "path");
+    model_internal static var allProperties:Array = new Array("time", "_id", "evidence", "entities", "path");
     model_internal static var allAssociationProperties:Array = new Array();
     model_internal static var allRequiredProperties:Array = new Array();
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("time", "_id", "evidence", "path");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("time", "_id", "evidence", "entities", "path");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("time", "_id", "evidence", "path");
+    model_internal static var dataProperties:Array = new Array("time", "_id", "evidence", "entities", "path");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("time", "_id", "evidence", "path");
+    model_internal static var nonDerivedProperties:Array = new Array("time", "_id", "evidence", "entities", "path");
     model_internal static var derivedProperties:Array = new Array();
-    model_internal static var collectionProperties:Array = new Array("evidence", "path");
+    model_internal static var collectionProperties:Array = new Array("evidence", "entities", "path");
     model_internal static var collectionBaseMap:Object;
     model_internal static var entityName:String = "AlertLog";
     model_internal static var dependentsOnMap:Object;
@@ -51,11 +51,13 @@ internal class _AlertLogEntityMetadata extends com.adobe.fiber.valueobjects.Abst
             model_internal::dependentsOnMap["time"] = new Array();
             model_internal::dependentsOnMap["_id"] = new Array();
             model_internal::dependentsOnMap["evidence"] = new Array();
+            model_internal::dependentsOnMap["entities"] = new Array();
             model_internal::dependentsOnMap["path"] = new Array();
 
             // collection base map
             model_internal::collectionBaseMap = new Object();
             model_internal::collectionBaseMap["evidence"] = "String";
+            model_internal::collectionBaseMap["entities"] = "String";
             model_internal::collectionBaseMap["path"] = "String";
         }
 
@@ -64,6 +66,7 @@ internal class _AlertLogEntityMetadata extends com.adobe.fiber.valueobjects.Abst
         model_internal::propertyTypeMap["time"] = "int";
         model_internal::propertyTypeMap["_id"] = "String";
         model_internal::propertyTypeMap["evidence"] = "ArrayCollection";
+        model_internal::propertyTypeMap["entities"] = "ArrayCollection";
         model_internal::propertyTypeMap["path"] = "ArrayCollection";
 
         model_internal::_instance = value;
@@ -312,6 +315,12 @@ internal class _AlertLogEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     }
 
     [Bindable(event="propertyChange")]
+    public function get isEntitiesAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get isPathAvailable():Boolean
     {
         return true;
@@ -341,6 +350,12 @@ internal class _AlertLogEntityMetadata extends com.adobe.fiber.valueobjects.Abst
 
     [Bindable(event="propertyChange")]   
     public function get evidenceStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get entitiesStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }

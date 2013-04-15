@@ -50,6 +50,7 @@ public class _Super_AlertLog extends flash.events.EventDispatcher implements com
     private var _internal_time : int;
     private var _internal__id : String;
     private var _internal_evidence : ArrayCollection;
+    private var _internal_entities : ArrayCollection;
     private var _internal_path : ArrayCollection;
 
     private static var emptyArray:Array = new Array();
@@ -90,6 +91,12 @@ public class _Super_AlertLog extends flash.events.EventDispatcher implements com
     public function get evidence() : ArrayCollection
     {
         return _internal_evidence;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get entities() : ArrayCollection
+    {
+        return _internal_entities;
     }
 
     [Bindable(event="propertyChange")]
@@ -151,6 +158,31 @@ public class _Super_AlertLog extends flash.events.EventDispatcher implements com
         }
     }
 
+    public function set entities(value:*) : void
+    {
+        var oldValue:ArrayCollection = _internal_entities;
+        if (oldValue !== value)
+        {
+            if (value is ArrayCollection)
+            {
+                _internal_entities = value;
+            }
+            else if (value is Array)
+            {
+                _internal_entities = new ArrayCollection(value);
+            }
+            else if (value == null)
+            {
+                _internal_entities = null;
+            }
+            else
+            {
+                throw new Error("value of entities must be a collection");
+            }
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "entities", oldValue, _internal_entities));
+        }
+    }
+
     public function set path(value:*) : void
     {
         var oldValue:ArrayCollection = _internal_path;
@@ -199,7 +231,6 @@ public class _Super_AlertLog extends flash.events.EventDispatcher implements com
     /**
      * derived property calculators
      */
-    
 
     /**
      * isValid calculator
