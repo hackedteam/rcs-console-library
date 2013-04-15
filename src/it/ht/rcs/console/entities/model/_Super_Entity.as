@@ -11,6 +11,7 @@ import com.adobe.fiber.valueobjects.IValueObject;
 import flash.events.Event;
 import flash.events.EventDispatcher;
 import it.ht.rcs.console.entities.model.Handle;
+import it.ht.rcs.console.entities.model.Link;
 import it.ht.rcs.console.entities.model.Position;
 import it.ht.rcs.console.entities.model.Position_attr;
 import mx.binding.utils.ChangeWatcher;
@@ -37,6 +38,7 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
     model_internal static function initRemoteClassAliasAllRelated() : void
     {
         it.ht.rcs.console.entities.model.Position.initRemoteClassAliasSingleChild();
+        it.ht.rcs.console.entities.model.Link.initRemoteClassAliasSingleChild();
         it.ht.rcs.console.entities.model.Position_attr.initRemoteClassAliasSingleChild();
         it.ht.rcs.console.entities.model.Handle.initRemoteClassAliasSingleChild();
     }
@@ -61,11 +63,12 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
     private var _internal_position : it.ht.rcs.console.entities.model.Position;
     private var _internal_desc : String;
     private var _internal_links : ArrayCollection;
+    model_internal var _internal_links_leaf:it.ht.rcs.console.entities.model.Link;
     private var _internal_type : String;
     private var _internal_user_ids : ArrayCollection;
     private var _internal_photos : ArrayCollection;
-    private var _internal_updated_at : String;
     private var _internal_level : String;
+    private var _internal_updated_at : String;
     private var _internal__id : String;
     private var _internal_position_attr : it.ht.rcs.console.entities.model.Position_attr;
     private var _internal_analyzed : Object;
@@ -96,8 +99,8 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "type", model_internal::setterListenerType));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "user_ids", model_internal::setterListenerUser_ids));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "photos", model_internal::setterListenerPhotos));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "updated_at", model_internal::setterListenerUpdated_at));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "level", model_internal::setterListenerLevel));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "updated_at", model_internal::setterListenerUpdated_at));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "_id", model_internal::setterListener_id));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "position_attr", model_internal::setterListenerPosition_attr));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "analyzed", model_internal::setterListenerAnalyzed));
@@ -149,15 +152,15 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
     }
 
     [Bindable(event="propertyChange")]
-    public function get updated_at() : String
-    {
-        return _internal_updated_at;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get level() : String
     {
         return _internal_level;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get updated_at() : String
+    {
+        return _internal_updated_at;
     }
 
     [Bindable(event="propertyChange")]
@@ -315,16 +318,6 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
         }
     }
 
-    public function set updated_at(value:String) : void
-    {
-        var oldValue:String = _internal_updated_at;
-        if (oldValue !== value)
-        {
-            _internal_updated_at = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "updated_at", oldValue, _internal_updated_at));
-        }
-    }
-
     public function set level(value:String) : void
     {
         var oldValue:String = _internal_level;
@@ -332,6 +325,16 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
         {
             _internal_level = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "level", oldValue, _internal_level));
+        }
+    }
+
+    public function set updated_at(value:String) : void
+    {
+        var oldValue:String = _internal_updated_at;
+        if (oldValue !== value)
+        {
+            _internal_updated_at = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "updated_at", oldValue, _internal_updated_at));
         }
     }
 
@@ -498,14 +501,14 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
         _model.invalidateDependentOnPhotos();
     }
 
-    model_internal function setterListenerUpdated_at(value:flash.events.Event):void
-    {
-        _model.invalidateDependentOnUpdated_at();
-    }
-
     model_internal function setterListenerLevel(value:flash.events.Event):void
     {
         _model.invalidateDependentOnLevel();
+    }
+
+    model_internal function setterListenerUpdated_at(value:flash.events.Event):void
+    {
+        _model.invalidateDependentOnUpdated_at();
     }
 
     model_internal function setterListener_id(value:flash.events.Event):void
@@ -568,7 +571,6 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
     /**
      * derived property calculators
      */
-    
 
     /**
      * isValid calculator
@@ -609,15 +611,15 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
             propertyValidity = false;
             com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_photosValidationFailureMessages);
         }
-        if (!_model.updated_atIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_updated_atValidationFailureMessages);
-        }
         if (!_model.levelIsValid)
         {
             propertyValidity = false;
             com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_levelValidationFailureMessages);
+        }
+        if (!_model.updated_atIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_updated_atValidationFailureMessages);
         }
         if (!_model._idIsValid)
         {
@@ -895,33 +897,6 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
         return validationFailures;
     }
     
-    model_internal var _doValidationCacheOfUpdated_at : Array = null;
-    model_internal var _doValidationLastValOfUpdated_at : String;
-
-    model_internal function _doValidationForUpdated_at(valueIn:Object):Array
-    {
-        var value : String = valueIn as String;
-
-        if (model_internal::_doValidationCacheOfUpdated_at != null && model_internal::_doValidationLastValOfUpdated_at == value)
-           return model_internal::_doValidationCacheOfUpdated_at ;
-
-        _model.model_internal::_updated_atIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.isUpdated_atAvailable && _internal_updated_at == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "updated_at is required"));
-        }
-
-        model_internal::_doValidationCacheOfUpdated_at = validationFailures;
-        model_internal::_doValidationLastValOfUpdated_at = value;
-
-        return validationFailures;
-    }
-    
     model_internal var _doValidationCacheOfLevel : Array = null;
     model_internal var _doValidationLastValOfLevel : String;
 
@@ -945,6 +920,33 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
 
         model_internal::_doValidationCacheOfLevel = validationFailures;
         model_internal::_doValidationLastValOfLevel = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfUpdated_at : Array = null;
+    model_internal var _doValidationLastValOfUpdated_at : String;
+
+    model_internal function _doValidationForUpdated_at(valueIn:Object):Array
+    {
+        var value : String = valueIn as String;
+
+        if (model_internal::_doValidationCacheOfUpdated_at != null && model_internal::_doValidationLastValOfUpdated_at == value)
+           return model_internal::_doValidationCacheOfUpdated_at ;
+
+        _model.model_internal::_updated_atIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isUpdated_atAvailable && _internal_updated_at == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "updated_at is required"));
+        }
+
+        model_internal::_doValidationCacheOfUpdated_at = validationFailures;
+        model_internal::_doValidationLastValOfUpdated_at = value;
 
         return validationFailures;
     }

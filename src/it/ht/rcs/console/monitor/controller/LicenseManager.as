@@ -147,8 +147,7 @@ package it.ht.rcs.console.monitor.controller
       translation=limits['translation'];
       modify =limits["modify"]
       intelligence =limits["intelligence"]
-      //intelligence =true;
-      //modify =false;
+      
       
       dispatchDataLoadedEvent();
     }
@@ -181,6 +180,7 @@ package it.ht.rcs.console.monitor.controller
       return limits['agents'][platform][0]; 
     }
     
+    
     public function updateLicense(license:FileReference, successCallback:Function, failCallback:Function, progressCallback:Function=null):void
     {
       license.addEventListener(ProgressEvent.PROGRESS, progressCallback)
@@ -188,7 +188,6 @@ package it.ht.rcs.console.monitor.controller
       license.addEventListener(SecurityErrorEvent.SECURITY_ERROR, failCallback)
       license.addEventListener(DataEvent.UPLOAD_COMPLETE_DATA, successCallback)
       license.upload(new URLRequest(DB.hostAutocomplete(Console.currentSession.server) + "license"), "content");
-      
     }
 
   }

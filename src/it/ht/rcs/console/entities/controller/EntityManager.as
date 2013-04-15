@@ -1,5 +1,6 @@
 package it.ht.rcs.console.entities.controller
 {
+	import flash.events.Event;
 	import flash.net.FileReference;
 	
 	import it.ht.rcs.console.DB;
@@ -13,7 +14,6 @@ package it.ht.rcs.console.entities.controller
 	import it.ht.rcs.console.push.PushController;
 	import it.ht.rcs.console.push.PushEvent;
 	import it.ht.rcs.console.search.controller.SearchManager;
-  import it.ht.rcs.console.ObjectUtils;
 	
 	import mx.collections.ArrayCollection;
 	import mx.collections.ListCollectionView;
@@ -62,7 +62,6 @@ package it.ht.rcs.console.entities.controller
 		public function addPhoto(fileReference:FileReference, id:String, onResult:Function=null, onFault:Function=null):void
 		{
 			DB.instance.entity.add_photo(fileReference, id, onResult, onFault)
-
 		}
 
 		public function addPhotoFromGrid(entityId:String, gridId:String, targetId:String, onResult:Function, onFault:Function=null):void
@@ -90,12 +89,17 @@ package it.ht.rcs.console.entities.controller
     
     public function mostContacted(entityId:String, from:String, to:String, num:String, onResult:Function, onFault:Function=null):void
     {
-      DB.instance.entity.most_contacted(entityId, from, to, num, onResult, onFault)
+      DB.instance.entity.most_contacted(entityId, from, to, num, onResult, onFault);
       
     }
     private function onEntityPush(e:PushEvent):void
     {
       EntityManager.instance.show(e.data.id as String);
+      if(e.data.action=="destroy")
+      {
+        EntityManager.instance.refresh();
+        EntityManager.instance.dispatchEvent(new Event(e.data.action));
+      }
     }
 
 		public function getEntityByTarget(targetId:String):Entity
@@ -115,7 +119,11 @@ package it.ht.rcs.console.entities.controller
     
     public function addEntity(entity:Entity, o:Operation, callback:Function):void
     {
-      DB.instance.entity.create(ObjectUtils.toHash(entity), o, function(e:ResultEvent):void {
+      var entityToHash:Object = ObjectUtils.toHash(entity)
+      entityToHash.position= ObjectUtils.toHash(entity.position)
+      entityToHash.position_attr= ObjectUtils.toHash(entity.position_attr)
+      DB.instance.entity.create(entityToHash, o, function(e:ResultEvent):void {
+      
         var entity:Entity = e.result as Entity;
         addItem(entity);
         refresh()
@@ -134,7 +142,6 @@ package it.ht.rcs.console.entities.controller
     override protected function onItemRemove(item:*):void
     {
       DB.instance.entity.destroy(item._id);
-      
     }
 
 		private function onResult(e:ResultEvent):void

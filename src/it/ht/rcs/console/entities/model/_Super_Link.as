@@ -1,6 +1,6 @@
 /**
  * This is a generated class and is not intended for modification.  To customize behavior
- * of this value object you may modify the generated sub-class of this class - Handles.as.
+ * of this value object you may modify the generated sub-class of this class - Link.as.
  */
 
 package it.ht.rcs.console.entities.model
@@ -12,6 +12,7 @@ import flash.events.Event;
 import flash.events.EventDispatcher;
 import mx.binding.utils.ChangeWatcher;
 import mx.collections.ArrayCollection;
+import mx.events.CollectionEvent;
 import mx.events.PropertyChangeEvent;
 import mx.validators.ValidationResult;
 
@@ -24,7 +25,7 @@ import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 use namespace model_internal;
 
 [ExcludeClass]
-public class _Super_Handles extends flash.events.EventDispatcher implements com.adobe.fiber.valueobjects.IValueObject
+public class _Super_Link extends flash.events.EventDispatcher implements com.adobe.fiber.valueobjects.IValueObject
 {
     model_internal static function initRemoteClassAliasSingle(cz:Class) : void
     {
@@ -34,7 +35,7 @@ public class _Super_Handles extends flash.events.EventDispatcher implements com.
     {
     }
 
-    model_internal var _dminternal_model : _HandlesEntityMetadata;
+    model_internal var _dminternal_model : _LinkEntityMetadata;
     model_internal var _changedObjects:mx.collections.ArrayCollection = new ArrayCollection();
 
     public function getChangedObjects() : Array
@@ -51,13 +52,15 @@ public class _Super_Handles extends flash.events.EventDispatcher implements com.
     /**
      * properties
      */
-    private var _internal_updated_at : String;
-    private var _internal_handle : String;
+    private var _internal_info : ArrayCollection;
+    private var _internal_first_seen : int;
     private var _internal_level : String;
+    private var _internal_le : String;
     private var _internal__id : String;
-    private var _internal_name : String;
-    private var _internal_created_at : String;
+    private var _internal_versus : String;
+    private var _internal_rel : int;
     private var _internal_type : String;
+    private var _internal_last_seen : int;
 
     private static var emptyArray:Array = new Array();
 
@@ -69,17 +72,16 @@ public class _Super_Handles extends flash.events.EventDispatcher implements com.
 
     model_internal var _changeWatcherArray:Array = new Array();
 
-    public function _Super_Handles()
+    public function _Super_Link()
     {
-        _model = new _HandlesEntityMetadata(this);
+        _model = new _LinkEntityMetadata(this);
 
         // Bind to own data or source properties for cache invalidation triggering
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "updated_at", model_internal::setterListenerUpdated_at));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "handle", model_internal::setterListenerHandle));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "info", model_internal::setterListenerInfo));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "level", model_internal::setterListenerLevel));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "le", model_internal::setterListenerLe));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "_id", model_internal::setterListener_id));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "name", model_internal::setterListenerName));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "created_at", model_internal::setterListenerCreated_at));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "versus", model_internal::setterListenerVersus));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "type", model_internal::setterListenerType));
 
     }
@@ -89,15 +91,15 @@ public class _Super_Handles extends flash.events.EventDispatcher implements com.
      */
 
     [Bindable(event="propertyChange")]
-    public function get updated_at() : String
+    public function get info() : ArrayCollection
     {
-        return _internal_updated_at;
+        return _internal_info;
     }
 
     [Bindable(event="propertyChange")]
-    public function get handle() : String
+    public function get first_seen() : int
     {
-        return _internal_handle;
+        return _internal_first_seen;
     }
 
     [Bindable(event="propertyChange")]
@@ -107,27 +109,39 @@ public class _Super_Handles extends flash.events.EventDispatcher implements com.
     }
 
     [Bindable(event="propertyChange")]
+    public function get le() : String
+    {
+        return _internal_le;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get _id() : String
     {
         return _internal__id;
     }
 
     [Bindable(event="propertyChange")]
-    public function get name() : String
+    public function get versus() : String
     {
-        return _internal_name;
+        return _internal_versus;
     }
 
     [Bindable(event="propertyChange")]
-    public function get created_at() : String
+    public function get rel() : int
     {
-        return _internal_created_at;
+        return _internal_rel;
     }
 
     [Bindable(event="propertyChange")]
     public function get type() : String
     {
         return _internal_type;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get last_seen() : int
+    {
+        return _internal_last_seen;
     }
 
     public function clearAssociations() : void
@@ -138,23 +152,38 @@ public class _Super_Handles extends flash.events.EventDispatcher implements com.
      * data/source property setters
      */
 
-    public function set updated_at(value:String) : void
+    public function set info(value:*) : void
     {
-        var oldValue:String = _internal_updated_at;
+        var oldValue:ArrayCollection = _internal_info;
         if (oldValue !== value)
         {
-            _internal_updated_at = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "updated_at", oldValue, _internal_updated_at));
+            if (value is ArrayCollection)
+            {
+                _internal_info = value;
+            }
+            else if (value is Array)
+            {
+                _internal_info = new ArrayCollection(value);
+            }
+            else if (value == null)
+            {
+                _internal_info = null;
+            }
+            else
+            {
+                throw new Error("value of info must be a collection");
+            }
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "info", oldValue, _internal_info));
         }
     }
 
-    public function set handle(value:String) : void
+    public function set first_seen(value:int) : void
     {
-        var oldValue:String = _internal_handle;
+        var oldValue:int = _internal_first_seen;
         if (oldValue !== value)
         {
-            _internal_handle = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "handle", oldValue, _internal_handle));
+            _internal_first_seen = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "first_seen", oldValue, _internal_first_seen));
         }
     }
 
@@ -168,6 +197,16 @@ public class _Super_Handles extends flash.events.EventDispatcher implements com.
         }
     }
 
+    public function set le(value:String) : void
+    {
+        var oldValue:String = _internal_le;
+        if (oldValue !== value)
+        {
+            _internal_le = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "le", oldValue, _internal_le));
+        }
+    }
+
     public function set _id(value:String) : void
     {
         var oldValue:String = _internal__id;
@@ -178,23 +217,23 @@ public class _Super_Handles extends flash.events.EventDispatcher implements com.
         }
     }
 
-    public function set name(value:String) : void
+    public function set versus(value:String) : void
     {
-        var oldValue:String = _internal_name;
+        var oldValue:String = _internal_versus;
         if (oldValue !== value)
         {
-            _internal_name = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "name", oldValue, _internal_name));
+            _internal_versus = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "versus", oldValue, _internal_versus));
         }
     }
 
-    public function set created_at(value:String) : void
+    public function set rel(value:int) : void
     {
-        var oldValue:String = _internal_created_at;
+        var oldValue:int = _internal_rel;
         if (oldValue !== value)
         {
-            _internal_created_at = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "created_at", oldValue, _internal_created_at));
+            _internal_rel = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "rel", oldValue, _internal_rel));
         }
     }
 
@@ -205,6 +244,16 @@ public class _Super_Handles extends flash.events.EventDispatcher implements com.
         {
             _internal_type = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "type", oldValue, _internal_type));
+        }
+    }
+
+    public function set last_seen(value:int) : void
+    {
+        var oldValue:int = _internal_last_seen;
+        if (oldValue !== value)
+        {
+            _internal_last_seen = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "last_seen", oldValue, _internal_last_seen));
         }
     }
 
@@ -220,14 +269,16 @@ public class _Super_Handles extends flash.events.EventDispatcher implements com.
      *  - the validity of the property (and the containing entity) if the given data property is required.
      */
 
-    model_internal function setterListenerUpdated_at(value:flash.events.Event):void
+    model_internal function setterListenerInfo(value:flash.events.Event):void
     {
-        _model.invalidateDependentOnUpdated_at();
-    }
-
-    model_internal function setterListenerHandle(value:flash.events.Event):void
-    {
-        _model.invalidateDependentOnHandle();
+        if (value is mx.events.PropertyChangeEvent)
+        {
+            if (mx.events.PropertyChangeEvent(value).newValue)
+            {
+                mx.events.PropertyChangeEvent(value).newValue.addEventListener(mx.events.CollectionEvent.COLLECTION_CHANGE, model_internal::setterListenerInfo);
+            }
+        }
+        _model.invalidateDependentOnInfo();
     }
 
     model_internal function setterListenerLevel(value:flash.events.Event):void
@@ -235,19 +286,19 @@ public class _Super_Handles extends flash.events.EventDispatcher implements com.
         _model.invalidateDependentOnLevel();
     }
 
+    model_internal function setterListenerLe(value:flash.events.Event):void
+    {
+        _model.invalidateDependentOnLe();
+    }
+
     model_internal function setterListener_id(value:flash.events.Event):void
     {
         _model.invalidateDependentOn_id();
     }
 
-    model_internal function setterListenerName(value:flash.events.Event):void
+    model_internal function setterListenerVersus(value:flash.events.Event):void
     {
-        _model.invalidateDependentOnName();
-    }
-
-    model_internal function setterListenerCreated_at(value:flash.events.Event):void
-    {
-        _model.invalidateDependentOnCreated_at();
+        _model.invalidateDependentOnVersus();
     }
 
     model_internal function setterListenerType(value:flash.events.Event):void
@@ -276,35 +327,30 @@ public class _Super_Handles extends flash.events.EventDispatcher implements com.
         var validationFailureMessages:Array = new Array();
 
         var propertyValidity:Boolean = true;
-        if (!_model.updated_atIsValid)
+        if (!_model.infoIsValid)
         {
             propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_updated_atValidationFailureMessages);
-        }
-        if (!_model.handleIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_handleValidationFailureMessages);
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_infoValidationFailureMessages);
         }
         if (!_model.levelIsValid)
         {
             propertyValidity = false;
             com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_levelValidationFailureMessages);
         }
+        if (!_model.leIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_leValidationFailureMessages);
+        }
         if (!_model._idIsValid)
         {
             propertyValidity = false;
             com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::__idValidationFailureMessages);
         }
-        if (!_model.nameIsValid)
+        if (!_model.versusIsValid)
         {
             propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_nameValidationFailureMessages);
-        }
-        if (!_model.created_atIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_created_atValidationFailureMessages);
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_versusValidationFailureMessages);
         }
         if (!_model.typeIsValid)
         {
@@ -338,14 +384,14 @@ public class _Super_Handles extends flash.events.EventDispatcher implements com.
 
     [Transient]
     [Bindable(event="propertyChange")]
-    public function get _model() : _HandlesEntityMetadata
+    public function get _model() : _LinkEntityMetadata
     {
         return model_internal::_dminternal_model;
     }
 
-    public function set _model(value : _HandlesEntityMetadata) : void
+    public function set _model(value : _LinkEntityMetadata) : void
     {
-        var oldValue : _HandlesEntityMetadata = model_internal::_dminternal_model;
+        var oldValue : _LinkEntityMetadata = model_internal::_dminternal_model;
         if (oldValue !== value)
         {
             model_internal::_dminternal_model = value;
@@ -390,56 +436,29 @@ public class _Super_Handles extends flash.events.EventDispatcher implements com.
         }
     }
 
-    model_internal var _doValidationCacheOfUpdated_at : Array = null;
-    model_internal var _doValidationLastValOfUpdated_at : String;
+    model_internal var _doValidationCacheOfInfo : Array = null;
+    model_internal var _doValidationLastValOfInfo : ArrayCollection;
 
-    model_internal function _doValidationForUpdated_at(valueIn:Object):Array
+    model_internal function _doValidationForInfo(valueIn:Object):Array
     {
-        var value : String = valueIn as String;
+        var value : ArrayCollection = valueIn as ArrayCollection;
 
-        if (model_internal::_doValidationCacheOfUpdated_at != null && model_internal::_doValidationLastValOfUpdated_at == value)
-           return model_internal::_doValidationCacheOfUpdated_at ;
+        if (model_internal::_doValidationCacheOfInfo != null && model_internal::_doValidationLastValOfInfo == value)
+           return model_internal::_doValidationCacheOfInfo ;
 
-        _model.model_internal::_updated_atIsValidCacheInitialized = true;
+        _model.model_internal::_infoIsValidCacheInitialized = true;
         var validationFailures:Array = new Array();
         var errorMessage:String;
         var failure:Boolean;
 
         var valRes:ValidationResult;
-        if (_model.isUpdated_atAvailable && _internal_updated_at == null)
+        if (_model.isInfoAvailable && _internal_info == null)
         {
-            validationFailures.push(new ValidationResult(true, "", "", "updated_at is required"));
+            validationFailures.push(new ValidationResult(true, "", "", "info is required"));
         }
 
-        model_internal::_doValidationCacheOfUpdated_at = validationFailures;
-        model_internal::_doValidationLastValOfUpdated_at = value;
-
-        return validationFailures;
-    }
-    
-    model_internal var _doValidationCacheOfHandle : Array = null;
-    model_internal var _doValidationLastValOfHandle : String;
-
-    model_internal function _doValidationForHandle(valueIn:Object):Array
-    {
-        var value : String = valueIn as String;
-
-        if (model_internal::_doValidationCacheOfHandle != null && model_internal::_doValidationLastValOfHandle == value)
-           return model_internal::_doValidationCacheOfHandle ;
-
-        _model.model_internal::_handleIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.isHandleAvailable && _internal_handle == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "handle is required"));
-        }
-
-        model_internal::_doValidationCacheOfHandle = validationFailures;
-        model_internal::_doValidationLastValOfHandle = value;
+        model_internal::_doValidationCacheOfInfo = validationFailures;
+        model_internal::_doValidationLastValOfInfo = value;
 
         return validationFailures;
     }
@@ -471,6 +490,33 @@ public class _Super_Handles extends flash.events.EventDispatcher implements com.
         return validationFailures;
     }
     
+    model_internal var _doValidationCacheOfLe : Array = null;
+    model_internal var _doValidationLastValOfLe : String;
+
+    model_internal function _doValidationForLe(valueIn:Object):Array
+    {
+        var value : String = valueIn as String;
+
+        if (model_internal::_doValidationCacheOfLe != null && model_internal::_doValidationLastValOfLe == value)
+           return model_internal::_doValidationCacheOfLe ;
+
+        _model.model_internal::_leIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isLeAvailable && _internal_le == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "le is required"));
+        }
+
+        model_internal::_doValidationCacheOfLe = validationFailures;
+        model_internal::_doValidationLastValOfLe = value;
+
+        return validationFailures;
+    }
+    
     model_internal var _doValidationCacheOf_id : Array = null;
     model_internal var _doValidationLastValOf_id : String;
 
@@ -498,56 +544,29 @@ public class _Super_Handles extends flash.events.EventDispatcher implements com.
         return validationFailures;
     }
     
-    model_internal var _doValidationCacheOfName : Array = null;
-    model_internal var _doValidationLastValOfName : String;
+    model_internal var _doValidationCacheOfVersus : Array = null;
+    model_internal var _doValidationLastValOfVersus : String;
 
-    model_internal function _doValidationForName(valueIn:Object):Array
+    model_internal function _doValidationForVersus(valueIn:Object):Array
     {
         var value : String = valueIn as String;
 
-        if (model_internal::_doValidationCacheOfName != null && model_internal::_doValidationLastValOfName == value)
-           return model_internal::_doValidationCacheOfName ;
+        if (model_internal::_doValidationCacheOfVersus != null && model_internal::_doValidationLastValOfVersus == value)
+           return model_internal::_doValidationCacheOfVersus ;
 
-        _model.model_internal::_nameIsValidCacheInitialized = true;
+        _model.model_internal::_versusIsValidCacheInitialized = true;
         var validationFailures:Array = new Array();
         var errorMessage:String;
         var failure:Boolean;
 
         var valRes:ValidationResult;
-        if (_model.isNameAvailable && _internal_name == null)
+        if (_model.isVersusAvailable && _internal_versus == null)
         {
-            validationFailures.push(new ValidationResult(true, "", "", "name is required"));
+            validationFailures.push(new ValidationResult(true, "", "", "versus is required"));
         }
 
-        model_internal::_doValidationCacheOfName = validationFailures;
-        model_internal::_doValidationLastValOfName = value;
-
-        return validationFailures;
-    }
-    
-    model_internal var _doValidationCacheOfCreated_at : Array = null;
-    model_internal var _doValidationLastValOfCreated_at : String;
-
-    model_internal function _doValidationForCreated_at(valueIn:Object):Array
-    {
-        var value : String = valueIn as String;
-
-        if (model_internal::_doValidationCacheOfCreated_at != null && model_internal::_doValidationLastValOfCreated_at == value)
-           return model_internal::_doValidationCacheOfCreated_at ;
-
-        _model.model_internal::_created_atIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.isCreated_atAvailable && _internal_created_at == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "created_at is required"));
-        }
-
-        model_internal::_doValidationCacheOfCreated_at = validationFailures;
-        model_internal::_doValidationLastValOfCreated_at = value;
+        model_internal::_doValidationCacheOfVersus = validationFailures;
+        model_internal::_doValidationLastValOfVersus = value;
 
         return validationFailures;
     }

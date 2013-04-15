@@ -151,7 +151,6 @@ public class _Super_Command extends flash.events.EventDispatcher implements com.
     /**
      * derived property calculators
      */
-    
 
     /**
      * isValid calculator

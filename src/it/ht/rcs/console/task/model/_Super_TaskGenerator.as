@@ -151,7 +151,6 @@ public class _Super_TaskGenerator extends flash.events.EventDispatcher implement
     /**
      * derived property calculators
      */
-    
 
     /**
      * isValid calculator
