@@ -52,7 +52,7 @@ public class _Super_Link extends flash.events.EventDispatcher implements com.ado
     /**
      * properties
      */
-    private var _internal_info: ArrayCollection;
+    private var _internal_info : ArrayCollection;
     private var _internal_first_seen : int;
     private var _internal_level : String;
     private var _internal_le : String;
@@ -159,7 +159,7 @@ public class _Super_Link extends flash.events.EventDispatcher implements com.ado
         {
             if (value is ArrayCollection)
             {
-                _internal_info= value;
+                _internal_info = value;
             }
             else if (value is Array)
             {

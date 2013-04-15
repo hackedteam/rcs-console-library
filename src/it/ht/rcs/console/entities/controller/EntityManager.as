@@ -1,5 +1,6 @@
 package it.ht.rcs.console.entities.controller
 {
+	import flash.events.Event;
 	import flash.net.FileReference;
 	
 	import it.ht.rcs.console.DB;
@@ -88,12 +89,17 @@ package it.ht.rcs.console.entities.controller
     
     public function mostContacted(entityId:String, from:String, to:String, num:String, onResult:Function, onFault:Function=null):void
     {
-      DB.instance.entity.most_contacted(entityId, from, to, num, onResult, onFault)
+      DB.instance.entity.most_contacted(entityId, from, to, num, onResult, onFault);
       
     }
     private function onEntityPush(e:PushEvent):void
     {
       EntityManager.instance.show(e.data.id as String);
+      if(e.data.action=="destroy")
+      {
+        EntityManager.instance.refresh();
+        EntityManager.instance.dispatchEvent(new Event(e.data.action));
+      }
     }
 
 		public function getEntityByTarget(targetId:String):Entity
@@ -136,7 +142,6 @@ package it.ht.rcs.console.entities.controller
     override protected function onItemRemove(item:*):void
     {
       DB.instance.entity.destroy(item._id);
-      
     }
 
 		private function onResult(e:ResultEvent):void
