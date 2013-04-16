@@ -95,12 +95,12 @@ package it.ht.rcs.console.entities.rest
     
     }
     
-    public function add_link(entityId:String, entity:Entity, type:String, versus:String, onResult:Function=null, onFault:Function=null):void
+    public function add_link(entity1:String, entity2:String, type:String, versus:String, rel:int, onResult:Function=null, onFault:Function=null):void
     {
       
     }
     
-    public function del_link(entityId:String, entity:Entity, onResult:Function=null, onFault:Function=null):void
+    public function del_link(entity1:String, entity2:String, onResult:Function=null, onFault:Function=null):void
     {
       
     }

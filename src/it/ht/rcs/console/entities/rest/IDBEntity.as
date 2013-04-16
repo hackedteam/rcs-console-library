@@ -31,9 +31,9 @@ package it.ht.rcs.console.entities.rest
       
     function del_handle(entityId:String, handleId:String, onResult:Function=null, onFault:Function=null):void
       
-    function add_link(entityId:String, entity:Entity, type:String, versus:String, onResult:Function=null, onFault:Function=null):void
+    function add_link(entity1:String, entity2:String, type:String, versus:String, rel:int, onResult:Function=null, onFault:Function=null):void
     
-    function del_link(entityId:String, entity:Entity, onResult:Function=null, onFault:Function=null):void
+    function del_link(entity1:String, entity2:String, onResult:Function=null, onFault:Function=null):void
       
     function most_contacted(entityId:String, from:String, to:String, num:String, onResult:Function=null, onFault:Function=null):void
       

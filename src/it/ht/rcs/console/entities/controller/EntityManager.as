@@ -81,6 +81,18 @@ package it.ht.rcs.console.entities.controller
       
     }
     
+    public function addLink(entity1 :String, entity2:String, type:String, versus:String, rel:int, onResult:Function=null, onFault:Function=null):void
+    {
+     DB.instance.entity.add_link(entity1, entity2, type, versus, rel, onResult, onFault)
+      
+    }
+    
+    public function deleteLink(entity1 :String, entity2:String, onResult:Function=null, onFault:Function=null):void
+    {
+      DB.instance.entity.del_link(entity1, entity2, onResult, onFault)
+      
+    }
+    
     public function deleteHandle(entityId:String, handleId:String, onResult:Function, onFault:Function=null):void
     {
       DB.instance.entity.del_handle(entityId, handleId, onResult, onFault)
@@ -119,9 +131,9 @@ package it.ht.rcs.console.entities.controller
     
     public function addEntity(entity:Entity, o:Operation, callback:Function):void
     {
-      var entityToHash:Object = ObjectUtils.toHash(entity)
-      entityToHash.position= ObjectUtils.toHash(entity.position)
-      entityToHash.position_attr= ObjectUtils.toHash(entity.position_attr)
+      var entityToHash:Object = ObjectUtils.toHash(entity);
+      entityToHash.position= ObjectUtils.toHash(entity.position);
+      entityToHash.position_attr= ObjectUtils.toHash(entity.position_attr);
       DB.instance.entity.create(entityToHash, o, function(e:ResultEvent):void {
       
         var entity:Entity = e.result as Entity;
