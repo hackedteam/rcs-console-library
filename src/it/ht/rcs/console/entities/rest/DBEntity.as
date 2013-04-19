@@ -65,6 +65,13 @@ package it.ht.rcs.console.entities.rest
       resp.token = add_link_(JSON.stringify(params));
     }
     
+    public function edit_link(entity1:String, entity2:String, type:String, versus:String, rel:int, onResult:Function=null, onFault:Function=null):void
+    {
+      var params:Object={_id:entity1, entity:entity2, type:type, versus:versus, rel:rel};
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = edit_link_(JSON.stringify(params));
+    }
+    
     public function del_handle(entityId:String, handleId:String, onResult:Function=null, onFault:Function=null):void
     {
       var params:Object={_id:entityId, handle_id:handleId}

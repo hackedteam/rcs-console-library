@@ -87,6 +87,12 @@ package it.ht.rcs.console.entities.controller
       
     }
     
+    public function editLink(entity1 :String, entity2:String, type:String, versus:String, rel:int, onResult:Function=null, onFault:Function=null):void
+    {
+      DB.instance.entity.edit_link(entity1, entity2, type, versus, rel, onResult, onFault)
+      
+    }
+    
     public function deleteLink(entity1 :String, entity2:String, onResult:Function=null, onFault:Function=null):void
     {
       DB.instance.entity.del_link(entity1, entity2, onResult, onFault)

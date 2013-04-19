@@ -100,6 +100,11 @@ package it.ht.rcs.console.entities.rest
       
     }
     
+    public function edit_link(entity1:String, entity2:String, type:String, versus:String, rel:int, onResult:Function=null, onFault:Function=null):void
+    {
+      
+    }
+    
     public function del_link(entity1:String, entity2:String, onResult:Function=null, onFault:Function=null):void
     {
       
