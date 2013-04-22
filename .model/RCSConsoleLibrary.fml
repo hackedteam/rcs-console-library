@@ -3259,6 +3259,7 @@
     <property name="desktop" type="opaque" required="true"/>
     <property name="windows" type="boolean[]" required="true"/>
     <property name="winmo" type="boolean[]" required="true"/>
+    <property name="winphone" type="boolean[]" required="true"/>
     <property name="linux" type="boolean[]" required="true"/>
     <property name="mobile" type="opaque" required="true"/>
   </entity>
