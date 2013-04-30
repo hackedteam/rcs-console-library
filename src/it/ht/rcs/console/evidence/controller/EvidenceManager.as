@@ -174,7 +174,7 @@ package it.ht.rcs.console.evidence.controller
       file.addEventListener(HTTPStatusEvent.HTTP_STATUS, onFault);
       file.addEventListener(IOErrorEvent.IO_ERROR, onFault);
       file.upload(new URLRequest(DB.hostAutocomplete(Console.currentSession.server) + "evidence/create/" + id), "content");
-      trace("url: "+DB.hostAutocomplete(Console.currentSession.server) + "evidence/create/" + id)
+      trace("url: "+DB.hostAutocomplete(Console.currentSession.server) + "evidence/create/" + id);
       
     }
     
