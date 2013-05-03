@@ -42,6 +42,8 @@ package it.ht.rcs.console.entities.rest
     function create(params:Object, operation:Operation, onResult:Function=null, onFault:Function=null):void
       
     function destroy(id:String, onResult:Function=null, onFault:Function=null):void;
+    
+    function merge(entity1:String, entity2:String, onResult:Function=null, onFault:Function=null):void;
   
     
   }

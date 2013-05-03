@@ -113,6 +113,12 @@ package it.ht.rcs.console.entities.rest
       resp.token = destroy_(JSON.stringify({_id: id}));
     }
     
+    public function merge(entity1:String, entity2:String, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = merge_(JSON.stringify({_id: entity1, entity:entity2}));
+    }
+    
     public function add_photo(fileReference:FileReference, id:String, onResult:Function = null, onFault:Function = null):void
     {
       var url:String= _serviceControl.baseURL+ "entity/add_photo"

@@ -5164,6 +5164,27 @@
         <item name="completeURL">http://localhost:4444/entity/edit_link</item>
       </annotation>
       <annotation name="original signature">
+        <item name="returnType">opaque</item>
+        <item name="inputParamNames">strXml</item>
+        <item name="inputParams">string</item>
+      </annotation>
+      <parameter name="strXml" type="string"/>
+    </function>
+    <function name="merge_" return-type="void">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.xml.XMLSerializationFilter</item>
+        <item name="method">POST</item>
+        <item name="contentType">application/xml</item>
+        <item name="requestBodyParameter">true</item>
+        <item name="url">/entity/merge</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">http://localhost:4444/entity/merge</item>
+      </annotation>
+      <annotation name="original signature">
         <item name="inputParamNames">strXml</item>
         <item name="inputParams">string</item>
         <item name="returnType">opaque</item>
