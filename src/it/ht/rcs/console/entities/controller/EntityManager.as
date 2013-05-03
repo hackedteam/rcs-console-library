@@ -157,8 +157,7 @@ package it.ht.rcs.console.entities.controller
     {
       DB.instance.entity.merge(entity1._id, entity2._id, function(e:ResultEvent):void
       {
-        refresh();
-        onResult(e);
+        DB.instance.entity.all(onResult);
       }, onFault)
     }
 
@@ -177,7 +176,6 @@ package it.ht.rcs.console.entities.controller
     private function onResult(e:ResultEvent):void
     {
       clear();
-
       for each (var item:* in e.result.source)
         addItem(item);
       dispatchDataLoadedEvent();
