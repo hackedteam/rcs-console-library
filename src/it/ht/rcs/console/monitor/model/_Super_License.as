@@ -74,6 +74,7 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
     private var _internal_rmi : ArrayCollection;
     private var _internal_scout : Boolean;
     private var _internal_ocr : Boolean;
+    private var _internal_hostname_sync : Boolean;
     private var _internal_translation : Boolean;
     private var _internal_modify : Boolean;
     private var _internal_intelligence : Boolean;
@@ -214,6 +215,12 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
     public function get ocr() : Boolean
     {
         return _internal_ocr;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get hostname_sync() : Boolean
+    {
+        return _internal_hostname_sync;
     }
 
     [Bindable(event="propertyChange")]
@@ -449,6 +456,16 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
         {
             _internal_ocr = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "ocr", oldValue, _internal_ocr));
+        }
+    }
+
+    public function set hostname_sync(value:Boolean) : void
+    {
+        var oldValue:Boolean = _internal_hostname_sync;
+        if (oldValue !== value)
+        {
+            _internal_hostname_sync = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "hostname_sync", oldValue, _internal_hostname_sync));
         }
     }
 

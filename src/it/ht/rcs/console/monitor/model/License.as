@@ -33,6 +33,7 @@ public class License extends _Super_License
       shards = data.shards;
       scout=data.scout;
       ocr=data.ocr;
+      hostname_sync=data.hostname_sync;
       translation=data.translation;
       modify = data.modify;
       intelligence =data.intelligence;

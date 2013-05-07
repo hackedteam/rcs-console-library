@@ -3192,6 +3192,7 @@
     <property name="rmi" type="boolean[]" required="true"/>
     <property name="scout" type="boolean" required="true"/>
     <property name="ocr" type="boolean" required="true"/>
+    <property name="hostname_sync" type="boolean" required="true"/>
     <property name="translation" type="boolean" required="true"/>
     <property name="modify" type="boolean" required="true"/>
     <property name="intelligence" type="boolean" required="true"/>

@@ -69,6 +69,7 @@ package it.ht.rcs.console.monitor.controller
     public var archive:Boolean = false;
     public var scout:Boolean = true;
     public var ocr:Boolean = false;
+    public var hostname_sync:Boolean = false;
     public var translation:Boolean = false;
     public var modify:Boolean = true;
     public var intelligence:Boolean = false;
@@ -153,6 +154,7 @@ package it.ht.rcs.console.monitor.controller
       
       scout = limits['scout'];
       ocr=limits['ocr'];
+      hostname_sync=limits['hostname_sync']
       translation=limits['translation'];
       modify =limits["modify"]
       intelligence =limits["intelligence"]
