@@ -152,11 +152,11 @@ public class _Super_LicenseAgents extends flash.events.EventDispatcher implement
     {
         return _internal_winmo;
     }
-    
+
     [Bindable(event="propertyChange")]
     public function get winphone() : ArrayCollection
     {
-      return _internal_winphone;
+        return _internal_winphone;
     }
 
     [Bindable(event="propertyChange")]
@@ -373,30 +373,30 @@ public class _Super_LicenseAgents extends flash.events.EventDispatcher implement
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "winmo", oldValue, _internal_winmo));
         }
     }
-    
+
     public function set winphone(value:*) : void
     {
-      var oldValue:ArrayCollection = _internal_winphone;
-      if (oldValue !== value)
-      {
-        if (value is ArrayCollection)
+        var oldValue:ArrayCollection = _internal_winphone;
+        if (oldValue !== value)
         {
-          _internal_winphone = value;
+            if (value is ArrayCollection)
+            {
+                _internal_winphone = value;
+            }
+            else if (value is Array)
+            {
+                _internal_winphone = new ArrayCollection(value);
+            }
+            else if (value == null)
+            {
+                _internal_winphone = null;
+            }
+            else
+            {
+                throw new Error("value of winphone must be a collection");
+            }
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "winphone", oldValue, _internal_winphone));
         }
-        else if (value is Array)
-        {
-          _internal_winphone = new ArrayCollection(value);
-        }
-        else if (value == null)
-        {
-          _internal_winphone = null;
-        }
-        else
-        {
-          throw new Error("value of winphone must be a collection");
-        }
-        this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "winphone", oldValue, _internal_winphone));
-      }
     }
 
     public function set linux(value:*) : void
@@ -539,17 +539,17 @@ public class _Super_LicenseAgents extends flash.events.EventDispatcher implement
         }
         _model.invalidateDependentOnWinmo();
     }
-    
+
     model_internal function setterListenerWinphone(value:flash.events.Event):void
     {
-      if (value is mx.events.PropertyChangeEvent)
-      {
-        if (mx.events.PropertyChangeEvent(value).newValue)
+        if (value is mx.events.PropertyChangeEvent)
         {
-          mx.events.PropertyChangeEvent(value).newValue.addEventListener(mx.events.CollectionEvent.COLLECTION_CHANGE, model_internal::setterListenerWinphone);
+            if (mx.events.PropertyChangeEvent(value).newValue)
+            {
+                mx.events.PropertyChangeEvent(value).newValue.addEventListener(mx.events.CollectionEvent.COLLECTION_CHANGE, model_internal::setterListenerWinphone);
+            }
         }
-      }
-      _model.invalidateDependentOnWinphone();
+        _model.invalidateDependentOnWinphone();
     }
 
     model_internal function setterListenerLinux(value:flash.events.Event):void
@@ -638,8 +638,8 @@ public class _Super_LicenseAgents extends flash.events.EventDispatcher implement
         }
         if (!_model.winphoneIsValid)
         {
-          propertyValidity = false;
-          com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_winphoneValidationFailureMessages);
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_winphoneValidationFailureMessages);
         }
         if (!_model.linuxIsValid)
         {
@@ -975,29 +975,29 @@ public class _Super_LicenseAgents extends flash.events.EventDispatcher implement
     
     model_internal var _doValidationCacheOfWinphone : Array = null;
     model_internal var _doValidationLastValOfWinphone : ArrayCollection;
-    
+
     model_internal function _doValidationForWinphone(valueIn:Object):Array
     {
-      var value : ArrayCollection = valueIn as ArrayCollection;
-      
-      if (model_internal::_doValidationCacheOfWinphone != null && model_internal::_doValidationLastValOfWinphone == value)
-        return model_internal::_doValidationCacheOfWinphone ;
-      
-      _model.model_internal::_winphoneIsValidCacheInitialized = true;
-      var validationFailures:Array = new Array();
-      var errorMessage:String;
-      var failure:Boolean;
-      
-      var valRes:ValidationResult;
-      if (_model.isWinmoAvailable && _internal_winmo == null)
-      {
-        validationFailures.push(new ValidationResult(true, "", "", "winphone is required"));
-      }
-      
-      model_internal::_doValidationCacheOfWinphone = validationFailures;
-      model_internal::_doValidationLastValOfWinphone = value;
-      
-      return validationFailures;
+        var value : ArrayCollection = valueIn as ArrayCollection;
+
+        if (model_internal::_doValidationCacheOfWinphone != null && model_internal::_doValidationLastValOfWinphone == value)
+           return model_internal::_doValidationCacheOfWinphone ;
+
+        _model.model_internal::_winphoneIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isWinphoneAvailable && _internal_winphone == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "winphone is required"));
+        }
+
+        model_internal::_doValidationCacheOfWinphone = validationFailures;
+        model_internal::_doValidationLastValOfWinphone = value;
+
+        return validationFailures;
     }
     
     model_internal var _doValidationCacheOfLinux : Array = null;

@@ -110,6 +110,11 @@ package it.ht.rcs.console.entities.rest
       
     }
     
+    public function merge(entity1:String, entity2:String, onResult:Function=null, onFault:Function=null):void
+    {
+    
+    }
+    
     public function most_contacted(entityId:String, from:String, to:String, num:String, onResult:Function=null, onFault:Function=null):void
     {
       var result:ArrayCollection=new ArrayCollection();
@@ -120,12 +125,12 @@ package it.ht.rcs.console.entities.rest
       contacts=new Array();
       contacts.push(new Contact({peer:"003214567",   type:"whatsapp",    count:13,   size:208.0,   percent:50,   peer_name:"Alejandro Reade"}));
       contacts.push(new Contact({peer:"547685469",   type:"whatsapp",    count:13,   size:208.0,   percent:50,   peer_name:"Joey Fargo"}));
-      result.addItem(contacts)
+      result.addItem(contacts);
       contacts=new Array();
       contacts.push(new Contact({peer:"john.doe",   type:"skype",    count:30,   size:208.0,   percent:60,   peer_name:"John Doe"}));
       contacts.push(new Contact({peer:"alejandroreade",   type:"skype",    count:12,   size:208.0,   percent:24,   peer_name:"Alejandro Reade"}));
       contacts.push(new Contact({peer:"joeyfargo",   type:"skype",    count:8,   size:208.0,   percent:16,   peer_name:"Joey Fargo"}));
-      result.addItem(contacts)
+      result.addItem(contacts);
       
       
       if (onResult != null)

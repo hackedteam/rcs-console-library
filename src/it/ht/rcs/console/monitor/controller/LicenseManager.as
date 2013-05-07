@@ -69,6 +69,7 @@ package it.ht.rcs.console.monitor.controller
     public var archive:Boolean = false;
     public var scout:Boolean = true;
     public var ocr:Boolean = false;
+    public var hostname_sync:Boolean = false;
     public var translation:Boolean = false;
     public var modify:Boolean = true;
     public var intelligence:Boolean = false;
@@ -116,7 +117,10 @@ package it.ht.rcs.console.monitor.controller
       agent_ios = limits['agents']['ios'][0];
       agent_symbian = limits['agents']['symbian'][0];
       agent_winmo = limits['agents']['winmo'][0];
-      agent_winphone = limits['agents']['winphone'][0];
+      if(limits['agents']['winphone'])
+      {
+        if(limits['agents']['winphone'].length>0) agent_winphone = limits['agents']['winphone'][0]
+      };
       
       agent_linux_demo = limits['agents']['linux'][1];
       agent_osx_demo = limits['agents']['osx'][1];
@@ -126,8 +130,10 @@ package it.ht.rcs.console.monitor.controller
       agent_ios_demo = limits['agents']['ios'][1];
       agent_symbian_demo = limits['agents']['symbian'][1];
       agent_winmo_demo = limits['agents']['winmo'][1];
-      agent_winphone_demo = limits['agents']['winphone'][1];
-      
+      if(limits['agents']['winphone'])
+      {
+      if(limits['agents']['winphone'].length>0)  agent_winphone_demo = limits['agents']['winphone'][1];
+      }
       collectors.max = (limits['collectors']['collectors'] == null) ? 'U' : limits['collectors']['collectors'].toString();
       anonymizers.max = (limits['collectors']['anonymizers'] == null) ? 'U' : limits['collectors']['anonymizers'].toString();
       
@@ -148,6 +154,7 @@ package it.ht.rcs.console.monitor.controller
       
       scout = limits['scout'];
       ocr=limits['ocr'];
+      hostname_sync=limits['hostname_sync']
       translation=limits['translation'];
       modify =limits["modify"]
       intelligence =limits["intelligence"]
