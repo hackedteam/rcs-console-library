@@ -44,6 +44,7 @@ public class Entity extends _Super_Entity
       this.position=data.position;
       this.position_attr=data.position_attr;
       this.type=data.type;
+      this.num_links=data.num_links;
     }
   }
   

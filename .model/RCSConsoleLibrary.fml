@@ -5341,5 +5341,6 @@
     <property name="path" type="string[]" required="true"/>
     <property name="created_at" type="string" required="true"/>
     <property name="handles" type="Handle[]" required="true"/>
+    <property name="num_links" type="string" required="true"/>
   </entity>
 </model>
