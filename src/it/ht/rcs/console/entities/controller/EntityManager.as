@@ -144,7 +144,6 @@ package it.ht.rcs.console.entities.controller
       entityToHash.position_attr = ObjectUtils.toHash(entity.position_attr);
       DB.instance.entity.create(entityToHash, o, function(e:ResultEvent):void
       {
-
         var entity:Entity = e.result as Entity;
         addItem(entity);
         refresh()
