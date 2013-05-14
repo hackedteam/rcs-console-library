@@ -24,7 +24,7 @@ package it.ht.rcs.console.events
     
     public var evidenceTypes:Array = null;
     public var evidenceIds:Array = null;
-    public var info:String = null;
+    public var info:Array = null;
     public var from:Number;
     public var to:Number;
     
