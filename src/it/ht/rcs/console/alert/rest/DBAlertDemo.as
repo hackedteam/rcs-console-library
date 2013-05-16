@@ -19,7 +19,7 @@ package it.ht.rcs.console.alert.rest
         logs: [new AlertLog({ time: new Date().time / 1000, path: ['o1', 't1', 'a1'], evidence: [2132468] })] }),*/
       
       new Alert({ _id: '1', enabled: true,  suppression: 600, type: 'LOG',  action: 'EVIDENCE', evidence: '*',      keywords: 'Nashville',   tag: 4, path: ['o1', 't1'], 
-        logs: [new AlertLog({ time: new Date().time / 1000, path: ['o1', 't1', 'a1'], evidence: ['e24'] })
+        logs: [new AlertLog({ time: new Date().time / 1000, path: ['o1', 't1', 'a1'], evidence: ['e24']})
                ] })
       
       //ultimo elenco rosso (1 nashville parola chiave linkare a tweet )

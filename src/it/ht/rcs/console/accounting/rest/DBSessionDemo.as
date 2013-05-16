@@ -18,19 +18,19 @@ package it.ht.rcs.console.accounting.rest
                                                           timezone: 0, enabled: true});
     
     public static var demo_user_admin:User   = new User({ _id: '1', name: 'demoa', contact: 'demoa@hackingteam.it',
-                                                          privs: ['ADMIN'], locale: 'en_US', group_ids: ['1'],
+                                                          privs: ['ADMIN','ADMIN_USERS','ADMIN_OPERATIONS','ADMIN_TARGETS','ADMIN_AUDIT','ADMIN_LICENSE'], locale: 'en_US', group_ids: ['1'],
                                                           dashboard_ids: [], recent_ids: [], timezone: 0, enabled: true});
     
     public static var demo_user_sys:User     = new User({ _id: '1', name: 'demos', contact:'demos@hackingteam.it',
-                                                          privs: ['SYS'], locale: 'en_US', group_ids: ['1'],
+                                                          privs: ['SYS','SYS_FRONTEND','SYS_BACKEND','SYS_BACKUP','SYS_INJECTORS','SYS_CONNECTORS'], locale: 'en_US', group_ids: ['1'],
                                                           dashboard_ids: [], recent_ids: [], timezone: 0, enabled: true});
     
     public static var demo_user_tech:User    = new User({ _id: '1', name: 'demot', contact:'demot@hackingteam.it',
-                                                          privs: ['TECH'], locale: 'en_US', group_ids: ['1'],
+                                                          privs: ['TECH', 'TECH_FACTORIES','TECH_BUILD','TECH_CONFIG','TECH_EXEC','TECH_UPLOAD','TECH_IMPORT','TECH_NI_RULES'], locale: 'en_US', group_ids: ['1'],
                                                           dashboard_ids: [], recent_ids: [], timezone: 0, enabled: true});
     
     public static var demo_user_view:User    = new User({ _id: '1', name: 'demov', contact:'demov@hackingteam.it',
-                                                          privs: ['VIEW'], locale: 'en_US', group_ids: ['1'],
+                                                          privs: ['VIEW', 'VIEW_ALERTS','VIEW_FILESYSTEM', 'VIEW_EDIT', 'VIEW_DELETE','VIEW_EXPORT','VIEW_PROFILES'], locale: 'en_US', group_ids: ['1'],
                                                           dashboard_ids: [], recent_ids: [], timezone: 0, enabled: true});
     
     public static var demo_user_nothing:User = new User({ _id: '1', name: 'demon', contact:'demon@hackingteam.it',

@@ -18,11 +18,11 @@ package it.ht.rcs.console.entities.rest
   
   public class DBEntityDemo implements IDBEntity
   {
-    
+    private static var handles:ArrayCollection=new ArrayCollection([new Handle({name:'Jimmy Page', handle:'jimmy.page',type:'facebook'}), new Handle({name:'Jimmy Page', handle:'jimmy.page@gmail.com',type:'gmail'}), new Handle({name:'Jimmy Page', handle:'jimmypage',type:'skype'})])
     public static var entities:ArrayCollection = new ArrayCollection([
       // Swordfish
      
-      new Entity({ _id: 'e1', type: 'target', name: 'Jimmy Page',      desc: 'Head of the terrorist cell',    path: ['o1','t1'],    name:'Jimmy Page',    level:'auto', photos:[],      handles:[]})
+      new Entity({ _id: 'e1', type: 'target', name: 'Jimmy Page',      desc: 'Head of the terrorist cell',    path: ['o1','t1'],    name:'Jimmy Page',    level:'auto', photos:[],      handles:handles})
     ]);
     
     
@@ -57,11 +57,9 @@ package it.ht.rcs.console.entities.rest
     
     public function show(id:String, onResult:Function=null, onFault:Function=null):void
     {
-      var handles:ArrayCollection=new ArrayCollection()
-      handles.addItem(new Handle({name:'Jimmy Page', handle:'jimmy.page',type:'facebook'}));
-      handles.addItem(new Handle({name:'Jimmy Page', handle:'jimmy.page@gmail.com',type:'gmail'}));
-      handles.addItem(new Handle({name:'Jimmy Page', handle:'jimmypage',type:'skype'}));
-      var result:Entity=new Entity({ _id: 'e1', type: 'target', name: 'Jimmy Page',      desc: 'Head of the terrorist cell',    path: ['o1','t1'],    name:'Jimmy Page',    level:'auto', photos:[],      handles:handles});
+      //TODO !!!
+      
+      var result:Entity=getEntityById(id)
       
       var position:Position=new Position;
       position.latitude="34.034453"
@@ -87,12 +85,30 @@ package it.ht.rcs.console.entities.rest
     
     public function add_handle(entityId:String, handle:String, handleName:String, handleType:String, onResult:Function=null, onFault:Function=null):void
     {
-      
+      var entity:Entity=getEntityById(entityId);
+      var h:Handle=new Handle();
+      h._id="h"+entities.length;
+      h.level="manual"
+      h.name=handleName;
+      h.handle=handle;
+      h.type=handleType;
+      entity.handles.addItem(h);
+      if (onResult != null)
+        onResult(new ResultEvent('e.update', false, true, entity));
     }
-      
+      private function getEntityById(id:String):Entity
+      {
+        for(var i:int=0;i<entities.length;i++)
+        {
+        if(entities.getItemAt(i)._id==id)
+          return entities.getItemAt(i) as Entity;
+        }
+        return null;
+      }
     public function del_handle(entityId:String, handleId:String, onResult:Function=null, onFault:Function=null):void
     {
-    
+      var entity:Entity=getEntityById(entityId);
+      
     }
     
     public function add_link(entity1:String, entity2:String, type:String, versus:String, rel:int, onResult:Function=null, onFault:Function=null):void
@@ -120,7 +136,7 @@ package it.ht.rcs.console.entities.rest
       var result:ArrayCollection=new ArrayCollection();
       var contacts:Array=new Array();
       contacts.push(new Contact({peer:"johndoe",   type:"facebook",    count:15.0,   size:208.0,   percent:75,   peer_name:"John Doe"}));
-      contacts.push(new Contact({peer:"j.fargo",   type:"facebook",    count:5.0,   size:208.0,   percent:25,   peer_name:"Joey Fargo"}));
+      contacts.push(new Contact({peer:"j.fargo",   type:"facebook",    count:5.0,   size:208.0,    percent:25,   peer_name:"Joey Fargo"}));
       result.addItem(contacts);
       contacts=new Array();
       contacts.push(new Contact({peer:"003214567",   type:"whatsapp",    count:13,   size:208.0,   percent:50,   peer_name:"Alejandro Reade"}));
