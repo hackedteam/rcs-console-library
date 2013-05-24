@@ -34,25 +34,36 @@ package it.ht.rcs.console.network.controller
       dispatchDataLoadedEvent();
     }
     
+    
     override public function removeItem(item:Object):void
     {
-      if (item is Collector)
+    if (item is Collector)
       {
         var current:Collector = item as Collector;
-        var next:Collector;
+        var next:Collector = current.next[0] == null ? null : getItem(current.next[0]) as Collector;;
         var prev:Collector = current.prev[0] == null ? null : getItem(current.prev[0]) as Collector;
-        if (prev)
-          prev.next = [null];
+       
+        if(current.type=="local")
+        {
+          if (prev)
+            prev.next = [null];
+          do {
+            current.prev = [null];
+            next = current.next[0] == null ? null : getItem(current.next[0]) as Collector;
+            current.next = [null];
+            current = next;
+          } while (next != null);
+        }
+        else if(current.type=="remote")
+        {
+          if (prev) prev.next=current.next[0]== null ?null : [current.next[0]]
+          if (next) next.prev=current.prev[0]== null ?null : [current.prev[0]]
+        }
         
-        do {
-          current.prev = [null];
-          next = current.next[0] == null ? null : getItem(current.next[0]) as Collector;
-          current.next = [null];
-          current = next;
-        } while (next != null);
       }
-      
+      //DB.instance.collector.update(prev, prop);
       super.removeItem(item);
+
     }
     
     override protected function onItemRemove(o:*):void

@@ -122,6 +122,21 @@ package it.ht.rcs.console.entities.controller
       }
     }
 
+    public function getEntityById(id:String):Entity
+    {
+      var lcv:ListCollectionView = getView();
+      
+      for (var i:int = 0; i < lcv.length; i++) {
+        var entity:Entity = lcv.getItemAt(i) as Entity
+        
+        if (entity._id == id) {
+          return entity;
+        }
+      }
+      
+      return null
+    }
+    
     public function getEntityByTarget(targetId:String):Entity
     {
       var lcv:ListCollectionView = getView();
