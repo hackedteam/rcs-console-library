@@ -14,7 +14,7 @@ package it.ht.rcs.console.entities.model
 {
 
 import com.adobe.fiber.core.model_internal;
-
+ 
 public class Position extends _Super_Position
 {
     /** 
