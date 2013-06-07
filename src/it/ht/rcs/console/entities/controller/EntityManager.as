@@ -120,7 +120,11 @@ package it.ht.rcs.console.entities.controller
     public function mostContacted(entityId:String, from:String, to:String, num:String, onResult:Function, onFault:Function = null):void
     {
       DB.instance.entity.most_contacted(entityId, from, to, num, onResult, onFault);
-
+    }
+    
+    public function mostVisited(entityId:String, from:String, to:String, num:String, onResult:Function, onFault:Function = null):void
+    {
+      DB.instance.entity.most_visited(entityId, from, to, num, onResult, onFault);
     }
 
     private function onEntityPush(e:PushEvent):void
