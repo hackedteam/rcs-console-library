@@ -87,7 +87,6 @@ package it.ht.rcs.console.entities.controller
     public function addLink(entity1:String, entity2:String, type:String, versus:String, rel:int, onResult:Function = null, onFault:Function = null):void
     {
       DB.instance.entity.add_link(entity1, entity2, type, versus, rel, onResult, onFault)
-
     }
     
     public function updatePosition(entity:Entity, position:Position, position_attr:Position_attr, onResult:Function = null, onFault:Function = null):void
@@ -96,19 +95,16 @@ package it.ht.rcs.console.entities.controller
       entityToHash.position = {latitude:position.latitude, longitude: position.longitude}
       entityToHash.position_attr = {accuracy:position_attr.accuracy}
       DB.instance.entity.update(entity, entityToHash)
-      
     }
 
     public function editLink(entity1:String, entity2:String, type:String, versus:String, rel:int, onResult:Function = null, onFault:Function = null):void
     {
       DB.instance.entity.edit_link(entity1, entity2, type, versus, rel, onResult, onFault)
-
     }
 
     public function deleteLink(entity1:String, entity2:String, onResult:Function = null, onFault:Function = null):void
     {
       DB.instance.entity.del_link(entity1, entity2, onResult, onFault)
-
     }
 
     public function deleteHandle(entityId:String, handleId:String, onResult:Function, onFault:Function = null):void
