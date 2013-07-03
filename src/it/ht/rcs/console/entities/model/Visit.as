@@ -1,5 +1,5 @@
 /**
- * This is a generated sub-class of _Position.as and is intended for behavior
+ * This is a generated sub-class of _Visit.as and is intended for behavior
  * customization.  This class is only generated when there is no file already present
  * at its target location.  Thus custom behavior that you add here will survive regeneration
  * of the super-class. 
@@ -14,8 +14,8 @@ package it.ht.rcs.console.entities.model
 {
 
 import com.adobe.fiber.core.model_internal;
- 
-public class Position extends _Super_Position
+
+public class Visit extends _Super_Visit
 {
     /** 
      * DO NOT MODIFY THIS STATIC INITIALIZER - IT IS NECESSARY
@@ -30,17 +30,17 @@ public class Position extends _Super_Position
      */     
     public static function _initRemoteClassAlias() : void
     {
-        _Super_Position.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.entities.model.Position);
-        _Super_Position.model_internal::initRemoteClassAliasAllRelated();
+        _Super_Visit.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.entities.model.Visit);
+        _Super_Visit.model_internal::initRemoteClassAliasAllRelated();
     }
      
     model_internal static function initRemoteClassAliasSingleChild() : void
     {
-        _Super_Position.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.entities.model.Position);
+        _Super_Visit.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.entities.model.Visit);
     }
     
     {
-        _Super_Position.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.entities.model.Position);
+        _Super_Visit.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.entities.model.Visit);
     }
     /** 
      * END OF DO NOT MODIFY SECTION

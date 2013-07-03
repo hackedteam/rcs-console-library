@@ -77,6 +77,7 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
     private var _internal_created_at : String;
     private var _internal_handles : ArrayCollection;
     model_internal var _internal_handles_leaf:it.ht.rcs.console.entities.model.Handle;
+    private var _internal_num_links : String;
 
     private static var emptyArray:Array = new Array();
 
@@ -108,6 +109,7 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "path", model_internal::setterListenerPath));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "created_at", model_internal::setterListenerCreated_at));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "handles", model_internal::setterListenerHandles));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "num_links", model_internal::setterListenerNum_links));
 
     }
 
@@ -203,6 +205,12 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
     public function get handles() : ArrayCollection
     {
         return _internal_handles;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get num_links() : String
+    {
+        return _internal_num_links;
     }
 
     public function clearAssociations() : void
@@ -438,6 +446,16 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
         }
     }
 
+    public function set num_links(value:String) : void
+    {
+        var oldValue:String = _internal_num_links;
+        if (oldValue !== value)
+        {
+            _internal_num_links = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "num_links", oldValue, _internal_num_links));
+        }
+    }
+
     /**
      * Data/source property setter listeners
      *
@@ -560,6 +578,11 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
         _model.invalidateDependentOnHandles();
     }
 
+    model_internal function setterListenerNum_links(value:flash.events.Event):void
+    {
+        _model.invalidateDependentOnNum_links();
+    }
+
 
     /**
      * valid related derived properties
@@ -656,6 +679,11 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
         {
             propertyValidity = false;
             com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_handlesValidationFailureMessages);
+        }
+        if (!_model.num_linksIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_num_linksValidationFailureMessages);
         }
 
         model_internal::_cacheInitialized_isValid = true;
@@ -1137,6 +1165,33 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
 
         model_internal::_doValidationCacheOfHandles = validationFailures;
         model_internal::_doValidationLastValOfHandles = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfNum_links : Array = null;
+    model_internal var _doValidationLastValOfNum_links : String;
+
+    model_internal function _doValidationForNum_links(valueIn:Object):Array
+    {
+        var value : String = valueIn as String;
+
+        if (model_internal::_doValidationCacheOfNum_links != null && model_internal::_doValidationLastValOfNum_links == value)
+           return model_internal::_doValidationCacheOfNum_links ;
+
+        _model.model_internal::_num_linksIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isNum_linksAvailable && _internal_num_links == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "num_links is required"));
+        }
+
+        model_internal::_doValidationCacheOfNum_links = validationFailures;
+        model_internal::_doValidationLastValOfNum_links = value;
 
         return validationFailures;
     }

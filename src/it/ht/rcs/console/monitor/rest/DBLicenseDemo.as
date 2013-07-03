@@ -34,6 +34,7 @@ package it.ht.rcs.console.monitor.rest
               collectors: null,
               anonymizers: 5
             }),
+          modify:true,
           correlation: true,
           connectors: true,
           exploits: true,

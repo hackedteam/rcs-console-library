@@ -161,8 +161,8 @@ package it.ht.rcs.console.task.controller
         case "finished":
           // update creation progress bar
           creation_percentage.bytesTotal = task.total;
-          creation_percentage.bytesLoaded = task.current;
-          
+          //creation_percentage.bytesLoaded = task.current;
+          creation_percentage.bytesLoaded = task.total; //??
           // stop the update timer
           updateTimer.stop();
           

@@ -2,7 +2,7 @@ package it.ht.rcs.console.entities.controller
 {
   import flash.events.Event;
   import flash.net.FileReference;
-
+  
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.ObjectUtils;
   import it.ht.rcs.console.agent.controller.AgentManager;
@@ -10,11 +10,13 @@ package it.ht.rcs.console.entities.controller
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.dashboard.controller.DashboardController;
   import it.ht.rcs.console.entities.model.Entity;
+  import it.ht.rcs.console.entities.model.Position;
+  import it.ht.rcs.console.entities.model.Position_attr;
   import it.ht.rcs.console.operation.model.Operation;
   import it.ht.rcs.console.push.PushController;
   import it.ht.rcs.console.push.PushEvent;
   import it.ht.rcs.console.search.controller.SearchManager;
-
+  
   import mx.collections.ArrayCollection;
   import mx.collections.ListCollectionView;
   import mx.rpc.events.FaultEvent;
@@ -85,19 +87,24 @@ package it.ht.rcs.console.entities.controller
     public function addLink(entity1:String, entity2:String, type:String, versus:String, rel:int, onResult:Function = null, onFault:Function = null):void
     {
       DB.instance.entity.add_link(entity1, entity2, type, versus, rel, onResult, onFault)
-
+    }
+    
+    public function updatePosition(entity:Entity, position:Position, position_attr:Position_attr, onResult:Function = null, onFault:Function = null):void
+    {
+      var entityToHash:Object = {}
+      entityToHash.position = {latitude:position.latitude, longitude: position.longitude}
+      entityToHash.position_attr = {accuracy:position_attr.accuracy}
+      DB.instance.entity.update(entity, entityToHash)
     }
 
     public function editLink(entity1:String, entity2:String, type:String, versus:String, rel:int, onResult:Function = null, onFault:Function = null):void
     {
       DB.instance.entity.edit_link(entity1, entity2, type, versus, rel, onResult, onFault)
-
     }
 
     public function deleteLink(entity1:String, entity2:String, onResult:Function = null, onFault:Function = null):void
     {
       DB.instance.entity.del_link(entity1, entity2, onResult, onFault)
-
     }
 
     public function deleteHandle(entityId:String, handleId:String, onResult:Function, onFault:Function = null):void
@@ -109,7 +116,11 @@ package it.ht.rcs.console.entities.controller
     public function mostContacted(entityId:String, from:String, to:String, num:String, onResult:Function, onFault:Function = null):void
     {
       DB.instance.entity.most_contacted(entityId, from, to, num, onResult, onFault);
-
+    }
+    
+    public function mostVisited(entityId:String, from:String, to:String, num:String, onResult:Function, onFault:Function = null):void
+    {
+      DB.instance.entity.most_visited(entityId, from, to, num, onResult, onFault);
     }
 
     private function onEntityPush(e:PushEvent):void
@@ -122,6 +133,21 @@ package it.ht.rcs.console.entities.controller
       }
     }
 
+    public function getEntityById(id:String):Entity
+    {
+      var lcv:ListCollectionView = getView();
+      
+      for (var i:int = 0; i < lcv.length; i++) {
+        var entity:Entity = lcv.getItemAt(i) as Entity
+        
+        if (entity._id == id) {
+          return entity;
+        }
+      }
+      
+      return null
+    }
+    
     public function getEntityByTarget(targetId:String):Entity
     {
       var lcv:ListCollectionView = getView();
@@ -144,7 +170,6 @@ package it.ht.rcs.console.entities.controller
       entityToHash.position_attr = ObjectUtils.toHash(entity.position_attr);
       DB.instance.entity.create(entityToHash, o, function(e:ResultEvent):void
       {
-
         var entity:Entity = e.result as Entity;
         addItem(entity);
         refresh()

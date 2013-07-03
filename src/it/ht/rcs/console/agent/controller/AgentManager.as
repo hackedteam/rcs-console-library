@@ -176,9 +176,9 @@ package it.ht.rcs.console.agent.controller
       DB.instance.agent.create_upload(agent, filename, grid, callback);
     }
     
-    public function filesystem(agentId:String, path:String, depth:int, callback:Function=null):void
+    public function filesystem(agentId:String, path:String, depth:int, callback:Function=null, faultCallback:Function=null):void
     {
-      DB.instance.agent.filesystem(agentId, path, depth, callback);
+      DB.instance.agent.filesystem(agentId, path, depth, callback, faultCallback);
     }
     
     public function purge(agentId:String, time:Number, size:Number, onResult:Function=null, onFault:Function=null):void

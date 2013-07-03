@@ -93,6 +93,13 @@ package it.ht.rcs.console.entities.rest
       resp.token = most_contacted_(JSON.stringify(params));
     }
     
+    public function most_visited(entityId:String, from:String, to:String, num:String, onResult:Function=null, onFault:Function=null):void
+    {
+      var params:Object={_id:entityId, from:from, to:to, num:num}
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = most_visited_(JSON.stringify(params));
+    }
+    
     public function update(entity:Entity, property:Object, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
