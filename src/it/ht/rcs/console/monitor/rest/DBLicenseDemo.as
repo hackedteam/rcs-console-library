@@ -36,6 +36,7 @@ package it.ht.rcs.console.monitor.rest
             }),
           modify:true,
           correlation: true,
+          intelligence:true,
           connectors: true,
           exploits: true,
           deletion: true,

@@ -5,6 +5,7 @@ package it.ht.rcs.console.entities.rest
   import it.ht.rcs.console.entities.model.Contact;
   import it.ht.rcs.console.entities.model.Entity;
   import it.ht.rcs.console.entities.model.Handle;
+  import it.ht.rcs.console.entities.model.Link;
   import it.ht.rcs.console.entities.model.Position;
   import it.ht.rcs.console.entities.model.Position_attr;
   import it.ht.rcs.console.operation.model.Operation;
@@ -18,12 +19,23 @@ package it.ht.rcs.console.entities.rest
   
   public class DBEntityDemo implements IDBEntity
   {
+    
+    
+    
+    
     private static var handles:ArrayCollection=new ArrayCollection([new Handle({name:'Jimmy Page', handle:'jimmy.page',type:'facebook'}), new Handle({name:'Jimmy Page', handle:'jimmy.page@gmail.com',type:'gmail'}), new Handle({name:'Jimmy Page', handle:'jimmypage',type:'skype'})])
     public static var entities:ArrayCollection = new ArrayCollection([
       // Swordfish
      
-      new Entity({ _id: 'e1', type: 'target', name: 'Jimmy Page',      desc: 'Head of the terrorist cell',    path: ['o1','t1'],    name:'Jimmy Page',    level:'auto', photos:[],      handles:handles})
+      new Entity({ _id: 'e1', type: 'target', name: 'Jimmy Page',     desc: 'Head of the terrorist cell',    path: ['o1','t1'],        level:'auto', photos:[],      handles:handles, links:[new Link({le:"e2", level:"auto", type:"peer",rel:2, versus:"out"}), new Link({le:"e3", level:"auto", type:"know",rel:1, versus:"both"}), new Link({le:"e4", level:"auto", type:"peer",rel:1, versus:"out"}), new Link({le:"e6", level:"auto", type:"peer",rel:1, versus:"out"})]}),
+      new Entity({ _id: 'e2', type: 'person', name: 'Joey Fargo',      desc: 'Friend',    path: ['o1','t1'],         level:'auto', photos:[],      handles:handles, links:[new Link({le:"e6", level:"auto", type:"peer",rel:1, versus:"out"})]}),
+      new Entity({ _id: 'e3', type: 'person', name: 'Alejandro Reade',      desc: 'Co-worker',    path: ['o1','t1'],         level:'auto', photos:[],      handles:handles, links:[new Link({le:"e4", level:"auto", type:"peer",rel:1, versus:"out"})]}),
+      new Entity({ _id: 'e4', type: 'position', name: 'Office',      desc: 'Office',    path: ['o1','t1'],         level:'auto', photos:[],      handles:handles, links:[]}),
+      new Entity({ _id: 'e5', type: 'person', name: 'John Doe',      desc: 'Friend',    path: ['o1','t1'],         level:'manual', photos:[],      handles:handles, links:[new Link({le:"e1", level:"auto", type:"identity",rel:1, versus:"both"})]}),
+      new Entity({ _id: 'e6', type: 'position', name: 'Home',      desc: 'Home',    path: ['o1','t1'],         level:'auto', photos:[],      handles:handles, links:[]})
     ]);
+    
+    
     
     
     private static function convertToUnix(value:Date):Number
@@ -57,16 +69,44 @@ package it.ht.rcs.console.entities.rest
     
     public function show(id:String, onResult:Function=null, onFault:Function=null):void
     {
-      //TODO !!!
+      //TODO !!!Ì
       
       var result:Entity=getEntityById(id)
       
       var position:Position=new Position;
-      position.latitude="34.034453"
-      position.longitude="-118.259583"
+      if(id=="e1" )
+      {
+      position.latitude="34.034153"
+      position.longitude="-118.154563"
+      }
+      else if(id=="e4")
+      {
+        position.latitude="34.032463"
+        position.longitude="-118.159583"
+      }
+      
+      else if(id=="e6")
+      {
+        position.latitude="34.034471"
+        position.longitude="-118.156593"
+      }
+      
       var position_attr:Position_attr=new Position_attr()
+      if(id=="e1")
+      {
       position_attr.accuracy="200";
       position_attr.time=convertToUnix(new Date(2012,11,03,14,57,00))
+      }
+      else if(id=="e4")
+      {
+        position_attr.accuracy="150";
+        position_attr.time=convertToUnix(new Date(2012,11,03,14,57,00))
+      }
+      else if(id=="e6")
+      {
+        position_attr.accuracy="100";
+        position_attr.time=convertToUnix(new Date(2012,11,03,14,57,00))
+      }
       result.position=position;
       result.position_attr=position_attr;
       if (onResult != null)

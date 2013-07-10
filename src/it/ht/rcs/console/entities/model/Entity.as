@@ -17,6 +17,8 @@ import com.adobe.fiber.core.model_internal;
 
 import it.ht.rcs.console.DB;
 
+import mx.collections.ArrayCollection;
+
 public class Entity extends _Super_Entity
 {
     /** 
@@ -45,6 +47,7 @@ public class Entity extends _Super_Entity
       this.position_attr=data.position_attr;
       this.type=data.type;
       this.num_links=data.num_links;
+      this.links=data.links
     }
   }
   
