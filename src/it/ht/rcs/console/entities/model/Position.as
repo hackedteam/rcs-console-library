@@ -27,7 +27,17 @@ public class Position extends _Super_Position
      * Calling this static function will initialize RemoteClass aliases
      * for this value object as well as all of the value objects corresponding
      * to entities associated to this value object's entity.  
-     */     
+     */
+  
+   function Position(data:Object=null)
+   {
+     if(data)
+     {
+       this.latitude=data.latitude;
+       this.longitude=data.longitude;
+     }
+   
+   }
     public static function _initRemoteClassAlias() : void
     {
         _Super_Position.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.entities.model.Position);

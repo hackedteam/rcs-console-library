@@ -19,20 +19,74 @@ package it.ht.rcs.console.entities.rest
   
   public class DBEntityDemo implements IDBEntity
   {
-    
-    
-    
-    
-    private static var handles:ArrayCollection=new ArrayCollection([new Handle({name:'Jimmy Page', handle:'jimmy.page',type:'facebook'}), new Handle({name:'Jimmy Page', handle:'jimmy.page@gmail.com',type:'gmail'}), new Handle({name:'Jimmy Page', handle:'jimmypage',type:'skype'})])
+
     public static var entities:ArrayCollection = new ArrayCollection([
       // Swordfish
      
-      new Entity({ _id: 'e1', type: 'target', name: 'Jimmy Page',     desc: 'Head of the terrorist cell',    path: ['o1','t1'],        level:'auto', photos:[],      handles:handles, links:[new Link({le:"e2", level:"auto", type:"peer",rel:2, versus:"out"}), new Link({le:"e3", level:"auto", type:"know",rel:1, versus:"both"}), new Link({le:"e4", level:"auto", type:"peer",rel:1, versus:"out"}), new Link({le:"e6", level:"auto", type:"peer",rel:1, versus:"out"})]}),
-      new Entity({ _id: 'e2', type: 'person', name: 'Joey Fargo',      desc: 'Friend',    path: ['o1','t1'],         level:'auto', photos:[],      handles:handles, links:[new Link({le:"e6", level:"auto", type:"peer",rel:1, versus:"out"})]}),
-      new Entity({ _id: 'e3', type: 'person', name: 'Alejandro Reade',      desc: 'Co-worker',    path: ['o1','t1'],         level:'auto', photos:[],      handles:handles, links:[new Link({le:"e4", level:"auto", type:"peer",rel:1, versus:"out"})]}),
-      new Entity({ _id: 'e4', type: 'position', name: 'Office',      desc: 'Office',    path: ['o1','t1'],         level:'auto', photos:[],      handles:handles, links:[]}),
-      new Entity({ _id: 'e5', type: 'person', name: 'John Doe',      desc: 'Friend',    path: ['o1','t1'],         level:'manual', photos:[],      handles:handles, links:[new Link({le:"e1", level:"auto", type:"identity",rel:1, versus:"both"})]}),
-      new Entity({ _id: 'e6', type: 'position', name: 'Home',      desc: 'Home',    path: ['o1','t1'],         level:'auto', photos:[],      handles:handles, links:[]})
+      //Jimmy Page - Target
+      new Entity({
+        _id: 'e1', type: 'target', name: 'Jimmy Page',     
+        desc: 'Head of the terrorist cell',    path: ['o1','t1'],        
+        level:'auto', photos:[],      
+        handles:[
+          new Handle({name:'Jimmy Page', handle:'jimmy.page',type:'facebook'}),
+          new Handle({name:'Jimmy Page', handle:'jimmy.page@gmail.com',type:'gmail'}),
+          new Handle({name:'Jimmy Page', handle:'jimmypage',type:'skype'})],
+        links:[
+          new Link({le:"e2", level:"automatic", type:"peer",rel:2, versus:"out"}), 
+          new Link({le:"e3", level:"automatic", type:"know",rel:0, versus:"both"}), 
+          new Link({le:"e4", level:"automatic", type:"peer",rel:0, versus:"out"}), 
+          new Link({le:"e6", level:"automatic", type:"peer",rel:0, versus:"out"})
+        ],
+        position:new Position({latitude:"34.032153" , longitude:"-118.154563"}),
+        position_attr:new Position_attr({accuracy:"100" , time:convertToUnix(new Date(2012,11,03,14,57,00))})
+      }),
+     
+      
+      //Joey Fargo - Target
+      new Entity({
+        _id: 'e2', type: 'target', name: 'Joey Fargo',
+        desc: 'Smart, computer savvy',    path: ['o1','t3'],       
+        level:'auto', photos:[],      
+        handles:[
+          new Handle({name:'Joey fargo', handle:'joey.fargo',type:'facebook'}),
+          new Handle({name:'Joey', handle:'jfar@gmail.com',type:'gmail'}),
+        ], 
+        links:[
+          new Link({le:"e6", level:"automatic", type:"position",rel:0, versus:"out"})
+        ],
+        position:new Position({latitude:"34.034733" , longitude:"-118.152413"}),
+        position_attr:new Position_attr({accuracy:"30" , time:convertToUnix(new Date(2012,11,03,14,57,00))})
+      }),
+      
+      //Alejandro Reade - Target
+      new Entity({ _id: 'e3', type: 'target', name: 'Alejandro Reade',      desc: 'The tough guy',    path: ['o1','t2'],         level:'auto', photos:[],      handles:[ new Handle({name:'Alejandro R ', handle:'+3256789011',type:'phone'})], links:[new Link({le:"e4", level:"automatic", type:"peer",rel:1, versus:"out"})]}),
+      new Entity({ _id: 'e4', type: 'position', name: 'Office',      
+        desc: 'Jimmy\'s Office',    path: ['o1','t1'],         
+        level:'auto', photos:[],      
+        handles:[], 
+        links:[],
+        position:new Position({latitude:"34.031249" , longitude:"-118.151848"}),
+        position_attr:new Position_attr({accuracy:"60" , time:convertToUnix(new Date(2012,11,03,14,57,00))})
+      }),
+      new Entity({ _id: 'e5', type: 'person', name: 'John Doe',      desc: 'Friend',    path: ['o1','t1'],         level:'manual', photos:[],      handles:[new Handle({name:'Jdoe', handle:'+3456743293',type:'phone'})], links:[new Link({le:"e1", level:"automatic", type:"know",rel:1, versus:"both"})]}),
+      new Entity({ _id: 'e7', type: 'person', name: 'Jane Doe',      desc: 'Friend',    path: ['o1','t1'],         level:'auto', photos:[],      handles:[new Handle({name:'Jdoe', handle:'+3456743293',type:'phone'})], links:[new Link({le:"e5", level:"automatic", type:"identity",rel:1, versus:"both"})]}),
+      new Entity({ _id: 'e6', type: 'position', name: 'Home',      
+        desc: 'Jimmy\'s Home',    path: ['o1','t1'],         
+        level:'auto', photos:[],     
+        handles:[], 
+        links:[],
+        position:new Position({latitude:"34.036531" , longitude:"-118.157120"}),
+        position_attr:new Position_attr({accuracy:"100" , time:convertToUnix(new Date(2012,11,03,14,57,00))})
+      }),
+      new Entity({ _id: 'e8', type: 'virtual', name: 'Discussion Forum',      
+        desc: 'Terrorists favourite web forum',    path: ['o1','t1'],         
+        level:'auto', photos:[],     
+        handles:[new Handle({name:'Main website', handle:'www.howtomakeabomb.com',type:'url'})], 
+        links:[new Link({le:"e1", level:"automatic", type:"peer",rel:0, versus:"out"}), new Link({le:"e2", level:"automatic", type:"peer",rel:0, versus:"out"})]
+
+      })
+      
     ]);
     
     
@@ -72,43 +126,7 @@ package it.ht.rcs.console.entities.rest
       //TODO !!!Ì
       
       var result:Entity=getEntityById(id)
-      
-      var position:Position=new Position;
-      if(id=="e1" )
-      {
-      position.latitude="34.034153"
-      position.longitude="-118.154563"
-      }
-      else if(id=="e4")
-      {
-        position.latitude="34.032463"
-        position.longitude="-118.159583"
-      }
-      
-      else if(id=="e6")
-      {
-        position.latitude="34.034471"
-        position.longitude="-118.156593"
-      }
-      
-      var position_attr:Position_attr=new Position_attr()
-      if(id=="e1")
-      {
-      position_attr.accuracy="200";
-      position_attr.time=convertToUnix(new Date(2012,11,03,14,57,00))
-      }
-      else if(id=="e4")
-      {
-        position_attr.accuracy="150";
-        position_attr.time=convertToUnix(new Date(2012,11,03,14,57,00))
-      }
-      else if(id=="e6")
-      {
-        position_attr.accuracy="100";
-        position_attr.time=convertToUnix(new Date(2012,11,03,14,57,00))
-      }
-      result.position=position;
-      result.position_attr=position_attr;
+     
       if (onResult != null)
         onResult(new ResultEvent('entity.show', false, true, result));
     }
@@ -173,25 +191,67 @@ package it.ht.rcs.console.entities.rest
     
     public function most_visited(entityId:String, from:String, to:String, num:String, onResult:Function=null, onFault:Function=null):void
     {
-     
+     var result:ArrayCollection=new ArrayCollection()
+       result.addItem({host:"www.cnn.com", count:500, percent:50})
+       result.addItem({host:"www.howtomakeabomb.com", count:200, percent:20})
+       result.addItem({host:"www.facebook.com", count:200, percent:15})
+       result.addItem({host:"www.gmail.com", count:200, percent:15})
+      
+      if (onResult != null)
+        onResult(new ResultEvent('entity.most_contacted', false, true, result));
     }
     
     public function most_contacted(entityId:String, from:String, to:String, num:String, onResult:Function=null, onFault:Function=null):void
     {
       var result:ArrayCollection=new ArrayCollection();
       var contacts:Array=new Array();
-      contacts.push(new Contact({peer:"johndoe",   type:"facebook",    count:15.0,   size:208.0,   percent:75,   peer_name:"John Doe"}));
-      contacts.push(new Contact({peer:"j.fargo",   type:"facebook",    count:5.0,   size:208.0,    percent:25,   peer_name:"Joey Fargo"}));
-      result.addItem(contacts);
-      contacts=new Array();
-      contacts.push(new Contact({peer:"003214567",   type:"whatsapp",    count:13,   size:208.0,   percent:50,   peer_name:"Alejandro Reade"}));
-      contacts.push(new Contact({peer:"547685469",   type:"whatsapp",    count:13,   size:208.0,   percent:50,   peer_name:"Joey Fargo"}));
-      result.addItem(contacts);
-      contacts=new Array();
-      contacts.push(new Contact({peer:"john.doe",   type:"skype",    count:30,   size:208.0,   percent:60,   peer_name:"John Doe"}));
-      contacts.push(new Contact({peer:"alejandroreade",   type:"skype",    count:12,   size:208.0,   percent:24,   peer_name:"Alejandro Reade"}));
-      contacts.push(new Contact({peer:"joeyfargo",   type:"skype",    count:8,   size:208.0,   percent:16,   peer_name:"Joey Fargo"}));
-      result.addItem(contacts);
+      if(entityId=="e1")
+      {
+        contacts.push(new Contact({peer:"johndoe",   type:"facebook",    count:15.0,   size:208.0,   percent:75,   peer_name:"John Doe"}));
+        contacts.push(new Contact({peer:"j.fargo",   type:"facebook",    count:5.0,   size:208.0,    percent:25,   peer_name:"Joey Fargo"}));
+        result.addItem(contacts);
+        contacts=new Array();
+        contacts.push(new Contact({peer:"003214567",   type:"whatsapp",    count:13,   size:208.0,   percent:50,   peer_name:"Alejandro Reade"}));
+        contacts.push(new Contact({peer:"547685469",   type:"whatsapp",    count:13,   size:208.0,   percent:50,   peer_name:"Joey Fargo"}));
+        result.addItem(contacts);
+        contacts=new Array();
+        contacts.push(new Contact({peer:"john.doe",         type:"skype",    count:30,   size:208.0,   percent:60,   peer_name:"John Doe"}));
+        contacts.push(new Contact({peer:"alejandroreade",   type:"skype",    count:12,   size:208.0,   percent:24,   peer_name:"Alejandro Reade"}));
+        contacts.push(new Contact({peer:"joeyfargo",        type:"skype",    count:8,    size:208.0,   percent:16,   peer_name:"Joey Fargo"}));
+        result.addItem(contacts);
+      }
+      
+      if(entityId=="e2")
+      {
+        contacts.push(new Contact({peer:"jimmypage",   type:"facebook",    count:15.0,   size:208.0,   percent:75,   peer_name:"John Doe"}));
+        contacts.push(new Contact({peer:"alejandro",   type:"facebook",    count:5.0,   size:208.0,    percent:25,   peer_name:"Alejandro Reade"}));
+        result.addItem(contacts);
+        contacts=new Array();
+        contacts.push(new Contact({peer:"1278615469",   type:"whatsapp",    count:13,   size:208.0,   percent:50,   peer_name:"Alejandro Reade"}));
+        contacts.push(new Contact({peer:"3247915422",   type:"whatsapp",    count:13,   size:208.0,   percent:50,   peer_name:"Jimmy"}));
+        result.addItem(contacts);
+        contacts=new Array();
+        contacts.push(new Contact({peer:"john.doe",         type:"skype",    count:30,   size:208.0,   percent:60,   peer_name:"John Doe"}));
+        contacts.push(new Contact({peer:"alejandroreade",   type:"skype",    count:12,   size:208.0,   percent:24,   peer_name:"Alejandro Reade"}));
+       
+        result.addItem(contacts);
+      }
+      
+      if(entityId=="e3")
+      {
+        contacts.push(new Contact({peer:"jimmypage",   type:"facebook",    count:15.0,   size:208.0,   percent:75,   peer_name:"John Doe"}));
+        contacts.push(new Contact({peer:"joeyfargo",   type:"facebook",    count:5.0,   size:208.0,    percent:25,   peer_name:"Joey Fargo"}));
+        result.addItem(contacts);
+        contacts=new Array();
+        contacts.push(new Contact({peer:"1278615469",   type:"whatsapp",    count:13,   size:208.0,   percent:50,   peer_name:"Alejandro Reade"}));
+        contacts.push(new Contact({peer:"3247915422",   type:"whatsapp",    count:13,   size:208.0,   percent:50,   peer_name:"Joey Fargo"}));
+        result.addItem(contacts);
+        contacts=new Array();
+        contacts.push(new Contact({peer:"john.doe",         type:"skype",    count:30,   size:208.0,   percent:60,   peer_name:"John Doe"}));
+        contacts.push(new Contact({peer:"joeyfargo",   type:"skype",    count:12,   size:208.0,   percent:24,   peer_name:"Joey Fargo"}));
+        
+        result.addItem(contacts);
+      }
       
       
       if (onResult != null)
@@ -200,7 +260,15 @@ package it.ht.rcs.console.entities.rest
     
     public function create(params:Object, operation:Operation, onResult:Function=null, onFault:Function=null):void
     {
-    
+      params._id = new Date().time.toString();
+      params.position=new Position()
+      params.position_attr=new Position_attr()
+      var entity:Entity = new Entity(params);
+      entity.path = [operation._id];
+      entities.addItem(entity);
+      DBSearchDemo.addItemAsSearchItem(entity, 0, null);
+      if (onResult != null)
+        onResult(new ResultEvent('entity.create', false, true, entity));
     }
   }
   
