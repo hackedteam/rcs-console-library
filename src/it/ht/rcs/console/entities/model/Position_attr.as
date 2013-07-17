@@ -27,7 +27,16 @@ public class Position_attr extends _Super_Position_attr
      * Calling this static function will initialize RemoteClass aliases
      * for this value object as well as all of the value objects corresponding
      * to entities associated to this value object's entity.  
-     */     
+     */
+  function Position_attr(data:Object=null)
+  {
+    if(data)
+    {
+      this.time=data.time;
+      this.accuracy=data.accuracy;
+    }
+    
+  }
     public static function _initRemoteClassAlias() : void
     {
         _Super_Position_attr.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.entities.model.Position_attr);
