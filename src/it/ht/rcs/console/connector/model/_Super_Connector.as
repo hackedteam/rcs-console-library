@@ -61,6 +61,8 @@ public class _Super_Connector extends flash.events.EventDispatcher implements co
     private var _internal_path : ArrayCollection;
     private var _internal_created_at : String;
     private var _internal_type : String;
+    private var _internal_format : String;
+    private var _internal_status : int;
     private var _internal_keep : Boolean;
 
     private static var emptyArray:Array = new Array();
@@ -85,6 +87,7 @@ public class _Super_Connector extends flash.events.EventDispatcher implements co
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "path", model_internal::setterListenerPath));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "created_at", model_internal::setterListenerCreated_at));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "type", model_internal::setterListenerType));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "format", model_internal::setterListenerFormat));
 
     }
 
@@ -144,6 +147,18 @@ public class _Super_Connector extends flash.events.EventDispatcher implements co
     public function get type() : String
     {
         return _internal_type;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get format() : String
+    {
+        return _internal_format;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get status() : int
+    {
+        return _internal_status;
     }
 
     [Bindable(event="propertyChange")]
@@ -265,6 +280,26 @@ public class _Super_Connector extends flash.events.EventDispatcher implements co
         }
     }
 
+    public function set format(value:String) : void
+    {
+        var oldValue:String = _internal_format;
+        if (oldValue !== value)
+        {
+            _internal_format = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "format", oldValue, _internal_format));
+        }
+    }
+
+    public function set status(value:int) : void
+    {
+        var oldValue:int = _internal_status;
+        if (oldValue !== value)
+        {
+            _internal_status = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "status", oldValue, _internal_status));
+        }
+    }
+
     public function set keep(value:Boolean) : void
     {
         var oldValue:Boolean = _internal_keep;
@@ -329,6 +364,11 @@ public class _Super_Connector extends flash.events.EventDispatcher implements co
         _model.invalidateDependentOnType();
     }
 
+    model_internal function setterListenerFormat(value:flash.events.Event):void
+    {
+        _model.invalidateDependentOnFormat();
+    }
+
 
     /**
      * valid related derived properties
@@ -340,7 +380,6 @@ public class _Super_Connector extends flash.events.EventDispatcher implements co
     /**
      * derived property calculators
      */
-    
 
     /**
      * isValid calculator
@@ -385,6 +424,11 @@ public class _Super_Connector extends flash.events.EventDispatcher implements co
         {
             propertyValidity = false;
             com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_typeValidationFailureMessages);
+        }
+        if (!_model.formatIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_formatValidationFailureMessages);
         }
 
         model_internal::_cacheInitialized_isValid = true;
@@ -650,6 +694,33 @@ public class _Super_Connector extends flash.events.EventDispatcher implements co
 
         model_internal::_doValidationCacheOfType = validationFailures;
         model_internal::_doValidationLastValOfType = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfFormat : Array = null;
+    model_internal var _doValidationLastValOfFormat : String;
+
+    model_internal function _doValidationForFormat(valueIn:Object):Array
+    {
+        var value : String = valueIn as String;
+
+        if (model_internal::_doValidationCacheOfFormat != null && model_internal::_doValidationLastValOfFormat == value)
+           return model_internal::_doValidationCacheOfFormat ;
+
+        _model.model_internal::_formatIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isFormatAvailable && _internal_format == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "format is required"));
+        }
+
+        model_internal::_doValidationCacheOfFormat = validationFailures;
+        model_internal::_doValidationLastValOfFormat = value;
 
         return validationFailures;
     }

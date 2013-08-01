@@ -84,7 +84,6 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     private var _internal_access : int;
     private var _internal_from : String;
     private var _internal_incoming : Boolean;
-    private var _internal_draft : Boolean;
     private var _internal_from_display : String;
     private var _internal_rcpt : String;
     private var _internal_rcpt_display : String;
@@ -315,12 +314,6 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     public function get incoming() : Boolean
     {
         return _internal_incoming;
-    }
-    
-    [Bindable(event="propertyChange")]
-    public function get draft() : Boolean
-    {
-      return _internal_draft;
     }
 
     [Bindable(event="propertyChange")]
@@ -760,15 +753,6 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "incoming", oldValue, _internal_incoming));
         }
     }
-    public function set draft(value:Boolean) : void
-    {
-      var oldValue:Boolean = _internal_draft;
-      if (oldValue !== value)
-      {
-        _internal_draft = value;
-        this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "draft", oldValue, _internal_draft));
-      }
-    }
 
     public function set from_display(value:String) : void
     {
@@ -1008,7 +992,6 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     /**
      * derived property calculators
      */
-    
 
     /**
      * isValid calculator

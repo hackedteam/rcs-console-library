@@ -271,7 +271,6 @@ public class _Super_EvidenceDataCell extends flash.events.EventDispatcher implem
     /**
      * derived property calculators
      */
-    
 
     /**
      * isValid calculator
