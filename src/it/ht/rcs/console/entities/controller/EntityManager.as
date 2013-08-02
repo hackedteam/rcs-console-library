@@ -127,10 +127,10 @@ package it.ht.rcs.console.entities.controller
     {
       EntityManager.instance.show(e.data.id as String);
 
-      if (e.data.action == "destroy") {
-        EntityManager.instance.refresh();
-        EntityManager.instance.dispatchEvent(new Event(e.data.action));
-      }
+    
+        //EntityManager.instance.refresh();
+        //EntityManager.instance.dispatchEvent(new Event(e.data.action));
+     
     }
 
     public function getEntityById(id:String):Entity
