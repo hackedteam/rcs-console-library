@@ -59,7 +59,6 @@ package it.ht.rcs.console.push
       socket = new EMWebSocket("wss://" + host + ":" + port.toString() + "/");
       socket.addEventListener(EMWebSocketEvent.CONNECT, onConnect);
       socket.addEventListener(EMWebSocketEvent.MESSAGE, onMessage);
-
       socket.addEventListener(EMWebSocketEvent.CLOSE, onClose);
 //      socket.addEventListener(EMWebSocketEvent.IO_ERROR, onError);
 //      socket.addEventListener(EMWebSocketEvent.CONNECT_ERROR, onError);
