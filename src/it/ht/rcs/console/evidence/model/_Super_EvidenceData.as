@@ -767,7 +767,7 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
       if (oldValue !== value)
       {
         _internal_draft = value;
-        this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "draft", oldValue, _internal_draft));
+        this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "draft", oldValue, _internal_incoming));
       }
     }
 
