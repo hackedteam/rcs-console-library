@@ -118,16 +118,20 @@ package it.ht.rcs.console.entities.controller
       DB.instance.entity.most_contacted(entityId, from, to, num, onResult, onFault);
     }
     
-    public function mostVisited(entityId:String, from:String, to:String, num:String, onResult:Function, onFault:Function = null):void
+    public function mostVisitedUrls(entityId:String, from:String, to:String, num:String, onResult:Function, onFault:Function = null):void
     {
-      DB.instance.entity.most_visited(entityId, from, to, num, onResult, onFault);
+      DB.instance.entity.most_visited_urls(entityId, from, to, num, onResult, onFault);
+    }
+    
+    public function mostVisitedPlaces(entityId:String, from:String, to:String, num:String, onResult:Function, onFault:Function = null):void
+    {
+      DB.instance.entity.most_visited_places(entityId, from, to, num, onResult, onFault);
     }
 
     private function onEntityPush(e:PushEvent):void
     {
       EntityManager.instance.show(e.data.id as String);
 
-    
         //EntityManager.instance.refresh();
         //EntityManager.instance.dispatchEvent(new Event(e.data.action));
      
