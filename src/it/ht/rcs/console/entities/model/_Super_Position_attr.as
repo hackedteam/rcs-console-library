@@ -145,6 +145,7 @@ public class _Super_Position_attr extends flash.events.EventDispatcher implement
     /**
      * derived property calculators
      */
+    
 
     /**
      * isValid calculator

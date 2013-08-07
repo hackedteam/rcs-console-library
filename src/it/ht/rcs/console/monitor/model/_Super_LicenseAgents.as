@@ -580,6 +580,7 @@ public class _Super_LicenseAgents extends flash.events.EventDispatcher implement
     /**
      * derived property calculators
      */
+    
 
     /**
      * isValid calculator

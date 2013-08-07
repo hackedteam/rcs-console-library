@@ -380,6 +380,7 @@ public class _Super_Connector extends flash.events.EventDispatcher implements co
     /**
      * derived property calculators
      */
+    
 
     /**
      * isValid calculator

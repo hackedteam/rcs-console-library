@@ -151,6 +151,7 @@ public class _Super_LicenseCollectors extends flash.events.EventDispatcher imple
     /**
      * derived property calculators
      */
+    
 
     /**
      * isValid calculator

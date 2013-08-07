@@ -60,6 +60,8 @@ public class _Super_BackupArchive extends flash.events.EventDispatcher implement
 
     private static var emptyArray:Array = new Array();
 
+    // Change this value according to your application's floating-point precision
+    private static var epsilon:Number = 0.0001;
 
     /**
      * derived property cache initialization
@@ -183,8 +185,8 @@ public class _Super_BackupArchive extends flash.events.EventDispatcher implement
         var oldValue:int = _internal_size;
         if (oldValue !== value)
         {
-            _internal_size = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "size", oldValue, _internal_size));
+          _internal_size = value;
+          this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "size", oldValue, _internal_size));
         }
     }
 
@@ -231,6 +233,7 @@ public class _Super_BackupArchive extends flash.events.EventDispatcher implement
     /**
      * derived property calculators
      */
+    
 
     /**
      * isValid calculator

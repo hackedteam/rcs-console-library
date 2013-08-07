@@ -87,7 +87,7 @@ internal class _BackupArchiveEntityMetadata extends com.adobe.fiber.valueobjects
         model_internal::propertyTypeMap["what"] = "String";
         model_internal::propertyTypeMap["incremental"] = "Boolean";
         model_internal::propertyTypeMap["name"] = "String";
-        model_internal::propertyTypeMap["size"] = "int";
+        model_internal::propertyTypeMap["size"] = "Number";
 
         model_internal::_instance = value;
         model_internal::__idValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationFor_id);
