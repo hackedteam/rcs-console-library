@@ -5418,7 +5418,7 @@
     <property name="what" type="string" required="true"/>
     <property name="incremental" type="boolean" required="true"/>
     <property name="name" type="string" required="true"/>
-    <property name="size" type="integer" required="true"/>
+    <property name="size" type="double" required="true"/>
   </entity>
   <entity name="BackupJobTime">
     <annotation name="EntityProperties">
