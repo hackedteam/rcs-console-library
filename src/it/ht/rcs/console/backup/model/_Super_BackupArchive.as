@@ -53,6 +53,8 @@ public class _Super_BackupArchive extends flash.events.EventDispatcher implement
      */
     private var _internal__id : String;
     private var _internal_when : String;
+    private var _internal_what : String;
+    private var _internal_incremental : Boolean;
     private var _internal_name : String;
     private var _internal_size : int;
 
@@ -73,6 +75,7 @@ public class _Super_BackupArchive extends flash.events.EventDispatcher implement
         // Bind to own data or source properties for cache invalidation triggering
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "_id", model_internal::setterListener_id));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "when", model_internal::setterListenerWhen));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "what", model_internal::setterListenerWhat));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "name", model_internal::setterListenerName));
 
     }
@@ -91,6 +94,18 @@ public class _Super_BackupArchive extends flash.events.EventDispatcher implement
     public function get when() : String
     {
         return _internal_when;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get what() : String
+    {
+        return _internal_what;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get incremental() : Boolean
+    {
+        return _internal_incremental;
     }
 
     [Bindable(event="propertyChange")]
@@ -130,6 +145,26 @@ public class _Super_BackupArchive extends flash.events.EventDispatcher implement
         {
             _internal_when = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "when", oldValue, _internal_when));
+        }
+    }
+
+    public function set what(value:String) : void
+    {
+        var oldValue:String = _internal_what;
+        if (oldValue !== value)
+        {
+            _internal_what = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "what", oldValue, _internal_what));
+        }
+    }
+
+    public function set incremental(value:Boolean) : void
+    {
+        var oldValue:Boolean = _internal_incremental;
+        if (oldValue !== value)
+        {
+            _internal_incremental = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "incremental", oldValue, _internal_incremental));
         }
     }
 
@@ -175,6 +210,11 @@ public class _Super_BackupArchive extends flash.events.EventDispatcher implement
         _model.invalidateDependentOnWhen();
     }
 
+    model_internal function setterListenerWhat(value:flash.events.Event):void
+    {
+        _model.invalidateDependentOnWhat();
+    }
+
     model_internal function setterListenerName(value:flash.events.Event):void
     {
         _model.invalidateDependentOnName();
@@ -191,7 +231,6 @@ public class _Super_BackupArchive extends flash.events.EventDispatcher implement
     /**
      * derived property calculators
      */
-    
 
     /**
      * isValid calculator
@@ -211,6 +250,11 @@ public class _Super_BackupArchive extends flash.events.EventDispatcher implement
         {
             propertyValidity = false;
             com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_whenValidationFailureMessages);
+        }
+        if (!_model.whatIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_whatValidationFailureMessages);
         }
         if (!_model.nameIsValid)
         {
@@ -346,6 +390,33 @@ public class _Super_BackupArchive extends flash.events.EventDispatcher implement
 
         model_internal::_doValidationCacheOfWhen = validationFailures;
         model_internal::_doValidationLastValOfWhen = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfWhat : Array = null;
+    model_internal var _doValidationLastValOfWhat : String;
+
+    model_internal function _doValidationForWhat(valueIn:Object):Array
+    {
+        var value : String = valueIn as String;
+
+        if (model_internal::_doValidationCacheOfWhat != null && model_internal::_doValidationLastValOfWhat == value)
+           return model_internal::_doValidationCacheOfWhat ;
+
+        _model.model_internal::_whatIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isWhatAvailable && _internal_what == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "what is required"));
+        }
+
+        model_internal::_doValidationCacheOfWhat = validationFailures;
+        model_internal::_doValidationLastValOfWhat = value;
 
         return validationFailures;
     }
