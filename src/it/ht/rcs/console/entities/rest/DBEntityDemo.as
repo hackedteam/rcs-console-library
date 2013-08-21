@@ -273,6 +273,11 @@ package it.ht.rcs.console.entities.rest
       if (onResult != null)
         onResult(new ResultEvent('entity.create', false, true, entity));
     }
+    
+    public function flow(entities:Array, from:String, to:String, onResult:Function=null, onFault:Function=null):void
+    {
+      
+    }
   }
   
 }

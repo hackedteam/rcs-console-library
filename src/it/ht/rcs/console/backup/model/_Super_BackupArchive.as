@@ -56,7 +56,7 @@ public class _Super_BackupArchive extends flash.events.EventDispatcher implement
     private var _internal_what : String;
     private var _internal_incremental : Boolean;
     private var _internal_name : String;
-    private var _internal_size : int;
+    private var _internal_size : Number;
 
     private static var emptyArray:Array = new Array();
 
@@ -117,7 +117,7 @@ public class _Super_BackupArchive extends flash.events.EventDispatcher implement
     }
 
     [Bindable(event="propertyChange")]
-    public function get size() : int
+    public function get size() : Number
     {
         return _internal_size;
     }
@@ -180,13 +180,13 @@ public class _Super_BackupArchive extends flash.events.EventDispatcher implement
         }
     }
 
-    public function set size(value:int) : void
+    public function set size(value:Number) : void
     {
-        var oldValue:int = _internal_size;
-        if (oldValue !== value)
+        var oldValue:Number = _internal_size;
+        if (isNaN(_internal_size) == true || Math.abs(oldValue - value) > epsilon)
         {
-          _internal_size = value;
-          this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "size", oldValue, _internal_size));
+            _internal_size = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "size", oldValue, _internal_size));
         }
     }
 
