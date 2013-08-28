@@ -8,7 +8,6 @@
 package it.ht.rcs.console.backup.rest
 {
   
-  
   import it.ht.rcs.console.DB;
   import it.ht.rcs.console.backup.model.BackupArchive;
   import it.ht.rcs.console.backup.model.BackupJob;
