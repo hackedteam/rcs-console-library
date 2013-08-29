@@ -52,13 +52,13 @@ package it.ht.rcs.console.entities.controller
 
         if (e == null)
           addItem(re.result);
-        //SearchManager.instance.showItem(_id);
+        SearchManager.instance.showItem(_id);
 
         if (onResult != null)
           onResult(re);
       }, function(fe:FaultEvent):void
       {
-        //SearchManager.instance.showItem(_id);
+        SearchManager.instance.showItem(_id);
       });
     }
 
@@ -177,7 +177,7 @@ package it.ht.rcs.console.entities.controller
         var entity:Entity = e.result as Entity;
         addItem(entity);
         refresh()
-        //SearchManager.instance.showItem(entity._id);
+        SearchManager.instance.showItem(entity._id);
         callback(entity);
       });
     }

@@ -30,6 +30,7 @@ public class _Super_Session extends flash.events.EventDispatcher implements com.
     model_internal static function initRemoteClassAliasAllRelated() : void
     {
         it.ht.rcs.console.accounting.model.User.initRemoteClassAliasSingleChild();
+        it.ht.rcs.console.accounting.model.Recent_ids.initRemoteClassAliasSingleChild();
     }
 
     model_internal var _dminternal_model : _SessionEntityMetadata;

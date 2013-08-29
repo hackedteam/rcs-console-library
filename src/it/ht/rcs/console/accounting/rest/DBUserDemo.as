@@ -59,9 +59,9 @@ package it.ht.rcs.console.accounting.rest
       /* do nothing */
     }
     
-    public function add_recent(user:User, id:String, onResult:Function=null, onFault:Function=null):void
+    public function add_recent(item:Object, onResult:Function=null, onFault:Function=null):void
     {
-      if (user.recent_ids.getItemIndex(id) == -1)
+     /* if (user.recent_ids.getItemIndex(id) == -1)
       {
         user.recent_ids.addItemAt(id, 0);
         if (user.recent_ids.length > 5)
@@ -69,7 +69,7 @@ package it.ht.rcs.console.accounting.rest
       }
       
       if (onResult != null)
-        onResult(new ResultEvent('user.add_recent', false, true, user));
+        onResult(new ResultEvent('user.add_recent', false, true, user));*/
     }
     
     public function message(id:String, text:String):void
