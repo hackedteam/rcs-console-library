@@ -83,6 +83,7 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     private var _internal_spool : String;
     private var _internal_access : int;
     private var _internal_from : String;
+    private var _internal_caller : String;
     private var _internal_incoming : Boolean;
     private var _internal_draft : Boolean;
     private var _internal_from_display : String;
@@ -309,6 +310,12 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     public function get from() : String
     {
         return _internal_from;
+    }
+    
+    [Bindable(event="propertyChange")]
+    public function get caller() : String
+    {
+      return _internal_caller;
     }
 
     [Bindable(event="propertyChange")]
@@ -749,6 +756,16 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
             _internal_from = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "from", oldValue, _internal_from));
         }
+    }
+    
+    public function set caller(value:String) : void
+    {
+      var oldValue:String = _internal_caller;
+      if (oldValue !== value)
+      {
+        _internal_caller = value;
+        this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "caller", oldValue, _internal_caller));
+      }
     }
 
     public function set incoming(value:Boolean) : void
