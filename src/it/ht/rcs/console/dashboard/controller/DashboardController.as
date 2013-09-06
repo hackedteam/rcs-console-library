@@ -245,7 +245,9 @@ package it.ht.rcs.console.dashboard.controller
       UserManager.instance.update(_user, {dashboard_ids: _dashboard_ids.source});
       
       SearchManager.instance.showItem(id, function (item:SearchItem):void {
-        UserManager.instance.add_recent(_user, item);
+        
+        var o:Object={id:item._id, section:"operations", type:item._kind}
+        UserManager.instance.add_recent(_user, o);
         manageItem(item);
       }, function(fe:FaultEvent):void {}); // Do nothing when disconnected.
     }

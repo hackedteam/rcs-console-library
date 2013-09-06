@@ -136,7 +136,13 @@ package it.ht.rcs.console.entities.rest
     public function flow(entities:Array, from:String, to:String, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = flow_(JSON.stringify({entities:entities, from:from, to:to}));
+      resp.token = flow_(JSON.stringify({ids:entities, from:from, to:to}));
+    }
+    
+    public function positions(entities:Array, from:String, to:String, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = positions_(JSON.stringify({ids:entities, from:from, to:to}));
     }
     
     public function add_photo(fileReference:FileReference, id:String, onResult:Function = null, onFault:Function = null):void

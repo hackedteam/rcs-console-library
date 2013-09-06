@@ -50,6 +50,8 @@ package it.ht.rcs.console.entities.rest
     function merge(entity1:String, entity2:String, onResult:Function=null, onFault:Function=null):void;
     
     function flow(entities:Array, from:String, to:String, onResult:Function=null, onFault:Function=null):void;
+    
+    function positions(entities:Array, from:String, to:String, onResult:Function=null, onFault:Function=null):void;
   
     
   }

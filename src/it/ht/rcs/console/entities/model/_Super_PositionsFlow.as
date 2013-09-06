@@ -1,6 +1,6 @@
 /**
  * This is a generated class and is not intended for modification.  To customize behavior
- * of this value object you may modify the generated sub-class of this class - Position.as.
+ * of this value object you may modify the generated sub-class of this class - PositionsFlow.as.
  */
 
 package it.ht.rcs.console.entities.model
@@ -10,8 +10,10 @@ import com.adobe.fiber.util.FiberUtils;
 import com.adobe.fiber.valueobjects.IValueObject;
 import flash.events.Event;
 import flash.events.EventDispatcher;
+import it.ht.rcs.console.entities.model.Positions;
 import mx.binding.utils.ChangeWatcher;
 import mx.collections.ArrayCollection;
+import mx.events.CollectionEvent;
 import mx.events.PropertyChangeEvent;
 import mx.validators.ValidationResult;
 
@@ -24,7 +26,7 @@ import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 use namespace model_internal;
 
 [ExcludeClass]
-public class _Super_Position extends flash.events.EventDispatcher implements com.adobe.fiber.valueobjects.IValueObject
+public class _Super_PositionsFlow extends flash.events.EventDispatcher implements com.adobe.fiber.valueobjects.IValueObject
 {
     model_internal static function initRemoteClassAliasSingle(cz:Class) : void
     {
@@ -32,9 +34,11 @@ public class _Super_Position extends flash.events.EventDispatcher implements com
 
     model_internal static function initRemoteClassAliasAllRelated() : void
     {
+        it.ht.rcs.console.entities.model.Positions.initRemoteClassAliasSingleChild();
+        it.ht.rcs.console.entities.model.Position.initRemoteClassAliasSingleChild();
     }
 
-    model_internal var _dminternal_model : _PositionEntityMetadata;
+    model_internal var _dminternal_model : _PositionsFlowEntityMetadata;
     model_internal var _changedObjects:mx.collections.ArrayCollection = new ArrayCollection();
 
     public function getChangedObjects() : Array
@@ -51,16 +55,12 @@ public class _Super_Position extends flash.events.EventDispatcher implements com
     /**
      * properties
      */
-    private var _internal_longitude : String;
-    private var _internal_latitude : String;
-    private var _internal_lon : Number = Number(0);
-    private var _internal_rad : Number = Number(0);
-    private var _internal_lat : Number = Number(0);
+    private var _internal_positions : ArrayCollection;
+    model_internal var _internal_positions_leaf:it.ht.rcs.console.entities.model.Positions;
+    private var _internal_time : int;
 
     private static var emptyArray:Array = new Array();
 
-    // Change this value according to your application's floating-point precision
-    private static var epsilon:Number = 0.0001;
 
     /**
      * derived property cache initialization
@@ -69,13 +69,12 @@ public class _Super_Position extends flash.events.EventDispatcher implements com
 
     model_internal var _changeWatcherArray:Array = new Array();
 
-    public function _Super_Position()
+    public function _Super_PositionsFlow()
     {
-        _model = new _PositionEntityMetadata(this);
+        _model = new _PositionsFlowEntityMetadata(this);
 
         // Bind to own data or source properties for cache invalidation triggering
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "longitude", model_internal::setterListenerLongitude));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "latitude", model_internal::setterListenerLatitude));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "positions", model_internal::setterListenerPositions));
 
     }
 
@@ -84,33 +83,15 @@ public class _Super_Position extends flash.events.EventDispatcher implements com
      */
 
     [Bindable(event="propertyChange")]
-    public function get longitude() : String
+    public function get positions() : ArrayCollection
     {
-        return _internal_longitude;
+        return _internal_positions;
     }
 
     [Bindable(event="propertyChange")]
-    public function get latitude() : String
+    public function get time() : int
     {
-        return _internal_latitude;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get lon() : Number
-    {
-        return _internal_lon;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get rad() : Number
-    {
-        return _internal_rad;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get lat() : Number
-    {
-        return _internal_lat;
+        return _internal_time;
     }
 
     public function clearAssociations() : void
@@ -121,53 +102,38 @@ public class _Super_Position extends flash.events.EventDispatcher implements com
      * data/source property setters
      */
 
-    public function set longitude(value:String) : void
+    public function set positions(value:*) : void
     {
-        var oldValue:String = _internal_longitude;
+        var oldValue:ArrayCollection = _internal_positions;
         if (oldValue !== value)
         {
-            _internal_longitude = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "longitude", oldValue, _internal_longitude));
+            if (value is ArrayCollection)
+            {
+                _internal_positions = value;
+            }
+            else if (value is Array)
+            {
+                _internal_positions = new ArrayCollection(value);
+            }
+            else if (value == null)
+            {
+                _internal_positions = null;
+            }
+            else
+            {
+                throw new Error("value of positions must be a collection");
+            }
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "positions", oldValue, _internal_positions));
         }
     }
 
-    public function set latitude(value:String) : void
+    public function set time(value:int) : void
     {
-        var oldValue:String = _internal_latitude;
+        var oldValue:int = _internal_time;
         if (oldValue !== value)
         {
-            _internal_latitude = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "latitude", oldValue, _internal_latitude));
-        }
-    }
-
-    public function set lon(value:Number) : void
-    {
-        var oldValue:Number = _internal_lon;
-        if (isNaN(_internal_lon) == true || Math.abs(oldValue - value) > epsilon)
-        {
-            _internal_lon = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "lon", oldValue, _internal_lon));
-        }
-    }
-
-    public function set rad(value:Number) : void
-    {
-        var oldValue:Number = _internal_rad;
-        if (isNaN(_internal_rad) == true || Math.abs(oldValue - value) > epsilon)
-        {
-            _internal_rad = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "rad", oldValue, _internal_rad));
-        }
-    }
-
-    public function set lat(value:Number) : void
-    {
-        var oldValue:Number = _internal_lat;
-        if (isNaN(_internal_lat) == true || Math.abs(oldValue - value) > epsilon)
-        {
-            _internal_lat = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "lat", oldValue, _internal_lat));
+            _internal_time = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "time", oldValue, _internal_time));
         }
     }
 
@@ -183,14 +149,16 @@ public class _Super_Position extends flash.events.EventDispatcher implements com
      *  - the validity of the property (and the containing entity) if the given data property is required.
      */
 
-    model_internal function setterListenerLongitude(value:flash.events.Event):void
+    model_internal function setterListenerPositions(value:flash.events.Event):void
     {
-        _model.invalidateDependentOnLongitude();
-    }
-
-    model_internal function setterListenerLatitude(value:flash.events.Event):void
-    {
-        _model.invalidateDependentOnLatitude();
+        if (value is mx.events.PropertyChangeEvent)
+        {
+            if (mx.events.PropertyChangeEvent(value).newValue)
+            {
+                mx.events.PropertyChangeEvent(value).newValue.addEventListener(mx.events.CollectionEvent.COLLECTION_CHANGE, model_internal::setterListenerPositions);
+            }
+        }
+        _model.invalidateDependentOnPositions();
     }
 
 
@@ -215,15 +183,10 @@ public class _Super_Position extends flash.events.EventDispatcher implements com
         var validationFailureMessages:Array = new Array();
 
         var propertyValidity:Boolean = true;
-        if (!_model.longitudeIsValid)
+        if (!_model.positionsIsValid)
         {
             propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_longitudeValidationFailureMessages);
-        }
-        if (!_model.latitudeIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_latitudeValidationFailureMessages);
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_positionsValidationFailureMessages);
         }
 
         model_internal::_cacheInitialized_isValid = true;
@@ -252,14 +215,14 @@ public class _Super_Position extends flash.events.EventDispatcher implements com
 
     [Transient]
     [Bindable(event="propertyChange")]
-    public function get _model() : _PositionEntityMetadata
+    public function get _model() : _PositionsFlowEntityMetadata
     {
         return model_internal::_dminternal_model;
     }
 
-    public function set _model(value : _PositionEntityMetadata) : void
+    public function set _model(value : _PositionsFlowEntityMetadata) : void
     {
-        var oldValue : _PositionEntityMetadata = model_internal::_dminternal_model;
+        var oldValue : _PositionsFlowEntityMetadata = model_internal::_dminternal_model;
         if (oldValue !== value)
         {
             model_internal::_dminternal_model = value;
@@ -304,56 +267,29 @@ public class _Super_Position extends flash.events.EventDispatcher implements com
         }
     }
 
-    model_internal var _doValidationCacheOfLongitude : Array = null;
-    model_internal var _doValidationLastValOfLongitude : String;
+    model_internal var _doValidationCacheOfPositions : Array = null;
+    model_internal var _doValidationLastValOfPositions : ArrayCollection;
 
-    model_internal function _doValidationForLongitude(valueIn:Object):Array
+    model_internal function _doValidationForPositions(valueIn:Object):Array
     {
-        var value : String = valueIn as String;
+        var value : ArrayCollection = valueIn as ArrayCollection;
 
-        if (model_internal::_doValidationCacheOfLongitude != null && model_internal::_doValidationLastValOfLongitude == value)
-           return model_internal::_doValidationCacheOfLongitude ;
+        if (model_internal::_doValidationCacheOfPositions != null && model_internal::_doValidationLastValOfPositions == value)
+           return model_internal::_doValidationCacheOfPositions ;
 
-        _model.model_internal::_longitudeIsValidCacheInitialized = true;
+        _model.model_internal::_positionsIsValidCacheInitialized = true;
         var validationFailures:Array = new Array();
         var errorMessage:String;
         var failure:Boolean;
 
         var valRes:ValidationResult;
-        if (_model.isLongitudeAvailable && _internal_longitude == null)
+        if (_model.isPositionsAvailable && _internal_positions == null)
         {
-            validationFailures.push(new ValidationResult(true, "", "", "longitude is required"));
+            validationFailures.push(new ValidationResult(true, "", "", "positions is required"));
         }
 
-        model_internal::_doValidationCacheOfLongitude = validationFailures;
-        model_internal::_doValidationLastValOfLongitude = value;
-
-        return validationFailures;
-    }
-    
-    model_internal var _doValidationCacheOfLatitude : Array = null;
-    model_internal var _doValidationLastValOfLatitude : String;
-
-    model_internal function _doValidationForLatitude(valueIn:Object):Array
-    {
-        var value : String = valueIn as String;
-
-        if (model_internal::_doValidationCacheOfLatitude != null && model_internal::_doValidationLastValOfLatitude == value)
-           return model_internal::_doValidationCacheOfLatitude ;
-
-        _model.model_internal::_latitudeIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.isLatitudeAvailable && _internal_latitude == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "latitude is required"));
-        }
-
-        model_internal::_doValidationCacheOfLatitude = validationFailures;
-        model_internal::_doValidationLastValOfLatitude = value;
+        model_internal::_doValidationCacheOfPositions = validationFailures;
+        model_internal::_doValidationLastValOfPositions = value;
 
         return validationFailures;
     }

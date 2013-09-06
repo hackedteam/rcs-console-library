@@ -10,6 +10,7 @@ import it.ht.rcs.console.entities.model.Contact;
 import it.ht.rcs.console.entities.model.Entity;
 import it.ht.rcs.console.entities.model.Flow;
 import it.ht.rcs.console.entities.model.Place;
+import it.ht.rcs.console.entities.model.PositionsFlow;
 import it.ht.rcs.console.entities.model.Visit;
 import mx.rpc.AbstractOperation;
 import mx.rpc.AsyncToken;
@@ -161,6 +162,14 @@ internal class _Super_DBEntity extends com.adobe.fiber.services.wrapper.HTTPServ
          operation.serializationFilter = serializer0;
          operation.contentType = "application/xml";
         operation.resultElementType = it.ht.rcs.console.entities.model.Flow;
+         operations.push(operation);
+
+         operation = new mx.rpc.http.Operation(null, "positions_");
+         operation.url = "/entity/positions";
+         operation.method = "POST";
+         operation.serializationFilter = serializer0;
+         operation.contentType = "application/xml";
+        operation.resultElementType = it.ht.rcs.console.entities.model.PositionsFlow;
          operations.push(operation);
 
          _serviceControl.operationList = operations;  
@@ -479,6 +488,24 @@ internal class _Super_DBEntity extends com.adobe.fiber.services.wrapper.HTTPServ
     public function flow_(strXml:String) : mx.rpc.AsyncToken
     {
         var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("flow_");
+        var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(strXml) ;
+        return _internal_token;
+    }
+     
+    /**
+      * This method is a generated wrapper used to call the 'positions_' operation. It returns an mx.rpc.AsyncToken whose
+      * result property will be populated with the result of the operation when the server response is received.
+      * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value.
+      * You can then bind to CallResponder.lastResult or listen for the CallResponder.result or fault events.
+      *
+      * @see mx.rpc.AsyncToken
+      * @see mx.rpc.CallResponder 
+      *
+      * @return an mx.rpc.AsyncToken whose result property will be populated with the result of the operation when the server response is received.
+      */
+    public function positions_(strXml:String) : mx.rpc.AsyncToken
+    {
+        var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("positions_");
         var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(strXml) ;
         return _internal_token;
     }

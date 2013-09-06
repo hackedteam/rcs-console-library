@@ -194,6 +194,11 @@ package it.ht.rcs.console.entities.controller
     {
       DB.instance.entity.flow(entities, from, to, onResult, onFault);
     }
+    
+    public function positions(entities:Array, from:String, to:String,  onResult:Function = null, onFault:Function = null):void
+    {
+      DB.instance.entity.positions(entities, from, to, onResult, onFault);
+    }
 
     override protected function onItemUpdate(event:*):void
     {
