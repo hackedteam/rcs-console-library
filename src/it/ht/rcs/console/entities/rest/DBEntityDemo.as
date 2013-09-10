@@ -279,7 +279,7 @@ package it.ht.rcs.console.entities.rest
       
     }
     
-    public function positions(entities:Array, from:String, to:String, onResult:Function=null, onFault:Function=null):void
+    public function positions(entities:Array, from:String, to:String, summary:Boolean=false, onResult:Function=null, onFault:Function=null):void
     {
       
     }
