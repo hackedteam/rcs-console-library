@@ -29,7 +29,8 @@ package it.ht.rcs.console.update.rest
           new Core({name: 'ios', version: '2013010101'}),
           new Core({name: 'linux', version: '2013010101'}),
           new Core({name: 'symbian', version: '2013010101'}),
-          new Core({name: 'winmo', version: '2013010101'})
+          new Core({name: 'winmo', version: '2013010101'}),
+          new Core({name: 'winphone', version: '2013010101'})
         ]));
       if (onResult != null) 
         onResult(event);
