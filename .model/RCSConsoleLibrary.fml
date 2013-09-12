@@ -5303,12 +5303,12 @@
         <item name="completeURL">http://localhost:4444/entity/positions</item>
       </annotation>
       <annotation name="ValidProperties">
-        <item name="propertySpecifier">positions,time</item>
+        <item name="propertySpecifier">positions,time,alpha</item>
       </annotation>
       <annotation name="original signature">
+        <item name="returnType">opaque</item>
         <item name="inputParamNames">strXml</item>
         <item name="inputParams">string</item>
-        <item name="returnType">opaque</item>
       </annotation>
       <parameter name="strXml" type="string"/>
     </function>
@@ -5501,6 +5501,26 @@
     <property name="host" type="string" required="true"/>
     <property name="count" type="integer" required="true"/>
   </entity>
+  <entity name="PositionsFlow">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">PositionsFlow</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBEntity</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="positions_">
+      <item name="propertySpecifier">positions,time,alpha</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.entities.model</item>
+    </annotation>
+    <property name="positions" type="Positions[]" required="true"/>
+    <property name="time" type="integer" required="true"/>
+    <property name="alpha" type="double" required="true" default="0"/>
+  </entity>
   <entity name="Positions">
     <annotation name="EntityProperties">
       <item name="EntityOriginalName">Positions</item>
@@ -5516,25 +5536,6 @@
     </annotation>
     <property name="position" type="Position" required="true"/>
     <property name="_id" type="string" required="true"/>
-  </entity>
-  <entity name="PositionsFlow">
-    <annotation name="EntityProperties">
-      <item name="EntityOriginalName">PositionsFlow</item>
-    </annotation>
-    <annotation name="service Group">
-      <item name="service">DBEntity</item>
-    </annotation>
-    <annotation name="ServerProperties">
-      <item name="IncludeRemoteClass">nonempty</item>
-    </annotation>
-    <annotation name="positions_">
-      <item name="propertySpecifier">positions,time</item>
-    </annotation>
-    <annotation name="ActionScriptGeneration">
-      <item name="Package">it.ht.rcs.console.entities.model</item>
-    </annotation>
-    <property name="positions" type="Positions[]" required="true"/>
-    <property name="time" type="integer" required="true"/>
   </entity>
   <entity name="Entity">
     <annotation name="EntityProperties">

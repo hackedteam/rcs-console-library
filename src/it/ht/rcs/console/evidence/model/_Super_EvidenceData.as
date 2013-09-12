@@ -311,11 +311,11 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     {
         return _internal_from;
     }
-    
+
     [Bindable(event="propertyChange")]
     public function get caller() : String
     {
-      return _internal_caller;
+        return _internal_caller;
     }
 
     [Bindable(event="propertyChange")]
@@ -757,15 +757,15 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "from", oldValue, _internal_from));
         }
     }
-    
+
     public function set caller(value:String) : void
     {
-      var oldValue:String = _internal_caller;
-      if (oldValue !== value)
-      {
-        _internal_caller = value;
-        this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "caller", oldValue, _internal_caller));
-      }
+        var oldValue:String = _internal_caller;
+        if (oldValue !== value)
+        {
+            _internal_caller = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "caller", oldValue, _internal_caller));
+        }
     }
 
     public function set incoming(value:Boolean) : void

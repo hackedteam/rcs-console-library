@@ -24,14 +24,14 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "body", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "incoming", "draft", "from_display", "rcpt", "rcpt_display", "subject", "url", "title", "keywords", "ip", "latitude", "longitude", "accuracy", "address", "cell", "wifi", "path", "attr", "size", "attach", "command", "tr");
+    model_internal static var allProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "body", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "caller", "incoming", "draft", "from_display", "rcpt", "rcpt_display", "subject", "url", "title", "keywords", "ip", "latitude", "longitude", "accuracy", "address", "cell", "wifi", "path", "attr", "size", "attach", "command", "tr");
     model_internal static var allAssociationProperties:Array = new Array();
     model_internal static var allRequiredProperties:Array = new Array();
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "body", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "incoming", "draft", "from_display", "rcpt", "rcpt_display", "subject", "url", "title", "keywords", "ip", "latitude", "longitude", "accuracy", "address", "cell", "wifi", "path", "attr", "size", "attach", "command", "tr");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "body", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "caller", "incoming", "draft", "from_display", "rcpt", "rcpt_display", "subject", "url", "title", "keywords", "ip", "latitude", "longitude", "accuracy", "address", "cell", "wifi", "path", "attr", "size", "attach", "command", "tr");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "body", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "incoming", "draft", "from_display", "rcpt", "rcpt_display", "subject", "url", "title", "keywords", "ip", "latitude", "longitude", "accuracy", "address", "cell", "wifi", "path", "attr", "size", "attach", "command", "tr");
+    model_internal static var dataProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "body", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "caller", "incoming", "draft", "from_display", "rcpt", "rcpt_display", "subject", "url", "title", "keywords", "ip", "latitude", "longitude", "accuracy", "address", "cell", "wifi", "path", "attr", "size", "attach", "command", "tr");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "body", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "incoming", "draft", "from_display", "rcpt", "rcpt_display", "subject", "url", "title", "keywords", "ip", "latitude", "longitude", "accuracy", "address", "cell", "wifi", "path", "attr", "size", "attach", "command", "tr");
+    model_internal static var nonDerivedProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "body", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "caller", "incoming", "draft", "from_display", "rcpt", "rcpt_display", "subject", "url", "title", "keywords", "ip", "latitude", "longitude", "accuracy", "address", "cell", "wifi", "path", "attr", "size", "attach", "command", "tr");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array("wifi");
     model_internal static var collectionBaseMap:Object;
@@ -81,6 +81,7 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
             model_internal::dependentsOnMap["spool"] = new Array();
             model_internal::dependentsOnMap["access"] = new Array();
             model_internal::dependentsOnMap["from"] = new Array();
+            model_internal::dependentsOnMap["caller"] = new Array();
             model_internal::dependentsOnMap["incoming"] = new Array();
             model_internal::dependentsOnMap["draft"] = new Array();
             model_internal::dependentsOnMap["from_display"] = new Array();
@@ -141,6 +142,7 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
         model_internal::propertyTypeMap["spool"] = "String";
         model_internal::propertyTypeMap["access"] = "int";
         model_internal::propertyTypeMap["from"] = "String";
+        model_internal::propertyTypeMap["caller"] = "String";
         model_internal::propertyTypeMap["incoming"] = "Boolean";
         model_internal::propertyTypeMap["draft"] = "Boolean";
         model_internal::propertyTypeMap["from_display"] = "String";
@@ -572,6 +574,12 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
     }
 
     [Bindable(event="propertyChange")]
+    public function get isCallerAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get isIncomingAvailable():Boolean
     {
         return true;
@@ -889,6 +897,12 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
 
     [Bindable(event="propertyChange")]   
     public function get fromStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get callerStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }

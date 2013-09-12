@@ -24,14 +24,14 @@ internal class _PositionsFlowEntityMetadata extends com.adobe.fiber.valueobjects
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("positions", "time");
+    model_internal static var allProperties:Array = new Array("positions", "time", "alpha");
     model_internal static var allAssociationProperties:Array = new Array();
-    model_internal static var allRequiredProperties:Array = new Array("positions", "time");
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("positions", "time");
+    model_internal static var allRequiredProperties:Array = new Array("positions", "time", "alpha");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("positions", "time", "alpha");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("positions", "time");
+    model_internal static var dataProperties:Array = new Array("positions", "time", "alpha");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("positions", "time");
+    model_internal static var nonDerivedProperties:Array = new Array("positions", "time", "alpha");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array("positions");
     model_internal static var collectionBaseMap:Object;
@@ -58,6 +58,7 @@ internal class _PositionsFlowEntityMetadata extends com.adobe.fiber.valueobjects
             model_internal::dependentsOnMap = new Object();
             model_internal::dependentsOnMap["positions"] = new Array();
             model_internal::dependentsOnMap["time"] = new Array();
+            model_internal::dependentsOnMap["alpha"] = new Array();
 
             // collection base map
             model_internal::collectionBaseMap = new Object();
@@ -68,6 +69,7 @@ internal class _PositionsFlowEntityMetadata extends com.adobe.fiber.valueobjects
         model_internal::propertyTypeMap = new Object();
         model_internal::propertyTypeMap["positions"] = "ArrayCollection";
         model_internal::propertyTypeMap["time"] = "int";
+        model_internal::propertyTypeMap["alpha"] = "Number";
 
         model_internal::_instance = value;
         model_internal::_positionsValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForPositions);
@@ -313,6 +315,12 @@ internal class _PositionsFlowEntityMetadata extends com.adobe.fiber.valueobjects
         return true;
     }
 
+    [Bindable(event="propertyChange")]
+    public function get isAlphaAvailable():Boolean
+    {
+        return true;
+    }
+
 
     /**
      * derived property recalculation
@@ -433,6 +441,12 @@ internal class _PositionsFlowEntityMetadata extends com.adobe.fiber.valueobjects
 
     [Bindable(event="propertyChange")]   
     public function get timeStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get alphaStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }

@@ -58,9 +58,12 @@ public class _Super_PositionsFlow extends flash.events.EventDispatcher implement
     private var _internal_positions : ArrayCollection;
     model_internal var _internal_positions_leaf:it.ht.rcs.console.entities.model.Positions;
     private var _internal_time : int;
+    private var _internal_alpha : Number = Number(0);
 
     private static var emptyArray:Array = new Array();
 
+    // Change this value according to your application's floating-point precision
+    private static var epsilon:Number = 0.0001;
 
     /**
      * derived property cache initialization
@@ -92,6 +95,12 @@ public class _Super_PositionsFlow extends flash.events.EventDispatcher implement
     public function get time() : int
     {
         return _internal_time;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get alpha() : Number
+    {
+        return _internal_alpha;
     }
 
     public function clearAssociations() : void
@@ -134,6 +143,16 @@ public class _Super_PositionsFlow extends flash.events.EventDispatcher implement
         {
             _internal_time = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "time", oldValue, _internal_time));
+        }
+    }
+
+    public function set alpha(value:Number) : void
+    {
+        var oldValue:Number = _internal_alpha;
+        if (isNaN(_internal_alpha) == true || Math.abs(oldValue - value) > epsilon)
+        {
+            _internal_alpha = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "alpha", oldValue, _internal_alpha));
         }
     }
 
