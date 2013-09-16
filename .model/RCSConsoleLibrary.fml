@@ -5536,6 +5536,7 @@
     </annotation>
     <property name="position" type="Position" required="true"/>
     <property name="_id" type="string" required="true"/>
+    <property name="alpha" type="double" required="true" default="0"/>
   </entity>
   <entity name="Entity">
     <annotation name="EntityProperties">

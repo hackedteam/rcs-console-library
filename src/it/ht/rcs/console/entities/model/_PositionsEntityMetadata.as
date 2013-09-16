@@ -23,14 +23,14 @@ internal class _PositionsEntityMetadata extends com.adobe.fiber.valueobjects.Abs
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("position", "_id");
+    model_internal static var allProperties:Array = new Array("position", "_id", "alpha");
     model_internal static var allAssociationProperties:Array = new Array();
-    model_internal static var allRequiredProperties:Array = new Array("position", "_id");
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("position", "_id");
+    model_internal static var allRequiredProperties:Array = new Array("position", "_id", "alpha");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("position", "_id", "alpha");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("position", "_id");
+    model_internal static var dataProperties:Array = new Array("position", "_id", "alpha");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("position", "_id");
+    model_internal static var nonDerivedProperties:Array = new Array("position", "_id", "alpha");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array();
     model_internal static var collectionBaseMap:Object;
@@ -62,6 +62,7 @@ internal class _PositionsEntityMetadata extends com.adobe.fiber.valueobjects.Abs
             model_internal::dependentsOnMap = new Object();
             model_internal::dependentsOnMap["position"] = new Array();
             model_internal::dependentsOnMap["_id"] = new Array();
+            model_internal::dependentsOnMap["alpha"] = new Array();
 
             // collection base map
             model_internal::collectionBaseMap = new Object();
@@ -71,6 +72,7 @@ internal class _PositionsEntityMetadata extends com.adobe.fiber.valueobjects.Abs
         model_internal::propertyTypeMap = new Object();
         model_internal::propertyTypeMap["position"] = "it.ht.rcs.console.entities.model.Position";
         model_internal::propertyTypeMap["_id"] = "String";
+        model_internal::propertyTypeMap["alpha"] = "Number";
 
         model_internal::_instance = value;
         model_internal::_positionValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForPosition);
@@ -321,6 +323,12 @@ internal class _PositionsEntityMetadata extends com.adobe.fiber.valueobjects.Abs
         return true;
     }
 
+    [Bindable(event="propertyChange")]
+    public function get isAlphaAvailable():Boolean
+    {
+        return true;
+    }
+
 
     /**
      * derived property recalculation
@@ -545,6 +553,12 @@ internal class _PositionsEntityMetadata extends com.adobe.fiber.valueobjects.Abs
                 model_internal::_instance.model_internal::isValid_der = model_internal::_instance.model_internal::calculateIsValid();
             }
         }
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get alphaStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
     }
 
 

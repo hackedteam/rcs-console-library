@@ -55,9 +55,12 @@ public class _Super_Positions extends flash.events.EventDispatcher implements co
      */
     private var _internal_position : it.ht.rcs.console.entities.model.Position;
     private var _internal__id : String;
+    private var _internal_alpha : Number = Number(0);
 
     private static var emptyArray:Array = new Array();
 
+    // Change this value according to your application's floating-point precision
+    private static var epsilon:Number = 0.0001;
 
     /**
      * derived property cache initialization
@@ -92,6 +95,12 @@ public class _Super_Positions extends flash.events.EventDispatcher implements co
         return _internal__id;
     }
 
+    [Bindable(event="propertyChange")]
+    public function get alpha() : Number
+    {
+        return _internal_alpha;
+    }
+
     public function clearAssociations() : void
     {
     }
@@ -117,6 +126,16 @@ public class _Super_Positions extends flash.events.EventDispatcher implements co
         {
             _internal__id = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "_id", oldValue, _internal__id));
+        }
+    }
+
+    public function set alpha(value:Number) : void
+    {
+        var oldValue:Number = _internal_alpha;
+        if (isNaN(_internal_alpha) == true || Math.abs(oldValue - value) > epsilon)
+        {
+            _internal_alpha = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "alpha", oldValue, _internal_alpha));
         }
     }
 
