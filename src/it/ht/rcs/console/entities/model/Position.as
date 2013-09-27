@@ -35,6 +35,8 @@ public class Position extends _Super_Position
      {
        this.latitude=data.latitude;
        this.longitude=data.longitude;
+       this.lat=data.latitude;
+       this.lon=data.longitude;
      }
    
    }
