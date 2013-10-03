@@ -4,11 +4,14 @@ package it.ht.rcs.console.dashboard.controller
   import flash.events.TimerEvent;
   import flash.utils.Timer;
   
+  import it.ht.rcs.console.DB;
   import it.ht.rcs.console.ObjectUtils;
   import it.ht.rcs.console.accounting.controller.UserManager;
   import it.ht.rcs.console.accounting.model.User;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.events.SessionEvent;
+  import it.ht.rcs.console.push.PushController;
+  import it.ht.rcs.console.push.PushEvent;
   import it.ht.rcs.console.search.controller.SearchManager;
   import it.ht.rcs.console.search.model.SearchItem;
   import it.ht.rcs.console.target.controller.TargetManager;
@@ -20,8 +23,6 @@ package it.ht.rcs.console.dashboard.controller
   import mx.collections.SortField;
   import mx.rpc.events.FaultEvent;
   
-  import it.ht.rcs.console.DB;
-  
   public class DashboardController extends ItemManager
   {
     public function DashboardController() { super(DashboardItem); }
@@ -32,26 +33,31 @@ package it.ht.rcs.console.dashboard.controller
     private var _user:User;
     private var _dashboard_ids:ArrayCollection;
     
-    /* auto refresh every 10 seconds */
-    private var autoRefresh:Timer = new Timer(3000);
+   
     
-    public function startAutoRefresh():void
+    public function startListeningForUpdates():void
     {
-      autoRefresh.addEventListener(TimerEvent.TIMER, onAutoRefresh);
-      autoRefresh.start();
+        PushController.instance.addEventListener(PushEvent.DASHBOARD, onUpdate)
     }
 
-    public function stopAutoRefresh():void
+    public function stopListeningForUpdates():void
     {
-      autoRefresh.removeEventListener(TimerEvent.TIMER, onAutoRefresh);
-      autoRefresh.stop();
-    }
-
-    private function onAutoRefresh(e:Event):void
-    {
-      refresh();
+      PushController.instance.removeEventListener(PushEvent.DASHBOARD, onUpdate)
     }
     
+    private function onUpdate(e:PushEvent):void
+    {
+      trace("GOT UPDATE IN DASHBOARD");
+
+      
+      SearchManager.instance.showItem(e.data.id, function (item:SearchItem):void {
+        if (item != null)
+          manageItem(item);
+        trace("Refresh > "+item.name)
+      }, function(fe:FaultEvent):void {});
+    }
+
+
     override public function refresh():void
     {
       super.refresh();

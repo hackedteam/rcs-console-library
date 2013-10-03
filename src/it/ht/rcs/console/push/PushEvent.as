@@ -12,6 +12,7 @@ package it.ht.rcs.console.push
     public static const ENTITY:String = "entity";
     public static const AGENT:String = "agent";
     public static const MESSAGE:String = "message";
+    public static const DASHBOARD:String = "dashboard";
     public static const LOGOUT:String = "logout";
     
 		public var data:*;
