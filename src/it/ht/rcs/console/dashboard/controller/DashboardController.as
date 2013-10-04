@@ -10,6 +10,7 @@ package it.ht.rcs.console.dashboard.controller
   import it.ht.rcs.console.accounting.model.User;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.events.SessionEvent;
+  import it.ht.rcs.console.operation.model.Operation;
   import it.ht.rcs.console.push.PushController;
   import it.ht.rcs.console.push.PushEvent;
   import it.ht.rcs.console.search.controller.SearchManager;
@@ -48,13 +49,12 @@ package it.ht.rcs.console.dashboard.controller
     private function onUpdate(e:PushEvent):void
     {
       trace("GOT UPDATE IN DASHBOARD");
-
       
-      SearchManager.instance.showItem(e.data.id, function (item:SearchItem):void {
-        if (item != null)
-          manageItem(item);
-        trace("Refresh > "+item.name)
-      }, function(fe:FaultEvent):void {});
+        var item:DashboardItem=DashboardController.instance.getItem(e.data.id)
+        if (item != null) updateItem(item, e.data);
+        else 
+          trace("update operation")
+        
     }
 
 
@@ -74,8 +74,15 @@ package it.ht.rcs.console.dashboard.controller
     
     private function manageItem(item:SearchItem):void
     {
-      item._kind == 'operation' ? manageOperation(item) : manageAgentTarget(item);
+      item._kind == 'operation' ? manageOperation(item) : manageAgentTarget(item); //push mode: no operations > only agents and target 
     }
+    
+    private function updateItem(item:DashboardItem, data:*):void
+    {
+      updateAgentTarget(item, data); //only agents and target 
+    }
+    
+    
     
     private var currentOperationId:String;
     private function manageOperation(item:SearchItem):void
@@ -227,7 +234,132 @@ package it.ht.rcs.console.dashboard.controller
       dashboardItem.modules = modules;
       dashboardItem.totTot  = totTot;
       dashboardItem.totSync = totSync;
+      
     }
+    
+    private function updateAgentTarget(dashboardItem:DashboardItem, data:*):void
+    {
+   
+      
+      if (dashboardItem == null) {
+        return;
+      }
+      
+      if (!data.stats) return; // TODO: Demo fix
+      
+     
+      dashboardItem.lastSync = data.stats.last_sync;
+      dashboardItem.lastSyncStatus = data.stats.last_sync_status;
+      
+      var totTot:Number = 0;
+      var totSync:Number = 0;
+      var modules:ArrayCollection = new ArrayCollection();
+      
+      var evidenceHash:Object = (data.stats.evidence);
+      var dashboardHash:Object =(data.stats.dashboard);
+      
+      var module:Object;
+      for (var type:String in evidenceHash)
+      {
+        if (evidenceHash[type] == 0)
+          continue;
+        if(!dashboardItem.baseline.evidence.hasOwnProperty(type)) 
+          continue; //temp
+        
+        module = {tot: 0, sync: 0};
+        module.type = type;
+        if(dashboardItem.baseline.evidence.hasOwnProperty(type)) 
+          module.tot = evidenceHash[type] - dashboardItem.baseline.evidence[type];
+        totTot += module.tot;
+        if(dashboardHash[type]) module.sync = dashboardHash[type];
+        totSync += module.sync;
+        modules.addItem(module);
+      }
+      
+      if (dashboardItem.baseline.last_sync == data.stats.last_sync && !DB.instance.demo) {
+        totSync = 0;
+        for each (module in modules)
+        module.sync = 0;
+      }
+      
+      var sort:Sort = new Sort();
+      sort.fields = [new SortField('type', true, false)];
+      modules.sort = sort;
+      modules.refresh();
+      
+      dashboardItem.modules = modules;
+      dashboardItem.totTot  = totTot;
+      dashboardItem.totSync = totSync;
+      
+      if(dashboardItem._kind=="target")
+      {
+        var item:SearchItem=SearchManager.instance.getItem(dashboardItem._id)
+        var o:SearchItem=SearchManager.instance.getItem(item.path[0])
+        trace("Operation to update: "+o.name)
+        updateOperation(o, data)
+      }
+    }
+    
+    private function updateOperation(item:SearchItem, data):void
+    {
+      trace("Manage Operation > "+item.name)
+      var dashboardItem:DashboardItem = getItem(item._id);
+        if(!dashboardItem)
+        return;
+      
+      if (!item.stat) return; // TODO: Demo fix
+      //trace(dashboardItem.name)
+     
+      dashboardItem.lastSync = data.stats.last_sync;
+      dashboardItem.lastSyncStatus = data.stats.last_sync_status;
+      dashboardItem.totSync = 0;
+      dashboardItem.totTot = 0;
+      
+      //updateTargetList(dashboardItem);
+      
+      for each (var t:TargetInfo in dashboardItem.targets.source) {
+        
+        SearchManager.instance.showItem(t._id, function(target:SearchItem):void {
+          
+          if (!target.stat) return; // TODO: Demo fix
+          
+          if (!dashboardItem.targetBaselines.hasOwnProperty(target._id))
+            dashboardItem.targetBaselines[target._id] = target.stat;
+          
+          var totTot:Number = 0;
+          var totSync:Number = 0;
+          
+          var evidenceHash:Object = ObjectUtils.toHash(target.stat.evidence);
+          var dashboardHash:Object = ObjectUtils.toHash(target.stat.dashboard);
+          
+          //t.name = target.name;
+          t.tot = 0;
+          t.sync = 0;
+          for (var type:String in evidenceHash)
+          {
+            if (evidenceHash[type] == 0)
+              continue;
+            
+            t.tot += evidenceHash[type] - dashboardItem.targetBaselines[target._id].evidence[type];
+            t.sync += dashboardHash[type];
+          }
+          dashboardItem.scout=t.scout;//????
+          dashboardItem.totTot += t.tot;
+          dashboardItem.totSync += t.sync;
+          
+          if (dashboardItem.targetBaselines[target._id].last_sync == target.stat.last_sync) {
+            dashboardItem.totSync = 0;
+            t.sync = 0;
+          }
+          
+        }, function(fe:FaultEvent):void {}); // Do nothing when disconnected.
+        
+      }
+      
+    
+    
+    }
+    
     
     override protected function onLogin(e:SessionEvent):void
     {
