@@ -365,15 +365,18 @@ package it.ht.rcs.console.dashboard.controller
 		{
       trace("Update Operation > " + item.name)
       var dashboardItem:DashboardItem=getItem(item._id);
+      if(!dashboardItem) return;
       trace("tot sync: "+dashboardItem.totSync)
       trace("tot tot: "+dashboardItem.totTot)
       trace("====================")
-      
-    updateTargetList(dashboardItem)
+      dashboardItem.lastSync=data.stats.last_sync
+      dashboardItem.totSync=0;
+      dashboardItem.totTot=0;
+        
+        
+      updateTargetList(dashboardItem)
       
 		}
-
-
 
 
 		override protected function onLogin(e:SessionEvent):void
