@@ -133,7 +133,7 @@ package it.ht.rcs.console.monitor.controller
       anonymizers.max = (limits['collectors']['anonymizers'] == null) ? 'U' : limits['collectors']['anonymizers'].toString();
       
       alerting = limits['alerting'];
-           connectors = limits['connectors'];
+      connectors = limits['connectors'];
       
       nia.max = (limits['nia'][0] == null) ? 'U' : limits['nia'][0].toString();
       nia_demo = limits['nia'][1];
@@ -155,6 +155,7 @@ package it.ht.rcs.console.monitor.controller
       correlation =limits['correlation'];
       //second level
       intelligence =limits["intelligence"]
+
       
       dispatchDataLoadedEvent();
     }
