@@ -93,11 +93,18 @@ package it.ht.rcs.console.entities.rest
       resp.token = most_contacted_(JSON.stringify(params));
     }
     
-    public function most_visited(entityId:String, from:String, to:String, num:String, onResult:Function=null, onFault:Function=null):void
+    public function most_visited_urls(entityId:String, from:String, to:String, num:String, onResult:Function=null, onFault:Function=null):void
     {
       var params:Object={_id:entityId, from:from, to:to, num:num}
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = most_visited_(JSON.stringify(params));
+      resp.token = most_visited_urls_(JSON.stringify(params));
+    }
+    
+    public function most_visited_places(entityId:String, from:String, to:String, num:String, onResult:Function=null, onFault:Function=null):void
+    {
+      var params:Object={_id:entityId, from:from, to:to, num:num}
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = most_visited_places_(JSON.stringify(params));
     }
     
     public function update(entity:Entity, property:Object, onResult:Function=null, onFault:Function=null):void
@@ -124,6 +131,18 @@ package it.ht.rcs.console.entities.rest
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
       resp.token = merge_(JSON.stringify({_id: entity1, entity:entity2}));
+    }
+    
+    public function flow(entities:Array, from:String, to:String, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = flow_(JSON.stringify({ids:entities, from:from, to:to}));
+    }
+    
+    public function positions(entities:Array, from:String, to:String, summary:Boolean=false, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = positions_(JSON.stringify({ids:entities, from:from, to:to, summary:summary}));
     }
     
     public function add_photo(fileReference:FileReference, id:String, onResult:Function = null, onFault:Function = null):void

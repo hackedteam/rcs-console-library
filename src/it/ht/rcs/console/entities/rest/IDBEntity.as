@@ -39,13 +39,19 @@ package it.ht.rcs.console.entities.rest
       
     function most_contacted(entityId:String, from:String, to:String, num:String, onResult:Function=null, onFault:Function=null):void
       
-    function most_visited(entityId:String, from:String, to:String, num:String, onResult:Function=null, onFault:Function=null):void
+    function most_visited_urls(entityId:String, from:String, to:String, num:String, onResult:Function=null, onFault:Function=null):void
+      
+    function most_visited_places(entityId:String, from:String, to:String, num:String, onResult:Function=null, onFault:Function=null):void
       
     function create(params:Object, operation:Operation, onResult:Function=null, onFault:Function=null):void
       
     function destroy(id:String, onResult:Function=null, onFault:Function=null):void;
     
     function merge(entity1:String, entity2:String, onResult:Function=null, onFault:Function=null):void;
+    
+    function flow(entities:Array, from:String, to:String, onResult:Function=null, onFault:Function=null):void;
+    
+    function positions(entities:Array, from:String, to:String, summary:Boolean=false, onResult:Function=null, onFault:Function=null):void;
   
     
   }

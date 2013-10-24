@@ -10,6 +10,8 @@ import com.adobe.fiber.styles.StyleValidator;
 import com.adobe.fiber.valueobjects.AbstractEntityMetadata;
 import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 import com.adobe.fiber.valueobjects.IPropertyIterator;
+import it.ht.rcs.console.entities.model.Positions;
+import mx.collections.ArrayCollection;
 import mx.events.ValidationResultEvent;
 import com.adobe.fiber.core.model_internal;
 import com.adobe.fiber.valueobjects.IModelType;
@@ -18,76 +20,63 @@ import mx.events.PropertyChangeEvent;
 use namespace model_internal;
 
 [ExcludeClass]
-internal class _PositionEntityMetadata extends com.adobe.fiber.valueobjects.AbstractEntityMetadata
+internal class _PositionsFlowEntityMetadata extends com.adobe.fiber.valueobjects.AbstractEntityMetadata
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("longitude", "latitude", "lon", "rad", "lat");
+    model_internal static var allProperties:Array = new Array("positions", "time", "alpha");
     model_internal static var allAssociationProperties:Array = new Array();
-    model_internal static var allRequiredProperties:Array = new Array("longitude", "latitude", "lon", "rad", "lat");
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("longitude", "latitude", "lon", "rad", "lat");
+    model_internal static var allRequiredProperties:Array = new Array("positions", "time", "alpha");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("positions", "time", "alpha");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("longitude", "latitude", "lon", "rad", "lat");
+    model_internal static var dataProperties:Array = new Array("positions", "time", "alpha");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("longitude", "latitude", "lon", "rad", "lat");
+    model_internal static var nonDerivedProperties:Array = new Array("positions", "time", "alpha");
     model_internal static var derivedProperties:Array = new Array();
-    model_internal static var collectionProperties:Array = new Array();
+    model_internal static var collectionProperties:Array = new Array("positions");
     model_internal static var collectionBaseMap:Object;
-    model_internal static var entityName:String = "Position";
+    model_internal static var entityName:String = "PositionsFlow";
     model_internal static var dependentsOnMap:Object;
     model_internal static var dependedOnServices:Array = new Array();
     model_internal static var propertyTypeMap:Object;
 
     
-    model_internal var _longitudeIsValid:Boolean;
-    model_internal var _longitudeValidator:com.adobe.fiber.styles.StyleValidator;
-    model_internal var _longitudeIsValidCacheInitialized:Boolean = false;
-    model_internal var _longitudeValidationFailureMessages:Array;
-    
-    model_internal var _latitudeIsValid:Boolean;
-    model_internal var _latitudeValidator:com.adobe.fiber.styles.StyleValidator;
-    model_internal var _latitudeIsValidCacheInitialized:Boolean = false;
-    model_internal var _latitudeValidationFailureMessages:Array;
+    model_internal var _positionsIsValid:Boolean;
+    model_internal var _positionsValidator:com.adobe.fiber.styles.StyleValidator;
+    model_internal var _positionsIsValidCacheInitialized:Boolean = false;
+    model_internal var _positionsValidationFailureMessages:Array;
 
-    model_internal var _instance:_Super_Position;
+    model_internal var _instance:_Super_PositionsFlow;
     model_internal static var _nullStyle:com.adobe.fiber.styles.Style = new com.adobe.fiber.styles.Style();
 
-    public function _PositionEntityMetadata(value : _Super_Position)
+    public function _PositionsFlowEntityMetadata(value : _Super_PositionsFlow)
     {
         // initialize property maps
         if (model_internal::dependentsOnMap == null)
         {
             // dependents map
             model_internal::dependentsOnMap = new Object();
-            model_internal::dependentsOnMap["longitude"] = new Array();
-            model_internal::dependentsOnMap["latitude"] = new Array();
-            model_internal::dependentsOnMap["lon"] = new Array();
-            model_internal::dependentsOnMap["rad"] = new Array();
-            model_internal::dependentsOnMap["lat"] = new Array();
+            model_internal::dependentsOnMap["positions"] = new Array();
+            model_internal::dependentsOnMap["time"] = new Array();
+            model_internal::dependentsOnMap["alpha"] = new Array();
 
             // collection base map
             model_internal::collectionBaseMap = new Object();
+            model_internal::collectionBaseMap["positions"] = "it.ht.rcs.console.entities.model.Positions";
         }
 
         // Property type Map
         model_internal::propertyTypeMap = new Object();
-        model_internal::propertyTypeMap["longitude"] = "String";
-        model_internal::propertyTypeMap["latitude"] = "String";
-        model_internal::propertyTypeMap["lon"] = "Number";
-        model_internal::propertyTypeMap["rad"] = "Number";
-        model_internal::propertyTypeMap["lat"] = "Number";
+        model_internal::propertyTypeMap["positions"] = "ArrayCollection";
+        model_internal::propertyTypeMap["time"] = "int";
+        model_internal::propertyTypeMap["alpha"] = "Number";
 
         model_internal::_instance = value;
-        model_internal::_longitudeValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForLongitude);
-        model_internal::_longitudeValidator.required = true;
-        model_internal::_longitudeValidator.requiredFieldError = "longitude is required";
-        //model_internal::_longitudeValidator.source = model_internal::_instance;
-        //model_internal::_longitudeValidator.property = "longitude";
-        model_internal::_latitudeValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForLatitude);
-        model_internal::_latitudeValidator.required = true;
-        model_internal::_latitudeValidator.requiredFieldError = "latitude is required";
-        //model_internal::_latitudeValidator.source = model_internal::_instance;
-        //model_internal::_latitudeValidator.property = "latitude";
+        model_internal::_positionsValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForPositions);
+        model_internal::_positionsValidator.required = true;
+        model_internal::_positionsValidator.requiredFieldError = "positions is required";
+        //model_internal::_positionsValidator.source = model_internal::_instance;
+        //model_internal::_positionsValidator.property = "positions";
     }
 
     override public function getEntityName():String
@@ -138,7 +127,7 @@ internal class _PositionEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     override public function getDependants(propertyName:String):Array
     {
        if (model_internal::nonDerivedProperties.indexOf(propertyName) == -1)
-            throw new Error(propertyName + " is not a data property of entity Position");
+            throw new Error(propertyName + " is not a data property of entity PositionsFlow");
             
        return model_internal::dependentsOnMap[propertyName] as Array;  
     }
@@ -156,7 +145,7 @@ internal class _PositionEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     override public function getCollectionBase(propertyName:String):String
     {
         if (model_internal::collectionProperties.indexOf(propertyName) == -1)
-            throw new Error(propertyName + " is not a collection property of entity Position");
+            throw new Error(propertyName + " is not a collection property of entity PositionsFlow");
 
         return model_internal::collectionBaseMap[propertyName];
     }
@@ -164,7 +153,7 @@ internal class _PositionEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     override public function getPropertyType(propertyName:String):String
     {
         if (model_internal::allProperties.indexOf(propertyName) == -1)
-            throw new Error(propertyName + " is not a property of Position");
+            throw new Error(propertyName + " is not a property of PositionsFlow");
 
         return model_internal::propertyTypeMap[propertyName];
     }
@@ -178,7 +167,7 @@ internal class _PositionEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     {
         if (model_internal::allProperties.indexOf(propertyName) == -1)
         {
-            throw new Error(propertyName + " does not exist for entity Position");
+            throw new Error(propertyName + " does not exist for entity PositionsFlow");
         }
 
         return model_internal::_instance[propertyName];
@@ -188,7 +177,7 @@ internal class _PositionEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     {
         if (model_internal::nonDerivedProperties.indexOf(propertyName) == -1)
         {
-            throw new Error(propertyName + " is not a modifiable property of entity Position");
+            throw new Error(propertyName + " is not a modifiable property of entity PositionsFlow");
         }
 
         model_internal::_instance[propertyName] = value;
@@ -220,7 +209,7 @@ internal class _PositionEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     {
         if (model_internal::allProperties.indexOf(propertyName) == -1)
         {
-            throw new Error(propertyName + " does not exist for entity Position");
+            throw new Error(propertyName + " does not exist for entity PositionsFlow");
         }
 
         if (model_internal::allAlwaysAvailableProperties.indexOf(propertyName) != -1)
@@ -315,31 +304,19 @@ internal class _PositionEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     }
 
     [Bindable(event="propertyChange")]
-    public function get isLongitudeAvailable():Boolean
+    public function get isPositionsAvailable():Boolean
     {
         return true;
     }
 
     [Bindable(event="propertyChange")]
-    public function get isLatitudeAvailable():Boolean
+    public function get isTimeAvailable():Boolean
     {
         return true;
     }
 
     [Bindable(event="propertyChange")]
-    public function get isLonAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get isRadAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get isLatAvailable():Boolean
+    public function get isAlphaAvailable():Boolean
     {
         return true;
     }
@@ -348,20 +325,12 @@ internal class _PositionEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     /**
      * derived property recalculation
      */
-    public function invalidateDependentOnLongitude():void
+    public function invalidateDependentOnPositions():void
     {
-        if (model_internal::_longitudeIsValidCacheInitialized )
+        if (model_internal::_positionsIsValidCacheInitialized )
         {
-            model_internal::_instance.model_internal::_doValidationCacheOfLongitude = null;
-            model_internal::calculateLongitudeIsValid();
-        }
-    }
-    public function invalidateDependentOnLatitude():void
-    {
-        if (model_internal::_latitudeIsValidCacheInitialized )
-        {
-            model_internal::_instance.model_internal::_doValidationCacheOfLatitude = null;
-            model_internal::calculateLatitudeIsValid();
+            model_internal::_instance.model_internal::_doValidationCacheOfPositions = null;
+            model_internal::calculatePositionsIsValid();
         }
     }
 
@@ -371,44 +340,44 @@ internal class _PositionEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     }
 
     [Bindable(event="propertyChange")]   
-    public function get longitudeStyle():com.adobe.fiber.styles.Style
+    public function get positionsStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
 
-    public function get longitudeValidator() : StyleValidator
+    public function get positionsValidator() : StyleValidator
     {
-        return model_internal::_longitudeValidator;
+        return model_internal::_positionsValidator;
     }
 
-    model_internal function set _longitudeIsValid_der(value:Boolean):void 
+    model_internal function set _positionsIsValid_der(value:Boolean):void 
     {
-        var oldValue:Boolean = model_internal::_longitudeIsValid;         
+        var oldValue:Boolean = model_internal::_positionsIsValid;         
         if (oldValue !== value)
         {
-            model_internal::_longitudeIsValid = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "longitudeIsValid", oldValue, value));
+            model_internal::_positionsIsValid = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "positionsIsValid", oldValue, value));
         }                             
     }
 
     [Bindable(event="propertyChange")]
-    public function get longitudeIsValid():Boolean
+    public function get positionsIsValid():Boolean
     {
-        if (!model_internal::_longitudeIsValidCacheInitialized)
+        if (!model_internal::_positionsIsValidCacheInitialized)
         {
-            model_internal::calculateLongitudeIsValid();
+            model_internal::calculatePositionsIsValid();
         }
 
-        return model_internal::_longitudeIsValid;
+        return model_internal::_positionsIsValid;
     }
 
-    model_internal function calculateLongitudeIsValid():void
+    model_internal function calculatePositionsIsValid():void
     {
-        var valRes:ValidationResultEvent = model_internal::_longitudeValidator.validate(model_internal::_instance.longitude)
-        model_internal::_longitudeIsValid_der = (valRes.results == null);
-        model_internal::_longitudeIsValidCacheInitialized = true;
+        var valRes:ValidationResultEvent = model_internal::_positionsValidator.validate(model_internal::_instance.positions)
+        model_internal::_positionsIsValid_der = (valRes.results == null);
+        model_internal::_positionsIsValidCacheInitialized = true;
         if (valRes.results == null)
-             model_internal::longitudeValidationFailureMessages_der = emptyArray;
+             model_internal::positionsValidationFailureMessages_der = emptyArray;
         else
         {
             var _valFailures:Array = new Array();
@@ -416,22 +385,22 @@ internal class _PositionEntityMetadata extends com.adobe.fiber.valueobjects.Abst
             {
                 _valFailures.push(valRes.results[a].errorMessage);
             }
-            model_internal::longitudeValidationFailureMessages_der = _valFailures;
+            model_internal::positionsValidationFailureMessages_der = _valFailures;
         }
     }
 
     [Bindable(event="propertyChange")]
-    public function get longitudeValidationFailureMessages():Array
+    public function get positionsValidationFailureMessages():Array
     {
-        if (model_internal::_longitudeValidationFailureMessages == null)
-            model_internal::calculateLongitudeIsValid();
+        if (model_internal::_positionsValidationFailureMessages == null)
+            model_internal::calculatePositionsIsValid();
 
-        return _longitudeValidationFailureMessages;
+        return _positionsValidationFailureMessages;
     }
 
-    model_internal function set longitudeValidationFailureMessages_der(value:Array) : void
+    model_internal function set positionsValidationFailureMessages_der(value:Array) : void
     {
-        var oldValue:Array = model_internal::_longitudeValidationFailureMessages;
+        var oldValue:Array = model_internal::_positionsValidationFailureMessages;
 
         var needUpdate : Boolean = false;
         if (oldValue == null)
@@ -459,8 +428,8 @@ internal class _PositionEntityMetadata extends com.adobe.fiber.valueobjects.Abst
 
         if (needUpdate)
         {
-            model_internal::_longitudeValidationFailureMessages = value;   
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "longitudeValidationFailureMessages", oldValue, value));
+            model_internal::_positionsValidationFailureMessages = value;   
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "positionsValidationFailureMessages", oldValue, value));
             // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
             // the entire entity.
             if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
@@ -471,119 +440,13 @@ internal class _PositionEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     }
 
     [Bindable(event="propertyChange")]   
-    public function get latitudeStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    public function get latitudeValidator() : StyleValidator
-    {
-        return model_internal::_latitudeValidator;
-    }
-
-    model_internal function set _latitudeIsValid_der(value:Boolean):void 
-    {
-        var oldValue:Boolean = model_internal::_latitudeIsValid;         
-        if (oldValue !== value)
-        {
-            model_internal::_latitudeIsValid = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "latitudeIsValid", oldValue, value));
-        }                             
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get latitudeIsValid():Boolean
-    {
-        if (!model_internal::_latitudeIsValidCacheInitialized)
-        {
-            model_internal::calculateLatitudeIsValid();
-        }
-
-        return model_internal::_latitudeIsValid;
-    }
-
-    model_internal function calculateLatitudeIsValid():void
-    {
-        var valRes:ValidationResultEvent = model_internal::_latitudeValidator.validate(model_internal::_instance.latitude)
-        model_internal::_latitudeIsValid_der = (valRes.results == null);
-        model_internal::_latitudeIsValidCacheInitialized = true;
-        if (valRes.results == null)
-             model_internal::latitudeValidationFailureMessages_der = emptyArray;
-        else
-        {
-            var _valFailures:Array = new Array();
-            for (var a:int = 0 ; a<valRes.results.length ; a++)
-            {
-                _valFailures.push(valRes.results[a].errorMessage);
-            }
-            model_internal::latitudeValidationFailureMessages_der = _valFailures;
-        }
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get latitudeValidationFailureMessages():Array
-    {
-        if (model_internal::_latitudeValidationFailureMessages == null)
-            model_internal::calculateLatitudeIsValid();
-
-        return _latitudeValidationFailureMessages;
-    }
-
-    model_internal function set latitudeValidationFailureMessages_der(value:Array) : void
-    {
-        var oldValue:Array = model_internal::_latitudeValidationFailureMessages;
-
-        var needUpdate : Boolean = false;
-        if (oldValue == null)
-            needUpdate = true;
-    
-        // avoid firing the event when old and new value are different empty arrays
-        if (!needUpdate && (oldValue !== value && (oldValue.length > 0 || value.length > 0)))
-        {
-            if (oldValue.length == value.length)
-            {
-                for (var a:int=0; a < oldValue.length; a++)
-                {
-                    if (oldValue[a] !== value[a])
-                    {
-                        needUpdate = true;
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                needUpdate = true;
-            }
-        }
-
-        if (needUpdate)
-        {
-            model_internal::_latitudeValidationFailureMessages = value;   
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "latitudeValidationFailureMessages", oldValue, value));
-            // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
-            // the entire entity.
-            if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
-            {
-                model_internal::_instance.model_internal::isValid_der = model_internal::_instance.model_internal::calculateIsValid();
-            }
-        }
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get lonStyle():com.adobe.fiber.styles.Style
+    public function get timeStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
 
     [Bindable(event="propertyChange")]   
-    public function get radStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get latStyle():com.adobe.fiber.styles.Style
+    public function get alphaStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
@@ -613,13 +476,9 @@ internal class _PositionEntityMetadata extends com.adobe.fiber.valueobjects.Abst
      {
          switch(propertyName)
          {
-            case("longitude"):
+            case("positions"):
             {
-                return longitudeValidationFailureMessages;
-            }
-            case("latitude"):
-            {
-                return latitudeValidationFailureMessages;
+                return positionsValidationFailureMessages;
             }
             default:
             {

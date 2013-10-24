@@ -69,6 +69,7 @@ package it.ht.rcs.console.controller
     public function addItem(item:Object):void
     {
       _items.addItem(item);
+     
     }
     
     public function removeItem(item:Object):void

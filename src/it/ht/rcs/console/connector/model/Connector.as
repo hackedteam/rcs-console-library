@@ -22,7 +22,7 @@ public class Connector extends _Super_Connector
     return {
       _id: '',
       enabled: false,
-      type: 'JSON',
+      type: 'LOCAL',
       keep: true,
       raw: false,
       dest: ''
@@ -39,6 +39,8 @@ public class Connector extends _Super_Connector
       raw = data.raw;
       path = data.path;
       type = data.type;
+      format = data.format;
+      status = data.status;
       dest = data.dest;
     }
   }

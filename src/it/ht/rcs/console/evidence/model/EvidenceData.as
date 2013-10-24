@@ -36,6 +36,7 @@ package it.ht.rcs.console.evidence.model
         this.event=data.event;
         this.from=data.from;
         this.from=data.from;
+        this.caller=data.caller;
         this.from_display=data.from_display;
         this.ip=data.ip;
         this.keywords=data.keywords;

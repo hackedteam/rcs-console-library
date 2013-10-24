@@ -117,10 +117,7 @@ package it.ht.rcs.console.monitor.controller
       agent_ios = limits['agents']['ios'][0];
       agent_symbian = limits['agents']['symbian'][0];
       agent_winmo = limits['agents']['winmo'][0];
-      if(limits['agents']['winphone'])
-      {
-        if(limits['agents']['winphone'].length>0) agent_winphone = limits['agents']['winphone'][0]
-      };
+      agent_winphone = limits['agents']['winphone'][0]
       
       agent_linux_demo = limits['agents']['linux'][1];
       agent_osx_demo = limits['agents']['osx'][1];
@@ -130,15 +127,13 @@ package it.ht.rcs.console.monitor.controller
       agent_ios_demo = limits['agents']['ios'][1];
       agent_symbian_demo = limits['agents']['symbian'][1];
       agent_winmo_demo = limits['agents']['winmo'][1];
-      if(limits['agents']['winphone'])
-      {
-      if(limits['agents']['winphone'].length>0)  agent_winphone_demo = limits['agents']['winphone'][1];
-      }
+      agent_winphone_demo = limits['agents']['winphone'][1];
+
       collectors.max = (limits['collectors']['collectors'] == null) ? 'U' : limits['collectors']['collectors'].toString();
       anonymizers.max = (limits['collectors']['anonymizers'] == null) ? 'U' : limits['collectors']['anonymizers'].toString();
       
       alerting = limits['alerting'];
-           connectors = limits['connectors'];
+      connectors = limits['connectors'];
       
       nia.max = (limits['nia'][0] == null) ? 'U' : limits['nia'][0].toString();
       nia_demo = limits['nia'][1];
@@ -160,6 +155,7 @@ package it.ht.rcs.console.monitor.controller
       correlation =limits['correlation'];
       //second level
       intelligence =limits["intelligence"]
+
       
       dispatchDataLoadedEvent();
     }

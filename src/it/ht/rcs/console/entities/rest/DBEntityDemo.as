@@ -4,10 +4,14 @@ package it.ht.rcs.console.entities.rest
   
   import it.ht.rcs.console.entities.model.Contact;
   import it.ht.rcs.console.entities.model.Entity;
+  import it.ht.rcs.console.entities.model.Flow;
+  import it.ht.rcs.console.entities.model.Flows;
   import it.ht.rcs.console.entities.model.Handle;
   import it.ht.rcs.console.entities.model.Link;
   import it.ht.rcs.console.entities.model.Position;
   import it.ht.rcs.console.entities.model.Position_attr;
+  import it.ht.rcs.console.entities.model.Positions;
+  import it.ht.rcs.console.entities.model.PositionsFlow;
   import it.ht.rcs.console.operation.model.Operation;
   import it.ht.rcs.console.search.model.Stat;
   import it.ht.rcs.console.search.model.StatEvidence;
@@ -19,6 +23,12 @@ package it.ht.rcs.console.entities.rest
   
   public class DBEntityDemo implements IDBEntity
   {
+    
+    
+    private static const WEEK:Number=604800
+    private static const DAY:Number=86400
+    private static const HOUR:Number=3600
+    private static const MINUTE:Number=60
 
     public static var entities:ArrayCollection = new ArrayCollection([
       // Swordfish
@@ -34,7 +44,7 @@ package it.ht.rcs.console.entities.rest
           new Handle({name:'Jimmy Page', handle:'jimmypage',type:'skype'})],
         links:[
           new Link({le:"e2", level:"automatic", type:"peer",rel:2, versus:"out"}), 
-          new Link({le:"e3", level:"automatic", type:"know",rel:0, versus:"both"}), 
+          new Link({le:"e3", level:"automatic", type:"peer",rel:3, versus:"both"}), 
           new Link({le:"e4", level:"automatic", type:"peer",rel:0, versus:"out"}), 
           new Link({le:"e6", level:"automatic", type:"peer",rel:0, versus:"out"})
         ],
@@ -123,7 +133,7 @@ package it.ht.rcs.console.entities.rest
     
     public function show(id:String, onResult:Function=null, onFault:Function=null):void
     {
-      //TODO !!!Ì
+ 
       
       var result:Entity=getEntityById(id)
      
@@ -189,7 +199,7 @@ package it.ht.rcs.console.entities.rest
     
     }
     
-    public function most_visited(entityId:String, from:String, to:String, num:String, onResult:Function=null, onFault:Function=null):void
+    public function most_visited_urls(entityId:String, from:String, to:String, num:String, onResult:Function=null, onFault:Function=null):void
     {
      var result:ArrayCollection=new ArrayCollection()
        result.addItem({host:"www.cnn.com", count:500, percent:50})
@@ -200,6 +210,9 @@ package it.ht.rcs.console.entities.rest
       if (onResult != null)
         onResult(new ResultEvent('entity.most_contacted', false, true, result));
     }
+    
+    public function most_visited_places(entityId:String, from:String, to:String, num:String, onResult:Function=null, onFault:Function=null):void
+    {}
     
     public function most_contacted(entityId:String, from:String, to:String, num:String, onResult:Function=null, onFault:Function=null):void
     {
@@ -269,6 +282,179 @@ package it.ht.rcs.console.entities.rest
       DBSearchDemo.addItemAsSearchItem(entity, 0, null);
       if (onResult != null)
         onResult(new ResultEvent('entity.create', false, true, entity));
+    }
+    
+    public function flow(entities:Array, from:String, to:String, onResult:Function=null, onFault:Function=null):void
+    {
+     //An array of FLOW with date and n flows....
+      var flows:ArrayCollection=new ArrayCollection();
+      
+      var flow1:Flow=new Flow()
+      flow1.date="20131010";
+      flow1.flows=new ArrayCollection();
+        
+      var flows1:Flows=new Flows();
+      flows1.from="e1";
+      flows1.rcpt="e2";
+      flows1.count=10;
+      flow1.flows.addItem(flows1);
+        
+      var flows2:Flows=new Flows();
+      flows2.from="e1";
+      flows2.rcpt="e3";
+      flows2.count=10;
+      flow1.flows.addItem(flows2);
+        
+      var flows3:Flows=new Flows();
+      flows3.from="e3";
+      flows3.rcpt="e1";
+      flows3.count=20;
+      flow1.flows.addItem(flows3)
+        
+      flows.addItem(flow1);
+      
+      //second day
+      var flow2:Flow=new Flow()
+      flow2.date="20131011";
+      flow2.flows=new ArrayCollection();
+
+      var flows4:Flows=new Flows();
+      flows4.from="e3";
+      flows4.rcpt="e1";
+      flows4.count=10;
+      
+      flow2.flows.addItem(flows4)
+      
+      flows.addItem(flow2);
+      
+      //third day
+      var flow3:Flow=new Flow()
+      flow3.date="20131013";
+      flow3.flows=new ArrayCollection();
+      
+      var flows5:Flows=new Flows();
+      flows5.from="e1";
+      flows5.rcpt="e2";
+      flows5.count=20;
+      flow3.flows.addItem(flows5);
+      
+      var flows6:Flows=new Flows();
+      flows6.from="e1";
+      flows6.rcpt="e3";
+      flows6.count=10;
+      flow3.flows.addItem(flows6);
+
+      flows.addItem(flow3);
+      
+      if (onResult != null)
+        onResult(new ResultEvent('entity.flow', false, true, flows));
+      
+        
+    }
+    
+    public function positions(entities:Array, from:String, to:String, summary:Boolean=false, onResult:Function=null, onFault:Function=null):void
+    {
+      var hours:ArrayCollection=new ArrayCollection()
+        
+      var minutes:ArrayCollection=new ArrayCollection()
+        
+      var flow1:PositionsFlow=new PositionsFlow()
+        
+      flow1.time=1381053600;
+      flow1.alpha=60
+      flow1.positions=new ArrayCollection()
+        
+      var pos1:Positions=new Positions()
+      pos1._id="pos1";
+      pos1._id="e1"
+      pos1.position=new Position({latitude: 34.031249, longitude:-118.151848})
+      pos1.alpha=60
+      flow1.positions.addItem(pos1)
+      
+      var pos2:Positions=new Positions()
+      pos2._id="pos2";
+      pos2._id="e2"
+      pos2.position=new Position({latitude: 34.031300, longitude:-118.151999})
+      pos2.alpha=60
+      flow1.positions.addItem(pos2)
+      
+        
+      var flow2:PositionsFlow=new PositionsFlow()
+      flow2.time=1381057200;
+      flow2.alpha=20;
+      flow2.positions=new ArrayCollection()
+      
+      var flow3:PositionsFlow=new PositionsFlow()
+      flow3.time=1381060800;
+      flow3.alpha=50;
+      flow3.positions=new ArrayCollection();
+      
+      var flow4:PositionsFlow=new PositionsFlow();
+      flow4.time=1381064400;
+      flow4.alpha=50
+      flow4.positions=new ArrayCollection();
+      
+      
+      hours.addItem(flow1)
+      hours.addItem(flow2)
+      hours.addItem(flow3)
+      hours.addItem(flow4)
+        
+        var lat1:Number=34.032153;
+        var lon1:Number=-118.154563;
+        
+        var lat2:Number=34.034733;
+        var lon2:Number=-118.152413;
+        
+        var min:PositionsFlow;
+        
+        var positions1:Positions;
+        var positions2:Positions;
+        
+        var alpha1:Number=60
+        var alpha2:Number=60
+        
+        for(var m:int=0;m<240;m++)
+        {
+          min=new PositionsFlow()
+          min.time=1378454400+(MINUTE*m)
+          min.alpha=60
+          min.positions=new ArrayCollection()
+            
+          if(m>180)
+          {
+            alpha1-=5
+            alpha2-=5
+          }
+          else
+          {
+            lat1+=0.00003
+            lon1-=0.00001
+              
+            lat2-=0.00001
+            lon1-=0.00002
+          }
+          
+          positions1=new Positions();
+          positions1._id="e1"
+          positions1.alpha=alpha1;
+          positions1.position=new Position({latitude: String(lat1), longitude:String(lon1)})
+            
+          positions2=new Positions();
+          positions2._id="e2";
+          positions2.alpha=alpha2;
+          positions2.position=new Position({latitude: String(lat2), longitude:String(lon2)})
+            
+          min.positions.addItem(positions1)
+          min.positions.addItem(positions2)
+
+          minutes.addItem(min)
+        }
+
+      if(summary)
+        onResult(new ResultEvent('entity.positions', false, true, hours));
+      else
+        onResult(new ResultEvent('entity.positions', false, true, minutes));
     }
   }
   

@@ -23,14 +23,14 @@ internal class _ConnectorEntityMetadata extends com.adobe.fiber.valueobjects.Abs
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("raw", "enabled", "updated_at", "dest", "_id", "name", "path", "created_at", "type", "keep");
+    model_internal static var allProperties:Array = new Array("raw", "enabled", "updated_at", "dest", "_id", "name", "path", "created_at", "type", "format", "status", "keep");
     model_internal static var allAssociationProperties:Array = new Array();
-    model_internal static var allRequiredProperties:Array = new Array("raw", "enabled", "updated_at", "dest", "_id", "name", "path", "created_at", "type", "keep");
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("raw", "enabled", "updated_at", "dest", "_id", "name", "path", "created_at", "type", "keep");
+    model_internal static var allRequiredProperties:Array = new Array("raw", "enabled", "updated_at", "dest", "_id", "name", "path", "created_at", "type", "format", "status", "keep");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("raw", "enabled", "updated_at", "dest", "_id", "name", "path", "created_at", "type", "format", "status", "keep");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("raw", "enabled", "updated_at", "dest", "_id", "name", "path", "created_at", "type", "keep");
+    model_internal static var dataProperties:Array = new Array("raw", "enabled", "updated_at", "dest", "_id", "name", "path", "created_at", "type", "format", "status", "keep");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("raw", "enabled", "updated_at", "dest", "_id", "name", "path", "created_at", "type", "keep");
+    model_internal static var nonDerivedProperties:Array = new Array("raw", "enabled", "updated_at", "dest", "_id", "name", "path", "created_at", "type", "format", "status", "keep");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array("path");
     model_internal static var collectionBaseMap:Object;
@@ -74,6 +74,11 @@ internal class _ConnectorEntityMetadata extends com.adobe.fiber.valueobjects.Abs
     model_internal var _typeValidator:com.adobe.fiber.styles.StyleValidator;
     model_internal var _typeIsValidCacheInitialized:Boolean = false;
     model_internal var _typeValidationFailureMessages:Array;
+    
+    model_internal var _formatIsValid:Boolean;
+    model_internal var _formatValidator:com.adobe.fiber.styles.StyleValidator;
+    model_internal var _formatIsValidCacheInitialized:Boolean = false;
+    model_internal var _formatValidationFailureMessages:Array;
 
     model_internal var _instance:_Super_Connector;
     model_internal static var _nullStyle:com.adobe.fiber.styles.Style = new com.adobe.fiber.styles.Style();
@@ -94,6 +99,8 @@ internal class _ConnectorEntityMetadata extends com.adobe.fiber.valueobjects.Abs
             model_internal::dependentsOnMap["path"] = new Array();
             model_internal::dependentsOnMap["created_at"] = new Array();
             model_internal::dependentsOnMap["type"] = new Array();
+            model_internal::dependentsOnMap["format"] = new Array();
+            model_internal::dependentsOnMap["status"] = new Array();
             model_internal::dependentsOnMap["keep"] = new Array();
 
             // collection base map
@@ -112,6 +119,8 @@ internal class _ConnectorEntityMetadata extends com.adobe.fiber.valueobjects.Abs
         model_internal::propertyTypeMap["path"] = "ArrayCollection";
         model_internal::propertyTypeMap["created_at"] = "String";
         model_internal::propertyTypeMap["type"] = "String";
+        model_internal::propertyTypeMap["format"] = "String";
+        model_internal::propertyTypeMap["status"] = "int";
         model_internal::propertyTypeMap["keep"] = "Boolean";
 
         model_internal::_instance = value;
@@ -150,6 +159,11 @@ internal class _ConnectorEntityMetadata extends com.adobe.fiber.valueobjects.Abs
         model_internal::_typeValidator.requiredFieldError = "type is required";
         //model_internal::_typeValidator.source = model_internal::_instance;
         //model_internal::_typeValidator.property = "type";
+        model_internal::_formatValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForFormat);
+        model_internal::_formatValidator.required = true;
+        model_internal::_formatValidator.requiredFieldError = "format is required";
+        //model_internal::_formatValidator.source = model_internal::_instance;
+        //model_internal::_formatValidator.property = "format";
     }
 
     override public function getEntityName():String
@@ -431,6 +445,18 @@ internal class _ConnectorEntityMetadata extends com.adobe.fiber.valueobjects.Abs
     }
 
     [Bindable(event="propertyChange")]
+    public function get isFormatAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isStatusAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get isKeepAvailable():Boolean
     {
         return true;
@@ -494,6 +520,14 @@ internal class _ConnectorEntityMetadata extends com.adobe.fiber.valueobjects.Abs
         {
             model_internal::_instance.model_internal::_doValidationCacheOfType = null;
             model_internal::calculateTypeIsValid();
+        }
+    }
+    public function invalidateDependentOnFormat():void
+    {
+        if (model_internal::_formatIsValidCacheInitialized )
+        {
+            model_internal::_instance.model_internal::_doValidationCacheOfFormat = null;
+            model_internal::calculateFormatIsValid();
         }
     }
 
@@ -1215,6 +1249,112 @@ internal class _ConnectorEntityMetadata extends com.adobe.fiber.valueobjects.Abs
     }
 
     [Bindable(event="propertyChange")]   
+    public function get formatStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    public function get formatValidator() : StyleValidator
+    {
+        return model_internal::_formatValidator;
+    }
+
+    model_internal function set _formatIsValid_der(value:Boolean):void 
+    {
+        var oldValue:Boolean = model_internal::_formatIsValid;         
+        if (oldValue !== value)
+        {
+            model_internal::_formatIsValid = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "formatIsValid", oldValue, value));
+        }                             
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get formatIsValid():Boolean
+    {
+        if (!model_internal::_formatIsValidCacheInitialized)
+        {
+            model_internal::calculateFormatIsValid();
+        }
+
+        return model_internal::_formatIsValid;
+    }
+
+    model_internal function calculateFormatIsValid():void
+    {
+        var valRes:ValidationResultEvent = model_internal::_formatValidator.validate(model_internal::_instance.format)
+        model_internal::_formatIsValid_der = (valRes.results == null);
+        model_internal::_formatIsValidCacheInitialized = true;
+        if (valRes.results == null)
+             model_internal::formatValidationFailureMessages_der = emptyArray;
+        else
+        {
+            var _valFailures:Array = new Array();
+            for (var a:int = 0 ; a<valRes.results.length ; a++)
+            {
+                _valFailures.push(valRes.results[a].errorMessage);
+            }
+            model_internal::formatValidationFailureMessages_der = _valFailures;
+        }
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get formatValidationFailureMessages():Array
+    {
+        if (model_internal::_formatValidationFailureMessages == null)
+            model_internal::calculateFormatIsValid();
+
+        return _formatValidationFailureMessages;
+    }
+
+    model_internal function set formatValidationFailureMessages_der(value:Array) : void
+    {
+        var oldValue:Array = model_internal::_formatValidationFailureMessages;
+
+        var needUpdate : Boolean = false;
+        if (oldValue == null)
+            needUpdate = true;
+    
+        // avoid firing the event when old and new value are different empty arrays
+        if (!needUpdate && (oldValue !== value && (oldValue.length > 0 || value.length > 0)))
+        {
+            if (oldValue.length == value.length)
+            {
+                for (var a:int=0; a < oldValue.length; a++)
+                {
+                    if (oldValue[a] !== value[a])
+                    {
+                        needUpdate = true;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                needUpdate = true;
+            }
+        }
+
+        if (needUpdate)
+        {
+            model_internal::_formatValidationFailureMessages = value;   
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "formatValidationFailureMessages", oldValue, value));
+            // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
+            // the entire entity.
+            if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
+            {
+                model_internal::_instance.model_internal::isValid_der = model_internal::_instance.model_internal::calculateIsValid();
+            }
+        }
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get statusStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
     public function get keepStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
@@ -1272,6 +1412,10 @@ internal class _ConnectorEntityMetadata extends com.adobe.fiber.valueobjects.Abs
             case("type"):
             {
                 return typeValidationFailureMessages;
+            }
+            case("format"):
+            {
+                return formatValidationFailureMessages;
             }
             default:
             {

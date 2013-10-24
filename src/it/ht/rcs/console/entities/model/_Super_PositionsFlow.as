@@ -1,16 +1,21 @@
 /**
  * This is a generated class and is not intended for modification.  To customize behavior
- * of this value object you may modify the generated sub-class of this class - Session.as.
+ * of this value object you may modify the generated sub-class of this class - PositionsFlow.as.
  */
 
-package it.ht.rcs.console.accounting.model
+package it.ht.rcs.console.entities.model
 {
 import com.adobe.fiber.services.IFiberManagingService;
+import com.adobe.fiber.util.FiberUtils;
 import com.adobe.fiber.valueobjects.IValueObject;
+import flash.events.Event;
 import flash.events.EventDispatcher;
-import it.ht.rcs.console.accounting.model.User;
+import it.ht.rcs.console.entities.model.Positions;
+import mx.binding.utils.ChangeWatcher;
 import mx.collections.ArrayCollection;
+import mx.events.CollectionEvent;
 import mx.events.PropertyChangeEvent;
+import mx.validators.ValidationResult;
 
 import flash.net.registerClassAlias;
 import flash.net.getClassByAlias;
@@ -21,7 +26,7 @@ import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 use namespace model_internal;
 
 [ExcludeClass]
-public class _Super_Session extends flash.events.EventDispatcher implements com.adobe.fiber.valueobjects.IValueObject
+public class _Super_PositionsFlow extends flash.events.EventDispatcher implements com.adobe.fiber.valueobjects.IValueObject
 {
     model_internal static function initRemoteClassAliasSingle(cz:Class) : void
     {
@@ -29,11 +34,11 @@ public class _Super_Session extends flash.events.EventDispatcher implements com.
 
     model_internal static function initRemoteClassAliasAllRelated() : void
     {
-        it.ht.rcs.console.accounting.model.User.initRemoteClassAliasSingleChild();
-        it.ht.rcs.console.accounting.model.Recent_ids.initRemoteClassAliasSingleChild();
+        it.ht.rcs.console.entities.model.Positions.initRemoteClassAliasSingleChild();
+        it.ht.rcs.console.entities.model.Position.initRemoteClassAliasSingleChild();
     }
 
-    model_internal var _dminternal_model : _SessionEntityMetadata;
+    model_internal var _dminternal_model : _PositionsFlowEntityMetadata;
     model_internal var _changedObjects:mx.collections.ArrayCollection = new ArrayCollection();
 
     public function getChangedObjects() : Array
@@ -50,14 +55,15 @@ public class _Super_Session extends flash.events.EventDispatcher implements com.
     /**
      * properties
      */
-    private var _internal_cookie : String;
+    private var _internal_positions : ArrayCollection;
+    model_internal var _internal_positions_leaf:it.ht.rcs.console.entities.model.Positions;
     private var _internal_time : int;
-    private var _internal_level : ArrayCollection;
-    private var _internal_address : String;
-    private var _internal_user : it.ht.rcs.console.accounting.model.User;
+    private var _internal_alpha : Number = Number(0);
 
     private static var emptyArray:Array = new Array();
 
+    // Change this value according to your application's floating-point precision
+    private static var epsilon:Number = 0.0001;
 
     /**
      * derived property cache initialization
@@ -66,11 +72,12 @@ public class _Super_Session extends flash.events.EventDispatcher implements com.
 
     model_internal var _changeWatcherArray:Array = new Array();
 
-    public function _Super_Session()
+    public function _Super_PositionsFlow()
     {
-        _model = new _SessionEntityMetadata(this);
+        _model = new _PositionsFlowEntityMetadata(this);
 
         // Bind to own data or source properties for cache invalidation triggering
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "positions", model_internal::setterListenerPositions));
 
     }
 
@@ -79,9 +86,9 @@ public class _Super_Session extends flash.events.EventDispatcher implements com.
      */
 
     [Bindable(event="propertyChange")]
-    public function get cookie() : String
+    public function get positions() : ArrayCollection
     {
-        return _internal_cookie;
+        return _internal_positions;
     }
 
     [Bindable(event="propertyChange")]
@@ -91,21 +98,9 @@ public class _Super_Session extends flash.events.EventDispatcher implements com.
     }
 
     [Bindable(event="propertyChange")]
-    public function get level() : ArrayCollection
+    public function get alpha() : Number
     {
-        return _internal_level;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get address() : String
-    {
-        return _internal_address;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get user() : it.ht.rcs.console.accounting.model.User
-    {
-        return _internal_user;
+        return _internal_alpha;
     }
 
     public function clearAssociations() : void
@@ -116,13 +111,28 @@ public class _Super_Session extends flash.events.EventDispatcher implements com.
      * data/source property setters
      */
 
-    public function set cookie(value:String) : void
+    public function set positions(value:*) : void
     {
-        var oldValue:String = _internal_cookie;
+        var oldValue:ArrayCollection = _internal_positions;
         if (oldValue !== value)
         {
-            _internal_cookie = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "cookie", oldValue, _internal_cookie));
+            if (value is ArrayCollection)
+            {
+                _internal_positions = value;
+            }
+            else if (value is Array)
+            {
+                _internal_positions = new ArrayCollection(value);
+            }
+            else if (value == null)
+            {
+                _internal_positions = null;
+            }
+            else
+            {
+                throw new Error("value of positions must be a collection");
+            }
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "positions", oldValue, _internal_positions));
         }
     }
 
@@ -136,48 +146,13 @@ public class _Super_Session extends flash.events.EventDispatcher implements com.
         }
     }
 
-    public function set level(value:*) : void
+    public function set alpha(value:Number) : void
     {
-        var oldValue:ArrayCollection = _internal_level;
-        if (oldValue !== value)
+        var oldValue:Number = _internal_alpha;
+        if (isNaN(_internal_alpha) == true || Math.abs(oldValue - value) > epsilon)
         {
-            if (value is ArrayCollection)
-            {
-                _internal_level = value;
-            }
-            else if (value is Array)
-            {
-                _internal_level = new ArrayCollection(value);
-            }
-            else if (value == null)
-            {
-                _internal_level = null;
-            }
-            else
-            {
-                throw new Error("value of level must be a collection");
-            }
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "level", oldValue, _internal_level));
-        }
-    }
-
-    public function set address(value:String) : void
-    {
-        var oldValue:String = _internal_address;
-        if (oldValue !== value)
-        {
-            _internal_address = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "address", oldValue, _internal_address));
-        }
-    }
-
-    public function set user(value:it.ht.rcs.console.accounting.model.User) : void
-    {
-        var oldValue:it.ht.rcs.console.accounting.model.User = _internal_user;
-        if (oldValue !== value)
-        {
-            _internal_user = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "user", oldValue, _internal_user));
+            _internal_alpha = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "alpha", oldValue, _internal_alpha));
         }
     }
 
@@ -192,6 +167,18 @@ public class _Super_Session extends flash.events.EventDispatcher implements com.
      *  - the validity of the property (and the containing entity) if the given data property has a length restriction.
      *  - the validity of the property (and the containing entity) if the given data property is required.
      */
+
+    model_internal function setterListenerPositions(value:flash.events.Event):void
+    {
+        if (value is mx.events.PropertyChangeEvent)
+        {
+            if (mx.events.PropertyChangeEvent(value).newValue)
+            {
+                mx.events.PropertyChangeEvent(value).newValue.addEventListener(mx.events.CollectionEvent.COLLECTION_CHANGE, model_internal::setterListenerPositions);
+            }
+        }
+        _model.invalidateDependentOnPositions();
+    }
 
 
     /**
@@ -215,6 +202,11 @@ public class _Super_Session extends flash.events.EventDispatcher implements com.
         var validationFailureMessages:Array = new Array();
 
         var propertyValidity:Boolean = true;
+        if (!_model.positionsIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_positionsValidationFailureMessages);
+        }
 
         model_internal::_cacheInitialized_isValid = true;
         model_internal::invalidConstraints_der = violatedConsts;
@@ -242,14 +234,14 @@ public class _Super_Session extends flash.events.EventDispatcher implements com.
 
     [Transient]
     [Bindable(event="propertyChange")]
-    public function get _model() : _SessionEntityMetadata
+    public function get _model() : _PositionsFlowEntityMetadata
     {
         return model_internal::_dminternal_model;
     }
 
-    public function set _model(value : _SessionEntityMetadata) : void
+    public function set _model(value : _PositionsFlowEntityMetadata) : void
     {
-        var oldValue : _SessionEntityMetadata = model_internal::_dminternal_model;
+        var oldValue : _PositionsFlowEntityMetadata = model_internal::_dminternal_model;
         if (oldValue !== value)
         {
             model_internal::_dminternal_model = value;
@@ -294,6 +286,33 @@ public class _Super_Session extends flash.events.EventDispatcher implements com.
         }
     }
 
+    model_internal var _doValidationCacheOfPositions : Array = null;
+    model_internal var _doValidationLastValOfPositions : ArrayCollection;
+
+    model_internal function _doValidationForPositions(valueIn:Object):Array
+    {
+        var value : ArrayCollection = valueIn as ArrayCollection;
+
+        if (model_internal::_doValidationCacheOfPositions != null && model_internal::_doValidationLastValOfPositions == value)
+           return model_internal::_doValidationCacheOfPositions ;
+
+        _model.model_internal::_positionsIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isPositionsAvailable && _internal_positions == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "positions is required"));
+        }
+
+        model_internal::_doValidationCacheOfPositions = validationFailures;
+        model_internal::_doValidationLastValOfPositions = value;
+
+        return validationFailures;
+    }
+    
 
 }
 

@@ -1,5 +1,5 @@
 /**
- * This is a generated sub-class of _Position.as and is intended for behavior
+ * This is a generated sub-class of _Recent_ids.as and is intended for behavior
  * customization.  This class is only generated when there is no file already present
  * at its target location.  Thus custom behavior that you add here will survive regeneration
  * of the super-class. 
@@ -10,12 +10,12 @@
  * corresponding entity 
  **/ 
  
-package it.ht.rcs.console.entities.model
+package it.ht.rcs.console.accounting.model
 {
 
 import com.adobe.fiber.core.model_internal;
- 
-public class Position extends _Super_Position
+
+public class Recent_ids extends _Super_Recent_ids
 {
     /** 
      * DO NOT MODIFY THIS STATIC INITIALIZER - IT IS NECESSARY
@@ -27,32 +27,20 @@ public class Position extends _Super_Position
      * Calling this static function will initialize RemoteClass aliases
      * for this value object as well as all of the value objects corresponding
      * to entities associated to this value object's entity.  
-     */
-  
-   function Position(data:Object=null)
-   {
-     if(data)
-     {
-       this.latitude=data.latitude;
-       this.longitude=data.longitude;
-       this.lat=data.latitude;
-       this.lon=data.longitude;
-     }
-   
-   }
+     */     
     public static function _initRemoteClassAlias() : void
     {
-        _Super_Position.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.entities.model.Position);
-        _Super_Position.model_internal::initRemoteClassAliasAllRelated();
+        _Super_Recent_ids.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.accounting.model.Recent_ids);
+        _Super_Recent_ids.model_internal::initRemoteClassAliasAllRelated();
     }
      
     model_internal static function initRemoteClassAliasSingleChild() : void
     {
-        _Super_Position.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.entities.model.Position);
+        _Super_Recent_ids.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.accounting.model.Recent_ids);
     }
     
     {
-        _Super_Position.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.entities.model.Position);
+        _Super_Recent_ids.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.accounting.model.Recent_ids);
     }
     /** 
      * END OF DO NOT MODIFY SECTION

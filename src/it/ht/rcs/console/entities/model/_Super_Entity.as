@@ -69,15 +69,15 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
     private var _internal_photos : ArrayCollection;
     private var _internal_level : String;
     private var _internal_updated_at : String;
-    private var _internal__id : String;
     private var _internal_position_attr : it.ht.rcs.console.entities.model.Position_attr;
     private var _internal_analyzed : Object;
-    private var _internal_name : String;
     private var _internal_path : ArrayCollection;
     private var _internal_created_at : String;
     private var _internal_handles : ArrayCollection;
     model_internal var _internal_handles_leaf:it.ht.rcs.console.entities.model.Handle;
     private var _internal_num_links : String;
+    private var _internal__id : String;
+    private var _internal_name : String;
 
     private static var emptyArray:Array = new Array();
 
@@ -102,14 +102,14 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "photos", model_internal::setterListenerPhotos));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "level", model_internal::setterListenerLevel));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "updated_at", model_internal::setterListenerUpdated_at));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "_id", model_internal::setterListener_id));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "position_attr", model_internal::setterListenerPosition_attr));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "analyzed", model_internal::setterListenerAnalyzed));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "name", model_internal::setterListenerName));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "path", model_internal::setterListenerPath));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "created_at", model_internal::setterListenerCreated_at));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "handles", model_internal::setterListenerHandles));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "num_links", model_internal::setterListenerNum_links));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "_id", model_internal::setterListener_id));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "name", model_internal::setterListenerName));
 
     }
 
@@ -166,12 +166,6 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
     }
 
     [Bindable(event="propertyChange")]
-    public function get _id() : String
-    {
-        return _internal__id;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get position_attr() : it.ht.rcs.console.entities.model.Position_attr
     {
         return _internal_position_attr;
@@ -181,12 +175,6 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
     public function get analyzed() : Object
     {
         return _internal_analyzed;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get name() : String
-    {
-        return _internal_name;
     }
 
     [Bindable(event="propertyChange")]
@@ -211,6 +199,18 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
     public function get num_links() : String
     {
         return _internal_num_links;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get _id() : String
+    {
+        return _internal__id;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get name() : String
+    {
+        return _internal_name;
     }
 
     public function clearAssociations() : void
@@ -346,16 +346,6 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
         }
     }
 
-    public function set _id(value:String) : void
-    {
-        var oldValue:String = _internal__id;
-        if (oldValue !== value)
-        {
-            _internal__id = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "_id", oldValue, _internal__id));
-        }
-    }
-
     public function set position_attr(value:it.ht.rcs.console.entities.model.Position_attr) : void
     {
         var oldValue:it.ht.rcs.console.entities.model.Position_attr = _internal_position_attr;
@@ -373,16 +363,6 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
         {
             _internal_analyzed = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "analyzed", oldValue, _internal_analyzed));
-        }
-    }
-
-    public function set name(value:String) : void
-    {
-        var oldValue:String = _internal_name;
-        if (oldValue !== value)
-        {
-            _internal_name = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "name", oldValue, _internal_name));
         }
     }
 
@@ -453,6 +433,26 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
         {
             _internal_num_links = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "num_links", oldValue, _internal_num_links));
+        }
+    }
+
+    public function set _id(value:String) : void
+    {
+        var oldValue:String = _internal__id;
+        if (oldValue !== value)
+        {
+            _internal__id = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "_id", oldValue, _internal__id));
+        }
+    }
+
+    public function set name(value:String) : void
+    {
+        var oldValue:String = _internal_name;
+        if (oldValue !== value)
+        {
+            _internal_name = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "name", oldValue, _internal_name));
         }
     }
 
@@ -529,11 +529,6 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
         _model.invalidateDependentOnUpdated_at();
     }
 
-    model_internal function setterListener_id(value:flash.events.Event):void
-    {
-        _model.invalidateDependentOn_id();
-    }
-
     model_internal function setterListenerPosition_attr(value:flash.events.Event):void
     {
         _model.invalidateDependentOnPosition_attr();
@@ -542,11 +537,6 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
     model_internal function setterListenerAnalyzed(value:flash.events.Event):void
     {
         _model.invalidateDependentOnAnalyzed();
-    }
-
-    model_internal function setterListenerName(value:flash.events.Event):void
-    {
-        _model.invalidateDependentOnName();
     }
 
     model_internal function setterListenerPath(value:flash.events.Event):void
@@ -581,6 +571,16 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
     model_internal function setterListenerNum_links(value:flash.events.Event):void
     {
         _model.invalidateDependentOnNum_links();
+    }
+
+    model_internal function setterListener_id(value:flash.events.Event):void
+    {
+        _model.invalidateDependentOn_id();
+    }
+
+    model_internal function setterListenerName(value:flash.events.Event):void
+    {
+        _model.invalidateDependentOnName();
     }
 
 
@@ -645,11 +645,6 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
             propertyValidity = false;
             com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_updated_atValidationFailureMessages);
         }
-        if (!_model._idIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::__idValidationFailureMessages);
-        }
         if (!_model.position_attrIsValid)
         {
             propertyValidity = false;
@@ -659,11 +654,6 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
         {
             propertyValidity = false;
             com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_analyzedValidationFailureMessages);
-        }
-        if (!_model.nameIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_nameValidationFailureMessages);
         }
         if (!_model.pathIsValid)
         {
@@ -684,6 +674,16 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
         {
             propertyValidity = false;
             com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_num_linksValidationFailureMessages);
+        }
+        if (!_model._idIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::__idValidationFailureMessages);
+        }
+        if (!_model.nameIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_nameValidationFailureMessages);
         }
 
         model_internal::_cacheInitialized_isValid = true;
@@ -980,33 +980,6 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
         return validationFailures;
     }
     
-    model_internal var _doValidationCacheOf_id : Array = null;
-    model_internal var _doValidationLastValOf_id : String;
-
-    model_internal function _doValidationFor_id(valueIn:Object):Array
-    {
-        var value : String = valueIn as String;
-
-        if (model_internal::_doValidationCacheOf_id != null && model_internal::_doValidationLastValOf_id == value)
-           return model_internal::_doValidationCacheOf_id ;
-
-        _model.model_internal::__idIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.is_idAvailable && _internal__id == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "_id is required"));
-        }
-
-        model_internal::_doValidationCacheOf_id = validationFailures;
-        model_internal::_doValidationLastValOf_id = value;
-
-        return validationFailures;
-    }
-    
     model_internal var _doValidationCacheOfPosition_attr : Array = null;
     model_internal var _doValidationLastValOfPosition_attr : it.ht.rcs.console.entities.model.Position_attr;
 
@@ -1057,33 +1030,6 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
 
         model_internal::_doValidationCacheOfAnalyzed = validationFailures;
         model_internal::_doValidationLastValOfAnalyzed = value;
-
-        return validationFailures;
-    }
-    
-    model_internal var _doValidationCacheOfName : Array = null;
-    model_internal var _doValidationLastValOfName : String;
-
-    model_internal function _doValidationForName(valueIn:Object):Array
-    {
-        var value : String = valueIn as String;
-
-        if (model_internal::_doValidationCacheOfName != null && model_internal::_doValidationLastValOfName == value)
-           return model_internal::_doValidationCacheOfName ;
-
-        _model.model_internal::_nameIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.isNameAvailable && _internal_name == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "name is required"));
-        }
-
-        model_internal::_doValidationCacheOfName = validationFailures;
-        model_internal::_doValidationLastValOfName = value;
 
         return validationFailures;
     }
@@ -1192,6 +1138,60 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
 
         model_internal::_doValidationCacheOfNum_links = validationFailures;
         model_internal::_doValidationLastValOfNum_links = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOf_id : Array = null;
+    model_internal var _doValidationLastValOf_id : String;
+
+    model_internal function _doValidationFor_id(valueIn:Object):Array
+    {
+        var value : String = valueIn as String;
+
+        if (model_internal::_doValidationCacheOf_id != null && model_internal::_doValidationLastValOf_id == value)
+           return model_internal::_doValidationCacheOf_id ;
+
+        _model.model_internal::__idIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.is_idAvailable && _internal__id == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "_id is required"));
+        }
+
+        model_internal::_doValidationCacheOf_id = validationFailures;
+        model_internal::_doValidationLastValOf_id = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfName : Array = null;
+    model_internal var _doValidationLastValOfName : String;
+
+    model_internal function _doValidationForName(valueIn:Object):Array
+    {
+        var value : String = valueIn as String;
+
+        if (model_internal::_doValidationCacheOfName != null && model_internal::_doValidationLastValOfName == value)
+           return model_internal::_doValidationCacheOfName ;
+
+        _model.model_internal::_nameIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isNameAvailable && _internal_name == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "name is required"));
+        }
+
+        model_internal::_doValidationCacheOfName = validationFailures;
+        model_internal::_doValidationLastValOfName = value;
 
         return validationFailures;
     }

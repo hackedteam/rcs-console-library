@@ -27,7 +27,8 @@ package it.ht.rcs.console.monitor.rest
               symbian: [true, true],
               total: null,
               windows: [true, true],
-              winmo: [false, false]
+              winmo: [false, false],
+              winphone: [false, false]
             }),
           collectors: new LicenseCollectors(
             {

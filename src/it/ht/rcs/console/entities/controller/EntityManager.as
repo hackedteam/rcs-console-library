@@ -118,19 +118,23 @@ package it.ht.rcs.console.entities.controller
       DB.instance.entity.most_contacted(entityId, from, to, num, onResult, onFault);
     }
     
-    public function mostVisited(entityId:String, from:String, to:String, num:String, onResult:Function, onFault:Function = null):void
+    public function mostVisitedUrls(entityId:String, from:String, to:String, num:String, onResult:Function, onFault:Function = null):void
     {
-      DB.instance.entity.most_visited(entityId, from, to, num, onResult, onFault);
+      DB.instance.entity.most_visited_urls(entityId, from, to, num, onResult, onFault);
+    }
+    
+    public function mostVisitedPlaces(entityId:String, from:String, to:String, num:String, onResult:Function, onFault:Function = null):void
+    {
+      DB.instance.entity.most_visited_places(entityId, from, to, num, onResult, onFault);
     }
 
     private function onEntityPush(e:PushEvent):void
     {
       EntityManager.instance.show(e.data.id as String);
 
-      if (e.data.action == "destroy") {
-        EntityManager.instance.refresh();
-        EntityManager.instance.dispatchEvent(new Event(e.data.action));
-      }
+        //EntityManager.instance.refresh();
+        //EntityManager.instance.dispatchEvent(new Event(e.data.action));
+     
     }
 
     public function getEntityById(id:String):Entity
@@ -173,7 +177,7 @@ package it.ht.rcs.console.entities.controller
         var entity:Entity = e.result as Entity;
         addItem(entity);
         refresh()
-        //SearchManager.instance.showItem(entity._id);
+        SearchManager.instance.showItem(entity._id);
         callback(entity);
       });
     }
@@ -184,6 +188,16 @@ package it.ht.rcs.console.entities.controller
       {
         DB.instance.entity.all(onResult);
       }, onFault)
+    }
+    
+    public function flow(entities:Array, from:String, to:String,  onResult:Function = null, onFault:Function = null):void
+    {
+      DB.instance.entity.flow(entities, from, to, onResult, onFault);
+    }
+    
+    public function positions(entities:Array, from:String, to:String,  summary:Boolean, onResult:Function = null, onFault:Function = null):void
+    {
+      DB.instance.entity.positions(entities, from, to, summary, onResult, onFault);
     }
 
     override protected function onItemUpdate(event:*):void

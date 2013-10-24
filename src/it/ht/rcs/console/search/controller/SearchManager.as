@@ -27,6 +27,7 @@ package it.ht.rcs.console.search.controller
       clear();
       for each (var item:* in e.result.source)
         addItem(item);
+
       dispatchDataLoadedEvent();
     }
     
@@ -45,6 +46,7 @@ package it.ht.rcs.console.search.controller
       
       DB.instance.search.show(id, function(re:ResultEvent):void {
         var item:SearchItem = re.result as SearchItem;
+         if(item==null) return;
         var current:SearchItem = getItem(item._id);
         if (current != null)
           removeItem(current);
