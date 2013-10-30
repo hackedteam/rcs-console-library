@@ -23,12 +23,11 @@ package it.ht.rcs.console.entities.rest
   
   public class DBEntityDemo implements IDBEntity
   {
-    
-    
-    private static const WEEK:Number=604800
-    private static const DAY:Number=86400
-    private static const HOUR:Number=3600
-    private static const MINUTE:Number=60
+
+    private static const WEEK:Number=1000*60*60*24*7
+    private static const DAY:Number=1000*60*60*24
+    private static const HOUR:Number=1000*60*60
+    private static const MINUTE:Number=1000*60
 
     public static var entities:ArrayCollection = new ArrayCollection([
       // Swordfish
@@ -40,10 +39,11 @@ package it.ht.rcs.console.entities.rest
         level:'auto', photos:[],      
         handles:[
           new Handle({name:'Jimmy Page', handle:'jimmy.page',type:'facebook'}),
+          new Handle({name:'Jimmy Page', handle:'jimmypage',type:'twitter'}),
           new Handle({name:'Jimmy Page', handle:'jimmy.page@gmail.com',type:'gmail'}),
           new Handle({name:'Jimmy Page', handle:'jimmypage',type:'skype'})],
         links:[
-          new Link({le:"e2", level:"automatic", type:"peer",rel:2, versus:"out"}), 
+          new Link({le:"e2", level:"automatic", type:"peer",rel:2, versus:"both", info:new ArrayCollection(["joey.fargo"])}), //Joey Fargo
           new Link({le:"e3", level:"automatic", type:"peer",rel:3, versus:"both"}), 
           new Link({le:"e4", level:"automatic", type:"peer",rel:0, versus:"out"}), 
           new Link({le:"e6", level:"automatic", type:"peer",rel:0, versus:"out"})
@@ -60,6 +60,7 @@ package it.ht.rcs.console.entities.rest
         level:'auto', photos:[],      
         handles:[
           new Handle({name:'Joey fargo', handle:'joey.fargo',type:'facebook'}),
+          new Handle({name:'Joey fargo', handle:'joeyfargo',type:'twitter'}),
           new Handle({name:'Joey', handle:'jfar@gmail.com',type:'gmail'}),
         ], 
         links:[
@@ -79,8 +80,8 @@ package it.ht.rcs.console.entities.rest
         position:new Position({latitude:"34.031249" , longitude:"-118.151848"}),
         position_attr:new Position_attr({accuracy:"60" , time:convertToUnix(new Date(2012,11,03,14,57,00))})
       }),
-      new Entity({ _id: 'e5', type: 'person', name: 'John Doe',      desc: 'Friend',    path: ['o1','t1'],         level:'manual', photos:[],      handles:[new Handle({name:'Jdoe', handle:'+3456743293',type:'phone'})], links:[new Link({le:"e1", level:"automatic", type:"know",rel:1, versus:"both"})]}),
-      new Entity({ _id: 'e7', type: 'person', name: 'Jane Doe',      desc: 'Friend',    path: ['o1','t1'],         level:'auto', photos:[],      handles:[new Handle({name:'Jdoe', handle:'+3456743293',type:'phone'})], links:[new Link({le:"e5", level:"automatic", type:"identity",rel:1, versus:"both"})]}),
+      new Entity({ _id: 'e5', type: 'person', name: 'John Doe',      desc: 'Friend',    path: ['o1','t1'],         level:'manual', photos:[],      handles:[new Handle({name:'Jdoe', handle:'Jdoe',type:'skype'})], links:[new Link({le:"e1", level:"automatic", type:"know",rel:1, versus:"both"})]}),
+      new Entity({ _id: 'e7', type: 'person', name: 'Jane Doe',      desc: 'Friend',    path: ['o1','t1'],         level:'auto', photos:[],      handles:[new Handle({name:'Jane.doe', handle:'+3456743293',type:'phone'})], links:[new Link({le:"e5", level:"automatic", type:"know",rel:1, versus:"both"})]}),
       new Entity({ _id: 'e6', type: 'position', name: 'Home',      
         desc: 'Jimmy\'s Home',    path: ['o1','t1'],         
         level:'auto', photos:[],     
@@ -99,9 +100,7 @@ package it.ht.rcs.console.entities.rest
       
     ]);
     
-    
-    
-    
+
     private static function convertToUnix(value:Date):Number
     {
       
@@ -260,7 +259,7 @@ package it.ht.rcs.console.entities.rest
         contacts.push(new Contact({peer:"3247915422",   type:"whatsapp",    count:13,   size:208.0,   percent:50,   peer_name:"Joey Fargo"}));
         result.addItem(contacts);
         contacts=new Array();
-        contacts.push(new Contact({peer:"john.doe",         type:"skype",    count:30,   size:208.0,   percent:60,   peer_name:"John Doe"}));
+        contacts.push(new Contact({peer:"john.doe",    type:"skype",    count:30,   size:208.0,   percent:60,   peer_name:"John Doe"}));
         contacts.push(new Contact({peer:"joeyfargo",   type:"skype",    count:12,   size:208.0,   percent:24,   peer_name:"Joey Fargo"}));
         
         result.addItem(contacts);
@@ -287,10 +286,20 @@ package it.ht.rcs.console.entities.rest
     public function flow(entities:Array, from:String, to:String, onResult:Function=null, onFault:Function=null):void
     {
      //An array of FLOW with date and n flows....
+      
+      var now:Date=new Date()
+      var date1:Date=new Date() //10 days ago
+      date1.time-=(DAY*10)
+      var date2:Date=new Date() //11 days ago
+      date2.time-=DAY*11
+      var date3:Date=new Date() //12 days ago
+      date3.time-=DAY*12
+        
+        
       var flows:ArrayCollection=new ArrayCollection();
       
       var flow1:Flow=new Flow()
-      flow1.date="20131010";
+      flow1.date=String(date1.fullYear)+doubleDigits(date1.month+1)+doubleDigits(date1.date);
       flow1.flows=new ArrayCollection();
         
       var flows1:Flows=new Flows();
@@ -315,7 +324,7 @@ package it.ht.rcs.console.entities.rest
       
       //second day
       var flow2:Flow=new Flow()
-      flow2.date="20131011";
+      flow2.date=String(date2.fullYear)+doubleDigits(date2.month+1)+doubleDigits(date2.date);
       flow2.flows=new ArrayCollection();
 
       var flows4:Flows=new Flows();
@@ -329,7 +338,7 @@ package it.ht.rcs.console.entities.rest
       
       //third day
       var flow3:Flow=new Flow()
-      flow3.date="20131013";
+      flow3.date=String(date3.fullYear)+doubleDigits(date3.month+1)+doubleDigits(date3.date);
       flow3.flows=new ArrayCollection();
       
       var flows5:Flows=new Flows();
@@ -354,14 +363,37 @@ package it.ht.rcs.console.entities.rest
     
     public function positions(entities:Array, from:String, to:String, summary:Boolean=false, onResult:Function=null, onFault:Function=null):void
     {
+      var now:Date=new Date()
+      var date1:Date=new Date() //10 days ago
+      date1.hours=1
+      date1.minutes=0
+      date1.time-=(DAY*10)
+        
+      var date2:Date=new Date() //11 days ago
+      date2.hours=2
+      date2.minutes=0
+      date2.time-=DAY*10
+     
+        
+      var date3:Date=new Date() //12 days ago
+      date3.hours=3
+      date3.minutes=0
+      date3.time-=DAY*10
+        
+      var date4:Date=new Date() //12 days ago
+      date4.hours=4
+      date4.minutes=0
+      date4.time-=DAY*10
+     
       var hours:ArrayCollection=new ArrayCollection()
         
       var minutes:ArrayCollection=new ArrayCollection()
         
       var flow1:PositionsFlow=new PositionsFlow()
         
-      flow1.time=1381053600;
-      flow1.alpha=60
+      flow1.time=date1.time/1000;  //1381053600  
+                                   //1382273988
+      flow1.alpha=50;
       flow1.positions=new ArrayCollection()
         
       var pos1:Positions=new Positions()
@@ -380,17 +412,17 @@ package it.ht.rcs.console.entities.rest
       
         
       var flow2:PositionsFlow=new PositionsFlow()
-      flow2.time=1381057200;
-      flow2.alpha=20;
+      flow2.time=date2.time/1000
+      flow2.alpha=40;
       flow2.positions=new ArrayCollection()
       
       var flow3:PositionsFlow=new PositionsFlow()
-      flow3.time=1381060800;
+      flow3.time=date3.time/1000
       flow3.alpha=50;
       flow3.positions=new ArrayCollection();
       
       var flow4:PositionsFlow=new PositionsFlow();
-      flow4.time=1381064400;
+      flow4.time=date4.time/1000
       flow4.alpha=50
       flow4.positions=new ArrayCollection();
       
@@ -411,13 +443,13 @@ package it.ht.rcs.console.entities.rest
         var positions1:Positions;
         var positions2:Positions;
         
-        var alpha1:Number=60
-        var alpha2:Number=60
+        var alpha1:Number=60;
+        var alpha2:Number=60;
         
         for(var m:int=0;m<240;m++)
         {
           min=new PositionsFlow()
-          min.time=1378454400+(MINUTE*m)
+          min.time=date1.time/1000+(60*m)  // /1000 ? date1.time ???
           min.alpha=60
           min.positions=new ArrayCollection()
             
@@ -455,6 +487,13 @@ package it.ht.rcs.console.entities.rest
         onResult(new ResultEvent('entity.positions', false, true, hours));
       else
         onResult(new ResultEvent('entity.positions', false, true, minutes));
+    }
+    
+    private function doubleDigits(n:Number):String
+    {
+    if(n<10)
+      return "0"+n;
+    return String(n)
     }
   }
   
