@@ -23,14 +23,14 @@ internal class _ConnectorEntityMetadata extends com.adobe.fiber.valueobjects.Abs
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("raw", "enabled", "updated_at", "dest", "_id", "name", "path", "created_at", "type", "format", "status", "keep");
+    model_internal static var allProperties:Array = new Array("raw", "enabled", "updated_at", "dest", "_id", "name", "path", "created_at", "type", "format", "status", "keep", "enqueue_previous");
     model_internal static var allAssociationProperties:Array = new Array();
-    model_internal static var allRequiredProperties:Array = new Array("raw", "enabled", "updated_at", "dest", "_id", "name", "path", "created_at", "type", "format", "status", "keep");
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("raw", "enabled", "updated_at", "dest", "_id", "name", "path", "created_at", "type", "format", "status", "keep");
+    model_internal static var allRequiredProperties:Array = new Array("raw", "enabled", "updated_at", "dest", "_id", "name", "path", "created_at", "type", "format", "status", "keep", "enqueue_previous");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("raw", "enabled", "updated_at", "dest", "_id", "name", "path", "created_at", "type", "format", "status", "keep", "enqueue_previous");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("raw", "enabled", "updated_at", "dest", "_id", "name", "path", "created_at", "type", "format", "status", "keep");
+    model_internal static var dataProperties:Array = new Array("raw", "enabled", "updated_at", "dest", "_id", "name", "path", "created_at", "type", "format", "status", "keep", "enqueue_previous");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("raw", "enabled", "updated_at", "dest", "_id", "name", "path", "created_at", "type", "format", "status", "keep");
+    model_internal static var nonDerivedProperties:Array = new Array("raw", "enabled", "updated_at", "dest", "_id", "name", "path", "created_at", "type", "format", "status", "keep", "enqueue_previous");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array("path");
     model_internal static var collectionBaseMap:Object;
@@ -102,6 +102,7 @@ internal class _ConnectorEntityMetadata extends com.adobe.fiber.valueobjects.Abs
             model_internal::dependentsOnMap["format"] = new Array();
             model_internal::dependentsOnMap["status"] = new Array();
             model_internal::dependentsOnMap["keep"] = new Array();
+            model_internal::dependentsOnMap["enqueue_previous"] = new Array();
 
             // collection base map
             model_internal::collectionBaseMap = new Object();
@@ -122,6 +123,7 @@ internal class _ConnectorEntityMetadata extends com.adobe.fiber.valueobjects.Abs
         model_internal::propertyTypeMap["format"] = "String";
         model_internal::propertyTypeMap["status"] = "int";
         model_internal::propertyTypeMap["keep"] = "Boolean";
+        model_internal::propertyTypeMap["enqueue_previous"] = "Boolean";
 
         model_internal::_instance = value;
         model_internal::_updated_atValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForUpdated_at);
@@ -458,6 +460,12 @@ internal class _ConnectorEntityMetadata extends com.adobe.fiber.valueobjects.Abs
 
     [Bindable(event="propertyChange")]
     public function get isKeepAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isEnqueue_previousAvailable():Boolean
     {
         return true;
     }
@@ -1356,6 +1364,12 @@ internal class _ConnectorEntityMetadata extends com.adobe.fiber.valueobjects.Abs
 
     [Bindable(event="propertyChange")]   
     public function get keepStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get enqueue_previousStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
