@@ -25,6 +25,7 @@ public class Connector extends _Super_Connector
       type: 'LOCAL',
       keep: true,
       raw: false,
+      enqueue_previous:false,
       dest: ''
     };
   }
@@ -42,6 +43,7 @@ public class Connector extends _Super_Connector
       format = data.format;
       status = data.status;
       dest = data.dest;
+      enqueue_previous=data.enqueue_previous
     }
   }
   

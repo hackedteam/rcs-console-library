@@ -1610,16 +1610,16 @@
       <item name="IncludeRemoteClass">nonempty</item>
     </annotation>
     <annotation name="all_">
-      <item name="propertySpecifier">raw,enabled,updated_at,dest,_id,name,path,created_at,type,format,status,keep</item>
+      <item name="propertySpecifier">raw,enqueue_previous,enabled,updated_at,dest,_id,name,path,created_at,type,format,status,keep</item>
     </annotation>
     <annotation name="ActionScriptGeneration">
       <item name="Package">it.ht.rcs.console.connector.model</item>
     </annotation>
     <annotation name="create_">
-      <item name="propertySpecifier">raw,enabled,updated_at,dest,_id,name,path,created_at,type,format,keep</item>
+      <item name="propertySpecifier">raw,enqueue_previous,enabled,updated_at,dest,_id,name,path,created_at,type,format,keep</item>
     </annotation>
     <annotation name="update_">
-      <item name="propertySpecifier">raw,enabled,updated_at,dest,_id,name,path,created_at,type,format,keep</item>
+      <item name="propertySpecifier">raw,enabled,enqueue_previous,updated_at,dest,_id,name,path,created_at,type,format,keep</item>
     </annotation>
     <property name="raw" type="boolean" required="true"/>
     <property name="enabled" type="boolean" required="true"/>
@@ -1633,6 +1633,7 @@
     <property name="format" type="string" required="true"/>
     <property name="status" type="integer" required="true"/>
     <property name="keep" type="boolean" required="true"/>
+    <property name="enqueue_previous" type="boolean" required="true"/>
   </entity>
   <service name="DBTarget">
     <annotation name="ActionScriptGeneration">

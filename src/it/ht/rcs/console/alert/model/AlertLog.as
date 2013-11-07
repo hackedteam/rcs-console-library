@@ -12,6 +12,7 @@ package it.ht.rcs.console.alert.model
         time = data.time;
         path = data.path;
         evidence = data.evidence;
+        entities = data.entities;
       }
     }
     

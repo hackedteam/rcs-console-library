@@ -40,7 +40,10 @@ public class Link extends _Super_Link
       this.level=data.level;
       this.rel=data.rel
       this.versus=data.versus
-      this.info=new ArrayCollection()
+        if(data.info)
+      this.info=data.info;
+        else
+          this.info=new ArrayCollection()
     }
   }
   

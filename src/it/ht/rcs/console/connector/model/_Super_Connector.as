@@ -64,6 +64,7 @@ public class _Super_Connector extends flash.events.EventDispatcher implements co
     private var _internal_format : String;
     private var _internal_status : int;
     private var _internal_keep : Boolean;
+    private var _internal_enqueue_previous : Boolean;
 
     private static var emptyArray:Array = new Array();
 
@@ -165,6 +166,12 @@ public class _Super_Connector extends flash.events.EventDispatcher implements co
     public function get keep() : Boolean
     {
         return _internal_keep;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get enqueue_previous() : Boolean
+    {
+        return _internal_enqueue_previous;
     }
 
     public function clearAssociations() : void
@@ -307,6 +314,16 @@ public class _Super_Connector extends flash.events.EventDispatcher implements co
         {
             _internal_keep = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "keep", oldValue, _internal_keep));
+        }
+    }
+
+    public function set enqueue_previous(value:Boolean) : void
+    {
+        var oldValue:Boolean = _internal_enqueue_previous;
+        if (oldValue !== value)
+        {
+            _internal_enqueue_previous = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "enqueue_previous", oldValue, _internal_enqueue_previous));
         }
     }
 
