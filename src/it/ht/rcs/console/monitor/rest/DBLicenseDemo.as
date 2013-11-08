@@ -21,18 +21,18 @@ package it.ht.rcs.console.monitor.rest
               blackberry: [true, true],
               desktop: 15,
               ios: [true, true],
-              linux: [false, false],
+              linux: [true, true],
               mobile: 15,
               osx: [true, true],
               symbian: [true, true],
               total: null,
               windows: [true, true],
               winmo: [false, false],
-              winphone: [false, false]
+              winphone: [true, true]
             }),
           collectors: new LicenseCollectors(
             {
-              collectors: null,
+              collectors: 15,
               anonymizers: 5
             }),
           modify:true,

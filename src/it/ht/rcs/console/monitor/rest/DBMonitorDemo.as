@@ -32,10 +32,10 @@ package it.ht.rcs.console.monitor.rest
           address: '127.0.0.1',
           cpu:70,
           disk:20,
-          info: 'Pay attention',
+          info: '',
           name: 'Database',
           pcpu:15,
-          status:'1',
+          status:'0',
           time: new Date().time / 1000,
           type: 'db'
         }));
@@ -144,7 +144,7 @@ package it.ht.rcs.console.monitor.rest
           address: '172.20.20.6',
           cpu:90,
           disk:70,
-          info: '',
+          info: 'Pay attention',
           name: 'Anonymizer',
           pcpu:70,
           status:'1',
@@ -175,7 +175,7 @@ package it.ht.rcs.console.monitor.rest
           info: '',
           name: 'Anonymizer',
           pcpu:70,
-          status:'2',
+          status:'0',
           time: new Date().time / 1000,
           type: 'anon'
         }));

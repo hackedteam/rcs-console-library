@@ -274,13 +274,13 @@ package it.ht.rcs.console
 			var supportedModules:Array=new Array();
 			for (var k:int=0; k < allModules.length; k++)
 			{
-        
+
 				if (moduleIsSupportedByAgent(platform, allModules[k].module, allModules))
 				{
 					supportedModules.push(allModules[k])
 				}
 			}
-      
+
 			for (var i:int=0; i < supportedModules.length; i++)
 			{
 				for (var j:int=0; j < config.modules.length; j++)
@@ -294,34 +294,34 @@ package it.ht.rcs.console
 			config.modules=supportedModules
 
 		}
-    
-    public static function addFactoryMissingModules(type:String, config:Object):void
-    {
-      
-      var allModules:Array=DefaultConfigBuilder.getModules(true);
-      var supportedModules:Array=new Array();
-      for (var k:int=0; k < allModules.length; k++)
-      {
-        
-        if (moduleIsSupportedByFactory(type, allModules[k].module, allModules))
-        {
-          supportedModules.push(allModules[k])
-        }
-      }
-      
-      for (var i:int=0; i < supportedModules.length; i++)
-      {
-        for (var j:int=0; j < config.modules.length; j++)
-        {
-          if (config.modules[j].module == supportedModules[i].module)
-          {
-            supportedModules[i]=config.modules[j]
-          }
-        }
-      }
-      config.modules=supportedModules
-      
-    }
+
+		public static function addFactoryMissingModules(type:String, config:Object):void
+		{
+
+			var allModules:Array=DefaultConfigBuilder.getModules(true);
+			var supportedModules:Array=new Array();
+			for (var k:int=0; k < allModules.length; k++)
+			{
+
+				if (moduleIsSupportedByFactory(type, allModules[k].module, allModules))
+				{
+					supportedModules.push(allModules[k])
+				}
+			}
+
+			for (var i:int=0; i < supportedModules.length; i++)
+			{
+				for (var j:int=0; j < config.modules.length; j++)
+				{
+					if (config.modules[j].module == supportedModules[i].module)
+					{
+						supportedModules[i]=config.modules[j]
+					}
+				}
+			}
+			config.modules=supportedModules
+
+		}
 
 		private static function moduleIsSupportedByAgent(platform:String, moduleName:String, modules:Array):Boolean
 		{
@@ -330,14 +330,14 @@ package it.ht.rcs.console
 					return module._platform.indexOf(platform) != -1;
 			return false;
 		}
-    
-    private static function moduleIsSupportedByFactory(type:String, moduleName:String, modules:Array):Boolean
-    {
-      for each (var module:Object in modules)
-      if (module.module == moduleName)
-        return module._type.indexOf(type) != -1;
-      return false;
-    }
+
+		private static function moduleIsSupportedByFactory(type:String, moduleName:String, modules:Array):Boolean
+		{
+			for each (var module:Object in modules)
+				if (module.module == moduleName)
+					return module._type.indexOf(type) != -1;
+			return false;
+		}
 
 		private static function deleteModuleReferences(config:Object, moduleName:String):void
 		{
@@ -363,7 +363,7 @@ package it.ht.rcs.console
 						i--;
 					}
 				}
-		} 
+		}
 
 	}
 
