@@ -44,7 +44,7 @@ package it.ht.rcs.console
 
 				{module: "application", _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,symbian,android,linux"},
 
-				{module: "calendar", _type: "desktop,mobile", _platform: "osx,ios,blackberry,winmo,symbian,android,linux,winphone"},
+				{module: "calendar", _type: "desktop,mobile", _platform: "osx,ios,blackberry,winmo,symbian,android,winphone"},
 
 				{module: "call", buffer: 512000, compression: 5,
 
@@ -54,19 +54,19 @@ package it.ht.rcs.console
 
 				{module: "chat", _type: "desktop,mobile", _platform: "windows,osx,blackberry,linux,ios,android"},
 
-				{module: "clipboard", _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,android,linux"},
+				{module: "clipboard", _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,android"},
 
 				{module: "conference", number: "", _type: "mobile", _platform: "winmo"},
 
 				{module: "crisis", network: {enabled: false, processes: []}, hook: {enabled: true, processes: []},
 
-					mic: true, call: true, camera: true, position: true, synchronize: false, _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,android,symbian,linux,winphone"},
+					mic: true, call: true, camera: true, position: true, synchronize: false, _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,android,symbian,winphone"},
 
 				{module: "device", list: false, _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,symbian,android,linux,winphone"},
 
-				{module: "file", open: false, capture: false, minsize: 1, maxsize: 500000, date: formatter.format(today), accept: [], deny: [], _type: "desktop", _platform: "windows,osx,linux"},
+				{module: "file", open: false, capture: false, minsize: 1, maxsize: 500000, date: formatter.format(today), accept: [], deny: [], _type: "desktop", _platform: "windows,osx"},
 
-				{module: "infection", local: false, mobile: false, usb: false, vm: 0, factory: "", _type: "desktop", _platform: "windows,linux"},
+				{module: "infection", local: false, mobile: false, usb: false, vm: 0, factory: "", _type: "desktop", _platform: "windows"},
 
 				{module: "keylog", _type: "desktop,mobile", _platform: "windows,osx,ios,linux"},
 
