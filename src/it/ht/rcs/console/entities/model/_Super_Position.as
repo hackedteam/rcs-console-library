@@ -51,11 +51,11 @@ public class _Super_Position extends flash.events.EventDispatcher implements com
     /**
      * properties
      */
-    private var _internal_longitude : String;
-    private var _internal_latitude : String;
     private var _internal_lon : Number = Number(0);
     private var _internal_rad : Number = Number(0);
     private var _internal_lat : Number = Number(0);
+    private var _internal_longitude : String;
+    private var _internal_latitude : String;
 
     private static var emptyArray:Array = new Array();
 
@@ -84,18 +84,6 @@ public class _Super_Position extends flash.events.EventDispatcher implements com
      */
 
     [Bindable(event="propertyChange")]
-    public function get longitude() : String
-    {
-        return _internal_longitude;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get latitude() : String
-    {
-        return _internal_latitude;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get lon() : Number
     {
         return _internal_lon;
@@ -113,6 +101,18 @@ public class _Super_Position extends flash.events.EventDispatcher implements com
         return _internal_lat;
     }
 
+    [Bindable(event="propertyChange")]
+    public function get longitude() : String
+    {
+        return _internal_longitude;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get latitude() : String
+    {
+        return _internal_latitude;
+    }
+
     public function clearAssociations() : void
     {
     }
@@ -120,26 +120,6 @@ public class _Super_Position extends flash.events.EventDispatcher implements com
     /**
      * data/source property setters
      */
-
-    public function set longitude(value:String) : void
-    {
-        var oldValue:String = _internal_longitude;
-        if (oldValue !== value)
-        {
-            _internal_longitude = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "longitude", oldValue, _internal_longitude));
-        }
-    }
-
-    public function set latitude(value:String) : void
-    {
-        var oldValue:String = _internal_latitude;
-        if (oldValue !== value)
-        {
-            _internal_latitude = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "latitude", oldValue, _internal_latitude));
-        }
-    }
 
     public function set lon(value:Number) : void
     {
@@ -168,6 +148,26 @@ public class _Super_Position extends flash.events.EventDispatcher implements com
         {
             _internal_lat = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "lat", oldValue, _internal_lat));
+        }
+    }
+
+    public function set longitude(value:String) : void
+    {
+        var oldValue:String = _internal_longitude;
+        if (oldValue !== value)
+        {
+            _internal_longitude = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "longitude", oldValue, _internal_longitude));
+        }
+    }
+
+    public function set latitude(value:String) : void
+    {
+        var oldValue:String = _internal_latitude;
+        if (oldValue !== value)
+        {
+            _internal_latitude = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "latitude", oldValue, _internal_latitude));
         }
     }
 

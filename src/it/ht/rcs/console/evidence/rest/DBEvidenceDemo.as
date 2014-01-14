@@ -108,7 +108,7 @@ package it.ht.rcs.console.evidence.rest
       new Evidence({_id: 'e26', aid: 'a1', blo: false, da: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 15, 09, 45)), dr: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 15, 10, 48)), _mid: 0, note: '', rel: 0, type: 'chat', data: new EvidenceData({program: 'SKYPE', topic: '', peer: 'alejandro.reade jimmy.page', content: 'alejandro.reade: Here we are!', tr: 'alejandro.reade: Here we are!'})}),
 
       //call
-      new Evidence({_id: 'e31', aid: 'a1', blo: false, da: convertToUnix(new Date(now.fullYear, now.month, now.date, 15, 09, 52)), dr: convertToUnix(new Date(now.fullYear, now.month, now.date, 15, 10, 51)), _mid: 0, note: '', rel: 0, type: 'call', data: new EvidenceData({peer: 'alejandro.reade', program: 'Skype', duration: '49.03451247165534', _grid: '50bcb2ec572d6e0d000000db.mp3'})}),
+      new Evidence({_id: 'e31', aid: 'a1', blo: false, da: convertToUnix(new Date(now.fullYear, now.month, now.date, 15, 09, 52)), dr: convertToUnix(new Date(now.fullYear, now.month, now.date, 15, 10, 51)), _mid: 0, note: '', rel: 2, type: 'call', data: new EvidenceData({peer: 'alejandro.reade', program: 'Skype', duration: '49.03451247165534', _grid: '50bcb1bf572d6e0d0000009d.mp3'})}),
 
       //keylog
       new Evidence({_id: 'e10', aid: 'a1', blo: false, da: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 15, 10, 54)), dr: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 15, 11, 46)), _mid: 0, note: '', rel: 0, type: 'keylog', data: new EvidenceData({program: 'TrueCrypt.exe', window: 'TrueCrypt', content: '↵'})}), 
