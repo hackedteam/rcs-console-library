@@ -52,6 +52,8 @@ package it.ht.rcs.console.entities.rest
     function flow(entities:Array, from:String, to:String, onResult:Function=null, onFault:Function=null):void;
     
     function positions(entities:Array, from:String, to:String, summary:Boolean=false, onResult:Function=null, onFault:Function=null):void;
+    
+    function promote_to_target(entityId:String, onResult:Function=null, onFault:Function=null):void;
   
     
   }

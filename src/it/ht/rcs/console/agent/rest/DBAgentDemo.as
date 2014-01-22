@@ -111,7 +111,7 @@ package it.ht.rcs.console.agent.rest
         agent.path = [operation._id, target._id];
       else
         agent.path = [operation._id];
-      agent.scout=false;
+      agent.level="elite"
       agents.addItem(agent);
       DBSearchDemo.addItemAsSearchItem(agent, 0, null);
       

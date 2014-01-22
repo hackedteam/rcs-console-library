@@ -127,6 +127,12 @@ package it.ht.rcs.console.entities.controller
     {
       DB.instance.entity.most_visited_places(entityId, from, to, num, onResult, onFault);
     }
+    
+    public function promoteToTarget(entityId:String, onResult:Function=null, onFault:Function = null):void
+    {
+      DB.instance.entity.promote_to_target(entityId, onResult, onFault);
+    }
+      
 
     private function onEntityPush(e:PushEvent):void
     {

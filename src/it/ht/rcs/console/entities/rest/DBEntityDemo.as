@@ -317,6 +317,11 @@ package it.ht.rcs.console.entities.rest
 
 
 		}
+    
+    public function promote_to_target(id:String, onResult:Function=null, onFault:Function=null):void
+    {
+      trace("TODO: Promote Entity to target")
+    }
 
 		public function positions(entities:Array, from:String, to:String, summary:Boolean=false, onResult:Function=null, onFault:Function=null):void
 		{

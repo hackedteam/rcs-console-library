@@ -8,7 +8,7 @@ package it.ht.rcs.console.dashboard.controller
   {
     
     [Bindable] public var _id:String;
-    [Bindable] public var scout:Boolean;
+    [Bindable] public var level:String;
     [Bindable] public var name:String;
     [Bindable] public var tot:Number = 0;
     [Bindable] public var sync:Number = 0;
