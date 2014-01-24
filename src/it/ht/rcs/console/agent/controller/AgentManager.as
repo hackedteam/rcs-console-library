@@ -220,6 +220,11 @@ package it.ht.rcs.console.agent.controller
       DB.instance.agent.activate_ghost(agent, sync, resultCallback, faultCallback);
     }
     
+    public function canUpgrade(agent:Agent, resultCallback:Function, faultCallback:Function=null):void
+    {
+      DB.instance.agent.can_upgrade(agent, resultCallback, faultCallback);
+    }
+    
     public function updateConfig(agent:Agent, config:Config, desc:String, callback:Function=null):void
     {
       config.desc = desc;

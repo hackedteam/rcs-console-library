@@ -187,6 +187,12 @@ package it.ht.rcs.console.agent.rest
       resp.token = destroy_exec_(JSON.stringify({ _id: agent._id, exec: commandId }));
     }
     
+    public function can_upgrade(agent:Agent, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = can_upgrade_(JSON.stringify({ _id: agent._id}));
+    }
+    
     /**
      * Override super.init() to provide any initialization customization if needed.
      */

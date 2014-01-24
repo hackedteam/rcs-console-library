@@ -203,6 +203,8 @@ package it.ht.rcs.console.agent.rest
     
     public function destroy_factory(id:String, permanent:Boolean=false, onResult:Function=null, onFault:Function=null):void{};
     
+    public function can_upgrade(agent:Agent, onResult:Function=null, onFault:Function=null):void {};
+    
   }
   
 }
