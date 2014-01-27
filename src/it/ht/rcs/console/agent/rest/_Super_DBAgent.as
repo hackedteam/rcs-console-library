@@ -238,7 +238,7 @@ internal class _Super_DBAgent extends com.adobe.fiber.services.wrapper.HTTPServi
          operation.method = "POST";
          operation.serializationFilter = serializer0;
          operation.contentType = "application/xml";
-        operation.resultType = String;
+        operation.resultType = Object;
          operations.push(operation);
 
          _serviceControl.operationList = operations;  

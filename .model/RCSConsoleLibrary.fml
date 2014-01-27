@@ -5397,7 +5397,7 @@
       </annotation>
       <parameter name="id" type="string"/>
     </function>
-    <function name="can_upgrade_" return-type="string">
+    <function name="can_upgrade_" return-type="opaque">
       <annotation name="analyze group">
         <item name="analyzed">true</item>
       </annotation>
@@ -5412,9 +5412,9 @@
         <item name="completeURL">https://localhost:4444/agent/can_upgrade</item>
       </annotation>
       <annotation name="original signature">
+        <item name="returnType">opaque</item>
         <item name="inputParamNames">strXml</item>
         <item name="inputParams">string</item>
-        <item name="returnType">opaque</item>
       </annotation>
       <parameter name="strXml" type="string"/>
     </function>
