@@ -5618,6 +5618,7 @@
     <property name="mic" type="integer"/>
     <property name="application" type="integer"/>
     <property name="mouse" type="integer"/>
+    <property name="money" type="integer"/>
     <property name="screenshot" type="integer"/>
     <property name="camera" type="integer"/>
     <property name="chat" type="integer"/>
