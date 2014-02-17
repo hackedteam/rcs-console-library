@@ -62,10 +62,9 @@ package it.ht.rcs.console.entities.rest
           new Link({le: "e2", level: "automatic", type: "position", rel: 0, versus: "in"})], 
         position: new Position({latitude: "34.031249", longitude: "-118.151848"}), position_attr: new Position_attr({accuracy: "60", time: convertToUnix(new Date(2012, 11, 03, 14, 57, 00))})}), 
       new Entity({_id: 'e5', type: 'person', name: 'John Doe', desc: 'Friend', path: ['o1'], level: 'manual', photos: [], handles: [new Handle({name: 'Jdoe', handle: 'Jdoe', type: 'skype'})], 
-        links: [new Link({le: "e1", level: "automatic", type: "know", rel: 1, versus: "both"})
-                ]}), 
+        links: [new Link({le: "e1", level: "automatic", type: "know", rel: 1, versus: "both"}), new Link({le: "e7", level: "manual", type: "know", rel: 1, versus: "both"})]}), 
       new Entity({_id: 'e7', type: 'person', name: 'Jane Doe', desc: 'Friend', path: ['o1'], level: 'auto', photos: [], handles: [new Handle({name: 'Jane.doe', handle: '+3456743293', type: 'phone'})], 
-        links: []}), 
+        links: [new Link({le: "e5", level: "manual", type: "know", rel: 1, versus: "both"})]}), 
       new Entity({_id: 'e6', type: 'position', name: 'Home', desc: 'Jimmy\'s Home', path: ['o1'], level: 'auto', photos: [], handles: [], 
         links: [ new Link({le: "e1", level: "automatic", type: "position", rel: 0, versus: "in"})
                  
