@@ -24,14 +24,14 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "body", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "caller", "incoming", "draft", "from_display", "rcpt", "rcpt_display", "subject", "url", "title", "keywords", "ip", "latitude", "longitude", "accuracy", "address", "cell", "wifi", "path", "attr", "size", "attach", "command", "tr");
+    model_internal static var allProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "body", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "caller", "incoming", "draft", "from_display", "rcpt", "id", "rcpt_display", "subject", "url", "title", "keywords", "ip", "latitude", "longitude", "accuracy", "address", "cell", "wifi", "path", "attr", "size", "attach", "command", "tr", "version", "encrypted", "balance", "amount", "currency");
     model_internal static var allAssociationProperties:Array = new Array();
     model_internal static var allRequiredProperties:Array = new Array();
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "body", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "caller", "incoming", "draft", "from_display", "rcpt", "rcpt_display", "subject", "url", "title", "keywords", "ip", "latitude", "longitude", "accuracy", "address", "cell", "wifi", "path", "attr", "size", "attach", "command", "tr");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "body", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "caller", "incoming", "draft", "from_display", "rcpt", "id", "rcpt_display", "subject", "url", "title", "keywords", "ip", "latitude", "longitude", "accuracy", "address", "cell", "wifi", "path", "attr", "size", "attach", "command", "tr", "version", "encrypted", "balance", "amount", "currency");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "body", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "caller", "incoming", "draft", "from_display", "rcpt", "rcpt_display", "subject", "url", "title", "keywords", "ip", "latitude", "longitude", "accuracy", "address", "cell", "wifi", "path", "attr", "size", "attach", "command", "tr");
+    model_internal static var dataProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "body", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "caller", "incoming", "draft", "from_display", "rcpt", "id", "rcpt_display", "subject", "url", "title", "keywords", "ip", "latitude", "longitude", "accuracy", "address", "cell", "wifi", "path", "attr", "size", "attach", "command", "tr", "version", "encrypted", "balance", "amount", "currency");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "body", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "caller", "incoming", "draft", "from_display", "rcpt", "rcpt_display", "subject", "url", "title", "keywords", "ip", "latitude", "longitude", "accuracy", "address", "cell", "wifi", "path", "attr", "size", "attach", "command", "tr");
+    model_internal static var nonDerivedProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "body", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "caller", "incoming", "draft", "from_display", "rcpt", "id", "rcpt_display", "subject", "url", "title", "keywords", "ip", "latitude", "longitude", "accuracy", "address", "cell", "wifi", "path", "attr", "size", "attach", "command", "tr", "version", "encrypted", "balance", "amount", "currency");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array("wifi");
     model_internal static var collectionBaseMap:Object;
@@ -86,6 +86,7 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
             model_internal::dependentsOnMap["draft"] = new Array();
             model_internal::dependentsOnMap["from_display"] = new Array();
             model_internal::dependentsOnMap["rcpt"] = new Array();
+            model_internal::dependentsOnMap["id"] = new Array();
             model_internal::dependentsOnMap["rcpt_display"] = new Array();
             model_internal::dependentsOnMap["subject"] = new Array();
             model_internal::dependentsOnMap["url"] = new Array();
@@ -104,6 +105,11 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
             model_internal::dependentsOnMap["attach"] = new Array();
             model_internal::dependentsOnMap["command"] = new Array();
             model_internal::dependentsOnMap["tr"] = new Array();
+            model_internal::dependentsOnMap["version"] = new Array();
+            model_internal::dependentsOnMap["encrypted"] = new Array();
+            model_internal::dependentsOnMap["balance"] = new Array();
+            model_internal::dependentsOnMap["amount"] = new Array();
+            model_internal::dependentsOnMap["currency"] = new Array();
 
             // collection base map
             model_internal::collectionBaseMap = new Object();
@@ -147,6 +153,7 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
         model_internal::propertyTypeMap["draft"] = "Boolean";
         model_internal::propertyTypeMap["from_display"] = "String";
         model_internal::propertyTypeMap["rcpt"] = "String";
+        model_internal::propertyTypeMap["id"] = "String";
         model_internal::propertyTypeMap["rcpt_display"] = "String";
         model_internal::propertyTypeMap["subject"] = "String";
         model_internal::propertyTypeMap["url"] = "String";
@@ -165,6 +172,11 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
         model_internal::propertyTypeMap["attach"] = "int";
         model_internal::propertyTypeMap["command"] = "String";
         model_internal::propertyTypeMap["tr"] = "String";
+        model_internal::propertyTypeMap["version"] = "String";
+        model_internal::propertyTypeMap["encrypted"] = "Boolean";
+        model_internal::propertyTypeMap["balance"] = "Number";
+        model_internal::propertyTypeMap["amount"] = "Number";
+        model_internal::propertyTypeMap["currency"] = "String";
 
         model_internal::_instance = value;
     }
@@ -604,6 +616,12 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
     }
 
     [Bindable(event="propertyChange")]
+    public function get isIdAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get isRcpt_displayAvailable():Boolean
     {
         return true;
@@ -707,6 +725,36 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
 
     [Bindable(event="propertyChange")]
     public function get isTrAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isVersionAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isEncryptedAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isBalanceAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isAmountAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isCurrencyAvailable():Boolean
     {
         return true;
     }
@@ -932,6 +980,12 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
     }
 
     [Bindable(event="propertyChange")]   
+    public function get idStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
     public function get rcpt_displayStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
@@ -1035,6 +1089,36 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
 
     [Bindable(event="propertyChange")]   
     public function get trStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get versionStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get encryptedStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get balanceStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get amountStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get currencyStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }

@@ -10,6 +10,7 @@ import com.adobe.fiber.styles.StyleValidator;
 import com.adobe.fiber.valueobjects.AbstractEntityMetadata;
 import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 import com.adobe.fiber.valueobjects.IPropertyIterator;
+import it.ht.rcs.console.entities.model.Analyzed;
 import it.ht.rcs.console.entities.model.Handle;
 import it.ht.rcs.console.entities.model.Link;
 import it.ht.rcs.console.entities.model.Position;
@@ -27,22 +28,37 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("position", "desc", "links", "type", "user_ids", "photos", "level", "updated_at", "position_attr", "analyzed", "path", "created_at", "handles", "num_links", "_id", "name");
+    model_internal static var allProperties:Array = new Array("links", "user_ids", "num_links", "position", "desc", "children", "type", "photos", "level", "updated_at", "stand_for", "_id", "position_attr", "analyzed", "name", "path", "created_at", "handles");
     model_internal static var allAssociationProperties:Array = new Array();
-    model_internal static var allRequiredProperties:Array = new Array("position", "desc", "links", "type", "user_ids", "photos", "level", "updated_at", "position_attr", "analyzed", "path", "created_at", "handles", "num_links", "_id", "name");
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("position", "desc", "links", "type", "user_ids", "photos", "level", "updated_at", "position_attr", "analyzed", "path", "created_at", "handles", "num_links", "_id", "name");
+    model_internal static var allRequiredProperties:Array = new Array("links", "user_ids", "num_links", "position", "desc", "children", "type", "photos", "level", "updated_at", "stand_for", "_id", "position_attr", "analyzed", "name", "path", "created_at", "handles");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("links", "user_ids", "num_links", "position", "desc", "children", "type", "photos", "level", "updated_at", "stand_for", "_id", "position_attr", "analyzed", "name", "path", "created_at", "handles");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("position", "desc", "links", "type", "user_ids", "photos", "level", "updated_at", "position_attr", "analyzed", "path", "created_at", "handles", "num_links", "_id", "name");
+    model_internal static var dataProperties:Array = new Array("links", "user_ids", "num_links", "position", "desc", "children", "type", "photos", "level", "updated_at", "stand_for", "_id", "position_attr", "analyzed", "name", "path", "created_at", "handles");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("position", "desc", "links", "type", "user_ids", "photos", "level", "updated_at", "position_attr", "analyzed", "path", "created_at", "handles", "num_links", "_id", "name");
+    model_internal static var nonDerivedProperties:Array = new Array("links", "user_ids", "num_links", "position", "desc", "children", "type", "photos", "level", "updated_at", "stand_for", "_id", "position_attr", "analyzed", "name", "path", "created_at", "handles");
     model_internal static var derivedProperties:Array = new Array();
-    model_internal static var collectionProperties:Array = new Array("links", "user_ids", "photos", "path", "handles");
+    model_internal static var collectionProperties:Array = new Array("links", "user_ids", "children", "photos", "path", "handles");
     model_internal static var collectionBaseMap:Object;
     model_internal static var entityName:String = "Entity";
     model_internal static var dependentsOnMap:Object;
     model_internal static var dependedOnServices:Array = new Array();
     model_internal static var propertyTypeMap:Object;
 
+    
+    model_internal var _linksIsValid:Boolean;
+    model_internal var _linksValidator:com.adobe.fiber.styles.StyleValidator;
+    model_internal var _linksIsValidCacheInitialized:Boolean = false;
+    model_internal var _linksValidationFailureMessages:Array;
+    
+    model_internal var _user_idsIsValid:Boolean;
+    model_internal var _user_idsValidator:com.adobe.fiber.styles.StyleValidator;
+    model_internal var _user_idsIsValidCacheInitialized:Boolean = false;
+    model_internal var _user_idsValidationFailureMessages:Array;
+    
+    model_internal var _num_linksIsValid:Boolean;
+    model_internal var _num_linksValidator:com.adobe.fiber.styles.StyleValidator;
+    model_internal var _num_linksIsValidCacheInitialized:Boolean = false;
+    model_internal var _num_linksValidationFailureMessages:Array;
     
     model_internal var _positionIsValid:Boolean;
     model_internal var _positionValidator:com.adobe.fiber.styles.StyleValidator;
@@ -54,20 +70,15 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
     model_internal var _descIsValidCacheInitialized:Boolean = false;
     model_internal var _descValidationFailureMessages:Array;
     
-    model_internal var _linksIsValid:Boolean;
-    model_internal var _linksValidator:com.adobe.fiber.styles.StyleValidator;
-    model_internal var _linksIsValidCacheInitialized:Boolean = false;
-    model_internal var _linksValidationFailureMessages:Array;
+    model_internal var _childrenIsValid:Boolean;
+    model_internal var _childrenValidator:com.adobe.fiber.styles.StyleValidator;
+    model_internal var _childrenIsValidCacheInitialized:Boolean = false;
+    model_internal var _childrenValidationFailureMessages:Array;
     
     model_internal var _typeIsValid:Boolean;
     model_internal var _typeValidator:com.adobe.fiber.styles.StyleValidator;
     model_internal var _typeIsValidCacheInitialized:Boolean = false;
     model_internal var _typeValidationFailureMessages:Array;
-    
-    model_internal var _user_idsIsValid:Boolean;
-    model_internal var _user_idsValidator:com.adobe.fiber.styles.StyleValidator;
-    model_internal var _user_idsIsValidCacheInitialized:Boolean = false;
-    model_internal var _user_idsValidationFailureMessages:Array;
     
     model_internal var _photosIsValid:Boolean;
     model_internal var _photosValidator:com.adobe.fiber.styles.StyleValidator;
@@ -84,6 +95,16 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
     model_internal var _updated_atIsValidCacheInitialized:Boolean = false;
     model_internal var _updated_atValidationFailureMessages:Array;
     
+    model_internal var _stand_forIsValid:Boolean;
+    model_internal var _stand_forValidator:com.adobe.fiber.styles.StyleValidator;
+    model_internal var _stand_forIsValidCacheInitialized:Boolean = false;
+    model_internal var _stand_forValidationFailureMessages:Array;
+    
+    model_internal var __idIsValid:Boolean;
+    model_internal var __idValidator:com.adobe.fiber.styles.StyleValidator;
+    model_internal var __idIsValidCacheInitialized:Boolean = false;
+    model_internal var __idValidationFailureMessages:Array;
+    
     model_internal var _position_attrIsValid:Boolean;
     model_internal var _position_attrValidator:com.adobe.fiber.styles.StyleValidator;
     model_internal var _position_attrIsValidCacheInitialized:Boolean = false;
@@ -93,6 +114,11 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
     model_internal var _analyzedValidator:com.adobe.fiber.styles.StyleValidator;
     model_internal var _analyzedIsValidCacheInitialized:Boolean = false;
     model_internal var _analyzedValidationFailureMessages:Array;
+    
+    model_internal var _nameIsValid:Boolean;
+    model_internal var _nameValidator:com.adobe.fiber.styles.StyleValidator;
+    model_internal var _nameIsValidCacheInitialized:Boolean = false;
+    model_internal var _nameValidationFailureMessages:Array;
     
     model_internal var _pathIsValid:Boolean;
     model_internal var _pathValidator:com.adobe.fiber.styles.StyleValidator;
@@ -108,21 +134,6 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
     model_internal var _handlesValidator:com.adobe.fiber.styles.StyleValidator;
     model_internal var _handlesIsValidCacheInitialized:Boolean = false;
     model_internal var _handlesValidationFailureMessages:Array;
-    
-    model_internal var _num_linksIsValid:Boolean;
-    model_internal var _num_linksValidator:com.adobe.fiber.styles.StyleValidator;
-    model_internal var _num_linksIsValidCacheInitialized:Boolean = false;
-    model_internal var _num_linksValidationFailureMessages:Array;
-    
-    model_internal var __idIsValid:Boolean;
-    model_internal var __idValidator:com.adobe.fiber.styles.StyleValidator;
-    model_internal var __idIsValidCacheInitialized:Boolean = false;
-    model_internal var __idValidationFailureMessages:Array;
-    
-    model_internal var _nameIsValid:Boolean;
-    model_internal var _nameValidator:com.adobe.fiber.styles.StyleValidator;
-    model_internal var _nameIsValidCacheInitialized:Boolean = false;
-    model_internal var _nameValidationFailureMessages:Array;
 
     model_internal var _instance:_Super_Entity;
     model_internal static var _nullStyle:com.adobe.fiber.styles.Style = new com.adobe.fiber.styles.Style();
@@ -134,52 +145,72 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
         {
             // dependents map
             model_internal::dependentsOnMap = new Object();
+            model_internal::dependentsOnMap["links"] = new Array();
+            model_internal::dependentsOnMap["user_ids"] = new Array();
+            model_internal::dependentsOnMap["num_links"] = new Array();
             model_internal::dependentsOnMap["position"] = new Array();
             model_internal::dependentsOnMap["desc"] = new Array();
-            model_internal::dependentsOnMap["links"] = new Array();
+            model_internal::dependentsOnMap["children"] = new Array();
             model_internal::dependentsOnMap["type"] = new Array();
-            model_internal::dependentsOnMap["user_ids"] = new Array();
             model_internal::dependentsOnMap["photos"] = new Array();
             model_internal::dependentsOnMap["level"] = new Array();
             model_internal::dependentsOnMap["updated_at"] = new Array();
+            model_internal::dependentsOnMap["stand_for"] = new Array();
+            model_internal::dependentsOnMap["_id"] = new Array();
             model_internal::dependentsOnMap["position_attr"] = new Array();
             model_internal::dependentsOnMap["analyzed"] = new Array();
+            model_internal::dependentsOnMap["name"] = new Array();
             model_internal::dependentsOnMap["path"] = new Array();
             model_internal::dependentsOnMap["created_at"] = new Array();
             model_internal::dependentsOnMap["handles"] = new Array();
-            model_internal::dependentsOnMap["num_links"] = new Array();
-            model_internal::dependentsOnMap["_id"] = new Array();
-            model_internal::dependentsOnMap["name"] = new Array();
 
             // collection base map
             model_internal::collectionBaseMap = new Object();
             model_internal::collectionBaseMap["links"] = "it.ht.rcs.console.entities.model.Link";
             model_internal::collectionBaseMap["user_ids"] = "String";
-            model_internal::collectionBaseMap["photos"] = "Object";
+            model_internal::collectionBaseMap["children"] = "String";
+            model_internal::collectionBaseMap["photos"] = "String";
             model_internal::collectionBaseMap["path"] = "String";
             model_internal::collectionBaseMap["handles"] = "it.ht.rcs.console.entities.model.Handle";
         }
 
         // Property type Map
         model_internal::propertyTypeMap = new Object();
+        model_internal::propertyTypeMap["links"] = "ArrayCollection";
+        model_internal::propertyTypeMap["user_ids"] = "ArrayCollection";
+        model_internal::propertyTypeMap["num_links"] = "String";
         model_internal::propertyTypeMap["position"] = "it.ht.rcs.console.entities.model.Position";
         model_internal::propertyTypeMap["desc"] = "String";
-        model_internal::propertyTypeMap["links"] = "ArrayCollection";
+        model_internal::propertyTypeMap["children"] = "ArrayCollection";
         model_internal::propertyTypeMap["type"] = "String";
-        model_internal::propertyTypeMap["user_ids"] = "ArrayCollection";
         model_internal::propertyTypeMap["photos"] = "ArrayCollection";
         model_internal::propertyTypeMap["level"] = "String";
         model_internal::propertyTypeMap["updated_at"] = "String";
+        model_internal::propertyTypeMap["stand_for"] = "String";
+        model_internal::propertyTypeMap["_id"] = "String";
         model_internal::propertyTypeMap["position_attr"] = "it.ht.rcs.console.entities.model.Position_attr";
-        model_internal::propertyTypeMap["analyzed"] = "Object";
+        model_internal::propertyTypeMap["analyzed"] = "it.ht.rcs.console.entities.model.Analyzed";
+        model_internal::propertyTypeMap["name"] = "String";
         model_internal::propertyTypeMap["path"] = "ArrayCollection";
         model_internal::propertyTypeMap["created_at"] = "String";
         model_internal::propertyTypeMap["handles"] = "ArrayCollection";
-        model_internal::propertyTypeMap["num_links"] = "String";
-        model_internal::propertyTypeMap["_id"] = "String";
-        model_internal::propertyTypeMap["name"] = "String";
 
         model_internal::_instance = value;
+        model_internal::_linksValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForLinks);
+        model_internal::_linksValidator.required = true;
+        model_internal::_linksValidator.requiredFieldError = "links is required";
+        //model_internal::_linksValidator.source = model_internal::_instance;
+        //model_internal::_linksValidator.property = "links";
+        model_internal::_user_idsValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForUser_ids);
+        model_internal::_user_idsValidator.required = true;
+        model_internal::_user_idsValidator.requiredFieldError = "user_ids is required";
+        //model_internal::_user_idsValidator.source = model_internal::_instance;
+        //model_internal::_user_idsValidator.property = "user_ids";
+        model_internal::_num_linksValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForNum_links);
+        model_internal::_num_linksValidator.required = true;
+        model_internal::_num_linksValidator.requiredFieldError = "num_links is required";
+        //model_internal::_num_linksValidator.source = model_internal::_instance;
+        //model_internal::_num_linksValidator.property = "num_links";
         model_internal::_positionValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForPosition);
         model_internal::_positionValidator.required = true;
         model_internal::_positionValidator.requiredFieldError = "position is required";
@@ -190,21 +221,16 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
         model_internal::_descValidator.requiredFieldError = "desc is required";
         //model_internal::_descValidator.source = model_internal::_instance;
         //model_internal::_descValidator.property = "desc";
-        model_internal::_linksValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForLinks);
-        model_internal::_linksValidator.required = true;
-        model_internal::_linksValidator.requiredFieldError = "links is required";
-        //model_internal::_linksValidator.source = model_internal::_instance;
-        //model_internal::_linksValidator.property = "links";
+        model_internal::_childrenValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForChildren);
+        model_internal::_childrenValidator.required = true;
+        model_internal::_childrenValidator.requiredFieldError = "children is required";
+        //model_internal::_childrenValidator.source = model_internal::_instance;
+        //model_internal::_childrenValidator.property = "children";
         model_internal::_typeValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForType);
         model_internal::_typeValidator.required = true;
         model_internal::_typeValidator.requiredFieldError = "type is required";
         //model_internal::_typeValidator.source = model_internal::_instance;
         //model_internal::_typeValidator.property = "type";
-        model_internal::_user_idsValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForUser_ids);
-        model_internal::_user_idsValidator.required = true;
-        model_internal::_user_idsValidator.requiredFieldError = "user_ids is required";
-        //model_internal::_user_idsValidator.source = model_internal::_instance;
-        //model_internal::_user_idsValidator.property = "user_ids";
         model_internal::_photosValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForPhotos);
         model_internal::_photosValidator.required = true;
         model_internal::_photosValidator.requiredFieldError = "photos is required";
@@ -220,6 +246,16 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
         model_internal::_updated_atValidator.requiredFieldError = "updated_at is required";
         //model_internal::_updated_atValidator.source = model_internal::_instance;
         //model_internal::_updated_atValidator.property = "updated_at";
+        model_internal::_stand_forValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForStand_for);
+        model_internal::_stand_forValidator.required = true;
+        model_internal::_stand_forValidator.requiredFieldError = "stand_for is required";
+        //model_internal::_stand_forValidator.source = model_internal::_instance;
+        //model_internal::_stand_forValidator.property = "stand_for";
+        model_internal::__idValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationFor_id);
+        model_internal::__idValidator.required = true;
+        model_internal::__idValidator.requiredFieldError = "_id is required";
+        //model_internal::__idValidator.source = model_internal::_instance;
+        //model_internal::__idValidator.property = "_id";
         model_internal::_position_attrValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForPosition_attr);
         model_internal::_position_attrValidator.required = true;
         model_internal::_position_attrValidator.requiredFieldError = "position_attr is required";
@@ -230,6 +266,11 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
         model_internal::_analyzedValidator.requiredFieldError = "analyzed is required";
         //model_internal::_analyzedValidator.source = model_internal::_instance;
         //model_internal::_analyzedValidator.property = "analyzed";
+        model_internal::_nameValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForName);
+        model_internal::_nameValidator.required = true;
+        model_internal::_nameValidator.requiredFieldError = "name is required";
+        //model_internal::_nameValidator.source = model_internal::_instance;
+        //model_internal::_nameValidator.property = "name";
         model_internal::_pathValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForPath);
         model_internal::_pathValidator.required = true;
         model_internal::_pathValidator.requiredFieldError = "path is required";
@@ -245,21 +286,6 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
         model_internal::_handlesValidator.requiredFieldError = "handles is required";
         //model_internal::_handlesValidator.source = model_internal::_instance;
         //model_internal::_handlesValidator.property = "handles";
-        model_internal::_num_linksValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForNum_links);
-        model_internal::_num_linksValidator.required = true;
-        model_internal::_num_linksValidator.requiredFieldError = "num_links is required";
-        //model_internal::_num_linksValidator.source = model_internal::_instance;
-        //model_internal::_num_linksValidator.property = "num_links";
-        model_internal::__idValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationFor_id);
-        model_internal::__idValidator.required = true;
-        model_internal::__idValidator.requiredFieldError = "_id is required";
-        //model_internal::__idValidator.source = model_internal::_instance;
-        //model_internal::__idValidator.property = "_id";
-        model_internal::_nameValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForName);
-        model_internal::_nameValidator.required = true;
-        model_internal::_nameValidator.requiredFieldError = "name is required";
-        //model_internal::_nameValidator.source = model_internal::_instance;
-        //model_internal::_nameValidator.property = "name";
     }
 
     override public function getEntityName():String
@@ -487,6 +513,24 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
     }
 
     [Bindable(event="propertyChange")]
+    public function get isLinksAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isUser_idsAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isNum_linksAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get isPositionAvailable():Boolean
     {
         return true;
@@ -499,19 +543,13 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
     }
 
     [Bindable(event="propertyChange")]
-    public function get isLinksAvailable():Boolean
+    public function get isChildrenAvailable():Boolean
     {
         return true;
     }
 
     [Bindable(event="propertyChange")]
     public function get isTypeAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get isUser_idsAvailable():Boolean
     {
         return true;
     }
@@ -535,6 +573,18 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
     }
 
     [Bindable(event="propertyChange")]
+    public function get isStand_forAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get is_idAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get isPosition_attrAvailable():Boolean
     {
         return true;
@@ -542,6 +592,12 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
 
     [Bindable(event="propertyChange")]
     public function get isAnalyzedAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isNameAvailable():Boolean
     {
         return true;
     }
@@ -564,28 +620,34 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
         return true;
     }
 
-    [Bindable(event="propertyChange")]
-    public function get isNum_linksAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get is_idAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get isNameAvailable():Boolean
-    {
-        return true;
-    }
-
 
     /**
      * derived property recalculation
      */
+    public function invalidateDependentOnLinks():void
+    {
+        if (model_internal::_linksIsValidCacheInitialized )
+        {
+            model_internal::_instance.model_internal::_doValidationCacheOfLinks = null;
+            model_internal::calculateLinksIsValid();
+        }
+    }
+    public function invalidateDependentOnUser_ids():void
+    {
+        if (model_internal::_user_idsIsValidCacheInitialized )
+        {
+            model_internal::_instance.model_internal::_doValidationCacheOfUser_ids = null;
+            model_internal::calculateUser_idsIsValid();
+        }
+    }
+    public function invalidateDependentOnNum_links():void
+    {
+        if (model_internal::_num_linksIsValidCacheInitialized )
+        {
+            model_internal::_instance.model_internal::_doValidationCacheOfNum_links = null;
+            model_internal::calculateNum_linksIsValid();
+        }
+    }
     public function invalidateDependentOnPosition():void
     {
         if (model_internal::_positionIsValidCacheInitialized )
@@ -602,12 +664,12 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
             model_internal::calculateDescIsValid();
         }
     }
-    public function invalidateDependentOnLinks():void
+    public function invalidateDependentOnChildren():void
     {
-        if (model_internal::_linksIsValidCacheInitialized )
+        if (model_internal::_childrenIsValidCacheInitialized )
         {
-            model_internal::_instance.model_internal::_doValidationCacheOfLinks = null;
-            model_internal::calculateLinksIsValid();
+            model_internal::_instance.model_internal::_doValidationCacheOfChildren = null;
+            model_internal::calculateChildrenIsValid();
         }
     }
     public function invalidateDependentOnType():void
@@ -616,14 +678,6 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
         {
             model_internal::_instance.model_internal::_doValidationCacheOfType = null;
             model_internal::calculateTypeIsValid();
-        }
-    }
-    public function invalidateDependentOnUser_ids():void
-    {
-        if (model_internal::_user_idsIsValidCacheInitialized )
-        {
-            model_internal::_instance.model_internal::_doValidationCacheOfUser_ids = null;
-            model_internal::calculateUser_idsIsValid();
         }
     }
     public function invalidateDependentOnPhotos():void
@@ -650,6 +704,22 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
             model_internal::calculateUpdated_atIsValid();
         }
     }
+    public function invalidateDependentOnStand_for():void
+    {
+        if (model_internal::_stand_forIsValidCacheInitialized )
+        {
+            model_internal::_instance.model_internal::_doValidationCacheOfStand_for = null;
+            model_internal::calculateStand_forIsValid();
+        }
+    }
+    public function invalidateDependentOn_id():void
+    {
+        if (model_internal::__idIsValidCacheInitialized )
+        {
+            model_internal::_instance.model_internal::_doValidationCacheOf_id = null;
+            model_internal::calculate_idIsValid();
+        }
+    }
     public function invalidateDependentOnPosition_attr():void
     {
         if (model_internal::_position_attrIsValidCacheInitialized )
@@ -664,6 +734,14 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
         {
             model_internal::_instance.model_internal::_doValidationCacheOfAnalyzed = null;
             model_internal::calculateAnalyzedIsValid();
+        }
+    }
+    public function invalidateDependentOnName():void
+    {
+        if (model_internal::_nameIsValidCacheInitialized )
+        {
+            model_internal::_instance.model_internal::_doValidationCacheOfName = null;
+            model_internal::calculateNameIsValid();
         }
     }
     public function invalidateDependentOnPath():void
@@ -690,34 +768,310 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
             model_internal::calculateHandlesIsValid();
         }
     }
-    public function invalidateDependentOnNum_links():void
-    {
-        if (model_internal::_num_linksIsValidCacheInitialized )
-        {
-            model_internal::_instance.model_internal::_doValidationCacheOfNum_links = null;
-            model_internal::calculateNum_linksIsValid();
-        }
-    }
-    public function invalidateDependentOn_id():void
-    {
-        if (model_internal::__idIsValidCacheInitialized )
-        {
-            model_internal::_instance.model_internal::_doValidationCacheOf_id = null;
-            model_internal::calculate_idIsValid();
-        }
-    }
-    public function invalidateDependentOnName():void
-    {
-        if (model_internal::_nameIsValidCacheInitialized )
-        {
-            model_internal::_instance.model_internal::_doValidationCacheOfName = null;
-            model_internal::calculateNameIsValid();
-        }
-    }
 
     model_internal function fireChangeEvent(propertyName:String, oldValue:Object, newValue:Object):void
     {
         this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, propertyName, oldValue, newValue));
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get linksStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    public function get linksValidator() : StyleValidator
+    {
+        return model_internal::_linksValidator;
+    }
+
+    model_internal function set _linksIsValid_der(value:Boolean):void 
+    {
+        var oldValue:Boolean = model_internal::_linksIsValid;         
+        if (oldValue !== value)
+        {
+            model_internal::_linksIsValid = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "linksIsValid", oldValue, value));
+        }                             
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get linksIsValid():Boolean
+    {
+        if (!model_internal::_linksIsValidCacheInitialized)
+        {
+            model_internal::calculateLinksIsValid();
+        }
+
+        return model_internal::_linksIsValid;
+    }
+
+    model_internal function calculateLinksIsValid():void
+    {
+        var valRes:ValidationResultEvent = model_internal::_linksValidator.validate(model_internal::_instance.links)
+        model_internal::_linksIsValid_der = (valRes.results == null);
+        model_internal::_linksIsValidCacheInitialized = true;
+        if (valRes.results == null)
+             model_internal::linksValidationFailureMessages_der = emptyArray;
+        else
+        {
+            var _valFailures:Array = new Array();
+            for (var a:int = 0 ; a<valRes.results.length ; a++)
+            {
+                _valFailures.push(valRes.results[a].errorMessage);
+            }
+            model_internal::linksValidationFailureMessages_der = _valFailures;
+        }
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get linksValidationFailureMessages():Array
+    {
+        if (model_internal::_linksValidationFailureMessages == null)
+            model_internal::calculateLinksIsValid();
+
+        return _linksValidationFailureMessages;
+    }
+
+    model_internal function set linksValidationFailureMessages_der(value:Array) : void
+    {
+        var oldValue:Array = model_internal::_linksValidationFailureMessages;
+
+        var needUpdate : Boolean = false;
+        if (oldValue == null)
+            needUpdate = true;
+    
+        // avoid firing the event when old and new value are different empty arrays
+        if (!needUpdate && (oldValue !== value && (oldValue.length > 0 || value.length > 0)))
+        {
+            if (oldValue.length == value.length)
+            {
+                for (var a:int=0; a < oldValue.length; a++)
+                {
+                    if (oldValue[a] !== value[a])
+                    {
+                        needUpdate = true;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                needUpdate = true;
+            }
+        }
+
+        if (needUpdate)
+        {
+            model_internal::_linksValidationFailureMessages = value;   
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "linksValidationFailureMessages", oldValue, value));
+            // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
+            // the entire entity.
+            if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
+            {
+                model_internal::_instance.model_internal::isValid_der = model_internal::_instance.model_internal::calculateIsValid();
+            }
+        }
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get user_idsStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    public function get user_idsValidator() : StyleValidator
+    {
+        return model_internal::_user_idsValidator;
+    }
+
+    model_internal function set _user_idsIsValid_der(value:Boolean):void 
+    {
+        var oldValue:Boolean = model_internal::_user_idsIsValid;         
+        if (oldValue !== value)
+        {
+            model_internal::_user_idsIsValid = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "user_idsIsValid", oldValue, value));
+        }                             
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get user_idsIsValid():Boolean
+    {
+        if (!model_internal::_user_idsIsValidCacheInitialized)
+        {
+            model_internal::calculateUser_idsIsValid();
+        }
+
+        return model_internal::_user_idsIsValid;
+    }
+
+    model_internal function calculateUser_idsIsValid():void
+    {
+        var valRes:ValidationResultEvent = model_internal::_user_idsValidator.validate(model_internal::_instance.user_ids)
+        model_internal::_user_idsIsValid_der = (valRes.results == null);
+        model_internal::_user_idsIsValidCacheInitialized = true;
+        if (valRes.results == null)
+             model_internal::user_idsValidationFailureMessages_der = emptyArray;
+        else
+        {
+            var _valFailures:Array = new Array();
+            for (var a:int = 0 ; a<valRes.results.length ; a++)
+            {
+                _valFailures.push(valRes.results[a].errorMessage);
+            }
+            model_internal::user_idsValidationFailureMessages_der = _valFailures;
+        }
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get user_idsValidationFailureMessages():Array
+    {
+        if (model_internal::_user_idsValidationFailureMessages == null)
+            model_internal::calculateUser_idsIsValid();
+
+        return _user_idsValidationFailureMessages;
+    }
+
+    model_internal function set user_idsValidationFailureMessages_der(value:Array) : void
+    {
+        var oldValue:Array = model_internal::_user_idsValidationFailureMessages;
+
+        var needUpdate : Boolean = false;
+        if (oldValue == null)
+            needUpdate = true;
+    
+        // avoid firing the event when old and new value are different empty arrays
+        if (!needUpdate && (oldValue !== value && (oldValue.length > 0 || value.length > 0)))
+        {
+            if (oldValue.length == value.length)
+            {
+                for (var a:int=0; a < oldValue.length; a++)
+                {
+                    if (oldValue[a] !== value[a])
+                    {
+                        needUpdate = true;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                needUpdate = true;
+            }
+        }
+
+        if (needUpdate)
+        {
+            model_internal::_user_idsValidationFailureMessages = value;   
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "user_idsValidationFailureMessages", oldValue, value));
+            // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
+            // the entire entity.
+            if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
+            {
+                model_internal::_instance.model_internal::isValid_der = model_internal::_instance.model_internal::calculateIsValid();
+            }
+        }
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get num_linksStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    public function get num_linksValidator() : StyleValidator
+    {
+        return model_internal::_num_linksValidator;
+    }
+
+    model_internal function set _num_linksIsValid_der(value:Boolean):void 
+    {
+        var oldValue:Boolean = model_internal::_num_linksIsValid;         
+        if (oldValue !== value)
+        {
+            model_internal::_num_linksIsValid = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "num_linksIsValid", oldValue, value));
+        }                             
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get num_linksIsValid():Boolean
+    {
+        if (!model_internal::_num_linksIsValidCacheInitialized)
+        {
+            model_internal::calculateNum_linksIsValid();
+        }
+
+        return model_internal::_num_linksIsValid;
+    }
+
+    model_internal function calculateNum_linksIsValid():void
+    {
+        var valRes:ValidationResultEvent = model_internal::_num_linksValidator.validate(model_internal::_instance.num_links)
+        model_internal::_num_linksIsValid_der = (valRes.results == null);
+        model_internal::_num_linksIsValidCacheInitialized = true;
+        if (valRes.results == null)
+             model_internal::num_linksValidationFailureMessages_der = emptyArray;
+        else
+        {
+            var _valFailures:Array = new Array();
+            for (var a:int = 0 ; a<valRes.results.length ; a++)
+            {
+                _valFailures.push(valRes.results[a].errorMessage);
+            }
+            model_internal::num_linksValidationFailureMessages_der = _valFailures;
+        }
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get num_linksValidationFailureMessages():Array
+    {
+        if (model_internal::_num_linksValidationFailureMessages == null)
+            model_internal::calculateNum_linksIsValid();
+
+        return _num_linksValidationFailureMessages;
+    }
+
+    model_internal function set num_linksValidationFailureMessages_der(value:Array) : void
+    {
+        var oldValue:Array = model_internal::_num_linksValidationFailureMessages;
+
+        var needUpdate : Boolean = false;
+        if (oldValue == null)
+            needUpdate = true;
+    
+        // avoid firing the event when old and new value are different empty arrays
+        if (!needUpdate && (oldValue !== value && (oldValue.length > 0 || value.length > 0)))
+        {
+            if (oldValue.length == value.length)
+            {
+                for (var a:int=0; a < oldValue.length; a++)
+                {
+                    if (oldValue[a] !== value[a])
+                    {
+                        needUpdate = true;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                needUpdate = true;
+            }
+        }
+
+        if (needUpdate)
+        {
+            model_internal::_num_linksValidationFailureMessages = value;   
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "num_linksValidationFailureMessages", oldValue, value));
+            // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
+            // the entire entity.
+            if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
+            {
+                model_internal::_instance.model_internal::isValid_der = model_internal::_instance.model_internal::calculateIsValid();
+            }
+        }
     }
 
     [Bindable(event="propertyChange")]   
@@ -921,44 +1275,44 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
     }
 
     [Bindable(event="propertyChange")]   
-    public function get linksStyle():com.adobe.fiber.styles.Style
+    public function get childrenStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }
 
-    public function get linksValidator() : StyleValidator
+    public function get childrenValidator() : StyleValidator
     {
-        return model_internal::_linksValidator;
+        return model_internal::_childrenValidator;
     }
 
-    model_internal function set _linksIsValid_der(value:Boolean):void 
+    model_internal function set _childrenIsValid_der(value:Boolean):void 
     {
-        var oldValue:Boolean = model_internal::_linksIsValid;         
+        var oldValue:Boolean = model_internal::_childrenIsValid;         
         if (oldValue !== value)
         {
-            model_internal::_linksIsValid = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "linksIsValid", oldValue, value));
+            model_internal::_childrenIsValid = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "childrenIsValid", oldValue, value));
         }                             
     }
 
     [Bindable(event="propertyChange")]
-    public function get linksIsValid():Boolean
+    public function get childrenIsValid():Boolean
     {
-        if (!model_internal::_linksIsValidCacheInitialized)
+        if (!model_internal::_childrenIsValidCacheInitialized)
         {
-            model_internal::calculateLinksIsValid();
+            model_internal::calculateChildrenIsValid();
         }
 
-        return model_internal::_linksIsValid;
+        return model_internal::_childrenIsValid;
     }
 
-    model_internal function calculateLinksIsValid():void
+    model_internal function calculateChildrenIsValid():void
     {
-        var valRes:ValidationResultEvent = model_internal::_linksValidator.validate(model_internal::_instance.links)
-        model_internal::_linksIsValid_der = (valRes.results == null);
-        model_internal::_linksIsValidCacheInitialized = true;
+        var valRes:ValidationResultEvent = model_internal::_childrenValidator.validate(model_internal::_instance.children)
+        model_internal::_childrenIsValid_der = (valRes.results == null);
+        model_internal::_childrenIsValidCacheInitialized = true;
         if (valRes.results == null)
-             model_internal::linksValidationFailureMessages_der = emptyArray;
+             model_internal::childrenValidationFailureMessages_der = emptyArray;
         else
         {
             var _valFailures:Array = new Array();
@@ -966,22 +1320,22 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
             {
                 _valFailures.push(valRes.results[a].errorMessage);
             }
-            model_internal::linksValidationFailureMessages_der = _valFailures;
+            model_internal::childrenValidationFailureMessages_der = _valFailures;
         }
     }
 
     [Bindable(event="propertyChange")]
-    public function get linksValidationFailureMessages():Array
+    public function get childrenValidationFailureMessages():Array
     {
-        if (model_internal::_linksValidationFailureMessages == null)
-            model_internal::calculateLinksIsValid();
+        if (model_internal::_childrenValidationFailureMessages == null)
+            model_internal::calculateChildrenIsValid();
 
-        return _linksValidationFailureMessages;
+        return _childrenValidationFailureMessages;
     }
 
-    model_internal function set linksValidationFailureMessages_der(value:Array) : void
+    model_internal function set childrenValidationFailureMessages_der(value:Array) : void
     {
-        var oldValue:Array = model_internal::_linksValidationFailureMessages;
+        var oldValue:Array = model_internal::_childrenValidationFailureMessages;
 
         var needUpdate : Boolean = false;
         if (oldValue == null)
@@ -1009,8 +1363,8 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
 
         if (needUpdate)
         {
-            model_internal::_linksValidationFailureMessages = value;   
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "linksValidationFailureMessages", oldValue, value));
+            model_internal::_childrenValidationFailureMessages = value;   
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "childrenValidationFailureMessages", oldValue, value));
             // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
             // the entire entity.
             if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
@@ -1111,106 +1465,6 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
         {
             model_internal::_typeValidationFailureMessages = value;   
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "typeValidationFailureMessages", oldValue, value));
-            // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
-            // the entire entity.
-            if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
-            {
-                model_internal::_instance.model_internal::isValid_der = model_internal::_instance.model_internal::calculateIsValid();
-            }
-        }
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get user_idsStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    public function get user_idsValidator() : StyleValidator
-    {
-        return model_internal::_user_idsValidator;
-    }
-
-    model_internal function set _user_idsIsValid_der(value:Boolean):void 
-    {
-        var oldValue:Boolean = model_internal::_user_idsIsValid;         
-        if (oldValue !== value)
-        {
-            model_internal::_user_idsIsValid = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "user_idsIsValid", oldValue, value));
-        }                             
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get user_idsIsValid():Boolean
-    {
-        if (!model_internal::_user_idsIsValidCacheInitialized)
-        {
-            model_internal::calculateUser_idsIsValid();
-        }
-
-        return model_internal::_user_idsIsValid;
-    }
-
-    model_internal function calculateUser_idsIsValid():void
-    {
-        var valRes:ValidationResultEvent = model_internal::_user_idsValidator.validate(model_internal::_instance.user_ids)
-        model_internal::_user_idsIsValid_der = (valRes.results == null);
-        model_internal::_user_idsIsValidCacheInitialized = true;
-        if (valRes.results == null)
-             model_internal::user_idsValidationFailureMessages_der = emptyArray;
-        else
-        {
-            var _valFailures:Array = new Array();
-            for (var a:int = 0 ; a<valRes.results.length ; a++)
-            {
-                _valFailures.push(valRes.results[a].errorMessage);
-            }
-            model_internal::user_idsValidationFailureMessages_der = _valFailures;
-        }
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get user_idsValidationFailureMessages():Array
-    {
-        if (model_internal::_user_idsValidationFailureMessages == null)
-            model_internal::calculateUser_idsIsValid();
-
-        return _user_idsValidationFailureMessages;
-    }
-
-    model_internal function set user_idsValidationFailureMessages_der(value:Array) : void
-    {
-        var oldValue:Array = model_internal::_user_idsValidationFailureMessages;
-
-        var needUpdate : Boolean = false;
-        if (oldValue == null)
-            needUpdate = true;
-    
-        // avoid firing the event when old and new value are different empty arrays
-        if (!needUpdate && (oldValue !== value && (oldValue.length > 0 || value.length > 0)))
-        {
-            if (oldValue.length == value.length)
-            {
-                for (var a:int=0; a < oldValue.length; a++)
-                {
-                    if (oldValue[a] !== value[a])
-                    {
-                        needUpdate = true;
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                needUpdate = true;
-            }
-        }
-
-        if (needUpdate)
-        {
-            model_internal::_user_idsValidationFailureMessages = value;   
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "user_idsValidationFailureMessages", oldValue, value));
             // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
             // the entire entity.
             if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
@@ -1521,6 +1775,206 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
     }
 
     [Bindable(event="propertyChange")]   
+    public function get stand_forStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    public function get stand_forValidator() : StyleValidator
+    {
+        return model_internal::_stand_forValidator;
+    }
+
+    model_internal function set _stand_forIsValid_der(value:Boolean):void 
+    {
+        var oldValue:Boolean = model_internal::_stand_forIsValid;         
+        if (oldValue !== value)
+        {
+            model_internal::_stand_forIsValid = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "stand_forIsValid", oldValue, value));
+        }                             
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get stand_forIsValid():Boolean
+    {
+        if (!model_internal::_stand_forIsValidCacheInitialized)
+        {
+            model_internal::calculateStand_forIsValid();
+        }
+
+        return model_internal::_stand_forIsValid;
+    }
+
+    model_internal function calculateStand_forIsValid():void
+    {
+        var valRes:ValidationResultEvent = model_internal::_stand_forValidator.validate(model_internal::_instance.stand_for)
+        model_internal::_stand_forIsValid_der = (valRes.results == null);
+        model_internal::_stand_forIsValidCacheInitialized = true;
+        if (valRes.results == null)
+             model_internal::stand_forValidationFailureMessages_der = emptyArray;
+        else
+        {
+            var _valFailures:Array = new Array();
+            for (var a:int = 0 ; a<valRes.results.length ; a++)
+            {
+                _valFailures.push(valRes.results[a].errorMessage);
+            }
+            model_internal::stand_forValidationFailureMessages_der = _valFailures;
+        }
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get stand_forValidationFailureMessages():Array
+    {
+        if (model_internal::_stand_forValidationFailureMessages == null)
+            model_internal::calculateStand_forIsValid();
+
+        return _stand_forValidationFailureMessages;
+    }
+
+    model_internal function set stand_forValidationFailureMessages_der(value:Array) : void
+    {
+        var oldValue:Array = model_internal::_stand_forValidationFailureMessages;
+
+        var needUpdate : Boolean = false;
+        if (oldValue == null)
+            needUpdate = true;
+    
+        // avoid firing the event when old and new value are different empty arrays
+        if (!needUpdate && (oldValue !== value && (oldValue.length > 0 || value.length > 0)))
+        {
+            if (oldValue.length == value.length)
+            {
+                for (var a:int=0; a < oldValue.length; a++)
+                {
+                    if (oldValue[a] !== value[a])
+                    {
+                        needUpdate = true;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                needUpdate = true;
+            }
+        }
+
+        if (needUpdate)
+        {
+            model_internal::_stand_forValidationFailureMessages = value;   
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "stand_forValidationFailureMessages", oldValue, value));
+            // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
+            // the entire entity.
+            if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
+            {
+                model_internal::_instance.model_internal::isValid_der = model_internal::_instance.model_internal::calculateIsValid();
+            }
+        }
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get _idStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    public function get _idValidator() : StyleValidator
+    {
+        return model_internal::__idValidator;
+    }
+
+    model_internal function set __idIsValid_der(value:Boolean):void 
+    {
+        var oldValue:Boolean = model_internal::__idIsValid;         
+        if (oldValue !== value)
+        {
+            model_internal::__idIsValid = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "_idIsValid", oldValue, value));
+        }                             
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get _idIsValid():Boolean
+    {
+        if (!model_internal::__idIsValidCacheInitialized)
+        {
+            model_internal::calculate_idIsValid();
+        }
+
+        return model_internal::__idIsValid;
+    }
+
+    model_internal function calculate_idIsValid():void
+    {
+        var valRes:ValidationResultEvent = model_internal::__idValidator.validate(model_internal::_instance._id)
+        model_internal::__idIsValid_der = (valRes.results == null);
+        model_internal::__idIsValidCacheInitialized = true;
+        if (valRes.results == null)
+             model_internal::_idValidationFailureMessages_der = emptyArray;
+        else
+        {
+            var _valFailures:Array = new Array();
+            for (var a:int = 0 ; a<valRes.results.length ; a++)
+            {
+                _valFailures.push(valRes.results[a].errorMessage);
+            }
+            model_internal::_idValidationFailureMessages_der = _valFailures;
+        }
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get _idValidationFailureMessages():Array
+    {
+        if (model_internal::__idValidationFailureMessages == null)
+            model_internal::calculate_idIsValid();
+
+        return __idValidationFailureMessages;
+    }
+
+    model_internal function set _idValidationFailureMessages_der(value:Array) : void
+    {
+        var oldValue:Array = model_internal::__idValidationFailureMessages;
+
+        var needUpdate : Boolean = false;
+        if (oldValue == null)
+            needUpdate = true;
+    
+        // avoid firing the event when old and new value are different empty arrays
+        if (!needUpdate && (oldValue !== value && (oldValue.length > 0 || value.length > 0)))
+        {
+            if (oldValue.length == value.length)
+            {
+                for (var a:int=0; a < oldValue.length; a++)
+                {
+                    if (oldValue[a] !== value[a])
+                    {
+                        needUpdate = true;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                needUpdate = true;
+            }
+        }
+
+        if (needUpdate)
+        {
+            model_internal::__idValidationFailureMessages = value;   
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "_idValidationFailureMessages", oldValue, value));
+            // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
+            // the entire entity.
+            if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
+            {
+                model_internal::_instance.model_internal::isValid_der = model_internal::_instance.model_internal::calculateIsValid();
+            }
+        }
+    }
+
+    [Bindable(event="propertyChange")]   
     public function get position_attrStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
@@ -1711,6 +2165,106 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
         {
             model_internal::_analyzedValidationFailureMessages = value;   
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "analyzedValidationFailureMessages", oldValue, value));
+            // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
+            // the entire entity.
+            if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
+            {
+                model_internal::_instance.model_internal::isValid_der = model_internal::_instance.model_internal::calculateIsValid();
+            }
+        }
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get nameStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    public function get nameValidator() : StyleValidator
+    {
+        return model_internal::_nameValidator;
+    }
+
+    model_internal function set _nameIsValid_der(value:Boolean):void 
+    {
+        var oldValue:Boolean = model_internal::_nameIsValid;         
+        if (oldValue !== value)
+        {
+            model_internal::_nameIsValid = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "nameIsValid", oldValue, value));
+        }                             
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get nameIsValid():Boolean
+    {
+        if (!model_internal::_nameIsValidCacheInitialized)
+        {
+            model_internal::calculateNameIsValid();
+        }
+
+        return model_internal::_nameIsValid;
+    }
+
+    model_internal function calculateNameIsValid():void
+    {
+        var valRes:ValidationResultEvent = model_internal::_nameValidator.validate(model_internal::_instance.name)
+        model_internal::_nameIsValid_der = (valRes.results == null);
+        model_internal::_nameIsValidCacheInitialized = true;
+        if (valRes.results == null)
+             model_internal::nameValidationFailureMessages_der = emptyArray;
+        else
+        {
+            var _valFailures:Array = new Array();
+            for (var a:int = 0 ; a<valRes.results.length ; a++)
+            {
+                _valFailures.push(valRes.results[a].errorMessage);
+            }
+            model_internal::nameValidationFailureMessages_der = _valFailures;
+        }
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get nameValidationFailureMessages():Array
+    {
+        if (model_internal::_nameValidationFailureMessages == null)
+            model_internal::calculateNameIsValid();
+
+        return _nameValidationFailureMessages;
+    }
+
+    model_internal function set nameValidationFailureMessages_der(value:Array) : void
+    {
+        var oldValue:Array = model_internal::_nameValidationFailureMessages;
+
+        var needUpdate : Boolean = false;
+        if (oldValue == null)
+            needUpdate = true;
+    
+        // avoid firing the event when old and new value are different empty arrays
+        if (!needUpdate && (oldValue !== value && (oldValue.length > 0 || value.length > 0)))
+        {
+            if (oldValue.length == value.length)
+            {
+                for (var a:int=0; a < oldValue.length; a++)
+                {
+                    if (oldValue[a] !== value[a])
+                    {
+                        needUpdate = true;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                needUpdate = true;
+            }
+        }
+
+        if (needUpdate)
+        {
+            model_internal::_nameValidationFailureMessages = value;   
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "nameValidationFailureMessages", oldValue, value));
             // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
             // the entire entity.
             if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
@@ -2020,306 +2574,6 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
         }
     }
 
-    [Bindable(event="propertyChange")]   
-    public function get num_linksStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    public function get num_linksValidator() : StyleValidator
-    {
-        return model_internal::_num_linksValidator;
-    }
-
-    model_internal function set _num_linksIsValid_der(value:Boolean):void 
-    {
-        var oldValue:Boolean = model_internal::_num_linksIsValid;         
-        if (oldValue !== value)
-        {
-            model_internal::_num_linksIsValid = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "num_linksIsValid", oldValue, value));
-        }                             
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get num_linksIsValid():Boolean
-    {
-        if (!model_internal::_num_linksIsValidCacheInitialized)
-        {
-            model_internal::calculateNum_linksIsValid();
-        }
-
-        return model_internal::_num_linksIsValid;
-    }
-
-    model_internal function calculateNum_linksIsValid():void
-    {
-        var valRes:ValidationResultEvent = model_internal::_num_linksValidator.validate(model_internal::_instance.num_links)
-        model_internal::_num_linksIsValid_der = (valRes.results == null);
-        model_internal::_num_linksIsValidCacheInitialized = true;
-        if (valRes.results == null)
-             model_internal::num_linksValidationFailureMessages_der = emptyArray;
-        else
-        {
-            var _valFailures:Array = new Array();
-            for (var a:int = 0 ; a<valRes.results.length ; a++)
-            {
-                _valFailures.push(valRes.results[a].errorMessage);
-            }
-            model_internal::num_linksValidationFailureMessages_der = _valFailures;
-        }
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get num_linksValidationFailureMessages():Array
-    {
-        if (model_internal::_num_linksValidationFailureMessages == null)
-            model_internal::calculateNum_linksIsValid();
-
-        return _num_linksValidationFailureMessages;
-    }
-
-    model_internal function set num_linksValidationFailureMessages_der(value:Array) : void
-    {
-        var oldValue:Array = model_internal::_num_linksValidationFailureMessages;
-
-        var needUpdate : Boolean = false;
-        if (oldValue == null)
-            needUpdate = true;
-    
-        // avoid firing the event when old and new value are different empty arrays
-        if (!needUpdate && (oldValue !== value && (oldValue.length > 0 || value.length > 0)))
-        {
-            if (oldValue.length == value.length)
-            {
-                for (var a:int=0; a < oldValue.length; a++)
-                {
-                    if (oldValue[a] !== value[a])
-                    {
-                        needUpdate = true;
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                needUpdate = true;
-            }
-        }
-
-        if (needUpdate)
-        {
-            model_internal::_num_linksValidationFailureMessages = value;   
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "num_linksValidationFailureMessages", oldValue, value));
-            // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
-            // the entire entity.
-            if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
-            {
-                model_internal::_instance.model_internal::isValid_der = model_internal::_instance.model_internal::calculateIsValid();
-            }
-        }
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get _idStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    public function get _idValidator() : StyleValidator
-    {
-        return model_internal::__idValidator;
-    }
-
-    model_internal function set __idIsValid_der(value:Boolean):void 
-    {
-        var oldValue:Boolean = model_internal::__idIsValid;         
-        if (oldValue !== value)
-        {
-            model_internal::__idIsValid = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "_idIsValid", oldValue, value));
-        }                             
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get _idIsValid():Boolean
-    {
-        if (!model_internal::__idIsValidCacheInitialized)
-        {
-            model_internal::calculate_idIsValid();
-        }
-
-        return model_internal::__idIsValid;
-    }
-
-    model_internal function calculate_idIsValid():void
-    {
-        var valRes:ValidationResultEvent = model_internal::__idValidator.validate(model_internal::_instance._id)
-        model_internal::__idIsValid_der = (valRes.results == null);
-        model_internal::__idIsValidCacheInitialized = true;
-        if (valRes.results == null)
-             model_internal::_idValidationFailureMessages_der = emptyArray;
-        else
-        {
-            var _valFailures:Array = new Array();
-            for (var a:int = 0 ; a<valRes.results.length ; a++)
-            {
-                _valFailures.push(valRes.results[a].errorMessage);
-            }
-            model_internal::_idValidationFailureMessages_der = _valFailures;
-        }
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get _idValidationFailureMessages():Array
-    {
-        if (model_internal::__idValidationFailureMessages == null)
-            model_internal::calculate_idIsValid();
-
-        return __idValidationFailureMessages;
-    }
-
-    model_internal function set _idValidationFailureMessages_der(value:Array) : void
-    {
-        var oldValue:Array = model_internal::__idValidationFailureMessages;
-
-        var needUpdate : Boolean = false;
-        if (oldValue == null)
-            needUpdate = true;
-    
-        // avoid firing the event when old and new value are different empty arrays
-        if (!needUpdate && (oldValue !== value && (oldValue.length > 0 || value.length > 0)))
-        {
-            if (oldValue.length == value.length)
-            {
-                for (var a:int=0; a < oldValue.length; a++)
-                {
-                    if (oldValue[a] !== value[a])
-                    {
-                        needUpdate = true;
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                needUpdate = true;
-            }
-        }
-
-        if (needUpdate)
-        {
-            model_internal::__idValidationFailureMessages = value;   
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "_idValidationFailureMessages", oldValue, value));
-            // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
-            // the entire entity.
-            if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
-            {
-                model_internal::_instance.model_internal::isValid_der = model_internal::_instance.model_internal::calculateIsValid();
-            }
-        }
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get nameStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    public function get nameValidator() : StyleValidator
-    {
-        return model_internal::_nameValidator;
-    }
-
-    model_internal function set _nameIsValid_der(value:Boolean):void 
-    {
-        var oldValue:Boolean = model_internal::_nameIsValid;         
-        if (oldValue !== value)
-        {
-            model_internal::_nameIsValid = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "nameIsValid", oldValue, value));
-        }                             
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get nameIsValid():Boolean
-    {
-        if (!model_internal::_nameIsValidCacheInitialized)
-        {
-            model_internal::calculateNameIsValid();
-        }
-
-        return model_internal::_nameIsValid;
-    }
-
-    model_internal function calculateNameIsValid():void
-    {
-        var valRes:ValidationResultEvent = model_internal::_nameValidator.validate(model_internal::_instance.name)
-        model_internal::_nameIsValid_der = (valRes.results == null);
-        model_internal::_nameIsValidCacheInitialized = true;
-        if (valRes.results == null)
-             model_internal::nameValidationFailureMessages_der = emptyArray;
-        else
-        {
-            var _valFailures:Array = new Array();
-            for (var a:int = 0 ; a<valRes.results.length ; a++)
-            {
-                _valFailures.push(valRes.results[a].errorMessage);
-            }
-            model_internal::nameValidationFailureMessages_der = _valFailures;
-        }
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get nameValidationFailureMessages():Array
-    {
-        if (model_internal::_nameValidationFailureMessages == null)
-            model_internal::calculateNameIsValid();
-
-        return _nameValidationFailureMessages;
-    }
-
-    model_internal function set nameValidationFailureMessages_der(value:Array) : void
-    {
-        var oldValue:Array = model_internal::_nameValidationFailureMessages;
-
-        var needUpdate : Boolean = false;
-        if (oldValue == null)
-            needUpdate = true;
-    
-        // avoid firing the event when old and new value are different empty arrays
-        if (!needUpdate && (oldValue !== value && (oldValue.length > 0 || value.length > 0)))
-        {
-            if (oldValue.length == value.length)
-            {
-                for (var a:int=0; a < oldValue.length; a++)
-                {
-                    if (oldValue[a] !== value[a])
-                    {
-                        needUpdate = true;
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                needUpdate = true;
-            }
-        }
-
-        if (needUpdate)
-        {
-            model_internal::_nameValidationFailureMessages = value;   
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "nameValidationFailureMessages", oldValue, value));
-            // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
-            // the entire entity.
-            if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
-            {
-                model_internal::_instance.model_internal::isValid_der = model_internal::_instance.model_internal::calculateIsValid();
-            }
-        }
-    }
-
 
      /**
      * 
@@ -2345,6 +2599,18 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
      {
          switch(propertyName)
          {
+            case("links"):
+            {
+                return linksValidationFailureMessages;
+            }
+            case("user_ids"):
+            {
+                return user_idsValidationFailureMessages;
+            }
+            case("num_links"):
+            {
+                return num_linksValidationFailureMessages;
+            }
             case("position"):
             {
                 return positionValidationFailureMessages;
@@ -2353,17 +2619,13 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
             {
                 return descValidationFailureMessages;
             }
-            case("links"):
+            case("children"):
             {
-                return linksValidationFailureMessages;
+                return childrenValidationFailureMessages;
             }
             case("type"):
             {
                 return typeValidationFailureMessages;
-            }
-            case("user_ids"):
-            {
-                return user_idsValidationFailureMessages;
             }
             case("photos"):
             {
@@ -2377,6 +2639,14 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
             {
                 return updated_atValidationFailureMessages;
             }
+            case("stand_for"):
+            {
+                return stand_forValidationFailureMessages;
+            }
+            case("_id"):
+            {
+                return _idValidationFailureMessages;
+            }
             case("position_attr"):
             {
                 return position_attrValidationFailureMessages;
@@ -2384,6 +2654,10 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
             case("analyzed"):
             {
                 return analyzedValidationFailureMessages;
+            }
+            case("name"):
+            {
+                return nameValidationFailureMessages;
             }
             case("path"):
             {
@@ -2396,18 +2670,6 @@ internal class _EntityEntityMetadata extends com.adobe.fiber.valueobjects.Abstra
             case("handles"):
             {
                 return handlesValidationFailureMessages;
-            }
-            case("num_links"):
-            {
-                return num_linksValidationFailureMessages;
-            }
-            case("_id"):
-            {
-                return _idValidationFailureMessages;
-            }
-            case("name"):
-            {
-                return nameValidationFailureMessages;
             }
             default:
             {

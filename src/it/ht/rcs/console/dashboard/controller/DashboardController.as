@@ -116,7 +116,7 @@ package it.ht.rcs.console.dashboard.controller
 				dashboardItem._id=item._id;
 				dashboardItem._kind=item._kind;
 				dashboardItem.status=item.status;
-				dashboardItem.scout=item.scout;
+				dashboardItem.level=item.level;
 
 				currentOperationId=dashboardItem._id;
 				var sort:Sort=new Sort();
@@ -212,7 +212,7 @@ package it.ht.rcs.console.dashboard.controller
         t.tot=tot;
         t.sync=sync
         
-        dashboardItem.scout=t.scout; //????
+        dashboardItem.level=t.level; //????
         dashboardItem.totTot+=t.tot;
         dashboardItem.totSync+=t.sync;
    
@@ -241,7 +241,7 @@ package it.ht.rcs.console.dashboard.controller
 				dashboardItem.platform=item.platform;
 				dashboardItem.demo=item.demo;
 				dashboardItem.baseline=item.stat;
-				dashboardItem.scout=item.scout;
+				dashboardItem.level=item.level;
 				addItem(dashboardItem);
 			}
 
@@ -250,7 +250,7 @@ package it.ht.rcs.console.dashboard.controller
 
 			dashboardItem.name=item.name;
 			dashboardItem.desc=item.desc;
-			dashboardItem.scout=item.scout;
+			dashboardItem.level=item.level;
 			dashboardItem.lastSync=item.stat.last_sync;
 			dashboardItem.lastSyncStatus=item.stat.last_sync_status;
 
@@ -296,7 +296,6 @@ package it.ht.rcs.console.dashboard.controller
 
 		private function updateAgentTarget(dashboardItem:DashboardItem, data:*):void
 		{
-
 
 			if (dashboardItem == null)
 			{

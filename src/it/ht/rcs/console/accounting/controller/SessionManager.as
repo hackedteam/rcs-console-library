@@ -1,8 +1,12 @@
 package it.ht.rcs.console.accounting.controller
 {
+  import air.net.URLMonitor;
+  
+  import flash.events.StatusEvent;
   import flash.filesystem.File;
   import flash.filesystem.FileMode;
   import flash.filesystem.FileStream;
+  import flash.net.URLRequest;
   
   import it.ht.rcs.console.*;
   import it.ht.rcs.console.DB;
@@ -25,9 +29,14 @@ package it.ht.rcs.console.accounting.controller
   public class SessionManager extends ItemManager
   {
     
+    private var monitor:URLMonitor;
+    [Bindable]
+    public var hasConnection:Boolean;
+    
     public function SessionManager()
     {
       super(Session);
+     
       loadPreviousLoginDetails();
     }
     
@@ -92,6 +101,12 @@ package it.ht.rcs.console.accounting.controller
       
       /* this is for DEMO purpose only, no database will be contacted, all the data are fake */
       var demoMode:Boolean = (user.indexOf('demo') != -1 && pass == '' && server == 'demo');
+    
+      if(demoMode)
+      {
+        trace(">>>>>>>>>>>>>>>>>>>>>>>>>>>>is demo")
+        checkInternetConnection()
+      }
       DB.instance.connect(server, notifier, i18n, demoMode);
       
       /* remember the function for the async handlers */
@@ -196,6 +211,34 @@ package it.ht.rcs.console.accounting.controller
         s.close();
       } catch(e:*) {
       }
+    }
+    
+    private function checkInternetConnection():void
+    {
+      
+      var req:URLRequest=new URLRequest("http://www.google.com");
+      req.method="HEAD";
+      if(!monitor)
+        monitor=new URLMonitor(req);
+      monitor.pollInterval=5000;
+      monitor.addEventListener(StatusEvent.STATUS, onConnection);
+      monitor.start();
+    }
+    
+    private function onConnection(e:StatusEvent=null):void
+    {
+      
+      if (e.code == "Service.available")
+      {
+        hasConnection=true;
+        trace("connection ok")
+      }
+      else
+      {
+        hasConnection=false;
+        trace("connection ko")
+      }
+      
     }
     
   }

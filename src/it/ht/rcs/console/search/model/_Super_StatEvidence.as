@@ -53,6 +53,7 @@ public class _Super_StatEvidence extends flash.events.EventDispatcher implements
     private var _internal_mic : int;
     private var _internal_application : int;
     private var _internal_mouse : int;
+    private var _internal_money : int;
     private var _internal_screenshot : int;
     private var _internal_camera : int;
     private var _internal_chat : int;
@@ -93,6 +94,12 @@ public class _Super_StatEvidence extends flash.events.EventDispatcher implements
     public function get position() : int
     {
         return _internal_position;
+    }
+    
+    [Bindable(event="propertyChange")]
+    public function get money() : int
+    {
+      return _internal_money;
     }
 
     [Bindable(event="propertyChange")]
@@ -229,6 +236,16 @@ public class _Super_StatEvidence extends flash.events.EventDispatcher implements
             _internal_message = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "message", oldValue, _internal_message));
         }
+    }
+    
+    public function set money(value:int) : void
+    {
+      var oldValue:int = _internal_money;
+      if (oldValue !== value)
+      {
+        _internal_money = value;
+        this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "money", oldValue, _internal_money));
+      }
     }
 
     public function set call(value:int) : void

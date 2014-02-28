@@ -35,6 +35,7 @@ package it.ht.rcs.console.evidence.model
         this.end=data.end;
         this.event=data.event;
         this.from=data.from;
+        this.id=data.id;
         this.from=data.from;
         this.caller=data.caller;
         this.from_display=data.from_display;
@@ -63,6 +64,11 @@ package it.ht.rcs.console.evidence.model
         this.user=data.user;
         this.users=data.users;
         this.incoming=data.incoming;
+        this.version=data.version;
+        this.encrypted=data.encrypted;
+        this.balance=data.balance;
+        this.currency=data.currency;
+        this.amount=data.amount;
         this.draft=data.draft;
         if(data.wifi)
         {

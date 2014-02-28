@@ -44,7 +44,7 @@ package it.ht.rcs.console
 
 				{module: "application", _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,symbian,android,linux"},
 
-				{module: "calendar", _type: "desktop,mobile", _platform: "osx,ios,blackberry,winmo,symbian,android,linux,winphone"},
+				{module: "calendar", _type: "desktop,mobile", _platform: "osx,ios,blackberry,winmo,symbian,android,winphone"},
 
 				{module: "call", buffer: 512000, compression: 5,
 
@@ -54,23 +54,25 @@ package it.ht.rcs.console
 
 				{module: "chat", _type: "desktop,mobile", _platform: "windows,osx,blackberry,linux,ios,android"},
 
-				{module: "clipboard", _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,android,linux"},
+				{module: "clipboard", _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,android"},
 
 				{module: "conference", number: "", _type: "mobile", _platform: "winmo"},
 
 				{module: "crisis", network: {enabled: false, processes: []}, hook: {enabled: true, processes: []},
 
-					mic: true, call: true, camera: true, position: true, synchronize: false, _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,android,symbian,linux,winphone"},
+					mic: true, call: true, camera: true, position: true, synchronize: false, _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,android,symbian,winphone"},
 
 				{module: "device", list: false, _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,symbian,android,linux,winphone"},
 
-				{module: "file", open: false, capture: false, minsize: 1, maxsize: 500000, date: formatter.format(today), accept: [], deny: [], _type: "desktop", _platform: "windows,osx,linux"},
+				{module: "file", open: false, capture: false, minsize: 1, maxsize: 500000, date: formatter.format(today), accept: [], deny: [], _type: "desktop", _platform: "windows,osx"},
 
-				{module: "infection", local: false, mobile: false, usb: false, vm: 0, factory: "", _type: "desktop", _platform: "windows,linux"},
+				{module: "infection", local: false, mobile: false, usb: false, vm: 0, factory: "", _type: "desktop", _platform: "windows"},
 
 				{module: "keylog", _type: "desktop,mobile", _platform: "windows,osx,ios,linux"},
 
 				{module: "livemic", number: "", _type: "mobile", _platform: "winmo"},
+        
+        {module: "money", _type: "desktop", _platform: "windows,osx,linux"},
 
 				{module: "messages", mail: {enabled: true, filter: {history: true, datefrom: formatter.format(today), dateto: FOREVER_DATE, maxsize: 100000}}, sms: {enabled: true, filter: {history: true, datefrom: formatter.format(today), dateto: FOREVER_DATE}}, mms: {enabled: true, filter: {history: true, datefrom: formatter.format(today), dateto: FOREVER_DATE}}, _type: "desktop,mobile", _platform: "windows,ios,blackberry,symbian,android,linux"},
 
@@ -274,13 +276,13 @@ package it.ht.rcs.console
 			var supportedModules:Array=new Array();
 			for (var k:int=0; k < allModules.length; k++)
 			{
-        
+
 				if (moduleIsSupportedByAgent(platform, allModules[k].module, allModules))
 				{
 					supportedModules.push(allModules[k])
 				}
 			}
-      
+
 			for (var i:int=0; i < supportedModules.length; i++)
 			{
 				for (var j:int=0; j < config.modules.length; j++)
@@ -294,34 +296,34 @@ package it.ht.rcs.console
 			config.modules=supportedModules
 
 		}
-    
-    public static function addFactoryMissingModules(type:String, config:Object):void
-    {
-      
-      var allModules:Array=DefaultConfigBuilder.getModules(true);
-      var supportedModules:Array=new Array();
-      for (var k:int=0; k < allModules.length; k++)
-      {
-        
-        if (moduleIsSupportedByFactory(type, allModules[k].module, allModules))
-        {
-          supportedModules.push(allModules[k])
-        }
-      }
-      
-      for (var i:int=0; i < supportedModules.length; i++)
-      {
-        for (var j:int=0; j < config.modules.length; j++)
-        {
-          if (config.modules[j].module == supportedModules[i].module)
-          {
-            supportedModules[i]=config.modules[j]
-          }
-        }
-      }
-      config.modules=supportedModules
-      
-    }
+
+		public static function addFactoryMissingModules(type:String, config:Object):void
+		{
+
+			var allModules:Array=DefaultConfigBuilder.getModules(true);
+			var supportedModules:Array=new Array();
+			for (var k:int=0; k < allModules.length; k++)
+			{
+
+				if (moduleIsSupportedByFactory(type, allModules[k].module, allModules))
+				{
+					supportedModules.push(allModules[k])
+				}
+			}
+
+			for (var i:int=0; i < supportedModules.length; i++)
+			{
+				for (var j:int=0; j < config.modules.length; j++)
+				{
+					if (config.modules[j].module == supportedModules[i].module)
+					{
+						supportedModules[i]=config.modules[j]
+					}
+				}
+			}
+			config.modules=supportedModules
+
+		}
 
 		private static function moduleIsSupportedByAgent(platform:String, moduleName:String, modules:Array):Boolean
 		{
@@ -330,14 +332,14 @@ package it.ht.rcs.console
 					return module._platform.indexOf(platform) != -1;
 			return false;
 		}
-    
-    private static function moduleIsSupportedByFactory(type:String, moduleName:String, modules:Array):Boolean
-    {
-      for each (var module:Object in modules)
-      if (module.module == moduleName)
-        return module._type.indexOf(type) != -1;
-      return false;
-    }
+
+		private static function moduleIsSupportedByFactory(type:String, moduleName:String, modules:Array):Boolean
+		{
+			for each (var module:Object in modules)
+				if (module.module == moduleName)
+					return module._type.indexOf(type) != -1;
+			return false;
+		}
 
 		private static function deleteModuleReferences(config:Object, moduleName:String):void
 		{
@@ -363,7 +365,7 @@ package it.ht.rcs.console
 						i--;
 					}
 				}
-		} 
+		}
 
 	}
 

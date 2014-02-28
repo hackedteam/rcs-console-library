@@ -59,7 +59,7 @@ public class _Super_Agent extends flash.events.EventDispatcher implements com.ad
      */
     private var _internal_group_ids : ArrayCollection;
     private var _internal_demo : Boolean;
-    private var _internal_scout : Boolean;
+    private var _internal_level : String;
     private var _internal__kind : String;
     private var _internal_platform : String;
     private var _internal_desc : String;
@@ -96,6 +96,7 @@ public class _Super_Agent extends flash.events.EventDispatcher implements com.ad
         _model = new _AgentEntityMetadata(this);
 
         // Bind to own data or source properties for cache invalidation triggering
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "level", model_internal::setterListenerLevel));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "platform", model_internal::setterListenerPlatform));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "type", model_internal::setterListenerType));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "configs", model_internal::setterListenerConfigs));
@@ -121,9 +122,9 @@ public class _Super_Agent extends flash.events.EventDispatcher implements com.ad
     }
 
     [Bindable(event="propertyChange")]
-    public function get scout() : Boolean
+    public function get level() : String
     {
-        return _internal_scout;
+        return _internal_level;
     }
 
     [Bindable(event="propertyChange")]
@@ -283,13 +284,13 @@ public class _Super_Agent extends flash.events.EventDispatcher implements com.ad
         }
     }
 
-    public function set scout(value:Boolean) : void
+    public function set level(value:String) : void
     {
-        var oldValue:Boolean = _internal_scout;
+        var oldValue:String = _internal_level;
         if (oldValue !== value)
         {
-            _internal_scout = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "scout", oldValue, _internal_scout));
+            _internal_level = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "level", oldValue, _internal_level));
         }
     }
 
@@ -525,6 +526,11 @@ public class _Super_Agent extends flash.events.EventDispatcher implements com.ad
      *  - the validity of the property (and the containing entity) if the given data property is required.
      */
 
+    model_internal function setterListenerLevel(value:flash.events.Event):void
+    {
+        _model.invalidateDependentOnLevel();
+    }
+
     model_internal function setterListenerPlatform(value:flash.events.Event):void
     {
         _model.invalidateDependentOnPlatform();
@@ -579,6 +585,11 @@ public class _Super_Agent extends flash.events.EventDispatcher implements com.ad
         var validationFailureMessages:Array = new Array();
 
         var propertyValidity:Boolean = true;
+        if (!_model.levelIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_levelValidationFailureMessages);
+        }
         if (!_model.platformIsValid)
         {
             propertyValidity = false;
@@ -683,6 +694,33 @@ public class _Super_Agent extends flash.events.EventDispatcher implements com.ad
         }
     }
 
+    model_internal var _doValidationCacheOfLevel : Array = null;
+    model_internal var _doValidationLastValOfLevel : String;
+
+    model_internal function _doValidationForLevel(valueIn:Object):Array
+    {
+        var value : String = valueIn as String;
+
+        if (model_internal::_doValidationCacheOfLevel != null && model_internal::_doValidationLastValOfLevel == value)
+           return model_internal::_doValidationCacheOfLevel ;
+
+        _model.model_internal::_levelIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isLevelAvailable && _internal_level == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "level is required"));
+        }
+
+        model_internal::_doValidationCacheOfLevel = validationFailures;
+        model_internal::_doValidationLastValOfLevel = value;
+
+        return validationFailures;
+    }
+    
     model_internal var _doValidationCacheOfPlatform : Array = null;
     model_internal var _doValidationLastValOfPlatform : String;
 

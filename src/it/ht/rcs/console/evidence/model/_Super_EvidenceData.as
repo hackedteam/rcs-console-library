@@ -88,6 +88,7 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     private var _internal_draft : Boolean;
     private var _internal_from_display : String;
     private var _internal_rcpt : String;
+    private var _internal_id : String;
     private var _internal_rcpt_display : String;
     private var _internal_subject : String;
     private var _internal_url : String;
@@ -107,6 +108,11 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     private var _internal_attach : int;
     private var _internal_command : String;
     private var _internal_tr : String;
+    private var _internal_version : String;
+    private var _internal_encrypted : Boolean;
+    private var _internal_balance : Number;
+    private var _internal_amount : Number;
+    private var _internal_currency : String;
 
     private static var emptyArray:Array = new Array();
 
@@ -343,6 +349,12 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     }
 
     [Bindable(event="propertyChange")]
+    public function get id() : String
+    {
+        return _internal_id;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get rcpt_display() : String
     {
         return _internal_rcpt_display;
@@ -448,6 +460,36 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     public function get tr() : String
     {
         return _internal_tr;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get version() : String
+    {
+        return _internal_version;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get encrypted() : Boolean
+    {
+        return _internal_encrypted;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get balance() : Number
+    {
+        return _internal_balance;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get amount() : Number
+    {
+        return _internal_amount;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get currency() : String
+    {
+        return _internal_currency;
     }
 
     public function clearAssociations() : void
@@ -808,6 +850,16 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
         }
     }
 
+    public function set id(value:String) : void
+    {
+        var oldValue:String = _internal_id;
+        if (oldValue !== value)
+        {
+            _internal_id = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "id", oldValue, _internal_id));
+        }
+    }
+
     public function set rcpt_display(value:String) : void
     {
         var oldValue:String = _internal_rcpt_display;
@@ -1000,6 +1052,56 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
         {
             _internal_tr = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "tr", oldValue, _internal_tr));
+        }
+    }
+
+    public function set version(value:String) : void
+    {
+        var oldValue:String = _internal_version;
+        if (oldValue !== value)
+        {
+            _internal_version = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "version", oldValue, _internal_version));
+        }
+    }
+
+    public function set encrypted(value:Boolean) : void
+    {
+        var oldValue:Boolean = _internal_encrypted;
+        if (oldValue !== value)
+        {
+            _internal_encrypted = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "encrypted", oldValue, _internal_encrypted));
+        }
+    }
+
+    public function set balance(value:Number) : void
+    {
+        var oldValue:Number = _internal_balance;
+        if (isNaN(_internal_balance) == true || Math.abs(oldValue - value) > epsilon)
+        {
+            _internal_balance = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "balance", oldValue, _internal_balance));
+        }
+    }
+
+    public function set amount(value:Number) : void
+    {
+        var oldValue:Number = _internal_amount;
+        if (isNaN(_internal_amount) == true || Math.abs(oldValue - value) > epsilon)
+        {
+            _internal_amount = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "amount", oldValue, _internal_amount));
+        }
+    }
+
+    public function set currency(value:String) : void
+    {
+        var oldValue:String = _internal_currency;
+        if (oldValue !== value)
+        {
+            _internal_currency = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "currency", oldValue, _internal_currency));
         }
     }
 

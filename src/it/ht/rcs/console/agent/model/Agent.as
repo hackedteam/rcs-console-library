@@ -21,7 +21,7 @@ package it.ht.rcs.console.agent.model
         stat: null,
         configs: [],
         instance: '',
-        scout:true,
+        level:"scout",
         good:true
       };
     }
@@ -42,7 +42,7 @@ package it.ht.rcs.console.agent.model
         instance = data.instance;
         type = data.type;
         platform = data.platform;
-        scout=data.scout;
+        level=data.level;
         good=data.good;
         
       }

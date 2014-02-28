@@ -22,14 +22,14 @@ internal class _PositionEntityMetadata extends com.adobe.fiber.valueobjects.Abst
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("longitude", "latitude", "lon", "rad", "lat");
+    model_internal static var allProperties:Array = new Array("lon", "rad", "lat", "longitude", "latitude");
     model_internal static var allAssociationProperties:Array = new Array();
-    model_internal static var allRequiredProperties:Array = new Array("longitude", "latitude", "lon", "rad", "lat");
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("longitude", "latitude", "lon", "rad", "lat");
+    model_internal static var allRequiredProperties:Array = new Array("lon", "rad", "lat", "longitude", "latitude");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("lon", "rad", "lat", "longitude", "latitude");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("longitude", "latitude", "lon", "rad", "lat");
+    model_internal static var dataProperties:Array = new Array("lon", "rad", "lat", "longitude", "latitude");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("longitude", "latitude", "lon", "rad", "lat");
+    model_internal static var nonDerivedProperties:Array = new Array("lon", "rad", "lat", "longitude", "latitude");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array();
     model_internal static var collectionBaseMap:Object;
@@ -59,11 +59,11 @@ internal class _PositionEntityMetadata extends com.adobe.fiber.valueobjects.Abst
         {
             // dependents map
             model_internal::dependentsOnMap = new Object();
-            model_internal::dependentsOnMap["longitude"] = new Array();
-            model_internal::dependentsOnMap["latitude"] = new Array();
             model_internal::dependentsOnMap["lon"] = new Array();
             model_internal::dependentsOnMap["rad"] = new Array();
             model_internal::dependentsOnMap["lat"] = new Array();
+            model_internal::dependentsOnMap["longitude"] = new Array();
+            model_internal::dependentsOnMap["latitude"] = new Array();
 
             // collection base map
             model_internal::collectionBaseMap = new Object();
@@ -71,11 +71,11 @@ internal class _PositionEntityMetadata extends com.adobe.fiber.valueobjects.Abst
 
         // Property type Map
         model_internal::propertyTypeMap = new Object();
-        model_internal::propertyTypeMap["longitude"] = "String";
-        model_internal::propertyTypeMap["latitude"] = "String";
         model_internal::propertyTypeMap["lon"] = "Number";
         model_internal::propertyTypeMap["rad"] = "Number";
         model_internal::propertyTypeMap["lat"] = "Number";
+        model_internal::propertyTypeMap["longitude"] = "String";
+        model_internal::propertyTypeMap["latitude"] = "String";
 
         model_internal::_instance = value;
         model_internal::_longitudeValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForLongitude);
@@ -315,18 +315,6 @@ internal class _PositionEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     }
 
     [Bindable(event="propertyChange")]
-    public function get isLongitudeAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get isLatitudeAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get isLonAvailable():Boolean
     {
         return true;
@@ -340,6 +328,18 @@ internal class _PositionEntityMetadata extends com.adobe.fiber.valueobjects.Abst
 
     [Bindable(event="propertyChange")]
     public function get isLatAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isLongitudeAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isLatitudeAvailable():Boolean
     {
         return true;
     }
@@ -368,6 +368,24 @@ internal class _PositionEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     model_internal function fireChangeEvent(propertyName:String, oldValue:Object, newValue:Object):void
     {
         this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, propertyName, oldValue, newValue));
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get lonStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get radStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get latStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
     }
 
     [Bindable(event="propertyChange")]   
@@ -568,24 +586,6 @@ internal class _PositionEntityMetadata extends com.adobe.fiber.valueobjects.Abst
                 model_internal::_instance.model_internal::isValid_der = model_internal::_instance.model_internal::calculateIsValid();
             }
         }
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get lonStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get radStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get latStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
     }
 
 
