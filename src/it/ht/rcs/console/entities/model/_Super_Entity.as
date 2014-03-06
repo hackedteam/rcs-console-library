@@ -5,29 +5,27 @@
 
 package it.ht.rcs.console.entities.model
 {
-import com.adobe.fiber.core.model_internal;
 import com.adobe.fiber.services.IFiberManagingService;
 import com.adobe.fiber.util.FiberUtils;
-import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
-import com.adobe.fiber.valueobjects.IPropertyIterator;
 import com.adobe.fiber.valueobjects.IValueObject;
-
 import flash.events.Event;
 import flash.events.EventDispatcher;
-import flash.net.getClassByAlias;
-import flash.net.registerClassAlias;
-
 import it.ht.rcs.console.entities.model.Analyzed;
 import it.ht.rcs.console.entities.model.Handle;
 import it.ht.rcs.console.entities.model.Link;
 import it.ht.rcs.console.entities.model.Position;
 import it.ht.rcs.console.entities.model.Position_attr;
-
 import mx.binding.utils.ChangeWatcher;
 import mx.collections.ArrayCollection;
 import mx.events.CollectionEvent;
 import mx.events.PropertyChangeEvent;
 import mx.validators.ValidationResult;
+
+import flash.net.registerClassAlias;
+import flash.net.getClassByAlias;
+import com.adobe.fiber.core.model_internal;
+import com.adobe.fiber.valueobjects.IPropertyIterator;
+import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 
 use namespace model_internal;
 
@@ -67,7 +65,7 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
     private var _internal_links : ArrayCollection;
     model_internal var _internal_links_leaf:it.ht.rcs.console.entities.model.Link;
     private var _internal_user_ids : ArrayCollection;
-    private var _internal_num_links : Number;
+    private var _internal_num_links : String;
     private var _internal_position : it.ht.rcs.console.entities.model.Position;
     private var _internal_desc : String;
     private var _internal_children : ArrayCollection;
@@ -138,7 +136,7 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
     }
 
     [Bindable(event="propertyChange")]
-    public function get num_links() : Number
+    public function get num_links() : String
     {
         return _internal_num_links;
     }
@@ -291,9 +289,9 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
         }
     }
 
-    public function set num_links(value:Number) : void
+    public function set num_links(value:String) : void
     {
-        var oldValue:Number = _internal_num_links;
+        var oldValue:String = _internal_num_links;
         if (oldValue !== value)
         {
             _internal_num_links = value;
@@ -901,11 +899,11 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
     }
     
     model_internal var _doValidationCacheOfNum_links : Array = null;
-    model_internal var _doValidationLastValOfNum_links : Number;
+    model_internal var _doValidationLastValOfNum_links : String;
 
     model_internal function _doValidationForNum_links(valueIn:Object):Array
     {
-        var value : Number = valueIn as Number;
+        var value : String = valueIn as String;
 
         if (model_internal::_doValidationCacheOfNum_links != null && model_internal::_doValidationLastValOfNum_links == value)
            return model_internal::_doValidationCacheOfNum_links ;
@@ -916,10 +914,10 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
         var failure:Boolean;
 
         var valRes:ValidationResult;
-      /*  if (_model.isNum_linksAvailable && _internal_num_links == NaN)
+        if (_model.isNum_linksAvailable && _internal_num_links == null)
         {
             validationFailures.push(new ValidationResult(true, "", "", "num_links is required"));
-        }*/
+        }
 
         model_internal::_doValidationCacheOfNum_links = validationFailures;
         model_internal::_doValidationLastValOfNum_links = value;

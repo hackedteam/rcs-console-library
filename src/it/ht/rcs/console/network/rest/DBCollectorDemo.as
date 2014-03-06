@@ -82,6 +82,11 @@ package it.ht.rcs.console.network.rest
      
     }
     
+    public function custom_relay(onResult:Function=null, onFault:Function=null):void
+    {
+      
+    }
+    
   }
   
 }

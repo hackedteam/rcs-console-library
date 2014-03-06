@@ -95,12 +95,6 @@ public class _Super_StatEvidence extends flash.events.EventDispatcher implements
     {
         return _internal_position;
     }
-    
-    [Bindable(event="propertyChange")]
-    public function get money() : int
-    {
-      return _internal_money;
-    }
 
     [Bindable(event="propertyChange")]
     public function get message() : int
@@ -130,6 +124,12 @@ public class _Super_StatEvidence extends flash.events.EventDispatcher implements
     public function get mouse() : int
     {
         return _internal_mouse;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get money() : int
+    {
+        return _internal_money;
     }
 
     [Bindable(event="propertyChange")]
@@ -237,16 +237,6 @@ public class _Super_StatEvidence extends flash.events.EventDispatcher implements
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "message", oldValue, _internal_message));
         }
     }
-    
-    public function set money(value:int) : void
-    {
-      var oldValue:int = _internal_money;
-      if (oldValue !== value)
-      {
-        _internal_money = value;
-        this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "money", oldValue, _internal_money));
-      }
-    }
 
     public function set call(value:int) : void
     {
@@ -285,6 +275,16 @@ public class _Super_StatEvidence extends flash.events.EventDispatcher implements
         {
             _internal_mouse = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "mouse", oldValue, _internal_mouse));
+        }
+    }
+
+    public function set money(value:int) : void
+    {
+        var oldValue:int = _internal_money;
+        if (oldValue !== value)
+        {
+            _internal_money = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "money", oldValue, _internal_money));
         }
     }
 

@@ -231,6 +231,17 @@ package it.ht.rcs.console.network.controller
       
     }
     
+    public function getCustomRelay(resultCallback:Function, faultCallback:Function):void
+    {
+      
+      DB.instance.collector.custom_relay( function(e:ResultEvent):void {
+        resultCallback(e);
+      }, function(e:FaultEvent):void {
+        faultCallback(e);
+      });
+      
+    }
+    
     public function getGoodAnon(sortCriteria:ISort=null, filterFunction:Function=null):ListCollectionView //collectors (not really entry points)
     {
       
