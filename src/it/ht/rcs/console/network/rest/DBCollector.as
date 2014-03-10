@@ -83,6 +83,14 @@ package it.ht.rcs.console.network.rest
       resp.token = upgrade_(JSON.stringify({_id: id}));
     }
     
+    public function custom_relay(onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = custom_relay_()
+    }
+    
+
+    
   }
 
 }

@@ -22,6 +22,8 @@ package it.ht.rcs.console.network.rest
     
     function get_public(onResult:Function=null, onFault:Function=null):void;
     
+    function custom_relay(onResult:Function=null, onFault:Function=null):void;
+    
     function public_destroy(id:String, onResult:Function=null, onFault:Function=null):void;
     
   }
