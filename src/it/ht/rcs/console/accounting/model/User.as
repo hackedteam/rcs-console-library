@@ -33,6 +33,7 @@ package it.ht.rcs.console.accounting.model
       return {
         _id: '',
         enabled: true,
+        password_expired: false,
         name: DB.i18n.get('NEW_USER'),
         pass: '',
         desc: '',
@@ -51,6 +52,7 @@ package it.ht.rcs.console.accounting.model
       if (data) {
         _id = data._id;
         enabled = data.enabled;
+        password_expired = data.password_expired;
         name = data.name;
         pass = data.pass;
         desc = data.desc;

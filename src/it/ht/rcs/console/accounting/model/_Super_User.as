@@ -57,6 +57,7 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
     private var _internal_not_exist : String;
     private var _internal__mid : int;
     private var _internal_enabled : Boolean;
+    private var _internal_password_expired : Boolean;
     private var _internal_desc : String;
     private var _internal_group_ids : ArrayCollection;
     private var _internal_locale : String;
@@ -123,6 +124,12 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
     public function get enabled() : Boolean
     {
         return _internal_enabled;
+    }
+    
+    [Bindable(event="propertyChange")]
+    public function get password_expired() : Boolean
+    {
+      return _internal_password_expired;
     }
 
     [Bindable(event="propertyChange")]
@@ -245,6 +252,16 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
             _internal_enabled = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "enabled", oldValue, _internal_enabled));
         }
+    }
+    
+    public function set password_expired(value:Boolean) : void
+    {
+      var oldValue:Boolean = _internal_password_expired;
+      if (oldValue !== value)
+      {
+        _internal_password_expired = value;
+        this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "password_expired", oldValue, _internal_password_expired));
+      }
     }
 
     public function set desc(value:String) : void
