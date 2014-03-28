@@ -24,14 +24,14 @@ internal class _UserEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("not_exist", "_mid", "enabled", "desc", "group_ids", "locale", "contact", "pass", "timezone", "updated_at", "_id", "recent_ids", "privs", "dashboard_ids", "name", "created_at", "ext_privs");
+    model_internal static var allProperties:Array = new Array("not_exist", "_mid", "enabled", "password_expired", "desc", "group_ids", "locale", "contact", "pass", "timezone", "updated_at", "_id", "recent_ids", "privs", "dashboard_ids", "name", "created_at", "ext_privs");
     model_internal static var allAssociationProperties:Array = new Array();
-    model_internal static var allRequiredProperties:Array = new Array("_mid", "enabled", "desc", "group_ids", "locale", "contact", "pass", "timezone", "updated_at", "_id", "recent_ids", "privs", "dashboard_ids", "name", "created_at", "ext_privs");
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("not_exist", "_mid", "enabled", "desc", "group_ids", "locale", "contact", "pass", "timezone", "updated_at", "_id", "recent_ids", "privs", "dashboard_ids", "name", "created_at", "ext_privs");
+    model_internal static var allRequiredProperties:Array = new Array("_mid", "enabled", "password_expired", "desc", "group_ids", "locale", "contact", "pass", "timezone", "updated_at", "_id", "recent_ids", "privs", "dashboard_ids", "name", "created_at", "ext_privs");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("not_exist", "_mid", "enabled", "password_expired", "desc", "group_ids", "locale", "contact", "pass", "timezone", "updated_at", "_id", "recent_ids", "privs", "dashboard_ids", "name", "created_at", "ext_privs");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("not_exist", "_mid", "enabled", "desc", "group_ids", "locale", "contact", "pass", "timezone", "updated_at", "_id", "recent_ids", "privs", "dashboard_ids", "name", "created_at", "ext_privs");
+    model_internal static var dataProperties:Array = new Array("not_exist", "_mid", "enabled", "password_expired", "desc", "group_ids", "locale", "contact", "pass", "timezone", "updated_at", "_id", "recent_ids", "privs", "dashboard_ids", "name", "created_at", "ext_privs");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("not_exist", "_mid", "enabled", "desc", "group_ids", "locale", "contact", "pass", "timezone", "updated_at", "_id", "recent_ids", "privs", "dashboard_ids", "name", "created_at", "ext_privs");
+    model_internal static var nonDerivedProperties:Array = new Array("not_exist", "_mid", "enabled", "password_expired", "desc", "group_ids", "locale", "contact", "pass", "timezone", "updated_at", "_id", "recent_ids", "privs", "dashboard_ids", "name", "created_at", "ext_privs");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array("group_ids", "recent_ids", "privs", "dashboard_ids");
     model_internal static var collectionBaseMap:Object;
@@ -114,6 +114,7 @@ internal class _UserEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
             model_internal::dependentsOnMap["not_exist"] = new Array();
             model_internal::dependentsOnMap["_mid"] = new Array();
             model_internal::dependentsOnMap["enabled"] = new Array();
+            model_internal::dependentsOnMap["password_expired"] = new Array();
             model_internal::dependentsOnMap["desc"] = new Array();
             model_internal::dependentsOnMap["group_ids"] = new Array();
             model_internal::dependentsOnMap["locale"] = new Array();
@@ -142,6 +143,7 @@ internal class _UserEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
         model_internal::propertyTypeMap["not_exist"] = "String";
         model_internal::propertyTypeMap["_mid"] = "int";
         model_internal::propertyTypeMap["enabled"] = "Boolean";
+        model_internal::propertyTypeMap["password_expired"] = "Boolean";
         model_internal::propertyTypeMap["desc"] = "String";
         model_internal::propertyTypeMap["group_ids"] = "ArrayCollection";
         model_internal::propertyTypeMap["locale"] = "String";
@@ -461,6 +463,12 @@ internal class _UserEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
     {
         return true;
     }
+    
+    [Bindable(event="propertyChange")]
+    public function get isPassword_expiredAvailable():Boolean
+    {
+      return true;
+    }
 
     [Bindable(event="propertyChange")]
     public function get isDescAvailable():Boolean
@@ -668,6 +676,12 @@ internal class _UserEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
     public function get enabledStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
+    }
+    
+    [Bindable(event="propertyChange")]   
+    public function get password_expiredStyle():com.adobe.fiber.styles.Style
+    {
+      return model_internal::_nullStyle;
     }
 
     [Bindable(event="propertyChange")]   

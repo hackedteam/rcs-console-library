@@ -9,9 +9,6 @@ package it.ht.rcs.console.accounting.controller
   import flash.net.URLRequest;
   
   import it.ht.rcs.console.*;
-  import it.ht.rcs.console.DB;
-  import it.ht.rcs.console.IFaultNotifier;
-  import it.ht.rcs.console.II18N;
   import it.ht.rcs.console.accounting.model.Session;
   import it.ht.rcs.console.accounting.model.User;
   import it.ht.rcs.console.controller.ItemManager;
@@ -135,6 +132,11 @@ package it.ht.rcs.console.accounting.controller
       /* HTTP 403 is 'not authorized' */
      
       if (e.statusCode == 403) {
+        if(e.fault.content=="EXPIRED_ACCOUNT")
+        {
+          _onLoginFault('Password expired!');
+          return;
+        }
         _onLoginFault('Incorrect Username or Password...');
         return;
       } 
@@ -227,7 +229,6 @@ package it.ht.rcs.console.accounting.controller
     
     private function onConnection(e:StatusEvent=null):void
     {
-      
       if (e.code == "Service.available")
       {
         hasConnection=true;
@@ -238,9 +239,9 @@ package it.ht.rcs.console.accounting.controller
         hasConnection=false;
         trace("connection ko")
       }
-      
     }
     
+   
   }
   
 }

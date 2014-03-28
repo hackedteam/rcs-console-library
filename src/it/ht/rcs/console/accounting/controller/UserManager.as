@@ -13,6 +13,7 @@ package it.ht.rcs.console.accounting.controller
   
   import mx.collections.ArrayCollection;
   import mx.events.PropertyChangeEvent;
+  import mx.rpc.events.FaultEvent;
   import mx.rpc.events.ResultEvent;
   
   public class UserManager extends ItemManager
@@ -88,9 +89,20 @@ package it.ht.rcs.console.accounting.controller
     
     public function changePassword(user:User, password:String):void
     {
-      DB.instance.user.update(user, {pass: password}, function (e:ResultEvent):void {
-        AlertPopUp.show(R.get('PASSWORD_CHANGED'));
-      });
+      DB.instance.user.update(user, {pass: password},onSuccess, onError);
+    }
+    
+    
+    private function onSuccess(e:ResultEvent):void
+    {
+     
+      AlertPopUp.show(R.get('PASSWORD_CHANGED'));
+    
+    }
+    private function onError(e:FaultEvent):void
+    {
+      var message:String=JSON.parse(String(e.message.body)) as String;
+      AlertPopUp.show(R.get(message));
     }
     
     public function update(user:User, properties:Object):void
