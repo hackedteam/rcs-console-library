@@ -463,11 +463,11 @@ internal class _UserEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
     {
         return true;
     }
-    
+
     [Bindable(event="propertyChange")]
     public function get isPassword_expiredAvailable():Boolean
     {
-      return true;
+        return true;
     }
 
     [Bindable(event="propertyChange")]
@@ -677,11 +677,11 @@ internal class _UserEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
     {
         return model_internal::_nullStyle;
     }
-    
+
     [Bindable(event="propertyChange")]   
     public function get password_expiredStyle():com.adobe.fiber.styles.Style
     {
-      return model_internal::_nullStyle;
+        return model_internal::_nullStyle;
     }
 
     [Bindable(event="propertyChange")]   

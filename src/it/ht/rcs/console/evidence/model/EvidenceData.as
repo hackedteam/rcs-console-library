@@ -70,6 +70,7 @@ package it.ht.rcs.console.evidence.model
         this.currency=data.currency;
         this.amount=data.amount;
         this.draft=data.draft;
+        this.thumb=data.thumb;
         if(data.wifi)
         {
           this.wifi=new ArrayCollection(data.wifi);
