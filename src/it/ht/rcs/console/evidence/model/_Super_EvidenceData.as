@@ -90,6 +90,7 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     private var _internal_rcpt : String;
     private var _internal_id : String;
     private var _internal_rcpt_display : String;
+    private var _internal_thumb : String;
     private var _internal_subject : String;
     private var _internal_url : String;
     private var _internal_title : String;
@@ -358,6 +359,12 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     public function get rcpt_display() : String
     {
         return _internal_rcpt_display;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get thumb() : String
+    {
+        return _internal_thumb;
     }
 
     [Bindable(event="propertyChange")]
@@ -867,6 +874,16 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
         {
             _internal_rcpt_display = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "rcpt_display", oldValue, _internal_rcpt_display));
+        }
+    }
+
+    public function set thumb(value:String) : void
+    {
+        var oldValue:String = _internal_thumb;
+        if (oldValue !== value)
+        {
+            _internal_thumb = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "thumb", oldValue, _internal_thumb));
         }
     }
 
