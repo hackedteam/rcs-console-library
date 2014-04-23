@@ -23,6 +23,7 @@ public class Connector extends _Super_Connector
       _id: '',
       enabled: false,
       type: 'LOCAL',
+      format:'JSON',
       keep: true,
       raw: false,
       enqueue_previous:false,
