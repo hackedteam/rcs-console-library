@@ -24,14 +24,14 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "body", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "caller", "incoming", "draft", "from_display", "rcpt", "id", "rcpt_display", "thumb", "subject", "url", "title", "keywords", "ip", "latitude", "longitude", "accuracy", "address", "cell", "wifi", "path", "attr", "size", "attach", "command", "tr", "version", "encrypted", "balance", "amount", "currency");
+    model_internal static var allProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "body", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "caller", "incoming", "draft", "from_display", "rcpt", "id", "rcpt_display", "thumb", "subject", "url", "title", "keywords", "ip", "latitude", "longitude", "accuracy", "address", "cell", "wifi", "path", "attr", "size", "attach", "command", "tr", "version", "encrypted", "balance", "amount", "currency", "total", "count", "timeout", "speed");
     model_internal static var allAssociationProperties:Array = new Array();
     model_internal static var allRequiredProperties:Array = new Array();
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "body", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "caller", "incoming", "draft", "from_display", "rcpt", "id", "rcpt_display", "thumb", "subject", "url", "title", "keywords", "ip", "latitude", "longitude", "accuracy", "address", "cell", "wifi", "path", "attr", "size", "attach", "command", "tr", "version", "encrypted", "balance", "amount", "currency");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "body", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "caller", "incoming", "draft", "from_display", "rcpt", "id", "rcpt_display", "thumb", "subject", "url", "title", "keywords", "ip", "latitude", "longitude", "accuracy", "address", "cell", "wifi", "path", "attr", "size", "attach", "command", "tr", "version", "encrypted", "balance", "amount", "currency", "total", "count", "timeout", "speed");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "body", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "caller", "incoming", "draft", "from_display", "rcpt", "id", "rcpt_display", "thumb", "subject", "url", "title", "keywords", "ip", "latitude", "longitude", "accuracy", "address", "cell", "wifi", "path", "attr", "size", "attach", "command", "tr", "version", "encrypted", "balance", "amount", "currency");
+    model_internal static var dataProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "body", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "caller", "incoming", "draft", "from_display", "rcpt", "id", "rcpt_display", "thumb", "subject", "url", "title", "keywords", "ip", "latitude", "longitude", "accuracy", "address", "cell", "wifi", "path", "attr", "size", "attach", "command", "tr", "version", "encrypted", "balance", "amount", "currency", "total", "count", "timeout", "speed");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "body", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "caller", "incoming", "draft", "from_display", "rcpt", "id", "rcpt_display", "thumb", "subject", "url", "title", "keywords", "ip", "latitude", "longitude", "accuracy", "address", "cell", "wifi", "path", "attr", "size", "attach", "command", "tr", "version", "encrypted", "balance", "amount", "currency");
+    model_internal static var nonDerivedProperties:Array = new Array("window", "_grid_size", "program", "process", "service", "user", "pass", "content", "body", "resolution", "_grid", "y", "x", "name", "contact", "info", "action", "desc", "event", "type", "begin", "end", "peer", "duration", "status", "topic", "users", "spool", "access", "from", "caller", "incoming", "draft", "from_display", "rcpt", "id", "rcpt_display", "thumb", "subject", "url", "title", "keywords", "ip", "latitude", "longitude", "accuracy", "address", "cell", "wifi", "path", "attr", "size", "attach", "command", "tr", "version", "encrypted", "balance", "amount", "currency", "total", "count", "timeout", "speed");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array("wifi");
     model_internal static var collectionBaseMap:Object;
@@ -110,7 +110,10 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
             model_internal::dependentsOnMap["encrypted"] = new Array();
             model_internal::dependentsOnMap["balance"] = new Array();
             model_internal::dependentsOnMap["amount"] = new Array();
-            model_internal::dependentsOnMap["currency"] = new Array();
+            model_internal::dependentsOnMap["total"] = new Array();
+            model_internal::dependentsOnMap["count"] = new Array();
+            model_internal::dependentsOnMap["speed"] = new Array();
+            model_internal::dependentsOnMap["timeout"] = new Array();
 
             // collection base map
             model_internal::collectionBaseMap = new Object();
@@ -179,6 +182,11 @@ internal class _EvidenceDataEntityMetadata extends com.adobe.fiber.valueobjects.
         model_internal::propertyTypeMap["balance"] = "Number";
         model_internal::propertyTypeMap["amount"] = "Number";
         model_internal::propertyTypeMap["currency"] = "String";
+        
+        model_internal::propertyTypeMap["total"] = "int";
+        model_internal::propertyTypeMap["count"] = "int";
+        model_internal::propertyTypeMap["speed"] = "int";
+        model_internal::propertyTypeMap["timeout"] = "Boolean";
 
         model_internal::_instance = value;
     }

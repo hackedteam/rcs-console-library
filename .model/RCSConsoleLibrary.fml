@@ -5602,6 +5602,10 @@
     <property name="from" type="string"/>
     <property name="caller" type="string"/>
     <property name="incoming" type="boolean"/>
+    <property name="speed" type="integer"/>
+    <property name="total" type="integer"/>
+    <property name="count" type="integer"/>
+    <property name="timeout" type="boolean"/>
     <property name="draft" type="boolean"/>
     <property name="from_display" type="string"/>
     <property name="rcpt" type="string"/>
