@@ -66,7 +66,7 @@ package it.ht.rcs.console.monitor.controller
     
     public var exploits:Boolean = false;
     public var deletion:Boolean = false;
-    public var archive:Boolean = false;
+    public var archive:int = 0;
     public var scout:Boolean = true;
     public var ocr:Boolean = false;
     public var hostname_sync:Boolean = false;

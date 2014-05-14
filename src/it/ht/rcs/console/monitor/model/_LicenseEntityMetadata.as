@@ -126,7 +126,7 @@ internal class _LicenseEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
         model_internal::propertyTypeMap["users"] = "Object";
         model_internal::propertyTypeMap["exploits"] = "Boolean";
         model_internal::propertyTypeMap["deletion"] = "Boolean";
-        model_internal::propertyTypeMap["archive"] = "Boolean";
+        model_internal::propertyTypeMap["archive"] = "int";
         model_internal::propertyTypeMap["maintenance"] = "int";
         model_internal::propertyTypeMap["agents"] = "it.ht.rcs.console.monitor.model.LicenseAgents";
         model_internal::propertyTypeMap["alerting"] = "Boolean";

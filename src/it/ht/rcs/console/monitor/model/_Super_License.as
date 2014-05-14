@@ -59,7 +59,7 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
     private var _internal_users : Object;
     private var _internal_exploits : Boolean;
     private var _internal_deletion : Boolean;
-    private var _internal_archive : Boolean;
+    private var _internal_archive : int;
     private var _internal_maintenance : int;
     private var _internal_agents : it.ht.rcs.console.monitor.model.LicenseAgents;
     private var _internal_alerting : Boolean;
@@ -128,7 +128,7 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
     }
 
     [Bindable(event="propertyChange")]
-    public function get archive() : Boolean
+    public function get archive() : int
     {
         return _internal_archive;
     }
@@ -279,9 +279,9 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
         }
     }
 
-    public function set archive(value:Boolean) : void
+    public function set archive(value:int) : void
     {
-        var oldValue:Boolean = _internal_archive;
+        var oldValue:int = _internal_archive;
         if (oldValue !== value)
         {
             _internal_archive = value;

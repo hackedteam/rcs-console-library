@@ -2137,7 +2137,7 @@
     <property name="users" type="opaque" required="true"/>
     <property name="exploits" type="boolean" required="true"/>
     <property name="deletion" type="boolean" required="true"/>
-    <property name="archive" type="boolean" required="true"/>
+    <property name="archive" type="integer" required="true"/>
     <property name="maintenance" type="integer" required="true"/>
     <property name="agents" type="LicenseAgents" required="true"/>
     <property name="alerting" type="boolean" required="true"/>
