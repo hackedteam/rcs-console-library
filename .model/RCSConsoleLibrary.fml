@@ -5261,17 +5261,17 @@
       </annotation>
       <parameter name="filter" type="string"/>
     </function>
-    <function name="ips_" return-type="Evidence[]">
+    <function name="sync_history_" return-type="Evidence[]">
       <annotation name="analyze group">
         <item name="analyzed">true</item>
       </annotation>
       <annotation name="ActionScriptGeneration">
         <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
         <item name="method">GET</item>
-        <item name="url">/evidence/ips</item>
+        <item name="url">/evidence/sync_history</item>
       </annotation>
       <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/evidence/ips</item>
+        <item name="completeURL">https://localhost:4444/evidence/sync_history</item>
       </annotation>
       <annotation name="ValidProperties">
         <item name="propertySpecifier">_mid,da,_id,data,rel,aid,type,note,dr,blo</item>

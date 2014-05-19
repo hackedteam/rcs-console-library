@@ -553,7 +553,7 @@ package it.ht.rcs.console.evidence.rest
 
     }
 
-    public function ips(filter:Object, onResult:Function = null, onFault:Function = null):void
+    public function sync_history(filter:Object, onResult:Function = null, onFault:Function = null):void
     {
       this.filter = filter;
       ip.filterFunction = filterIps;

@@ -142,7 +142,7 @@ package it.ht.rcs.console.evidence.controller
     public function ips(onIpsResult:Function):void
     {
       trace(ObjectUtil.toString(ipsFilter));
-      DB.instance.evidence.ips(ipsFilter, onIpsResult);
+      DB.instance.evidence.sync_history(ipsFilter, onIpsResult);
     }
 
     public function show(id:String, target:String, resultCallback:Function, faultCallback:Function):void

@@ -5,22 +5,20 @@
 
 package it.ht.rcs.console.evidence.model
 {
-import com.adobe.fiber.core.model_internal;
 import com.adobe.fiber.services.IFiberManagingService;
-import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
-import com.adobe.fiber.valueobjects.IPropertyIterator;
 import com.adobe.fiber.valueobjects.IValueObject;
-
 import flash.events.EventDispatcher;
-import flash.net.getClassByAlias;
-import flash.net.registerClassAlias;
-
 import it.ht.rcs.console.evidence.model.EvidenceDataAddress;
 import it.ht.rcs.console.evidence.model.EvidenceDataCell;
 import it.ht.rcs.console.evidence.model.EvidenceDataWifi;
-
 import mx.collections.ArrayCollection;
 import mx.events.PropertyChangeEvent;
+
+import flash.net.registerClassAlias;
+import flash.net.getClassByAlias;
+import com.adobe.fiber.core.model_internal;
+import com.adobe.fiber.valueobjects.IPropertyIterator;
+import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 
 use namespace model_internal;
 
@@ -87,6 +85,10 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     private var _internal_from : String;
     private var _internal_caller : String;
     private var _internal_incoming : Boolean;
+    private var _internal_speed : int;
+    private var _internal_total : int;
+    private var _internal_count : int;
+    private var _internal_timeout : Boolean;
     private var _internal_draft : Boolean;
     private var _internal_from_display : String;
     private var _internal_rcpt : String;
@@ -116,13 +118,6 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     private var _internal_balance : Number;
     private var _internal_amount : Number;
     private var _internal_currency : String;
-    
-    private var _internal_speed : int;
-    private var _internal_total : int;
-    private var _internal_count : int;
-    private var _internal_timeout : Boolean;
-    
-    
 
     private static var emptyArray:Array = new Array();
 
@@ -273,24 +268,6 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     {
         return _internal_begin;
     }
-    
-    [Bindable(event="propertyChange")]
-    public function get speed() : int
-    {
-      return _internal_speed;
-    }
-    
-    [Bindable(event="propertyChange")]
-    public function get total() : int
-    {
-      return _internal_total;
-    }
-    
-    [Bindable(event="propertyChange")]
-    public function get count() : int
-    {
-      return _internal_count;
-    }
 
     [Bindable(event="propertyChange")]
     public function get end() : int
@@ -357,11 +334,29 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     {
         return _internal_incoming;
     }
-    
+
+    [Bindable(event="propertyChange")]
+    public function get speed() : int
+    {
+        return _internal_speed;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get total() : int
+    {
+        return _internal_total;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get count() : int
+    {
+        return _internal_count;
+    }
+
     [Bindable(event="propertyChange")]
     public function get timeout() : Boolean
     {
-      return _internal_timeout;
+        return _internal_timeout;
     }
 
     [Bindable(event="propertyChange")]
@@ -507,8 +502,6 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     {
         return _internal_version;
     }
-    
-
 
     [Bindable(event="propertyChange")]
     public function get encrypted() : Boolean
@@ -861,16 +854,45 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "incoming", oldValue, _internal_incoming));
         }
     }
-    
-    
+
+    public function set speed(value:int) : void
+    {
+        var oldValue:int = _internal_speed;
+        if (oldValue !== value)
+        {
+            _internal_speed = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "speed", oldValue, _internal_speed));
+        }
+    }
+
+    public function set total(value:int) : void
+    {
+        var oldValue:int = _internal_total;
+        if (oldValue !== value)
+        {
+            _internal_total = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "total", oldValue, _internal_total));
+        }
+    }
+
+    public function set count(value:int) : void
+    {
+        var oldValue:int = _internal_count;
+        if (oldValue !== value)
+        {
+            _internal_count = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "count", oldValue, _internal_count));
+        }
+    }
+
     public function set timeout(value:Boolean) : void
     {
-      var oldValue:Boolean = _internal_timeout;
-      if (oldValue !== value)
-      {
-        _internal_timeout= value;
-        this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "timeout", oldValue, _internal_timeout));
-      }
+        var oldValue:Boolean = _internal_timeout;
+        if (oldValue !== value)
+        {
+            _internal_timeout = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "timeout", oldValue, _internal_timeout));
+        }
     }
 
     public function set draft(value:Boolean) : void
@@ -1097,37 +1119,6 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "attach", oldValue, _internal_attach));
         }
     }
-    
-    public function set speed(value:int) : void
-    {
-      var oldValue:int = _internal_speed;
-      if (oldValue !== value)
-      {
-        _internal_speed = value;
-        this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "speed", oldValue, _internal_speed));
-      }
-    }
-    
-    public function set total(value:int) : void
-    {
-      var oldValue:int = _internal_total;
-      if (oldValue !== value)
-      {
-        _internal_total = value;
-        this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "total", oldValue, _internal_total));
-      }
-    }
-    
-    
-    public function set count(value:int) : void
-    {
-      var oldValue:int = _internal_count;
-      if (oldValue !== value)
-      {
-        _internal_count = value;
-        this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "count", oldValue, _internal_count));
-      }
-    }
 
     public function set command(value:String) : void
     {
@@ -1158,8 +1149,6 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "version", oldValue, _internal_version));
         }
     }
-    
-    
 
     public function set encrypted(value:Boolean) : void
     {
