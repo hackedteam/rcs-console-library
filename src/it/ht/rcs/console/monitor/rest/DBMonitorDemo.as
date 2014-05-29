@@ -28,7 +28,7 @@ package it.ht.rcs.console.monitor.rest
       
       items.addItem(new Status(
         {
-          _id: '2',
+          _id: '21',
           address: '127.0.0.1',
           cpu:70,
           disk:20,
@@ -38,6 +38,48 @@ package it.ht.rcs.console.monitor.rest
           status:'0',
           time: new Date().time / 1000,
           type: 'db'
+        }));
+      
+      items.addItem(new Status(
+        {
+          _id: '22',
+          address: '127.0.0.1',
+          cpu:70,
+          disk:20,
+          info: '',
+          name: 'Connector',
+          pcpu:15,
+          status:'0',
+          time: new Date().time / 1000,
+          type: 'connector'
+        }));
+      
+      items.addItem(new Status(
+        {
+          _id: '23',
+          address: '127.0.0.1',
+          cpu:70,
+          disk:20,
+          info: '',
+          name: 'Master',
+          pcpu:15,
+          status:'0',
+          time: new Date().time / 1000,
+          type: 'archive'
+        }));
+      
+      items.addItem(new Status(
+        {
+          _id: '23',
+          address: '127.0.0.1',
+          cpu:70,
+          disk:20,
+          info: '',
+          name: 'Satellite',
+          pcpu:15,
+          status:'0',
+          time: new Date().time / 1000,
+          type: 'satellite'
         }));
       
       items.addItem(new Status(
@@ -81,6 +123,49 @@ package it.ht.rcs.console.monitor.rest
           time: new Date().time / 1000,
           type: 'anon'
         }));
+      
+      items.addItem(new Status(
+        {
+          _id: '5',
+          address: '172.20.20.1',
+          cpu:90,
+          disk:70,
+          info: '',
+          name: 'Ocr',
+          pcpu:70,
+          status:'0',
+          time: new Date().time / 1000,
+          type: 'ocr'
+        }));
+      
+      items.addItem(new Status(
+        {
+          _id: '5',
+          address: '172.20.20.1',
+          cpu:90,
+          disk:70,
+          info: '',
+          name: 'Intelligence',
+          pcpu:70,
+          status:'0',
+          time: new Date().time / 1000,
+          type: 'intelligence'
+        }));
+      
+      items.addItem(new Status(
+        {
+          _id: '5',
+          address: '172.20.20.1',
+          cpu:90,
+          disk:70,
+          info: '',
+          name: 'Money',
+          pcpu:70,
+          status:'0',
+          time: new Date().time / 1000,
+          type: 'money'
+        }));
+      
       
       items.addItem(new Status(
         {
@@ -166,61 +251,10 @@ package it.ht.rcs.console.monitor.rest
           type: 'anon'
         }));
       
-      items.addItem(new Status(
-        {
-          _id: '12',
-          address: '192.168.2.170',
-          cpu:90,
-          disk:70,
-          info: '',
-          name: 'Anonymizer',
-          pcpu:70,
-          status:'0',
-          time: new Date().time / 1000,
-          type: 'anon'
-        }));
+     
+     
       
-      items.addItem(new Status(
-        {
-          _id: '13',
-          address: '192.168.2.171',
-          cpu:90,
-          disk:70,
-          info: '',
-          name: 'Anonymizer',
-          pcpu:70,
-          status:'0',
-          time: new Date().time / 1000,
-          type: 'anon'
-        }));
-      
-      items.addItem(new Status(
-        {
-          _id: '14',
-          address: '192.168.2.172',
-          cpu:90,
-          disk:70,
-          info: '',
-          name: 'Anonymizer',
-          pcpu:70,
-          status:'0',
-          time: new Date().time / 1000,
-          type: 'anon'
-        }));
-      
-      items.addItem(new Status(
-        {
-          _id: '15',
-          address: '192.168.2.173',
-          cpu:90,
-          disk:70,
-          info: '',
-          name: 'Anonymizer',
-          pcpu:70,
-          status:'0',
-          time: new Date().time / 1000,
-          type: 'anon'
-        }));
+     
       
       
       if (onResult != null) 

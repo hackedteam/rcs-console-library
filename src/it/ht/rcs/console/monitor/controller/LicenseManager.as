@@ -54,7 +54,7 @@ package it.ht.rcs.console.monitor.controller
     public var anonymizers:CurrMaxObject = new CurrMaxObject("0", "0");
     
     public var alerting:Boolean = false;
-    public var correlation:Boolean = false;
+    public var profiling:Boolean = false;
     public var connectors:Boolean = false;
     
     public var nia:CurrMaxObject = new CurrMaxObject("0", "0");
@@ -152,7 +152,7 @@ package it.ht.rcs.console.monitor.controller
       translation=limits['translation'];
       modify = limits["modify"];
        //first level
-      correlation =limits['correlation'];
+      profiling =limits['profiling'];
       //second level
       intelligence =limits["intelligence"]
 
