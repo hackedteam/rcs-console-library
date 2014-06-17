@@ -23,5 +23,6 @@ package it.ht.rcs.console.evidence.rest
     function filter_create(filter:Object, onResult:Function=null, onFault:Function=null):void
     function filter_destroy(filter:Filter, onResult:Function=null, onFault:Function=null):void;
     function translate(id:String, target:String, onResult:Function=null, onFault:Function=null):void;
+    function update_multi(evidences:Array, property:Object, target:String, onResult:Function=null, onFault:Function=null):void
   }
 }
