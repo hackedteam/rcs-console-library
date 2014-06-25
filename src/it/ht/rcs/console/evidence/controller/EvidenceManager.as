@@ -95,6 +95,16 @@ package it.ht.rcs.console.evidence.controller
       DB.instance.evidence.update(event.source, property, evidenceFilter.target);
     }
     
+    public function update_multi(ids:Array, property:Object, callback:Function):void
+    {
+    
+     // property[event.property] = event.newValue is ArrayCollection ? event.newValue.source : event.newValue;
+      //DB.instance.evidence.update(event.source, property, evidenceFilter.target);
+      DB.instance.evidence.update_multi(ids, property, evidenceFilter.target, callback);
+    }
+    
+   
+    
     override protected function onItemRemove(item:*):void
     {
        DB.instance.evidence.destroy(item, evidenceFilter.target,onItemRemoved);
@@ -142,7 +152,7 @@ package it.ht.rcs.console.evidence.controller
     public function ips(onIpsResult:Function):void
     {
       trace(ObjectUtil.toString(ipsFilter));
-      DB.instance.evidence.ips(ipsFilter, onIpsResult);
+      DB.instance.evidence.sync_history(ipsFilter, onIpsResult);
     }
 
     public function show(id:String, target:String, resultCallback:Function, faultCallback:Function):void

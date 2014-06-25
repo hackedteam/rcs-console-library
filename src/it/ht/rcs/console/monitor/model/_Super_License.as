@@ -59,12 +59,12 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
     private var _internal_users : Object;
     private var _internal_exploits : Boolean;
     private var _internal_deletion : Boolean;
-    private var _internal_archive : Boolean;
+    private var _internal_archive : int;
     private var _internal_maintenance : int;
     private var _internal_agents : it.ht.rcs.console.monitor.model.LicenseAgents;
     private var _internal_alerting : Boolean;
     private var _internal_nia : ArrayCollection;
-    private var _internal_correlation : Boolean;
+    private var _internal_profiling : Boolean;
     private var _internal_type : String;
     private var _internal_expiry : int;
     private var _internal_collectors : it.ht.rcs.console.monitor.model.LicenseCollectors;
@@ -128,7 +128,7 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
     }
 
     [Bindable(event="propertyChange")]
-    public function get archive() : Boolean
+    public function get archive() : int
     {
         return _internal_archive;
     }
@@ -158,9 +158,9 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
     }
 
     [Bindable(event="propertyChange")]
-    public function get correlation() : Boolean
+    public function get profiling() : Boolean
     {
-        return _internal_correlation;
+        return _internal_profiling;
     }
 
     [Bindable(event="propertyChange")]
@@ -279,9 +279,9 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
         }
     }
 
-    public function set archive(value:Boolean) : void
+    public function set archive(value:int) : void
     {
-        var oldValue:Boolean = _internal_archive;
+        var oldValue:int = _internal_archive;
         if (oldValue !== value)
         {
             _internal_archive = value;
@@ -344,13 +344,13 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
         }
     }
 
-    public function set correlation(value:Boolean) : void
+    public function set profiling(value:Boolean) : void
     {
-        var oldValue:Boolean = _internal_correlation;
+        var oldValue:Boolean = _internal_profiling;
         if (oldValue !== value)
         {
-            _internal_correlation = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "correlation", oldValue, _internal_correlation));
+            _internal_profiling = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "profiling", oldValue, _internal_profiling));
         }
     }
 

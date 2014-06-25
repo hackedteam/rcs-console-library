@@ -30,6 +30,14 @@ package it.ht.rcs.console.evidence.rest
       resp.token = update_(JSON.stringify(property));
     }
     
+    public function update_multi(evidences:Array, property:Object, target:String, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      property['_ids'] = evidences;
+      property['target'] = target;
+      resp.token = update_multi_(JSON.stringify(property));
+    }
+    
     public function destroy(evidence:Evidence, target:String, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
@@ -69,10 +77,10 @@ package it.ht.rcs.console.evidence.rest
       resp.token = commands_(JSON.stringify(filter));
     }
     
-    public function ips(filter:Object, onResult:Function=null, onFault:Function=null):void
+    public function sync_history(filter:Object, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = ips_(JSON.stringify(filter));
+      resp.token = sync_history_(JSON.stringify(filter));
     }
     
     public function total(filter:Object, onResult:Function=null, onFault:Function=null):void

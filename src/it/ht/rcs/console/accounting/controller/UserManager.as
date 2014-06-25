@@ -102,7 +102,7 @@ package it.ht.rcs.console.accounting.controller
     private function onError(e:FaultEvent):void
     {
       var message:String=JSON.parse(String(e.message.body)) as String;
-      AlertPopUp.show(R.get(message));
+      AlertPopUp.show(R.get(message), R.get('ERROR'));
     }
     
     public function update(user:User, properties:Object):void

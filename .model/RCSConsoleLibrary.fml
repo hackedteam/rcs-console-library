@@ -2108,7 +2108,7 @@
         <item name="completeURL">https://localhost:4444/license/limit</item>
       </annotation>
       <annotation name="ValidProperties">
-        <item name="propertySpecifier">users,archive,deletion,scout,exploits,maintenance,agents,alerting,nia,correlation,type,expiry,collectors,shards,connectors,serial,rmi</item>
+        <item name="propertySpecifier">users,archive,deletion,scout,exploits,maintenance,agents,alerting,nia,profiling,type,expiry,collectors,shards,connectors,serial,rmi</item>
       </annotation>
       <annotation name="original signature">
         <item name="returnType">opaque</item>
@@ -2126,23 +2126,23 @@
       <item name="IncludeRemoteClass">nonempty</item>
     </annotation>
     <annotation name="limit">
-      <item name="propertySpecifier">collectors,users,nia,agents,alerting,correlation,type,serial,rmi</item>
+      <item name="propertySpecifier">collectors,users,nia,agents,alerting,profiling,type,serial,rmi</item>
     </annotation>
     <annotation name="ActionScriptGeneration">
       <item name="Package">it.ht.rcs.console.monitor.model</item>
     </annotation>
     <annotation name="limit_">
-      <item name="propertySpecifier">users,archive,deletion,scout,exploits,maintenance,agents,alerting,nia,correlation,type,expiry,collectors,shards,connectors,serial,rmi,scout,ocr,translation,modify,intelligence</item>
+      <item name="propertySpecifier">users,archive,deletion,scout,exploits,maintenance,agents,alerting,nia,profiling,type,expiry,collectors,shards,connectors,serial,rmi,scout,ocr,translation,modify,intelligence</item>
     </annotation>
     <property name="users" type="opaque" required="true"/>
     <property name="exploits" type="boolean" required="true"/>
     <property name="deletion" type="boolean" required="true"/>
-    <property name="archive" type="boolean" required="true"/>
+    <property name="archive" type="integer" required="true"/>
     <property name="maintenance" type="integer" required="true"/>
     <property name="agents" type="LicenseAgents" required="true"/>
     <property name="alerting" type="boolean" required="true"/>
     <property name="nia" type="opaque[]" required="true"/>
-    <property name="correlation" type="boolean" required="true"/>
+    <property name="profiling" type="boolean" required="true"/>
     <property name="type" type="string" required="true"/>
     <property name="expiry" type="integer" required="true"/>
     <property name="collectors" type="LicenseCollectors" required="true"/>
@@ -5261,17 +5261,17 @@
       </annotation>
       <parameter name="filter" type="string"/>
     </function>
-    <function name="ips_" return-type="Evidence[]">
+    <function name="sync_history_" return-type="Evidence[]">
       <annotation name="analyze group">
         <item name="analyzed">true</item>
       </annotation>
       <annotation name="ActionScriptGeneration">
         <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
         <item name="method">GET</item>
-        <item name="url">/evidence/ips</item>
+        <item name="url">/evidence/sync_history</item>
       </annotation>
       <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/evidence/ips</item>
+        <item name="completeURL">https://localhost:4444/evidence/sync_history</item>
       </annotation>
       <annotation name="ValidProperties">
         <item name="propertySpecifier">_mid,da,_id,data,rel,aid,type,note,dr,blo</item>
@@ -5393,6 +5393,26 @@
       </annotation>
       <parameter name="id" type="string"/>
       <parameter name="target" type="string"/>
+    </function>
+    <function name="update_multi_" return-type="opaque">
+      <annotation name="analyze group">
+        <item name="analyzed">false</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="method">POST</item>
+        <item name="contentType">application/xml</item>
+        <item name="requestBodyParameter">true</item>
+        <item name="url">/evidence/update_multi</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/evidence/update_multi</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParamNames">strXml</item>
+        <item name="inputParams">string</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="strXml" type="string"/>
     </function>
   </service>
   <entity name="Filter">
@@ -5602,6 +5622,10 @@
     <property name="from" type="string"/>
     <property name="caller" type="string"/>
     <property name="incoming" type="boolean"/>
+    <property name="speed" type="integer"/>
+    <property name="total" type="integer"/>
+    <property name="count" type="integer"/>
+    <property name="timeout" type="boolean"/>
     <property name="draft" type="boolean"/>
     <property name="from_display" type="string"/>
     <property name="rcpt" type="string"/>

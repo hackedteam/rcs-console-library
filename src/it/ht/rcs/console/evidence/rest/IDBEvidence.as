@@ -11,7 +11,7 @@ package it.ht.rcs.console.evidence.rest
     function agent_status(params: Object, onResult:Function = null, onFault:Function = null):void;
 	  function info(filter: Object, onResult:Function = null, onFault:Function = null):void;
     function commands(filter: Object, onResult:Function = null, onFault:Function = null):void;
-    function ips(filter: Object, onResult:Function = null, onFault:Function = null):void;
+    function sync_history(filter: Object, onResult:Function = null, onFault:Function = null):void;
     function sync_start(params: Object, onResult:Function = null, onFault:Function = null):void;
     function sync_stop(params: Object, onResult:Function = null, onFault:Function = null):void;
     function total(params: Object, onResult:Function = null, onFault:Function = null):void;
@@ -23,5 +23,6 @@ package it.ht.rcs.console.evidence.rest
     function filter_create(filter:Object, onResult:Function=null, onFault:Function=null):void
     function filter_destroy(filter:Filter, onResult:Function=null, onFault:Function=null):void;
     function translate(id:String, target:String, onResult:Function=null, onFault:Function=null):void;
+    function update_multi(evidences:Array, property:Object, target:String, onResult:Function=null, onFault:Function=null):void
   }
 }

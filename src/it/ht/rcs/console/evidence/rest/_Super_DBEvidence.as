@@ -244,8 +244,8 @@ internal class _Super_DBEvidence extends com.adobe.fiber.services.wrapper.HTTPSe
         operation.resultElementType = it.ht.rcs.console.evidence.model.Evidence;
          operations.push(operation);
 
-         operation = new mx.rpc.http.Operation(null, "ips_");
-         operation.url = "/evidence/ips";
+         operation = new mx.rpc.http.Operation(null, "sync_history_");
+         operation.url = "/evidence/sync_history";
          operation.method = "GET";
          argsArray = new Array("filter");
          operation.argumentNames = argsArray;         
@@ -291,6 +291,13 @@ internal class _Super_DBEvidence extends com.adobe.fiber.services.wrapper.HTTPSe
          operation.properties = new Object();
          operation.properties["urlParamNames"] = ["id"];
         operation.resultType = it.ht.rcs.console.evidence.model.Evidence;
+         operations.push(operation);
+
+         operation = new mx.rpc.http.Operation(null, "update_multi_");
+         operation.url = "/evidence/update_multi";
+         operation.method = "POST";
+         operation.contentType = "application/xml";
+        operation.resultType = Object;
          operations.push(operation);
 
          _serviceControl.operationList = operations;  
@@ -550,7 +557,7 @@ internal class _Super_DBEvidence extends com.adobe.fiber.services.wrapper.HTTPSe
     }
      
     /**
-      * This method is a generated wrapper used to call the 'ips_' operation. It returns an mx.rpc.AsyncToken whose
+      * This method is a generated wrapper used to call the 'sync_history_' operation. It returns an mx.rpc.AsyncToken whose
       * result property will be populated with the result of the operation when the server response is received.
       * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value.
       * You can then bind to CallResponder.lastResult or listen for the CallResponder.result or fault events.
@@ -560,9 +567,9 @@ internal class _Super_DBEvidence extends com.adobe.fiber.services.wrapper.HTTPSe
       *
       * @return an mx.rpc.AsyncToken whose result property will be populated with the result of the operation when the server response is received.
       */
-    public function ips_(filter:String) : mx.rpc.AsyncToken
+    public function sync_history_(filter:String) : mx.rpc.AsyncToken
     {
-        var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("ips_");
+        var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("sync_history_");
         var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(filter) ;
         return _internal_token;
     }
@@ -654,6 +661,24 @@ internal class _Super_DBEvidence extends com.adobe.fiber.services.wrapper.HTTPSe
     {
         var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("translate_");
         var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(id,target) ;
+        return _internal_token;
+    }
+     
+    /**
+      * This method is a generated wrapper used to call the 'update_multi_' operation. It returns an mx.rpc.AsyncToken whose
+      * result property will be populated with the result of the operation when the server response is received.
+      * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value.
+      * You can then bind to CallResponder.lastResult or listen for the CallResponder.result or fault events.
+      *
+      * @see mx.rpc.AsyncToken
+      * @see mx.rpc.CallResponder 
+      *
+      * @return an mx.rpc.AsyncToken whose result property will be populated with the result of the operation when the server response is received.
+      */
+    public function update_multi_(strXml:String) : mx.rpc.AsyncToken
+    {
+        var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("update_multi_");
+        var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(strXml) ;
         return _internal_token;
     }
      

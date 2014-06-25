@@ -85,6 +85,10 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     private var _internal_from : String;
     private var _internal_caller : String;
     private var _internal_incoming : Boolean;
+    private var _internal_speed : int;
+    private var _internal_total : int;
+    private var _internal_count : int;
+    private var _internal_timeout : Boolean;
     private var _internal_draft : Boolean;
     private var _internal_from_display : String;
     private var _internal_rcpt : String;
@@ -329,6 +333,30 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     public function get incoming() : Boolean
     {
         return _internal_incoming;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get speed() : int
+    {
+        return _internal_speed;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get total() : int
+    {
+        return _internal_total;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get count() : int
+    {
+        return _internal_count;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get timeout() : Boolean
+    {
+        return _internal_timeout;
     }
 
     [Bindable(event="propertyChange")]
@@ -824,6 +852,46 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
         {
             _internal_incoming = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "incoming", oldValue, _internal_incoming));
+        }
+    }
+
+    public function set speed(value:int) : void
+    {
+        var oldValue:int = _internal_speed;
+        if (oldValue !== value)
+        {
+            _internal_speed = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "speed", oldValue, _internal_speed));
+        }
+    }
+
+    public function set total(value:int) : void
+    {
+        var oldValue:int = _internal_total;
+        if (oldValue !== value)
+        {
+            _internal_total = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "total", oldValue, _internal_total));
+        }
+    }
+
+    public function set count(value:int) : void
+    {
+        var oldValue:int = _internal_count;
+        if (oldValue !== value)
+        {
+            _internal_count = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "count", oldValue, _internal_count));
+        }
+    }
+
+    public function set timeout(value:Boolean) : void
+    {
+        var oldValue:Boolean = _internal_timeout;
+        if (oldValue !== value)
+        {
+            _internal_timeout = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "timeout", oldValue, _internal_timeout));
         }
     }
 

@@ -20,7 +20,7 @@ package it.ht.rcs.console.evidence.model
         }
         this.attach=data.attach;
         this.attr=data.attr;
-        this.begin=data.begin;
+        this.begin=data.begin;//
         this.body=data.body;
         this.command=data.command;
         if(data.cell)
@@ -32,7 +32,7 @@ package it.ht.rcs.console.evidence.model
         this.tr=data.tr;
         this.desc=data.desc;
         this.duration=data.duration;
-        this.end=data.end;
+        this.end=data.end;//
         this.event=data.event;
         this.from=data.from;
         this.id=data.id;
@@ -53,7 +53,7 @@ package it.ht.rcs.console.evidence.model
         this.rcpt_display=data.rcpt_display;
         this.resolution=data.resolution;
         this.service=data.service;
-        this.size=data.size;
+        this.size=data.size;//
         this.spool=data.spool;
         this.status=data.status;
         this.subject=data.subject;
@@ -79,6 +79,13 @@ package it.ht.rcs.console.evidence.model
         this.x=data.x;
         this.y=data.y;
         
+        this.total=data.total;
+        this.count=data.count;
+        this.timeout=data.timeout
+        this.speed=data.speed
+        
+
+         
       }
     }
     /**

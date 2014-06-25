@@ -23,7 +23,7 @@ public class License extends _Super_License
       alerting = data.alerting;
       agents = data.agents;
       collectors = data.collectors;
-      correlation = data.correlation;
+      profiling = data.profiling;
       connectors = data.connectors;
       nia = data.nia;
       rmi = data.rmi;

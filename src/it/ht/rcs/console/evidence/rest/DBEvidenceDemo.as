@@ -212,28 +212,51 @@ package it.ht.rcs.console.evidence.rest
     public static var ip:ArrayCollection = new ArrayCollection([
 
       // Jimmy Page (SwordFish) a1 desktop, a2 mobile
-      new Evidence({_id: 'c01', aid: 'a1', blo: false, da: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), dr: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({content: '172.16.42.2'})}), 
-      new Evidence({_id: 'c02', aid: 'a2', blo: true, da: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), dr: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({content: '172.16.42.2'})}), 
-      new Evidence({_id: 'c03', aid: 'a2', blo: false, da: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), dr: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({content: '172.16.42.2'})}),
+      new Evidence({_id: 'c01', aid: 'a1', blo: false, da: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), dr: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), _mid: 0, note: '', rel: 0, type: '', 
+        data: new EvidenceData({ip: '172.16.42.2', end:convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 47)), speed:30750, size:1230000, timeout:false, count :5, total:5})}), 
+      new Evidence({_id: 'c01', aid: 'a1', blo: false, da: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 32, 02)), dr: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), _mid: 0, note: '', rel: 0, type: '', 
+        data: new EvidenceData({ip: '172.16.42.2', end:convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 32, 51)), speed:21428, size:1050000, timeout:false, count :3, total:3})}), 
+      new Evidence({_id: 'c01', aid: 'a1', blo: false, da: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 33, 18)), dr: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), _mid: 0, note: '', rel: 0, type: '', 
+        data: new EvidenceData({ip: '172.16.42.2', end:convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 34, 00)), speed:24452, size:1027000, timeout:true, count :0, total:1})}), 
+     
+      
+      new Evidence({_id: 'c01', aid: 'a2', blo: false, da: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), dr: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), _mid: 0, note: '', rel: 0, type: '', 
+        data: new EvidenceData({ip: '172.16.42.2', end:convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 47)), speed:30750, size:1230000, timeout:false, count :5, total:5})}), 
+      new Evidence({_id: 'c01', aid: 'a2', blo: false, da: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 32, 02)), dr: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), _mid: 0, note: '', rel: 0, type: '', 
+        data: new EvidenceData({ip: '172.16.42.2', end:convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 32, 51)), speed:21428, size:1050000, timeout:false, count :3, total:3})}), 
+      new Evidence({_id: 'c01', aid: 'a2', blo: false, da: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 33, 18)), dr: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), _mid: 0, note: '', rel: 0, type: '', 
+        data: new EvidenceData({ip: '172.16.42.2', end:convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 34, 00)), speed:24452, size:1027000, timeout:false, count :1, total:1})}), 
 
       // Alejandro Reade (Swordfish), a3 desktop
-      new Evidence({_id: 'c04', aid: 'a3', blo: false, da: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), dr: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({content: '172.20.20.170'})}), 
-      new Evidence({_id: 'c05', aid: 'a3', blo: false, da: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), dr: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({content: '172.20.20.170'})}),
+      new Evidence({_id: 'c04', aid: 'a3', blo: false, da: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), dr: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), _mid: 0, note: '', rel: 0, type: '', 
+        data: new EvidenceData({ip: '172.20.20.170', end:convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 47)), speed:0, size:0, timeout:false})}), 
+      new Evidence({_id: 'c05', aid: 'a3', blo: false, da: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), dr: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), _mid: 0, note: '', rel: 0, type: '', 
+        data: new EvidenceData({ip: '172.20.20.170', end:convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 47)), speed:0, size:0, timeout:false})}),
 
       // Joey Fargo (SwordFish), a4 desktop,a5 desktop, a6 mobile
-      new Evidence({_id: 'c06', aid: 'a4', blo: false, da: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), dr: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({content: '172.20.20.193'})}), 
-      new Evidence({_id: 'c07', aid: 'a5', blo: false, da: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), dr: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({content: '172.20.20.193'})}), 
-      new Evidence({_id: 'c08', aid: 'a6', blo: false, da: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), dr: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({content: '172.20.20.193'})}),
+      new Evidence({_id: 'c06', aid: 'a4', blo: false, da: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), dr: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), _mid: 0, note: '', rel: 0, type: '', 
+        data: new EvidenceData({ip: '172.20.20.193', end:convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 47)), speed:0, size:0, timeout:false})}), 
+      new Evidence({_id: 'c07', aid: 'a5', blo: false, da: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), dr: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), _mid: 0, note: '', rel: 0, type: '', 
+        data: new EvidenceData({ip: '172.20.20.193', end:convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 47)), speed:0, size:0, timeout:false})}), 
+      new Evidence({_id: 'c08', aid: 'a6', blo: false, da: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), dr: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), _mid: 0, note: '', rel: 0, type: '', 
+        data: new EvidenceData({ip: '172.20.20.193', end:convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 47)), speed:0, size:0, timeout:false})}),
 
       // Guido (Blackjack), a7 desktop ,a8 mobile
-      new Evidence({_id: 'c09', aid: 'a7', blo: false, da: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), dr: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({content: '172.20.20.193'})}), 
-      new Evidence({_id: 'c10', aid: 'a8', blo: false, da: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), dr: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({content: '172.20.20.193'})}), 
-      new Evidence({_id: 'c11', aid: 'a8', blo: false, da: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), dr: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({content: '172.20.20.193'})}),
+      new Evidence({_id: 'c09', aid: 'a7', blo: false, da: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), dr: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), _mid: 0, note: '', rel: 0, type: '', 
+        data: new EvidenceData({ip: '172.20.20.193',end:convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 47)), speed:0, size:0, timeout:false})}), 
+      new Evidence({_id: 'c10', aid: 'a8', blo: false, da: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), dr: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), _mid: 0, note: '', rel: 0, type: '', 
+        data: new EvidenceData({ip: '172.20.20.193',end:convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 47)), speed:0, size:0, timeout:false})}), 
+      new Evidence({_id: 'c11', aid: 'a8', blo: false, da: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), dr: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), _mid: 0, note: '', rel: 0, type: '', 
+        data: new EvidenceData({ip: '172.20.20.193',end:convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 47)), speed:0, size:0, timeout:false})}),
 
       // Dmitry Vitaly (All In), a9 mobile
-      new Evidence({_id: 'c12', aid: 'a9', blo: false, da: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), dr: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({content: '172.20.20.193'})}), 
-      new Evidence({_id: 'c13', aid: 'a9', blo: false, da: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), dr: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({content: '172.20.20.193'})}), 
-      new Evidence({_id: 'c14', aid: 'a9', blo: false, da: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), dr: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), _mid: 0, note: '', rel: 0, type: '', data: new EvidenceData({content: '172.20.20.193'})})])
+      new Evidence({_id: 'c12', aid: 'a9', blo: false, da: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), dr: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), _mid: 0, note: '', rel: 0, type: '', 
+        data: new EvidenceData({ip: '172.20.20.193', end:convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 47)), speed:0, size:0, timeout:false})}), 
+      new Evidence({_id: 'c13', aid: 'a9', blo: false, da: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), dr: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), _mid: 0, note: '', rel: 0, type: '', 
+        data: new EvidenceData({ip: '172.20.20.193', end:convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 47)), speed:0, size:0, timeout:false})}), 
+      new Evidence({_id: 'c14', aid: 'a9', blo: false, da: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), dr: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 07)), _mid: 0, note: '', rel: 0, type: '', 
+        data: new EvidenceData({ip: '172.20.20.193',end:convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 16, 29, 47)), speed:0, size:0, timeout:false})})]
+    )
 
     public function all(filter:Object, onResult:Function = null, onFault:Function = null):void
     {
@@ -477,7 +500,8 @@ package it.ht.rcs.console.evidence.rest
         //from only
         if (filter.from && !filter.to) {
 
-          if (filter.from == "24h" && item[filter.date] >= now - SECONDS_PER_DAY) {
+          if (filter.from == "24h" )//&& item[filter.date] >= now - SECONDS_PER_DAY) 
+          {
             result = true;
             return result
           }
@@ -553,14 +577,14 @@ package it.ht.rcs.console.evidence.rest
 
     }
 
-    public function ips(filter:Object, onResult:Function = null, onFault:Function = null):void
+    public function sync_history(filter:Object, onResult:Function = null, onFault:Function = null):void
     {
       this.filter = filter;
       ip.filterFunction = filterIps;
       ip.refresh()
 
       if (onResult != null)
-        onResult(new ResultEvent('evidence.ips', false, true, ip));
+        onResult(new ResultEvent('evidence.sync_history', false, true, ip));
     }
 
     public function total(filter:Object, onResult:Function = null, onFault:Function = null):void
@@ -707,6 +731,11 @@ package it.ht.rcs.console.evidence.rest
 
     public function translate(id:String, target:String, onResult:Function = null, onFault:Function = null):void
     {
+    }
+    
+    public function update_multi(evidences:Array, property:Object, target:String, onResult:Function=null, onFault:Function=null):void
+    {
+     
     }
 
   }

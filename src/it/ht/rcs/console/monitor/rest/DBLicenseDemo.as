@@ -36,7 +36,7 @@ package it.ht.rcs.console.monitor.rest
               anonymizers: 5
             }),
           modify:true,
-          correlation: true,
+          profiling: true,
           intelligence:true,
           connectors: true,
           exploits: true,
