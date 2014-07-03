@@ -5408,11 +5408,32 @@
         <item name="completeURL">https://localhost:4444/evidence/update_multi</item>
       </annotation>
       <annotation name="original signature">
+        <item name="returnType">opaque</item>
         <item name="inputParamNames">strXml</item>
         <item name="inputParams">string</item>
-        <item name="returnType">opaque</item>
       </annotation>
       <parameter name="strXml" type="string"/>
+    </function>
+    <function name="filesystem2_" return-type="opaque">
+      <annotation name="analyze group">
+        <item name="analyzed">false</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.xml.XMLSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/evidence/filesystem2</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/evidence/filesystem2</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParamNames">target,agent,path</item>
+        <item name="inputParams">string,string,string</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="target" type="string"/>
+      <parameter name="agent" type="string"/>
+      <parameter name="path" type="string"/>
     </function>
   </service>
   <entity name="Filter">

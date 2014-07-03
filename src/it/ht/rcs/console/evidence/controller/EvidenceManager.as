@@ -288,6 +288,12 @@ package it.ht.rcs.console.evidence.controller
       DB.instance.evidence.filesystem(targetId, agentId, filter, onResult);
     }
     
+    public function filesystem2(targetId:String, agentId:String, path:String, onResult:Function = null):void
+    {
+
+      DB.instance.evidence.filesystem2(targetId, agentId, path, onResult);
+    }
+    
     public function getFilters(onResult:Function = null, onFault:Function = null):void
     {
       DB.instance.evidence.filter_all(onResult, onFault)

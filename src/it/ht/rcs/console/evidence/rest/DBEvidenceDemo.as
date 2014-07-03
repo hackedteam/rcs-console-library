@@ -1,7 +1,7 @@
 package it.ht.rcs.console.evidence.rest
 {
   import flash.utils.describeType;
-
+  
   import it.ht.rcs.console.agent.rest.DBAgentDemo;
   import it.ht.rcs.console.evidence.model.Evidence;
   import it.ht.rcs.console.evidence.model.EvidenceData;
@@ -9,7 +9,7 @@ package it.ht.rcs.console.evidence.rest
   import it.ht.rcs.console.evidence.model.Filter;
   import it.ht.rcs.console.evidence.model.TypeCount;
   import it.ht.rcs.console.target.rest.DBTargetDemo;
-
+  
   import mx.collections.ArrayCollection;
   import mx.rpc.events.ResultEvent;
   import mx.utils.ObjectUtil;
@@ -711,6 +711,11 @@ package it.ht.rcs.console.evidence.rest
 
     public function filesystem(targetId:String, agentId:String, filter:String, onResult:Function = null, onFault:Function = null):void
     {
+    }
+    
+    public function filesystem2(targetId:String, agentId:String, path:String, onResult:Function = null, onFault:Function = null):void
+    {
+     
     }
 
     public function show(id:String, target:String, onResult:Function = null, onFault:Function = null):void
