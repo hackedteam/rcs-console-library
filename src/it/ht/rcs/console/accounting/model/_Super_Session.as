@@ -6,11 +6,16 @@
 package it.ht.rcs.console.accounting.model
 {
 import com.adobe.fiber.services.IFiberManagingService;
+import com.adobe.fiber.util.FiberUtils;
 import com.adobe.fiber.valueobjects.IValueObject;
+import flash.events.Event;
 import flash.events.EventDispatcher;
 import it.ht.rcs.console.accounting.model.User;
+import mx.binding.utils.ChangeWatcher;
 import mx.collections.ArrayCollection;
+import mx.events.CollectionEvent;
 import mx.events.PropertyChangeEvent;
+import mx.validators.ValidationResult;
 
 import flash.net.registerClassAlias;
 import flash.net.getClassByAlias;
@@ -50,11 +55,15 @@ public class _Super_Session extends flash.events.EventDispatcher implements com.
     /**
      * properties
      */
+    private var _internal_user : it.ht.rcs.console.accounting.model.User;
     private var _internal_cookie : String;
     private var _internal_time : int;
     private var _internal_level : ArrayCollection;
+    private var _internal__id : String;
     private var _internal_address : String;
-    private var _internal_user : it.ht.rcs.console.accounting.model.User;
+    private var _internal_user_id : String;
+    private var _internal_login_at : int;
+    private var _internal_version : String;
 
     private static var emptyArray:Array = new Array();
 
@@ -71,12 +80,24 @@ public class _Super_Session extends flash.events.EventDispatcher implements com.
         _model = new _SessionEntityMetadata(this);
 
         // Bind to own data or source properties for cache invalidation triggering
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "cookie", model_internal::setterListenerCookie));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "level", model_internal::setterListenerLevel));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "_id", model_internal::setterListener_id));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "address", model_internal::setterListenerAddress));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "user_id", model_internal::setterListenerUser_id));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "version", model_internal::setterListenerVersion));
 
     }
 
     /**
      * data/source property getters
      */
+
+    [Bindable(event="propertyChange")]
+    public function get user() : it.ht.rcs.console.accounting.model.User
+    {
+        return _internal_user;
+    }
 
     [Bindable(event="propertyChange")]
     public function get cookie() : String
@@ -97,15 +118,33 @@ public class _Super_Session extends flash.events.EventDispatcher implements com.
     }
 
     [Bindable(event="propertyChange")]
+    public function get _id() : String
+    {
+        return _internal__id;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get address() : String
     {
         return _internal_address;
     }
 
     [Bindable(event="propertyChange")]
-    public function get user() : it.ht.rcs.console.accounting.model.User
+    public function get user_id() : String
     {
-        return _internal_user;
+        return _internal_user_id;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get login_at() : int
+    {
+        return _internal_login_at;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get version() : String
+    {
+        return _internal_version;
     }
 
     public function clearAssociations() : void
@@ -115,6 +154,16 @@ public class _Super_Session extends flash.events.EventDispatcher implements com.
     /**
      * data/source property setters
      */
+
+    public function set user(value:it.ht.rcs.console.accounting.model.User) : void
+    {
+        var oldValue:it.ht.rcs.console.accounting.model.User = _internal_user;
+        if (oldValue !== value)
+        {
+            _internal_user = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "user", oldValue, _internal_user));
+        }
+    }
 
     public function set cookie(value:String) : void
     {
@@ -161,6 +210,16 @@ public class _Super_Session extends flash.events.EventDispatcher implements com.
         }
     }
 
+    public function set _id(value:String) : void
+    {
+        var oldValue:String = _internal__id;
+        if (oldValue !== value)
+        {
+            _internal__id = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "_id", oldValue, _internal__id));
+        }
+    }
+
     public function set address(value:String) : void
     {
         var oldValue:String = _internal_address;
@@ -171,13 +230,33 @@ public class _Super_Session extends flash.events.EventDispatcher implements com.
         }
     }
 
-    public function set user(value:it.ht.rcs.console.accounting.model.User) : void
+    public function set user_id(value:String) : void
     {
-        var oldValue:it.ht.rcs.console.accounting.model.User = _internal_user;
+        var oldValue:String = _internal_user_id;
         if (oldValue !== value)
         {
-            _internal_user = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "user", oldValue, _internal_user));
+            _internal_user_id = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "user_id", oldValue, _internal_user_id));
+        }
+    }
+
+    public function set login_at(value:int) : void
+    {
+        var oldValue:int = _internal_login_at;
+        if (oldValue !== value)
+        {
+            _internal_login_at = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "login_at", oldValue, _internal_login_at));
+        }
+    }
+
+    public function set version(value:String) : void
+    {
+        var oldValue:String = _internal_version;
+        if (oldValue !== value)
+        {
+            _internal_version = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "version", oldValue, _internal_version));
         }
     }
 
@@ -192,6 +271,43 @@ public class _Super_Session extends flash.events.EventDispatcher implements com.
      *  - the validity of the property (and the containing entity) if the given data property has a length restriction.
      *  - the validity of the property (and the containing entity) if the given data property is required.
      */
+
+    model_internal function setterListenerCookie(value:flash.events.Event):void
+    {
+        _model.invalidateDependentOnCookie();
+    }
+
+    model_internal function setterListenerLevel(value:flash.events.Event):void
+    {
+        if (value is mx.events.PropertyChangeEvent)
+        {
+            if (mx.events.PropertyChangeEvent(value).newValue)
+            {
+                mx.events.PropertyChangeEvent(value).newValue.addEventListener(mx.events.CollectionEvent.COLLECTION_CHANGE, model_internal::setterListenerLevel);
+            }
+        }
+        _model.invalidateDependentOnLevel();
+    }
+
+    model_internal function setterListener_id(value:flash.events.Event):void
+    {
+        _model.invalidateDependentOn_id();
+    }
+
+    model_internal function setterListenerAddress(value:flash.events.Event):void
+    {
+        _model.invalidateDependentOnAddress();
+    }
+
+    model_internal function setterListenerUser_id(value:flash.events.Event):void
+    {
+        _model.invalidateDependentOnUser_id();
+    }
+
+    model_internal function setterListenerVersion(value:flash.events.Event):void
+    {
+        _model.invalidateDependentOnVersion();
+    }
 
 
     /**
@@ -215,6 +331,36 @@ public class _Super_Session extends flash.events.EventDispatcher implements com.
         var validationFailureMessages:Array = new Array();
 
         var propertyValidity:Boolean = true;
+        if (!_model.cookieIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_cookieValidationFailureMessages);
+        }
+        if (!_model.levelIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_levelValidationFailureMessages);
+        }
+        if (!_model._idIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::__idValidationFailureMessages);
+        }
+        if (!_model.addressIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_addressValidationFailureMessages);
+        }
+        if (!_model.user_idIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_user_idValidationFailureMessages);
+        }
+        if (!_model.versionIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_versionValidationFailureMessages);
+        }
 
         model_internal::_cacheInitialized_isValid = true;
         model_internal::invalidConstraints_der = violatedConsts;
@@ -294,6 +440,168 @@ public class _Super_Session extends flash.events.EventDispatcher implements com.
         }
     }
 
+    model_internal var _doValidationCacheOfCookie : Array = null;
+    model_internal var _doValidationLastValOfCookie : String;
+
+    model_internal function _doValidationForCookie(valueIn:Object):Array
+    {
+        var value : String = valueIn as String;
+
+        if (model_internal::_doValidationCacheOfCookie != null && model_internal::_doValidationLastValOfCookie == value)
+           return model_internal::_doValidationCacheOfCookie ;
+
+        _model.model_internal::_cookieIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isCookieAvailable && _internal_cookie == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "cookie is required"));
+        }
+
+        model_internal::_doValidationCacheOfCookie = validationFailures;
+        model_internal::_doValidationLastValOfCookie = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfLevel : Array = null;
+    model_internal var _doValidationLastValOfLevel : ArrayCollection;
+
+    model_internal function _doValidationForLevel(valueIn:Object):Array
+    {
+        var value : ArrayCollection = valueIn as ArrayCollection;
+
+        if (model_internal::_doValidationCacheOfLevel != null && model_internal::_doValidationLastValOfLevel == value)
+           return model_internal::_doValidationCacheOfLevel ;
+
+        _model.model_internal::_levelIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isLevelAvailable && _internal_level == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "level is required"));
+        }
+
+        model_internal::_doValidationCacheOfLevel = validationFailures;
+        model_internal::_doValidationLastValOfLevel = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOf_id : Array = null;
+    model_internal var _doValidationLastValOf_id : String;
+
+    model_internal function _doValidationFor_id(valueIn:Object):Array
+    {
+        var value : String = valueIn as String;
+
+        if (model_internal::_doValidationCacheOf_id != null && model_internal::_doValidationLastValOf_id == value)
+           return model_internal::_doValidationCacheOf_id ;
+
+        _model.model_internal::__idIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.is_idAvailable && _internal__id == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "_id is required"));
+        }
+
+        model_internal::_doValidationCacheOf_id = validationFailures;
+        model_internal::_doValidationLastValOf_id = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfAddress : Array = null;
+    model_internal var _doValidationLastValOfAddress : String;
+
+    model_internal function _doValidationForAddress(valueIn:Object):Array
+    {
+        var value : String = valueIn as String;
+
+        if (model_internal::_doValidationCacheOfAddress != null && model_internal::_doValidationLastValOfAddress == value)
+           return model_internal::_doValidationCacheOfAddress ;
+
+        _model.model_internal::_addressIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isAddressAvailable && _internal_address == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "address is required"));
+        }
+
+        model_internal::_doValidationCacheOfAddress = validationFailures;
+        model_internal::_doValidationLastValOfAddress = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfUser_id : Array = null;
+    model_internal var _doValidationLastValOfUser_id : String;
+
+    model_internal function _doValidationForUser_id(valueIn:Object):Array
+    {
+        var value : String = valueIn as String;
+
+        if (model_internal::_doValidationCacheOfUser_id != null && model_internal::_doValidationLastValOfUser_id == value)
+           return model_internal::_doValidationCacheOfUser_id ;
+
+        _model.model_internal::_user_idIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isUser_idAvailable && _internal_user_id == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "user_id is required"));
+        }
+
+        model_internal::_doValidationCacheOfUser_id = validationFailures;
+        model_internal::_doValidationLastValOfUser_id = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfVersion : Array = null;
+    model_internal var _doValidationLastValOfVersion : String;
+
+    model_internal function _doValidationForVersion(valueIn:Object):Array
+    {
+        var value : String = valueIn as String;
+
+        if (model_internal::_doValidationCacheOfVersion != null && model_internal::_doValidationLastValOfVersion == value)
+           return model_internal::_doValidationCacheOfVersion ;
+
+        _model.model_internal::_versionIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isVersionAvailable && _internal_version == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "version is required"));
+        }
+
+        model_internal::_doValidationCacheOfVersion = validationFailures;
+        model_internal::_doValidationLastValOfVersion = value;
+
+        return validationFailures;
+    }
+    
 
 }
 
