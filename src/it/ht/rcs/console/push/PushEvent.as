@@ -14,6 +14,7 @@ package it.ht.rcs.console.push
     public static const MESSAGE:String = "message";
     public static const DASHBOARD:String = "dashboard";
     public static const LOGOUT:String = "logout";
+    public static const FILESYSTEM:String = "filesystem";
     
 		public var data:*;
 		

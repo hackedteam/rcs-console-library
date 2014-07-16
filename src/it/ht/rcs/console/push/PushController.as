@@ -189,6 +189,11 @@ package it.ht.rcs.console.push
           event = new PushEvent(PushEvent.AGENT);
           event.data = message;
           break;
+        case 'filesystem':
+          trace('PushManager: dispatching FILESYSTEM event');
+          event = new PushEvent(PushEvent.FILESYSTEM);
+          event.data = message;
+          break;
         case 'message':
           trace('PushManager: MESSAGE event');
           event = new PushEvent(PushEvent.MESSAGE);
