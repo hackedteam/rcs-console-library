@@ -17,6 +17,7 @@ package it.ht.rcs.console.events
     public static const SYSTEM:String      = "System";
     public static const AUDIT:String       = "Audit";
     public static const MONITOR:String     = "Monitor";
+    public static const HELP:String        = "Help";
     
     public var section:String;
     public var subsection:String;
