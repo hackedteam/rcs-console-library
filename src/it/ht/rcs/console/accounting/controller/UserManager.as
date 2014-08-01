@@ -6,12 +6,15 @@ package it.ht.rcs.console.accounting.controller
   import it.ht.rcs.console.accounting.model.Session;
   import it.ht.rcs.console.accounting.model.User;
   import it.ht.rcs.console.controller.ItemManager;
+  import it.ht.rcs.console.push.PushController;
+  import it.ht.rcs.console.push.PushEvent;
   import it.ht.rcs.console.search.model.SearchItem;
   import it.ht.rcs.console.utils.AlertPopUp;
-
+  
   import locale.R;
-
+  
   import mx.collections.ArrayCollection;
+  import mx.events.CollectionEvent;
   import mx.events.PropertyChangeEvent;
   import mx.rpc.events.FaultEvent;
   import mx.rpc.events.ResultEvent;
@@ -22,6 +25,7 @@ package it.ht.rcs.console.accounting.controller
     public function UserManager()
     {
       super(User);
+      PushController.instance.addEventListener( PushEvent.USER, onUserPush);
     }
 
     private static var _instance:UserManager = new UserManager();
@@ -31,6 +35,44 @@ package it.ht.rcs.console.accounting.controller
       return _instance;
     }
 
+    
+    private function onUserPush(e:PushEvent):void
+    {
+      //show(e.data.id as String);
+      
+      var u:User;
+      switch (e.data.action)
+      {
+        case PushEvent.CREATE:
+          trace("user creation");
+          u=new User(e.data.changes);
+          addItem(u);
+          break;
+        
+        case PushEvent.MODIFY:
+          trace("user update");
+          u = getItem(e.data.id)
+          if(!u)
+            return;
+          _items.removeEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
+          for(var property:String in e.data.changes)
+          {
+            if( u[property])
+              u[property] = e.data.changes[property];
+          }
+          _items.addEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
+          break;
+        
+        case PushEvent.DESTROY:
+          trace("user deletion");
+          _items.removeEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
+          removeItem(getItem(e.data.id))
+          _items.addEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
+          break;
+      }
+    }
+    
+    
     override public function refresh():void
     {
       super.refresh();

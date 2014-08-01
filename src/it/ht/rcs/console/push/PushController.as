@@ -140,7 +140,7 @@ package it.ht.rcs.console.push
     public function send(message:Object):void
     {
       var encoded:String = JSON.stringify(message);
-      trace('ws: sent message: ' + encoded);
+      trace('ws: sent message: ' + encoded); 
       socket.send(encoded);
     }
     
@@ -189,9 +189,24 @@ package it.ht.rcs.console.push
           event = new PushEvent(PushEvent.AGENT);
           event.data = message;
           break;
+        case 'factory':
+          trace('PushManager: dispatching FACTORY event');
+          event = new PushEvent(PushEvent.FACTORY);
+          event.data = message;
+          break;
         case 'filesystem':
           trace('PushManager: dispatching FILESYSTEM event');
           event = new PushEvent(PushEvent.FILESYSTEM);
+          event.data = message;
+          break;
+        case 'user':
+          trace('PushManager: dispatching USER event');
+          event = new PushEvent(PushEvent.USER);
+          event.data = message;
+          break;
+        case 'group':
+          trace('PushManager: dispatching GROUP event');
+          event = new PushEvent(PushEvent.GROUP);
           event.data = message;
           break;
         case 'message':

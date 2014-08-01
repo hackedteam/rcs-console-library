@@ -6,8 +6,11 @@ package it.ht.rcs.console.accounting.controller
   import it.ht.rcs.console.accounting.model.User;
   import it.ht.rcs.console.controller.ItemManager;
   import it.ht.rcs.console.operation.model.Operation;
+  import it.ht.rcs.console.push.PushController;
+  import it.ht.rcs.console.push.PushEvent;
   
   import mx.collections.ArrayCollection;
+  import mx.events.CollectionEvent;
   import mx.events.PropertyChangeEvent;
   import mx.rpc.events.ResultEvent;
   
@@ -17,6 +20,8 @@ package it.ht.rcs.console.accounting.controller
     public function GroupManager()
     {
       super(Group);
+      PushEvent
+      PushController.instance.addEventListener(PushEvent.GROUP, onGroupPush);
     }
     
     private static var _instance:GroupManager = new GroupManager();
@@ -34,6 +39,42 @@ package it.ht.rcs.console.accounting.controller
       for each (var item:* in e.result.source)
         addItem(item);
       dispatchDataLoadedEvent();
+    }
+    
+    private function onGroupPush(e:PushEvent):void
+    {
+      //show(e.data.id as String);
+      
+      var g:Group;
+      switch (e.data.action)
+      {
+        case PushEvent.CREATE:
+          trace("group creation");
+          g=new Group(e.data.changes);
+          addItem(g);
+          break;
+        
+        case PushEvent.MODIFY:
+          trace("group update");
+          g = getItem(e.data.id)
+          if(!g)
+            return;
+          _items.removeEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
+          for(var property:String in e.data.changes)
+          {
+            if( g[property])
+              g[property] = e.data.changes[property];
+          }
+          _items.addEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
+          break;
+        
+        case PushEvent.DESTROY:
+          trace("group deletion");
+          _items.removeEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
+          removeItem(getItem(e.data.id))
+          _items.addEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
+          break;
+      }
     }
     
     override protected function onItemRemove(item:*):void
