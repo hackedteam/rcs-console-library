@@ -168,6 +168,7 @@ package it.ht.rcs.console.push
         case 'alert':
           trace('PushManager: dispatching ALERT event');
           event = new PushEvent(PushEvent.ALERT);
+          event.data = message;
           break;
         case 'operation':
           trace('PushManager: dispatching OPERATION event');
