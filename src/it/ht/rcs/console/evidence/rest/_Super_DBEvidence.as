@@ -208,15 +208,6 @@ internal class _Super_DBEvidence extends com.adobe.fiber.services.wrapper.HTTPSe
         operation.resultElementType = it.ht.rcs.console.evidence.model.TypeCount;
          operations.push(operation);
 
-         operation = new mx.rpc.http.Operation(null, "filesystem_");
-         operation.url = "/evidence/filesystem";
-         operation.method = "GET";
-         argsArray = new Array("target","agent","filter");
-         operation.argumentNames = argsArray;         
-         operation.serializationFilter = serializer0;
-        operation.resultElementType = it.ht.rcs.console.evidence.model.Evidence;
-         operations.push(operation);
-
          operation = new mx.rpc.http.Operation(null, "show_");
          operation.url = "/evidence/{id}";
          operation.method = "GET";
@@ -300,8 +291,8 @@ internal class _Super_DBEvidence extends com.adobe.fiber.services.wrapper.HTTPSe
         operation.resultType = Object;
          operations.push(operation);
 
-         operation = new mx.rpc.http.Operation(null, "filesystem2_");
-         operation.url = "/evidence/filesystem2";
+         operation = new mx.rpc.http.Operation(null, "filesystem_");
+         operation.url = "/evidence/filesystem";
          operation.method = "GET";
          argsArray = new Array("target","agent","path");
          operation.argumentNames = argsArray;         
@@ -494,24 +485,6 @@ internal class _Super_DBEvidence extends com.adobe.fiber.services.wrapper.HTTPSe
     }
      
     /**
-      * This method is a generated wrapper used to call the 'filesystem_' operation. It returns an mx.rpc.AsyncToken whose
-      * result property will be populated with the result of the operation when the server response is received.
-      * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value.
-      * You can then bind to CallResponder.lastResult or listen for the CallResponder.result or fault events.
-      *
-      * @see mx.rpc.AsyncToken
-      * @see mx.rpc.CallResponder 
-      *
-      * @return an mx.rpc.AsyncToken whose result property will be populated with the result of the operation when the server response is received.
-      */
-    public function filesystem_(target:String, agent:String, filter:String) : mx.rpc.AsyncToken
-    {
-        var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("filesystem_");
-        var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(target,agent,filter) ;
-        return _internal_token;
-    }
-     
-    /**
       * This method is a generated wrapper used to call the 'show_' operation. It returns an mx.rpc.AsyncToken whose
       * result property will be populated with the result of the operation when the server response is received.
       * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value.
@@ -692,7 +665,7 @@ internal class _Super_DBEvidence extends com.adobe.fiber.services.wrapper.HTTPSe
     }
      
     /**
-      * This method is a generated wrapper used to call the 'filesystem2_' operation. It returns an mx.rpc.AsyncToken whose
+      * This method is a generated wrapper used to call the 'filesystem_' operation. It returns an mx.rpc.AsyncToken whose
       * result property will be populated with the result of the operation when the server response is received.
       * To use this result from MXML code, define a CallResponder component and assign its token property to this method's return value.
       * You can then bind to CallResponder.lastResult or listen for the CallResponder.result or fault events.
@@ -702,9 +675,9 @@ internal class _Super_DBEvidence extends com.adobe.fiber.services.wrapper.HTTPSe
       *
       * @return an mx.rpc.AsyncToken whose result property will be populated with the result of the operation when the server response is received.
       */
-    public function filesystem2_(target:String, agent:String, path:String) : mx.rpc.AsyncToken
+    public function filesystem_(target:String, agent:String, path:String) : mx.rpc.AsyncToken
     {
-        var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("filesystem2_");
+        var _internal_operation:mx.rpc.AbstractOperation = _serviceControl.getOperation("filesystem_");
         var _internal_token:mx.rpc.AsyncToken = _internal_operation.send(target,agent,path) ;
         return _internal_token;
     }

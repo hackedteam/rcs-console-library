@@ -709,11 +709,11 @@ package it.ht.rcs.console.evidence.rest
         onResult(new ResultEvent('evidence.total', false, true, result));
     }
 
-    public function filesystem(targetId:String, agentId:String, filter:String, onResult:Function = null, onFault:Function = null):void
+   /* public function filesystem(targetId:String, agentId:String, filter:String, onResult:Function = null, onFault:Function = null):void
     {
-    }
+    }*/
     
-    public function filesystem2(targetId:String, agentId:String, path:String, onResult:Function = null, onFault:Function = null):void
+    public function filesystem(targetId:String, agentId:String, path:String, onResult:Function = null, onFault:Function = null):void
     {
       
     }

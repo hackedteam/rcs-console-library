@@ -282,16 +282,16 @@ package it.ht.rcs.console.evidence.controller
     }
     
   
-    public function filesystem(targetId:String, agentId:String, filter:String, onResult:Function = null):void
+  /*  public function filesystem(targetId:String, agentId:String, filter:String, onResult:Function = null):void
     {
       filter=filter.replace("//","/")
       DB.instance.evidence.filesystem(targetId, agentId, filter, onResult);
-    }
+    }*/
     
-    public function filesystem2(targetId:String, agentId:String, path:String, onResult:Function = null):void
+    public function filesystem(targetId:String, agentId:String, path:String, onResult:Function = null):void
     {
 
-      DB.instance.evidence.filesystem2(targetId, agentId, path, onResult);
+      DB.instance.evidence.filesystem(targetId, agentId, path, onResult);
     }
     
     public function getFilters(onResult:Function = null, onFault:Function = null):void
