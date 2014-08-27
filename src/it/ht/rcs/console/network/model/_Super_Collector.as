@@ -49,14 +49,12 @@ public class _Super_Collector extends flash.events.EventDispatcher implements co
      */
     private var _internal_port : int;
     private var _internal_desc : String;
-    private var _internal_configured : Boolean;
-    private var _internal_upgradable : Boolean;
     private var _internal_next : ArrayCollection;
     private var _internal_type : String;
     private var _internal_version : int;
     private var _internal_prev : ArrayCollection;
     private var _internal_updated_at : String;
-    private var _internal_poll : Boolean;
+    private var _internal_enabled : Boolean;
     private var _internal__id : String;
     private var _internal_address : String;
     private var _internal_name : String;
@@ -100,18 +98,6 @@ public class _Super_Collector extends flash.events.EventDispatcher implements co
     }
 
     [Bindable(event="propertyChange")]
-    public function get configured() : Boolean
-    {
-        return _internal_configured;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get upgradable() : Boolean
-    {
-        return _internal_upgradable;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get next() : ArrayCollection
     {
         return _internal_next;
@@ -142,9 +128,9 @@ public class _Super_Collector extends flash.events.EventDispatcher implements co
     }
 
     [Bindable(event="propertyChange")]
-    public function get poll() : Boolean
+    public function get enabled() : Boolean
     {
-        return _internal_poll;
+        return _internal_enabled;
     }
 
     [Bindable(event="propertyChange")]
@@ -214,26 +200,6 @@ public class _Super_Collector extends flash.events.EventDispatcher implements co
         {
             _internal_desc = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "desc", oldValue, _internal_desc));
-        }
-    }
-
-    public function set configured(value:Boolean) : void
-    {
-        var oldValue:Boolean = _internal_configured;
-        if (oldValue !== value)
-        {
-            _internal_configured = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "configured", oldValue, _internal_configured));
-        }
-    }
-
-    public function set upgradable(value:Boolean) : void
-    {
-        var oldValue:Boolean = _internal_upgradable;
-        if (oldValue !== value)
-        {
-            _internal_upgradable = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "upgradable", oldValue, _internal_upgradable));
         }
     }
 
@@ -317,13 +283,13 @@ public class _Super_Collector extends flash.events.EventDispatcher implements co
         }
     }
 
-    public function set poll(value:Boolean) : void
+    public function set enabled(value:Boolean) : void
     {
-        var oldValue:Boolean = _internal_poll;
+        var oldValue:Boolean = _internal_enabled;
         if (oldValue !== value)
         {
-            _internal_poll = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "poll", oldValue, _internal_poll));
+            _internal_enabled = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "enabled", oldValue, _internal_enabled));
         }
     }
 
@@ -420,7 +386,6 @@ public class _Super_Collector extends flash.events.EventDispatcher implements co
     /**
      * derived property calculators
      */
-    
 
     /**
      * isValid calculator

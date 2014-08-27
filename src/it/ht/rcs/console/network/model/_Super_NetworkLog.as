@@ -169,7 +169,6 @@ public class _Super_NetworkLog extends flash.events.EventDispatcher implements c
     /**
      * derived property calculators
      */
-    
 
     /**
      * isValid calculator

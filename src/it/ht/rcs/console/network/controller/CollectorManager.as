@@ -85,7 +85,7 @@ package it.ht.rcs.console.network.controller
       property['address']=collector.address;
       property['internal_address']=collector.internal_address;
       property['desc']=collector.desc;
-      property['poll']=collector.poll;
+      property['enabled']=collector.enabled;
       property['name']=collector.name;
       property['type']=collector.type;
       property['version']=collector.version;
