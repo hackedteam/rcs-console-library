@@ -30,9 +30,29 @@ package it.ht.rcs.console.agent.controller
 		public function AgentManager()
 		{
 			super(Agent);
-			PushController.instance.addEventListener(PushEvent.AGENT, onAgentPush);
-			PushController.instance.addEventListener(PushEvent.FACTORY, onAgentPush);
+			//PushController.instance.addEventListener(PushEvent.AGENT, onAgentPush);
+			//PushController.instance.addEventListener(PushEvent.FACTORY, onAgentPush);
 		}
+    
+    public function listenAgentPush():void
+    {
+      PushController.instance.addEventListener( PushEvent.AGENT, onAgentPush);
+    }
+    public function listenFactoryPush():void
+    {
+      PushController.instance.addEventListener( PushEvent.FACTORY, onAgentPush);
+    }
+    
+    
+    public function unlistenAgentPush():void
+    {
+      PushController.instance.removeEventListener( PushEvent.AGENT, onAgentPush);
+    }
+    
+    public function unlistenFactoryPush():void
+    {
+      PushController.instance.removeEventListener( PushEvent.FACTORY, onAgentPush);
+    }
 
 		private static var _instance:AgentManager=new AgentManager();
 

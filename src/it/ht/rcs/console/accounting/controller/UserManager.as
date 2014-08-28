@@ -25,8 +25,18 @@ package it.ht.rcs.console.accounting.controller
     public function UserManager()
     {
       super(User);
+      //PushController.instance.addEventListener( PushEvent.USER, onUserPush);
+    }
+    
+    public function listenPush():void
+    {
       PushController.instance.addEventListener( PushEvent.USER, onUserPush);
     }
+    public function unlistenPush():void
+    {
+      PushController.instance.removeEventListener( PushEvent.USER, onUserPush);
+    }
+    
 
     private static var _instance:UserManager = new UserManager();
 

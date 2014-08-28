@@ -28,8 +28,17 @@ package it.ht.rcs.console.operation.controller
 		public function OperationManager()
 		{
 			super(Operation);
-			PushController.instance.addEventListener(PushEvent.OPERATION, onOperationPush);
+			//PushController.instance.addEventListener(PushEvent.OPERATION, onOperationPush);
 		}
+    
+    public function listenPush():void
+    {
+      PushController.instance.addEventListener( PushEvent.OPERATION, onOperationPush);
+    }
+    public function unlistenPush():void
+    {
+      PushController.instance.removeEventListener( PushEvent.OPERATION, onOperationPush);
+    }
 
 		private static var _instance:OperationManager=new OperationManager();
 

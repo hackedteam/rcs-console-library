@@ -33,7 +33,16 @@ package it.ht.rcs.console.target.controller
     public function TargetManager()
     {
       super(Target);
-      PushController.instance.addEventListener(PushEvent.TARGET, onTargetPush);
+      //PushController.instance.addEventListener(PushEvent.TARGET, onTargetPush);
+    }
+    
+    public function listenPush():void
+    {
+      PushController.instance.addEventListener( PushEvent.TARGET, onTargetPush);
+    }
+    public function unlistenPush():void
+    {
+      PushController.instance.removeEventListener( PushEvent.TARGET, onTargetPush);
     }
     
     private static var _instance:TargetManager = new TargetManager();

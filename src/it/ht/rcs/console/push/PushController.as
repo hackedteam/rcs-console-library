@@ -159,6 +159,12 @@ package it.ht.rcs.console.push
         case 'monitor':
           trace('PushManager: dispatching MONITOR event');
           event = new PushEvent(PushEvent.MONITOR);
+          event.data = message;
+          break;
+        case 'monitor_counters':
+          trace('PushManager: dispatching MONITOR event');
+          event = new PushEvent(PushEvent.MONITOR_COUNTERS);
+          event.data = message;
           break;
         case 'dashboard':
           trace('PushManager: dispatching DASHBOARD event');

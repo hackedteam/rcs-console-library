@@ -38,6 +38,17 @@ package it.ht.rcs.console.entities.controller
       return _instance;
     }
 
+    
+    public function listenPush():void
+    {
+      PushController.instance.addEventListener( PushEvent.ENTITY, onEntityPush);
+    }
+    public function unlistenPush():void
+    {
+      PushController.instance.removeEventListener( PushEvent.ENTITY, onEntityPush);
+    }
+    
+    
     override public function refresh():void
     {
       super.refresh();

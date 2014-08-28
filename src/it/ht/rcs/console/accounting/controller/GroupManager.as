@@ -20,8 +20,17 @@ package it.ht.rcs.console.accounting.controller
     public function GroupManager()
     {
       super(Group);
-      PushEvent
-      PushController.instance.addEventListener(PushEvent.GROUP, onGroupPush);
+      //PushController.instance.addEventListener(PushEvent.GROUP, onGroupPush);
+    }
+    
+    
+    public function listenPush():void
+    {
+      PushController.instance.addEventListener( PushEvent.GROUP, onGroupPush);
+    }
+    public function unlistenPush():void
+    {
+      PushController.instance.removeEventListener( PushEvent.GROUP, onGroupPush);
     }
     
     private static var _instance:GroupManager = new GroupManager();
