@@ -147,6 +147,7 @@ package it.ht.rcs.console.entities.controller
 
     private function onEntityPush(e:PushEvent):void
     {
+      trace("EntityPush")
       EntityManager.instance.show(e.data.id as String);
 
         //EntityManager.instance.refresh();
