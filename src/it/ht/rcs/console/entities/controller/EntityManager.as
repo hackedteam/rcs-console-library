@@ -19,6 +19,7 @@ package it.ht.rcs.console.entities.controller
   
   import mx.collections.ArrayCollection;
   import mx.collections.ListCollectionView;
+  import mx.events.CollectionEvent;
   import mx.rpc.events.FaultEvent;
   import mx.rpc.events.ResultEvent;
 
@@ -148,10 +149,43 @@ package it.ht.rcs.console.entities.controller
     private function onEntityPush(e:PushEvent):void
     {
       trace("EntityPush")
-      EntityManager.instance.show(e.data.id as String);
+     // EntityManager.instance.show(e.data.id as String);
 
         //EntityManager.instance.refresh();
         //EntityManager.instance.dispatchEvent(new Event(e.data.action));
+      
+      var entity:Entity;
+      switch (e.data.action)
+      {
+        case PushEvent.CREATE:
+          trace("entity creation");
+          var position_attr:Position_attr=new Position_attr(e.data.changes.position_attr)
+          e.data.changes.position_attr=position_attr;
+          entity=new Entity(e.data.changes);
+          addItem(entity);
+          break;
+        
+        
+        case PushEvent.MODIFY:
+          trace("entity update");
+          entity = getItem(e.data.id)
+          _items.removeEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
+          for(var property:String in e.data.changes)
+          {
+            
+            entity[property]= e.data.changes[property];
+          }
+          _items.addEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
+          break;
+        
+        
+        case PushEvent.DESTROY:
+          trace("entity deletion");
+          _items.removeEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
+          removeItem(getItem(e.data.id))
+          _items.addEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
+          break;
+      }
      
     }
 

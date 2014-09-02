@@ -3,7 +3,7 @@ package it.ht.rcs.console.monitor.controller
 	import flash.events.Event;
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
-
+	
 	import it.ht.rcs.console.DB;
 	import it.ht.rcs.console.controller.ItemManager;
 	import it.ht.rcs.console.events.RefreshEvent;
@@ -11,7 +11,7 @@ package it.ht.rcs.console.monitor.controller
 	import it.ht.rcs.console.monitor.model.Status;
 	import it.ht.rcs.console.push.PushController;
 	import it.ht.rcs.console.push.PushEvent;
-
+	
 	import mx.core.FlexGlobals;
 	import mx.events.CollectionEvent;
 	import mx.events.PropertyChangeEvent;
@@ -66,13 +66,11 @@ package it.ht.rcs.console.monitor.controller
 			switch (e.data.action)
 			{
 				case PushEvent.CREATE:
-					trace("monitor creation");
 					o=(e.data.changes);
 					addItem(o);
 					break;
 
 				case PushEvent.MODIFY:
-					trace("monitor update");
 					o=getItem(e.data.id)
 					_items.removeEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
 					for (var property:String in e.data.changes)
@@ -84,12 +82,14 @@ package it.ht.rcs.console.monitor.controller
 					break;
 
 				case PushEvent.DESTROY:
-					trace("monitor deletion");
 					_items.removeEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
 					removeItem(getItem(e.data.id))
 					_items.addEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
 					break;
 			}
+      var event:PushEvent = new PushEvent(PushEvent.MONITOR);
+      event.data = e.data;
+      dispatchEvent(event)
 		}
 
 		public function onAutorefresh(e:*):void
