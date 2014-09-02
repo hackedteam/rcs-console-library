@@ -66,7 +66,7 @@ package it.ht.rcs.console.monitor.controller
 			switch (e.data.action)
 			{
 				case PushEvent.CREATE:
-					o=(e.data.changes);
+					o=new Status(e.data.changes);
 					addItem(o);
 					break;
 
@@ -130,7 +130,7 @@ package it.ht.rcs.console.monitor.controller
 
 			for each (var o:* in _items.source)
 				if (o.address == address)
-					return o;
+					return o as Status;
 			return null;
 		}
 

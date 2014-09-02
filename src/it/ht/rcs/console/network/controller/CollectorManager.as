@@ -67,7 +67,6 @@ package it.ht.rcs.console.network.controller
 			switch (e.data.action)
 			{
 				case PushEvent.CREATE:
-					trace("monitor creation");
 					c=getCollcetorByIp(e.data.changes.address);
 					if (c)
 					{
@@ -76,7 +75,6 @@ package it.ht.rcs.console.network.controller
 					break;
 
 				case PushEvent.MODIFY:
-					trace("monitor update");
 					c=getCollcetorByIp(e.data.changes.address);
 					if (c)
 					{
@@ -85,8 +83,8 @@ package it.ht.rcs.console.network.controller
 					break;
 
 				case PushEvent.DESTROY:
-					trace("monitor deletion");
 
+          dispatchEvent(new DataLoadedEvent(DataLoadedEvent.DATA_LOADED))
 					break;
 			}
 		}
