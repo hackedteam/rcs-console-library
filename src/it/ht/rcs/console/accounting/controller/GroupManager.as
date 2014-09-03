@@ -60,7 +60,8 @@ package it.ht.rcs.console.accounting.controller
         case PushEvent.CREATE:
           trace("group creation");
           g=new Group(e.data.changes);
-          addItem(g);
+          if(!getItem(e.data.id))
+            addItem(g);
           break;
         
         case PushEvent.MODIFY:

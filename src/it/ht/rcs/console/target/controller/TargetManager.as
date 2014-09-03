@@ -81,6 +81,8 @@ package it.ht.rcs.console.target.controller
           e.data.changes.stat=stat
           
           t=new Target(e.data.changes);
+          if(!getItem(e.data.id))
+
           addItem(t);
           break;
       

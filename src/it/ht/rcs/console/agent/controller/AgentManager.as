@@ -96,6 +96,7 @@ package it.ht.rcs.console.agent.controller
           e.data.changes.stat=stat
 
 					a=new Agent(e.data.changes);
+          if(!getItem(e.data.id))
 					addItem(a);
 					break;
 				case PushEvent.MODIFY:

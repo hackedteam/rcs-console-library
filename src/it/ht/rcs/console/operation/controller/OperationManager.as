@@ -80,7 +80,8 @@ package it.ht.rcs.console.operation.controller
 					e.data.changes.stat=stat
 
 					o=new Operation(e.data.changes);
-					addItem(o);
+					if(!getItem(e.data.id)) 
+            addItem(o);
 					break;
         
 				case PushEvent.MODIFY:

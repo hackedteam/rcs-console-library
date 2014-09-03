@@ -67,6 +67,7 @@ package it.ht.rcs.console.monitor.controller
 			{
 				case PushEvent.CREATE:
 					o=new Status(e.data.changes);
+          if(!getItem(e.data.id))
 					addItem(o);
 					break;
 

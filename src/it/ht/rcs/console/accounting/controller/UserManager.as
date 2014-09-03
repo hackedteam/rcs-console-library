@@ -56,6 +56,7 @@ package it.ht.rcs.console.accounting.controller
         case PushEvent.CREATE:
           trace("user creation");
           u=new User(e.data.changes);
+          if(!getItem(e.data.id))
           addItem(u);
           break;
         

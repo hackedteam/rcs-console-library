@@ -162,6 +162,7 @@ package it.ht.rcs.console.entities.controller
           var position_attr:Position_attr=new Position_attr(e.data.changes.position_attr)
           e.data.changes.position_attr=position_attr;
           entity=new Entity(e.data.changes);
+          if(!getItem(e.data.id))
           addItem(entity);
           break;
         
