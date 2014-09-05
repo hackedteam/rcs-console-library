@@ -50,7 +50,7 @@ package it.ht.rcs.console
 
 					record: true, _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,symbian,android,linux"},
 
-				{module: "camera", quality: "med", _type: "desktop,mobile", _platform: "windows,osx,ios,winmo,symbian,linux"},
+				{module: "camera", quality: "med", _type: "desktop,mobile", _platform: "windows,osx,ios,winmo,symbian,linux,android"},
 
 				{module: "chat", _type: "desktop,mobile", _platform: "windows,osx,blackberry,linux,ios,android"},
 
