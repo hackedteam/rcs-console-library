@@ -170,10 +170,12 @@ package it.ht.rcs.console.entities.controller
         case PushEvent.MODIFY:
           trace("entity update");
           entity = getItem(e.data.id)
+          if(!entity)
+            return;
           _items.removeEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
           for(var property:String in e.data.changes)
           {
-            
+            if( entity[property])
             entity[property]= e.data.changes[property];
           }
           _items.addEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
