@@ -7,6 +7,13 @@ package it.ht.rcs.console.network.model
   public class Collector extends _Super_Collector
   {
     
+    
+    [Bindable]
+    public function get isUpdatable():Boolean
+    {
+        return version>=2014093001
+    }
+    
     public static function defaultCollector():Object
     {
       return {
