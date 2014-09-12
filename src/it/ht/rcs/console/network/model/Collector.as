@@ -8,7 +8,7 @@ package it.ht.rcs.console.network.model
   {
     
     
-    [Bindable]
+ 
     public function get isUpdatable():Boolean
     {
         return version>=2014093001

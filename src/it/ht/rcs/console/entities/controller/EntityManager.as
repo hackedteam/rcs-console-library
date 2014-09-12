@@ -161,6 +161,8 @@ package it.ht.rcs.console.entities.controller
           trace("entity creation");
           var position_attr:Position_attr=new Position_attr(e.data.changes.position_attr)
           e.data.changes.position_attr=position_attr;
+          var position:Position=new Position(e.data.changes.position)
+          e.data.changes.position=position;
           entity=new Entity(e.data.changes);
           if(!getItem(e.data.id))
           addItem(entity);
@@ -173,9 +175,15 @@ package it.ht.rcs.console.entities.controller
           if(!entity)
             return;
           _items.removeEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
+
+          if(e.data.changes.position)
+          {
+            e.data.changes.position=new Position(e.data.changes.position);
+          }
+          
           for(var property:String in e.data.changes)
           {
-            if( entity[property])
+            if(entity[property])
             entity[property]= e.data.changes[property];
           }
           _items.addEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
