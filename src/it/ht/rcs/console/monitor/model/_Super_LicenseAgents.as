@@ -60,7 +60,6 @@ public class _Super_LicenseAgents extends flash.events.EventDispatcher implement
     private var _internal_ios : ArrayCollection;
     private var _internal_desktop : Object;
     private var _internal_windows : ArrayCollection;
-    private var _internal_winmo : ArrayCollection;
     private var _internal_winphone : ArrayCollection;
     private var _internal_linux : ArrayCollection;
     private var _internal_mobile : Object;
@@ -88,7 +87,6 @@ public class _Super_LicenseAgents extends flash.events.EventDispatcher implement
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "ios", model_internal::setterListenerIos));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "desktop", model_internal::setterListenerDesktop));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "windows", model_internal::setterListenerWindows));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "winmo", model_internal::setterListenerWinmo));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "winphone", model_internal::setterListenerWinphone));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "linux", model_internal::setterListenerLinux));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "mobile", model_internal::setterListenerMobile));
@@ -145,12 +143,6 @@ public class _Super_LicenseAgents extends flash.events.EventDispatcher implement
     public function get windows() : ArrayCollection
     {
         return _internal_windows;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get winmo() : ArrayCollection
-    {
-        return _internal_winmo;
     }
 
     [Bindable(event="propertyChange")]
@@ -349,31 +341,6 @@ public class _Super_LicenseAgents extends flash.events.EventDispatcher implement
         }
     }
 
-    public function set winmo(value:*) : void
-    {
-        var oldValue:ArrayCollection = _internal_winmo;
-        if (oldValue !== value)
-        {
-            if (value is ArrayCollection)
-            {
-                _internal_winmo = value;
-            }
-            else if (value is Array)
-            {
-                _internal_winmo = new ArrayCollection(value);
-            }
-            else if (value == null)
-            {
-                _internal_winmo = null;
-            }
-            else
-            {
-                throw new Error("value of winmo must be a collection");
-            }
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "winmo", oldValue, _internal_winmo));
-        }
-    }
-
     public function set winphone(value:*) : void
     {
         var oldValue:ArrayCollection = _internal_winphone;
@@ -528,18 +495,6 @@ public class _Super_LicenseAgents extends flash.events.EventDispatcher implement
         _model.invalidateDependentOnWindows();
     }
 
-    model_internal function setterListenerWinmo(value:flash.events.Event):void
-    {
-        if (value is mx.events.PropertyChangeEvent)
-        {
-            if (mx.events.PropertyChangeEvent(value).newValue)
-            {
-                mx.events.PropertyChangeEvent(value).newValue.addEventListener(mx.events.CollectionEvent.COLLECTION_CHANGE, model_internal::setterListenerWinmo);
-            }
-        }
-        _model.invalidateDependentOnWinmo();
-    }
-
     model_internal function setterListenerWinphone(value:flash.events.Event):void
     {
         if (value is mx.events.PropertyChangeEvent)
@@ -629,11 +584,6 @@ public class _Super_LicenseAgents extends flash.events.EventDispatcher implement
         {
             propertyValidity = false;
             com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_windowsValidationFailureMessages);
-        }
-        if (!_model.winmoIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_winmoValidationFailureMessages);
         }
         if (!_model.winphoneIsValid)
         {
@@ -941,33 +891,6 @@ public class _Super_LicenseAgents extends flash.events.EventDispatcher implement
 
         model_internal::_doValidationCacheOfWindows = validationFailures;
         model_internal::_doValidationLastValOfWindows = value;
-
-        return validationFailures;
-    }
-    
-    model_internal var _doValidationCacheOfWinmo : Array = null;
-    model_internal var _doValidationLastValOfWinmo : ArrayCollection;
-
-    model_internal function _doValidationForWinmo(valueIn:Object):Array
-    {
-        var value : ArrayCollection = valueIn as ArrayCollection;
-
-        if (model_internal::_doValidationCacheOfWinmo != null && model_internal::_doValidationLastValOfWinmo == value)
-           return model_internal::_doValidationCacheOfWinmo ;
-
-        _model.model_internal::_winmoIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.isWinmoAvailable && _internal_winmo == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "winmo is required"));
-        }
-
-        model_internal::_doValidationCacheOfWinmo = validationFailures;
-        model_internal::_doValidationLastValOfWinmo = value;
 
         return validationFailures;
     }

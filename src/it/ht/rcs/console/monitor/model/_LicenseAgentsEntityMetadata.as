@@ -23,16 +23,16 @@ internal class _LicenseAgentsEntityMetadata extends com.adobe.fiber.valueobjects
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("symbian", "blackberry", "osx", "total", "android", "ios", "desktop", "windows", "winmo", "winphone", "linux", "mobile");
+    model_internal static var allProperties:Array = new Array("symbian", "blackberry", "osx", "total", "android", "ios", "desktop", "windows", "winphone", "linux", "mobile");
     model_internal static var allAssociationProperties:Array = new Array();
-    model_internal static var allRequiredProperties:Array = new Array("symbian", "blackberry", "osx", "total", "android", "ios", "desktop", "windows", "winmo", "winphone", "linux", "mobile");
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("symbian", "blackberry", "osx", "total", "android", "ios", "desktop", "windows", "winmo", "winphone", "linux", "mobile");
+    model_internal static var allRequiredProperties:Array = new Array("symbian", "blackberry", "osx", "total", "android", "ios", "desktop", "windows", "winphone", "linux", "mobile");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("symbian", "blackberry", "osx", "total", "android", "ios", "desktop", "windows", "winphone", "linux", "mobile");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("symbian", "blackberry", "osx", "total", "android", "ios", "desktop", "windows", "winmo", "winphone", "linux", "mobile");
+    model_internal static var dataProperties:Array = new Array("symbian", "blackberry", "osx", "total", "android", "ios", "desktop", "windows", "winphone", "linux", "mobile");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("symbian", "blackberry", "osx", "total", "android", "ios", "desktop", "windows", "winmo", "winphone", "linux", "mobile");
+    model_internal static var nonDerivedProperties:Array = new Array("symbian", "blackberry", "osx", "total", "android", "ios", "desktop", "windows", "winphone", "linux", "mobile");
     model_internal static var derivedProperties:Array = new Array();
-    model_internal static var collectionProperties:Array = new Array("symbian", "blackberry", "osx", "android", "ios", "windows", "winmo", "winphone", "linux");
+    model_internal static var collectionProperties:Array = new Array("symbian", "blackberry", "osx", "android", "ios", "windows", "winphone", "linux");
     model_internal static var collectionBaseMap:Object;
     model_internal static var entityName:String = "LicenseAgents";
     model_internal static var dependentsOnMap:Object;
@@ -80,11 +80,6 @@ internal class _LicenseAgentsEntityMetadata extends com.adobe.fiber.valueobjects
     model_internal var _windowsIsValidCacheInitialized:Boolean = false;
     model_internal var _windowsValidationFailureMessages:Array;
     
-    model_internal var _winmoIsValid:Boolean;
-    model_internal var _winmoValidator:com.adobe.fiber.styles.StyleValidator;
-    model_internal var _winmoIsValidCacheInitialized:Boolean = false;
-    model_internal var _winmoValidationFailureMessages:Array;
-    
     model_internal var _winphoneIsValid:Boolean;
     model_internal var _winphoneValidator:com.adobe.fiber.styles.StyleValidator;
     model_internal var _winphoneIsValidCacheInitialized:Boolean = false;
@@ -118,7 +113,6 @@ internal class _LicenseAgentsEntityMetadata extends com.adobe.fiber.valueobjects
             model_internal::dependentsOnMap["ios"] = new Array();
             model_internal::dependentsOnMap["desktop"] = new Array();
             model_internal::dependentsOnMap["windows"] = new Array();
-            model_internal::dependentsOnMap["winmo"] = new Array();
             model_internal::dependentsOnMap["winphone"] = new Array();
             model_internal::dependentsOnMap["linux"] = new Array();
             model_internal::dependentsOnMap["mobile"] = new Array();
@@ -131,7 +125,6 @@ internal class _LicenseAgentsEntityMetadata extends com.adobe.fiber.valueobjects
             model_internal::collectionBaseMap["android"] = "Boolean";
             model_internal::collectionBaseMap["ios"] = "Boolean";
             model_internal::collectionBaseMap["windows"] = "Boolean";
-            model_internal::collectionBaseMap["winmo"] = "Boolean";
             model_internal::collectionBaseMap["winphone"] = "Boolean";
             model_internal::collectionBaseMap["linux"] = "Boolean";
         }
@@ -146,7 +139,6 @@ internal class _LicenseAgentsEntityMetadata extends com.adobe.fiber.valueobjects
         model_internal::propertyTypeMap["ios"] = "ArrayCollection";
         model_internal::propertyTypeMap["desktop"] = "Object";
         model_internal::propertyTypeMap["windows"] = "ArrayCollection";
-        model_internal::propertyTypeMap["winmo"] = "ArrayCollection";
         model_internal::propertyTypeMap["winphone"] = "ArrayCollection";
         model_internal::propertyTypeMap["linux"] = "ArrayCollection";
         model_internal::propertyTypeMap["mobile"] = "Object";
@@ -192,11 +184,6 @@ internal class _LicenseAgentsEntityMetadata extends com.adobe.fiber.valueobjects
         model_internal::_windowsValidator.requiredFieldError = "windows is required";
         //model_internal::_windowsValidator.source = model_internal::_instance;
         //model_internal::_windowsValidator.property = "windows";
-        model_internal::_winmoValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForWinmo);
-        model_internal::_winmoValidator.required = true;
-        model_internal::_winmoValidator.requiredFieldError = "winmo is required";
-        //model_internal::_winmoValidator.source = model_internal::_instance;
-        //model_internal::_winmoValidator.property = "winmo";
         model_internal::_winphoneValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForWinphone);
         model_internal::_winphoneValidator.required = true;
         model_internal::_winphoneValidator.requiredFieldError = "winphone is required";
@@ -487,12 +474,6 @@ internal class _LicenseAgentsEntityMetadata extends com.adobe.fiber.valueobjects
     }
 
     [Bindable(event="propertyChange")]
-    public function get isWinmoAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get isWinphoneAvailable():Boolean
     {
         return true;
@@ -576,14 +557,6 @@ internal class _LicenseAgentsEntityMetadata extends com.adobe.fiber.valueobjects
         {
             model_internal::_instance.model_internal::_doValidationCacheOfWindows = null;
             model_internal::calculateWindowsIsValid();
-        }
-    }
-    public function invalidateDependentOnWinmo():void
-    {
-        if (model_internal::_winmoIsValidCacheInitialized )
-        {
-            model_internal::_instance.model_internal::_doValidationCacheOfWinmo = null;
-            model_internal::calculateWinmoIsValid();
         }
     }
     public function invalidateDependentOnWinphone():void
@@ -1417,106 +1390,6 @@ internal class _LicenseAgentsEntityMetadata extends com.adobe.fiber.valueobjects
     }
 
     [Bindable(event="propertyChange")]   
-    public function get winmoStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    public function get winmoValidator() : StyleValidator
-    {
-        return model_internal::_winmoValidator;
-    }
-
-    model_internal function set _winmoIsValid_der(value:Boolean):void 
-    {
-        var oldValue:Boolean = model_internal::_winmoIsValid;         
-        if (oldValue !== value)
-        {
-            model_internal::_winmoIsValid = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "winmoIsValid", oldValue, value));
-        }                             
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get winmoIsValid():Boolean
-    {
-        if (!model_internal::_winmoIsValidCacheInitialized)
-        {
-            model_internal::calculateWinmoIsValid();
-        }
-
-        return model_internal::_winmoIsValid;
-    }
-
-    model_internal function calculateWinmoIsValid():void
-    {
-        var valRes:ValidationResultEvent = model_internal::_winmoValidator.validate(model_internal::_instance.winmo)
-        model_internal::_winmoIsValid_der = (valRes.results == null);
-        model_internal::_winmoIsValidCacheInitialized = true;
-        if (valRes.results == null)
-             model_internal::winmoValidationFailureMessages_der = emptyArray;
-        else
-        {
-            var _valFailures:Array = new Array();
-            for (var a:int = 0 ; a<valRes.results.length ; a++)
-            {
-                _valFailures.push(valRes.results[a].errorMessage);
-            }
-            model_internal::winmoValidationFailureMessages_der = _valFailures;
-        }
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get winmoValidationFailureMessages():Array
-    {
-        if (model_internal::_winmoValidationFailureMessages == null)
-            model_internal::calculateWinmoIsValid();
-
-        return _winmoValidationFailureMessages;
-    }
-
-    model_internal function set winmoValidationFailureMessages_der(value:Array) : void
-    {
-        var oldValue:Array = model_internal::_winmoValidationFailureMessages;
-
-        var needUpdate : Boolean = false;
-        if (oldValue == null)
-            needUpdate = true;
-    
-        // avoid firing the event when old and new value are different empty arrays
-        if (!needUpdate && (oldValue !== value && (oldValue.length > 0 || value.length > 0)))
-        {
-            if (oldValue.length == value.length)
-            {
-                for (var a:int=0; a < oldValue.length; a++)
-                {
-                    if (oldValue[a] !== value[a])
-                    {
-                        needUpdate = true;
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                needUpdate = true;
-            }
-        }
-
-        if (needUpdate)
-        {
-            model_internal::_winmoValidationFailureMessages = value;   
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "winmoValidationFailureMessages", oldValue, value));
-            // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
-            // the entire entity.
-            if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
-            {
-                model_internal::_instance.model_internal::isValid_der = model_internal::_instance.model_internal::calculateIsValid();
-            }
-        }
-    }
-
-    [Bindable(event="propertyChange")]   
     public function get winphoneStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
@@ -1872,10 +1745,6 @@ internal class _LicenseAgentsEntityMetadata extends com.adobe.fiber.valueobjects
             case("windows"):
             {
                 return windowsValidationFailureMessages;
-            }
-            case("winmo"):
-            {
-                return winmoValidationFailureMessages;
             }
             case("winphone"):
             {
