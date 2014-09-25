@@ -27,9 +27,9 @@ package it.ht.rcs.console.build.controller
       android: new ArrayCollection(),
       blackberry: new ArrayCollection(),
       ios: new ArrayCollection(),
-      symbian: new ArrayCollection(),
-      winmo: new ArrayCollection()
+      symbian: new ArrayCollection()
     };
+    
     [Bindable]
     public var symbianConf:SymbianConf;
     

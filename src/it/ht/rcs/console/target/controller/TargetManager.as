@@ -1,5 +1,6 @@
 package it.ht.rcs.console.target.controller
 {
+  import flash.events.Event;
   import flash.events.TimerEvent;
   import flash.utils.Timer;
   
@@ -14,10 +15,13 @@ package it.ht.rcs.console.target.controller
   import it.ht.rcs.console.push.PushController;
   import it.ht.rcs.console.push.PushEvent;
   import it.ht.rcs.console.search.controller.SearchManager;
+  import it.ht.rcs.console.search.model.Stat;
+  import it.ht.rcs.console.search.model.StatEvidence;
   import it.ht.rcs.console.target.model.Target;
   
   import mx.collections.ArrayCollection;
   import mx.collections.ListCollectionView;
+  import mx.events.CollectionEvent;
   import mx.rpc.events.FaultEvent;
   import mx.rpc.events.ResultEvent;
   
@@ -29,7 +33,16 @@ package it.ht.rcs.console.target.controller
     public function TargetManager()
     {
       super(Target);
-      PushController.instance.addEventListener(PushEvent.TARGET, onTargetPush);
+      //PushController.instance.addEventListener(PushEvent.TARGET, onTargetPush);
+    }
+    
+    public function listenPush():void
+    {
+      PushController.instance.addEventListener( PushEvent.TARGET, onTargetPush);
+    }
+    public function unlistenPush():void
+    {
+      PushController.instance.removeEventListener( PushEvent.TARGET, onTargetPush);
     }
     
     private static var _instance:TargetManager = new TargetManager();
@@ -51,7 +64,50 @@ package it.ht.rcs.console.target.controller
     
     private function onTargetPush(e:PushEvent):void
     {
-      TargetManager.instance.show(e.data.id as String);
+      //TargetManager.instance.show(e.data.id as String);
+      
+      var t:Target;
+      switch (e.data.action)
+      {
+        case PushEvent.CREATE:
+          trace("target creation");
+          
+          var evidence:StatEvidence=new StatEvidence(e.data.changes.stat.evidence)
+          e.data.changes.stat.evidence=evidence;
+          var dashboard:StatEvidence=new StatEvidence(e.data.changes.stat.dashboard)
+          e.data.changes.stat.dashboard=dashboard;
+          
+          var stat:Stat=new Stat(e.data.changes.stat)
+          e.data.changes.stat=stat
+          
+          t=new Target(e.data.changes);
+          if(!getItem(e.data.id))
+
+          addItem(t);
+          break;
+      
+        
+        case PushEvent.MODIFY:
+          trace("target update");
+          t = getItem(e.data.id)
+          _items.removeEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
+          for(var property:String in e.data.changes)
+          {
+            
+            t[property]= e.data.changes[property];
+          }
+          _items.addEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
+          break;
+        
+        
+        case PushEvent.DESTROY:
+          trace("target deletion");
+          _items.removeEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
+          removeItem(getItem(e.data.id))
+          _items.addEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
+          break;
+      }
+      dispatchEvent(new Event("dataPush"))
     }
     
     override protected function onItemRemove(item:*):void

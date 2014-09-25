@@ -53,6 +53,8 @@ public class _Super_FileSystemItem extends flash.events.EventDispatcher implemen
      */
     private var _internal__id : String;
     private var _internal_path : String;
+    private var _internal_created_at : int;
+    private var _internal_sent_at : int;
     private var _internal_depth : int;
 
     private static var emptyArray:Array = new Array();
@@ -92,6 +94,18 @@ public class _Super_FileSystemItem extends flash.events.EventDispatcher implemen
     }
 
     [Bindable(event="propertyChange")]
+    public function get created_at() : int
+    {
+        return _internal_created_at;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get sent_at() : int
+    {
+        return _internal_sent_at;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get depth() : int
     {
         return _internal_depth;
@@ -122,6 +136,26 @@ public class _Super_FileSystemItem extends flash.events.EventDispatcher implemen
         {
             _internal_path = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "path", oldValue, _internal_path));
+        }
+    }
+
+    public function set created_at(value:int) : void
+    {
+        var oldValue:int = _internal_created_at;
+        if (oldValue !== value)
+        {
+            _internal_created_at = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "created_at", oldValue, _internal_created_at));
+        }
+    }
+
+    public function set sent_at(value:int) : void
+    {
+        var oldValue:int = _internal_sent_at;
+        if (oldValue !== value)
+        {
+            _internal_sent_at = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "sent_at", oldValue, _internal_sent_at));
         }
     }
 
@@ -168,7 +202,6 @@ public class _Super_FileSystemItem extends flash.events.EventDispatcher implemen
     /**
      * derived property calculators
      */
-    
 
     /**
      * isValid calculator

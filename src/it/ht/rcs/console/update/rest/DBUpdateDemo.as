@@ -14,7 +14,7 @@ package it.ht.rcs.console.update.rest
     
     public function all(onResult:Function=null, onFault:Function=null):void
     {
-      var event:ResultEvent = new ResultEvent("update.index", false, true, new UpdateVersions({console: "-1", db: "9.1.0"}));
+      var event:ResultEvent = new ResultEvent("update.index", false, true, new UpdateVersions({console: "-1", db: "9.4.0"}));
       if (onResult != null) 
         onResult(event);
     }
@@ -29,7 +29,6 @@ package it.ht.rcs.console.update.rest
           new Core({name: 'ios', version: '2013010101'}),
           new Core({name: 'linux', version: '2013010101'}),
           new Core({name: 'symbian', version: '2013010101'}),
-          new Core({name: 'winmo', version: '2013010101'}),
           new Core({name: 'winphone', version: '2013010101'})
         ]));
       if (onResult != null) 

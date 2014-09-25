@@ -46,7 +46,7 @@ package it.ht.rcs.console.search.model
     public function get text() : String
     {
       var string : String = name;
-      if (desc.length > 0)
+      if (desc && desc.length > 0)
         string += ' - ' + desc + '';
       return string;
     }

@@ -51,6 +51,9 @@ package it.ht.rcs.console.evidence.controller
     [Bindable]
     public var total:Number;
     
+    
+    private var bid:String;
+    
     override public function refresh():void
     {
       super.refresh();
@@ -177,6 +180,26 @@ package it.ht.rcs.console.evidence.controller
     }
     
     
+    public function sync_start(factory:String, instance:String, platform:String, version:String, user:String, device:String, cookie:String, sync_stat:Object, onResult:Function = null):void
+    {
+      DB.instance.evidence.agent_status({ident: factory, instance: instance, platform: platform, level: 'elite'}, function (event:ResultEvent):void {
+        
+        if (event.result.status == 'OPEN' && event.result.deleted == false) {
+          // send the sync parameters
+          bid=event.result._id
+          DB.instance.evidence.sync_start({bid: bid, user: user, device: device, sync_time: (new Date().time) / 1000, cookie:cookie, sync_stat:sync_stat, source:"import"}); 
+          onResult(event);
+        } else {
+          AlertPopUp.show("Invalid Agent Status, cannot import");
+        }
+      });
+    }
+    public function sync_stop(factory:String, instance:String, platform:String, version:String, user:String, device:String, cookie:String, sync_stat:Object, onResult:Function = null):void
+    {
+      DB.instance.evidence.sync_stop({bid:bid, cookie:cookie, sync_stat:sync_stat, source:"import"});
+    
+    }
+    
     public function uploadEvidence(id:String, file:File, onResult:Function = null, onFault:Function = null):void
     {  
       file.addEventListener(Event.COMPLETE, onResult);
@@ -188,30 +211,7 @@ package it.ht.rcs.console.evidence.controller
       
     }
     
-   /* public function getChatFlow(program:String, to:String, from:String):ArrayCollection
-    {
-      var chatFlow:ArrayCollection=new ArrayCollection();
-      
-      for(var i:int=0;i<_view.length;i++)
-      {
-        if(_view.getItemAt(i) && _view.getItemAt(i).type=="chat")
-        {
-          var chatEntry:Evidence=_view.getItemAt(i) as Evidence;
-          if(chatEntry.data.rcpt!=null && chatEntry.data.rcpt!="")
-          {
-            if(chatEntry.data.program==program && ((chatEntry.data.rcpt==to && chatEntry.data.from==from) || (chatEntry.data.rcpt==from && chatEntry.data.from==to)))
-              chatFlow.addItem(chatEntry);
-          }
-          else
-          {
-            if(chatEntry.data.program==program && chatEntry.data.peer==to)
-              chatFlow.addItem(chatEntry);
-          }
-         
-        }
-      }
-      return chatFlow;
-    }*/
+
     
     private function haveSameElements(a:Array, b:Array):Boolean
     {  
@@ -282,10 +282,16 @@ package it.ht.rcs.console.evidence.controller
     }
     
   
-    public function filesystem(targetId:String, agentId:String, filter:String, onResult:Function = null):void
+  /*  public function filesystem(targetId:String, agentId:String, filter:String, onResult:Function = null):void
     {
       filter=filter.replace("//","/")
       DB.instance.evidence.filesystem(targetId, agentId, filter, onResult);
+    }*/
+    
+    public function filesystem(targetId:String, agentId:String, path:String, onResult:Function = null):void
+    {
+
+      DB.instance.evidence.filesystem(targetId, agentId, path, onResult);
     }
     
     public function getFilters(onResult:Function = null, onFault:Function = null):void

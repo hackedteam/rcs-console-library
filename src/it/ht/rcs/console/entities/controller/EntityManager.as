@@ -19,6 +19,7 @@ package it.ht.rcs.console.entities.controller
   
   import mx.collections.ArrayCollection;
   import mx.collections.ListCollectionView;
+  import mx.events.CollectionEvent;
   import mx.rpc.events.FaultEvent;
   import mx.rpc.events.ResultEvent;
 
@@ -38,6 +39,17 @@ package it.ht.rcs.console.entities.controller
       return _instance;
     }
 
+    
+    public function listenPush():void
+    {
+      PushController.instance.addEventListener( PushEvent.ENTITY, onEntityPush);
+    }
+    public function unlistenPush():void
+    {
+      PushController.instance.removeEventListener( PushEvent.ENTITY, onEntityPush);
+    }
+    
+    
     override public function refresh():void
     {
       super.refresh();
@@ -136,10 +148,55 @@ package it.ht.rcs.console.entities.controller
 
     private function onEntityPush(e:PushEvent):void
     {
-      EntityManager.instance.show(e.data.id as String);
+      trace("EntityPush")
+     // EntityManager.instance.show(e.data.id as String);
 
         //EntityManager.instance.refresh();
         //EntityManager.instance.dispatchEvent(new Event(e.data.action));
+      
+      var entity:Entity;
+      switch (e.data.action)
+      {
+        case PushEvent.CREATE:
+          trace("entity creation");
+          var position_attr:Position_attr=new Position_attr(e.data.changes.position_attr)
+          e.data.changes.position_attr=position_attr;
+          var position:Position=new Position(e.data.changes.position)
+          e.data.changes.position=position;
+          entity=new Entity(e.data.changes);
+          if(!getItem(e.data.id))
+          addItem(entity);
+          break;
+        
+        
+        case PushEvent.MODIFY:
+          trace("entity update");
+          entity = getItem(e.data.id)
+          if(!entity)
+            return;
+          _items.removeEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
+
+          if(e.data.changes.position)
+          {
+            e.data.changes.position=new Position(e.data.changes.position);
+          }
+          
+          for(var property:String in e.data.changes)
+          {
+            if(entity[property])
+            entity[property]= e.data.changes[property];
+          }
+          _items.addEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
+          break;
+        
+        
+        case PushEvent.DESTROY:
+          trace("entity deletion");
+          _items.removeEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
+          removeItem(getItem(e.data.id))
+          _items.addEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
+          break;
+      }
      
     }
 

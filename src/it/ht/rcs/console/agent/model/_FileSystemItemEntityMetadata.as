@@ -22,14 +22,14 @@ internal class _FileSystemItemEntityMetadata extends com.adobe.fiber.valueobject
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("_id", "path", "depth");
+    model_internal static var allProperties:Array = new Array("_id", "path", "created_at", "sent_at", "depth");
     model_internal static var allAssociationProperties:Array = new Array();
-    model_internal static var allRequiredProperties:Array = new Array("_id", "path", "depth");
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("_id", "path", "depth");
+    model_internal static var allRequiredProperties:Array = new Array("_id", "path", "created_at", "sent_at", "depth");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("_id", "path", "created_at", "sent_at", "depth");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("_id", "path", "depth");
+    model_internal static var dataProperties:Array = new Array("_id", "path", "created_at", "sent_at", "depth");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("_id", "path", "depth");
+    model_internal static var nonDerivedProperties:Array = new Array("_id", "path", "created_at", "sent_at", "depth");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array();
     model_internal static var collectionBaseMap:Object;
@@ -61,6 +61,8 @@ internal class _FileSystemItemEntityMetadata extends com.adobe.fiber.valueobject
             model_internal::dependentsOnMap = new Object();
             model_internal::dependentsOnMap["_id"] = new Array();
             model_internal::dependentsOnMap["path"] = new Array();
+            model_internal::dependentsOnMap["created_at"] = new Array();
+            model_internal::dependentsOnMap["sent_at"] = new Array();
             model_internal::dependentsOnMap["depth"] = new Array();
 
             // collection base map
@@ -71,6 +73,8 @@ internal class _FileSystemItemEntityMetadata extends com.adobe.fiber.valueobject
         model_internal::propertyTypeMap = new Object();
         model_internal::propertyTypeMap["_id"] = "String";
         model_internal::propertyTypeMap["path"] = "String";
+        model_internal::propertyTypeMap["created_at"] = "int";
+        model_internal::propertyTypeMap["sent_at"] = "int";
         model_internal::propertyTypeMap["depth"] = "int";
 
         model_internal::_instance = value;
@@ -323,6 +327,18 @@ internal class _FileSystemItemEntityMetadata extends com.adobe.fiber.valueobject
     }
 
     [Bindable(event="propertyChange")]
+    public function get isCreated_atAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get isSent_atAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get isDepthAvailable():Boolean
     {
         return true;
@@ -552,6 +568,18 @@ internal class _FileSystemItemEntityMetadata extends com.adobe.fiber.valueobject
                 model_internal::_instance.model_internal::isValid_der = model_internal::_instance.model_internal::calculateIsValid();
             }
         }
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get created_atStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get sent_atStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
     }
 
     [Bindable(event="propertyChange")]   

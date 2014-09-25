@@ -1,4 +1,4 @@
-#Wed Jul 06 16:27:45 CEST 2011
+#Wed Aug 27 14:07:17 CEST 2014
 ASRearr_AddDefaultHeaderForProperties=1
 ASRearr_AddDefaultHeaderForStaticProperties=1
 ASRearr_BlankLinesBeforeElement=
@@ -28,7 +28,7 @@ ASRearr_ModifierOrder_Property=<Namespace>,override,native,public,private,protec
 ASRearr_MoveImportsOutsideClass=true
 ASRearr_RemoveExistingCopyrightHeaders=false
 ASRearr_RemoveExistingSectionHeaders=false
-ASRearr_SectionHeaderMap=\#\n\#Wed Jul 06 16\:27\:45 CEST 2011\n
+ASRearr_SectionHeaderMap=\#\n\#Wed Aug 27 14\:07\:17 CEST 2014\n
 ASRearr_SortGettersAndSettersWithAssociatedProperties=true
 ASRearr_SortGettersAndSettersWithAssociatedStaticProperties=true
 ASRearr_UseCopyrightGeneration=false
@@ -153,7 +153,7 @@ Actionscript.wrapExpressionMode=1
 Actionscript.wrapIndentStyle=1000
 Actionscript.wrapMethodCallMode=1
 Actionscript.wrapMethodDeclMode=1
-Flex.useTabs=false
+Flex.useTabs=true
 MXML.KeepScriptCDataOnSameLine=false
 MXML.ScriptCDataIndentTabs=1
 MXML.ScriptIndentTabs=1
@@ -194,5 +194,5 @@ MXML.useFormattingOfBoundAttributes=false
 MXML.useSpacesInsideAttributeBraces=false
 MXML.useTagsDoNotFormatInside=false
 MXML.wrapIndentStyle=1001
-UseProjectSettings=true
+UseProjectSettings=false
 eclipse.preferences.version=1

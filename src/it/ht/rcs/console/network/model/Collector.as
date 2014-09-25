@@ -7,6 +7,13 @@ package it.ht.rcs.console.network.model
   public class Collector extends _Super_Collector
   {
     
+    
+ 
+    public function get isUpdatable():Boolean
+    {
+        return version>=2014093001
+    }
+    
     public static function defaultCollector():Object
     {
       return {
@@ -16,8 +23,8 @@ package it.ht.rcs.console.network.model
         internal_address: '',
         desc: '',
         name: DB.i18n.get('NEW_ANONYMIZER'),
-        poll: false,
-        port: 443,
+        enabled: true,
+        port: 80,
         type: 'remote',
         version: '',
         next: [null],
@@ -33,7 +40,7 @@ package it.ht.rcs.console.network.model
         internal_address = data.internal_address;
         desc = data.desc;
         name = data.name;
-        poll = data.poll;
+        enabled = data.enabled;
         port = data.port;
         type = data.type;
         version = data.version;

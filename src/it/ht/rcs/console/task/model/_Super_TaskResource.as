@@ -135,7 +135,6 @@ public class _Super_TaskResource extends flash.events.EventDispatcher implements
     /**
      * derived property calculators
      */
-    
 
     /**
      * isValid calculator
