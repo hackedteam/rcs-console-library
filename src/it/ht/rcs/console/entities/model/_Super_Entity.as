@@ -664,6 +664,7 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
     /**
      * derived property calculators
      */
+    
 
     /**
      * isValid calculator

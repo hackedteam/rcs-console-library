@@ -112,7 +112,6 @@ package it.ht.rcs.console.agent.rest
     }
     
 
-    
     public function destroy_filesystem(agent:Agent, filesystemId:String, onResult:Function=null, onFault:Function=null):void
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
@@ -191,6 +190,12 @@ package it.ht.rcs.console.agent.rest
     {
       var resp:CallResponder = DB.getCallResponder(onResult, onFault);
       resp.token = can_upgrade_(JSON.stringify({ _id: agent._id}));
+    }
+    
+    public function soldier_version(agent:Agent, onResult:Function=null, onFault:Function=null):void
+    {
+      var resp:CallResponder = DB.getCallResponder(onResult, onFault);
+      resp.token = soldier_version_(JSON.stringify({platform: agent.platform}));
     }
     
     /**

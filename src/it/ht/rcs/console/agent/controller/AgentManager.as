@@ -312,6 +312,11 @@ package it.ht.rcs.console.agent.controller
 		{
 			DB.instance.agent.can_upgrade(agent, resultCallback, faultCallback);
 		}
+    
+    public function soldier_version(agent:Agent, resultCallback:Function, faultCallback:Function=null):void
+    {
+      DB.instance.agent.soldier_version(agent, resultCallback, faultCallback);
+    }
 
 		public function updateConfig(agent:Agent, config:Config, desc:String, callback:Function=null):void
 		{

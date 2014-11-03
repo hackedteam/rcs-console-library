@@ -197,6 +197,7 @@ public class _Super_Template extends flash.events.EventDispatcher implements com
     /**
      * derived property calculators
      */
+    
 
     /**
      * isValid calculator
