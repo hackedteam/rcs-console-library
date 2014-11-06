@@ -60,7 +60,6 @@ public class _Super_InjectorRule extends flash.events.EventDispatcher implements
     private var _internal_disable_sync : Boolean;
     private var _internal_ident_param : String;
     private var _internal_probability : int;
-    private var _internal_scout : Boolean;
 
     private static var emptyArray:Array = new Array();
 
@@ -160,12 +159,6 @@ public class _Super_InjectorRule extends flash.events.EventDispatcher implements
     public function get probability() : int
     {
         return _internal_probability;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get scout() : Boolean
-    {
-        return _internal_scout;
     }
 
     public function clearAssociations() : void
@@ -321,16 +314,6 @@ public class _Super_InjectorRule extends flash.events.EventDispatcher implements
         }
     }
 
-    public function set scout(value:Boolean) : void
-    {
-        var oldValue:Boolean = _internal_scout;
-        if (oldValue !== value)
-        {
-            _internal_scout = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "scout", oldValue, _internal_scout));
-        }
-    }
-
     /**
      * Data/source property setter listeners
      *
@@ -354,7 +337,6 @@ public class _Super_InjectorRule extends flash.events.EventDispatcher implements
     /**
      * derived property calculators
      */
-    
 
     /**
      * isValid calculator

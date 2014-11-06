@@ -25,6 +25,7 @@ package it.ht.rcs.console.network.model
         name: DB.i18n.get('NEW_ANONYMIZER'),
         enabled: true,
         port: 80,
+        demo: false,
         type: 'remote',
         version: '',
         next: [null],
@@ -47,6 +48,7 @@ package it.ht.rcs.console.network.model
         next = data.next;
         prev = data.prev;
         good = data.good;
+        demo = data.demo;
       }
     }
     

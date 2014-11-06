@@ -37,7 +37,6 @@ package it.ht.rcs.console.network.model
         probability = data.probability;
         resource = data.resource;
         target_id = data.target_id;
-        scout = data.scout;
       }
     }
     

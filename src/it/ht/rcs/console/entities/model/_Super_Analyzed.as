@@ -145,7 +145,6 @@ public class _Super_Analyzed extends flash.events.EventDispatcher implements com
     /**
      * derived property calculators
      */
-    
 
     /**
      * isValid calculator

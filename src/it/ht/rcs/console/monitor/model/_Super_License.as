@@ -72,7 +72,7 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
     private var _internal_connectors : Boolean;
     private var _internal_serial : String;
     private var _internal_rmi : ArrayCollection;
-    private var _internal_scout : Boolean;
+    private var _internal_elite : Boolean;
     private var _internal_ocr : Boolean;
     private var _internal_hostname_sync : Boolean;
     private var _internal_translation : Boolean;
@@ -206,9 +206,9 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
     }
 
     [Bindable(event="propertyChange")]
-    public function get scout() : Boolean
+    public function get elite() : Boolean
     {
-        return _internal_scout;
+        return _internal_elite;
     }
 
     [Bindable(event="propertyChange")]
@@ -439,13 +439,13 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
         }
     }
 
-    public function set scout(value:Boolean) : void
+    public function set elite(value:Boolean) : void
     {
-        var oldValue:Boolean = _internal_scout;
+        var oldValue:Boolean = _internal_elite;
         if (oldValue !== value)
         {
-            _internal_scout = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "scout", oldValue, _internal_scout));
+            _internal_elite = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "elite", oldValue, _internal_elite));
         }
     }
 
@@ -576,7 +576,6 @@ public class _Super_License extends flash.events.EventDispatcher implements com.
     /**
      * derived property calculators
      */
-    
 
     /**
      * isValid calculator

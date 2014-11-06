@@ -25,14 +25,14 @@ internal class _LicenseEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("users", "exploits", "deletion", "archive", "maintenance", "agents", "alerting", "nia", "profiling", "type", "expiry", "collectors", "shards", "connectors", "serial", "rmi", "scout", "ocr", "hostname_sync", "translation", "modify", "intelligence");
+    model_internal static var allProperties:Array = new Array("users", "exploits", "deletion", "archive", "maintenance", "agents", "alerting", "nia", "profiling", "type", "expiry", "collectors", "shards", "connectors", "serial", "rmi", "elite", "ocr", "hostname_sync", "translation", "modify", "intelligence");
     model_internal static var allAssociationProperties:Array = new Array();
-    model_internal static var allRequiredProperties:Array = new Array("users", "exploits", "deletion", "archive", "maintenance", "agents", "alerting", "nia", "profiling", "type", "expiry", "collectors", "shards", "connectors", "serial", "rmi", "scout", "ocr", "hostname_sync", "translation", "modify", "intelligence");
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("users", "exploits", "deletion", "archive", "maintenance", "agents", "alerting", "nia", "profiling", "type", "expiry", "collectors", "shards", "connectors", "serial", "rmi", "scout", "ocr", "hostname_sync", "translation", "modify", "intelligence");
+    model_internal static var allRequiredProperties:Array = new Array("users", "exploits", "deletion", "archive", "maintenance", "agents", "alerting", "nia", "profiling", "type", "expiry", "collectors", "shards", "connectors", "serial", "rmi", "elite", "ocr", "hostname_sync", "translation", "modify", "intelligence");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("users", "exploits", "deletion", "archive", "maintenance", "agents", "alerting", "nia", "profiling", "type", "expiry", "collectors", "shards", "connectors", "serial", "rmi", "elite", "ocr", "hostname_sync", "translation", "modify", "intelligence");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("users", "exploits", "deletion", "archive", "maintenance", "agents", "alerting", "nia", "profiling", "type", "expiry", "collectors", "shards", "connectors", "serial", "rmi", "scout", "ocr", "hostname_sync", "translation", "modify", "intelligence");
+    model_internal static var dataProperties:Array = new Array("users", "exploits", "deletion", "archive", "maintenance", "agents", "alerting", "nia", "profiling", "type", "expiry", "collectors", "shards", "connectors", "serial", "rmi", "elite", "ocr", "hostname_sync", "translation", "modify", "intelligence");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("users", "exploits", "deletion", "archive", "maintenance", "agents", "alerting", "nia", "profiling", "type", "expiry", "collectors", "shards", "connectors", "serial", "rmi", "scout", "ocr", "hostname_sync", "translation", "modify", "intelligence");
+    model_internal static var nonDerivedProperties:Array = new Array("users", "exploits", "deletion", "archive", "maintenance", "agents", "alerting", "nia", "profiling", "type", "expiry", "collectors", "shards", "connectors", "serial", "rmi", "elite", "ocr", "hostname_sync", "translation", "modify", "intelligence");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array("nia", "rmi");
     model_internal static var collectionBaseMap:Object;
@@ -108,7 +108,7 @@ internal class _LicenseEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
             model_internal::dependentsOnMap["connectors"] = new Array();
             model_internal::dependentsOnMap["serial"] = new Array();
             model_internal::dependentsOnMap["rmi"] = new Array();
-            model_internal::dependentsOnMap["scout"] = new Array();
+            model_internal::dependentsOnMap["elite"] = new Array();
             model_internal::dependentsOnMap["ocr"] = new Array();
             model_internal::dependentsOnMap["hostname_sync"] = new Array();
             model_internal::dependentsOnMap["translation"] = new Array();
@@ -139,7 +139,7 @@ internal class _LicenseEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
         model_internal::propertyTypeMap["connectors"] = "Boolean";
         model_internal::propertyTypeMap["serial"] = "String";
         model_internal::propertyTypeMap["rmi"] = "ArrayCollection";
-        model_internal::propertyTypeMap["scout"] = "Boolean";
+        model_internal::propertyTypeMap["elite"] = "Boolean";
         model_internal::propertyTypeMap["ocr"] = "Boolean";
         model_internal::propertyTypeMap["hostname_sync"] = "Boolean";
         model_internal::propertyTypeMap["translation"] = "Boolean";
@@ -510,7 +510,7 @@ internal class _LicenseEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     }
 
     [Bindable(event="propertyChange")]
-    public function get isScoutAvailable():Boolean
+    public function get isEliteAvailable():Boolean
     {
         return true;
     }
@@ -1468,7 +1468,7 @@ internal class _LicenseEntityMetadata extends com.adobe.fiber.valueobjects.Abstr
     }
 
     [Bindable(event="propertyChange")]   
-    public function get scoutStyle():com.adobe.fiber.styles.Style
+    public function get eliteStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }

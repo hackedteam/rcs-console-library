@@ -34,7 +34,6 @@ package it.ht.rcs.console.network.model
         address = data.address;
         desc = data.desc;
         name = data.name;
-        poll = data.poll;
         port = data.port;
         redirect = data.redirect;
         redirection_tag = data.redirection_tag;

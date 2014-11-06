@@ -31,10 +31,10 @@ public class License extends _Super_License
       type = data.type;
       users = data.users;
       shards = data.shards;
-      scout=data.scout;
-      ocr=data.ocr;
-      hostname_sync=data.hostname_sync;
-      translation=data.translation;
+      elite = data.elite;
+      ocr = data.ocr;
+      hostname_sync = data.hostname_sync;
+      translation = data.translation;
       modify = data.modify;
       intelligence =data.intelligence;
     }
