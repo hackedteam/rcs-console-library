@@ -19,7 +19,7 @@ import mx.events.PropertyChangeEvent;
 use namespace model_internal;
 
 [ExcludeClass]
-internal class _LinkInfoEntityMetadata extends com.adobe.fiber.valueobjects.AbstractEntityMetadata
+internal class _InfoEntityMetadata extends com.adobe.fiber.valueobjects.AbstractEntityMetadata
 {
     private static var emptyArray:Array = new Array();
 
@@ -34,7 +34,7 @@ internal class _LinkInfoEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array("viber", "mail", "bbm", "phone", "msn", "gtalk", "line", "telegram", "url", "whatsapp", "twitter", "facebook", "money", "gmail", "adium", "wechat", "skype", "yahoo");
     model_internal static var collectionBaseMap:Object;
-    model_internal static var entityName:String = "LinkInfo";
+    model_internal static var entityName:String = "Info";
     model_internal static var dependentsOnMap:Object;
     model_internal static var dependedOnServices:Array = new Array();
     model_internal static var propertyTypeMap:Object;
@@ -130,10 +130,10 @@ internal class _LinkInfoEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     model_internal var _yahooIsValidCacheInitialized:Boolean = false;
     model_internal var _yahooValidationFailureMessages:Array;
 
-    model_internal var _instance:_Super_LinkInfo;
+    model_internal var _instance:_Super_Info;
     model_internal static var _nullStyle:com.adobe.fiber.styles.Style = new com.adobe.fiber.styles.Style();
 
-    public function _LinkInfoEntityMetadata(value : _Super_LinkInfo)
+    public function _InfoEntityMetadata(value : _Super_Info)
     {
         // initialize property maps
         if (model_internal::dependentsOnMap == null)
@@ -343,7 +343,7 @@ internal class _LinkInfoEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     override public function getDependants(propertyName:String):Array
     {
        if (model_internal::nonDerivedProperties.indexOf(propertyName) == -1)
-            throw new Error(propertyName + " is not a data property of entity LinkInfo");
+            throw new Error(propertyName + " is not a data property of entity Info");
             
        return model_internal::dependentsOnMap[propertyName] as Array;  
     }
@@ -361,7 +361,7 @@ internal class _LinkInfoEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     override public function getCollectionBase(propertyName:String):String
     {
         if (model_internal::collectionProperties.indexOf(propertyName) == -1)
-            throw new Error(propertyName + " is not a collection property of entity LinkInfo");
+            throw new Error(propertyName + " is not a collection property of entity Info");
 
         return model_internal::collectionBaseMap[propertyName];
     }
@@ -369,7 +369,7 @@ internal class _LinkInfoEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     override public function getPropertyType(propertyName:String):String
     {
         if (model_internal::allProperties.indexOf(propertyName) == -1)
-            throw new Error(propertyName + " is not a property of LinkInfo");
+            throw new Error(propertyName + " is not a property of Info");
 
         return model_internal::propertyTypeMap[propertyName];
     }
@@ -383,7 +383,7 @@ internal class _LinkInfoEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     {
         if (model_internal::allProperties.indexOf(propertyName) == -1)
         {
-            throw new Error(propertyName + " does not exist for entity LinkInfo");
+            throw new Error(propertyName + " does not exist for entity Info");
         }
 
         return model_internal::_instance[propertyName];
@@ -393,7 +393,7 @@ internal class _LinkInfoEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     {
         if (model_internal::nonDerivedProperties.indexOf(propertyName) == -1)
         {
-            throw new Error(propertyName + " is not a modifiable property of entity LinkInfo");
+            throw new Error(propertyName + " is not a modifiable property of entity Info");
         }
 
         model_internal::_instance[propertyName] = value;
@@ -425,7 +425,7 @@ internal class _LinkInfoEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     {
         if (model_internal::allProperties.indexOf(propertyName) == -1)
         {
-            throw new Error(propertyName + " does not exist for entity LinkInfo");
+            throw new Error(propertyName + " does not exist for entity Info");
         }
 
         if (model_internal::allAlwaysAvailableProperties.indexOf(propertyName) != -1)

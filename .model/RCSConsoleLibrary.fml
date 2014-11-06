@@ -5408,6 +5408,25 @@
       </annotation>
       <parameter name="strXml" type="string"/>
     </function>
+    <function name="Operation1" return-type="Link">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/entity/test</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">http://localhost:4444/entity/test</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">first_seen,level,le,_id,versus,rel,type,last_seen,info</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+      </annotation>
+    </function>
   </service>
   <entity name="Flow">
     <annotation name="EntityProperties">
@@ -5614,7 +5633,7 @@
     <property name="rel" type="integer" required="true"/>
     <property name="type" type="string" required="true"/>
     <property name="last_seen" type="integer" required="true"/>
-    <property name="info" type="opaque" required="true"/>
+    <property name="info" type="LinkInfo" required="true"/>
   </entity>
   <entity name="Analyzed">
     <annotation name="EntityProperties">
@@ -5670,6 +5689,38 @@
     <property name="count" type="integer" required="true"/>
     <property name="rcpt" type="string" required="true"/>
     <property name="from" type="string" required="true"/>
+  </entity>
+  <entity name="Info">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Info</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBEntity</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.entities.model</item>
+    </annotation>
+    <property name="viber" type="opaque[]" required="true"/>
+    <property name="mail" type="opaque[]" required="true"/>
+    <property name="bbm" type="opaque[]" required="true"/>
+    <property name="phone" type="opaque[]" required="true"/>
+    <property name="msn" type="opaque[]" required="true"/>
+    <property name="gtalk" type="opaque[]" required="true"/>
+    <property name="line" type="opaque[]" required="true"/>
+    <property name="telegram" type="opaque[]" required="true"/>
+    <property name="url" type="opaque[]" required="true"/>
+    <property name="whatsapp" type="opaque[]" required="true"/>
+    <property name="twitter" type="opaque[]" required="true"/>
+    <property name="facebook" type="opaque[]" required="true"/>
+    <property name="money" type="opaque[]" required="true"/>
+    <property name="gmail" type="opaque[]" required="true"/>
+    <property name="adium" type="opaque[]" required="true"/>
+    <property name="wechat" type="opaque[]" required="true"/>
+    <property name="skype" type="opaque[]" required="true"/>
+    <property name="yahoo" type="opaque[]" required="true"/>
   </entity>
   <entity name="Positions">
     <annotation name="EntityProperties">

@@ -10,6 +10,7 @@ import com.adobe.fiber.util.FiberUtils;
 import com.adobe.fiber.valueobjects.IValueObject;
 import flash.events.Event;
 import flash.events.EventDispatcher;
+import it.ht.rcs.console.entities.model.LinkInfo;
 import mx.binding.utils.ChangeWatcher;
 import mx.collections.ArrayCollection;
 import mx.events.PropertyChangeEvent;
@@ -32,6 +33,7 @@ public class _Super_Link extends flash.events.EventDispatcher implements com.ado
 
     model_internal static function initRemoteClassAliasAllRelated() : void
     {
+        it.ht.rcs.console.entities.model.LinkInfo.initRemoteClassAliasSingleChild();
     }
 
     model_internal var _dminternal_model : _LinkEntityMetadata;
@@ -59,7 +61,7 @@ public class _Super_Link extends flash.events.EventDispatcher implements com.ado
     private var _internal_rel : int;
     private var _internal_type : String;
     private var _internal_last_seen : int;
-    private var _internal_info : Object;
+    private var _internal_info : it.ht.rcs.console.entities.model.LinkInfo;
 
     private static var emptyArray:Array = new Array();
 
@@ -138,7 +140,7 @@ public class _Super_Link extends flash.events.EventDispatcher implements com.ado
     }
 
     [Bindable(event="propertyChange")]
-    public function get info() : Object
+    public function get info() : it.ht.rcs.console.entities.model.LinkInfo
     {
         return _internal_info;
     }
@@ -231,9 +233,9 @@ public class _Super_Link extends flash.events.EventDispatcher implements com.ado
         }
     }
 
-    public function set info(value:Object) : void
+    public function set info(value:it.ht.rcs.console.entities.model.LinkInfo) : void
     {
-        var oldValue:Object = _internal_info;
+        var oldValue:it.ht.rcs.console.entities.model.LinkInfo = _internal_info;
         if (oldValue !== value)
         {
             _internal_info = value;
@@ -294,6 +296,7 @@ public class _Super_Link extends flash.events.EventDispatcher implements com.ado
     /**
      * derived property calculators
      */
+    
 
     /**
      * isValid calculator
@@ -549,11 +552,11 @@ public class _Super_Link extends flash.events.EventDispatcher implements com.ado
     }
     
     model_internal var _doValidationCacheOfInfo : Array = null;
-    model_internal var _doValidationLastValOfInfo : Object;
+    model_internal var _doValidationLastValOfInfo : it.ht.rcs.console.entities.model.LinkInfo;
 
     model_internal function _doValidationForInfo(valueIn:Object):Array
     {
-        var value : Object = valueIn as Object;
+        var value : it.ht.rcs.console.entities.model.LinkInfo = valueIn as it.ht.rcs.console.entities.model.LinkInfo;
 
         if (model_internal::_doValidationCacheOfInfo != null && model_internal::_doValidationLastValOfInfo == value)
            return model_internal::_doValidationCacheOfInfo ;

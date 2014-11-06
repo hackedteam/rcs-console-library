@@ -1,6 +1,6 @@
 /**
  * This is a generated class and is not intended for modification.  To customize behavior
- * of this value object you may modify the generated sub-class of this class - LinkInfo.as.
+ * of this value object you may modify the generated sub-class of this class - Info.as.
  */
 
 package it.ht.rcs.console.entities.model
@@ -25,7 +25,7 @@ import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 use namespace model_internal;
 
 [ExcludeClass]
-public class _Super_LinkInfo extends flash.events.EventDispatcher implements com.adobe.fiber.valueobjects.IValueObject
+public class _Super_Info extends flash.events.EventDispatcher implements com.adobe.fiber.valueobjects.IValueObject
 {
     model_internal static function initRemoteClassAliasSingle(cz:Class) : void
     {
@@ -35,7 +35,7 @@ public class _Super_LinkInfo extends flash.events.EventDispatcher implements com
     {
     }
 
-    model_internal var _dminternal_model : _LinkInfoEntityMetadata;
+    model_internal var _dminternal_model : _InfoEntityMetadata;
     model_internal var _changedObjects:mx.collections.ArrayCollection = new ArrayCollection();
 
     public function getChangedObjects() : Array
@@ -81,9 +81,9 @@ public class _Super_LinkInfo extends flash.events.EventDispatcher implements com
 
     model_internal var _changeWatcherArray:Array = new Array();
 
-    public function _Super_LinkInfo()
+    public function _Super_Info()
     {
-        _model = new _LinkInfoEntityMetadata(this);
+        _model = new _InfoEntityMetadata(this);
 
         // Bind to own data or source properties for cache invalidation triggering
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "viber", model_internal::setterListenerViber));
@@ -1044,14 +1044,14 @@ public class _Super_LinkInfo extends flash.events.EventDispatcher implements com
 
     [Transient]
     [Bindable(event="propertyChange")]
-    public function get _model() : _LinkInfoEntityMetadata
+    public function get _model() : _InfoEntityMetadata
     {
         return model_internal::_dminternal_model;
     }
 
-    public function set _model(value : _LinkInfoEntityMetadata) : void
+    public function set _model(value : _InfoEntityMetadata) : void
     {
-        var oldValue : _LinkInfoEntityMetadata = model_internal::_dminternal_model;
+        var oldValue : _InfoEntityMetadata = model_internal::_dminternal_model;
         if (oldValue !== value)
         {
             model_internal::_dminternal_model = value;

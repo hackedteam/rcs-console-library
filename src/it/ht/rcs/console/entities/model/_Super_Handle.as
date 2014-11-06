@@ -266,6 +266,7 @@ public class _Super_Handle extends flash.events.EventDispatcher implements com.a
     /**
      * derived property calculators
      */
+    
 
     /**
      * isValid calculator

@@ -283,6 +283,7 @@ public class _Super_PublicDocument extends flash.events.EventDispatcher implemen
     /**
      * derived property calculators
      */
+    
 
     /**
      * isValid calculator

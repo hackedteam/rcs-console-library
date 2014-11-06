@@ -10,6 +10,7 @@ import com.adobe.fiber.styles.StyleValidator;
 import com.adobe.fiber.valueobjects.AbstractEntityMetadata;
 import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 import com.adobe.fiber.valueobjects.IPropertyIterator;
+import it.ht.rcs.console.entities.model.LinkInfo;
 import mx.events.ValidationResultEvent;
 import com.adobe.fiber.core.model_internal;
 import com.adobe.fiber.valueobjects.IModelType;
@@ -103,7 +104,7 @@ internal class _LinkEntityMetadata extends com.adobe.fiber.valueobjects.Abstract
         model_internal::propertyTypeMap["rel"] = "int";
         model_internal::propertyTypeMap["type"] = "String";
         model_internal::propertyTypeMap["last_seen"] = "int";
-        model_internal::propertyTypeMap["info"] = "Object";
+        model_internal::propertyTypeMap["info"] = "it.ht.rcs.console.entities.model.LinkInfo";
 
         model_internal::_instance = value;
         model_internal::_levelValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForLevel);
