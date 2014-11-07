@@ -33,6 +33,31 @@ public class LinkInfo extends _Super_LinkInfo
         _Super_LinkInfo.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.entities.model.LinkInfo);
         _Super_LinkInfo.model_internal::initRemoteClassAliasAllRelated();
     }
+    
+    public function LinkInfo(data:Object=null)
+    {
+      if(data)
+      {
+        if(data.skype) this.skype=data.skype;
+        if(data.facebook) this.facebook=data.facebook;
+        if(data.phone) this.phone=data.phone;
+        if(data.mail) this.mail=data.mail;
+        if(data.url) this.url=data.url;
+        if(data.money) this.money=data.money;
+        if(data.gmail) this.gmail=data.gmail;
+        if(data.yahoo) this.yahoo=data.yahoo;
+        if(data.adium) this.adium=data.adium;
+        if(data.bbm) this.bbm=data.bbm;
+        if(data.whatsapp) this.whatsapp=data.whatsapp;
+        if(data.gtalk) this.gtalk=data.gtalk;
+        if(data.line) this.line=data.line;
+        if(data.msn) this.msn=data.msn;
+        if(data.telegram) this.telegram=data.telegram;
+        if(data.twitter) this.twitter=data.twitter;
+        if(data.viber) this.viber=data.viber;
+        if(data.wechat) this.wechat=data.wechat;
+      }
+    }
      
     model_internal static function initRemoteClassAliasSingleChild() : void
     {
