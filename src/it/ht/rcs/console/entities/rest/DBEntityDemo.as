@@ -72,8 +72,8 @@ package it.ht.rcs.console.entities.rest
         ], 
         position: new Position({latitude: "34.036531", longitude: "-118.157120"}), position_attr: new Position_attr({accuracy: "100", time: convertToUnix(new Date(2012, 11, 03, 14, 57, 00))})}), 
       new Entity({_id: 'e8', type: 'virtual', name: 'Discussion Forum', desc: 'Terrorists favourite web forum', path: ['o1'], level: 'auto', photos: [], handles: [new Handle({name: 'Main website', handle: 'www.howtomakeabomb.com', type: 'url'})], 
-        links: [new Link({le: "e1", level: "automatic", type: "virtual", rel: 0, versus: "in", info: new LinkInfo(["www.howtomakeabomb.com"])}), 
-                new Link({le: "e3", level: "automatic", type: "virtual", rel: 0, versus: "in", info: new LinkInfo(["www.howtomakeabomb.com"])})]
+        links: [new Link({le: "e1", level: "automatic", type: "virtual", rel: 0, versus: "in", info: new LinkInfo({"url":[["http://www.howtomakeabomb.com"]]})}), 
+                new Link({le: "e3", level: "automatic", type: "virtual", rel: 0, versus: "in", info: new LinkInfo({"url":[["http://www.howtomakeabomb.com"]]})})]
  			}),
 
       //groups
