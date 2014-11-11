@@ -56,6 +56,7 @@ public class LinkInfo extends _Super_LinkInfo
         if(data.twitter) this.twitter=data.twitter;
         if(data.viber) this.viber=data.viber;
         if(data.wechat) this.wechat=data.wechat;
+        if(data.url) this.url=data.url;
       }
     }
      
