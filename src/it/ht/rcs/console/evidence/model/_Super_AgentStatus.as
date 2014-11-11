@@ -168,7 +168,6 @@ public class _Super_AgentStatus extends flash.events.EventDispatcher implements 
     /**
      * derived property calculators
      */
-    
 
     /**
      * isValid calculator

@@ -320,7 +320,6 @@ public class _Super_Session extends flash.events.EventDispatcher implements com.
     /**
      * derived property calculators
      */
-    
 
     /**
      * isValid calculator

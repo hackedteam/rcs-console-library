@@ -340,7 +340,6 @@ public class _Super_Injector extends flash.events.EventDispatcher implements com
     /**
      * derived property calculators
      */
-    
 
     /**
      * isValid calculator
