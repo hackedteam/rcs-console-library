@@ -277,7 +277,6 @@ public class _Super_Core extends flash.events.EventDispatcher implements com.ado
     /**
      * derived property calculators
      */
-    
 
     /**
      * isValid calculator

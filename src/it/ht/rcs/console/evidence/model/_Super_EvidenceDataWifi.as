@@ -152,7 +152,6 @@ public class _Super_EvidenceDataWifi extends flash.events.EventDispatcher implem
     /**
      * derived property calculators
      */
-    
 
     /**
      * isValid calculator

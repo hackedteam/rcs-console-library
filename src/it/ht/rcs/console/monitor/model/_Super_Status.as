@@ -315,7 +315,6 @@ public class _Super_Status extends flash.events.EventDispatcher implements com.a
     /**
      * derived property calculators
      */
-    
 
     /**
      * isValid calculator
