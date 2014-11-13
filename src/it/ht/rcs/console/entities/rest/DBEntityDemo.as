@@ -35,7 +35,8 @@ package it.ht.rcs.console.entities.rest
 
 			//Jimmy Page - Target
 			new Entity({_id: 'e1', type: 'target', name: 'Jimmy Page', desc: 'Head of the terrorist cell', path: ['o1', 't1'], level: 'auto', photos: [], handles: [new Handle({name: 'Jimmy Page', handle: 'jimmy.page', type: 'facebook'}), new Handle({name: 'Jimmy Page', handle: '+7654987112', type: 'phone'}), new Handle({name: 'Jimmy Page', handle: 'jimmypage', type: 'twitter'}), new Handle({name: 'Jimmy Page', handle: 'jimmy.page@gmail.com', type: 'gmail'}), new Handle({name: 'Jimmy Page', handle: 'jimmypage', type: 'skype'})], 
-        links: [new Link({le: "e2", level: "automatic", type: "peer", rel: 2, versus: "both", info: new LinkInfo({"skype":[["jimmypage","joeyfargo"]]})}), //Joey Fargo
+        links: [new Link({le: "e2", level: "automatic", type: "peer", rel: 2, versus: "both", info: new LinkInfo({"skype":[["jimmypage" ,"joeyfargo"]], "gmail":[["jimmy.page@gmail.com","jfar@gmail.com"]]})}), //Joey Fargo
+
 					      new Link({le: "e3", level: "automatic", type: "peer", rel: 3, versus: "both", info: new LinkInfo({"phone":[["+3456743293","+7654987112"]]})}), //Alejandro Reade
                 new Link({le: "e4", level: "automatic", type: "position", rel: 0, versus: "out"}), //position Jimmy's office
                 new Link({le: "e6", level: "automatic", type: "position", rel: 0, versus: "out"}),
