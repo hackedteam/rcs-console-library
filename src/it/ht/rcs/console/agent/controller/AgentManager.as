@@ -99,6 +99,7 @@ package it.ht.rcs.console.agent.controller
           if(!getItem(e.data.id))
 					addItem(a);
 					break;
+        
 				case PushEvent.MODIFY:
 					a=getItem(e.data.id)
 					if (!a)
