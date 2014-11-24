@@ -4563,7 +4563,7 @@
       <item name="IncludeRemoteClass">nonempty</item>
     </annotation>
     <annotation name="all_archive_">
-      <item name="propertySpecifier">_id,when,what,incremental,name,size</item>
+      <item name="propertySpecifier">_id,when,what,incremental,name,size,version</item>
     </annotation>
     <annotation name="ActionScriptGeneration">
       <item name="Package">it.ht.rcs.console.backup.model</item>
@@ -4571,6 +4571,7 @@
     <property name="_id" type="string" required="true"/>
     <property name="when" type="string" required="true"/>
     <property name="what" type="string" required="true"/>
+    <property name="version" type="string" required="true"/>
     <property name="incremental" type="boolean" required="true"/>
     <property name="name" type="string" required="true"/>
     <property name="size" type="double" required="true"/>

@@ -916,6 +916,7 @@ public class _Super_Info extends flash.events.EventDispatcher implements com.ado
     /**
      * derived property calculators
      */
+    
 
     /**
      * isValid calculator

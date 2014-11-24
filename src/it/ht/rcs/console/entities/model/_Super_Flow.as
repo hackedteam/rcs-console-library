@@ -177,6 +177,7 @@ public class _Super_Flow extends flash.events.EventDispatcher implements com.ado
     /**
      * derived property calculators
      */
+    
 
     /**
      * isValid calculator
