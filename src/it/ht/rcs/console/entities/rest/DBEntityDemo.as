@@ -78,7 +78,9 @@ package it.ht.rcs.console.entities.rest
  			}),
 
       //groups
-      new Entity({_id: 'g1', type: 'group', name: 'Friends', desc: 'Jimmy\'s friends', path: ['o1'], level: 'auto', photos: [], handles: [], links: [], children:['e5','e7']})
+      new Entity({_id: 'g1', type: 'group', name: 'Friends', desc: 'Jimmy\'s friends', path: ['o1'], level: 'auto', photos: [], handles: [], links: [], children:['e5','e7']}),
+      new Entity({_id: 'e33', type: 'target', name: 'Guido', desc: 'The bomber', path: ['o2', 't4'], level: 'auto', photos: [], handles: [], links: []}), 
+      new Entity({_id: 'e34', type: 'target', name: 'Dmitry Vitaly', desc: 'Drug trafficker', path: ['o3', 't5'], level: 'auto', photos: [], handles: [], links: []})
 			]);
 
 
