@@ -125,7 +125,7 @@ package it.ht.rcs.console.target.controller
       DB.instance.target.update(event.source, property);
     }
     
-    public function addTarget(t:Target, o:Operation, callback:Function):void
+    public function addTarget(t:Target, o:Operation, callback:Function=null):void
     {
       DB.instance.target.create(ObjectUtils.toHash(t), o, function(e:ResultEvent):void {
         var target:Target = e.result as Target;
@@ -139,7 +139,7 @@ package it.ht.rcs.console.target.controller
         t.addEventListener(TimerEvent.TIMER, refreshEntities)
         t.start()*/
        
-        
+        if(callback)
         callback(target);
       });
     }
