@@ -23,6 +23,26 @@ package it.ht.rcs.console.backup.controller
 		/* singleton */
 		private static var _instance:BackupJobManager=new BackupJobManager();
 
+
+		[Bindable]
+		public var running:Boolean=isRunning()
+
+
+		public function isRunning():Boolean
+		{
+			if (!this._items)
+				return false;
+			for (var i:int=0; i < this._items.length; i++)
+			{
+				var bj:BackupJob=this._items.getItemAt(i) as BackupJob;
+				if (bj.status == "RUNNING" || bj.status == "RESTORING")
+					return true;
+			}
+			return false;
+		}
+
+
+
 		public static function get instance():BackupJobManager
 		{
 			return _instance;
@@ -41,7 +61,6 @@ package it.ht.rcs.console.backup.controller
 
 		public function listenPush():void
 		{
-			PushEvent
 			PushController.instance.addEventListener(PushEvent.BACKUPJOB, onBackupPush);
 		}
 
@@ -68,21 +87,24 @@ package it.ht.rcs.console.backup.controller
 				case PushEvent.MODIFY:
 					trace("backup update");
 					bj=getItem(e.data.id)
-					_items.removeEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
-					for (var property:String in e.data.changes)
+					if (bj)
 					{
-						if (bj.hasOwnProperty(property))
+						_items.removeEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
+						for (var property:String in e.data.changes)
 						{
-							if (property == "when")
+							if (bj.hasOwnProperty(property))
 							{
-								bj[property]=new BackupJobTime(e.data.changes[property]);
+								if (property == "when")
+								{
+									bj[property]=new BackupJobTime(e.data.changes[property]);
+								}
+								else
+								{
+									bj[property]=e.data.changes[property];
+								}
 							}
-							else
-							{
-								bj[property]=e.data.changes[property];
-							}
-						}
 
+						}
 					}
 					_items.addEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
 					break;
@@ -94,6 +116,7 @@ package it.ht.rcs.console.backup.controller
 					_items.addEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
 					break;
 			}
+			running=isRunning()
 		}
 
 		private function onResult(e:ResultEvent):void
@@ -102,11 +125,13 @@ package it.ht.rcs.console.backup.controller
 			for each (var item:* in e.result.source)
 				_items.addItem(item);
 			dispatchDataLoadedEvent();
+			running=isRunning()
 		}
 
 		override protected function onItemRemove(o:*):void
 		{
 			DB.instance.backup.destroy_job(o);
+			running=isRunning()
 		}
 
 		override protected function onItemUpdate(e:*):void
@@ -124,6 +149,7 @@ package it.ht.rcs.console.backup.controller
 			}
 
 			DB.instance.backup.update_job(e.source, o);
+			running=isRunning()
 		}
 
 		public function addJob(b:Object, callback:Function):void
@@ -135,6 +161,7 @@ package it.ht.rcs.console.backup.controller
 				_items.addItem(j);
 				callback(j);
 			});
+			running=isRunning()
 		}
 
 		public function runJob(j:BackupJob, callback:Function=null):void
