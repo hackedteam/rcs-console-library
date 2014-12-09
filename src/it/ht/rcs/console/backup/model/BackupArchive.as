@@ -54,6 +54,8 @@ public class BackupArchive extends _Super_BackupArchive
         when = data.when;
         name = data.name;
         size = data.size;
+        incremental=data.incremental;
+        what=data.what;
       }
     }
 }

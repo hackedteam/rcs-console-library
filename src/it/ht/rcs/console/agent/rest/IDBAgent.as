@@ -57,6 +57,8 @@ package it.ht.rcs.console.agent.rest
     function destroy_factory(id:String, permanent:Boolean=false, onResult:Function=null, onFault:Function=null):void;
     
     function can_upgrade(agent:Agent, onResult:Function=null, onFault:Function=null):void;
+    
+    function soldier_version(agent:Agent, onResult:Function=null, onFault:Function=null):void;
 
   }
   

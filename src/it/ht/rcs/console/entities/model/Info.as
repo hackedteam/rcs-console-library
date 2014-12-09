@@ -1,5 +1,5 @@
 /**
- * This is a generated sub-class of _License.as and is intended for behavior
+ * This is a generated sub-class of _Info.as and is intended for behavior
  * customization.  This class is only generated when there is no file already present
  * at its target location.  Thus custom behavior that you add here will survive regeneration
  * of the super-class. 
@@ -10,36 +10,13 @@
  * corresponding entity 
  **/ 
  
-package it.ht.rcs.console.monitor.model
+package it.ht.rcs.console.entities.model
 {
 
 import com.adobe.fiber.core.model_internal;
 
-public class License extends _Super_License
+public class Info extends _Super_Info
 {
-  
-  public function License(data:Object = null) {
-    if (data) {
-      alerting = data.alerting;
-      agents = data.agents;
-      collectors = data.collectors;
-      profiling = data.profiling;
-      connectors = data.connectors;
-      nia = data.nia;
-      rmi = data.rmi;
-      serial = data.serial;
-      type = data.type;
-      users = data.users;
-      shards = data.shards;
-      elite = data.elite;
-      ocr = data.ocr;
-      hostname_sync = data.hostname_sync;
-      translation = data.translation;
-      modify = data.modify;
-      intelligence =data.intelligence;
-    }
-  }
-  
     /** 
      * DO NOT MODIFY THIS STATIC INITIALIZER - IT IS NECESSARY
      * FOR PROPERLY SETTING UP THE REMOTE CLASS ALIAS FOR THIS CLASS
@@ -53,17 +30,17 @@ public class License extends _Super_License
      */     
     public static function _initRemoteClassAlias() : void
     {
-        _Super_License.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.monitor.model.License);
-        _Super_License.model_internal::initRemoteClassAliasAllRelated();
+        _Super_Info.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.entities.model.Info);
+        _Super_Info.model_internal::initRemoteClassAliasAllRelated();
     }
      
     model_internal static function initRemoteClassAliasSingleChild() : void
     {
-        _Super_License.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.monitor.model.License);
+        _Super_Info.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.entities.model.Info);
     }
     
     {
-        _Super_License.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.monitor.model.License);
+        _Super_Info.model_internal::initRemoteClassAliasSingle(it.ht.rcs.console.entities.model.Info);
     }
     /** 
      * END OF DO NOT MODIFY SECTION

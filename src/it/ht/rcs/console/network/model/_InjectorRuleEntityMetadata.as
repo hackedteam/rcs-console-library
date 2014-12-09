@@ -21,14 +21,14 @@ internal class _InjectorRuleEntityMetadata extends com.adobe.fiber.valueobjects.
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("action_param", "enabled", "action_param_name", "resource", "target_id", "updated_at", "_id", "ident", "action", "created_at", "disable_sync", "ident_param", "probability", "scout");
+    model_internal static var allProperties:Array = new Array("action_param", "enabled", "action_param_name", "resource", "target_id", "updated_at", "_id", "ident", "action", "created_at", "disable_sync", "ident_param", "probability");
     model_internal static var allAssociationProperties:Array = new Array();
     model_internal static var allRequiredProperties:Array = new Array();
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("action_param", "enabled", "action_param_name", "resource", "target_id", "updated_at", "_id", "ident", "action", "created_at", "disable_sync", "ident_param", "probability", "scout");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("action_param", "enabled", "action_param_name", "resource", "target_id", "updated_at", "_id", "ident", "action", "created_at", "disable_sync", "ident_param", "probability");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("action_param", "enabled", "action_param_name", "resource", "target_id", "updated_at", "_id", "ident", "action", "created_at", "disable_sync", "ident_param", "probability", "scout");
+    model_internal static var dataProperties:Array = new Array("action_param", "enabled", "action_param_name", "resource", "target_id", "updated_at", "_id", "ident", "action", "created_at", "disable_sync", "ident_param", "probability");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("action_param", "enabled", "action_param_name", "resource", "target_id", "updated_at", "_id", "ident", "action", "created_at", "disable_sync", "ident_param", "probability", "scout");
+    model_internal static var nonDerivedProperties:Array = new Array("action_param", "enabled", "action_param_name", "resource", "target_id", "updated_at", "_id", "ident", "action", "created_at", "disable_sync", "ident_param", "probability");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array("target_id");
     model_internal static var collectionBaseMap:Object;
@@ -61,7 +61,6 @@ internal class _InjectorRuleEntityMetadata extends com.adobe.fiber.valueobjects.
             model_internal::dependentsOnMap["disable_sync"] = new Array();
             model_internal::dependentsOnMap["ident_param"] = new Array();
             model_internal::dependentsOnMap["probability"] = new Array();
-            model_internal::dependentsOnMap["scout"] = new Array();
 
             // collection base map
             model_internal::collectionBaseMap = new Object();
@@ -83,7 +82,6 @@ internal class _InjectorRuleEntityMetadata extends com.adobe.fiber.valueobjects.
         model_internal::propertyTypeMap["disable_sync"] = "Boolean";
         model_internal::propertyTypeMap["ident_param"] = "String";
         model_internal::propertyTypeMap["probability"] = "int";
-        model_internal::propertyTypeMap["scout"] = "Boolean";
 
         model_internal::_instance = value;
     }
@@ -390,12 +388,6 @@ internal class _InjectorRuleEntityMetadata extends com.adobe.fiber.valueobjects.
         return true;
     }
 
-    [Bindable(event="propertyChange")]
-    public function get isScoutAvailable():Boolean
-    {
-        return true;
-    }
-
 
     /**
      * derived property recalculation
@@ -480,12 +472,6 @@ internal class _InjectorRuleEntityMetadata extends com.adobe.fiber.valueobjects.
 
     [Bindable(event="propertyChange")]   
     public function get probabilityStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get scoutStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }

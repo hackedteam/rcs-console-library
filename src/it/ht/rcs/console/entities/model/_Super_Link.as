@@ -10,9 +10,9 @@ import com.adobe.fiber.util.FiberUtils;
 import com.adobe.fiber.valueobjects.IValueObject;
 import flash.events.Event;
 import flash.events.EventDispatcher;
+import it.ht.rcs.console.entities.model.LinkInfo;
 import mx.binding.utils.ChangeWatcher;
 import mx.collections.ArrayCollection;
-import mx.events.CollectionEvent;
 import mx.events.PropertyChangeEvent;
 import mx.validators.ValidationResult;
 
@@ -33,6 +33,7 @@ public class _Super_Link extends flash.events.EventDispatcher implements com.ado
 
     model_internal static function initRemoteClassAliasAllRelated() : void
     {
+        it.ht.rcs.console.entities.model.LinkInfo.initRemoteClassAliasSingleChild();
     }
 
     model_internal var _dminternal_model : _LinkEntityMetadata;
@@ -52,7 +53,6 @@ public class _Super_Link extends flash.events.EventDispatcher implements com.ado
     /**
      * properties
      */
-    private var _internal_info : ArrayCollection;
     private var _internal_first_seen : int;
     private var _internal_level : String;
     private var _internal_le : String;
@@ -61,6 +61,7 @@ public class _Super_Link extends flash.events.EventDispatcher implements com.ado
     private var _internal_rel : int;
     private var _internal_type : String;
     private var _internal_last_seen : int;
+    private var _internal_info : it.ht.rcs.console.entities.model.LinkInfo;
 
     private static var emptyArray:Array = new Array();
 
@@ -77,24 +78,18 @@ public class _Super_Link extends flash.events.EventDispatcher implements com.ado
         _model = new _LinkEntityMetadata(this);
 
         // Bind to own data or source properties for cache invalidation triggering
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "info", model_internal::setterListenerInfo));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "level", model_internal::setterListenerLevel));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "le", model_internal::setterListenerLe));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "_id", model_internal::setterListener_id));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "versus", model_internal::setterListenerVersus));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "type", model_internal::setterListenerType));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "info", model_internal::setterListenerInfo));
 
     }
 
     /**
      * data/source property getters
      */
-
-    [Bindable(event="propertyChange")]
-    public function get info() : ArrayCollection
-    {
-        return _internal_info;
-    }
 
     [Bindable(event="propertyChange")]
     public function get first_seen() : int
@@ -144,6 +139,12 @@ public class _Super_Link extends flash.events.EventDispatcher implements com.ado
         return _internal_last_seen;
     }
 
+    [Bindable(event="propertyChange")]
+    public function get info() : it.ht.rcs.console.entities.model.LinkInfo
+    {
+        return _internal_info;
+    }
+
     public function clearAssociations() : void
     {
     }
@@ -151,31 +152,6 @@ public class _Super_Link extends flash.events.EventDispatcher implements com.ado
     /**
      * data/source property setters
      */
-
-    public function set info(value:*) : void
-    {
-        var oldValue:ArrayCollection = _internal_info;
-        if (oldValue !== value)
-        {
-            if (value is ArrayCollection)
-            {
-                _internal_info = value;
-            }
-            else if (value is Array)
-            {
-                _internal_info = new ArrayCollection(value);
-            }
-            else if (value == null)
-            {
-                _internal_info = null;
-            }
-            else
-            {
-                throw new Error("value of info must be a collection");
-            }
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "info", oldValue, _internal_info));
-        }
-    }
 
     public function set first_seen(value:int) : void
     {
@@ -257,6 +233,16 @@ public class _Super_Link extends flash.events.EventDispatcher implements com.ado
         }
     }
 
+    public function set info(value:it.ht.rcs.console.entities.model.LinkInfo) : void
+    {
+        var oldValue:it.ht.rcs.console.entities.model.LinkInfo = _internal_info;
+        if (oldValue !== value)
+        {
+            _internal_info = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "info", oldValue, _internal_info));
+        }
+    }
+
     /**
      * Data/source property setter listeners
      *
@@ -268,18 +254,6 @@ public class _Super_Link extends flash.events.EventDispatcher implements com.ado
      *  - the validity of the property (and the containing entity) if the given data property has a length restriction.
      *  - the validity of the property (and the containing entity) if the given data property is required.
      */
-
-    model_internal function setterListenerInfo(value:flash.events.Event):void
-    {
-        if (value is mx.events.PropertyChangeEvent)
-        {
-            if (mx.events.PropertyChangeEvent(value).newValue)
-            {
-                mx.events.PropertyChangeEvent(value).newValue.addEventListener(mx.events.CollectionEvent.COLLECTION_CHANGE, model_internal::setterListenerInfo);
-            }
-        }
-        _model.invalidateDependentOnInfo();
-    }
 
     model_internal function setterListenerLevel(value:flash.events.Event):void
     {
@@ -306,6 +280,11 @@ public class _Super_Link extends flash.events.EventDispatcher implements com.ado
         _model.invalidateDependentOnType();
     }
 
+    model_internal function setterListenerInfo(value:flash.events.Event):void
+    {
+        _model.invalidateDependentOnInfo();
+    }
+
 
     /**
      * valid related derived properties
@@ -317,6 +296,7 @@ public class _Super_Link extends flash.events.EventDispatcher implements com.ado
     /**
      * derived property calculators
      */
+    
 
     /**
      * isValid calculator
@@ -327,11 +307,6 @@ public class _Super_Link extends flash.events.EventDispatcher implements com.ado
         var validationFailureMessages:Array = new Array();
 
         var propertyValidity:Boolean = true;
-        if (!_model.infoIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_infoValidationFailureMessages);
-        }
         if (!_model.levelIsValid)
         {
             propertyValidity = false;
@@ -356,6 +331,11 @@ public class _Super_Link extends flash.events.EventDispatcher implements com.ado
         {
             propertyValidity = false;
             com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_typeValidationFailureMessages);
+        }
+        if (!_model.infoIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_infoValidationFailureMessages);
         }
 
         model_internal::_cacheInitialized_isValid = true;
@@ -436,33 +416,6 @@ public class _Super_Link extends flash.events.EventDispatcher implements com.ado
         }
     }
 
-    model_internal var _doValidationCacheOfInfo : Array = null;
-    model_internal var _doValidationLastValOfInfo : ArrayCollection;
-
-    model_internal function _doValidationForInfo(valueIn:Object):Array
-    {
-        var value : ArrayCollection = valueIn as ArrayCollection;
-
-        if (model_internal::_doValidationCacheOfInfo != null && model_internal::_doValidationLastValOfInfo == value)
-           return model_internal::_doValidationCacheOfInfo ;
-
-        _model.model_internal::_infoIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.isInfoAvailable && _internal_info == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "info is required"));
-        }
-
-        model_internal::_doValidationCacheOfInfo = validationFailures;
-        model_internal::_doValidationLastValOfInfo = value;
-
-        return validationFailures;
-    }
-    
     model_internal var _doValidationCacheOfLevel : Array = null;
     model_internal var _doValidationLastValOfLevel : String;
 
@@ -594,6 +547,33 @@ public class _Super_Link extends flash.events.EventDispatcher implements com.ado
 
         model_internal::_doValidationCacheOfType = validationFailures;
         model_internal::_doValidationLastValOfType = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfInfo : Array = null;
+    model_internal var _doValidationLastValOfInfo : it.ht.rcs.console.entities.model.LinkInfo;
+
+    model_internal function _doValidationForInfo(valueIn:Object):Array
+    {
+        var value : it.ht.rcs.console.entities.model.LinkInfo = valueIn as it.ht.rcs.console.entities.model.LinkInfo;
+
+        if (model_internal::_doValidationCacheOfInfo != null && model_internal::_doValidationLastValOfInfo == value)
+           return model_internal::_doValidationCacheOfInfo ;
+
+        _model.model_internal::_infoIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isInfoAvailable && _internal_info == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "info is required"));
+        }
+
+        model_internal::_doValidationCacheOfInfo = validationFailures;
+        model_internal::_doValidationLastValOfInfo = value;
 
         return validationFailures;
     }

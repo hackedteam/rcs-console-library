@@ -39,6 +39,7 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
     model_internal static function initRemoteClassAliasAllRelated() : void
     {
         it.ht.rcs.console.entities.model.Link.initRemoteClassAliasSingleChild();
+        it.ht.rcs.console.entities.model.LinkInfo.initRemoteClassAliasSingleChild();
         it.ht.rcs.console.entities.model.Position.initRemoteClassAliasSingleChild();
         it.ht.rcs.console.entities.model.Position_attr.initRemoteClassAliasSingleChild();
         it.ht.rcs.console.entities.model.Analyzed.initRemoteClassAliasSingleChild();
@@ -664,6 +665,7 @@ public class _Super_Entity extends flash.events.EventDispatcher implements com.a
     /**
      * derived property calculators
      */
+    
 
     /**
      * isValid calculator

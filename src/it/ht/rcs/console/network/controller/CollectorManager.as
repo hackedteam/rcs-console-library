@@ -16,6 +16,7 @@ package it.ht.rcs.console.network.controller
 	import mx.collections.ListCollectionView;
 	import mx.rpc.events.FaultEvent;
 	import mx.rpc.events.ResultEvent;
+	import mx.utils.ObjectUtil;
 
 	public class CollectorManager extends ItemManager
 	{
@@ -219,16 +220,20 @@ package it.ht.rcs.console.network.controller
 
 			if (item['type'] == 'remote' && item['prev'][0] != null && item['good'])
 				return true;
+    
+      if (item['type'] == 'local' && item['demo'] == true)
+        return true;
 
 			return false;
-
-
 		}
 
 		private function goodCollectorFilter(item:Object):Boolean
 		{
 			if (item['address'] == null || item['address'] == '')
 				return false;
+
+      if (item['type'] == 'local' && item['demo'] == true)
+        return true;
 
 			if (item['type'] == 'local' && item['next'][0] == null && item['good'])
 				return true;

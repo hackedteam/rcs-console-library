@@ -36,6 +36,7 @@ public class _Super_Place extends flash.events.EventDispatcher implements com.ad
     {
         it.ht.rcs.console.entities.model.Entity.initRemoteClassAliasSingleChild();
         it.ht.rcs.console.entities.model.Link.initRemoteClassAliasSingleChild();
+        it.ht.rcs.console.entities.model.LinkInfo.initRemoteClassAliasSingleChild();
         it.ht.rcs.console.entities.model.Position.initRemoteClassAliasSingleChild();
         it.ht.rcs.console.entities.model.Position_attr.initRemoteClassAliasSingleChild();
         it.ht.rcs.console.entities.model.Analyzed.initRemoteClassAliasSingleChild();
@@ -215,6 +216,7 @@ public class _Super_Place extends flash.events.EventDispatcher implements com.ad
     /**
      * derived property calculators
      */
+    
 
     /**
      * isValid calculator

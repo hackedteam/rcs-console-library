@@ -441,6 +441,7 @@ public class _Super_StatEvidence extends flash.events.EventDispatcher implements
     /**
      * derived property calculators
      */
+    
 
     /**
      * isValid calculator

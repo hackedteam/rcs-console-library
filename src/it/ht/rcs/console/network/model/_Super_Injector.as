@@ -55,7 +55,6 @@ public class _Super_Injector extends flash.events.EventDispatcher implements com
     private var _internal_redirection_tag : String;
     private var _internal_port : int;
     private var _internal_updated_at : String;
-    private var _internal_poll : Boolean;
     private var _internal_desc : String;
     private var _internal__id : String;
     private var _internal_configured : Boolean;
@@ -115,12 +114,6 @@ public class _Super_Injector extends flash.events.EventDispatcher implements com
     public function get updated_at() : String
     {
         return _internal_updated_at;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get poll() : Boolean
-    {
-        return _internal_poll;
     }
 
     [Bindable(event="propertyChange")]
@@ -244,16 +237,6 @@ public class _Super_Injector extends flash.events.EventDispatcher implements com
         }
     }
 
-    public function set poll(value:Boolean) : void
-    {
-        var oldValue:Boolean = _internal_poll;
-        if (oldValue !== value)
-        {
-            _internal_poll = value;
-            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "poll", oldValue, _internal_poll));
-        }
-    }
-
     public function set desc(value:String) : void
     {
         var oldValue:String = _internal_desc;
@@ -357,6 +340,7 @@ public class _Super_Injector extends flash.events.EventDispatcher implements com
     /**
      * derived property calculators
      */
+    
 
     /**
      * isValid calculator

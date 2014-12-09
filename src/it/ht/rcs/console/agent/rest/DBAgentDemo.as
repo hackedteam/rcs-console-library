@@ -209,6 +209,10 @@ package it.ht.rcs.console.agent.rest
     
     public function can_upgrade(agent:Agent, onResult:Function=null, onFault:Function=null):void {};
     
+    public function soldier_version(agent:Agent, onResult:Function=null, onFault:Function=null):void
+    {
+    }
+    
   }
   
 }

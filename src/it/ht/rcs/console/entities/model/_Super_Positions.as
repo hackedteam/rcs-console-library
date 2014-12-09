@@ -172,6 +172,7 @@ public class _Super_Positions extends flash.events.EventDispatcher implements co
     /**
      * derived property calculators
      */
+    
 
     /**
      * isValid calculator

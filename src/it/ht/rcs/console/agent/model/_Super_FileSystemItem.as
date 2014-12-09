@@ -202,6 +202,7 @@ public class _Super_FileSystemItem extends flash.events.EventDispatcher implemen
     /**
      * derived property calculators
      */
+    
 
     /**
      * isValid calculator

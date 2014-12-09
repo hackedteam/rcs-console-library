@@ -22,14 +22,14 @@ internal class _InjectorEntityMetadata extends com.adobe.fiber.valueobjects.Abst
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("rules", "version", "redirection_tag", "port", "updated_at", "poll", "desc", "_id", "configured", "upgradable", "address", "name", "created_at", "redirect");
+    model_internal static var allProperties:Array = new Array("rules", "version", "redirection_tag", "port", "updated_at", "desc", "_id", "configured", "upgradable", "address", "name", "created_at", "redirect");
     model_internal static var allAssociationProperties:Array = new Array();
     model_internal static var allRequiredProperties:Array = new Array();
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("rules", "version", "redirection_tag", "port", "updated_at", "poll", "desc", "_id", "configured", "upgradable", "address", "name", "created_at", "redirect");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("rules", "version", "redirection_tag", "port", "updated_at", "desc", "_id", "configured", "upgradable", "address", "name", "created_at", "redirect");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("rules", "version", "redirection_tag", "port", "updated_at", "poll", "desc", "_id", "configured", "upgradable", "address", "name", "created_at", "redirect");
+    model_internal static var dataProperties:Array = new Array("rules", "version", "redirection_tag", "port", "updated_at", "desc", "_id", "configured", "upgradable", "address", "name", "created_at", "redirect");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("rules", "version", "redirection_tag", "port", "updated_at", "poll", "desc", "_id", "configured", "upgradable", "address", "name", "created_at", "redirect");
+    model_internal static var nonDerivedProperties:Array = new Array("rules", "version", "redirection_tag", "port", "updated_at", "desc", "_id", "configured", "upgradable", "address", "name", "created_at", "redirect");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array("rules");
     model_internal static var collectionBaseMap:Object;
@@ -54,7 +54,6 @@ internal class _InjectorEntityMetadata extends com.adobe.fiber.valueobjects.Abst
             model_internal::dependentsOnMap["redirection_tag"] = new Array();
             model_internal::dependentsOnMap["port"] = new Array();
             model_internal::dependentsOnMap["updated_at"] = new Array();
-            model_internal::dependentsOnMap["poll"] = new Array();
             model_internal::dependentsOnMap["desc"] = new Array();
             model_internal::dependentsOnMap["_id"] = new Array();
             model_internal::dependentsOnMap["configured"] = new Array();
@@ -76,7 +75,6 @@ internal class _InjectorEntityMetadata extends com.adobe.fiber.valueobjects.Abst
         model_internal::propertyTypeMap["redirection_tag"] = "String";
         model_internal::propertyTypeMap["port"] = "int";
         model_internal::propertyTypeMap["updated_at"] = "String";
-        model_internal::propertyTypeMap["poll"] = "Boolean";
         model_internal::propertyTypeMap["desc"] = "String";
         model_internal::propertyTypeMap["_id"] = "String";
         model_internal::propertyTypeMap["configured"] = "Boolean";
@@ -344,12 +342,6 @@ internal class _InjectorEntityMetadata extends com.adobe.fiber.valueobjects.Abst
     }
 
     [Bindable(event="propertyChange")]
-    public function get isPollAvailable():Boolean
-    {
-        return true;
-    }
-
-    [Bindable(event="propertyChange")]
     public function get isDescAvailable():Boolean
     {
         return true;
@@ -433,12 +425,6 @@ internal class _InjectorEntityMetadata extends com.adobe.fiber.valueobjects.Abst
 
     [Bindable(event="propertyChange")]   
     public function get updated_atStyle():com.adobe.fiber.styles.Style
-    {
-        return model_internal::_nullStyle;
-    }
-
-    [Bindable(event="propertyChange")]   
-    public function get pollStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }

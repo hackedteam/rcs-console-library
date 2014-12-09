@@ -50,10 +50,12 @@ package it.ht.rcs.console.alert.controller
         case PushEvent.CREATE:
           trace("alert creation");
           a = getItem(e.data.id);
+          _items.removeEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
           log=new AlertLog(e.data.changes)
           if(!a.logs)
             a.logs=new ArrayCollection()    
           a.logs.addItem(log);
+          _items.addEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
           break;
 
         case PushEvent.MODIFY:

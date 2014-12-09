@@ -575,6 +575,7 @@ public class _Super_User extends flash.events.EventDispatcher implements com.ado
     /**
      * derived property calculators
      */
+    
 
     /**
      * isValid calculator

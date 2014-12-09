@@ -54,6 +54,7 @@ public class _Super_BackupArchive extends flash.events.EventDispatcher implement
     private var _internal__id : String;
     private var _internal_when : String;
     private var _internal_what : String;
+    private var _internal_version : String;
     private var _internal_incremental : Boolean;
     private var _internal_name : String;
     private var _internal_size : Number;
@@ -78,6 +79,7 @@ public class _Super_BackupArchive extends flash.events.EventDispatcher implement
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "_id", model_internal::setterListener_id));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "when", model_internal::setterListenerWhen));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "what", model_internal::setterListenerWhat));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "version", model_internal::setterListenerVersion));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "name", model_internal::setterListenerName));
 
     }
@@ -102,6 +104,12 @@ public class _Super_BackupArchive extends flash.events.EventDispatcher implement
     public function get what() : String
     {
         return _internal_what;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get version() : String
+    {
+        return _internal_version;
     }
 
     [Bindable(event="propertyChange")]
@@ -157,6 +165,16 @@ public class _Super_BackupArchive extends flash.events.EventDispatcher implement
         {
             _internal_what = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "what", oldValue, _internal_what));
+        }
+    }
+
+    public function set version(value:String) : void
+    {
+        var oldValue:String = _internal_version;
+        if (oldValue !== value)
+        {
+            _internal_version = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "version", oldValue, _internal_version));
         }
     }
 
@@ -217,6 +235,11 @@ public class _Super_BackupArchive extends flash.events.EventDispatcher implement
         _model.invalidateDependentOnWhat();
     }
 
+    model_internal function setterListenerVersion(value:flash.events.Event):void
+    {
+        _model.invalidateDependentOnVersion();
+    }
+
     model_internal function setterListenerName(value:flash.events.Event):void
     {
         _model.invalidateDependentOnName();
@@ -233,6 +256,7 @@ public class _Super_BackupArchive extends flash.events.EventDispatcher implement
     /**
      * derived property calculators
      */
+    
 
     /**
      * isValid calculator
@@ -257,6 +281,11 @@ public class _Super_BackupArchive extends flash.events.EventDispatcher implement
         {
             propertyValidity = false;
             com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_whatValidationFailureMessages);
+        }
+        if (!_model.versionIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_versionValidationFailureMessages);
         }
         if (!_model.nameIsValid)
         {
@@ -419,6 +448,33 @@ public class _Super_BackupArchive extends flash.events.EventDispatcher implement
 
         model_internal::_doValidationCacheOfWhat = validationFailures;
         model_internal::_doValidationLastValOfWhat = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfVersion : Array = null;
+    model_internal var _doValidationLastValOfVersion : String;
+
+    model_internal function _doValidationForVersion(valueIn:Object):Array
+    {
+        var value : String = valueIn as String;
+
+        if (model_internal::_doValidationCacheOfVersion != null && model_internal::_doValidationLastValOfVersion == value)
+           return model_internal::_doValidationCacheOfVersion ;
+
+        _model.model_internal::_versionIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isVersionAvailable && _internal_version == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "version is required"));
+        }
+
+        model_internal::_doValidationCacheOfVersion = validationFailures;
+        model_internal::_doValidationLastValOfVersion = value;
 
         return validationFailures;
     }

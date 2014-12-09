@@ -73,6 +73,7 @@ package it.ht.rcs.console.agent.controller
 			for each (var item:* in e.result.source)
 				addItem(item);
 			dispatchDataLoadedEvent();
+      _items.addEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
 		}
 
 
@@ -82,28 +83,31 @@ package it.ht.rcs.console.agent.controller
 			//refresh();
 
 			var a:Agent;
+      
 			switch (e.data.action)
 			{
 				case PushEvent.CREATE:
 					trace("agent creation");
-          
-          var evidence:StatEvidence=new StatEvidence(e.data.changes.stat.evidence)
-          e.data.changes.stat.evidence=evidence;
-          var dashboard:StatEvidence=new StatEvidence(e.data.changes.stat.dashboard)
-          e.data.changes.stat.dashboard=dashboard;
-          
-          var stat:Stat=new Stat(e.data.changes.stat)
-          e.data.changes.stat=stat
-
+          if(e.data.type=="agent")
+          {
+            var evidence:StatEvidence=new StatEvidence(e.data.changes.stat.evidence)
+            e.data.changes.stat.evidence=evidence;
+            var dashboard:StatEvidence=new StatEvidence(e.data.changes.stat.dashboard)
+            e.data.changes.stat.dashboard=dashboard;
+            
+            var stat:Stat=new Stat(e.data.changes.stat)
+            e.data.changes.stat=stat
+          }
 					a=new Agent(e.data.changes);
           if(!getItem(e.data.id))
 					addItem(a);
 					break;
+        
 				case PushEvent.MODIFY:
 					a=getItem(e.data.id)
-					if (!a)
-						return;
-					_items.removeEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
+					if (a)
+          {
+          _items.removeEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
 					//Is a factory deletion 
 					if (e.data.changes.deleted)
 					{
@@ -118,18 +122,21 @@ package it.ht.rcs.console.agent.controller
 							a[property]=e.data.changes[property];
 						}
 					}
-					_items.addEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
+         _items.addEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
+          }
+          
 					break;
 				case PushEvent.DESTROY:
 					trace("agent deletion");
-					_items.removeEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
+				
           a=getItem(e.data.id)
-          if (!a)
-            return;
+          if (a)
+          {
 					removeItem(a)
-					_items.addEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
+          }
 					break;
 			}
+    
 			dispatchEvent(new Event("dataPush"))
 		}
 
@@ -312,6 +319,11 @@ package it.ht.rcs.console.agent.controller
 		{
 			DB.instance.agent.can_upgrade(agent, resultCallback, faultCallback);
 		}
+    
+    public function soldier_version(agent:Agent, resultCallback:Function, faultCallback:Function=null):void
+    {
+      DB.instance.agent.soldier_version(agent, resultCallback, faultCallback);
+    }
 
 		public function updateConfig(agent:Agent, config:Config, desc:String, callback:Function=null):void
 		{

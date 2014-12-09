@@ -43,7 +43,7 @@ public class Link extends _Super_Link
         if(data.info)
       this.info=data.info;
         else
-          this.info=new ArrayCollection()
+          this.info=new LinkInfo()
     }
   }
   

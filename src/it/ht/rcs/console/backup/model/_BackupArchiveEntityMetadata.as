@@ -22,14 +22,14 @@ internal class _BackupArchiveEntityMetadata extends com.adobe.fiber.valueobjects
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("_id", "when", "what", "incremental", "name", "size");
+    model_internal static var allProperties:Array = new Array("_id", "when", "what", "version", "incremental", "name", "size");
     model_internal static var allAssociationProperties:Array = new Array();
-    model_internal static var allRequiredProperties:Array = new Array("_id", "when", "what", "incremental", "name", "size");
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("_id", "when", "what", "incremental", "name", "size");
+    model_internal static var allRequiredProperties:Array = new Array("_id", "when", "what", "version", "incremental", "name", "size");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("_id", "when", "what", "version", "incremental", "name", "size");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("_id", "when", "what", "incremental", "name", "size");
+    model_internal static var dataProperties:Array = new Array("_id", "when", "what", "version", "incremental", "name", "size");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("_id", "when", "what", "incremental", "name", "size");
+    model_internal static var nonDerivedProperties:Array = new Array("_id", "when", "what", "version", "incremental", "name", "size");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array();
     model_internal static var collectionBaseMap:Object;
@@ -54,6 +54,11 @@ internal class _BackupArchiveEntityMetadata extends com.adobe.fiber.valueobjects
     model_internal var _whatIsValidCacheInitialized:Boolean = false;
     model_internal var _whatValidationFailureMessages:Array;
     
+    model_internal var _versionIsValid:Boolean;
+    model_internal var _versionValidator:com.adobe.fiber.styles.StyleValidator;
+    model_internal var _versionIsValidCacheInitialized:Boolean = false;
+    model_internal var _versionValidationFailureMessages:Array;
+    
     model_internal var _nameIsValid:Boolean;
     model_internal var _nameValidator:com.adobe.fiber.styles.StyleValidator;
     model_internal var _nameIsValidCacheInitialized:Boolean = false;
@@ -72,6 +77,7 @@ internal class _BackupArchiveEntityMetadata extends com.adobe.fiber.valueobjects
             model_internal::dependentsOnMap["_id"] = new Array();
             model_internal::dependentsOnMap["when"] = new Array();
             model_internal::dependentsOnMap["what"] = new Array();
+            model_internal::dependentsOnMap["version"] = new Array();
             model_internal::dependentsOnMap["incremental"] = new Array();
             model_internal::dependentsOnMap["name"] = new Array();
             model_internal::dependentsOnMap["size"] = new Array();
@@ -85,6 +91,7 @@ internal class _BackupArchiveEntityMetadata extends com.adobe.fiber.valueobjects
         model_internal::propertyTypeMap["_id"] = "String";
         model_internal::propertyTypeMap["when"] = "String";
         model_internal::propertyTypeMap["what"] = "String";
+        model_internal::propertyTypeMap["version"] = "String";
         model_internal::propertyTypeMap["incremental"] = "Boolean";
         model_internal::propertyTypeMap["name"] = "String";
         model_internal::propertyTypeMap["size"] = "Number";
@@ -105,6 +112,11 @@ internal class _BackupArchiveEntityMetadata extends com.adobe.fiber.valueobjects
         model_internal::_whatValidator.requiredFieldError = "what is required";
         //model_internal::_whatValidator.source = model_internal::_instance;
         //model_internal::_whatValidator.property = "what";
+        model_internal::_versionValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForVersion);
+        model_internal::_versionValidator.required = true;
+        model_internal::_versionValidator.requiredFieldError = "version is required";
+        //model_internal::_versionValidator.source = model_internal::_instance;
+        //model_internal::_versionValidator.property = "version";
         model_internal::_nameValidator = new StyleValidator(model_internal::_instance.model_internal::_doValidationForName);
         model_internal::_nameValidator.required = true;
         model_internal::_nameValidator.requiredFieldError = "name is required";
@@ -355,6 +367,12 @@ internal class _BackupArchiveEntityMetadata extends com.adobe.fiber.valueobjects
     }
 
     [Bindable(event="propertyChange")]
+    public function get isVersionAvailable():Boolean
+    {
+        return true;
+    }
+
+    [Bindable(event="propertyChange")]
     public function get isIncrementalAvailable():Boolean
     {
         return true;
@@ -398,6 +416,14 @@ internal class _BackupArchiveEntityMetadata extends com.adobe.fiber.valueobjects
         {
             model_internal::_instance.model_internal::_doValidationCacheOfWhat = null;
             model_internal::calculateWhatIsValid();
+        }
+    }
+    public function invalidateDependentOnVersion():void
+    {
+        if (model_internal::_versionIsValidCacheInitialized )
+        {
+            model_internal::_instance.model_internal::_doValidationCacheOfVersion = null;
+            model_internal::calculateVersionIsValid();
         }
     }
     public function invalidateDependentOnName():void
@@ -715,6 +741,106 @@ internal class _BackupArchiveEntityMetadata extends com.adobe.fiber.valueobjects
     }
 
     [Bindable(event="propertyChange")]   
+    public function get versionStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    public function get versionValidator() : StyleValidator
+    {
+        return model_internal::_versionValidator;
+    }
+
+    model_internal function set _versionIsValid_der(value:Boolean):void 
+    {
+        var oldValue:Boolean = model_internal::_versionIsValid;         
+        if (oldValue !== value)
+        {
+            model_internal::_versionIsValid = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "versionIsValid", oldValue, value));
+        }                             
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get versionIsValid():Boolean
+    {
+        if (!model_internal::_versionIsValidCacheInitialized)
+        {
+            model_internal::calculateVersionIsValid();
+        }
+
+        return model_internal::_versionIsValid;
+    }
+
+    model_internal function calculateVersionIsValid():void
+    {
+        var valRes:ValidationResultEvent = model_internal::_versionValidator.validate(model_internal::_instance.version)
+        model_internal::_versionIsValid_der = (valRes.results == null);
+        model_internal::_versionIsValidCacheInitialized = true;
+        if (valRes.results == null)
+             model_internal::versionValidationFailureMessages_der = emptyArray;
+        else
+        {
+            var _valFailures:Array = new Array();
+            for (var a:int = 0 ; a<valRes.results.length ; a++)
+            {
+                _valFailures.push(valRes.results[a].errorMessage);
+            }
+            model_internal::versionValidationFailureMessages_der = _valFailures;
+        }
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get versionValidationFailureMessages():Array
+    {
+        if (model_internal::_versionValidationFailureMessages == null)
+            model_internal::calculateVersionIsValid();
+
+        return _versionValidationFailureMessages;
+    }
+
+    model_internal function set versionValidationFailureMessages_der(value:Array) : void
+    {
+        var oldValue:Array = model_internal::_versionValidationFailureMessages;
+
+        var needUpdate : Boolean = false;
+        if (oldValue == null)
+            needUpdate = true;
+    
+        // avoid firing the event when old and new value are different empty arrays
+        if (!needUpdate && (oldValue !== value && (oldValue.length > 0 || value.length > 0)))
+        {
+            if (oldValue.length == value.length)
+            {
+                for (var a:int=0; a < oldValue.length; a++)
+                {
+                    if (oldValue[a] !== value[a])
+                    {
+                        needUpdate = true;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                needUpdate = true;
+            }
+        }
+
+        if (needUpdate)
+        {
+            model_internal::_versionValidationFailureMessages = value;   
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "versionValidationFailureMessages", oldValue, value));
+            // Only execute calculateIsValid if it has been called before, to update the validationFailureMessages for
+            // the entire entity.
+            if (model_internal::_instance.model_internal::_cacheInitialized_isValid)
+            {
+                model_internal::_instance.model_internal::isValid_der = model_internal::_instance.model_internal::calculateIsValid();
+            }
+        }
+    }
+
+    [Bindable(event="propertyChange")]   
     public function get incrementalStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
@@ -862,6 +988,10 @@ internal class _BackupArchiveEntityMetadata extends com.adobe.fiber.valueobjects
             case("what"):
             {
                 return whatValidationFailureMessages;
+            }
+            case("version"):
+            {
+                return versionValidationFailureMessages;
             }
             case("name"):
             {

@@ -1,13 +1,14 @@
 package it.ht.rcs.console.entities.rest
 {
 	import flash.net.FileReference;
-
+	
 	import it.ht.rcs.console.entities.model.Contact;
 	import it.ht.rcs.console.entities.model.Entity;
 	import it.ht.rcs.console.entities.model.Flow;
 	import it.ht.rcs.console.entities.model.Flows;
 	import it.ht.rcs.console.entities.model.Handle;
 	import it.ht.rcs.console.entities.model.Link;
+	import it.ht.rcs.console.entities.model.LinkInfo;
 	import it.ht.rcs.console.entities.model.Position;
 	import it.ht.rcs.console.entities.model.Position_attr;
 	import it.ht.rcs.console.entities.model.Positions;
@@ -17,7 +18,7 @@ package it.ht.rcs.console.entities.rest
 	import it.ht.rcs.console.search.model.StatEvidence;
 	import it.ht.rcs.console.search.rest.DBSearchDemo;
 	import it.ht.rcs.console.target.model.Target;
-
+	
 	import mx.collections.ArrayCollection;
 	import mx.rpc.events.ResultEvent;
 
@@ -33,9 +34,10 @@ package it.ht.rcs.console.entities.rest
 			// Swordfish
 
 			//Jimmy Page - Target
-			new Entity({_id: 'e1', type: 'target', name: 'Jimmy Page', desc: 'Head of the terrorist cell', path: ['o1', 't1'], level: 'auto', photos: [], handles: [new Handle({name: 'Jimmy Page', handle: 'jimmy.page', type: 'facebook'}), new Handle({name: 'Jimmy Page', handle: 'jimmypage', type: 'twitter'}), new Handle({name: 'Jimmy Page', handle: 'jimmy.page@gmail.com', type: 'gmail'}), new Handle({name: 'Jimmy Page', handle: 'jimmypage', type: 'skype'})], 
-        links: [new Link({le: "e2", level: "automatic", type: "peer", rel: 2, versus: "both", info: new ArrayCollection(["joey.fargo"])}), //Joey Fargo
-					      new Link({le: "e3", level: "automatic", type: "peer", rel: 3, versus: "both", info: new ArrayCollection(["alejandro.reade"])}), //Alejandro Reade
+			new Entity({_id: 'e1', type: 'target', name: 'Jimmy Page', desc: 'Head of the terrorist cell', path: ['o1', 't1'], level: 'auto', photos: [], handles: [new Handle({name: 'Jimmy Page', handle: 'jimmy.page', type: 'facebook'}), new Handle({name: 'Jimmy Page', handle: '+7654987112', type: 'phone'}), new Handle({name: 'Jimmy Page', handle: 'jimmypage', type: 'twitter'}), new Handle({name: 'Jimmy Page', handle: 'jimmy.page@gmail.com', type: 'gmail'}), new Handle({name: 'Jimmy Page', handle: 'jimmypage', type: 'skype'})], 
+        links: [new Link({le: "e2", level: "automatic", type: "peer", rel: 2, versus: "both", info: new LinkInfo({"skype":[["jimmypage" ,"joeyfargo"]], "gmail":[["jimmy.page@gmail.com","jfar@gmail.com"]]})}), //Joey Fargo
+
+					      new Link({le: "e3", level: "automatic", type: "peer", rel: 3, versus: "both", info: new LinkInfo({"phone":[["+3456743293","+7654987112"]]})}), //Alejandro Reade
                 new Link({le: "e4", level: "automatic", type: "position", rel: 0, versus: "out"}), //position Jimmy's office
                 new Link({le: "e6", level: "automatic", type: "position", rel: 0, versus: "out"}),
                 new Link({le: "e8", level: "automatic", type: "virtual", rel: 0, versus: "out"}),
@@ -44,7 +46,7 @@ package it.ht.rcs.console.entities.rest
         position: new Position({latitude: "34.032153", longitude: "-118.154563"}), position_attr: new Position_attr({accuracy: "100", time: convertToUnix(new Date(2012, 11, 03, 14, 57, 00))})}),
 
 			//Joey Fargo - Target
-			new Entity({_id: 'e2', type: 'target', name: 'Joey Fargo', desc: 'Smart, computer savvy', path: ['o1', 't3'], level: 'auto', photos: [], handles: [new Handle({name: 'Joey fargo', handle: 'joey.fargo', type: 'facebook'}), new Handle({name: 'Joey fargo', handle: 'joeyfargo', type: 'twitter'}), new Handle({name: 'Joey', handle: 'jfar@gmail.com', type: 'gmail'}),], 
+			new Entity({_id: 'e2', type: 'target', name: 'Joey Fargo', desc: 'Smart, computer savvy', path: ['o1', 't3'], level: 'auto', photos: [], handles: [new Handle({name: 'Joey fargo', handle: 'joey.fargo', type: 'facebook'}), new Handle({name: 'Joey fargo', handle: 'joeyfargo', type: 'skype'}), new Handle({name: 'Joey', handle: 'jfar@gmail.com', type: 'gmail'}),], 
         links: [new Link({le: "e1", level: "automatic", type: "peer", rel: 2, versus: "both"}),
                 new Link({le: "e4", level: "automatic", type: "position", rel: 0, versus: "out"})
                 
@@ -71,12 +73,14 @@ package it.ht.rcs.console.entities.rest
         ], 
         position: new Position({latitude: "34.036531", longitude: "-118.157120"}), position_attr: new Position_attr({accuracy: "100", time: convertToUnix(new Date(2012, 11, 03, 14, 57, 00))})}), 
       new Entity({_id: 'e8', type: 'virtual', name: 'Discussion Forum', desc: 'Terrorists favourite web forum', path: ['o1'], level: 'auto', photos: [], handles: [new Handle({name: 'Main website', handle: 'www.howtomakeabomb.com', type: 'url'})], 
-        links: [new Link({le: "e1", level: "automatic", type: "virtual", rel: 0, versus: "in", info: new ArrayCollection(["www.howtomakeabomb.com"])}), 
-                new Link({le: "e3", level: "automatic", type: "virtual", rel: 0, versus: "in", info: new ArrayCollection(["www.howtomakeabomb.com"])})]
+        links: [new Link({le: "e1", level: "automatic", type: "virtual", rel: 0, versus: "in", info: new LinkInfo({"url":[["http://www.howtomakeabomb.com"]]})}), 
+                new Link({le: "e3", level: "automatic", type: "virtual", rel: 0, versus: "in", info: new LinkInfo({"url":[["http://www.howtomakeabomb.com"]]})})]
  			}),
 
       //groups
-      new Entity({_id: 'g1', type: 'group', name: 'Friends', desc: 'Jimmy\'s friends', path: ['o1'], level: 'auto', photos: [], handles: [], links: [], children:['e5','e7']})
+      new Entity({_id: 'g1', type: 'group', name: 'Friends', desc: 'Jimmy\'s friends', path: ['o1'], level: 'auto', photos: [], handles: [], links: [], children:['e5','e7']}),
+      new Entity({_id: 'e33', type: 'target', name: 'Guido', desc: 'The bomber', path: ['o2', 't4'], level: 'auto', photos: [], handles: [], links: []}), 
+      new Entity({_id: 'e34', type: 'target', name: 'Dmitry Vitaly', desc: 'Drug trafficker', path: ['o3', 't5'], level: 'auto', photos: [], handles: [], links: []})
 			]);
 
 

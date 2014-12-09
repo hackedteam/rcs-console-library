@@ -65,7 +65,7 @@ package it.ht.rcs.console.monitor.controller
     public var exploits:Boolean = false;
     public var deletion:Boolean = false;
     public var archive:int = 0;
-    public var scout:Boolean = true;
+    public var elite:Boolean = true;
     public var ocr:Boolean = false;
     public var hostname_sync:Boolean = false;
     public var translation:Boolean = false;
@@ -142,7 +142,7 @@ package it.ht.rcs.console.monitor.controller
       deletion = limits['deletion'];
       archive = limits['archive'];
       
-      scout = limits['scout'];
+      elite = limits['elite'];
       ocr=limits['ocr'];
       hostname_sync=limits['hostname_sync']
       translation=limits['translation'];
