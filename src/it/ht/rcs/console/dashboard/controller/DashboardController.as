@@ -22,6 +22,7 @@ package it.ht.rcs.console.dashboard.controller
 	import mx.collections.ListCollectionView;
 	import mx.collections.Sort;
 	import mx.collections.SortField;
+	import mx.events.CollectionEvent;
 	import mx.rpc.events.FaultEvent;
 	import mx.rpc.events.ResultEvent;
 
@@ -46,15 +47,49 @@ package it.ht.rcs.console.dashboard.controller
 
 		public function startListeningForUpdates():void
 		{
-			PushController.instance.addEventListener(PushEvent.DASHBOARD, onUpdate)
+			PushController.instance.addEventListener(PushEvent.DASHBOARD, onDashBoardUpdate)
+      PushController.instance.addEventListener(PushEvent.OPERATION, onItemPush)
+      PushController.instance.addEventListener(PushEvent.TARGET, onItemPush)
+      PushController.instance.addEventListener(PushEvent.AGENT, onItemPush)
 		}
 
 		public function stopListeningForUpdates():void
 		{
-			PushController.instance.removeEventListener(PushEvent.DASHBOARD, onUpdate)
+			PushController.instance.removeEventListener(PushEvent.DASHBOARD, onDashBoardUpdate)
+      PushController.instance.removeEventListener(PushEvent.OPERATION, onItemPush)
+      PushController.instance.removeEventListener(PushEvent.TARGET, onItemPush)
+      PushController.instance.removeEventListener(PushEvent.AGENT, onItemPush)
 		}
+    
+     private function onItemPush(e:PushEvent):void
+    {
+      var item:DashboardItem=DashboardController.instance.getItem(e.data.id);
+      if(!item)
+        return
+      switch (e.data.action)
+      {
+        case PushEvent.CREATE:
+          trace("Dashboard item Create > do nothing")
+          break;
+        
+        case PushEvent.MODIFY:
+          trace("Dashboard item Modify > update properties")
+          _items.removeEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
+          for(var property:String in e.data.changes)
+          {
+            
+            item[property]= e.data.changes[property];
+          }
+          _items.addEventListener(CollectionEvent.COLLECTION_CHANGE, onItemsChange);
+          break;
+        
+        case PushEvent.DESTROY:
+          trace("Dashboard item Destroy > delete item")
+          break;
+      }
+    }
 
-		private function onUpdate(e:PushEvent):void
+		private function onDashBoardUpdate(e:PushEvent):void
 		{
 			trace("GOT UPDATE IN DASHBOARD");
 
@@ -170,7 +205,7 @@ package it.ht.rcs.console.dashboard.controller
 		}
     
     private function onTargetResult(target:SearchItem):void
-    {
+    { 
       trace(target._id+": "+target.name)
       var dashboardItem:DashboardItem=getItem(target.path[0]);
         
