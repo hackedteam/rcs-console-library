@@ -216,6 +216,11 @@ package it.ht.rcs.console.push
           event = new PushEvent(PushEvent.GROUP);
           event.data = message;
           break;
+        case 'backupjob':
+          trace('PushManager: dispatching BACKUP event');
+          event = new PushEvent(PushEvent.BACKUPJOB);
+          event.data = message;
+          break;
         case 'message':
           trace('PushManager: MESSAGE event');
           event = new PushEvent(PushEvent.MESSAGE);
