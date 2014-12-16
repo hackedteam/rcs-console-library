@@ -18,6 +18,7 @@ package it.ht.rcs.console.push
     public static const FILESYSTEM:String = "filesystem";
     public static const USER:String = "user";
     public static const GROUP:String = "group";
+    public static const BACKUPJOB:String = "backupjob";
     public static const MONITOR_COUNTERS:String = "monitor_counters";
     
     public static const CREATE:String = "create";

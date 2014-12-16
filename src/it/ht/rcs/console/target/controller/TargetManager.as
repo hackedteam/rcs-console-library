@@ -139,7 +139,8 @@ package it.ht.rcs.console.target.controller
         t.addEventListener(TimerEvent.TIMER, refreshEntities)
         t.start()*/
        
-        if(callback)
+
+        if(callback!=null)
         callback(target);
       });
     }

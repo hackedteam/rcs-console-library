@@ -70,7 +70,7 @@ public class BackupJob extends _Super_BackupJob
         _id = data._id;
         enabled = data.enabled;
         what = data.what;
-        when = data.when;
+        when=  new BackupJobTime(data.when),
         name = data.name;
         lastrun = data.lastrun;
         status = data.status;
