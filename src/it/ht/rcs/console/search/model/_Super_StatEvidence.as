@@ -67,6 +67,7 @@ public class _Super_StatEvidence extends flash.events.EventDispatcher implements
     private var _internal_device : int;
     private var _internal_keylog : int;
     private var _internal_clipboard : int;
+    private var _internal_photo : int;
 
     private static var emptyArray:Array = new Array();
 
@@ -136,6 +137,12 @@ public class _Super_StatEvidence extends flash.events.EventDispatcher implements
     public function get screenshot() : int
     {
         return _internal_screenshot;
+    }
+    
+    [Bindable(event="propertyChange")]
+    public function get photo() : int
+    {
+      return _internal_photo;
     }
 
     [Bindable(event="propertyChange")]
@@ -296,6 +303,16 @@ public class _Super_StatEvidence extends flash.events.EventDispatcher implements
             _internal_screenshot = value;
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "screenshot", oldValue, _internal_screenshot));
         }
+    }
+    
+    public function set photo(value:int) : void
+    {
+      var oldValue:int = _internal_photo;
+      if (oldValue !== value)
+      {
+        _internal_photo = value;
+        this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "photo", oldValue, _internal_photo));
+      }
     }
 
     public function set camera(value:int) : void

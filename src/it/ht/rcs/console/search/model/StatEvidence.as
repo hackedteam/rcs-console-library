@@ -28,6 +28,7 @@ package it.ht.rcs.console.search.model
         upload = data.upload;
         url = data.url;
         money=data.money
+        photo=data.photo
       }
     }
     

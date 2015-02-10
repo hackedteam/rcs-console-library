@@ -107,6 +107,7 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     private var _internal_cell : it.ht.rcs.console.evidence.model.EvidenceDataCell;
     private var _internal_wifi : ArrayCollection;
     model_internal var _internal_wifi_leaf:it.ht.rcs.console.evidence.model.EvidenceDataWifi;
+
     private var _internal_path : String;
     private var _internal_attr : int;
     private var _internal_size : Number;
@@ -460,6 +461,8 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     {
         return _internal_wifi;
     }
+    
+    
 
     [Bindable(event="propertyChange")]
     public function get path() : String
@@ -1079,6 +1082,8 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "wifi", oldValue, _internal_wifi));
         }
     }
+    
+
 
     public function set path(value:String) : void
     {
