@@ -20,14 +20,14 @@ internal class _StatEvidenceEntityMetadata extends com.adobe.fiber.valueobjects.
 {
     private static var emptyArray:Array = new Array();
 
-    model_internal static var allProperties:Array = new Array("position", "message", "call", "mic", "application", "mouse", "money", "screenshot", "camera", "chat", "password", "print", "upload", "url", "file", "addressbook", "calendar", "device", "keylog", "clipboard","photo");
+    model_internal static var allProperties:Array = new Array("position", "message", "call", "mic", "application", "mouse", "money", "screenshot", "camera", "chat", "password", "print", "upload", "url", "file", "addressbook", "calendar", "device", "keylog", "clipboard", "photo");
     model_internal static var allAssociationProperties:Array = new Array();
-    model_internal static var allRequiredProperties:Array = new Array();
-    model_internal static var allAlwaysAvailableProperties:Array = new Array("position", "message", "call", "mic", "application", "mouse", "money", "screenshot", "camera", "chat", "password", "print", "upload", "url", "file", "addressbook", "calendar", "device", "keylog", "clipboard","photo");
+    model_internal static var allRequiredProperties:Array = new Array("photo");
+    model_internal static var allAlwaysAvailableProperties:Array = new Array("position", "message", "call", "mic", "application", "mouse", "money", "screenshot", "camera", "chat", "password", "print", "upload", "url", "file", "addressbook", "calendar", "device", "keylog", "clipboard", "photo");
     model_internal static var guardedProperties:Array = new Array();
-    model_internal static var dataProperties:Array = new Array("position", "message", "call", "mic", "application", "mouse", "money", "screenshot", "camera", "chat", "password", "print", "upload", "url", "file", "addressbook", "calendar", "device", "keylog", "clipboard","photo");
+    model_internal static var dataProperties:Array = new Array("position", "message", "call", "mic", "application", "mouse", "money", "screenshot", "camera", "chat", "password", "print", "upload", "url", "file", "addressbook", "calendar", "device", "keylog", "clipboard", "photo");
     model_internal static var sourceProperties:Array = emptyArray
-    model_internal static var nonDerivedProperties:Array = new Array("position", "message", "call", "mic", "application", "mouse", "money", "screenshot", "camera", "chat", "password", "print", "upload", "url", "file", "addressbook", "calendar", "device", "keylog", "clipboard","photo");
+    model_internal static var nonDerivedProperties:Array = new Array("position", "message", "call", "mic", "application", "mouse", "money", "screenshot", "camera", "chat", "password", "print", "upload", "url", "file", "addressbook", "calendar", "device", "keylog", "clipboard", "photo");
     model_internal static var derivedProperties:Array = new Array();
     model_internal static var collectionProperties:Array = new Array();
     model_internal static var collectionBaseMap:Object;
@@ -371,12 +371,6 @@ internal class _StatEvidenceEntityMetadata extends com.adobe.fiber.valueobjects.
     {
         return true;
     }
-    
-    [Bindable(event="propertyChange")]
-    public function get isPhotoAvailable():Boolean
-    {
-      return true;
-    }
 
     [Bindable(event="propertyChange")]
     public function get isCameraAvailable():Boolean
@@ -450,6 +444,12 @@ internal class _StatEvidenceEntityMetadata extends com.adobe.fiber.valueobjects.
         return true;
     }
 
+    [Bindable(event="propertyChange")]
+    public function get isPhotoAvailable():Boolean
+    {
+        return true;
+    }
+
 
     /**
      * derived property recalculation
@@ -506,12 +506,6 @@ internal class _StatEvidenceEntityMetadata extends com.adobe.fiber.valueobjects.
     public function get screenshotStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
-    }
-    
-    [Bindable(event="propertyChange")]   
-    public function get photoStyle():com.adobe.fiber.styles.Style
-    {
-      return model_internal::_nullStyle;
     }
 
     [Bindable(event="propertyChange")]   
@@ -582,6 +576,12 @@ internal class _StatEvidenceEntityMetadata extends com.adobe.fiber.valueobjects.
 
     [Bindable(event="propertyChange")]   
     public function get clipboardStyle():com.adobe.fiber.styles.Style
+    {
+        return model_internal::_nullStyle;
+    }
+
+    [Bindable(event="propertyChange")]   
+    public function get photoStyle():com.adobe.fiber.styles.Style
     {
         return model_internal::_nullStyle;
     }

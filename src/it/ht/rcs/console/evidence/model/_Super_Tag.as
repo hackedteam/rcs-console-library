@@ -1,6 +1,6 @@
 /**
  * This is a generated class and is not intended for modification.  To customize behavior
- * of this value object you may modify the generated sub-class of this class - Evidence.as.
+ * of this value object you may modify the generated sub-class of this class - Tag.as.
  */
 
 package it.ht.rcs.console.evidence.model
@@ -10,7 +10,6 @@ import com.adobe.fiber.util.FiberUtils;
 import com.adobe.fiber.valueobjects.IValueObject;
 import flash.events.Event;
 import flash.events.EventDispatcher;
-import it.ht.rcs.console.evidence.model.EvidenceData;
 import mx.binding.utils.ChangeWatcher;
 import mx.collections.ArrayCollection;
 import mx.events.PropertyChangeEvent;
@@ -24,9 +23,8 @@ import com.adobe.fiber.valueobjects.AvailablePropertyIterator;
 
 use namespace model_internal;
 
-[Managed]
 [ExcludeClass]
-public class _Super_Evidence extends flash.events.EventDispatcher implements com.adobe.fiber.valueobjects.IValueObject
+public class _Super_Tag extends flash.events.EventDispatcher implements com.adobe.fiber.valueobjects.IValueObject
 {
     model_internal static function initRemoteClassAliasSingle(cz:Class) : void
     {
@@ -34,14 +32,9 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
 
     model_internal static function initRemoteClassAliasAllRelated() : void
     {
-        it.ht.rcs.console.evidence.model.EvidenceData.initRemoteClassAliasSingleChild();
-        it.ht.rcs.console.evidence.model.EvidenceDataAddress.initRemoteClassAliasSingleChild();
-        it.ht.rcs.console.evidence.model.EvidenceDataCell.initRemoteClassAliasSingleChild();
-        it.ht.rcs.console.evidence.model.EvidenceDataWifi.initRemoteClassAliasSingleChild();
-        it.ht.rcs.console.evidence.model.Tag.initRemoteClassAliasSingleChild();
     }
 
-    model_internal var _dminternal_model : _EvidenceEntityMetadata;
+    model_internal var _dminternal_model : _TagEntityMetadata;
     model_internal var _changedObjects:mx.collections.ArrayCollection = new ArrayCollection();
 
     public function getChangedObjects() : Array
@@ -58,16 +51,9 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
     /**
      * properties
      */
-    private var _internal__mid : int;
-    private var _internal_da : int;
-    private var _internal__id : String;
-    private var _internal_data : it.ht.rcs.console.evidence.model.EvidenceData;
-    private var _internal_rel : int;
-    private var _internal_aid : String;
+    private var _internal_handle : String;
+    private var _internal_name : String;
     private var _internal_type : String;
-    private var _internal_note : String;
-    private var _internal_dr : int;
-    private var _internal_blo : Boolean;
 
     private static var emptyArray:Array = new Array();
 
@@ -79,15 +65,14 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
 
     model_internal var _changeWatcherArray:Array = new Array();
 
-    public function _Super_Evidence()
+    public function _Super_Tag()
     {
-        _model = new _EvidenceEntityMetadata(this);
+        _model = new _TagEntityMetadata(this);
 
         // Bind to own data or source properties for cache invalidation triggering
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "data", model_internal::setterListenerData));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "aid", model_internal::setterListenerAid));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "handle", model_internal::setterListenerHandle));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "name", model_internal::setterListenerName));
         model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "type", model_internal::setterListenerType));
-        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "note", model_internal::setterListenerNote));
 
     }
 
@@ -96,63 +81,21 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
      */
 
     [Bindable(event="propertyChange")]
-    public function get _mid() : int
+    public function get handle() : String
     {
-        return _internal__mid;
+        return _internal_handle;
     }
 
     [Bindable(event="propertyChange")]
-    public function get da() : int
+    public function get name() : String
     {
-        return _internal_da;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get _id() : String
-    {
-        return _internal__id;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get data() : it.ht.rcs.console.evidence.model.EvidenceData
-    {
-        return _internal_data;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get rel() : int
-    {
-        return _internal_rel;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get aid() : String
-    {
-        return _internal_aid;
+        return _internal_name;
     }
 
     [Bindable(event="propertyChange")]
     public function get type() : String
     {
         return _internal_type;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get note() : String
-    {
-        return _internal_note;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get dr() : int
-    {
-        return _internal_dr;
-    }
-
-    [Bindable(event="propertyChange")]
-    public function get blo() : Boolean
-    {
-        return _internal_blo;
     }
 
     public function clearAssociations() : void
@@ -163,57 +106,23 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
      * data/source property setters
      */
 
-    public function set _mid(value:int) : void
+    public function set handle(value:String) : void
     {
-        var oldValue:int = _internal__mid;
+        var oldValue:String = _internal_handle;
         if (oldValue !== value)
         {
-            _internal__mid = value;
+            _internal_handle = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "handle", oldValue, _internal_handle));
         }
     }
 
-    public function set da(value:int) : void
+    public function set name(value:String) : void
     {
-        var oldValue:int = _internal_da;
+        var oldValue:String = _internal_name;
         if (oldValue !== value)
         {
-            _internal_da = value;
-        }
-    }
-
-    public function set _id(value:String) : void
-    {
-        var oldValue:String = _internal__id;
-        if (oldValue !== value)
-        {
-            _internal__id = value;
-        }
-    }
-
-    public function set data(value:it.ht.rcs.console.evidence.model.EvidenceData) : void
-    {
-        var oldValue:it.ht.rcs.console.evidence.model.EvidenceData = _internal_data;
-        if (oldValue !== value)
-        {
-            _internal_data = value;
-        }
-    }
-
-    public function set rel(value:int) : void
-    {
-        var oldValue:int = _internal_rel;
-        if (oldValue !== value)
-        {
-            _internal_rel = value;
-        }
-    }
-
-    public function set aid(value:String) : void
-    {
-        var oldValue:String = _internal_aid;
-        if (oldValue !== value)
-        {
-            _internal_aid = value;
+            _internal_name = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "name", oldValue, _internal_name));
         }
     }
 
@@ -223,33 +132,7 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
         if (oldValue !== value)
         {
             _internal_type = value;
-        }
-    }
-
-    public function set note(value:String) : void
-    {
-        var oldValue:String = _internal_note;
-        if (oldValue !== value)
-        {
-            _internal_note = value;
-        }
-    }
-
-    public function set dr(value:int) : void
-    {
-        var oldValue:int = _internal_dr;
-        if (oldValue !== value)
-        {
-            _internal_dr = value;
-        }
-    }
-
-    public function set blo(value:Boolean) : void
-    {
-        var oldValue:Boolean = _internal_blo;
-        if (oldValue !== value)
-        {
-            _internal_blo = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "type", oldValue, _internal_type));
         }
     }
 
@@ -265,24 +148,19 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
      *  - the validity of the property (and the containing entity) if the given data property is required.
      */
 
-    model_internal function setterListenerData(value:flash.events.Event):void
+    model_internal function setterListenerHandle(value:flash.events.Event):void
     {
-        _model.invalidateDependentOnData();
+        _model.invalidateDependentOnHandle();
     }
 
-    model_internal function setterListenerAid(value:flash.events.Event):void
+    model_internal function setterListenerName(value:flash.events.Event):void
     {
-        _model.invalidateDependentOnAid();
+        _model.invalidateDependentOnName();
     }
 
     model_internal function setterListenerType(value:flash.events.Event):void
     {
         _model.invalidateDependentOnType();
-    }
-
-    model_internal function setterListenerNote(value:flash.events.Event):void
-    {
-        _model.invalidateDependentOnNote();
     }
 
 
@@ -307,25 +185,20 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
         var validationFailureMessages:Array = new Array();
 
         var propertyValidity:Boolean = true;
-        if (!_model.dataIsValid)
+        if (!_model.handleIsValid)
         {
             propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_dataValidationFailureMessages);
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_handleValidationFailureMessages);
         }
-        if (!_model.aidIsValid)
+        if (!_model.nameIsValid)
         {
             propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_aidValidationFailureMessages);
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_nameValidationFailureMessages);
         }
         if (!_model.typeIsValid)
         {
             propertyValidity = false;
             com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_typeValidationFailureMessages);
-        }
-        if (!_model.noteIsValid)
-        {
-            propertyValidity = false;
-            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_noteValidationFailureMessages);
         }
 
         model_internal::_cacheInitialized_isValid = true;
@@ -354,14 +227,14 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
 
     [Transient]
     [Bindable(event="propertyChange")]
-    public function get _model() : _EvidenceEntityMetadata
+    public function get _model() : _TagEntityMetadata
     {
         return model_internal::_dminternal_model;
     }
 
-    public function set _model(value : _EvidenceEntityMetadata) : void
+    public function set _model(value : _TagEntityMetadata) : void
     {
-        var oldValue : _EvidenceEntityMetadata = model_internal::_dminternal_model;
+        var oldValue : _TagEntityMetadata = model_internal::_dminternal_model;
         if (oldValue !== value)
         {
             model_internal::_dminternal_model = value;
@@ -406,56 +279,56 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
         }
     }
 
-    model_internal var _doValidationCacheOfData : Array = null;
-    model_internal var _doValidationLastValOfData : it.ht.rcs.console.evidence.model.EvidenceData;
+    model_internal var _doValidationCacheOfHandle : Array = null;
+    model_internal var _doValidationLastValOfHandle : String;
 
-    model_internal function _doValidationForData(valueIn:Object):Array
+    model_internal function _doValidationForHandle(valueIn:Object):Array
     {
-        var value : it.ht.rcs.console.evidence.model.EvidenceData = valueIn as it.ht.rcs.console.evidence.model.EvidenceData;
+        var value : String = valueIn as String;
 
-        if (model_internal::_doValidationCacheOfData != null && model_internal::_doValidationLastValOfData == value)
-           return model_internal::_doValidationCacheOfData ;
+        if (model_internal::_doValidationCacheOfHandle != null && model_internal::_doValidationLastValOfHandle == value)
+           return model_internal::_doValidationCacheOfHandle ;
 
-        _model.model_internal::_dataIsValidCacheInitialized = true;
+        _model.model_internal::_handleIsValidCacheInitialized = true;
         var validationFailures:Array = new Array();
         var errorMessage:String;
         var failure:Boolean;
 
         var valRes:ValidationResult;
-        if (_model.isDataAvailable && _internal_data == null)
+        if (_model.isHandleAvailable && _internal_handle == null)
         {
-            validationFailures.push(new ValidationResult(true, "", "", "data is required"));
+            validationFailures.push(new ValidationResult(true, "", "", "handle is required"));
         }
 
-        model_internal::_doValidationCacheOfData = validationFailures;
-        model_internal::_doValidationLastValOfData = value;
+        model_internal::_doValidationCacheOfHandle = validationFailures;
+        model_internal::_doValidationLastValOfHandle = value;
 
         return validationFailures;
     }
     
-    model_internal var _doValidationCacheOfAid : Array = null;
-    model_internal var _doValidationLastValOfAid : String;
+    model_internal var _doValidationCacheOfName : Array = null;
+    model_internal var _doValidationLastValOfName : String;
 
-    model_internal function _doValidationForAid(valueIn:Object):Array
+    model_internal function _doValidationForName(valueIn:Object):Array
     {
         var value : String = valueIn as String;
 
-        if (model_internal::_doValidationCacheOfAid != null && model_internal::_doValidationLastValOfAid == value)
-           return model_internal::_doValidationCacheOfAid ;
+        if (model_internal::_doValidationCacheOfName != null && model_internal::_doValidationLastValOfName == value)
+           return model_internal::_doValidationCacheOfName ;
 
-        _model.model_internal::_aidIsValidCacheInitialized = true;
+        _model.model_internal::_nameIsValidCacheInitialized = true;
         var validationFailures:Array = new Array();
         var errorMessage:String;
         var failure:Boolean;
 
         var valRes:ValidationResult;
-        if (_model.isAidAvailable && _internal_aid == null)
+        if (_model.isNameAvailable && _internal_name == null)
         {
-            validationFailures.push(new ValidationResult(true, "", "", "aid is required"));
+            validationFailures.push(new ValidationResult(true, "", "", "name is required"));
         }
 
-        model_internal::_doValidationCacheOfAid = validationFailures;
-        model_internal::_doValidationLastValOfAid = value;
+        model_internal::_doValidationCacheOfName = validationFailures;
+        model_internal::_doValidationLastValOfName = value;
 
         return validationFailures;
     }
@@ -483,33 +356,6 @@ public class _Super_Evidence extends flash.events.EventDispatcher implements com
 
         model_internal::_doValidationCacheOfType = validationFailures;
         model_internal::_doValidationLastValOfType = value;
-
-        return validationFailures;
-    }
-    
-    model_internal var _doValidationCacheOfNote : Array = null;
-    model_internal var _doValidationLastValOfNote : String;
-
-    model_internal function _doValidationForNote(valueIn:Object):Array
-    {
-        var value : String = valueIn as String;
-
-        if (model_internal::_doValidationCacheOfNote != null && model_internal::_doValidationLastValOfNote == value)
-           return model_internal::_doValidationCacheOfNote ;
-
-        _model.model_internal::_noteIsValidCacheInitialized = true;
-        var validationFailures:Array = new Array();
-        var errorMessage:String;
-        var failure:Boolean;
-
-        var valRes:ValidationResult;
-        if (_model.isNoteAvailable && _internal_note == null)
-        {
-            validationFailures.push(new ValidationResult(true, "", "", "note is required"));
-        }
-
-        model_internal::_doValidationCacheOfNote = validationFailures;
-        model_internal::_doValidationLastValOfNote = value;
 
         return validationFailures;
     }

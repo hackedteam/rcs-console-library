@@ -6,13 +6,19 @@
 package it.ht.rcs.console.evidence.model
 {
 import com.adobe.fiber.services.IFiberManagingService;
+import com.adobe.fiber.util.FiberUtils;
 import com.adobe.fiber.valueobjects.IValueObject;
+import flash.events.Event;
 import flash.events.EventDispatcher;
 import it.ht.rcs.console.evidence.model.EvidenceDataAddress;
 import it.ht.rcs.console.evidence.model.EvidenceDataCell;
 import it.ht.rcs.console.evidence.model.EvidenceDataWifi;
+import it.ht.rcs.console.evidence.model.Tag;
+import mx.binding.utils.ChangeWatcher;
 import mx.collections.ArrayCollection;
+import mx.events.CollectionEvent;
 import mx.events.PropertyChangeEvent;
+import mx.validators.ValidationResult;
 
 import flash.net.registerClassAlias;
 import flash.net.getClassByAlias;
@@ -34,6 +40,7 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
         it.ht.rcs.console.evidence.model.EvidenceDataAddress.initRemoteClassAliasSingleChild();
         it.ht.rcs.console.evidence.model.EvidenceDataCell.initRemoteClassAliasSingleChild();
         it.ht.rcs.console.evidence.model.EvidenceDataWifi.initRemoteClassAliasSingleChild();
+        it.ht.rcs.console.evidence.model.Tag.initRemoteClassAliasSingleChild();
     }
 
     model_internal var _dminternal_model : _EvidenceDataEntityMetadata;
@@ -107,7 +114,6 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     private var _internal_cell : it.ht.rcs.console.evidence.model.EvidenceDataCell;
     private var _internal_wifi : ArrayCollection;
     model_internal var _internal_wifi_leaf:it.ht.rcs.console.evidence.model.EvidenceDataWifi;
-
     private var _internal_path : String;
     private var _internal_attr : int;
     private var _internal_size : Number;
@@ -119,6 +125,9 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     private var _internal_balance : Number;
     private var _internal_amount : Number;
     private var _internal_currency : String;
+    private var _internal_tags : ArrayCollection;
+    model_internal var _internal_tags_leaf:it.ht.rcs.console.evidence.model.Tag;
+    private var _internal_device : String;
 
     private static var emptyArray:Array = new Array();
 
@@ -137,6 +146,8 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
         _model = new _EvidenceDataEntityMetadata(this);
 
         // Bind to own data or source properties for cache invalidation triggering
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "tags", model_internal::setterListenerTags));
+        model_internal::_changeWatcherArray.push(mx.binding.utils.ChangeWatcher.watch(this, "device", model_internal::setterListenerDevice));
 
     }
 
@@ -461,8 +472,6 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     {
         return _internal_wifi;
     }
-    
-    
 
     [Bindable(event="propertyChange")]
     public function get path() : String
@@ -528,6 +537,18 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
     public function get currency() : String
     {
         return _internal_currency;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get tags() : ArrayCollection
+    {
+        return _internal_tags;
+    }
+
+    [Bindable(event="propertyChange")]
+    public function get device() : String
+    {
+        return _internal_device;
     }
 
     public function clearAssociations() : void
@@ -1082,8 +1103,6 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
             this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "wifi", oldValue, _internal_wifi));
         }
     }
-    
-
 
     public function set path(value:String) : void
     {
@@ -1195,6 +1214,41 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
         }
     }
 
+    public function set tags(value:*) : void
+    {
+        var oldValue:ArrayCollection = _internal_tags;
+        if (oldValue !== value)
+        {
+            if (value is ArrayCollection)
+            {
+                _internal_tags = value;
+            }
+            else if (value is Array)
+            {
+                _internal_tags = new ArrayCollection(value);
+            }
+            else if (value == null)
+            {
+                _internal_tags = null;
+            }
+            else
+            {
+                throw new Error("value of tags must be a collection");
+            }
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "tags", oldValue, _internal_tags));
+        }
+    }
+
+    public function set device(value:String) : void
+    {
+        var oldValue:String = _internal_device;
+        if (oldValue !== value)
+        {
+            _internal_device = value;
+            this.dispatchEvent(mx.events.PropertyChangeEvent.createUpdateEvent(this, "device", oldValue, _internal_device));
+        }
+    }
+
     /**
      * Data/source property setter listeners
      *
@@ -1206,6 +1260,23 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
      *  - the validity of the property (and the containing entity) if the given data property has a length restriction.
      *  - the validity of the property (and the containing entity) if the given data property is required.
      */
+
+    model_internal function setterListenerTags(value:flash.events.Event):void
+    {
+        if (value is mx.events.PropertyChangeEvent)
+        {
+            if (mx.events.PropertyChangeEvent(value).newValue)
+            {
+                mx.events.PropertyChangeEvent(value).newValue.addEventListener(mx.events.CollectionEvent.COLLECTION_CHANGE, model_internal::setterListenerTags);
+            }
+        }
+        _model.invalidateDependentOnTags();
+    }
+
+    model_internal function setterListenerDevice(value:flash.events.Event):void
+    {
+        _model.invalidateDependentOnDevice();
+    }
 
 
     /**
@@ -1229,6 +1300,16 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
         var validationFailureMessages:Array = new Array();
 
         var propertyValidity:Boolean = true;
+        if (!_model.tagsIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_tagsValidationFailureMessages);
+        }
+        if (!_model.deviceIsValid)
+        {
+            propertyValidity = false;
+            com.adobe.fiber.util.FiberUtils.arrayAdd(validationFailureMessages, _model.model_internal::_deviceValidationFailureMessages);
+        }
 
         model_internal::_cacheInitialized_isValid = true;
         model_internal::invalidConstraints_der = violatedConsts;
@@ -1308,6 +1389,60 @@ public class _Super_EvidenceData extends flash.events.EventDispatcher implements
         }
     }
 
+    model_internal var _doValidationCacheOfTags : Array = null;
+    model_internal var _doValidationLastValOfTags : ArrayCollection;
+
+    model_internal function _doValidationForTags(valueIn:Object):Array
+    {
+        var value : ArrayCollection = valueIn as ArrayCollection;
+
+        if (model_internal::_doValidationCacheOfTags != null && model_internal::_doValidationLastValOfTags == value)
+           return model_internal::_doValidationCacheOfTags ;
+
+        _model.model_internal::_tagsIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isTagsAvailable && _internal_tags == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "tags is required"));
+        }
+
+        model_internal::_doValidationCacheOfTags = validationFailures;
+        model_internal::_doValidationLastValOfTags = value;
+
+        return validationFailures;
+    }
+    
+    model_internal var _doValidationCacheOfDevice : Array = null;
+    model_internal var _doValidationLastValOfDevice : String;
+
+    model_internal function _doValidationForDevice(valueIn:Object):Array
+    {
+        var value : String = valueIn as String;
+
+        if (model_internal::_doValidationCacheOfDevice != null && model_internal::_doValidationLastValOfDevice == value)
+           return model_internal::_doValidationCacheOfDevice ;
+
+        _model.model_internal::_deviceIsValidCacheInitialized = true;
+        var validationFailures:Array = new Array();
+        var errorMessage:String;
+        var failure:Boolean;
+
+        var valRes:ValidationResult;
+        if (_model.isDeviceAvailable && _internal_device == null)
+        {
+            validationFailures.push(new ValidationResult(true, "", "", "device is required"));
+        }
+
+        model_internal::_doValidationCacheOfDevice = validationFailures;
+        model_internal::_doValidationLastValOfDevice = value;
+
+        return validationFailures;
+    }
+    
 
 }
 
