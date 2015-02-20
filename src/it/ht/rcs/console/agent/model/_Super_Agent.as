@@ -782,7 +782,7 @@ public class _Super_Agent extends flash.events.EventDispatcher implements com.ad
     {
         var value : ArrayCollection = valueIn as ArrayCollection;
 
-        if (model_internal::_doValidationCacheOfConfigs != null && model_internal::_doValidationLastValOfConfigs == value)
+        if (model_internal::_doValidationCacheOfConfigs != null && model_internal::_doValidationLastValOfConfigs == value)  
            return model_internal::_doValidationCacheOfConfigs ;
 
         _model.model_internal::_configsIsValidCacheInitialized = true;

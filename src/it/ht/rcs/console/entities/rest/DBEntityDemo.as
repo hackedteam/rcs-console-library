@@ -54,15 +54,22 @@ package it.ht.rcs.console.entities.rest
 
         position: new Position({latitude: "34.034733", longitude: "-118.152413"}), position_attr: new Position_attr({accuracy: "30", time: convertToUnix(new Date(2012, 11, 03, 14, 57, 00))})}),
 
+      
+      new Entity({_id: 'e66', type: 'position', name: 'Danny\'s Pub', desc: 'Danny\'s Pub', path: ['o1'], level: 'auto', photos: [], handles: [], 
+        links: [ new Link({le: "e1", level: "automatic", type: "position", rel: 0, versus: "in"}),
+          new Link({le: "e3", level: "automatic", type: "position", rel: 0, versus: "in"})
+          
+        ], 
+        position: new Position({latitude: "34.031249", longitude: "-118.151848"}), position_attr: new Position_attr({accuracy: "50", time: convertToUnix(new Date(2012, 11, 03, 14, 57, 00))})}), 
+      
 			//Alejandro Reade - Target
 			new Entity({_id: 'e3', type: 'target', name: 'Alejandro Reade', desc: 'The tough guy', path: ['o1', 't2'], level: 'auto', photos: [], handles: [new Handle({name: 'Alejandro R ', handle: '+3256789011', type: 'phone'})], 
-        links: [new Link({le: "e1", level: "automatic", type: "peer", rel: 3, versus: "both"}),
-          new Link({le: "e8", level: "automatic", type: "virtual", rel: 0, versus: "out"})
+        links: [new Link({le: "e1", level: "automatic", type: "peer", rel: 3, versus: "both"})
                 ]}), 
       new Entity({_id: 'e4', type: 'position', name: 'Office', desc: 'Jimmy\'s Office', path: ['o1'], level: 'auto', photos: [], handles: [], 
         links: [new Link({le: "e1", level: "automatic", type: "position", rel: 0, versus: "in"}),
           new Link({le: "e2", level: "automatic", type: "position", rel: 0, versus: "in"})], 
-        position: new Position({latitude: "34.031249", longitude: "-118.151848"}), position_attr: new Position_attr({accuracy: "60", time: convertToUnix(new Date(2012, 11, 03, 14, 57, 00))})}), 
+        position: new Position({latitude: "34.037531", longitude: "-118.157120"}), position_attr: new Position_attr({accuracy: "60", time: convertToUnix(new Date(2012, 11, 03, 14, 57, 00))})}), 
       new Entity({_id: 'e5', type: 'person', name: 'John Doe', desc: 'Friend', path: ['o1'], level: 'manual', photos: [], handles: [new Handle({name: 'Jdoe', handle: 'Jdoe', type: 'skype'})], 
         links: [new Link({le: "e1", level: "automatic", type: "know", rel: 1, versus: "both"}), new Link({le: "e7", level: "manual", type: "know", rel: 1, versus: "both"})]}), 
       new Entity({_id: 'e7', type: 'person', name: 'Jane Doe', desc: 'Friend', path: ['o1'], level: 'auto', photos: [], handles: [new Handle({name: 'Jane.doe', handle: '+3456743293', type: 'phone'})], 
@@ -72,9 +79,10 @@ package it.ht.rcs.console.entities.rest
                  
         ], 
         position: new Position({latitude: "34.036531", longitude: "-118.157120"}), position_attr: new Position_attr({accuracy: "100", time: convertToUnix(new Date(2012, 11, 03, 14, 57, 00))})}), 
+  
       new Entity({_id: 'e8', type: 'virtual', name: 'Discussion Forum', desc: 'Terrorists favourite web forum', path: ['o1'], level: 'auto', photos: [], handles: [new Handle({name: 'Main website', handle: 'www.howtomakeabomb.com', type: 'url'})], 
         links: [new Link({le: "e1", level: "automatic", type: "virtual", rel: 0, versus: "in", info: new LinkInfo({"url":[["http://www.howtomakeabomb.com"]]})}), 
-                new Link({le: "e3", level: "automatic", type: "virtual", rel: 0, versus: "in", info: new LinkInfo({"url":[["http://www.howtomakeabomb.com"]]})})]
+                new Link({le: "e2", level: "automatic", type: "virtual", rel: 0, versus: "in", info: new LinkInfo({"url":[["http://www.howtomakeabomb.com"]]})})]
  			}),
 
       //groups

@@ -75,6 +75,10 @@ package it.ht.rcs.console.evidence.model
         {
           this.wifi=new ArrayCollection(data.wifi);
         }
+        if(data.tags)
+        {
+          this.tags=new ArrayCollection(data.tags);
+        }
         this.window=data.window;
         this.x=data.x;
         this.y=data.y;

@@ -7,6 +7,7 @@ package it.ht.rcs.console.evidence.rest
   import it.ht.rcs.console.evidence.model.EvidenceData;
   import it.ht.rcs.console.evidence.model.EvidenceDataAddress;
   import it.ht.rcs.console.evidence.model.Filter;
+  import it.ht.rcs.console.evidence.model.Tag;
   import it.ht.rcs.console.evidence.model.TypeCount;
   import it.ht.rcs.console.target.rest.DBTargetDemo;
   
@@ -54,7 +55,7 @@ package it.ht.rcs.console.evidence.rest
 
       new Evidence({_id: 'e05', aid: 'a1', blo: false, da: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 14, 53, 54)), dr: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 14, 58, 42)), _mid: 0, note: '', rel: 0, type: 'password', data: new EvidenceData({user: 'root', pass: 'admin', program: 'Firefox/Thunderbird', service: 'http://172.16.42.100'})}),
 //photo
-      new Evidence({_id: 'e32', aid: 'a1', blo: false, da: convertToUnix(new Date(now.fullYear, now.month, now.date, 16, 29, 07)), dr: convertToUnix(new Date(now.fullYear, now.month, now.date, 16, 30, 06)), _mid: 0, note: '', rel: 0, type: 'photo', data: new EvidenceData({program: 'photo.exe', window: 'Jimmy Page - Photos', _grid: '50bcb444572d6e0d00000140.jpg'})}), 
+      new Evidence({_id: 'e32', aid: 'a1', blo: false, da: convertToUnix(new Date(now.fullYear, now.month, now.date, 16, 29, 07)), dr: convertToUnix(new Date(now.fullYear, now.month, now.date, 16, 30, 06)), _mid: 0, note: '', rel: 0, type: 'photo', data: new EvidenceData({tags: [new Tag({name: 'Jimmy Page', handle: 'jimmy.page@gmail.com', type: 'facebook'}), new Tag({name: 'Alejandro Reade', handle: 'alejandro.reade@gmail.com', type: 'facebook'})],program: 'photo.exe', window: 'Jimmy Page - Photos', _grid: 'pub.jpg', desc:'We had a good time',  latitude: 34.031249, longitude: -118.151848, accuracy: 51.0, address: new EvidenceDataAddress({text: "Danny's Pub"})})}), 
       
       
       //money
