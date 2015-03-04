@@ -321,6 +321,10 @@ package it.ht.rcs.console.evidence.rest
         }
 
         if (criteria == "info") {
+          
+          if(item.type=="position")
+            return true;
+          
           result = searchForKeyword(item.data, filter.info);
           break;
         }
@@ -332,6 +336,7 @@ package it.ht.rcs.console.evidence.rest
 
     private function searchForKeyword(data:Object, keyword:String = ""):Boolean
     {
+   
       var keywords:Array = keyword.split(" ")
       var matches:Number = 0
       //loop item.data
