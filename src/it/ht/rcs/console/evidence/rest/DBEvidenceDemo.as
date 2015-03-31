@@ -7,6 +7,7 @@ package it.ht.rcs.console.evidence.rest
   import it.ht.rcs.console.evidence.model.EvidenceData;
   import it.ht.rcs.console.evidence.model.EvidenceDataAddress;
   import it.ht.rcs.console.evidence.model.Filter;
+  import it.ht.rcs.console.evidence.model.Tag;
   import it.ht.rcs.console.evidence.model.TypeCount;
   import it.ht.rcs.console.target.rest.DBTargetDemo;
   
@@ -53,7 +54,9 @@ package it.ht.rcs.console.evidence.rest
       new Evidence({_id: 'e04', aid: 'a1', blo: false, da: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 14, 53, 54)), dr: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 14, 58, 42)), _mid: 0, note: '', rel: 0, type: 'password', data: new EvidenceData({user: 'jimmy.page', pass: 'beta456', program: 'Firefox/Thunderbird', service: 'https://twitter.com'})}),
 
       new Evidence({_id: 'e05', aid: 'a1', blo: false, da: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 14, 53, 54)), dr: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 14, 58, 42)), _mid: 0, note: '', rel: 0, type: 'password', data: new EvidenceData({user: 'root', pass: 'admin', program: 'Firefox/Thunderbird', service: 'http://172.16.42.100'})}),
-
+//photo
+      new Evidence({_id: 'e32', aid: 'a1', blo: false, da: convertToUnix(new Date(now.fullYear, now.month, now.date, 16, 29, 07)), dr: convertToUnix(new Date(now.fullYear, now.month, now.date, 16, 30, 06)), _mid: 0, note: '', rel: 0, type: 'photo', data: new EvidenceData({tags: [new Tag({name: 'Jimmy Page', handle: 'jimmy.page@gmail.com', type: 'facebook'}), new Tag({name: 'Alejandro Reade', handle: 'alejandro.reade@gmail.com', type: 'facebook'})],program: 'photo.exe', window: 'Jimmy Page - Photos', _grid: 'pub.jpg', desc:'We had a good time',  latitude: 34.031249, longitude: -118.151848, accuracy: 51.0, address: new EvidenceDataAddress({text: "Danny's Pub"})})}), 
+      
       
       //money
       new Evidence({_id: 'e96', aid: 'a1', blo: false, da: convertToUnix(new Date(now.fullYear, now.month, now.date, 14, 53, 59)), dr: convertToUnix(new Date(now.fullYear, now.month, now.date, 14, 58, 43)), _mid: 0, note: '', rel: 0, type: 'money', data: new EvidenceData({type: 'wallet', currency:'bitcoin',version:'80600', encrypted:false,size:'73728',balance:0})}),
@@ -133,6 +136,7 @@ package it.ht.rcs.console.evidence.rest
       //chat
 
       new Evidence({_id: 'e26', aid: 'a1', blo: false, da: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 15, 10, 09)), dr: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 15, 10, 48)), _mid: 0, note: '', rel: 0, type: 'chat', data: new EvidenceData({program: 'SKYPE', topic: '', peer: 'alejandro.reade jimmy.page', content: 'alejandro.reade: posted file secret_op.tc to members of this conversation', tr: 'alejandro.reade: posted file secret_op.tc to members of this conversation'})}),
+      new Evidence({_id: 'e26', aid: 'a1', blo: false, da: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 15, 10, 09)), dr: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 15, 10, 48)), _mid: 0, note: '', rel: 0, type: 'chat', data: new EvidenceData({program: 'SKYPE', topic: '', peer: 'alejandro.reade jimmy.page', content: 'alejandro.reade: posted file secret_op.tc to members of this conversation', tr: 'alejandro.reade: posted file secret_op.tc to members of this conversation', _grid:'50bcb444572d6e0d00000140.jpg'})}),
 
       //url
       new Evidence({_id: 'e27', aid: 'a1', blo: false, da: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 15, 14, 36)), dr: convertToUnix(new Date(tenDaysAgo.fullYear, tenDaysAgo.month, tenDaysAgo.date, 15, 14, 46)), _mid: 0, note: '', rel: 0, type: 'url', data: new EvidenceData({url: 'www.howtomakeabomb.com', title: 'How to make a bomb!', program: 'Firefox', keywords: ''})}), 
@@ -317,6 +321,10 @@ package it.ht.rcs.console.evidence.rest
         }
 
         if (criteria == "info") {
+          
+          if(item.type=="position")
+            return true;
+          
           result = searchForKeyword(item.data, filter.info);
           break;
         }
@@ -328,6 +336,7 @@ package it.ht.rcs.console.evidence.rest
 
     private function searchForKeyword(data:Object, keyword:String = ""):Boolean
     {
+   
       var keywords:Array = keyword.split(" ")
       var matches:Number = 0
       //loop item.data
@@ -670,12 +679,16 @@ package it.ht.rcs.console.evidence.rest
       var url:TypeCount = new TypeCount();
       url.type = "url";
       counts["url"] = url;
+      
+      var photo:TypeCount = new TypeCount();
+      photo.type = "photo";
+      counts["photo"] = photo;
 
       var total:TypeCount = new TypeCount();
       total.type = "total";
       counts["total"] = total;
 
-      result.source = [addressbook, application, calendar, call, camera, chat, clipboard, device, file, keylog, message, mic, money, mouse, password, position, print, screenshot, url, total];
+      result.source = [addressbook, application, calendar, call, camera, chat, clipboard, device, file, keylog, message, mic, money, mouse, password, photo, position, print, screenshot, url, total];
 
       var i:uint;
       var currentEvidence:Evidence;

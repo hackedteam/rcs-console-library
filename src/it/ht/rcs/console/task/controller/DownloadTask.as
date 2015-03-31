@@ -168,7 +168,7 @@ package it.ht.rcs.console.task.controller
           
           // task.description = "Completed";
           if (task.file_name != null)
-            NotificationPopup.showNotification(ResourceManager.getInstance().getString('localized_main', 'TASK_COMPLETE', [task.file_name]), 3);
+            NotificationPopup.showNotification(ResourceManager.getInstance().getString('localized_main', 'TASK_COMPLETE', [task.file_name]),6,true);
           else
             NotificationPopup.showNotification(ResourceManager.getInstance().getString('localized_main', 'TASK_NOFILE_COMPLETE'), 3);
           trace("Task " + task._id +" completed.");

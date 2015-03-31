@@ -15,7 +15,7 @@ package it.ht.rcs.console.monitor.rest
       items.addItem(new Status(
         {
           _id: '1',
-          address: '1.2.3.4',
+          address: '192.168.2.172',
           cpu:30,
           disk:10,
           info: 'Status for component...',

@@ -2487,699 +2487,6 @@
     <property name="type" type="string" required="true"/>
     <property name="section" type="string" required="true"/>
   </entity>
-  <service name="DBEvidence">
-    <annotation name="ActionScriptGeneration">
-      <item name="ServiceType">HTTPMultiService</item>
-      <item name="Package">it.ht.rcs.console.evidence.rest</item>
-      <item name="rootURL">https://localhost:4444</item>
-    </annotation>
-    <annotation name="ServiceTypeGroup">
-      <item name="ServiceBackendType">HTTPService</item>
-    </annotation>
-    <annotation name="ServiceConfig">
-      <item name="DEFAULT_ENTITY_PACKAGE">it.ht.rcs.console.evidence.model</item>
-      <item name="LINKED_FILE"></item>
-    </annotation>
-    <function name="agent_status_" return-type="AgentStatus">
-      <annotation name="analyze group">
-        <item name="analyzed">true</item>
-      </annotation>
-      <annotation name="ActionScriptGeneration">
-        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
-        <item name="method">POST</item>
-        <item name="contentType">application/xml</item>
-        <item name="requestBodyParameter">true</item>
-        <item name="url">/agent/status</item>
-      </annotation>
-      <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/agent/status</item>
-      </annotation>
-      <annotation name="ValidProperties">
-        <item name="propertySpecifier">_id,status,deleted</item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="returnType">opaque</item>
-        <item name="inputParamNames">strXml</item>
-        <item name="inputParams">string</item>
-      </annotation>
-      <parameter name="strXml" type="string"/>
-    </function>
-    <function name="all_" return-type="Evidence[]">
-      <annotation name="analyze group">
-        <item name="analyzed">true</item>
-      </annotation>
-      <annotation name="ActionScriptGeneration">
-        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
-        <item name="method">GET</item>
-        <item name="url">/evidence</item>
-      </annotation>
-      <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/evidence</item>
-      </annotation>
-      <annotation name="ValidProperties">
-        <item name="propertySpecifier">blo,_id,data,rel,da,dr,aid,type,_mid,note</item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="returnType">opaque</item>
-        <item name="inputParamNames">filter,startIndex,numItems</item>
-        <item name="inputParams">string,integer,integer</item>
-      </annotation>
-      <parameter name="filter" type="string"/>
-      <parameter name="startIndex" type="integer"/>
-      <parameter name="numItems" type="integer"/>
-    </function>
-    <function name="count_" return-type="integer">
-      <annotation name="analyze group">
-        <item name="analyzed">true</item>
-      </annotation>
-      <annotation name="ActionScriptGeneration">
-        <item name="SerializationFilter">com.adobe.serializers.xml.XMLSerializationFilter</item>
-        <item name="method">GET</item>
-        <item name="url">/evidence/count</item>
-      </annotation>
-      <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/evidence/count</item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="returnType">opaque</item>
-        <item name="inputParamNames">filter</item>
-        <item name="inputParams">string</item>
-      </annotation>
-      <parameter name="filter" type="string"/>
-    </function>
-    <function name="info_" return-type="Evidence">
-      <annotation name="analyze group">
-        <item name="analyzed">true</item>
-      </annotation>
-      <annotation name="ActionScriptGeneration">
-        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
-        <item name="method">GET</item>
-        <item name="url">/evidence/info</item>
-      </annotation>
-      <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/evidence/info</item>
-      </annotation>
-      <annotation name="ValidProperties">
-        <item name="propertySpecifier">blo,_id,data,rel,da,dr,aid,type,_mid</item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="returnType">opaque</item>
-        <item name="inputParamNames">filter</item>
-        <item name="inputParams">string</item>
-      </annotation>
-      <parameter name="filter" type="string"/>
-    </function>
-    <function name="sync_start_" return-type="void">
-      <annotation name="analyze group">
-        <item name="analyzed">true</item>
-      </annotation>
-      <annotation name="ActionScriptGeneration">
-        <item name="SerializationFilter">com.adobe.serializers.xml.XMLSerializationFilter</item>
-        <item name="method">POST</item>
-        <item name="contentType">application/xml</item>
-        <item name="requestBodyParameter">true</item>
-        <item name="url">/evidence/start</item>
-      </annotation>
-      <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/evidence/start</item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="returnType">opaque</item>
-        <item name="inputParamNames">strXml</item>
-        <item name="inputParams">string</item>
-      </annotation>
-      <parameter name="strXml" type="string"/>
-    </function>
-    <function name="sync_stop_" return-type="void">
-      <annotation name="analyze group">
-        <item name="analyzed">true</item>
-      </annotation>
-      <annotation name="ActionScriptGeneration">
-        <item name="SerializationFilter">com.adobe.serializers.xml.XMLSerializationFilter</item>
-        <item name="method">POST</item>
-        <item name="contentType">application/xml</item>
-        <item name="requestBodyParameter">true</item>
-        <item name="url">/evidence/stop</item>
-      </annotation>
-      <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/evidence/stop</item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="returnType">opaque</item>
-        <item name="inputParamNames">strXml</item>
-        <item name="inputParams">string</item>
-      </annotation>
-      <parameter name="strXml" type="string"/>
-    </function>
-    <function name="update_" return-type="Evidence">
-      <annotation name="analyze group">
-        <item name="analyzed">true</item>
-      </annotation>
-      <annotation name="ActionScriptGeneration">
-        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
-        <item name="method">POST</item>
-        <item name="contentType">application/xml</item>
-        <item name="requestBodyParameter">true</item>
-        <item name="url">/evidence/update</item>
-      </annotation>
-      <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/evidence/update</item>
-      </annotation>
-      <annotation name="ValidProperties">
-        <item name="propertySpecifier">blo,_id,data,rel,da,dr,aid,type,_mid,note</item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="returnType">opaque</item>
-        <item name="inputParamNames">strXml</item>
-        <item name="inputParams">string</item>
-      </annotation>
-      <parameter name="strXml" type="string"/>
-    </function>
-    <function name="total_" return-type="TypeCount[]">
-      <annotation name="analyze group">
-        <item name="analyzed">true</item>
-      </annotation>
-      <annotation name="ActionScriptGeneration">
-        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
-        <item name="method">GET</item>
-        <item name="url">/evidence/total</item>
-      </annotation>
-      <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/evidence/total</item>
-      </annotation>
-      <annotation name="ValidProperties">
-        <item name="propertySpecifier">count,type</item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="returnType">opaque</item>
-        <item name="inputParamNames">filter</item>
-        <item name="inputParams">string</item>
-      </annotation>
-      <parameter name="filter" type="string"/>
-    </function>
-    <function name="show_" return-type="Evidence">
-      <annotation name="analyze group">
-        <item name="analyzed">true</item>
-      </annotation>
-      <annotation name="ActionScriptGeneration">
-        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
-        <item name="method">GET</item>
-        <item name="url">/evidence/{id}</item>
-      </annotation>
-      <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/evidence/{id}</item>
-      </annotation>
-      <annotation name="ValidProperties">
-        <item name="propertySpecifier">_mid,da,_id,data,rel,aid,type,note,dr,blo</item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="returnType">opaque</item>
-        <item name="inputParamNames">id,target</item>
-        <item name="inputParams">string,string</item>
-      </annotation>
-      <annotation name="Properties">
-        <item name="urlParamNames">id</item>
-      </annotation>
-      <parameter name="id" type="string"/>
-      <parameter name="target" type="string"/>
-    </function>
-    <function name="destroy_" return-type="void">
-      <annotation name="analyze group">
-        <item name="analyzed">true</item>
-      </annotation>
-      <annotation name="ActionScriptGeneration">
-        <item name="SerializationFilter">com.adobe.serializers.xml.XMLSerializationFilter</item>
-        <item name="method">POST</item>
-        <item name="contentType">application/xml</item>
-        <item name="requestBodyParameter">true</item>
-        <item name="url">/evidence/destroy</item>
-      </annotation>
-      <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/evidence/destroy</item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="returnType">opaque</item>
-        <item name="inputParamNames">strXml</item>
-        <item name="inputParams">string</item>
-      </annotation>
-      <parameter name="strXml" type="string"/>
-    </function>
-    <function name="commands_" return-type="Evidence[]">
-      <annotation name="analyze group">
-        <item name="analyzed">true</item>
-      </annotation>
-      <annotation name="ActionScriptGeneration">
-        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
-        <item name="method">GET</item>
-        <item name="url">/evidence/commands</item>
-      </annotation>
-      <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/evidence/commands</item>
-      </annotation>
-      <annotation name="ValidProperties">
-        <item name="propertySpecifier">_mid,da,_id,data,rel,aid,type,note,dr,blo</item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="returnType">opaque</item>
-        <item name="inputParamNames">filter</item>
-        <item name="inputParams">string</item>
-      </annotation>
-      <parameter name="filter" type="string"/>
-    </function>
-    <function name="sync_history_" return-type="Evidence[]">
-      <annotation name="analyze group">
-        <item name="analyzed">true</item>
-      </annotation>
-      <annotation name="ActionScriptGeneration">
-        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
-        <item name="method">GET</item>
-        <item name="url">/evidence/sync_history</item>
-      </annotation>
-      <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/evidence/sync_history</item>
-      </annotation>
-      <annotation name="ValidProperties">
-        <item name="propertySpecifier">_mid,da,_id,data,rel,aid,type,note,dr,blo</item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="returnType">opaque</item>
-        <item name="inputParamNames">filter</item>
-        <item name="inputParams">string</item>
-      </annotation>
-      <parameter name="filter" type="string"/>
-    </function>
-    <function name="filter_all_" return-type="Filter">
-      <annotation name="analyze group">
-        <item name="analyzed">true</item>
-      </annotation>
-      <annotation name="ActionScriptGeneration">
-        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
-        <item name="method">GET</item>
-        <item name="url">/filter</item>
-      </annotation>
-      <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/filter</item>
-      </annotation>
-      <annotation name="ValidProperties">
-        <item name="propertySpecifier">_id,name,user,filter</item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="returnType">opaque</item>
-      </annotation>
-    </function>
-    <function name="filter_destroy_" return-type="void">
-      <annotation name="analyze group">
-        <item name="analyzed">true</item>
-      </annotation>
-      <annotation name="ActionScriptGeneration">
-        <item name="SerializationFilter">com.adobe.serializers.xml.XMLSerializationFilter</item>
-        <item name="method">POST</item>
-        <item name="contentType">application/xml</item>
-        <item name="requestBodyParameter">true</item>
-        <item name="url">/filter/destroy</item>
-      </annotation>
-      <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/filter/destroy</item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="returnType">opaque</item>
-        <item name="inputParamNames">strXml</item>
-        <item name="inputParams">string</item>
-      </annotation>
-      <parameter name="strXml" type="string"/>
-    </function>
-    <function name="filter_create_" return-type="Filter">
-      <annotation name="analyze group">
-        <item name="analyzed">true</item>
-      </annotation>
-      <annotation name="ActionScriptGeneration">
-        <item name="SerializationFilter">com.adobe.serializers.xml.XMLSerializationFilter</item>
-        <item name="method">POST</item>
-        <item name="contentType">application/xml</item>
-        <item name="requestBodyParameter">true</item>
-        <item name="url">/filter/create</item>
-      </annotation>
-      <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/filter/create</item>
-      </annotation>
-      <annotation name="ValidProperties">
-        <item name="propertySpecifier">_id,name,user,filter</item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="returnType">opaque</item>
-        <item name="inputParamNames">strXml</item>
-        <item name="inputParams">string</item>
-      </annotation>
-      <parameter name="strXml" type="string"/>
-    </function>
-    <function name="destroy_all_" return-type="void">
-      <annotation name="analyze group">
-        <item name="analyzed">true</item>
-      </annotation>
-      <annotation name="ActionScriptGeneration">
-        <item name="SerializationFilter">com.adobe.serializers.xml.XMLSerializationFilter</item>
-        <item name="method">POST</item>
-        <item name="contentType">application/xml</item>
-        <item name="requestBodyParameter">true</item>
-        <item name="url">/evidence/destroy_all</item>
-      </annotation>
-      <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/evidence/destroy_all</item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="returnType">opaque</item>
-        <item name="inputParamNames">strXml</item>
-        <item name="inputParams">string</item>
-      </annotation>
-      <parameter name="strXml" type="string"/>
-    </function>
-    <function name="translate_" return-type="Evidence">
-      <annotation name="analyze group">
-        <item name="analyzed">true</item>
-      </annotation>
-      <annotation name="ActionScriptGeneration">
-        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
-        <item name="method">GET</item>
-        <item name="url">/evidence/translate/{id}</item>
-      </annotation>
-      <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/evidence/translate/{id}</item>
-      </annotation>
-      <annotation name="ValidProperties">
-        <item name="propertySpecifier">_mid,da,_id,data,rel,aid,type,note,dr,blo</item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="returnType">opaque</item>
-        <item name="inputParamNames">id,target</item>
-        <item name="inputParams">string,string</item>
-      </annotation>
-      <annotation name="Properties">
-        <item name="urlParamNames">id</item>
-      </annotation>
-      <parameter name="id" type="string"/>
-      <parameter name="target" type="string"/>
-    </function>
-    <function name="update_multi_" return-type="opaque">
-      <annotation name="analyze group">
-        <item name="analyzed">false</item>
-      </annotation>
-      <annotation name="ActionScriptGeneration">
-        <item name="method">POST</item>
-        <item name="contentType">application/xml</item>
-        <item name="requestBodyParameter">true</item>
-        <item name="url">/evidence/update_multi</item>
-      </annotation>
-      <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/evidence/update_multi</item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="returnType">opaque</item>
-        <item name="inputParamNames">strXml</item>
-        <item name="inputParams">string</item>
-      </annotation>
-      <parameter name="strXml" type="string"/>
-    </function>
-    <function name="filesystem_" return-type="opaque">
-      <annotation name="analyze group">
-        <item name="analyzed">false</item>
-      </annotation>
-      <annotation name="ActionScriptGeneration">
-        <item name="SerializationFilter">com.adobe.serializers.xml.XMLSerializationFilter</item>
-        <item name="method">GET</item>
-        <item name="url">/evidence/filesystem</item>
-      </annotation>
-      <annotation name="url group">
-        <item name="completeURL">https://localhost:4444/evidence/filesystem</item>
-      </annotation>
-      <annotation name="original signature">
-        <item name="returnType">opaque</item>
-        <item name="inputParamNames">target,agent,path</item>
-        <item name="inputParams">string,string,string</item>
-      </annotation>
-      <parameter name="target" type="string"/>
-      <parameter name="agent" type="string"/>
-      <parameter name="path" type="string"/>
-    </function>
-  </service>
-  <entity name="Filter">
-    <annotation name="EntityProperties">
-      <item name="EntityOriginalName">Filter</item>
-    </annotation>
-    <annotation name="service Group">
-      <item name="service">DBEvidence</item>
-    </annotation>
-    <annotation name="ServerProperties">
-      <item name="IncludeRemoteClass">nonempty</item>
-    </annotation>
-    <annotation name="filter_all_">
-      <item name="propertySpecifier">_id,name,user,filter</item>
-    </annotation>
-    <annotation name="ActionScriptGeneration">
-      <item name="Package">it.ht.rcs.console.evidence.model</item>
-    </annotation>
-    <annotation name="filter_create_">
-      <item name="propertySpecifier">_id,name,user,filter</item>
-    </annotation>
-    <property name="_id" type="string" required="true"/>
-    <property name="name" type="string" required="true"/>
-    <property name="user" type="string[]" required="true"/>
-    <property name="filter" type="opaque" required="true"/>
-  </entity>
-  <entity name="Evidence" persistent="true">
-    <annotation name="EntityProperties">
-      <item name="EntityOriginalName">Evidence</item>
-    </annotation>
-    <annotation name="service Group">
-      <item name="service">DBEvidence,DBEvidenceDummy</item>
-    </annotation>
-    <annotation name="ServerProperties">
-      <item name="IncludeRemoteClass">nonempty</item>
-    </annotation>
-    <annotation name="all_">
-      <item name="propertySpecifier">blo,_id,data,rel,da,dr,aid,type,_mid,note</item>
-      <item name="positionalPagingParameters">true</item>
-      <item name="pagingEnabled">true</item>
-      <item name="countOperation">count_</item>
-    </annotation>
-    <annotation name="ActionScriptGeneration">
-      <item name="Package">it.ht.rcs.console.evidence.model</item>
-    </annotation>
-    <annotation name="info_">
-      <item name="propertySpecifier">blo,_id,data,rel,da,dr,aid,type,_mid</item>
-    </annotation>
-    <annotation name="DataManagement">
-      <item name="managingService">DBEvidence</item>
-      <item name="fillFunc">all_</item>
-    </annotation>
-    <annotation name="update_">
-      <item name="propertySpecifier">blo,_id,data,rel,da,dr,aid,type,_mid,note</item>
-    </annotation>
-    <annotation name="filesystem_">
-      <item name="propertySpecifier">da,_id,data,rel,aid,type,note,dr,blo</item>
-    </annotation>
-    <annotation name="show_">
-      <item name="propertySpecifier">_mid,da,_id,data,rel,aid,type,note,dr,blo</item>
-    </annotation>
-    <annotation name="commands_">
-      <item name="propertySpecifier">_mid,da,_id,data,rel,aid,type,note,dr,blo</item>
-    </annotation>
-    <annotation name="ips_">
-      <item name="propertySpecifier">_mid,da,_id,data,rel,aid,type,note,dr,blo</item>
-    </annotation>
-    <annotation name="translate_">
-      <item name="propertySpecifier">_mid,da,_id,data,rel,aid,type,note,dr,blo</item>
-    </annotation>
-    <property name="_mid" type="integer" required="true"/>
-    <property name="da" type="integer" required="true"/>
-    <id name="_id" type="string"/>
-    <property name="data" type="EvidenceData" required="true"/>
-    <property name="rel" type="integer" required="true"/>
-    <property name="aid" type="string" required="true"/>
-    <property name="type" type="string" required="true"/>
-    <property name="note" type="string" required="true"/>
-    <property name="dr" type="integer" required="true"/>
-    <property name="blo" type="boolean" required="true"/>
-  </entity>
-  <entity name="EvidenceDataCell">
-    <annotation name="EntityProperties">
-      <item name="EntityOriginalName">EvidenceDataCell</item>
-    </annotation>
-    <annotation name="service Group">
-      <item name="service">DBEvidence</item>
-    </annotation>
-    <annotation name="ServerProperties">
-      <item name="IncludeRemoteClass">nonempty</item>
-    </annotation>
-    <annotation name="ActionScriptGeneration">
-      <item name="Package">it.ht.rcs.console.evidence.model</item>
-    </annotation>
-    <property name="mcc" type="integer"/>
-    <property name="mnc" type="integer"/>
-    <property name="lac" type="integer"/>
-    <property name="cid" type="integer"/>
-    <property name="sid" type="integer"/>
-    <property name="nid" type="integer"/>
-    <property name="bid" type="integer"/>
-    <property name="db" type="integer"/>
-    <property name="adv" type="integer"/>
-    <property name="age" type="integer"/>
-  </entity>
-  <entity name="EvidenceDataWifi">
-    <annotation name="EntityProperties">
-      <item name="EntityOriginalName">EvidenceDataWifi</item>
-    </annotation>
-    <annotation name="service Group">
-      <item name="service">DBEvidence</item>
-    </annotation>
-    <annotation name="ServerProperties">
-      <item name="IncludeRemoteClass">nonempty</item>
-    </annotation>
-    <annotation name="ActionScriptGeneration">
-      <item name="Package">it.ht.rcs.console.evidence.model</item>
-    </annotation>
-    <property name="mac" type="string"/>
-    <property name="ssid" type="string"/>
-    <property name="sig" type="integer"/>
-  </entity>
-  <entity name="AgentStatus">
-    <annotation name="EntityProperties">
-      <item name="EntityOriginalName">AgentStatus</item>
-    </annotation>
-    <annotation name="service Group">
-      <item name="service">DBEvidence</item>
-    </annotation>
-    <annotation name="ServerProperties">
-      <item name="IncludeRemoteClass">nonempty</item>
-    </annotation>
-    <annotation name="agent_status_">
-      <item name="propertySpecifier">_id,status,deleted</item>
-    </annotation>
-    <annotation name="ActionScriptGeneration">
-      <item name="Package">it.ht.rcs.console.evidence.model</item>
-    </annotation>
-    <property name="_id" type="string" required="true"/>
-    <property name="status" type="string" required="true"/>
-    <property name="deleted" type="boolean" required="true"/>
-  </entity>
-  <entity name="EvidenceDataAddress">
-    <annotation name="EntityProperties">
-      <item name="EntityOriginalName">EvidenceDataAddress</item>
-    </annotation>
-    <annotation name="service Group">
-      <item name="service">DBEvidence</item>
-    </annotation>
-    <annotation name="ServerProperties">
-      <item name="IncludeRemoteClass">nonempty</item>
-    </annotation>
-    <annotation name="ActionScriptGeneration">
-      <item name="Package">it.ht.rcs.console.evidence.model</item>
-    </annotation>
-    <property name="country" type="string"/>
-    <property name="country_code" type="string"/>
-    <property name="region" type="string"/>
-    <property name="city" type="string"/>
-    <property name="street" type="string"/>
-    <property name="street_number" type="string"/>
-    <property name="postal_code" type="string"/>
-    <property name="text" type="string"/>
-  </entity>
-  <entity name="EvidenceData">
-    <annotation name="EntityProperties">
-      <item name="EntityOriginalName">EvidenceData</item>
-    </annotation>
-    <annotation name="service Group">
-      <item name="service">DBEvidence</item>
-    </annotation>
-    <annotation name="ServerProperties">
-      <item name="IncludeRemoteClass">nonempty</item>
-    </annotation>
-    <annotation name="ActionScriptGeneration">
-      <item name="Package">it.ht.rcs.console.evidence.model</item>
-    </annotation>
-    <property name="window" type="string"/>
-    <property name="_grid_size" type="integer"/>
-    <property name="program" type="string"/>
-    <property name="process" type="string"/>
-    <property name="service" type="string"/>
-    <property name="user" type="string"/>
-    <property name="pass" type="string"/>
-    <property name="content" type="string"/>
-    <property name="body" type="string"/>
-    <property name="resolution" type="string"/>
-    <property name="_grid" type="string"/>
-    <property name="y" type="integer"/>
-    <property name="x" type="integer"/>
-    <property name="name" type="string"/>
-    <property name="contact" type="string"/>
-    <property name="info" type="string"/>
-    <property name="action" type="string"/>
-    <property name="desc" type="string"/>
-    <property name="event" type="string"/>
-    <property name="type" type="string"/>
-    <property name="begin" type="integer"/>
-    <property name="end" type="integer"/>
-    <property name="peer" type="string"/>
-    <property name="duration" type="integer"/>
-    <property name="status" type="string"/>
-    <property name="topic" type="string"/>
-    <property name="users" type="string"/>
-    <property name="spool" type="string"/>
-    <property name="access" type="integer"/>
-    <property name="from" type="string"/>
-    <property name="caller" type="string"/>
-    <property name="incoming" type="boolean"/>
-    <property name="speed" type="integer"/>
-    <property name="total" type="integer"/>
-    <property name="count" type="integer"/>
-    <property name="timeout" type="boolean"/>
-    <property name="draft" type="boolean"/>
-    <property name="from_display" type="string"/>
-    <property name="rcpt" type="string"/>
-    <property name="id" type="string"/>
-    <property name="rcpt_display" type="string"/>
-    <property name="thumb" type="string"/>
-    <property name="subject" type="string"/>
-    <property name="url" type="string"/>
-    <property name="title" type="string"/>
-    <property name="keywords" type="string"/>
-    <property name="ip" type="string"/>
-    <property name="latitude" type="double"/>
-    <property name="longitude" type="double"/>
-    <property name="accuracy" type="integer"/>
-    <property name="address" type="EvidenceDataAddress"/>
-    <property name="cell" type="EvidenceDataCell"/>
-    <property name="wifi" type="EvidenceDataWifi[]"/>
-    <property name="path" type="string"/>
-    <property name="attr" type="integer"/>
-    <property name="size" type="double"/>
-    <property name="attach" type="integer"/>
-    <property name="command" type="string"/>
-    <property name="tr" type="string"/>
-    <property name="version" type="string"/>
-    <property name="encrypted" type="boolean"/>
-    <property name="balance" type="double"/>
-    <property name="amount" type="double"/>
-    <property name="currency" type="string"/>
-  </entity>
-  <entity name="TypeCount">
-    <annotation name="EntityProperties">
-      <item name="EntityOriginalName">TypeCount</item>
-    </annotation>
-    <annotation name="service Group">
-      <item name="service">DBEvidence</item>
-    </annotation>
-    <annotation name="ServerProperties">
-      <item name="IncludeRemoteClass">nonempty</item>
-    </annotation>
-    <annotation name="total_">
-      <item name="propertySpecifier">count,type</item>
-    </annotation>
-    <annotation name="ActionScriptGeneration">
-      <item name="Package">it.ht.rcs.console.evidence.model</item>
-    </annotation>
-    <property name="count" type="double" required="true" default="0"/>
-    <property name="type" type="string" required="true"/>
-  </entity>
   <service name="DBCollector">
     <annotation name="ActionScriptGeneration">
       <item name="ServiceType">HTTPMultiService</item>
@@ -4297,40 +3604,6 @@
     <property name="_grid_size" type="integer" required="true"/>
     <property name="filename" type="string" required="true"/>
     <property name="_grid" type="string[]" required="true"/>
-  </entity>
-  <entity name="StatEvidence">
-    <annotation name="EntityProperties">
-      <item name="EntityOriginalName">StatEvidence</item>
-    </annotation>
-    <annotation name="service Group">
-      <item name="service">DBSearch,DBTarget,DBOperation,DBAgent</item>
-    </annotation>
-    <annotation name="ServerProperties">
-      <item name="IncludeRemoteClass">nonempty</item>
-    </annotation>
-    <annotation name="ActionScriptGeneration">
-      <item name="Package">it.ht.rcs.console.search.model</item>
-    </annotation>
-    <property name="position" type="integer"/>
-    <property name="message" type="integer"/>
-    <property name="call" type="integer"/>
-    <property name="mic" type="integer"/>
-    <property name="application" type="integer"/>
-    <property name="mouse" type="integer"/>
-    <property name="money" type="integer"/>
-    <property name="screenshot" type="integer"/>
-    <property name="camera" type="integer"/>
-    <property name="chat" type="integer"/>
-    <property name="password" type="integer"/>
-    <property name="print" type="integer"/>
-    <property name="upload" type="integer"/>
-    <property name="url" type="integer"/>
-    <property name="file" type="integer"/>
-    <property name="addressbook" type="integer"/>
-    <property name="calendar" type="integer"/>
-    <property name="device" type="integer"/>
-    <property name="keylog" type="integer"/>
-    <property name="clipboard" type="integer"/>
   </entity>
   <service name="DBBackup">
     <annotation name="ActionScriptGeneration">
@@ -5764,5 +5037,777 @@
     <property name="path" type="string[]" required="true"/>
     <property name="created_at" type="string" required="true"/>
     <property name="handles" type="Handle[]" required="true"/>
+  </entity>
+  <service name="DBEvidence">
+    <annotation name="ActionScriptGeneration">
+      <item name="ServiceType">HTTPMultiService</item>
+      <item name="Package">it.ht.rcs.console.evidence.rest</item>
+      <item name="rootURL">https://localhost:4444</item>
+    </annotation>
+    <annotation name="ServiceTypeGroup">
+      <item name="ServiceBackendType">HTTPService</item>
+    </annotation>
+    <annotation name="ServiceConfig">
+      <item name="DEFAULT_ENTITY_PACKAGE">it.ht.rcs.console.evidence.model</item>
+      <item name="LINKED_FILE"></item>
+    </annotation>
+    <function name="agent_status_" return-type="AgentStatus">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">POST</item>
+        <item name="contentType">application/xml</item>
+        <item name="requestBodyParameter">true</item>
+        <item name="url">/agent/status</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/agent/status</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">_id,status,deleted</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+        <item name="inputParamNames">strXml</item>
+        <item name="inputParams">string</item>
+      </annotation>
+      <parameter name="strXml" type="string"/>
+    </function>
+    <function name="all_" return-type="Evidence[]">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/evidence</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/evidence</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">blo,_id,data,rel,da,dr,aid,type,_mid,note</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+        <item name="inputParamNames">filter,startIndex,numItems</item>
+        <item name="inputParams">string,integer,integer</item>
+      </annotation>
+      <parameter name="filter" type="string"/>
+      <parameter name="startIndex" type="integer"/>
+      <parameter name="numItems" type="integer"/>
+    </function>
+    <function name="count_" return-type="integer">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.xml.XMLSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/evidence/count</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/evidence/count</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+        <item name="inputParamNames">filter</item>
+        <item name="inputParams">string</item>
+      </annotation>
+      <parameter name="filter" type="string"/>
+    </function>
+    <function name="info_" return-type="Evidence">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/evidence/info</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/evidence/info</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">blo,_id,data,rel,da,dr,aid,type,_mid</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+        <item name="inputParamNames">filter</item>
+        <item name="inputParams">string</item>
+      </annotation>
+      <parameter name="filter" type="string"/>
+    </function>
+    <function name="sync_start_" return-type="void">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.xml.XMLSerializationFilter</item>
+        <item name="method">POST</item>
+        <item name="contentType">application/xml</item>
+        <item name="requestBodyParameter">true</item>
+        <item name="url">/evidence/start</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/evidence/start</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+        <item name="inputParamNames">strXml</item>
+        <item name="inputParams">string</item>
+      </annotation>
+      <parameter name="strXml" type="string"/>
+    </function>
+    <function name="sync_stop_" return-type="void">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.xml.XMLSerializationFilter</item>
+        <item name="method">POST</item>
+        <item name="contentType">application/xml</item>
+        <item name="requestBodyParameter">true</item>
+        <item name="url">/evidence/stop</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/evidence/stop</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+        <item name="inputParamNames">strXml</item>
+        <item name="inputParams">string</item>
+      </annotation>
+      <parameter name="strXml" type="string"/>
+    </function>
+    <function name="update_" return-type="Evidence">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">POST</item>
+        <item name="contentType">application/xml</item>
+        <item name="requestBodyParameter">true</item>
+        <item name="url">/evidence/update</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/evidence/update</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">blo,_id,data,rel,da,dr,aid,type,_mid,note</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+        <item name="inputParamNames">strXml</item>
+        <item name="inputParams">string</item>
+      </annotation>
+      <parameter name="strXml" type="string"/>
+    </function>
+    <function name="total_" return-type="TypeCount[]">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/evidence/total</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/evidence/total</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">count,type</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+        <item name="inputParamNames">filter</item>
+        <item name="inputParams">string</item>
+      </annotation>
+      <parameter name="filter" type="string"/>
+    </function>
+    <function name="show_" return-type="Evidence">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/evidence/{id}</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/evidence/{id}</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">_mid,da,_id,data,rel,aid,type,note,dr,blo</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+        <item name="inputParamNames">id,target</item>
+        <item name="inputParams">string,string</item>
+      </annotation>
+      <annotation name="Properties">
+        <item name="urlParamNames">id</item>
+      </annotation>
+      <parameter name="id" type="string"/>
+      <parameter name="target" type="string"/>
+    </function>
+    <function name="destroy_" return-type="void">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.xml.XMLSerializationFilter</item>
+        <item name="method">POST</item>
+        <item name="contentType">application/xml</item>
+        <item name="requestBodyParameter">true</item>
+        <item name="url">/evidence/destroy</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/evidence/destroy</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+        <item name="inputParamNames">strXml</item>
+        <item name="inputParams">string</item>
+      </annotation>
+      <parameter name="strXml" type="string"/>
+    </function>
+    <function name="commands_" return-type="Evidence[]">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/evidence/commands</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/evidence/commands</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">_mid,da,_id,data,rel,aid,type,note,dr,blo</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+        <item name="inputParamNames">filter</item>
+        <item name="inputParams">string</item>
+      </annotation>
+      <parameter name="filter" type="string"/>
+    </function>
+    <function name="sync_history_" return-type="Evidence[]">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/evidence/sync_history</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/evidence/sync_history</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">_mid,da,_id,data,rel,aid,type,note,dr,blo</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+        <item name="inputParamNames">filter</item>
+        <item name="inputParams">string</item>
+      </annotation>
+      <parameter name="filter" type="string"/>
+    </function>
+    <function name="filter_all_" return-type="Filter">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/filter</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/filter</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">_id,name,user,filter</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+      </annotation>
+    </function>
+    <function name="filter_destroy_" return-type="void">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.xml.XMLSerializationFilter</item>
+        <item name="method">POST</item>
+        <item name="contentType">application/xml</item>
+        <item name="requestBodyParameter">true</item>
+        <item name="url">/filter/destroy</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/filter/destroy</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+        <item name="inputParamNames">strXml</item>
+        <item name="inputParams">string</item>
+      </annotation>
+      <parameter name="strXml" type="string"/>
+    </function>
+    <function name="filter_create_" return-type="Filter">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.xml.XMLSerializationFilter</item>
+        <item name="method">POST</item>
+        <item name="contentType">application/xml</item>
+        <item name="requestBodyParameter">true</item>
+        <item name="url">/filter/create</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/filter/create</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">_id,name,user,filter</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+        <item name="inputParamNames">strXml</item>
+        <item name="inputParams">string</item>
+      </annotation>
+      <parameter name="strXml" type="string"/>
+    </function>
+    <function name="destroy_all_" return-type="void">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.xml.XMLSerializationFilter</item>
+        <item name="method">POST</item>
+        <item name="contentType">application/xml</item>
+        <item name="requestBodyParameter">true</item>
+        <item name="url">/evidence/destroy_all</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/evidence/destroy_all</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+        <item name="inputParamNames">strXml</item>
+        <item name="inputParams">string</item>
+      </annotation>
+      <parameter name="strXml" type="string"/>
+    </function>
+    <function name="translate_" return-type="Evidence">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/evidence/translate/{id}</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/evidence/translate/{id}</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">_mid,da,_id,data,rel,aid,type,note,dr,blo</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+        <item name="inputParamNames">id,target</item>
+        <item name="inputParams">string,string</item>
+      </annotation>
+      <annotation name="Properties">
+        <item name="urlParamNames">id</item>
+      </annotation>
+      <parameter name="id" type="string"/>
+      <parameter name="target" type="string"/>
+    </function>
+    <function name="update_multi_" return-type="opaque">
+      <annotation name="analyze group">
+        <item name="analyzed">false</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="method">POST</item>
+        <item name="contentType">application/xml</item>
+        <item name="requestBodyParameter">true</item>
+        <item name="url">/evidence/update_multi</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/evidence/update_multi</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+        <item name="inputParamNames">strXml</item>
+        <item name="inputParams">string</item>
+      </annotation>
+      <parameter name="strXml" type="string"/>
+    </function>
+    <function name="filesystem_" return-type="opaque">
+      <annotation name="analyze group">
+        <item name="analyzed">false</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.xml.XMLSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/evidence/filesystem</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/evidence/filesystem</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+        <item name="inputParamNames">target,agent,path</item>
+        <item name="inputParams">string,string,string</item>
+      </annotation>
+      <parameter name="target" type="string"/>
+      <parameter name="agent" type="string"/>
+      <parameter name="path" type="string"/>
+    </function>
+    <function name="test" return-type="StatEvidence">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ActionScriptGeneration">
+        <item name="SerializationFilter">com.adobe.serializers.json.JSONSerializationFilter</item>
+        <item name="method">GET</item>
+        <item name="url">/evidence/filesystem</item>
+      </annotation>
+      <annotation name="url group">
+        <item name="completeURL">https://localhost:4444/evidence/filesystem</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">photo</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+      </annotation>
+    </function>
+  </service>
+  <entity name="Filter">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Filter</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBEvidence</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="filter_all_">
+      <item name="propertySpecifier">_id,name,user,filter</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.evidence.model</item>
+    </annotation>
+    <annotation name="filter_create_">
+      <item name="propertySpecifier">_id,name,user,filter</item>
+    </annotation>
+    <property name="_id" type="string" required="true"/>
+    <property name="name" type="string" required="true"/>
+    <property name="user" type="string[]" required="true"/>
+    <property name="filter" type="opaque" required="true"/>
+  </entity>
+  <entity name="Evidence" persistent="true">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Evidence</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBEvidence,DBEvidenceDummy</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="all_">
+      <item name="propertySpecifier">blo,_id,data,rel,da,dr,aid,type,_mid,note</item>
+      <item name="positionalPagingParameters">true</item>
+      <item name="pagingEnabled">true</item>
+      <item name="countOperation">count_</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.evidence.model</item>
+    </annotation>
+    <annotation name="info_">
+      <item name="propertySpecifier">blo,_id,data,rel,da,dr,aid,type,_mid</item>
+    </annotation>
+    <annotation name="DataManagement">
+      <item name="managingService">DBEvidence</item>
+      <item name="fillFunc">all_</item>
+    </annotation>
+    <annotation name="update_">
+      <item name="propertySpecifier">blo,_id,data,rel,da,dr,aid,type,_mid,note</item>
+    </annotation>
+    <annotation name="filesystem_">
+      <item name="propertySpecifier">da,_id,data,rel,aid,type,note,dr,blo</item>
+    </annotation>
+    <annotation name="show_">
+      <item name="propertySpecifier">_mid,da,_id,data,rel,aid,type,note,dr,blo</item>
+    </annotation>
+    <annotation name="commands_">
+      <item name="propertySpecifier">_mid,da,_id,data,rel,aid,type,note,dr,blo</item>
+    </annotation>
+    <annotation name="ips_">
+      <item name="propertySpecifier">_mid,da,_id,data,rel,aid,type,note,dr,blo</item>
+    </annotation>
+    <annotation name="translate_">
+      <item name="propertySpecifier">_mid,da,_id,data,rel,aid,type,note,dr,blo</item>
+    </annotation>
+    <property name="_mid" type="integer" required="true"/>
+    <property name="da" type="integer" required="true"/>
+    <id name="_id" type="string"/>
+    <property name="data" type="EvidenceData" required="true"/>
+    <property name="rel" type="integer" required="true"/>
+    <property name="aid" type="string" required="true"/>
+    <property name="type" type="string" required="true"/>
+    <property name="note" type="string" required="true"/>
+    <property name="dr" type="integer" required="true"/>
+    <property name="blo" type="boolean" required="true"/>
+  </entity>
+  <entity name="EvidenceDataCell">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">EvidenceDataCell</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBEvidence</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.evidence.model</item>
+    </annotation>
+    <property name="mcc" type="integer"/>
+    <property name="mnc" type="integer"/>
+    <property name="lac" type="integer"/>
+    <property name="cid" type="integer"/>
+    <property name="sid" type="integer"/>
+    <property name="nid" type="integer"/>
+    <property name="bid" type="integer"/>
+    <property name="db" type="integer"/>
+    <property name="adv" type="integer"/>
+    <property name="age" type="integer"/>
+  </entity>
+  <entity name="Tag">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Tags</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBEvidence</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.evidence.model</item>
+    </annotation>
+    <property name="handle" type="string" required="true"/>
+    <property name="name" type="string" required="true"/>
+    <property name="type" type="string" required="true"/>
+  </entity>
+  <entity name="EvidenceDataWifi">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">EvidenceDataWifi</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBEvidence</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.evidence.model</item>
+    </annotation>
+    <property name="mac" type="string"/>
+    <property name="ssid" type="string"/>
+    <property name="sig" type="integer"/>
+  </entity>
+  <entity name="AgentStatus">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">AgentStatus</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBEvidence</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="agent_status_">
+      <item name="propertySpecifier">_id,status,deleted</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.evidence.model</item>
+    </annotation>
+    <property name="_id" type="string" required="true"/>
+    <property name="status" type="string" required="true"/>
+    <property name="deleted" type="boolean" required="true"/>
+  </entity>
+  <entity name="EvidenceDataAddress">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">EvidenceDataAddress</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBEvidence</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.evidence.model</item>
+    </annotation>
+    <property name="country" type="string"/>
+    <property name="country_code" type="string"/>
+    <property name="region" type="string"/>
+    <property name="city" type="string"/>
+    <property name="street" type="string"/>
+    <property name="street_number" type="string"/>
+    <property name="postal_code" type="string"/>
+    <property name="text" type="string"/>
+  </entity>
+  <entity name="EvidenceData">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">EvidenceData</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBEvidence</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.evidence.model</item>
+    </annotation>
+    <annotation name="test">
+      <item name="propertySpecifier">tags,device</item>
+    </annotation>
+    <property name="window" type="string"/>
+    <property name="_grid_size" type="integer"/>
+    <property name="program" type="string"/>
+    <property name="process" type="string"/>
+    <property name="service" type="string"/>
+    <property name="user" type="string"/>
+    <property name="pass" type="string"/>
+    <property name="content" type="string"/>
+    <property name="body" type="string"/>
+    <property name="resolution" type="string"/>
+    <property name="_grid" type="string"/>
+    <property name="y" type="integer"/>
+    <property name="x" type="integer"/>
+    <property name="name" type="string"/>
+    <property name="contact" type="string"/>
+    <property name="info" type="string"/>
+    <property name="action" type="string"/>
+    <property name="desc" type="string"/>
+    <property name="event" type="string"/>
+    <property name="type" type="string"/>
+    <property name="begin" type="integer"/>
+    <property name="end" type="integer"/>
+    <property name="peer" type="string"/>
+    <property name="duration" type="integer"/>
+    <property name="status" type="string"/>
+    <property name="topic" type="string"/>
+    <property name="users" type="string"/>
+    <property name="spool" type="string"/>
+    <property name="access" type="integer"/>
+    <property name="from" type="string"/>
+    <property name="caller" type="string"/>
+    <property name="incoming" type="boolean"/>
+    <property name="speed" type="integer"/>
+    <property name="total" type="integer"/>
+    <property name="count" type="integer"/>
+    <property name="timeout" type="boolean"/>
+    <property name="draft" type="boolean"/>
+    <property name="from_display" type="string"/>
+    <property name="rcpt" type="string"/>
+    <property name="id" type="string"/>
+    <property name="rcpt_display" type="string"/>
+    <property name="thumb" type="string"/>
+    <property name="subject" type="string"/>
+    <property name="url" type="string"/>
+    <property name="title" type="string"/>
+    <property name="keywords" type="string"/>
+    <property name="ip" type="string"/>
+    <property name="latitude" type="double"/>
+    <property name="longitude" type="double"/>
+    <property name="accuracy" type="integer"/>
+    <property name="address" type="EvidenceDataAddress"/>
+    <property name="cell" type="EvidenceDataCell"/>
+    <property name="wifi" type="EvidenceDataWifi[]"/>
+    <property name="path" type="string"/>
+    <property name="attr" type="integer"/>
+    <property name="size" type="double"/>
+    <property name="attach" type="integer"/>
+    <property name="command" type="string"/>
+    <property name="tr" type="string"/>
+    <property name="version" type="string"/>
+    <property name="encrypted" type="boolean"/>
+    <property name="balance" type="double"/>
+    <property name="amount" type="double"/>
+    <property name="currency" type="string"/>
+    <property name="tags" type="Tag[]" required="true"/>
+    <property name="device" type="string" required="true"/>
+  </entity>
+  <entity name="TypeCount">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">TypeCount</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBEvidence</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="total_">
+      <item name="propertySpecifier">count,type</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.evidence.model</item>
+    </annotation>
+    <property name="count" type="double" required="true" default="0"/>
+    <property name="type" type="string" required="true"/>
+  </entity>
+  <entity name="StatEvidence">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">StatEvidence</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">DBEvidence</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">it.ht.rcs.console.search.model</item>
+    </annotation>
+    <annotation name="test">
+      <item name="propertySpecifier">photo</item>
+    </annotation>
+    <property name="position" type="integer"/>
+    <property name="message" type="integer"/>
+    <property name="call" type="integer"/>
+    <property name="mic" type="integer"/>
+    <property name="application" type="integer"/>
+    <property name="mouse" type="integer"/>
+    <property name="money" type="integer"/>
+    <property name="screenshot" type="integer"/>
+    <property name="camera" type="integer"/>
+    <property name="chat" type="integer"/>
+    <property name="password" type="integer"/>
+    <property name="print" type="integer"/>
+    <property name="upload" type="integer"/>
+    <property name="url" type="integer"/>
+    <property name="file" type="integer"/>
+    <property name="addressbook" type="integer"/>
+    <property name="calendar" type="integer"/>
+    <property name="device" type="integer"/>
+    <property name="keylog" type="integer"/>
+    <property name="clipboard" type="integer"/>
+    <property name="photo" type="integer" required="true"/>
   </entity>
 </model>

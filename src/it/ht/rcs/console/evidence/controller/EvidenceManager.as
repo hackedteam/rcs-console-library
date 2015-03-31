@@ -58,7 +58,7 @@ package it.ht.rcs.console.evidence.controller
     {
       super.refresh();
       trace(ObjectUtil.toString(evidenceFilter));
-     
+      
       DB.instance.evidence.total(evidenceFilter, onCountResult);
       DB.instance.evidence.all(evidenceFilter, onResult);
     }
@@ -83,10 +83,10 @@ package it.ht.rcs.console.evidence.controller
     {
       counts = e.result as ArrayCollection;
       for each (var typeCount:TypeCount in counts)
-        if (typeCount.type == "total") {
-          total = typeCount.count;
-          break;
-        }
+      if (typeCount.type == "total") {
+        total = typeCount.count;
+        break;
+      }
     }
     
     override protected function onItemUpdate(event:*):void
@@ -100,28 +100,30 @@ package it.ht.rcs.console.evidence.controller
     
     public function update_multi(ids:Array, property:Object, callback:Function):void
     {
-    
-     // property[event.property] = event.newValue is ArrayCollection ? event.newValue.source : event.newValue;
+      
+      // property[event.property] = event.newValue is ArrayCollection ? event.newValue.source : event.newValue;
       //DB.instance.evidence.update(event.source, property, evidenceFilter.target);
       DB.instance.evidence.update_multi(ids, property, evidenceFilter.target, callback);
     }
     
-   
+    
     
     override protected function onItemRemove(item:*):void
     {
-       DB.instance.evidence.destroy(item, evidenceFilter.target,onItemRemoved);
+      DB.instance.evidence.destroy(item, evidenceFilter.target,onItemRemoved);
+      
     }
     
     private function onItemRemoved(e:ResultEvent):void
     {
       DB.instance.evidence.total(evidenceFilter, onCountResult);
-    //DB.instance.evidence.all(evidenceFilter, onResult);
+      //DB.instance.evidence.all(evidenceFilter, onResult);
     }
-     
+    
     override public function removeItem(item:Object):void
     {
       _view.list.removeItemAt(_view.getItemIndex(item))
+      
     }
     
     public function destroy_all(params:Object):void
@@ -134,7 +136,7 @@ package it.ht.rcs.console.evidence.controller
       trace("remove command");
       DB.instance.evidence.destroy(item, target._id);
     }
-     
+    
     public function removeIp(item:Evidence, target:Target):void
     {
       trace("remove command");
@@ -157,7 +159,7 @@ package it.ht.rcs.console.evidence.controller
       trace(ObjectUtil.toString(ipsFilter));
       DB.instance.evidence.sync_history(ipsFilter, onIpsResult);
     }
-
+    
     public function show(id:String, target:String, resultCallback:Function, faultCallback:Function):void
     {
       DB.instance.evidence.show(id, target, resultCallback, faultCallback);
@@ -166,12 +168,12 @@ package it.ht.rcs.console.evidence.controller
     public function sync(factory:String, instance:String, platform:String, version:String, user:String, device:String, onResult:Function = null):void
     {
       DB.instance.evidence.agent_status({ident: factory, instance: instance, platform: platform, level: 'elite'}, function (event:ResultEvent):void {
-                
+        
         if (event.result.status == 'OPEN' && event.result.deleted == false) {
           // send the sync parameters
           DB.instance.evidence.sync_start({bid: event.result._id, user: user, device: device, sync_time: (new Date().time) / 1000}); 
           DB.instance.evidence.sync_stop({bid: event.result._id});
-
+          
           onResult(event);
         } else {
           AlertPopUp.show("Invalid Agent Status, cannot import");
@@ -197,7 +199,7 @@ package it.ht.rcs.console.evidence.controller
     public function sync_stop(factory:String, instance:String, platform:String, version:String, user:String, device:String, cookie:String, sync_stat:Object, onResult:Function = null):void
     {
       DB.instance.evidence.sync_stop({bid:bid, cookie:cookie, sync_stat:sync_stat, source:"import"});
-    
+      
     }
     
     public function uploadEvidence(id:String, file:File, onResult:Function = null, onFault:Function = null):void
@@ -211,7 +213,7 @@ package it.ht.rcs.console.evidence.controller
       
     }
     
-
+    
     
     private function haveSameElements(a:Array, b:Array):Boolean
     {  
@@ -250,10 +252,10 @@ package it.ht.rcs.console.evidence.controller
         }
         return chatFlow;
       }
-
+      
       if(!to) to="";
       if(!from) from="";
-
+      
       var participants:Array=to.split(",");
       participants.push(from);
       
@@ -262,35 +264,35 @@ package it.ht.rcs.console.evidence.controller
         if(_view.getItemAt(i) && _view.getItemAt(i).type=="chat")
         {
           chatEntry=_view.getItemAt(i) as Evidence;
-
-            if(chatEntry.data.rcpt!=null && chatEntry.data.rcpt!="")
-            {
-              var currentParticipants:Array=chatEntry.data.rcpt.split(",");
-              currentParticipants.push(chatEntry.data.from);
-              
-              if(chatEntry.data.program==program && haveSameElements(participants, currentParticipants))
-                chatFlow.addItem(chatEntry);
-            }
-            else
-            {
-              if(chatEntry.data.program==program && chatEntry.data.peer==to)
-                chatFlow.addItem(chatEntry);
-            }
+          
+          if(chatEntry.data.rcpt!=null && chatEntry.data.rcpt!="")
+          {
+            var currentParticipants:Array=chatEntry.data.rcpt.split(",");
+            currentParticipants.push(chatEntry.data.from);
+            
+            if(chatEntry.data.program==program && haveSameElements(participants, currentParticipants))
+              chatFlow.addItem(chatEntry);
+          }
+          else
+          {
+            if(chatEntry.data.program==program && chatEntry.data.peer==to)
+              chatFlow.addItem(chatEntry);
+          }
         }
       }
       return chatFlow;
     }
     
-  
-  /*  public function filesystem(targetId:String, agentId:String, filter:String, onResult:Function = null):void
+    
+    /*  public function filesystem(targetId:String, agentId:String, filter:String, onResult:Function = null):void
     {
-      filter=filter.replace("//","/")
-      DB.instance.evidence.filesystem(targetId, agentId, filter, onResult);
+    filter=filter.replace("//","/")
+    DB.instance.evidence.filesystem(targetId, agentId, filter, onResult);
     }*/
     
     public function filesystem(targetId:String, agentId:String, path:String, onResult:Function = null):void
     {
-
+      
       DB.instance.evidence.filesystem(targetId, agentId, path, onResult);
     }
     
